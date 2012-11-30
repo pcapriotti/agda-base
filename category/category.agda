@@ -2,10 +2,10 @@
 
 module category.category where
 
-open import level using (lsuc ; _⊔_)
+open import level using (Level ; lsuc ; _⊔_)
 open import equality using (_≡_)
 
-record Category {i j} : Set (lsuc (i ⊔ j)) where
+record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
   infixl 9 _∘_
   field
     -- data
