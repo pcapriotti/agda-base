@@ -1,0 +1,5 @@
+module unit where
+
+data ⊤ : Set where
+  tt : ⊤
+
