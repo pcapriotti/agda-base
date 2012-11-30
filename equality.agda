@@ -3,3 +3,4 @@ module equality where
 
 open import equality.core public
 open import equality.groupoid public
+open import equality.reasoning public
