@@ -1,7 +1,7 @@
 
 {-# OPTIONS --without-K  #-}
 
-module fin where
+module base_types.fin where
 
 open import base_types.nat using (ℕ; zero; suc)
 
