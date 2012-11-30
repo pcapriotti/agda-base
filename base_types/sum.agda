@@ -1,4 +1,7 @@
-module sum where
+
+{-# OPTIONS --without-K  #-}
+
+module base_types.sum where
 
 open import level using (Level; _⊔_)
 

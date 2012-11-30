@@ -1,13 +1,12 @@
 
 {-# OPTIONS --without-K  #-}
 
-module bool where
+module base_types.bool where
 
-open import equality  using (_≡_; refl)
-open import empty     using (⊥)
-open import unit      using (⊤)
-
+open import base_types.empty     using (⊥)
+open import base_types.unit      using (⊤)
 open import decidable using (Dec; yes; no)
+open import equality             using (_≡_; refl)
 open import level     using (Level)
 
 infixr 6 _∧_
