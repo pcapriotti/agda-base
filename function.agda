@@ -28,3 +28,7 @@ const x = λ _ → x
 _$_ : ∀ {a b} {A : Set a} {B : A → Set b} →
       ((x : A) → B x) → ((x : A) → B x)
 f $ x = f x
+
+flip : ∀ {a b c} {A : Set a} {B : Set b} {C : A → B → Set c} →
+       ((x : A) (y : B) → C x y) → ((y : B) (x : A) → C x y)
+flip f = λ y x → f x y
