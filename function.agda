@@ -1,7 +1,7 @@
 {-# OPTIONS --without-K #-}
 module function where
 
-open import Level
+open import level
 
 -- copied from Agda's standard library
 
