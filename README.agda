@@ -10,6 +10,8 @@ import level
 -- categories
 
 import category.category
+import category.groupoid
 import category.functor
 
 import category.instances.set
+import category.instances.discrete

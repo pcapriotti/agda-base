@@ -2,7 +2,6 @@
 module equality.reasoning where
 
 open import equality.core
-open import equality.groupoid
 
 module ≡-Reasoning {i} {X : Set i} where
   infix  4 _IsRelatedTo_
