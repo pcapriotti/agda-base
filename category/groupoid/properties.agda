@@ -4,10 +4,11 @@ module category.groupoid.properties where
 
 open import category.category
 open import category.groupoid
+open import category.functor hiding (id)
 open import equality.core using (_≡_ ; sym ; cong)
 open import equality.reasoning
 
-module Properties {i j}{G : Groupoid i j} where
+module Properties {i j}(G : Groupoid i j) where
   open Groupoid G
   open ≡-Reasoning
 
@@ -48,3 +49,29 @@ module Properties {i j}{G : Groupoid i j} where
           id _
         ∎
 open Properties public
+
+module Properties₂ {i j i' j'}{G : Groupoid i j}{H : Groupoid i' j'}
+                   (F : Morphism G H) where
+  open Groupoid hiding (_⊚_ ; _⁻¹)
+  open Groupoid G using () renaming (_⊚_ to _⊚₁_ ; _⁻¹ to inv₁)
+  open Groupoid H using () renaming (_⊚_ to _⊚₂_ ; _⁻¹ to inv₂)
+  open Functor F
+
+  map-inv : {x y : obj G}
+            (f : hom G x y)
+          → map (inv₁ f) ≡ inv₂ (map f)
+  map-inv {x} f = unique-inverse H (map f) (map (inv₁ f)) lem
+    where
+      open equality.reasoning
+      open ≡-Reasoning
+
+      lem : map f ⊚₂ map (inv₁ f) ≡ id H _
+      lem = begin
+          map f ⊚₂ map (inv₁ f)
+        ≡⟨ sym (map-hom f (inv₁ f)) ⟩
+          map (f ⊚₁ inv₁ f)
+        ≡⟨ cong map (left-inverse G f) ⟩
+          map (id G _)
+        ≡⟨ map-id _ ⟩
+          id H _
+        ∎
