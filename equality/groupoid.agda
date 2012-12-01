@@ -16,7 +16,9 @@ equality-groupoid A = record
     ; left-unit = left-unit
     ; right-unit = right-unit
     ; associativity = associativity }
-  ; sym = sym }
+  ; sym = sym
+  ; left-inverse = left-inverse
+  ; right-inverse = right-inverse }
   where
     open import equality.properties
 

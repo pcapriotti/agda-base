@@ -17,3 +17,11 @@ associativity : ∀ {i} {A : Set i}{x y z w : A}
               → trans p (trans q r)
               ≡ trans (trans p q) r
 associativity refl q r = refl
+
+left-inverse : ∀ {i} {A : Set i} {x y : A} (p : x ≡ y)
+             → trans p (sym p) ≡ refl
+left-inverse refl = refl
+
+right-inverse : ∀ {i} {A : Set i} {x y : A} (p : x ≡ y)
+              → trans (sym p) p ≡ refl
+right-inverse refl = refl
