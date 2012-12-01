@@ -1,6 +1,8 @@
 {-# OPTIONS --without-K #-}
 module level where
 
+infixl 5 _⊔_
+
 postulate
   Level : Set
   lzero  : Level
