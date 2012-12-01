@@ -22,7 +22,8 @@ record Groupoid (i j : Level) : Set (lsuc (i ⊔ j)) where
     right-inverse : {A B : obj}(f : hom A B)
                   → f ∘ sym f ≡ id B
 
-  _⁻¹_ : {A B : obj} → hom A B → hom B A
-  _⁻¹_ = sym
+  infix 6 _⁻¹
+  _⁻¹ : {A B : obj} → hom A B → hom B A
+  _⁻¹ = sym
 
   open Category cat public

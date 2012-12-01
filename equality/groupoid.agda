@@ -30,3 +30,11 @@ subst : ∀ {i j} {A : Set i}{x y : A}
       → (B : A → Set j) → x ≡ y
       → B x → B y
 subst B refl = id
+
+module Exports {i}{A : Set i} where
+  open import category.category
+  open import category.groupoid
+
+  open Groupoid (equality-groupoid A) public
+    hiding (sym ; id ; _∘_)
+open Exports public
