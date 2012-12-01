@@ -11,19 +11,17 @@ record Groupoid (i j : Level) : Set (lsuc (i ⊔ j)) where
 
   open Category cat
 
+  infix 9 _⁻¹
+
   field
     -- structure
-    sym : {A B : obj} → hom A B → hom B A
+    _⁻¹ : {A B : obj} → hom A B → hom B A
 
     -- laws
     left-inverse : {A B : obj}(f : hom A B)
-                 → sym f ∘ f ≡ id A
+                 → f ⁻¹ ∘ f ≡ id A
 
     right-inverse : {A B : obj}(f : hom A B)
-                  → f ∘ sym f ≡ id B
-
-  infix 6 _⁻¹
-  _⁻¹ : {A B : obj} → hom A B → hom B A
-  _⁻¹ = sym
+                  → f ∘ f ⁻¹ ≡ id B
 
   open Category cat public

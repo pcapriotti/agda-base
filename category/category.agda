@@ -6,7 +6,7 @@ open import level using (Level ; lsuc ; _⊔_)
 open import equality.core using (_≡_)
 
 record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
-  infixl 9 _∘_
+  infixl 8 _∘_
   field
     -- data
     obj : Set i
