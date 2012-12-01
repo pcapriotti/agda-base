@@ -3,6 +3,7 @@ module category.groupoid where
 
 open import level using (Level ; lsuc ; _⊔_)
 open import category.category
+open import category.functor using (Functor)
 open import equality.core using (_≡_)
 
 record Groupoid (i j : Level) : Set (lsuc (i ⊔ j)) where
@@ -25,3 +26,9 @@ record Groupoid (i j : Level) : Set (lsuc (i ⊔ j)) where
                   → f ∘ f ⁻¹ ≡ id B
 
   open Category cat public
+
+open Groupoid using (cat)
+
+-- a morphism of groupoids is just a functor of the underlying categories
+Morphism : ∀ {i j i' j'} (G : Groupoid i j)(H : Groupoid i' j') → Set _
+Morphism G H = Functor (cat G) (cat H)
