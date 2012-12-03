@@ -1,7 +1,7 @@
 {-# OPTIONS --without-K #-}
 open import category.category
 
-module category.isomorphism {i j}{C : Category i j} where
+module category.isomorphism {i j}(C : Category i j) where
 
 open import equality.core using (_≡_ ; refl)
 
