@@ -1,9 +1,9 @@
 
 {-# OPTIONS --without-K  #-}
 
-module base_types.fin where
+module sets.fin where
 
-open import base_types.nat using (ℕ; zero; suc)
+open import sets.nat using (ℕ; zero; suc)
 
 data Fin : ℕ → Set where
   zero : {n : ℕ} → Fin n

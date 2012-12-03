@@ -1,7 +1,7 @@
 
 {-# OPTIONS --without-K  #-}
 
-module base_types.empty where
+module sets.empty where
 
 data ⊥ : Set where
 

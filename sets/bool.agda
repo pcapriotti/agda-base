@@ -1,10 +1,10 @@
 
 {-# OPTIONS --without-K  #-}
 
-module base_types.bool where
+module sets.bool where
 
-open import base_types.empty     using (⊥)
-open import base_types.unit      using (⊤)
+open import sets.empty     using (⊥)
+open import sets.unit      using (⊤)
 open import decidable using (Dec; yes; no)
 open import equality             using (_≡_; refl)
 open import level     using (Level)

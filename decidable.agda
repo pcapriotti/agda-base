@@ -4,7 +4,7 @@
 module decidable where
 
 open import level            using (Level)
-open import base_types.empty using (⊥)
+open import sets.empty using (⊥)
 
 infix 3 ¬_
 

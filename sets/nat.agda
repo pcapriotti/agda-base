@@ -1,7 +1,7 @@
 
 {-# OPTIONS --without-K  #-}
 
-module base_types.nat where
+module sets.nat where
 
 open import level     using (lzero)
 open import equality  using (_≡_; refl; cong)
