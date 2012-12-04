@@ -3,6 +3,7 @@ module category.groupoid where
 
 open import level using (Level ; lsuc ; _⊔_)
 open import category.category
+import category.functor as F
 open import category.functor using (Functor)
 open import equality.core using (_≡_)
 

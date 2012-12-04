@@ -2,7 +2,9 @@
 
 module equality.properties where
 
-open import equality.core
+open import sum using (Σ ; _,_ ; proj₁)
+open import equality.core using (_≡_ ; refl ; trans ; sym)
+open import function using (_∘_)
 
 left-unit : ∀ {i} {A : Set i}{x y : A}
           → (p : x ≡ y) → trans p refl ≡ p

@@ -8,6 +8,10 @@ import decidable
 import function
 import level
 
+import hott.hlevel
+import hott.weak-equivalence
+import hott.coherence
+
 -- categories
 
 import category.category
