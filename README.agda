@@ -10,6 +10,9 @@ import decidable
 import function
 import level
 
+import function.isomorphism
+import function.extensionality
+
 -- categories
 
 import category.category
