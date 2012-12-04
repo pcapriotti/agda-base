@@ -191,7 +191,7 @@ lem-whiskering f H x = begin
     cong f (H x)
   ≡⟨ sym (lem-subst-fixpoint f x (H x)) ⟩
     subst (λ z → f z ≡ z) (sym (H x)) (H x)
-  ≡⟨ section-naturality H (sym (H x)) ⟩
+  ≡⟨ cong' H (sym (H x)) ⟩
     H (f x)
   ∎
   where

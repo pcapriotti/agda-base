@@ -10,10 +10,10 @@ open import function using (id ; _∘_)
 
 open DiscreteGroupoid public hiding (id ; _∘_)
 
-section-naturality : ∀ {i} {X : Set i}{Y : X → Set i}
+cong' : ∀ {i} {X : Set i}{Y : X → Set i}
                  {x x' : X}(f : (x : X) → Y x)(p : x ≡ x')
                → subst Y p (f x) ≡ f x'
-section-naturality _ refl = refl
+cong' _ refl = refl
 
 subst-naturality : ∀ {i j} {X Y : Set i}{x x' : X} (P : Y → Set j)
                    (f : X → Y)(p : x ≡ x')(u : P (f x))
