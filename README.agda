@@ -28,3 +28,7 @@ import hott.hlevel
 import hott.weak-equivalence
 import hott.coherence
 import hott.univalence
+
+-- higher inductive types
+
+import higher.circle
