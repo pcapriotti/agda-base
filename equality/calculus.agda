@@ -10,9 +10,9 @@ open import function using (id ; _∘_)
 
 open DiscreteGroupoid public hiding (id ; _∘_)
 
-cong' : ∀ {i} {X : Set i}{Y : X → Set i}
-                 {x x' : X}(f : (x : X) → Y x)(p : x ≡ x')
-               → subst Y p (f x) ≡ f x'
+cong' : ∀ {i j} {X : Set i}{Y : X → Set j}
+        {x x' : X}(f : (x : X) → Y x)(p : x ≡ x')
+      → subst Y p (f x) ≡ f x'
 cong' _ refl = refl
 
 subst-naturality : ∀ {i j} {X Y : Set i}{x x' : X} (P : Y → Set j)
@@ -36,6 +36,11 @@ subst-const : ∀ {i j} {A : Set i}{X : Set j}
             → {a a' : A}(p : a ≡ a')(x : X)
             → subst (λ _ → X) p x ≡ x
 subst-const refl x = refl
+
+subst-const-cong : ∀ {i j} {A : Set i}{X : Set j}
+                 → {a a' : A}(f : A → X)(p : a ≡ a')
+                 → cong' f p ≡ subst-const p (f a) ⊚ cong f p
+subst-const-cong f refl = refl
 
 congΣ : ∀ {i j}{A : Set i}{B : A → Set j}
         {a a' : A}{b : B a}{b' : B a'}

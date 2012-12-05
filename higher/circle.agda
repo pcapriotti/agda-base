@@ -2,6 +2,7 @@
 module higher.circle where
 
 open import sum using (_,_ ; proj₂)
+open import function using (id)
 open import sets.empty
 open import sets.bool
 open import equality.core
@@ -17,28 +18,76 @@ postulate
   base : S¹
   loop : base ≡ base
 
-  elim : ∀ {i} {X : Set i}
-       → (m : X)
-       → (m ≡ m)
-       → S¹ → X
+private
+  module Eliminators' {i}(B : S¹ → Set i)
+                      (m : B base)
+                      (l : subst B loop m ≡ m) where
 
-  β-base : ∀ {i} {X : Set i}
-         → (m : X) (l : m ≡ m)
-         → elim m l base ≡ m
+    postulate
+      elim' : (x : S¹) → B x
+      β-base' : elim' base ≡ m
+      β-loop' : cong (subst B loop) (sym β-base')
+              ⊚ cong' elim' loop
+              ⊚ β-base' ≡ l
 
-  β-loop : ∀ {i} {X : Set i}
-           → (m : X)
-           → (l : m ≡ m)
-           → sym (β-base m l) ⊚ cong (elim m l) loop ⊚ β-base m l ≡ l
+private
+  module Eliminators {i} {B : Set i}
+                     (m : B) (l : m ≡ m) where
+    open Eliminators' (λ _ → B) m (subst-const loop m ⊚ l)
 
-module Dependent {i}(B : S¹ → Set i)
-                 (m : B base)
-                 (l : subst B loop m ≡ m) where
+    elim : S¹ → B
+    elim = elim'
 
-  postulate
-    elim' : (x : S¹) → B x
-    β-base' : elim' base ≡ m
-open Dependent public
+    β-base : elim base ≡ m
+    β-base = β-base'
+
+    β-loop : sym β-base
+           ⊚ cong elim loop
+           ⊚ β-base ≡ l
+    β-loop = begin
+        sym β-base ⊚ cong elim loop ⊚ β-base
+      ≡⟨ lem β-base β-base loop ⟩
+        sym (subst-const loop m) ⊚
+        cong (subst (λ _ → B) loop) (sym β-base) ⊚
+        cong' elim' loop ⊚ β-base
+      ≡⟨ sym (associativity (sym (subst-const loop m) ⊚ _) _ _) ⟩
+        sym (subst-const loop m) ⊚
+        cong (subst (λ _ → B) loop) (sym β-base) ⊚
+        (cong' elim' loop ⊚ β-base)
+      ≡⟨ sym (associativity (sym (subst-const loop m)) _ _) ⟩
+        sym (subst-const loop m) ⊚
+        (cong (subst (λ _ → B) loop) (sym β-base) ⊚
+        (cong' elim' loop ⊚ β-base))
+      ≡⟨ cong (λ z → sym (subst-const loop m) ⊚ z)
+          (associativity
+            (cong (subst (λ _ → B) loop) (sym β-base)) _ _) ⟩
+        sym (subst-const loop m) ⊚
+        (cong (subst (λ _ → B) loop) (sym β-base) ⊚
+         cong' elim' loop ⊚ β-base)
+      ≡⟨ cong (λ z → sym (subst-const loop m) ⊚ z) β-loop' ⟩
+        sym (subst-const loop m) ⊚ (subst-const loop m ⊚ l)
+      ≡⟨ associativity (sym (subst-const loop m))
+                       (subst-const loop m) l ⟩
+        sym (subst-const loop m) ⊚ subst-const loop m ⊚ l
+      ≡⟨ cong (λ z → z ⊚ l)
+              (right-inverse (subst-const loop m)) ⟩
+        l
+      ∎
+      where
+        open ≡-Reasoning
+        lem : {x y : S¹}
+              (p₁ : elim x ≡ m)
+              (p₂ : elim y ≡ m)
+              (p : x ≡ y)
+            → sym p₁ ⊚ cong elim p ⊚ p₂
+            ≡ sym (subst-const p m)
+            ⊚ cong (subst (λ _ → B) p) (sym p₁)
+            ⊚ cong' elim' p ⊚ p₂
+        lem p₁ p₂ refl =
+          cong (λ z → z ⊚ refl ⊚ p₂) (sym (cong-id (sym p₁)))
+
+open Eliminators public
+open Eliminators' public
 
 non-simply-connected : ¬ (loop ≡ refl)
 non-simply-connected = go not-is-equiv
