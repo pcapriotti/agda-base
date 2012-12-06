@@ -13,25 +13,29 @@ open import category.groupoid.properties
 open Groupoid G hiding (_⊚_)
 open ≡-Reasoning
 
-data Term (x y : obj) : Set (i ⊔ j) where
-  var : hom x y → Term x y
-  _*_ : {z : obj} → Term z y → Term x z → Term x y
-  inv : Term y x → Term x y
+data Term : obj → obj → Set (i ⊔ j) where
+  null : ∀ {x} → Term x x
+  var : ∀ {x y} → hom x y → Term x y
+  _*_ : ∀ {x y z} → Term y z → Term x y → Term x z
+  inv : ∀ {x y} → Term y x → Term x y
 
 infixl 5 _*_
 
 eval : {x y : obj} → Term x y → hom x y
+eval null = id _
 eval (var f) = f
 eval (g * f) = (eval g) ∘ (eval f)
 eval (inv f) = eval f ⁻¹
 
 invert : {x y : obj} → Term x y → Term y x
+invert null = null
 invert (var f) = inv (var f)
 invert (g * f) = invert f * invert g
 invert (inv f) = f
 
 invert-correct : {x y : obj}(t : Term x y)
                → eval (invert t) ≡ eval t ⁻¹
+invert-correct null = id-inverse G _
 invert-correct (var f) = refl
 invert-correct (g * f) = begin
     eval (invert (g * f))
@@ -43,12 +47,14 @@ invert-correct (g * f) = begin
 invert-correct (inv f) = sym (double-inverse G (eval f))
 
 simplify₁ : {x y : obj} → Term x y → Term x y
+simplify₁ null = null
 simplify₁ (var f) = var f
 simplify₁ (g * f) = simplify₁ g * simplify₁ f
 simplify₁ (inv f) = invert (simplify₁ f)
 
 simplify₁-correct : {x y : obj} (t : Term x y)
                   → eval (simplify₁ t) ≡ eval t
+simplify₁-correct null = refl
 simplify₁-correct (var f) = refl
 simplify₁-correct (g * f) =
   cong₂ _∘_ (simplify₁-correct g) (simplify₁-correct f)

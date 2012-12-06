@@ -28,6 +28,9 @@ private
       p ⁻¹
                    ∎
 
+    id-inverse : (x : obj) → id x ≡ id x ⁻¹
+    id-inverse x = unique-inverse (id x) (id x) (right-unit (id x))
+
     double-inverse : {x y : obj} (p : hom x y) → (p ⁻¹) ⁻¹ ≡ p
     double-inverse p = sym (unique-inverse (p ⁻¹) p (right-inverse p))
 
