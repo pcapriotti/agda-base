@@ -46,36 +46,63 @@ invert-correct (g * f) = begin
   ∎
 invert-correct (inv f) = sym (double-inverse G (eval f))
 
-simplify₁ : {x y : obj} → Term x y → Term x y
-simplify₁ null = null
-simplify₁ (var f) = var f
-simplify₁ (g * f) = simplify₁ g * simplify₁ f
-simplify₁ (inv f) = invert (simplify₁ f)
+record Simplifier : Set (i ⊔ j) where
+  constructor simplifier
+  field
+    simplify : {x y : obj} → Term x y → Term x y
+    correctness : {x y : obj}(t : Term x y)
+                → eval (simplify t) ≡ eval t
+open Simplifier
 
-simplify₁-correct : {x y : obj} (t : Term x y)
-                  → eval (simplify₁ t) ≡ eval t
-simplify₁-correct null = refl
-simplify₁-correct (var f) = refl
-simplify₁-correct (g * f) =
-  cong₂ _∘_ (simplify₁-correct g) (simplify₁-correct f)
-simplify₁-correct (inv f) = begin
-    eval (simplify₁ (inv f))
-  ≡⟨ invert-correct (simplify₁ f) ⟩
-    eval (simplify₁ f) ⁻¹
-  ≡⟨ cong _⁻¹ (simplify₁-correct f) ⟩
-    eval f ⁻¹
-  ∎
+combine : Simplifier → Simplifier → Simplifier
+combine s₁ s₂ = simplifier simpl corr
+  where
+    simpl : {x y : obj} → Term x y → Term x y
+    simpl t = simplify s₂ (simplify s₁ t)
 
-solve₁ : {x y : obj} (t₁ t₂ : Term x y)
-       → simplify₁ t₁ ≡ simplify₁ t₂
+    corr : {x y : obj}(t : Term x y)
+         → eval (simpl t) ≡ eval t
+    corr t = begin
+        eval (simplify s₂ (simplify s₁ t))
+      ≡⟨ correctness s₂ (simplify s₁ t) ⟩
+        eval (simplify s₁ t)
+      ≡⟨ correctness s₁ t ⟩
+        eval t
+      ∎
+
+expand-inv : Simplifier
+expand-inv = simplifier simpl corr
+  where
+    simpl : {x y : obj} → Term x y → Term x y
+    simpl null = null
+    simpl (var f) = var f
+    simpl (g * f) = simpl g * simpl f
+    simpl (inv f) = invert (simpl f)
+
+    corr : {x y : obj} (t : Term x y)
+                     → eval (simpl t) ≡ eval t
+    corr null = refl
+    corr (var f) = refl
+    corr (g * f) =
+      cong₂ _∘_ (corr g) (corr f)
+    corr (inv f) = begin
+        eval (simpl (inv f))
+      ≡⟨ invert-correct (simpl f) ⟩
+        eval (simpl f) ⁻¹
+      ≡⟨ cong _⁻¹ (corr f) ⟩
+        eval f ⁻¹
+      ∎
+
+solve₁ : {x y : obj} (s : Simplifier) (t₁ t₂ : Term x y)
+       → simplify s t₁ ≡ simplify s t₂
        → eval t₁ ≡ eval t₂
-solve₁ t₁ t₂ p = begin
+solve₁ s t₁ t₂ p = begin
     eval t₁
-  ≡⟨ sym (simplify₁-correct t₁) ⟩
-    eval (simplify₁ t₁)
+  ≡⟨ sym (correctness s t₁) ⟩
+    eval (simplify s t₁)
   ≡⟨ cong eval p ⟩
-    eval (simplify₁ t₂)
-  ≡⟨ simplify₁-correct t₂ ⟩
+    eval (simplify s t₂)
+  ≡⟨ correctness s t₂ ⟩
     eval t₂
   ∎
 
@@ -84,7 +111,7 @@ example : {x y z w : obj}
           (g : hom y z)
           (h : hom z w)
         → (h ∘ g ∘ f) ⁻¹ ≡ f ⁻¹ ∘ (g ⁻¹ ∘ h ⁻¹)
-example {x}{y}{z}{w} f g h = solve₁ t₁ t₂ refl
+example {x}{y}{z}{w} f g h = solve₁ expand-inv t₁ t₂ refl
   where
     t₁ : Term w x
     t₁ = inv (var h * var g * var f)
