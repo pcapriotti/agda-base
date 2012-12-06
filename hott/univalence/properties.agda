@@ -9,6 +9,7 @@ open import function.extensionality.core
 open import function.isomorphism
 open import sets.unit
 open import hott.hlevel using (contr)
+open import hott.hlevel.properties.sets using (⊤-contr)
 open import hott.weak-equivalence using (_≈_)
 open import hott.coherence
 open import hott.univalence
@@ -28,13 +29,6 @@ contr-contr {X = X}{Y = Y} (x , cx) (y , cy) =
   where
     lift-cx : (l : ↑ j X) → lift x ≡ l
     lift-cx (lift x') = cong lift (cx x')
-
--- ⊤ is contractible
-⊤-contr : contr ⊤
-⊤-contr = tt , c
-  where
-    c : (x : ⊤) → tt ≡ x
-    c tt = refl
 
 -- exponentials preserve contractibility (given extensionality)
 exp-contr : ∀ {i j}{X : Set i}{Y : Set j}

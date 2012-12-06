@@ -4,12 +4,7 @@
 module decidable where
 
 open import level            using (Level)
-open import sets.empty using (⊥)
-
-infix 3 ¬_
-
-¬_ : {l : Level} → Set l → Set l
-¬ P = P → ⊥
+open import sets.empty using (¬_)
 
 -- Decidable relations.
 
