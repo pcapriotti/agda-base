@@ -28,6 +28,7 @@ import hott.hlevel
 import hott.weak-equivalence
 import hott.coherence
 import hott.univalence
+import hott.univalence.properties
 
 -- higher inductive types
 

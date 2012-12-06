@@ -4,7 +4,7 @@ module hott.weak-equivalence where
 open import equality.core using (_≡_ ; refl ; cong)
 open import sum using (Σ ; proj₁ ; proj₂ ; _,_)
 open import level using (_⊔_)
-open import hott.hlevel using (contr ; _⁻¹_)
+open import hott.hlevel using (contr ; isProp ; _⁻¹_)
 open import function using (_$_)
 open import function.isomorphism using (_≅_ ; iso)
 
@@ -33,3 +33,8 @@ apply≈ = proj₁
 
 invert≈ : ∀ {i} {X Y : Set i} → X ≈ Y → Y → X
 invert≈ (_ , we) y = proj₁ (proj₁ (we y))
+
+-- being a weak equivalence is propositional
+-- we-prop : ∀ {i j}{X : Set i}{Y : Set j}{f : X → Y}
+--         → isProp (isWeakEquiv f)
+-- we-prop = {!!}

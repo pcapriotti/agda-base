@@ -40,8 +40,8 @@ lem-homotopy-nat : ∀ {i j}{X : Set i}{Y : Set j}
                  → H x ⊚ cong g p ≡ cong f p ⊚ H x'
 lem-homotopy-nat H refl = left-unit _
 
-≅'⇒≈ : ∀ {i}{X Y : Set i} → (X ≅' Y) → X ≈ Y
-≅'⇒≈ {i}{X}{Y} (isom , coherent) = f , we
+≅'⇒≈ : ∀ {i j}{X : Set i}{Y : Set j} → (X ≅' Y) → X ≈ Y
+≅'⇒≈ {i}{j}{X}{Y} (isom , coherent) = f , we
   where
     open _≅_ isom
       renaming ( to to f ; from to g
@@ -101,9 +101,9 @@ lem-homotopy-nat H refl = left-unit _
            λ { (x , p) → sym (uncongΣ (contr-fiber y x p)) }
 
 -- weak equivalences correspond to coherent isomorphisms
-weakEquivCoherent : ∀ {i} {X Y : Set i} → (e : X ≈ Y)
-                  → isCoherent (≈⇒≅ e)
-weakEquivCoherent {i}{X}{Y} (f , we) x = main
+weakEquivCoherent : ∀ {i j} {X : Set i}{Y : Set j}
+                  → (e : X ≈ Y) → isCoherent (≈⇒≅ e)
+weakEquivCoherent {i}{j}{X}{Y} (f , we) x = main
   where
     isom : X ≅ Y
     isom = ≈⇒≅ (f , we)
@@ -322,6 +322,10 @@ vogt-lemma {X = X}{Y = Y} isom = K' , coherent
     open _≅_ isom
     v = vogt-lemma isom
     
+≈⇒≅' : ∀ {i j} {X : Set i}{Y : Set j} → X ≈ Y → X ≅' Y
+≈⇒≅' f = isom , weakEquivCoherent f
+  where
+    isom = ≈⇒≅ f
 
 ≅⇒≈ : ∀ {i}{X Y : Set i} → X ≅ Y → X ≈ Y
 ≅⇒≈ = ≅'⇒≈ ∘ ≅⇒≅'

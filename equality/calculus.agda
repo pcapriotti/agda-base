@@ -15,7 +15,8 @@ cong' : ∀ {i j} {X : Set i}{Y : X → Set j}
       → subst Y p (f x) ≡ f x'
 cong' _ refl = refl
 
-subst-naturality : ∀ {i j} {X Y : Set i}{x x' : X} (P : Y → Set j)
+subst-naturality : ∀ {i j} {X : Set i} {Y : Set j}
+                   {x x' : X} (P : Y → Set j)
                    (f : X → Y)(p : x ≡ x')(u : P (f x))
                  → subst (P ∘ f) p u ≡ subst P (cong f p) u
 subst-naturality _ _ refl _ = refl
@@ -69,7 +70,7 @@ congΣ-sym : ∀ {i j}{A : Set i}{B : A → Set j}
           ≡ sym (proj₁ (congΣ p))
 congΣ-sym refl = refl
 
-subst-cong : ∀ {i}{A B : Set i}{a a' : A}
+subst-cong : ∀ {i j}{A : Set i}{B : Set j}{a a' : A}
            → (f : A → B)
            → (p : a ≡ a')
            → cong f (sym p)

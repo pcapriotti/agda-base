@@ -4,7 +4,7 @@ module hott.hlevel where
 open import level using (_⊔_)
 open import sum
 open import sets.nat
-open import equality using (_≡_ ; refl ; sym)
+open import equality using (_≡_ ; refl ; sym; singleton)
 open import function using (_$_)
 open import category.instances.discrete
 open DiscreteGroupoid
@@ -52,3 +52,10 @@ Prop' = Σ Set isProp
 -- the inverse image of a y ∈ Y considering a function f : X → Y
 _⁻¹_ : ∀ {i k} {X : Set i} {Y : Set k} → (X → Y) → Y → Set (i ⊔ k)
 f ⁻¹ y = Σ _ λ x → f x ≡ y
+
+-- singletons are contractible
+singl-contr : ∀ {i} {A : Set i} → (x : A) → contr (singleton x)
+singl-contr {A = A} x = (x , refl) , λ { (x' , p) → lem x' p }
+  where
+    lem : (x' : A)(p : x ≡ x') → (x , refl) ≡ (x' , p)
+    lem .x refl = refl

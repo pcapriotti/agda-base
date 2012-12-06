@@ -1,0 +1,69 @@
+{-# OPTIONS --without-K #-}
+module hott.univalence.properties where
+
+open import sum
+open import level using (lsuc; ↑; lift)
+open import equality.core
+open import function using (_∘_; const)
+open import function.extensionality.core
+open import function.isomorphism
+open import sets.unit
+open import hott.hlevel using (contr)
+open import hott.weak-equivalence using (_≈_)
+open import hott.coherence
+open import hott.univalence
+
+-- any two contractible types are equal
+contr-contr : ∀ {i} {X Y : Set i}
+            → contr X → contr Y
+            → X ≡ Y
+contr-contr {X = X}{Y = Y} (x , cx) (y , cy) =
+  ≈⇒≡ (≅⇒≈ (iso (const y) (const x) cx cy))
+
+-- lifting preserves contractibility
+↑-contr : ∀ {i} j {X : Set i}
+        → contr X
+        → contr (↑ j X)
+↑-contr j {X} (x , cx) = lift x , lift-cx
+  where
+    lift-cx : (l : ↑ j X) → lift x ≡ l
+    lift-cx (lift x') = cong lift (cx x')
+
+-- ⊤ is contractible
+⊤-contr : contr ⊤
+⊤-contr = tt , c
+  where
+    c : (x : ⊤) → tt ≡ x
+    c tt = refl
+
+-- exponentials preserve contractibility (given extensionality)
+exp-contr : ∀ {i j}{X : Set i}{Y : Set j}
+          → Extensionality i j
+          → contr Y → contr (X → Y)
+exp-contr {X = X} {Y = Y} ext (y , c) = (const y , c')
+  where
+    c' : (u : X → Y) → const y ≡ u
+    c' u = ext _ _ (c ∘ u)
+
+-- Π preserves contractibility (given extensionality)
+Π-contr : ∀ {i j}{X : Set i}{Y : X → Set j}
+        → (∀ {i j} → Extensionality i j)
+        → ((x : X) → contr (Y x))
+        → contr ((x : X) → Y x)
+Π-contr {i}{j}{X} {Y} ext f =
+  subst (λ z → contr ((x : X) → z x)) trivial≡Y trivial-contr
+  where
+    Z : Set j
+    Z = ↑ j ⊤
+
+    Z-contr : contr Z
+    Z-contr = ↑-contr j ⊤-contr
+
+    trivial : X → Set j
+    trivial _ = Z
+
+    trivial≡Y : trivial ≡ Y
+    trivial≡Y = ext _ _ (λ x → contr-contr Z-contr (f x))
+
+    trivial-contr : contr ((x : X) → trivial x)
+    trivial-contr = exp-contr ext Z-contr

@@ -1,6 +1,7 @@
 {-# OPTIONS --without-K #-}
 module equality.core where
 
+open import sum
 open import level using ()
 open import function using (id)
 
@@ -25,3 +26,6 @@ subst : ∀ {i j} {A : Set i}{x y : A}
       → (B : A → Set j) → x ≡ y
       → B x → B y
 subst B refl = id
+
+singleton : ∀ {i}{A : Set i} → A → Set i
+singleton {A = A} a = Σ A λ a' → a ≡ a'
