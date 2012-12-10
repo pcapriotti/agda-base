@@ -1,6 +1,7 @@
 {-# OPTIONS --without-K #-}
 module equality.solver {i}(X : Set i) where
 
+open import decidable
 open import sum
 open import level using (lsuc; _⊔_)
 open import equality.core
@@ -55,6 +56,31 @@ module Generic {n : ℕ} (tenv : TEnv n) where
   reverse nil = nil
   reverse (f ∷ fs) = reverse fs ++ (f ∺ nil)
   reverse (f ∺ fs) = reverse fs ++ (f ∷ nil)
+
+  fuse : ∀ {x y z} → List z y → List x y → List x z
+  fuse nil js = js
+  fuse (i ∷ is) js = go i refl is js
+    where
+      go : ∀ {x y z} i → (y ≡ target tenv i) → List z (source tenv i)
+         → List x y → List x z
+      go {x} i p is (j ∷ js) with j ≟ i
+      ... | yes q =
+        fuse is (subst (λ i → List x (source tenv i)) q js)
+      ... | no _ =
+        reverse (i ∷ is) ++ subst (λ w → List x w) p (j ∷ js)
+      go {x} i p is js =
+        reverse (i ∷ is) ++ subst (λ w → List x w) p js
+  fuse (i ∺ is) js = go i refl is js
+    where
+      go : ∀ {x y z} i → (y ≡ source tenv i) → List z (target tenv i)
+         → List x y → List x z
+      go {x} i p is (j ∺ js) with j ≟ i
+      ... | yes q =
+        fuse is (subst (λ i → List x (target tenv i)) q js)
+      ... | no _ =
+        reverse (i ∺ is) ++ subst (λ w → List x w) p (j ∺ js)
+      go {x} i p is js =
+        reverse (i ∺ is) ++ subst (λ w → List x w) p js
 
   linearize : {x y : X} → Term x y → List x y
   linearize null = nil
