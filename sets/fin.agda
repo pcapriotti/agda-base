@@ -6,5 +6,5 @@ module sets.fin where
 open import sets.nat using (ℕ; zero; suc)
 
 data Fin : ℕ → Set where
-  zero : {n : ℕ} → Fin n
+  zero : {n : ℕ} → Fin (suc n)
   suc  : {n : ℕ} → Fin n → Fin (suc n)
