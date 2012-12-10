@@ -15,3 +15,9 @@ Extensionality' i j = {X : Set i}{Y : X → Set j}
                     → (f g : (x : X) → Y x)
                     → ((x : X) → f x ≡ g x)
                     → f ≡ g
+
+ext-apply : ∀ {i j}{X : Set i}{Y : X → Set j}
+          → {f g : (x : X) → Y x}
+          → f ≡ g
+          → (x : X) → f x ≡ g x
+ext-apply refl x = refl
