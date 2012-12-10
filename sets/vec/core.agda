@@ -19,3 +19,7 @@ lookup : ∀ {i}{A : Set i}{n : ℕ}
 lookup [] ()
 lookup (x ∷ xs) zero = x
 lookup (x ∷ xs) (suc i) = lookup xs i
+
+_!_ : ∀ {i}{A : Set i}{n : ℕ}
+    → Vec A n → Fin n → A
+_!_ = lookup

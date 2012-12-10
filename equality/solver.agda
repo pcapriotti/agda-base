@@ -8,6 +8,7 @@ open import equality.reasoning
 open import equality.calculus
 open import sets.nat using (ℕ)
 open import sets.fin
+open import sets.vec
 
 open ≡-Reasoning
 
@@ -15,22 +16,21 @@ Graph : ∀ k → Set _
 Graph k = X → X → Set k
 
 TEnv : ∀ n → Set i
-TEnv n = Fin n → X × X
+TEnv n = Vec (X × X) n
+
+source : ∀ {n} → TEnv n → Fin n → X
+source tenv i = proj₁ (tenv ! i)
+
+target : ∀ {n} → TEnv n → Fin n → X
+target tenv i = proj₂ (tenv ! i)
 
 Env : ∀ {n} → TEnv n → Set _
-Env {n} tenv = (i : Fin n)
-             → proj₁ (tenv i) ≡ proj₂ (tenv i)
+Env {n} tenv = (i : Fin n) → source tenv i ≡ target tenv i
 
 module Generic {n : ℕ} (tenv : TEnv n) where
-  tX₁ : Fin n → X
-  tX₁ i = proj₁ (tenv i)
-
-  tX₂ : Fin n → X
-  tX₂ i = proj₂ (tenv i)
-
   data Term : Graph i where
     null : ∀ {x} → Term x x
-    var : (i : Fin n) → Term (tX₁ i) (tX₂ i)
+    var : (i : Fin n) → Term (source tenv i) (target tenv i)
     _*_ : ∀ {x y z} → Term y z → Term x y → Term x z
     inv : ∀ {x y} → Term y x → Term x y
   infixl 5 _*_
@@ -152,18 +152,6 @@ module Generic {n : ℕ} (tenv : TEnv n) where
 
 module Builder where
   open Generic
-
-  tenv₁ : X → X → TEnv 1
-  tenv₁ x y = e
-    where
-      e : Fin 1 → X × X
-      e zero = (x , y)
-      e (suc ())
-
-  term : {x y x' y' : X}
-       → (∀ {n} {tenv : TEnv n} → Term tenv x y → Term tenv x' y')
-       → Term (tenv₁ x y) x' y'
-  term f = f (var zero)
 
 -- private
 --   module Example where
