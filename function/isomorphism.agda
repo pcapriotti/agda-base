@@ -3,10 +3,8 @@ module function.isomorphism where
 
 open import level using (_⊔_)
 open import equality.core
+open import equality.groupoid
 open import sum
-open import category.instances.discrete
-
-open DiscreteGroupoid
 
 -- isomorphisms
 record _≅_ {i j}(X : Set i)(Y : Set j) : Set (i ⊔ j) where

@@ -3,12 +3,8 @@ module equality.calculus where
 
 open import sum using (Σ ; _,_ ; proj₁)
 open import equality.core
-  using (_≡_ ; refl ; sym ; subst ; cong)
-open import category.instances.discrete
-import category.groupoid.properties as GP
+open import equality.groupoid public
 open import function using (id ; _∘_)
-
-open DiscreteGroupoid public hiding (id ; _∘_)
 
 cong' : ∀ {i j} {X : Set i}{Y : X → Set j}
         {x x' : X}(f : (x : X) → Y x)(p : x ≡ x')
@@ -77,6 +73,16 @@ subst-cong : ∀ {i j}{A : Set i}{B : Set j}{a a' : A}
            ≡ subst (λ x → f x ≡ f a) p refl
 subst-cong f refl = refl
 
+cong-map-id : ∀ {i j}{X : Set i}{Y : Set j}{x : X}
+            → (f : X → Y)
+            → cong f (refl {x = x}) ≡ refl {x = f x}
+cong-map-id f = refl
+
+cong-map-hom : ∀ {i j}{X : Set i}{Y : Set j}{x y z : X}
+             → (f : X → Y)(p : x ≡ y)(q : y ≡ z)
+             → cong f (p ⊚ q) ≡ cong f p ⊚ cong f q
+cong-map-hom f refl _ = refl
+
 cong-id : ∀ {l} {A : Set l}{x y : A}(p : x ≡ y)
         → cong id p ≡ p
 cong-id refl = refl
@@ -90,14 +96,13 @@ cong-inv : ∀ {i j} {X : Set i} {Y : Set j}
          → {x x' : X}
          → (f : X → Y)(p : x ≡ x')
          → cong f (sym p) ≡ sym (cong f p)
-cong-inv {X = X} {Y = Y} f =
-  GP.map-inv {G = discrete X} {H = discrete Y} (discrete-map f)
+cong-inv f refl = refl
 
 double-inverse : ∀ {i} {X : Set i} {x y : X}
                (p : x ≡ y) → sym (sym p) ≡ p
-double-inverse = GP.double-inverse (discrete _)
+double-inverse refl = refl
 
 inverse-comp : ∀ {i} {X : Set i} {x y z : X}
                (p : x ≡ y)(q : y ≡ z)
              → sym (p ⊚ q) ≡ sym q ⊚ sym p
-inverse-comp = GP.inverse-comp (discrete _)
+inverse-comp refl q = sym (left-unit (sym q))

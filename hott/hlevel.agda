@@ -4,10 +4,9 @@ module hott.hlevel where
 open import level using (_⊔_)
 open import sum
 open import sets.nat
-open import equality using (_≡_ ; refl ; sym; singleton)
+open import equality.core
+open import equality.groupoid
 open import function using (_$_)
-open import category.instances.discrete
-open DiscreteGroupoid
 
 -- h-levels
 h : ∀ {i} → ℕ → Set i → Set i
