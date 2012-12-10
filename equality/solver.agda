@@ -35,6 +35,33 @@ module Generic {n : ℕ} (tenv : TEnv n) where
     inv : ∀ {x y} → Term y x → Term x y
   infixl 5 _*_
 
+  data List : Graph i where
+    nil : ∀ {x} → List x x
+    _∷_ : ∀ {x} (i : Fin n)
+        → List x (source tenv i)
+        → List x (target tenv i)
+    _∺_ : ∀ {x} (i : Fin n)
+        → List x (target tenv i)
+        → List x (source tenv i)
+  infixr 5 _∷_ _∺_
+
+  _++_ : ∀ {x y z} → List y z → List x y → List x z
+  nil ++ gs = gs
+  (f ∷ fs) ++ gs = f ∷ (fs ++ gs)
+  (f ∺ fs) ++ gs = f ∺ (fs ++ gs)
+  infixr 5 _++_
+
+  reverse : ∀ {x y} → List x y → List y x
+  reverse nil = nil
+  reverse (f ∷ fs) = reverse fs ++ (f ∺ nil)
+  reverse (f ∺ fs) = reverse fs ++ (f ∷ nil)
+
+  linearize : {x y : X} → Term x y → List x y
+  linearize null = nil
+  linearize (var i) = i ∷ nil
+  linearize (g * f) = linearize g ++ linearize f
+  linearize (inv f) = reverse (linearize f)
+
   module WithEnv (env : Env tenv) where
     evalT : {x y : X} → Term x y → x ≡ y
     evalT null = refl
@@ -42,81 +69,58 @@ module Generic {n : ℕ} (tenv : TEnv n) where
     evalT (g * f) = evalT f ⊚ evalT g
     evalT (inv t) = evalT t ⁻¹
 
-    data List : X → X → Set i where
-      nil : ∀ {x} → List x x
-      _∷_ : ∀ {x y z} → y ≡ z → List x y → List x z
-      _∺_ : ∀ {x y z} → z ≡ y → List x y → List x z
-    infixr 5 _∷_ _∺_
-
     evalL : {x y : X} → List x y → x ≡ y
     evalL nil = refl
-    evalL (f ∷ fs) = evalL fs ⊚ f
-    evalL (f ∺ fs) = evalL fs ⊚ f ⁻¹
+    evalL (v ∷ fs) = evalL fs ⊚ env v
+    evalL (v ∺ fs) = evalL fs ⊚ env v ⁻¹
 
-    _++_ : ∀ {x y z} → List y z → List x y → List x z
-    nil ++ gs = gs
-    (f ∷ fs) ++ gs = f ∷ (fs ++ gs)
-    (f ∺ fs) ++ gs = f ∺ (fs ++ gs)
-    infixr 5 _++_
+    oneL : (i : Fin n) → evalL (i ∷ nil) ≡ env i
+    oneL i = refl
 
-    oneL : ∀ {x y} (f : x ≡ y) → evalL (f ∷ nil) ≡ f
-    oneL f = right-unit f
-
-    invL : ∀ {x y} (f : x ≡ y) → evalL (f ∺ nil) ≡ f ⁻¹
-    invL f = right-unit (f ⁻¹)
+    invL : (i : Fin n) → evalL (i ∺ nil) ≡ env i ⁻¹
+    invL i = refl
 
     eval++ : ∀ {x y z}(fs : List y z)(gs : List x y)
            → evalL (fs ++ gs) ≡ evalL gs ⊚ evalL fs
     eval++ nil gs = sym (left-unit (evalL gs))
-    eval++ (f ∷ fs) gs = begin
-        evalL (fs ++ gs) ⊚ f
-      ≡⟨ cong (λ z → z ⊚ f) (eval++ fs gs) ⟩
-        (evalL gs ⊚ evalL fs) ⊚ f
-      ≡⟨ associativity (evalL gs) (evalL fs) f ⟩
-        evalL gs ⊚ (evalL fs ⊚ f)
+    eval++ (i ∷ fs) gs = begin
+        evalL (fs ++ gs) ⊚ env i
+      ≡⟨ cong (λ z → z ⊚ env i) (eval++ fs gs) ⟩
+        (evalL gs ⊚ evalL fs) ⊚ env i
+      ≡⟨ associativity (evalL gs) (evalL fs) (env i) ⟩
+        evalL gs ⊚ (evalL fs ⊚ env i)
       ∎
-    eval++ (f ∺ fs) gs = begin
-        evalL (fs ++ gs) ⊚ f ⁻¹
-      ≡⟨ cong (λ z → z ⊚ f ⁻¹) (eval++ fs gs) ⟩
-        evalL gs ⊚ evalL fs ⊚ f ⁻¹
-      ≡⟨ associativity (evalL gs) (evalL fs) (f ⁻¹) ⟩
-        evalL gs ⊚ (evalL fs ⊚ f ⁻¹)
+    eval++ (i ∺ fs) gs = begin
+        evalL (fs ++ gs) ⊚ env i ⁻¹
+      ≡⟨ cong (λ z → z ⊚ env i ⁻¹) (eval++ fs gs) ⟩
+        evalL gs ⊚ evalL fs ⊚ env i ⁻¹
+      ≡⟨ associativity (evalL gs) (evalL fs) (env i ⁻¹) ⟩
+        evalL gs ⊚ (evalL fs ⊚ env i ⁻¹)
       ∎
-
-    reverse : ∀ {x y} → List x y → List y x
-    reverse nil = nil
-    reverse (f ∷ fs) = reverse fs ++ (f ∺ nil)
-    reverse (f ∺ fs) = reverse fs ++ (f ∷ nil)
 
     reverse-inv : ∀ {x y}(t : List x y)
                 → evalL (reverse t) ≡ (evalL t) ⁻¹
     reverse-inv nil = refl
-    reverse-inv (f ∷ fs) = begin
-        evalL (reverse fs ++ (f ∺ nil))
-      ≡⟨ eval++ (reverse fs) (f ∺ nil) ⟩
-        evalL (f ∺ nil) ⊚ evalL (reverse fs)
-      ≡⟨ cong₂ _⊚_ (invL f) (reverse-inv fs) ⟩
-        f ⁻¹ ⊚ evalL fs ⁻¹
-      ≡⟨ sym (inverse-comp (evalL fs) f) ⟩
-        (evalL fs ⊚ f) ⁻¹
+    reverse-inv (i ∷ fs) = begin
+        evalL (reverse fs ++ (i ∺ nil))
+      ≡⟨ eval++ (reverse fs) (i ∺ nil) ⟩
+        evalL (i ∺ nil) ⊚ evalL (reverse fs)
+      ≡⟨ cong₂ _⊚_ (invL i) (reverse-inv fs) ⟩
+        env i ⁻¹ ⊚ evalL fs ⁻¹
+      ≡⟨ sym (inverse-comp (evalL fs) (env i)) ⟩
+        (evalL fs ⊚ env i) ⁻¹
       ∎
-    reverse-inv (f ∺ fs) = begin
-        evalL (reverse fs ++ (f ∷ nil))
-      ≡⟨ eval++ (reverse fs) (f ∷ nil) ⟩
-        evalL (f ∷ nil) ⊚ evalL (reverse fs)
-      ≡⟨ cong₂ _⊚_ (oneL f) (reverse-inv fs) ⟩
-        f ⊚ evalL fs ⁻¹
-      ≡⟨ cong (λ z → z ⊚ evalL fs ⁻¹) (sym (double-inverse f)) ⟩
-        (f ⁻¹) ⁻¹ ⊚ evalL fs ⁻¹
-      ≡⟨ sym (inverse-comp (evalL fs) (f ⁻¹)) ⟩
-        (evalL fs ⊚ f ⁻¹) ⁻¹
+    reverse-inv (i ∺ fs) = begin
+        evalL (reverse fs ++ (i ∷ nil))
+      ≡⟨ eval++ (reverse fs) (i ∷ nil) ⟩
+        evalL (i ∷ nil) ⊚ evalL (reverse fs)
+      ≡⟨ cong₂ _⊚_ (oneL i) (reverse-inv fs) ⟩
+        env i ⊚ evalL fs ⁻¹
+      ≡⟨ cong (λ z → z ⊚ evalL fs ⁻¹) (sym (double-inverse (env i))) ⟩
+        (env i ⁻¹) ⁻¹ ⊚ evalL fs ⁻¹
+      ≡⟨ sym (inverse-comp (evalL fs) (env i ⁻¹)) ⟩
+        (evalL fs ⊚ env i ⁻¹) ⁻¹
       ∎
-
-    linearize : {x y : X} → Term x y → List x y
-    linearize null = nil
-    linearize (var f) = env f ∷ nil
-    linearize (g * f) = linearize g ++ linearize f
-    linearize (inv f) = reverse (linearize f)
 
     linearize-correct : {x y : X}(t : Term x y)
                       → evalL (linearize t) ≡ evalT t
