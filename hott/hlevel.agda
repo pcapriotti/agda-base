@@ -1,7 +1,7 @@
 {-# OPTIONS --without-K #-}
 module hott.hlevel where
 
-open import level using (_⊔_)
+open import level using (_⊔_; lsuc)
 open import sum
 open import sets.nat
 open import equality.core
@@ -45,8 +45,12 @@ contr⇒isProp : ∀ {i} {X : Set i} → contr X → isProp X
 contr⇒isProp (x , p) = λ x' x'' → sym (p x') ⊚ p x''
 
 -- Prop: the set of propositions
-Prop' : Set₁
-Prop' = Σ Set isProp
+HProp : ∀ {i} → Set (lsuc i)
+HProp {i} = Σ (Set i) isProp
+
+-- HSet : sets
+HSet : ∀ {i} → Set (lsuc i)
+HSet {i} = Σ (Set i) (h 2)
 
 -- the inverse image of a y ∈ Y considering a function f : X → Y
 _⁻¹_ : ∀ {i k} {X : Set i} {Y : Set k} → (X → Y) → Y → Set (i ⊔ k)
