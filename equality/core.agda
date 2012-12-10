@@ -35,3 +35,19 @@ subst B refl = id
 
 singleton : ∀ {i}{A : Set i} → A → Set i
 singleton {A = A} a = Σ A λ a' → a ≡ a'
+
+J : ∀ {i j}{X : Set i}
+  → (P : (x y : X) → x ≡ y → Set j)
+  → ((x : X) → P x x refl)
+  → (x y : X)
+  → (p : x ≡ y)
+  → P x y p
+J P u x .x refl = u x
+
+J' : ∀ {i j}{X : Set i}{x : X}
+   → (P : (y : X) → x ≡ y → Set j)
+   → P x refl
+   → (y : X)
+   → (p : x ≡ y)
+   → P y p
+J' P u y refl = u
