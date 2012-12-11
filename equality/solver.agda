@@ -57,30 +57,38 @@ module Generic {n : ℕ} (tenv : TEnv n) where
   reverse (f ∷ fs) = reverse fs ++ (f ∺ nil)
   reverse (f ∺ fs) = reverse fs ++ (f ∷ nil)
 
-  fuse : ∀ {x y z} → List z y → List x y → List x z
-  fuse nil js = js
-  fuse (i ∷ is) js = go i refl is js
-    where
-      go : ∀ {x y z} i → (y ≡ target tenv i) → List z (source tenv i)
-         → List x y → List x z
-      go {x} i p is (j ∷ js) with j ≟ i
-      ... | yes q =
-        fuse is (subst (λ i → List x (source tenv i)) q js)
-      ... | no _ =
-        reverse (i ∷ is) ++ subst (λ w → List x w) p (j ∷ js)
-      go {x} i p is js =
-        reverse (i ∷ is) ++ subst (λ w → List x w) p js
-  fuse (i ∺ is) js = go i refl is js
-    where
-      go : ∀ {x y z} i → (y ≡ source tenv i) → List z (target tenv i)
-         → List x y → List x z
-      go {x} i p is (j ∺ js) with j ≟ i
-      ... | yes q =
-        fuse is (subst (λ i → List x (target tenv i)) q js)
-      ... | no _ =
-        reverse (i ∺ is) ++ subst (λ w → List x w) p (j ∺ js)
-      go {x} i p is js =
-        reverse (i ∺ is) ++ subst (λ w → List x w) p js
+  mutual
+    fuse : ∀ {x y z} → List z y → List x y → List x z
+    fuse nil js = js
+    fuse (i ∷ is) js = fuse₁ i refl is js
+    fuse (i ∺ is) js = fuse₂ i refl is js
+
+    fuse₁ : ∀ {x y z} i → (y ≡ target tenv i) → List z (source tenv i)
+       → List x y → List x z
+    fuse₁ {x} i p is (j ∷ js) = fuse-step₁ i j p is js (j ≟ i)
+    fuse₁ {x} i p is js =
+      reverse (i ∷ is) ++ subst (λ w → List x w) p js
+
+    fuse-step₁ : ∀ {x z} i j
+               → (target tenv j ≡ target tenv i)
+               → List z (source tenv i)
+               → List x (source tenv j)
+               → Dec (j ≡ i)
+               → List x z
+    fuse-step₁ {x} i j p is js (yes q)
+      = fuse is (subst (λ i → List x (source tenv i)) q js)
+    fuse-step₁ {x} i j p is js (no _)
+      = reverse (i ∷ is) ++ subst (List x) p (j ∷ js)
+
+    fuse₂ : ∀ {x y z} i → (y ≡ source tenv i) → List z (target tenv i)
+       → List x y → List x z
+    fuse₂ {x} i p is (j ∺ js) with j ≟ i
+    ... | yes q =
+      fuse is (subst (λ i → List x (target tenv i)) q js)
+    ... | no _ =
+      reverse (i ∺ is) ++ subst (λ w → List x w) p (j ∺ js)
+    fuse₂ {x} i p is js =
+      reverse (i ∺ is) ++ subst (λ w → List x w) p js
 
   linearize : {x y : X} → Term x y → List x y
   linearize null = nil
@@ -123,6 +131,29 @@ module Generic {n : ℕ} (tenv : TEnv n) where
       ≡⟨ associativity (evalL gs) (evalL fs) (env i ⁻¹) ⟩
         evalL gs ⊚ (evalL fs ⊚ env i ⁻¹)
       ∎
+
+    fuse-correct : ∀ {x y z}(is : List z y)(js : List x y)
+                 → evalL (fuse is js) ≡ evalL (reverse is ++ js)
+    fuse-correct nil js = refl
+    fuse-correct (i ∷ is) js = go i refl is js
+      where
+        go : ∀ {x y z} i
+           → (p : y ≡ target tenv i)
+           → (is : List z (source tenv i))
+           → (js : List x y)
+           → evalL (fuse₁ i p is js)
+           ≡ evalL (reverse (i ∷ is) ++ subst (List x) p js)
+        go i p is nil = refl
+        go {x} i p is (j ∷ js) with j ≟ i
+        ... | yes q = {!fuse-correct is js'!}
+          where
+            js' : List x (source tenv i)
+            js' = subst (λ j → List x (source tenv j)) q js
+        ... | no _ = {!!}
+          
+
+        go i p is (j ∺ js) = {!!}
+    fuse-correct (i ∺ is) js = {!!}
 
     reverse-inv : ∀ {x y}(t : List x y)
                 → evalL (reverse t) ≡ (evalL t) ⁻¹
