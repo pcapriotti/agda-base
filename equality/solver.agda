@@ -14,189 +14,179 @@ open import sets.vec
 open ≡-Reasoning
 
 Graph : ∀ k → Set _
-Graph k = X → X → Set k
+Graph k = X → X → Set (i ⊔ k)
 
-TEnv : ∀ n → Set i
-TEnv n = Vec (X × X) n
+total-space : ∀ {k} → Graph k → Set (i ⊔ k)
+total-space g = Σ (X × X) λ {(x , y) → g x y}
 
-source : ∀ {n} → TEnv n → Fin n → X
-source tenv i = proj₁ (tenv ! i)
+Env : ∀ k → Graph k → Set _
+Env _ g = ∀ {x y} → g x y → x ≡ y
 
-target : ∀ {n} → TEnv n → Fin n → X
-target tenv i = proj₂ (tenv ! i)
+DecGraph : ∀ {k} → Graph k → Set (i ⊔ k)
+DecGraph {k} g = (u v : total-space {k} g) → Dec (u ≡ v)
 
-Env : ∀ {n} → TEnv n → Set _
-Env {n} tenv = (i : Fin n) → source tenv i ≡ target tenv i
-
-module Generic {n : ℕ} (tenv : TEnv n) where
-  data Term : Graph i where
+module Generic {k} (W : Graph k) where
+  data Term : Graph k where
     null : ∀ {x} → Term x x
-    var : (i : Fin n) → Term (source tenv i) (target tenv i)
+    var : ∀ {x y} → W x y → Term x y
     _*_ : ∀ {x y z} → Term y z → Term x y → Term x z
     inv : ∀ {x y} → Term y x → Term x y
   infixl 5 _*_
 
-  data List : Graph i where
-    nil : ∀ {x} → List x x
-    _∷_ : ∀ {x} (i : Fin n)
-        → List x (source tenv i)
-        → List x (target tenv i)
-    _∺_ : ∀ {x} (i : Fin n)
-        → List x (target tenv i)
-        → List x (source tenv i)
-  infixr 5 _∷_ _∺_
+  data Word : Graph k where
+    fwd : ∀ {x y} → W x y → Word x y
+    inv : ∀ {x y} → W y x → Word x y
 
-  _++_ : ∀ {x y z} → List y z → List x y → List x z
-  nil ++ gs = gs
-  (f ∷ fs) ++ gs = f ∷ (fs ++ gs)
-  (f ∺ fs) ++ gs = f ∺ (fs ++ gs)
+  wreverse : ∀ {x y} → Word x y → Word y x
+  wreverse (fwd w) = inv w
+  wreverse (inv w) = fwd w
+
+  data List : Graph k where
+    nil : ∀ {x} → List x x
+    _∷_ : ∀ {x y z}
+        → Word x y
+        → List y z
+        → List x z
+  infixr 5 _∷_
+
+  _++_ : ∀ {x y z} → List x y → List y z → List x z
+  nil ++ ws = ws
+  (u ∷ us) ++ ws = u ∷ (us ++ ws)
   infixr 5 _++_
 
   reverse : ∀ {x y} → List x y → List y x
   reverse nil = nil
-  reverse (f ∷ fs) = reverse fs ++ (f ∺ nil)
-  reverse (f ∺ fs) = reverse fs ++ (f ∷ nil)
+  reverse (w ∷ ws) = reverse ws ++ (wreverse w ∷ nil)
 
-  mutual
-    fuse : ∀ {x y z} → List z y → List x y → List x z
-    fuse nil js = js
-    fuse (i ∷ is) js = fuse₁ i refl is js
-    fuse (i ∺ is) js = fuse₂ i refl is js
+  fuse : ∀ {x y z} → List y x → List y z → List x z
+  fuse (i ∷ is) (j ∷ js) = {!!}
+  fuse is js = reverse is ++ js
 
-    fuse₁ : ∀ {x y z} i → (y ≡ target tenv i) → List z (source tenv i)
-       → List x y → List x z
-    fuse₁ {x} i p is (j ∷ js) = fuse-step₁ i j p is js (j ≟ i)
-    fuse₁ {x} i p is js =
-      reverse (i ∷ is) ++ subst (λ w → List x w) p js
-
-    fuse-step₁ : ∀ {x z} i j
-               → (target tenv j ≡ target tenv i)
-               → List z (source tenv i)
-               → List x (source tenv j)
-               → Dec (j ≡ i)
-               → List x z
-    fuse-step₁ {x} i j p is js (yes q)
-      = fuse is (subst (λ i → List x (source tenv i)) q js)
-    fuse-step₁ {x} i j p is js (no _)
-      = reverse (i ∷ is) ++ subst (List x) p (j ∷ js)
-
-    fuse₂ : ∀ {x y z} i → (y ≡ source tenv i) → List z (target tenv i)
-       → List x y → List x z
-    fuse₂ {x} i p is (j ∺ js) with j ≟ i
-    ... | yes q =
-      fuse is (subst (λ i → List x (target tenv i)) q js)
-    ... | no _ =
-      reverse (i ∺ is) ++ subst (λ w → List x w) p (j ∺ js)
-    fuse₂ {x} i p is js =
-      reverse (i ∺ is) ++ subst (λ w → List x w) p js
-
+--   mutual
+--     fuse : ∀ {x y z} → List z y → List x y → List x z
+--     fuse nil js = js
+--     fuse (i ∷ is) js = fuse₁ i refl is js
+--     fuse (i ∺ is) js = fuse₂ i refl is js
+-- 
+--     fuse₁ : ∀ {x y z} i → (y ≡ target tenv i) → List z (source tenv i)
+--        → List x y → List x z
+--     fuse₁ {x} i p is (j ∷ js) = fuse-step₁ i j p is js (j ≟ i)
+--     fuse₁ {x} i p is js =
+--       reverse (i ∷ is) ++ subst (λ w → List x w) p js
+-- 
+--     fuse-step₁ : ∀ {x z} i j
+--                → (target tenv j ≡ target tenv i)
+--                → List z (source tenv i)
+--                → List x (source tenv j)
+--                → Dec (j ≡ i)
+--                → List x z
+--     fuse-step₁ {x} i j p is js (yes q)
+--       = fuse is (subst (λ i → List x (source tenv i)) q js)
+--     fuse-step₁ {x} i j p is js (no _)
+--       = reverse (i ∷ is) ++ subst (List x) p (j ∷ js)
+-- 
+--     fuse₂ : ∀ {x y z} i → (y ≡ source tenv i) → List z (target tenv i)
+--        → List x y → List x z
+--     fuse₂ {x} i p is (j ∺ js) with j ≟ i
+--     ... | yes q =
+--       fuse is (subst (λ i → List x (target tenv i)) q js)
+--     ... | no _ =
+--       reverse (i ∺ is) ++ subst (λ w → List x w) p (j ∺ js)
+--     fuse₂ {x} i p is js =
+--       reverse (i ∺ is) ++ subst (λ w → List x w) p js
+-- 
   linearize : {x y : X} → Term x y → List x y
   linearize null = nil
-  linearize (var i) = i ∷ nil
-  linearize (g * f) = linearize g ++ linearize f
+  linearize (var i) = fwd i ∷ nil
+  linearize (g * f) = linearize f ++ linearize g
   linearize (inv f) = reverse (linearize f)
 
-  module WithEnv (env : Env tenv) where
-    evalT : {x y : X} → Term x y → x ≡ y
+  module WithEnv (env : Env k W) where
+    evalT : ∀ {x y} → Term x y → x ≡ y
     evalT null = refl
     evalT (var x) = env x
     evalT (g * f) = evalT f ⊚ evalT g
     evalT (inv t) = evalT t ⁻¹
 
-    evalL : {x y : X} → List x y → x ≡ y
+    evalW : ∀ {x y} → Word x y → x ≡ y
+    evalW (fwd w) = env w
+    evalW (inv w) = env w ⁻¹
+
+    wreverse-inv : ∀ {x y}(w : Word x y)
+                 → evalW (wreverse w)
+                 ≡ evalW w ⁻¹
+    wreverse-inv (fwd w) = refl
+    wreverse-inv (inv w) = sym (double-inverse (env w))
+
+    evalL : ∀ {x y} → List x y → x ≡ y
     evalL nil = refl
-    evalL (v ∷ fs) = evalL fs ⊚ env v
-    evalL (v ∺ fs) = evalL fs ⊚ env v ⁻¹
+    evalL (w ∷ ws) = evalW w ⊚ evalL ws
 
-    oneL : (i : Fin n) → evalL (i ∷ nil) ≡ env i
-    oneL i = refl
+    oneW : ∀ {x y}(w : Word x y) → evalL (w ∷ nil) ≡ evalW w
+    oneW w = left-unit (evalW w)
 
-    invL : (i : Fin n) → evalL (i ∺ nil) ≡ env i ⁻¹
-    invL i = refl
-
-    eval++ : ∀ {x y z}(fs : List y z)(gs : List x y)
-           → evalL (fs ++ gs) ≡ evalL gs ⊚ evalL fs
-    eval++ nil gs = sym (left-unit (evalL gs))
-    eval++ (i ∷ fs) gs = begin
-        evalL (fs ++ gs) ⊚ env i
-      ≡⟨ cong (λ z → z ⊚ env i) (eval++ fs gs) ⟩
-        (evalL gs ⊚ evalL fs) ⊚ env i
-      ≡⟨ associativity (evalL gs) (evalL fs) (env i) ⟩
-        evalL gs ⊚ (evalL fs ⊚ env i)
+    eval++ : ∀ {x y z}(ws : List x y)(us : List y z)
+           → evalL (ws ++ us) ≡ evalL ws ⊚ evalL us
+    eval++ nil us = refl
+    eval++ (w ∷ ws) us = begin
+        evalW w ⊚ evalL (ws ++ us)
+      ≡⟨ cong (λ α → evalW w ⊚ α) (eval++ ws us) ⟩
+        evalW w ⊚ (evalL ws ⊚ evalL us)
+      ≡⟨ sym (associativity (evalW w) (evalL ws) (evalL us)) ⟩
+        evalW w ⊚ evalL ws ⊚ evalL us
       ∎
-    eval++ (i ∺ fs) gs = begin
-        evalL (fs ++ gs) ⊚ env i ⁻¹
-      ≡⟨ cong (λ z → z ⊚ env i ⁻¹) (eval++ fs gs) ⟩
-        evalL gs ⊚ evalL fs ⊚ env i ⁻¹
-      ≡⟨ associativity (evalL gs) (evalL fs) (env i ⁻¹) ⟩
-        evalL gs ⊚ (evalL fs ⊚ env i ⁻¹)
-      ∎
-
-    fuse-correct : ∀ {x y z}(is : List z y)(js : List x y)
-                 → evalL (fuse is js) ≡ evalL (reverse is ++ js)
-    fuse-correct nil js = refl
-    fuse-correct (i ∷ is) js = go i refl is js
-      where
-        go : ∀ {x y z} i
-           → (p : y ≡ target tenv i)
-           → (is : List z (source tenv i))
-           → (js : List x y)
-           → evalL (fuse₁ i p is js)
-           ≡ evalL (reverse (i ∷ is) ++ subst (List x) p js)
-        go i p is nil = refl
-        go {x} i p is (j ∷ js) with j ≟ i
-        ... | yes q = {!fuse-correct is js'!}
-          where
-            js' : List x (source tenv i)
-            js' = subst (λ j → List x (source tenv j)) q js
-        ... | no _ = {!!}
-          
-
-        go i p is (j ∺ js) = {!!}
-    fuse-correct (i ∺ is) js = {!!}
+-- 
+--     fuse-correct : ∀ {x y z}(is : List z y)(js : List x y)
+--                  → evalL (fuse is js) ≡ evalL (reverse is ++ js)
+--     fuse-correct nil js = refl
+--     fuse-correct (i ∷ is) js = go i refl is js
+--       where
+--         go : ∀ {x y z} i
+--            → (p : y ≡ target tenv i)
+--            → (is : List z (source tenv i))
+--            → (js : List x y)
+--            → evalL (fuse₁ i p is js)
+--            ≡ evalL (reverse (i ∷ is) ++ subst (List x) p js)
+--         go i p is nil = refl
+--         go {x} i p is (j ∷ js) with j ≟ i
+--         ... | yes q = {!fuse-correct is js'!}
+--           where
+--             js' : List x (source tenv i)
+--             js' = subst (λ j → List x (source tenv j)) q js
+--         ... | no _ = {!!}
+--           
+-- 
+--         go i p is (j ∺ js) = {!!}
+--     fuse-correct (i ∺ is) js = {!!}
 
     reverse-inv : ∀ {x y}(t : List x y)
                 → evalL (reverse t) ≡ (evalL t) ⁻¹
     reverse-inv nil = refl
-    reverse-inv (i ∷ fs) = begin
-        evalL (reverse fs ++ (i ∺ nil))
-      ≡⟨ eval++ (reverse fs) (i ∺ nil) ⟩
-        evalL (i ∺ nil) ⊚ evalL (reverse fs)
-      ≡⟨ cong₂ _⊚_ (invL i) (reverse-inv fs) ⟩
-        env i ⁻¹ ⊚ evalL fs ⁻¹
-      ≡⟨ sym (inverse-comp (evalL fs) (env i)) ⟩
-        (evalL fs ⊚ env i) ⁻¹
-      ∎
-    reverse-inv (i ∺ fs) = begin
-        evalL (reverse fs ++ (i ∷ nil))
-      ≡⟨ eval++ (reverse fs) (i ∷ nil) ⟩
-        evalL (i ∷ nil) ⊚ evalL (reverse fs)
-      ≡⟨ cong₂ _⊚_ (oneL i) (reverse-inv fs) ⟩
-        env i ⊚ evalL fs ⁻¹
-      ≡⟨ cong (λ z → z ⊚ evalL fs ⁻¹) (sym (double-inverse (env i))) ⟩
-        (env i ⁻¹) ⁻¹ ⊚ evalL fs ⁻¹
-      ≡⟨ sym (inverse-comp (evalL fs) (env i ⁻¹)) ⟩
-        (evalL fs ⊚ env i ⁻¹) ⁻¹
+    reverse-inv (w ∷ ws) = begin
+        evalL (reverse ws ++ (wreverse w ∷ nil))
+      ≡⟨ eval++ (reverse ws) (wreverse w ∷ nil) ⟩
+        evalL (reverse ws) ⊚ evalL (wreverse w ∷ nil)
+      ≡⟨ cong₂ _⊚_ (reverse-inv ws)
+                  (oneW (wreverse w) ⊚ wreverse-inv w) ⟩
+        evalL ws ⁻¹ ⊚ evalW w ⁻¹
+      ≡⟨ sym (inverse-comp (evalW w) (evalL ws)) ⟩
+        evalL (w ∷ ws) ⁻¹
       ∎
 
     linearize-correct : {x y : X}(t : Term x y)
                       → evalL (linearize t) ≡ evalT t
     linearize-correct null = refl
-    linearize-correct (var f) = right-unit (env f)
-    linearize-correct (g * f) = begin
-        evalL (linearize g ++ linearize f)
-      ≡⟨ eval++ (linearize g) (linearize f) ⟩
-        evalL (linearize f) ⊚ evalL (linearize g)
-      ≡⟨ cong₂ _⊚_ (linearize-correct f) (linearize-correct g) ⟩
-        evalT f ⊚ evalT g
+    linearize-correct (var w) = left-unit (env w)
+    linearize-correct (t₁ * t₂) = begin
+        evalL (linearize t₂ ++ linearize t₁)
+      ≡⟨ eval++ (linearize t₂) (linearize t₁) ⟩
+        evalL (linearize t₂) ⊚ evalL (linearize t₁)
+      ≡⟨ cong₂ _⊚_ (linearize-correct t₂) (linearize-correct t₁) ⟩
+        evalT t₂ ⊚ evalT t₁
       ∎
-    linearize-correct (inv t) = begin
-        evalL (reverse (linearize t))
-      ≡⟨ reverse-inv (linearize t) ⟩
-        evalL (linearize t) ⁻¹
-      ≡⟨ cong (_⁻¹) (linearize-correct t) ⟩
-        evalT (inv t)
-      ∎
+    linearize-correct (inv t) =
+      reverse-inv (linearize t) ⊚
+      cong sym (linearize-correct t)
 
     solve : {x y : X} (t₁ t₂ : Term x y)
           → linearize t₁ ≡ linearize t₂
