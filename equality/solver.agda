@@ -60,6 +60,11 @@ module Generic {k} (W : Graph (i ⊔ k))(dec : DecGraph W) where
   wreverse (fwd w) = inv w
   wreverse (inv w) = fwd w
 
+  wreverse-wreverse : ∀ {x y}(w : Word x y)
+                    → wreverse (wreverse w) ≡ w
+  wreverse-wreverse (fwd w) = refl
+  wreverse-wreverse (inv w) = refl
+
   data List : Graph (i ⊔ k) where
     nil : ∀ {x} → List x x
     _∷_ : ∀ {x y z}
@@ -71,11 +76,39 @@ module Generic {k} (W : Graph (i ⊔ k))(dec : DecGraph W) where
   _++_ : ∀ {x y z} → List x y → List y z → List x z
   nil ++ ws = ws
   (u ∷ us) ++ ws = u ∷ (us ++ ws)
-  infixr 5 _++_
+  infixl 5 _++_
+
+  assoc++ : ∀ {x y z w}(ws : List x y)(us : List y z)(vs : List z w)
+          → ws ++ (us ++ vs)
+          ≡ ws ++ us ++ vs
+  assoc++ nil us vs = refl
+  assoc++ (w ∷ ws) us vs = cong (λ α → w ∷ α) (assoc++ ws us vs)
+
+  nil-right-inverse : ∀ {x y} (ws : List x y)
+                    → ws ++ nil ≡ ws
+  nil-right-inverse nil = refl
+  nil-right-inverse (w ∷ ws) =
+    cong (λ ws → w ∷ ws)
+         (nil-right-inverse ws)
 
   reverse : ∀ {x y} → List x y → List y x
   reverse nil = nil
   reverse (w ∷ ws) = reverse ws ++ (wreverse w ∷ nil)
+
+  reverse++ : ∀ {x y z} (ws : List x y) (us : List y z)
+            → reverse (ws ++ us)
+            ≡ reverse us ++ reverse ws
+  reverse++ nil us = sym (nil-right-inverse (reverse us))
+  reverse++ (w ∷ ws) us =
+      cong (λ α → α ++ (wreverse w ∷ nil)) (reverse++ ws us)
+    ⊚ sym (assoc++ (reverse us) (reverse ws) (wreverse w ∷ nil))
+
+  reverse-reverse : ∀ {x y} (ws : List x y)
+                  → reverse (reverse ws) ≡ ws
+  reverse-reverse nil = refl
+  reverse-reverse (w ∷ ws) =
+      reverse++ (reverse ws) (wreverse w ∷ nil)
+    ⊚ cong₂ _∷_ (wreverse-wreverse w) (reverse-reverse ws)
 
   fuse : ∀ {x y z} → List y x → List y z → List x z
   fuse {z = z} (fwd w ∷ ws) (fwd u ∷ us) with u ≟ w
@@ -89,7 +122,7 @@ module Generic {k} (W : Graph (i ⊔ k))(dec : DecGraph W) where
   linearize : {x y : X} → Term x y → List x y
   linearize null = nil
   linearize (var i) = fwd i ∷ nil
-  linearize (g * f) = linearize f ++ linearize g
+  linearize (g * f) = fuse (reverse (linearize f)) (linearize g)
   linearize (inv f) = reverse (linearize f)
 
   module WithEnv (env : Env W) where
@@ -223,13 +256,13 @@ module Generic {k} (W : Graph (i ⊔ k))(dec : DecGraph W) where
                       → evalL (linearize t) ≡ evalT t
     linearize-correct null = refl
     linearize-correct (var w) = left-unit (env w)
-    linearize-correct (t₁ * t₂) = begin
-        evalL (linearize t₂ ++ linearize t₁)
-      ≡⟨ eval++ (linearize t₂) (linearize t₁) ⟩
-        evalL (linearize t₂) ⊚ evalL (linearize t₁)
-      ≡⟨ cong₂ _⊚_ (linearize-correct t₂) (linearize-correct t₁) ⟩
-        evalT t₂ ⊚ evalT t₁
-      ∎
+    linearize-correct (t₁ * t₂) = 
+        fuse-correct (reverse (linearize t₂)) (linearize t₁)
+      ⊚ (cong (λ α → evalL (α ++ linearize t₁))
+              (reverse-reverse (linearize t₂))
+      ⊚ (eval++ (linearize t₂) (linearize t₁)
+      ⊚ cong₂ _⊚_ (linearize-correct t₂) (linearize-correct t₁)))
+      
     linearize-correct (inv t) =
       reverse-inv (linearize t) ⊚
       cong sym (linearize-correct t)
