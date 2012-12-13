@@ -12,16 +12,9 @@ open import sets.nat using (ℕ)
 open import sets.fin hiding (_≟_)
 open import sets.vec
 
+open import equality.solver.core
+
 open ≡-Reasoning
-
-Graph : ∀ k → Set _
-Graph k = X → X → Set k
-
-total-space : ∀ {k} → Graph k → Set (i ⊔ k)
-total-space g = Σ (X × X) λ {(x , y) → g x y}
-
-Env : ∀ {k} → Graph k → Set _
-Env g = ∀ {x y} → g x y → x ≡ y
 
 lem-rewrite : {x y y' z : X}
             → (p : x ≡ y)(q : y ≡ z)
@@ -32,83 +25,31 @@ lem-rewrite refl q r .r refl =
     sym (cong (λ α → α ⊚ q) (right-inverse r))
   ⊚ associativity (sym r) r q
 
-record DecGraph {k}(g : Graph k) : Set (i ⊔ k) where
+record DecGraph {k}(g : Graph X k) : Set (i ⊔ k) where
   field
     _≟_ : ∀ {x y y'}(w : g x y)(u : g x y')
         → Dec (Σ (y ≡ y') λ q → subst (g x) q w ≡ u)
     _≟'_ : ∀ {x x' y}(w : g x y)(u : g x' y)
          → Dec (Σ (x ≡ x') λ q → subst (λ x → g x y) q w ≡ u)
 
-module Generic {k} (W : Graph (i ⊔ k))(dec : DecGraph W) where
+module Generic {k} (W : Graph X (i ⊔ k))(dec : DecGraph W) where
   open DecGraph dec
 
-  liftW : ∀ {x y} → W x y → total-space W
-  liftW {x}{y} w = ((x , y) , w)
+  module Terms where
+    import equality.solver.term as M
+    open M X W public
+  open Terms hiding (module WithEnv)
 
-  data Term : Graph (i ⊔ k) where
-    null : ∀ {x} → Term x x
-    var : ∀ {x y} → W x y → Term x y
-    _*_ : ∀ {x y z} → Term y z → Term x y → Term x z
-    inv : ∀ {x y} → Term y x → Term x y
-  infixl 5 _*_
+  module Words where
+    import equality.solver.word as M
+    open M X W public
+  open Words hiding (module WithEnv)
 
-  data Word : Graph (i ⊔ k) where
-    fwd : ∀ {x y} → W x y → Word x y
-    inv : ∀ {x y} → W y x → Word x y
-
-  wreverse : ∀ {x y} → Word x y → Word y x
-  wreverse (fwd w) = inv w
-  wreverse (inv w) = fwd w
-
-  wreverse-wreverse : ∀ {x y}(w : Word x y)
-                    → wreverse (wreverse w) ≡ w
-  wreverse-wreverse (fwd w) = refl
-  wreverse-wreverse (inv w) = refl
-
-  data List : Graph (i ⊔ k) where
-    nil : ∀ {x} → List x x
-    _∷_ : ∀ {x y z}
-        → Word x y
-        → List y z
-        → List x z
-  infixr 5 _∷_
-
-  _++_ : ∀ {x y z} → List x y → List y z → List x z
-  nil ++ ws = ws
-  (u ∷ us) ++ ws = u ∷ (us ++ ws)
-  infixl 5 _++_
-
-  assoc++ : ∀ {x y z w}(ws : List x y)(us : List y z)(vs : List z w)
-          → ws ++ (us ++ vs)
-          ≡ ws ++ us ++ vs
-  assoc++ nil us vs = refl
-  assoc++ (w ∷ ws) us vs = cong (λ α → w ∷ α) (assoc++ ws us vs)
-
-  nil-right-inverse : ∀ {x y} (ws : List x y)
-                    → ws ++ nil ≡ ws
-  nil-right-inverse nil = refl
-  nil-right-inverse (w ∷ ws) =
-    cong (λ ws → w ∷ ws)
-         (nil-right-inverse ws)
-
-  reverse : ∀ {x y} → List x y → List y x
-  reverse nil = nil
-  reverse (w ∷ ws) = reverse ws ++ (wreverse w ∷ nil)
-
-  reverse++ : ∀ {x y z} (ws : List x y) (us : List y z)
-            → reverse (ws ++ us)
-            ≡ reverse us ++ reverse ws
-  reverse++ nil us = sym (nil-right-inverse (reverse us))
-  reverse++ (w ∷ ws) us =
-      cong (λ α → α ++ (wreverse w ∷ nil)) (reverse++ ws us)
-    ⊚ sym (assoc++ (reverse us) (reverse ws) (wreverse w ∷ nil))
-
-  reverse-reverse : ∀ {x y} (ws : List x y)
-                  → reverse (reverse ws) ≡ ws
-  reverse-reverse nil = refl
-  reverse-reverse (w ∷ ws) =
-      reverse++ (reverse ws) (wreverse w ∷ nil)
-    ⊚ cong₂ _∷_ (wreverse-wreverse w) (reverse-reverse ws)
+  module Lists where
+    import equality.solver.list as L
+    open L X Word public
+    open WithInvolution word-involution public
+  open Lists hiding (module WithEnv)
 
   fuse : ∀ {x y z} → List y x → List y z → List x z
   fuse {z = z} (fwd w ∷ ws) (fwd u ∷ us) with u ≟ w
@@ -126,25 +67,12 @@ module Generic {k} (W : Graph (i ⊔ k))(dec : DecGraph W) where
   linearize (inv f) = reverse (linearize f)
 
   module WithEnv (env : Env W) where
-    evalT : ∀ {x y} → Term x y → x ≡ y
-    evalT null = refl
-    evalT (var x) = env x
-    evalT (g * f) = evalT f ⊚ evalT g
-    evalT (inv t) = evalT t ⁻¹
-
-    evalW : ∀ {x y} → Word x y → x ≡ y
-    evalW (fwd w) = env w
-    evalW (inv w) = env w ⁻¹
-
-    wreverse-inv : ∀ {x y}(w : Word x y)
-                 → evalW (wreverse w)
-                 ≡ evalW w ⁻¹
-    wreverse-inv (fwd w) = refl
-    wreverse-inv (inv w) = sym (double-inverse (env w))
-
-    evalL : ∀ {x y} → List x y → x ≡ y
-    evalL nil = refl
-    evalL (w ∷ ws) = evalW w ⊚ evalL ws
+    open Terms.WithEnv env
+      renaming (eval to evalT)
+    open Words.WithEnv env
+      renaming (eval to evalW)
+    open Lists.WithEnv evalW
+      renaming (eval to evalL)
 
     oneW : ∀ {x y}(w : Word x y) → evalL (w ∷ nil) ≡ evalW w
     oneW w = left-unit (evalW w)
