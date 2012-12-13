@@ -71,3 +71,11 @@ private
     nat-set : h 2 ℕ
     nat-set = hedberg _≟_
 open NatSet public
+
+-- Fin is a set
+private
+  module FinSet where
+    open import sets.fin
+    fin-set : ∀ n → h 2 (Fin n)
+    fin-set n = hedberg _≟_
+open FinSet public
