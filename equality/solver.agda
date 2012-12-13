@@ -5,7 +5,7 @@ open import decidable
 open import sum
 open import function using (_∘_)
 open import level using (lsuc; _⊔_)
-open import equality.core
+open import equality.core hiding (singleton)
 open import equality.reasoning
 open import equality.calculus
 open import sets.nat using (ℕ)
@@ -48,7 +48,7 @@ module Generic {k} (W : Graph X (i ⊔ k))(dec : DecGraph W) where
   module Lists where
     import equality.solver.list as L
     open L X Word public
-    open WithInvolution word-involution public
+    open WithInvolution word-inv public
   open Lists hiding (module WithEnv)
 
   fuse : ∀ {x y z} → List y x → List y z → List x z
@@ -73,34 +73,7 @@ module Generic {k} (W : Graph X (i ⊔ k))(dec : DecGraph W) where
       renaming (eval to evalW)
     open Lists.WithEnv evalW
       renaming (eval to evalL)
-
-    oneW : ∀ {x y}(w : Word x y) → evalL (w ∷ nil) ≡ evalW w
-    oneW w = left-unit (evalW w)
-
-    eval++ : ∀ {x y z}(ws : List x y)(us : List y z)
-           → evalL (ws ++ us) ≡ evalL ws ⊚ evalL us
-    eval++ nil us = refl
-    eval++ (w ∷ ws) us = begin
-        evalW w ⊚ evalL (ws ++ us)
-      ≡⟨ cong (λ α → evalW w ⊚ α) (eval++ ws us) ⟩
-        evalW w ⊚ (evalL ws ⊚ evalL us)
-      ≡⟨ sym (associativity (evalW w) (evalL ws) (evalL us)) ⟩
-        evalW w ⊚ evalL ws ⊚ evalL us
-      ∎
-
-    reverse-inv : ∀ {x y}(t : List x y)
-                → evalL (reverse t) ≡ (evalL t) ⁻¹
-    reverse-inv nil = refl
-    reverse-inv (w ∷ ws) = begin
-        evalL (reverse ws ++ (wreverse w ∷ nil))
-      ≡⟨ eval++ (reverse ws) (wreverse w ∷ nil) ⟩
-        evalL (reverse ws) ⊚ evalL (wreverse w ∷ nil)
-      ≡⟨ cong₂ _⊚_ (reverse-inv ws)
-                  (oneW (wreverse w) ⊚ wreverse-inv w) ⟩
-        evalL ws ⁻¹ ⊚ evalW w ⁻¹
-      ≡⟨ sym (inverse-comp (evalW w) (evalL ws)) ⟩
-        evalL (w ∷ ws) ⁻¹
-      ∎
+    open Lists.WithEnvInvolution evalW word-env-inv
 
     fuse-correct : ∀ {x y z}(ws : List y x)(us : List y z)
                  → evalL (fuse ws us) ≡ evalL (reverse ws ++ us)

@@ -19,8 +19,8 @@ wreverse-wreverse : ∀ {x y}(w : Word x y)
 wreverse-wreverse (fwd w) = refl
 wreverse-wreverse (inv w) = refl
 
-word-involution : Involution Word
-word-involution = record
+word-inv : Involution Word
+word-inv = record
   { τ = wreverse
   ; τ-τ = wreverse-wreverse }
 
@@ -34,3 +34,8 @@ module WithEnv (env : Env W) where
                ≡ eval w ⁻¹
   wreverse-inv (fwd w) = refl
   wreverse-inv (inv w) = sym (double-inverse (env w))
+
+  word-env-inv : EnvInvolution Word eval
+  word-env-inv = record
+    { inv = word-inv
+    ; τ-correct = wreverse-inv }

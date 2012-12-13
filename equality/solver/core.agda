@@ -14,3 +14,15 @@ record Involution {i k}{X : Set i}(W : Graph X k) : Set (i ⊔ k) where
   field
     τ : ∀ {x y} → W x y → W y x
     τ-τ : ∀ {x y}(w : W x y) → τ (τ w) ≡ w
+
+record EnvInvolution {i k}{X : Set i}(W : Graph X k)(env : Env W) : Set (i ⊔ k) where
+  field
+    inv : Involution W
+
+  open Involution inv
+
+  field
+    τ-correct : ∀ {x y}(w : W x y)
+              → env (τ w) ≡ sym (env w)
+
+  open Involution inv public
