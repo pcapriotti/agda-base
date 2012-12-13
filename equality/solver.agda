@@ -25,13 +25,6 @@ lem-rewrite refl q r .r refl =
     sym (cong (λ α → α ⊚ q) (right-inverse r))
   ⊚ associativity (sym r) r q
 
-record DecGraph {k}(g : Graph X k) : Set (i ⊔ k) where
-  field
-    _≟_ : ∀ {x y y'}(w : g x y)(u : g x y')
-        → Dec (Σ (y ≡ y') λ q → subst (g x) q w ≡ u)
-    _≟'_ : ∀ {x x' y}(w : g x y)(u : g x' y)
-         → Dec (Σ (x ≡ x') λ q → subst (λ x → g x y) q w ≡ u)
-
 module Generic {k} (W : Graph X (i ⊔ k))(dec : DecGraph W) where
   open DecGraph dec
 
