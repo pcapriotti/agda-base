@@ -14,7 +14,7 @@ data Term : Graph X (i ⊔ k) where
 infixl 5 _*_
 
 module WithEnv (env : Env W) where
-  eval : ∀ {x y} → Term x y → x ≡ y
+  eval : Env Term
   eval null = refl
   eval (var x) = env x
   eval (g * f) = eval f ⊚ eval g

@@ -55,6 +55,6 @@ module WithInvolution (inv : Involution W) where
     ⊚ cong₂ _∷_ (τ-τ w) (reverse-reverse ws)
 
 module WithEnv (env : Env W) where
-  eval : ∀ {x y} → List x y → x ≡ y
+  eval : Env List
   eval nil = refl
   eval (w ∷ ws) = env w ⊚ eval ws

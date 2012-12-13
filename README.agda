@@ -13,6 +13,8 @@ import level
 import function.isomorphism
 import function.extensionality
 
+import equality.solver
+
 -- categories
 
 import category.category
