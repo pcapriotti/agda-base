@@ -2,11 +2,13 @@
 module function.isomorphism.properties where
 
 open import sum
+open import sets.nat
 open import equality.core
 open import equality.calculus
 open import equality.reasoning
 open import function.isomorphism
 open import hott.coherence
+open import hott.hlevel
 
 private
   module Dummy {i j}{X : Set i}{Y : Set j}
@@ -74,3 +76,25 @@ iso≡ : ∀ {i j}{X : Set i}{Y : Set j}
      → (x ≡ x')
      ≅ (apply isom x ≡ apply isom x')
 iso≡ isom = iso'≡ (≅⇒≅' isom)
+
+-- isomorphisms preserve h-levels
+iso-h : ∀ {i j}{X : Set i}{Y : Set j}
+      → X ≅ Y
+      → (n : ℕ)
+      → h n X
+      → h n Y
+iso-h {Y = Y} isom 0 (x , f) = to x , f'
+  where
+    open _≅_ isom
+
+    f' : (y : Y) → to x ≡ y
+    f' y = cong to (f (from y)) ⊚ iso₂ y
+iso-h {Y = Y} isom (suc n) f = f'
+  where
+    open _≅_ isom
+
+    f' : (y y' : Y) → h n (y ≡ y')
+    f' y y' = subst₂ (λ α β → h n (α ≡ β))
+                     (iso₂ y)
+                     (iso₂ y')
+                     (iso-h (iso≡ isom) n (f (from y) (from y')))

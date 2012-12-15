@@ -33,6 +33,13 @@ subst : ∀ {i j} {A : Set i}{x y : A}
       → B x → B y
 subst B refl = id
 
+subst₂ : ∀ {i j k} {A : Set i}{x x' : A}
+         {B : Set j}{y y' : B}
+       → (C : A → B → Set k)
+       → x ≡ x' → y ≡ y'
+       → C x y → C x' y'
+subst₂ C refl refl = id
+
 singleton : ∀ {i}{A : Set i} → A → Set i
 singleton {A = A} a = Σ A λ a' → a ≡ a'
 
