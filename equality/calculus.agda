@@ -1,7 +1,7 @@
 {-# OPTIONS --without-K #-}
 module equality.calculus where
 
-open import sum using (Σ ; _,_ ; proj₁)
+open import sum using (Σ ; _,_ ; proj₁; proj₂)
 open import equality.core
 open import equality.groupoid public
 open import function using (id ; _∘_)
@@ -40,11 +40,15 @@ subst-const-cong : ∀ {i j} {A : Set i}{X : Set j}
 subst-const-cong f refl = refl
 
 congΣ : ∀ {i j}{A : Set i}{B : A → Set j}
-        {a a' : A}{b : B a}{b' : B a'}
-     → (p : (a , b) ≡ (a' , b'))
-     → Σ (a ≡ a') λ q
-     → subst B q b ≡ b'
-congΣ refl = refl , refl
+        {x x' : Σ A B}
+     → (p : x ≡ x')
+     → Σ (proj₁ x ≡ proj₁ x') λ q
+     → subst B q (proj₂ x) ≡ proj₂ x'
+congΣ {B = B} p =
+  J (λ x x' p → Σ (proj₁ x ≡ proj₁ x') λ q
+              → subst B q (proj₂ x) ≡ proj₂ x')
+    (λ x → refl , refl)
+    _ _ p
 
 uncongΣ : ∀ {i j}{A : Set i}{B : A → Set j}
           {a a' : A}{b : B a}{b' : B a'}
@@ -57,14 +61,19 @@ congΣ-proj : ∀ {i j}{A : Set i}{B : A → Set j}
              (p : (a , b) ≡ (a' , b'))
            → proj₁ (congΣ p)
            ≡ cong proj₁ p
-congΣ-proj refl = refl
+congΣ-proj =
+  J (λ _ _ p → proj₁ (congΣ p) ≡ cong proj₁ p)
+    (λ x → refl) _ _
 
 congΣ-sym : ∀ {i j}{A : Set i}{B : A → Set j}
             {a a' : A}{b : B a}{b' : B a'}
             (p : (a , b) ≡ (a' , b'))
           → proj₁ (congΣ (sym p))
           ≡ sym (proj₁ (congΣ p))
-congΣ-sym refl = refl
+congΣ-sym =
+  J (λ _ _ p → proj₁ (congΣ (sym p))
+             ≡ sym (proj₁ (congΣ p)))
+    (λ x → refl) _ _
 
 subst-cong : ∀ {i j}{A : Set i}{B : Set j}{a a' : A}
            → (f : A → B)
