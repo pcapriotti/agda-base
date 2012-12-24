@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 open import equality.solver.core
-module equality.solver.term {i}(X : Set i){k}(W : Graph X k) where
+module equality.solver.term {i}{X : Set i}{k}(W : Graph X k) where
 
 open import level using (_⊔_)
 open import equality.core
@@ -13,9 +13,12 @@ data Term : Graph X (i ⊔ k) where
   inv : ∀ {x y} → Term y x → Term x y
 infixl 5 _*_
 
-module WithEnv (env : Env W) where
-  eval : Env Term
-  eval null = refl
-  eval (var x) = env x
-  eval (g * f) = eval f ⊚ eval g
-  eval (inv t) = eval t ⁻¹
+module WithEnv {j}{X' : Set j}(env : Env W X') where
+  eval : Env Term X'
+  eval = record { imap = imap env ; gmap = go }
+    where
+      go : ∀ {x y} → Term x y → imap env x ≡ imap env y
+      go null = refl
+      go (var x) = gmap env x
+      go (g * f) = go f ⊚ go g
+      go (inv t) = go t ⁻¹

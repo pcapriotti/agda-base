@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 open import equality.solver.core
-module equality.solver.word {i k}(X : Set i)(W : Graph X k) where
+module equality.solver.word {i k}{X : Set i}(W : Graph X k) where
 
 open import level using (_⊔_)
 open import equality.core
@@ -24,16 +24,19 @@ word-inv = record
   { τ = wreverse
   ; τ-τ = wreverse-wreverse }
 
-module WithEnv (env : Env W) where
-  eval : Env Word
-  eval (fwd w) = env w
-  eval (inv w) = env w ⁻¹
+module WithEnv {j}{X' : Set j}(env : Env W X') where
+  eval : Env Word X'
+  eval = record
+    { imap = imap env
+    ; gmap = λ
+      { (fwd w) → gmap env w
+      ; (inv w) → gmap env w ⁻¹ } }
 
   wreverse-inv : ∀ {x y}(w : Word x y)
-               → eval (wreverse w)
-               ≡ eval w ⁻¹
+               → gmap eval (wreverse w)
+               ≡ gmap eval w ⁻¹
   wreverse-inv (fwd w) = refl
-  wreverse-inv (inv w) = sym (double-inverse (env w))
+  wreverse-inv (inv w) = sym (double-inverse (gmap env w))
 
   word-env-inv : EnvInvolution Word eval
   word-env-inv = record

@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 open import equality.solver.core
-module equality.solver.list {i k} (X : Set i)(W : Graph X k) where
+module equality.solver.list {i k}{X : Set i}(W : Graph X k) where
 
 open import level using (_⊔_)
 open import equality.core hiding (singleton)
@@ -55,43 +55,46 @@ module WithInvolution (inv : Involution W) where
       reverse++ (reverse ws) (τ w ∷ nil)
     ⊚ cong₂ _∷_ (τ-τ w) (reverse-reverse ws)
 
-module WithEnv (env : Env W) where
+module WithEnv {j}{X' : Set j}(env : Env W X') where
   open ≡-Reasoning
   
-  eval : Env List
-  eval nil = refl
-  eval (w ∷ ws) = env w ⊚ eval ws
+  eval : Env List X'
+  eval = record { imap = imap env ; gmap = go }
+    where
+      go : ∀ {x y} → List x y → imap env x ≡ imap env y
+      go nil = refl
+      go (w ∷ ws) = gmap env w ⊚ go ws
 
-  singleton : ∀ {x y}(w : W x y) → eval (w ∷ nil) ≡ env w
-  singleton w = left-unit (env w)
+  singleton : ∀ {x y}(w : W x y) → gmap eval (w ∷ nil) ≡ gmap env w
+  singleton w = left-unit (gmap env w)
 
   eval++ : ∀ {x y z}(ws : List x y)(us : List y z)
-         → eval (ws ++ us) ≡ eval ws ⊚ eval us
+         → gmap eval (ws ++ us) ≡ gmap eval ws ⊚ gmap eval us
   eval++ nil us = refl
   eval++ (w ∷ ws) us = begin
-      env w ⊚ eval (ws ++ us)
-    ≡⟨ cong (λ α → env w ⊚ α) (eval++ ws us) ⟩
-      env w ⊚ (eval ws ⊚ eval us)
-    ≡⟨ sym (associativity (env w) (eval ws) (eval us)) ⟩
-      env w ⊚ eval ws ⊚ eval us
+      gmap env w ⊚ gmap eval (ws ++ us)
+    ≡⟨ cong (λ α → gmap env w ⊚ α) (eval++ ws us) ⟩
+      gmap env w ⊚ (gmap eval ws ⊚ gmap eval us)
+    ≡⟨ sym (associativity (gmap env w) (gmap eval ws) (gmap eval us)) ⟩
+      gmap env w ⊚ gmap eval ws ⊚ gmap eval us
     ∎
 
-module WithEnvInvolution (env : Env W) (env-inv : EnvInvolution W env) where
+module WithEnvInvolution {j}{X' : Set j}(env : Env W X') (env-inv : EnvInvolution W env) where
   open EnvInvolution env-inv
   open WithEnv env
   open WithInvolution inv
   open ≡-Reasoning
 
   reverse-inv : ∀ {x y}(t : List x y)
-              → eval (reverse t) ≡ (eval t) ⁻¹
+              → gmap eval (reverse t) ≡ (gmap eval t) ⁻¹
   reverse-inv nil = refl
   reverse-inv (w ∷ ws) = begin
-      eval (reverse ws ++ (τ w ∷ nil))
+      gmap eval (reverse ws ++ (τ w ∷ nil))
     ≡⟨ eval++ (reverse ws) (τ w ∷ nil) ⟩
-      eval (reverse ws) ⊚ eval (τ w ∷ nil)
+      gmap eval (reverse ws) ⊚ gmap eval (τ w ∷ nil)
     ≡⟨ cong₂ _⊚_ (reverse-inv ws)
                 (singleton (τ w) ⊚ τ-correct w) ⟩
-      eval ws ⁻¹ ⊚ env w ⁻¹
-    ≡⟨ sym (inverse-comp (env w) (eval ws)) ⟩
-      eval (w ∷ ws) ⁻¹
+      gmap eval ws ⁻¹ ⊚ gmap env w ⁻¹
+    ≡⟨ sym (inverse-comp (gmap env w) (gmap eval ws)) ⟩
+      gmap eval (w ∷ ws) ⁻¹
     ∎

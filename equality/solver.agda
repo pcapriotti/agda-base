@@ -25,22 +25,22 @@ lem-rewrite refl q r .r refl =
     sym (cong (λ α → α ⊚ q) (right-inverse r))
   ⊚ associativity (sym r) r q
 
-module Generic {k} (W : Graph X (i ⊔ k))(dec : DecGraph W) where
+module Generic {n k} (W : Graph (Fin n) k)(dec : DecGraph W) where
   open DecGraph dec
 
   module Terms where
     import equality.solver.term as M
-    open M X W public
+    open M W public
   open Terms hiding (module WithEnv)
 
   module Words where
     import equality.solver.word as M
-    open M X W public
+    open M W public
   open Words hiding (module WithEnv)
 
   module Lists where
     import equality.solver.list as L
-    open L X Word public
+    open L Word public
     open WithInvolution word-inv public
   open Lists hiding (module WithEnv)
 
@@ -53,20 +53,23 @@ module Generic {k} (W : Graph X (i ⊔ k))(dec : DecGraph W) where
   ... | no _ = reverse (inv w ∷ ws) ++ (inv u ∷ us)
   fuse ws us = reverse ws ++ us
 
-  linearize : {x y : X} → Term x y → List x y
+  linearize : ∀ {x y} → Term x y → List x y
   linearize null = nil
   linearize (var i) = fwd i ∷ nil
   linearize (g * f) = fuse (reverse (linearize f)) (linearize g)
   linearize (inv f) = reverse (linearize f)
 
-  module WithEnv (env : Env W) where
+  module WithEnv (env : Env W X) where
     open Terms.WithEnv env
-      renaming (eval to evalT)
+      renaming (eval to envT)
     open Words.WithEnv env
-      renaming (eval to evalW)
-    open Lists.WithEnv evalW
-      renaming (eval to evalL)
-    open Lists.WithEnvInvolution evalW word-env-inv
+      renaming (eval to envW)
+    open Lists.WithEnv envW
+      renaming (eval to envL)
+    open Lists.WithEnvInvolution envW word-env-inv
+    evalT = gmap envT
+    evalW = gmap envW
+    evalL = gmap envL
 
     fuse-correct : ∀ {x y z}(ws : List y x)(us : List y z)
                  → evalL (fuse ws us) ≡ evalL (reverse ws ++ us)
@@ -81,7 +84,7 @@ module Generic {k} (W : Graph X (i ⊔ k))(dec : DecGraph W) where
         evalL ws ⁻¹ ⊚ evalL us'
       ≡⟨ lem-rewrite (evalL ws ⁻¹) (evalL us')
                      (evalW (fwd w)) (evalW (fwd u'))
-                     (cong env (sym p)) ⟩
+                     (cong (gmap env) (sym p)) ⟩
         (evalL ws ⁻¹ ⊚ evalW (fwd w) ⁻¹) ⊚ (evalW (fwd u') ⊚ evalL us')
       ≡⟨ cong (λ α → (evalL ws ⁻¹ ⊚ evalW (fwd w) ⁻¹) ⊚ α) (lem q u us) ⟩
         (evalL ws ⁻¹ ⊚ evalW (fwd w) ⁻¹) ⊚ (evalW (fwd u) ⊚ evalL us)
@@ -116,7 +119,7 @@ module Generic {k} (W : Graph X (i ⊔ k))(dec : DecGraph W) where
         evalL ws ⁻¹ ⊚ evalL us'
       ≡⟨ lem-rewrite (evalL ws ⁻¹) (evalL us')
                       (evalW (inv w)) (evalW (inv u'))
-                      (cong (sym ∘ env) (sym p)) ⟩
+                      (cong (sym ∘ gmap env) (sym p)) ⟩
         (evalL ws ⁻¹ ⊚ evalW (inv w) ⁻¹) ⊚ (evalW (inv u') ⊚ evalL us')
       ≡⟨ cong (λ α → (evalL ws ⁻¹ ⊚ evalW (inv w) ⁻¹) ⊚ α)
               (lem q u us) ⟩
@@ -146,10 +149,10 @@ module Generic {k} (W : Graph X (i ⊔ k))(dec : DecGraph W) where
     fuse-correct (inv w ∷ ws) nil = refl
     fuse-correct nil us = refl
 
-    linearize-correct : {x y : X}(t : Term x y)
+    linearize-correct : ∀ {x y}(t : Term x y)
                       → evalL (linearize t) ≡ evalT t
     linearize-correct null = refl
-    linearize-correct (var w) = left-unit (env w)
+    linearize-correct (var w) = left-unit (gmap env w)
     linearize-correct (t₁ * t₂) = 
         fuse-correct (reverse (linearize t₂)) (linearize t₁)
       ⊚ (cong (λ α → evalL (α ++ linearize t₁))
@@ -161,7 +164,7 @@ module Generic {k} (W : Graph X (i ⊔ k))(dec : DecGraph W) where
       reverse-inv (linearize t) ⊚
       cong sym (linearize-correct t)
 
-    solve : {x y : X} (t₁ t₂ : Term x y)
+    solve : ∀ {x y} (t₁ t₂ : Term x y)
           → linearize t₁ ≡ linearize t₂
           → evalT t₁ ≡ evalT t₂
     solve t₁ t₂ p = begin
