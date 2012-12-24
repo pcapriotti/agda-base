@@ -25,7 +25,7 @@ lem-rewrite refl q r .r refl =
     sym (cong (λ α → α ⊚ q) (right-inverse r))
   ⊚ associativity (sym r) r q
 
-module Generic {n k} (W : Graph (Fin n) k)(dec : DecGraph W) where
+module WithDec {n k} (W : Graph (Fin n) k)(dec : DecGraph W) where
   open DecGraph dec
 
   module Terms where
@@ -177,15 +177,26 @@ module Generic {n k} (W : Graph (Fin n) k)(dec : DecGraph W) where
         evalT t₂
       ∎
 
-module Builder where
-  open Generic
-
 -- private
 --   module Example where
+--     i₀ i₁ i₂ i₃ : Fin 4
+--     i₀ = zero
+--     i₁ = suc i₀
+--     i₂ = suc i₁
+--     i₃ = suc i₂
+-- 
+--     data W : Graph (Fin 4) zero where
+--       w₀ : W i₀ i₁
+--       w₁ : W i₁ i₂
+--       w₂ : W i₂ i₃
+-- 
+--     import equality.solver.term as Terms
+--     open Terms W
+-- 
 --     example : {x y z w : X}
---               (f : hom x y)
---               (g : hom y z)
---               (h : hom z w)
+--               (f : x ≡ y)
+--               (g : y ≡ z)
+--               (h : z ≡ w)
 --             → (h ∘ g ∘ f) ⁻¹ ≡ f ⁻¹ ∘ g ⁻¹ ∘ h ⁻¹
 --     example {x}{y}{z}{w} f g h = solve t₁ t₂ refl
 --       where

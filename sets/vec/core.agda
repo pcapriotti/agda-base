@@ -8,6 +8,7 @@ open import sets.fin
 data Vec {i}(A : Set i) : ℕ → Set i where
   [] : Vec A 0
   _∷_ : ∀ {n} → A → Vec A n → Vec A (suc n)
+infixr 5 _∷_
 
 tabulate : ∀ {i}{A : Set i}{n : ℕ}
          → (Fin n → A) → Vec A n

@@ -9,6 +9,7 @@ open import sets.fin using (Fin)
 open import sets.vec
 open import level using (_⊔_)
 open import equality.core
+open import equality.calculus
 open import hott.hlevel
 open import hott.hlevel.properties.sets
 
@@ -95,3 +96,35 @@ record DecGraph {i k}{X : Set i}(W : Graph X k) : Set (i ⊔ k) where
         where
           r : q' ≡ q
           r = proj₁ (h2 x x' q' q)
+
+dec-total : ∀ {i k}{X : Set i}{W : Graph X k}
+          → ((x y : X) → Dec (x ≡ y))
+          → ((w w' : total-space W) → Dec (w ≡ w'))
+          → DecGraph W
+dec-total {X = X} {W = W} idec tdec = record { idec = idec ; gdec = dec' }
+  where
+    dec' : ∀ {x y} → (w w' : W x y) → Dec (w ≡ w')
+    dec' {x}{y} w w' with tdec ((x , y) , w) ((x , y) , w')
+    ... | yes p = yes (subst (λ q₀ → subst (uncurry W) q₀ w ≡ w') q₀-trivial q₁)
+      where
+        q₀ : (x , y) ≡ (x , y)
+        q₀ = proj₁ (congΣ p)
+
+        q₁ : subst (uncurry W) q₀ w ≡ w'
+        q₁ = proj₂ (congΣ p)
+
+        dec₂ : (p p' : X × X) → Dec (p ≡ p')
+        dec₂ (x , y) (x' , y') with idec x x' | idec y y'
+        ... | no f | _ = no (λ q → f (cong proj₁ q))
+        ... | yes _ | no f = no (λ q → f (cong proj₂ q))
+        dec₂ (x , y) (.x , .y) | yes refl | yes refl = yes refl
+
+        h2 : h 2 (X × X)
+        h2 = hedberg dec₂
+
+        q₀-trivial : q₀ ≡ refl
+        q₀-trivial = proj₁ (h2 (x , y) (x , y) q₀ refl)
+    ... | no f = no (λ p → f (lift p))
+      where
+        lift : ∀ {x y}{w w' : W x y} → w ≡ w' → ((x , y) , w) ≡ ((x , y) , w')
+        lift refl = refl
