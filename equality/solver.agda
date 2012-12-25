@@ -13,6 +13,7 @@ open import sets.fin hiding (_≟_)
 open import sets.vec
 
 open import equality.solver.core
+open import equality.solver.builder
 
 open ≡-Reasoning
 
@@ -56,7 +57,7 @@ module WithDec {n k} (W : Graph (Fin n) k)(dec : DecGraph W) where
   linearize : ∀ {x y} → Term x y → List x y
   linearize null = nil
   linearize (var i) = fwd i ∷ nil
-  linearize (g * f) = fuse (reverse (linearize f)) (linearize g)
+  linearize (g * f) = fuse (reverse (linearize g)) (linearize f)
   linearize (inv f) = reverse (linearize f)
 
   module WithEnv (env : Env W X) where
@@ -154,11 +155,11 @@ module WithDec {n k} (W : Graph (Fin n) k)(dec : DecGraph W) where
     linearize-correct null = refl
     linearize-correct (var w) = left-unit (gmap env w)
     linearize-correct (t₁ * t₂) = 
-        fuse-correct (reverse (linearize t₂)) (linearize t₁)
-      ⊚ (cong (λ α → evalL (α ++ linearize t₁))
-              (reverse-reverse (linearize t₂))
-      ⊚ (eval++ (linearize t₂) (linearize t₁)
-      ⊚ cong₂ _⊚_ (linearize-correct t₂) (linearize-correct t₁)))
+        fuse-correct (reverse (linearize t₁)) (linearize t₂)
+      ⊚ (cong (λ α → evalL (α ++ linearize t₂))
+              (reverse-reverse (linearize t₁))
+      ⊚ (eval++ (linearize t₁) (linearize t₂)
+      ⊚ cong₂ _⊚_ (linearize-correct t₁) (linearize-correct t₂)))
       
     linearize-correct (inv t) =
       reverse-inv (linearize t) ⊚
@@ -176,32 +177,3 @@ module WithDec {n k} (W : Graph (Fin n) k)(dec : DecGraph W) where
       ≡⟨ linearize-correct t₂ ⟩
         evalT t₂
       ∎
-
--- private
---   module Example where
---     i₀ i₁ i₂ i₃ : Fin 4
---     i₀ = zero
---     i₁ = suc i₀
---     i₂ = suc i₁
---     i₃ = suc i₂
--- 
---     data W : Graph (Fin 4) zero where
---       w₀ : W i₀ i₁
---       w₁ : W i₁ i₂
---       w₂ : W i₂ i₃
--- 
---     import equality.solver.term as Terms
---     open Terms W
--- 
---     example : {x y z w : X}
---               (f : x ≡ y)
---               (g : y ≡ z)
---               (h : z ≡ w)
---             → (h ∘ g ∘ f) ⁻¹ ≡ f ⁻¹ ∘ g ⁻¹ ∘ h ⁻¹
---     example {x}{y}{z}{w} f g h = solve t₁ t₂ refl
---       where
---         t₁ : Term w x
---         t₁ = inv (var (suc (suc zero)) * var (suc zero) * var zero)
--- 
---         t₂ : Term w x
---         t₂ = inv (var zero) * inv (var (suc zero)) * inv (var (suc (suc zero)))
