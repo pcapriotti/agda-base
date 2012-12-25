@@ -16,6 +16,11 @@ Extensionality' i j = {X : Set i}{Y : X → Set j}
                     → ((x : X) → f x ≡ g x)
                     → f ≡ g
 
+StrongExt : ∀ i j → Set (lsuc (i ⊔ j))
+StrongExt i j = {X : Set i}{Y : X → Set j}
+              → (f g : (x : X) → Y x)
+              → (∀ x → f x ≡ g x) ≡ (f ≡ g)
+
 ext-apply : ∀ {i j}{X : Set i}{Y : X → Set j}
           → {f g : (x : X) → Y x}
           → f ≡ g

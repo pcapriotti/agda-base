@@ -33,9 +33,9 @@ private
                → ext f g (happly p) ≡ p
     ext-happly {f} refl = ext-id f
 
-    ext-strong : (f g : (x : X) → Y x) (h : f ~ g)
+    happly-ext : (f g : (x : X) → Y x) (h : f ~ g)
                → happly (ext f g h) ≡ h
-    ext-strong f g h = subst (λ {(g , h) → happly (ext f g h) ≡ h})
+    happly-ext f g h = subst (λ {(g , h) → happly (ext f g h) ≡ h})
                          (e-contr' (g , h))
                          strong-id
       where
@@ -56,9 +56,13 @@ private
         strong-id = cong happly (ext-id f)
 
     ext-iso : (f g : (x : X) → Y x)
-            → (f ≡ g) ≅ (f ~ g)
-    ext-iso f g = iso happly (ext f g) ext-happly (ext-strong f g)
+            → (f ~ g) ≅ (f ≡ g)
+    ext-iso f g = iso (ext f g) happly (happly-ext f g) ext-happly
 
-  module Dummy' {i j}{X : Set i}{Y : X → Set j}
-    = Dummy X Y extensionality' (Π-contr extensionality') ext-id'
+  module Dummy' {i j} where
+    strong-ext : StrongExt i j
+    strong-ext {X = X}{Y} f g = ≅⇒≡ (ext-iso f g)
+      where
+        open Dummy X Y extensionality' (Π-contr extensionality') ext-id'
+
 open Dummy' public

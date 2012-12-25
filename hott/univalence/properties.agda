@@ -9,7 +9,8 @@ open import function using (_∘_; const)
 open import function.extensionality.core
 open import function.isomorphism
 open import sets.unit
-open import hott.hlevel using (contr)
+open import sets.nat using (ℕ; suc)
+open import hott.hlevel using (h; contr)
 open import hott.hlevel.properties.sets using (⊤-contr)
 open import hott.weak-equivalence using (_≈_)
 open import hott.coherence
@@ -76,6 +77,15 @@ exp-contr {X = X} {Y = Y} ext (y , c) = (const y , c')
 
     trivial-contr : contr ((x : X) → trivial x)
     trivial-contr = exp-contr ext Z-contr
+
+-- Π preserves h-levels
+Π-hlevel : ∀ {i j} {X : Set i}{Y : X → Set j}
+         → (∀ {i j} → StrongExt i j)
+         → (n : ℕ) → ((x : X) → h n (Y x))
+         → h n ((x : X) → Y x)
+Π-hlevel ext 0 c = Π-contr (λ f g → coerce (ext f g)) c
+Π-hlevel {X = X}{Y} ext (suc n) hn = λ f g →
+  subst (h n) (ext f g) (Π-hlevel ext n (λ x → hn x (f x) (g x)))
 
 -- any property is preserved by isomorphism
 iso-subst : ∀ {i j} {X : Set i}{Y : Set i}
