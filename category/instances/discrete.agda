@@ -3,7 +3,7 @@ module category.instances.discrete where
 
 open import sum
 open import category.groupoid
-open import category.functor using () renaming (id to Id)
+open import category.functor using (Id)
 open import equality.core using (_≡_ ; refl ; sym ; trans ; cong)
 open import equality.properties
 open import function using (id)

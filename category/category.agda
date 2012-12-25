@@ -26,8 +26,3 @@ record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
                     (g : hom B C)
                     (h : hom C D)
                   → h ∘ g ∘ f ≡ h ∘ (g ∘ f)
-
-  -- reverse composition
-  infixl 5 _⊚_
-  _⊚_ : {A B C : obj} → hom A B → hom B C → hom A C
-  g ⊚ f = f ∘ g
