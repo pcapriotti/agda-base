@@ -1,9 +1,10 @@
 {-# OPTIONS --without-K #-}
 module equality.solver.builder {i}(X : Set i) where
 
-open import level using (lzero)
+open import level using (lzero; lsuc; _⊔_)
 open import decidable
 open import sum
+open import function
 open import function.isomorphism
 open import equality.core
 open import equality.calculus
@@ -65,17 +66,18 @@ private
           
 open FinGraph
 
-make-term : ∀ {n x₀ y₀ x y}
-          → ({W : Graph (Fin n) lzero} → Term W x₀ y₀ → Term W x y)
-          → Term (fin-graph (Fin n) ((x₀ , y₀) ∷ [])) x y
-make-term f = f (var (fin-element zero))
+HOTerm : ∀ {i n}{X : Set i} → Vec (X × X) n → X → X → Set (lsuc lzero ⊔ i)
+HOTerm {X = X} [] x y = {W : Graph X lzero} → Term W x y
+HOTerm {X = X} ((x' , y') ∷ v) x y = {W : Graph X lzero} → Term W x' y' → HOTerm v x y
 
-make-term₂ : ∀ {n x₀ y₀ x₁ y₁ x y}
-          → ({W : Graph (Fin n) lzero} → Term W x₀ y₀ → Term W x₁ y₁ → Term W x y)
-          → Term (fin-graph (Fin n) ((x₀ , y₀) ∷ (x₁ , y₁) ∷ [])) x y
-make-term₂ f = f (var (fin-element zero)) (var (fin-element (suc zero)))
-
-make-term₃ : ∀ {n x₀ y₀ x₁ y₁ x₂ y₂ x y}
-          → ({W : Graph (Fin n) lzero} → Term W x₀ y₀ → Term W x₁ y₁ → Term W x₂ y₂ → Term W x y)
-          → Term (fin-graph (Fin n) ((x₀ , y₀) ∷ (x₁ , y₁) ∷ (x₂ , y₂) ∷ [])) x y
-make-term₃ f = f (var (fin-element zero)) (var (fin-element (suc zero))) (var (fin-element (suc (suc zero))))
+term : ∀ {n k} {v : Vec (Fin n × Fin n) k}{x y : Fin n}
+     → HOTerm v x y
+     → Term (fin-graph (Fin n) v) x y
+term {v = v}{x}{y} t = go v x y t (var ∘ fin-element)
+  where
+    go : ∀ {i n}{X : Set i}{W : Graph X lzero}(v : Vec (X × X) n)(x y : X)
+       → HOTerm v x y
+       → ((i : Fin n) → Term W (proj₁ (v ! i)) (proj₂ (v ! i)))
+       → Term W x y
+    go [] x y t _ = t
+    go ((x' , y') ∷ v) x y f e = go v x y (f (e zero)) (e ∘ suc)
