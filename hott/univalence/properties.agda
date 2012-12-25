@@ -4,6 +4,7 @@ module hott.univalence.properties where
 open import sum
 open import level using (lsuc; ↑; lift)
 open import equality.core
+open import equality.calculus
 open import function using (_∘_; const)
 open import function.extensionality.core
 open import function.isomorphism
@@ -24,6 +25,16 @@ contr-contr : ∀ {i} {X Y : Set i}
             → X ≡ Y
 contr-contr {X = X}{Y = Y} (x , cx) (y , cy) =
   ≅⇒≡ (iso (const y) (const x) cx cy)
+
+-- a retract of a contractible type is contractible
+retract-contr : ∀ {i j} {X : Set i}{Y : Set j}
+              → (f : X → Y)(g : Y → X)
+              → ((y : Y) → f (g y) ≡ y)
+              → contr X → contr Y
+retract-contr {Y = Y} f g r (x , c) = (f x , c')
+  where
+    c' : (y : Y) → f x ≡ y
+    c' y = cong f (c (g y)) ⊚ r y
 
 -- lifting preserves contractibility
 ↑-contr : ∀ {i} j {X : Set i}

@@ -4,6 +4,7 @@ module function.extensionality.proof where
 
 open import sum
 open import equality.core
+open import equality.calculus
 open import equality.reasoning
 open import function using (id; _∘_)
 open import function.isomorphism
@@ -52,7 +53,7 @@ private
   -- now we use univalence to show that a weak equivalence between X and
   -- Y lifts to a weak equivalence between the exponentials (A → X) and
   -- (A → Y) for any type A
-  module Lift {i} {j} (A : Set i) where
+  module Lift {i} j (A : Set i) where
     -- lift a function to the exponentials
     lift : {X Y : Set j}
          → (X → Y) → (A → X) → (A → Y)
@@ -120,58 +121,70 @@ private
 
 -- Now, to prove extensionality, we take a pair of extensionally equal
 -- functions, and we want to prove that they are propositionally equal
-extensionality : ∀ {i j} → Extensionality i j
-extensionality {i}{j} {X} {Y} f g h = main
-  where
-    -- Let Y' be the path space of Y
-    open Paths Y renaming (Δ to Y')
-    open Lift X
+abstract
+  extensionality₀ : ∀ {i j} → Extensionality i j
+  extensionality₀ {i}{j} {X} {Y} f g h = main
+    where
+      -- Let Y' be the path space of Y
+      open Paths Y renaming (Δ to Y')
+      open Lift j X
 
-    -- Since Y and Y' are equivalent, we can lift the equivalence
-    -- to the exponentials, and get an isomorphism.
-    iso' : (X → Y) ≅ (X → Y')
-    iso' = ≈⇒≅ (lift≈ Δ-equiv)
+      -- Since Y and Y' are equivalent, we can lift the equivalence
+      -- to the exponentials, and get an isomorphism.
+      iso' : (X → Y) ≅ (X → Y')
+      iso' = ≈⇒≅ (lift≈ Δ-equiv)
 
-    -- We can now show that composing with δ is a left inverse to
-    -- composing with π₁.
-    -- Here we make use of the fact that the underlying function of
-    -- the equivalence returned by lift≈ is just lift of the base
-    -- function.
-    lem : (k : X → Y') → δ ∘ π₁ ∘ k ≡ k
-    lem k = begin
-        δ ∘ π₁ ∘ k
-      ≡⟨ cong (λ t → t (π₁ ∘ k))
-               (sym (lift≈-coherence Δ-equiv)) ⟩
-        to (π₁ ∘ k)
-      ≡⟨ cong to (lift≈-inverse Δ-equiv π₁ refl k) ⟩
-        to (from k)
-      ≡⟨ iso₂ k ⟩
-        k
-      ∎
-      where
-        open ≡-Reasoning
-        open _≅_ iso'
-  
-    -- Now we can finally show that f and g are equal.
-    -- The idea of the proof is that
-    --     δ ∘ f ≡ δ ∘ g
-    -- since they are both equal to k below, hence they must be equal
-    -- by injectivity of δ
-    main : f ≡ g
-    main = begin
-        f
-      ≡⟨ refl ⟩
-        π₁ ∘ k
-      ≡⟨ refl ⟩
-        π₂ ∘ δ ∘ π₁ ∘ k
-      ≡⟨ cong (_∘_ π₂) (lem k) ⟩
-        π₂ ∘ k
-      ≡⟨ refl ⟩
-        g
-      ∎
-      where
-        open ≡-Reasoning
-        open _≅_ iso' using (iso₂)
+      -- We can now show that composing with δ is a left inverse to
+      -- composing with π₁.
+      -- Here we make use of the fact that the underlying function of
+      -- the equivalence returned by lift≈ is just lift of the base
+      -- function.
+      lem : (k : X → Y') → δ ∘ π₁ ∘ k ≡ k
+      lem k = begin
+          δ ∘ π₁ ∘ k
+        ≡⟨ cong (λ t → t (π₁ ∘ k))
+                 (sym (lift≈-coherence Δ-equiv)) ⟩
+          to (π₁ ∘ k)
+        ≡⟨ cong to (lift≈-inverse Δ-equiv π₁ refl k) ⟩
+          to (from k)
+        ≡⟨ iso₂ k ⟩
+          k
+        ∎
+        where
+          open ≡-Reasoning
+          open _≅_ iso'
 
-        k : X → Y'
-        k x = (f x , (g x , h x))
+      -- Now we can finally show that f and g are equal.
+      -- The idea of the proof is that
+      --     δ ∘ f ≡ δ ∘ g
+      -- since they are both equal to k below, hence they must be equal
+      -- by injectivity of δ
+      main : f ≡ g
+      main = begin
+          f
+        ≡⟨ refl ⟩
+          π₁ ∘ k
+        ≡⟨ refl ⟩
+          π₂ ∘ δ ∘ π₁ ∘ k
+        ≡⟨ cong (_∘_ π₂) (lem k) ⟩
+          π₂ ∘ k
+        ≡⟨ refl ⟩
+          g
+        ∎
+        where
+          open ≡-Reasoning
+          open _≅_ iso' using (iso₂)
+
+          k : X → Y'
+          k x = (f x , (g x , h x))
+
+abstract
+  extensionality : ∀ {i j} → Extensionality i j
+  extensionality f g h = extensionality₀ f g h
+                       ⊚ extensionality₀ g g (λ _ → refl) ⁻¹
+
+  -- computation rule for extensionality
+  ext-id : ∀ {i j}{X : Set i}{Y : Set j}
+         → (f : X → Y)
+         → extensionality f f (λ _ → refl) ≡ refl
+  ext-id f = left-inverse (extensionality₀ f f (λ x → refl))
