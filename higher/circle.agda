@@ -50,24 +50,24 @@ private
         sym (subst-const loop m) ⊚
         cong (subst (λ _ → B) loop) (sym β-base) ⊚
         cong' elim' loop ⊚ β-base
-      ≡⟨ sym (associativity (sym (subst-const loop m) ⊚ _) _ _) ⟩
+      ≡⟨ associativity (sym (subst-const loop m) ⊚ _) _ _ ⟩
         sym (subst-const loop m) ⊚
         cong (subst (λ _ → B) loop) (sym β-base) ⊚
         (cong' elim' loop ⊚ β-base)
-      ≡⟨ sym (associativity (sym (subst-const loop m)) _ _) ⟩
+      ≡⟨ associativity (sym (subst-const loop m)) _ _ ⟩
         sym (subst-const loop m) ⊚
         (cong (subst (λ _ → B) loop) (sym β-base) ⊚
         (cong' elim' loop ⊚ β-base))
       ≡⟨ cong (λ z → sym (subst-const loop m) ⊚ z)
-          (associativity
-            (cong (subst (λ _ → B) loop) (sym β-base)) _ _) ⟩
+          (sym (associativity
+            (cong (subst (λ _ → B) loop) (sym β-base)) _ _)) ⟩
         sym (subst-const loop m) ⊚
         (cong (subst (λ _ → B) loop) (sym β-base) ⊚
          cong' elim' loop ⊚ β-base)
       ≡⟨ cong (λ z → sym (subst-const loop m) ⊚ z) β-loop' ⟩
         sym (subst-const loop m) ⊚ (subst-const loop m ⊚ l)
-      ≡⟨ associativity (sym (subst-const loop m))
-                       (subst-const loop m) l ⟩
+      ≡⟨ sym (associativity (sym (subst-const loop m))
+                            (subst-const loop m) l) ⟩
         sym (subst-const loop m) ⊚ subst-const loop m ⊚ l
       ≡⟨ cong (λ z → z ⊚ l)
               (right-inverse (subst-const loop m)) ⟩

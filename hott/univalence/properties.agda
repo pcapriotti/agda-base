@@ -14,12 +14,16 @@ open import hott.weak-equivalence using (_≈_)
 open import hott.coherence
 open import hott.univalence
 
+-- isomorphism implies equality
+≅⇒≡ : ∀ {i}{X Y : Set i} → X ≅ Y → X ≡ Y
+≅⇒≡ isom = ≈⇒≡ (≅⇒≈ isom)
+
 -- any two contractible types are equal
 contr-contr : ∀ {i} {X Y : Set i}
             → contr X → contr Y
             → X ≡ Y
 contr-contr {X = X}{Y = Y} (x , cx) (y , cy) =
-  ≈⇒≡ (≅⇒≈ (iso (const y) (const x) cx cy))
+  ≅⇒≡ (iso (const y) (const x) cx cy)
 
 -- lifting preserves contractibility
 ↑-contr : ∀ {i} j {X : Set i}
@@ -61,3 +65,9 @@ exp-contr {X = X} {Y = Y} ext (y , c) = (const y , c')
 
     trivial-contr : contr ((x : X) → trivial x)
     trivial-contr = exp-contr ext Z-contr
+
+-- any property is preserved by isomorphism
+iso-subst : ∀ {i j} {X : Set i}{Y : Set i}
+           → (P : Set i → Set j)
+           → X ≅ Y → P X → P Y
+iso-subst P isom = subst P (≅⇒≡ isom)

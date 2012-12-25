@@ -1,14 +1,10 @@
 {-# OPTIONS --without-K #-}
 module equality.calculus where
 
-open import sum using (Σ ; _,_ ; proj₁)
+open import sum using (Σ ; _,_ ; proj₁; proj₂)
 open import equality.core
-  using (_≡_ ; refl ; sym ; subst ; cong)
-open import category.instances.discrete
-import category.groupoid.properties as GP
+open import equality.groupoid public
 open import function using (id ; _∘_)
-
-open DiscreteGroupoid public hiding (id ; _∘_)
 
 cong' : ∀ {i j} {X : Set i}{Y : X → Set j}
         {x x' : X}(f : (x : X) → Y x)(p : x ≡ x')
@@ -44,11 +40,15 @@ subst-const-cong : ∀ {i j} {A : Set i}{X : Set j}
 subst-const-cong f refl = refl
 
 congΣ : ∀ {i j}{A : Set i}{B : A → Set j}
-        {a a' : A}{b : B a}{b' : B a'}
-     → (p : (a , b) ≡ (a' , b'))
-     → Σ (a ≡ a') λ q
-     → subst B q b ≡ b'
-congΣ refl = refl , refl
+        {x x' : Σ A B}
+     → (p : x ≡ x')
+     → Σ (proj₁ x ≡ proj₁ x') λ q
+     → subst B q (proj₂ x) ≡ proj₂ x'
+congΣ {B = B} p =
+  J (λ x x' p → Σ (proj₁ x ≡ proj₁ x') λ q
+              → subst B q (proj₂ x) ≡ proj₂ x')
+    (λ x → refl , refl)
+    _ _ p
 
 uncongΣ : ∀ {i j}{A : Set i}{B : A → Set j}
           {a a' : A}{b : B a}{b' : B a'}
@@ -61,14 +61,19 @@ congΣ-proj : ∀ {i j}{A : Set i}{B : A → Set j}
              (p : (a , b) ≡ (a' , b'))
            → proj₁ (congΣ p)
            ≡ cong proj₁ p
-congΣ-proj refl = refl
+congΣ-proj =
+  J (λ _ _ p → proj₁ (congΣ p) ≡ cong proj₁ p)
+    (λ x → refl) _ _
 
 congΣ-sym : ∀ {i j}{A : Set i}{B : A → Set j}
             {a a' : A}{b : B a}{b' : B a'}
             (p : (a , b) ≡ (a' , b'))
           → proj₁ (congΣ (sym p))
           ≡ sym (proj₁ (congΣ p))
-congΣ-sym refl = refl
+congΣ-sym =
+  J (λ _ _ p → proj₁ (congΣ (sym p))
+             ≡ sym (proj₁ (congΣ p)))
+    (λ x → refl) _ _
 
 subst-cong : ∀ {i j}{A : Set i}{B : Set j}{a a' : A}
            → (f : A → B)
@@ -76,6 +81,16 @@ subst-cong : ∀ {i j}{A : Set i}{B : Set j}{a a' : A}
            → cong f (sym p)
            ≡ subst (λ x → f x ≡ f a) p refl
 subst-cong f refl = refl
+
+cong-map-id : ∀ {i j}{X : Set i}{Y : Set j}{x : X}
+            → (f : X → Y)
+            → cong f (refl {x = x}) ≡ refl {x = f x}
+cong-map-id f = refl
+
+cong-map-hom : ∀ {i j}{X : Set i}{Y : Set j}{x y z : X}
+             → (f : X → Y)(p : x ≡ y)(q : y ≡ z)
+             → cong f (p ⊚ q) ≡ cong f p ⊚ cong f q
+cong-map-hom f refl _ = refl
 
 cong-id : ∀ {l} {A : Set l}{x y : A}(p : x ≡ y)
         → cong id p ≡ p
@@ -90,14 +105,13 @@ cong-inv : ∀ {i j} {X : Set i} {Y : Set j}
          → {x x' : X}
          → (f : X → Y)(p : x ≡ x')
          → cong f (sym p) ≡ sym (cong f p)
-cong-inv {X = X} {Y = Y} f =
-  GP.map-inv {G = discrete X} {H = discrete Y} (discrete-map f)
+cong-inv f refl = refl
 
 double-inverse : ∀ {i} {X : Set i} {x y : X}
                (p : x ≡ y) → sym (sym p) ≡ p
-double-inverse = GP.double-inverse (discrete _)
+double-inverse refl = refl
 
 inverse-comp : ∀ {i} {X : Set i} {x y z : X}
                (p : x ≡ y)(q : y ≡ z)
              → sym (p ⊚ q) ≡ sym q ⊚ sym p
-inverse-comp = GP.inverse-comp (discrete _)
+inverse-comp refl q = sym (left-unit (sym q))

@@ -1,8 +1,7 @@
 {-# OPTIONS --without-K #-}
 module hott.coherence where
 
-open import equality using
-  (_≡_ ; refl ; sym ; cong ; subst)
+open import equality.core
 open import equality.calculus
 open import equality.reasoning
 open import function using (_$_ ; id ; _∘_)
@@ -11,10 +10,6 @@ open import sum using
   (Σ ; _,_ ; proj₁ ; proj₂)
 open import hott.hlevel
 open import hott.weak-equivalence
-open import category.functor using (Functor)
-open import category.instances.discrete
-
-open DiscreteGroupoid hiding (id ; _∘_)
 
 -- a coherent isomophism is one determined by a weak equivalence
 isCoherent : ∀ {i j} {X : Set i}{Y : Set j} → X ≅ Y → Set _
@@ -77,7 +72,7 @@ lem-homotopy-nat H refl = left-unit _
                   (double-inverse (H x)) ⟩
             cong f (cong g (sym p) ⊚ H x) ⊚ p
           ≡⟨ cong (λ z → z ⊚ p)
-                   (Functor.map-hom (discrete-map f) (cong g (sym p)) (H x)) ⟩
+                   (cong-map-hom f (cong g (sym p)) (H x)) ⟩
             cong f (cong g (sym p)) ⊚ cong f (H x) ⊚ p
           ≡⟨ cong (λ z → z ⊚ cong f (H x) ⊚ p)
                    (cong-hom g f (sym p)) ⟩
@@ -88,7 +83,7 @@ lem-homotopy-nat H refl = left-unit _
             K y ⊚ cong id (sym p) ⊚ p
           ≡⟨ cong (λ z → K y ⊚ z ⊚ p) (cong-id (sym p)) ⟩
             K y ⊚ sym p ⊚ p
-          ≡⟨ sym (associativity (K y) (sym p) p) ⟩
+          ≡⟨ associativity (K y) (sym p) p ⟩
             K y ⊚ (sym p ⊚ p)
           ≡⟨ cong (_⊚_ (K y)) (right-inverse p) ⟩
             K y ⊚ refl
@@ -170,7 +165,7 @@ lem-subst-fixpoint {i}{X} f x p = begin
   ≡⟨ cong (λ z → cong f z ⊚ p ⊚ sym p)
            (double-inverse p) ⟩
     cong f p ⊚ p ⊚ sym p
-  ≡⟨ sym (associativity (cong f p) p (sym p)) ⟩
+  ≡⟨ associativity (cong f p) p (sym p) ⟩
     cong f p ⊚ (p ⊚ sym p)
   ≡⟨ cong (λ z → cong f p ⊚ z) (left-inverse p) ⟩
     cong f p ⊚ refl
@@ -291,9 +286,9 @@ vogt-lemma {X = X}{Y = Y} isom = K' , coherent
       ≡⟨ refl ⟩
         cong (f ∘ g) (sym (K (f x))) ⊚
         cong f (H (g (f x))) ⊚ K (f x)
-      ≡⟨ sym (associativity (cong (f ∘ g) (sym (K (f x))))
+      ≡⟨ associativity (cong (f ∘ g) (sym (K (f x))))
                (cong f (H (g (f x))))
-               (K (f x))) ⟩
+               (K (f x)) ⟩
         cong (f ∘ g) (sym (K (f x))) ⊚
         (cong f (H (g (f x))) ⊚ K (f x))
       ≡⟨ cong (λ z → cong (f ∘ g) (sym (K (f x))) ⊚ z) (lem x) ⟩
@@ -303,9 +298,9 @@ vogt-lemma {X = X}{Y = Y} isom = K' , coherent
               (cong-inv (f ∘ g) (K (f x))) ⟩
         sym (cong (f ∘ g) (K (f x))) ⊚
         (cong (f ∘ g) (K (f x)) ⊚ cong f (H x))
-      ≡⟨ associativity (sym (cong (f ∘ g) (K (f x))))
+      ≡⟨ sym (associativity (sym (cong (f ∘ g) (K (f x))))
                        (cong (f ∘ g) (K (f x)))
-                       (cong f (H x)) ⟩
+                       (cong f (H x))) ⟩
         ( sym (cong (f ∘ g) (K (f x))) ⊚
           cong (f ∘ g) (K (f x)) ) ⊚
         cong f (H x)
