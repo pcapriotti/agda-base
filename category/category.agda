@@ -4,19 +4,19 @@ module category.category where
 
 open import level using (Level ; lsuc ; _⊔_)
 open import equality.core using (_≡_)
+open import hott.hlevel
 
 record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
   infixl 8 _∘_
   field
-    -- data
     obj : Set i
     hom : obj → obj → Set j
 
-    -- structure
+    trunc : ∀ x y → h 2 (hom x y)
+
     id : (A : obj) → hom A A
     _∘_ : {A B C : obj} → hom B C → hom A B → hom A C
 
-    -- laws
     left-unit : {A B : obj}(f : hom A B)
               → id B ∘ f ≡ f
     right-unit : {A B : obj}(f : hom A B)
