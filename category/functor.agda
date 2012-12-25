@@ -32,21 +32,21 @@ record Functor {i j i' j'}
               (f : hom X Y)(g : hom Y Z)
             → map (g ∘ f) ≡ map g ∘' map f
 
-id : ∀ {i j}(C : Category i j) → Functor C C
-id C = record
+Id : ∀ {i j}(C : Category i j) → Functor C C
+Id C = record
   { apply = ι
   ; map = ι
   ; map-id = λ _ → refl
   ; map-hom = λ _ _ → refl }
 
-_∘_ : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
-      {C : Category i₁ j₁}
-      {D : Category i₂ j₂}
-      {E : Category i₃ j₃}
-    → Functor D E
-    → Functor C D
-    → Functor C E
-_∘_ {C = C} {D} {E} F G = record
+Compose : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
+          {C : Category i₁ j₁}
+          {D : Category i₂ j₂}
+          {E : Category i₃ j₃}
+        → Functor D E
+        → Functor C D
+        → Functor C E
+Compose {C = C} {D} {E} F G = record
   { apply = apply F ⋆ apply G
   ; map = map F ⋆ map G
   ; map-id = λ X → begin
