@@ -23,6 +23,8 @@ import equality.solver
 import category.category
 import category.groupoid
 import category.functor
+import category.functor.category
+import category.functor.adjoint
 import category.trans
 
 import category.instances.set
