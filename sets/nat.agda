@@ -38,3 +38,11 @@ suc _ ≟ zero  = no (λ ())
 suc a ≟ suc b with a ≟ b
 suc a ≟ suc b | yes a≡b = yes $ cong {lzero} {lzero} suc a≡b
 suc a ≟ suc b | no ¬a≡b = no $ (λ sa≡sb → ¬a≡b (cong {lzero} {lzero} pred sa≡sb))
+
+data _≤_ : ℕ → ℕ → Set where
+  refl-≤ : ∀ n → n ≤ n
+  suc-≤ : ∀ {n m} → n ≤ m → n ≤ suc m
+
+zero-min : ∀ n → 0 ≤ n
+zero-min 0 = refl-≤ 0
+zero-min (suc n) = suc-≤ (zero-min n)

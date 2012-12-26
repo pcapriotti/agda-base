@@ -11,7 +11,7 @@ open import hott.hlevel
 
 open Groupoid using (cat)
 
-discrete : ∀ {i}→ (A : Set i) → h 3 A → Groupoid i i
+discrete : ∀ {i} → (A : Set i) → h 3 A → Groupoid i i
 discrete A h3 = record
   { cat = record
     { obj = A

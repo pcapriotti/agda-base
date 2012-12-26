@@ -33,7 +33,7 @@ import category.instances.discrete
 -- HoTT
 
 import hott.hlevel
-import hott.hlevel.properties.sets
+import hott.hlevel.properties
 import hott.weak-equivalence
 import hott.coherence
 import hott.univalence
