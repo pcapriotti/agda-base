@@ -32,6 +32,10 @@ record Nat (F G : Functor C D) : Set (i ⊔ j ⊔ j') where
     α : Trans F G
     α-nat : natural F G α
 
+_⇒_ : Functor C D → Functor C D → Set _
+_⇒_ = Nat
+infixr 1 _⇒_
+
 Id : (F : Functor C D) → Nat F F
 Id F = nt (λ X → id (apply F X))
           ( λ f → left-unit (map F f)

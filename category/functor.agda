@@ -39,14 +39,14 @@ Id C = record
   ; map-id = λ _ → refl
   ; map-hom = λ _ _ → refl }
 
-Compose : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
+_∘_ : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
           {C : Category i₁ j₁}
           {D : Category i₂ j₂}
           {E : Category i₃ j₃}
         → Functor D E
         → Functor C D
         → Functor C E
-Compose {C = C} {D} {E} F G = record
+_∘_ {C = C} {D} {E} F G = record
   { apply = apply F ⋆ apply G
   ; map = map F ⋆ map G
   ; map-id = λ X → begin
