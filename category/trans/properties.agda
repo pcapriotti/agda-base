@@ -21,7 +21,7 @@ nat-right-unit : {F G : Functor C D}
               → (α : Nat F G)
               → α ∘ Id F ≡ α
 nat-right-unit {F}{G} (nt α α-nat) =
-  nat-equality F G _ _ trans-right-unit
+  nat-equality _ _ trans-right-unit
   where
     trans-right-unit : (λ X → α X ⋆ id (apply F X)) ≡ α
     trans-right-unit = extensionality' _ _ (λ X → right-unit (α X))
@@ -30,7 +30,7 @@ nat-left-unit : {F G : Functor C D}
               → (α : Nat F G)
               → Id G ∘ α ≡ α
 nat-left-unit {F}{G} (nt α α-nat) =
-  nat-equality F G _ _ trans-left-unit
+  nat-equality _ _ trans-left-unit
   where
     trans-left-unit : (λ X → id (apply G X) ⋆ α X) ≡ α
     trans-left-unit = extensionality' _ _ (λ X → left-unit (α X))
@@ -41,7 +41,7 @@ nat-assoc : {F G H K : Functor C D}
           → (γ : Nat H K)
           → γ ∘ β ∘ α ≡ γ ∘ (β ∘ α)
 nat-assoc {F}{G}{H}{K} (nt α α-nat) (nt β β-nat) (nt γ γ-nat) =
-  nat-equality F K _ _ (extensionality' _ _ trans-assoc)
+  nat-equality _ _ (extensionality' _ _ trans-assoc)
   where
     trans-assoc : ∀ X → γ X ⋆ β X ⋆ α X ≡ γ X ⋆ (β X ⋆ α X)
     trans-assoc X = associativity _ _ _

@@ -5,7 +5,7 @@ module category.functor where
 open import category.category
 open import function using () renaming (id to ι ; _∘_ to _⋆_)
 open import level using (_⊔_)
-open import equality.core using (_≡_ ; refl ; cong)
+open import equality.core using (_≡_ ; refl ; cong; sym)
 
 record Functor {i j i' j'}
                (C : Category i j)
@@ -81,3 +81,13 @@ _∘_ {C = C} {D} {E} F G = record
                ; id to id₃
                ; _∘_ to _∘₃_ )
     open Functor
+
+open Category
+
+Const : ∀ {i j i' j'}(C : Category i j){D : Category i' j'}
+      → (X : obj D) → Functor C D
+Const C {D} X = record
+  { apply = λ _ → X
+  ; map = λ _ → id D X
+  ; map-id = λ _ → refl
+  ; map-hom = λ _ _ → sym (right-unit D _) }
