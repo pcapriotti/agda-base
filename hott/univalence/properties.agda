@@ -103,6 +103,12 @@ exp-contr {X = X} {Y = Y} ext (y , c) = (const y , c')
 Σ-hlevel (suc n) hx hy = λ a b → iso-h Σ-split-iso n
   (Σ-hlevel n (hx _ _) (λ p → hy (proj₁ b) _ _))
 
+-- × preserves h-levels
+×-hlevel : ∀ {i j}{X : Set i}{Y : Set j}
+         → (n : ℕ) → h n X → h n Y
+         → h n (X × Y)
+×-hlevel n hx hy = Σ-hlevel n hx (λ _ → hy)
+
 -- any property is preserved by isomorphism
 iso-subst : ∀ {i j} {X : Set i}{Y : Set i}
            → (P : Set i → Set j)
