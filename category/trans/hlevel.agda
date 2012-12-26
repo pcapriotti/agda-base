@@ -2,6 +2,7 @@
 
 open import sum
 open import equality.core
+open import equality.calculus
 open import category.category
 open import category.functor
 open import category.trans.core
@@ -16,6 +17,20 @@ module category.trans.hlevel {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where
 
 open Category using (mor; hom)
+
+private
+  module NatΣ (F G : Functor C D) where
+    Nat' : Set _
+    Nat' = Σ (Trans F G) (natural F G)
+
+    unnat-Σ : Nat' → Nat F G
+    unnat-Σ (α , nat) = nt α nat
+
+    nat-Σ : Nat F G → Nat'
+    nat-Σ (nt α nat) = α , nat
+
+    nat-Σ-iso : Nat' ≅ Nat F G
+    nat-Σ-iso = iso unnat-Σ nat-Σ (λ x → refl) (λ x → refl)
 
 trans-hset : (F G : Functor C D) → h 2 (Trans F G)
 trans-hset F G = Π-hlevel strong-ext 2 (λ X → trunc _ _) 
@@ -36,5 +51,17 @@ natural-prop F G α = iso-h (lem (nat-equation F G α)) 1
                 (λ _ → refl) (λ _ → refl)
 
 nat-hset : (F G : Functor C D) → h 2 (Nat F G)
-nat-hset F G = Σ-hlevel 2 (trans-hset F G)
-                          (λ α → h↑ 1 (natural-prop F G α))
+nat-hset F G = iso-h nat-Σ-iso 2
+  (Σ-hlevel 2 (trans-hset F G)
+                          (λ α → h↑ 1 (natural-prop F G α)))
+  where
+    open NatΣ F G
+
+nat-equality : (F G : Functor C D)
+             → (n₁ n₂ : Nat F G)
+             → (Nat.α n₁ ≡ Nat.α n₂)
+             → n₁ ≡ n₂
+nat-equality F G (nt α _) (nt β _) p = cong unnat-Σ (uncongΣ (p , p'))
+  where
+    p' = h1⇒isProp (natural-prop F G β) _ _
+    open NatΣ F G

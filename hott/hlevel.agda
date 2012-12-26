@@ -28,8 +28,8 @@ isProp X = (x x' : X) → x ≡ x'
 --             h1 says that all elements are equal and
 --                all equality proofs are equal)
 
-h1⇒isProp : ∀ {i} (X : Set i) → h 1 X → isProp X
-h1⇒isProp X h1 x x' = proj₁ $ h1 x x' 
+h1⇒isProp : ∀ {i} {X : Set i} → h 1 X → isProp X
+h1⇒isProp h1 x x' = proj₁ $ h1 x x' 
 
 isProp⇒h1 : ∀ {i} (X : Set i) → isProp X → h 1 X
 isProp⇒h1 X f x y = p₀ x y , lem x y
