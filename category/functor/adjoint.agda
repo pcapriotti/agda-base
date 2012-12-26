@@ -15,7 +15,7 @@ open import category.trans.core
   using (_⇒_; nt; natural)
 
 module category.functor.adjoint {i}{j}{i'}{j'}
-  (C : Category i j)(D : Category i' j')
+  {C : Category i j}{D : Category i' j'}
   (F : Functor C D)(G : Functor D C) where
 
 open Category hiding (_∘_)

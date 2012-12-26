@@ -26,9 +26,12 @@ import category.functor
 import category.functor.category
 import category.functor.adjoint
 import category.trans
+import category.terminal
 
 import category.instances.set
 import category.instances.discrete
+import category.instances.unit
+import category.instances.empty
 
 -- HoTT
 

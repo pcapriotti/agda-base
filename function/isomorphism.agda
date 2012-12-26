@@ -49,4 +49,7 @@ private
 
           K : (y : Y) → f (g y) ≡ y
           K y = proj₂ (surj-f y)
+
+      sym≅ : X ≅ Y → Y ≅ X
+      sym≅ (iso f g H K) = iso g f K H
 open Dummy public
