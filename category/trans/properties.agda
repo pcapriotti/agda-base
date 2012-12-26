@@ -36,12 +36,12 @@ nat-left-unit {F}{G} (nt α α-nat) =
     trans-left-unit = extensionality' _ _ (λ X → left-unit (α X))
 
 nat-assoc : {F G H K : Functor C D}
-          → (α : Nat H K)
+          → (α : Nat F G)
           → (β : Nat G H)
-          → (γ : Nat F G)
-          → α ∘ β ∘ γ ≡ α ∘ (β ∘ γ)
+          → (γ : Nat H K)
+          → γ ∘ β ∘ α ≡ γ ∘ (β ∘ α)
 nat-assoc {F}{G}{H}{K} (nt α α-nat) (nt β β-nat) (nt γ γ-nat) =
   nat-equality F K _ _ (extensionality' _ _ trans-assoc)
   where
-    trans-assoc : ∀ X → α X ⋆ β X ⋆ γ X ≡ α X ⋆ (β X ⋆ γ X)
+    trans-assoc : ∀ X → γ X ⋆ β X ⋆ α X ≡ γ X ⋆ (β X ⋆ α X)
     trans-assoc X = associativity _ _ _
