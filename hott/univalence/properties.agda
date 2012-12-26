@@ -2,12 +2,14 @@
 module hott.univalence.properties where
 
 open import sum
+open import sum.properties
 open import level using (lsuc; ↑; lift)
 open import equality.core
 open import equality.calculus
 open import function using (_∘_; const)
 open import function.extensionality.core
 open import function.isomorphism
+open import function.isomorphism.properties
 open import sets.unit
 open import sets.nat using (ℕ; suc)
 open import hott.hlevel using (h; contr)
@@ -86,6 +88,20 @@ exp-contr {X = X} {Y = Y} ext (y , c) = (const y , c')
 Π-hlevel ext 0 c = Π-contr (λ f g → coerce (ext f g)) c
 Π-hlevel {X = X}{Y} ext (suc n) hn = λ f g →
   subst (h n) (ext f g) (Π-hlevel ext n (λ x → hn x (f x) (g x)))
+
+-- Σ preserves h-levels
+Σ-hlevel : ∀ {i j} {X : Set i}{Y : X → Set j}
+         → (n : ℕ) → h n X
+         → ((x : X) → h n (Y x))
+         → h n (Σ X Y)
+Σ-hlevel {X = X}{Y} 0 (x₀ , cx) hy =
+  (x₀ , proj₁ (hy x₀)) , λ { (x , y) → c x y }
+  where
+    c : (x : X)(y : Y x) → (x₀ , proj₁ (hy x₀)) ≡ (x , y)
+    c x y = cong (λ x → (x , proj₁ (hy x))) (cx x)
+          ⊚ cong (_,_ x) (proj₂ (hy x) y)
+Σ-hlevel (suc n) hx hy = λ a b → iso-h Σ-split-iso n
+  (Σ-hlevel n (hx _ _) (λ p → hy (proj₁ b) _ _))
 
 -- any property is preserved by isomorphism
 iso-subst : ∀ {i j} {X : Set i}{Y : Set i}

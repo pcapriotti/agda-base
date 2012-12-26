@@ -4,6 +4,8 @@ module README where
 -- Preliminaries
 
 import sum
+import sum.properties
+
 import equality
 import sets
 import decidable
@@ -11,6 +13,7 @@ import function
 import level
 
 import function.isomorphism
+import function.isomorphism.properties
 import function.extensionality
 
 import equality.solver
