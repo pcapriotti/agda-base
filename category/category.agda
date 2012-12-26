@@ -3,6 +3,7 @@
 module category.category where
 
 open import level using (Level ; lsuc ; _⊔_)
+open import sum
 open import equality.core using (_≡_)
 open import hott.hlevel
 
@@ -26,3 +27,6 @@ record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
                     (g : hom B C)
                     (h : hom C D)
                   → h ∘ g ∘ f ≡ h ∘ (g ∘ f)
+
+  mor : Set (i ⊔ j)
+  mor = Σ (obj × obj) (uncurry hom)
