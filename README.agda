@@ -27,6 +27,8 @@ import category.functor.category
 import category.functor.adjoint
 import category.trans
 import category.terminal
+import category.kan-extension
+import category.limit
 
 import category.instances.set
 import category.instances.discrete
