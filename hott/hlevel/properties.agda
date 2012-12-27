@@ -11,7 +11,7 @@ open import hott.hlevel.properties.sets public
 h-≤ : ∀ {i n m}{X : Set i}
     → n ≤ m → h n X → h m X
 h-≤ (refl-≤ _) hn = hn
-h-≤ (suc-≤ p) hn = h↑ _ (h-≤ p hn)
+h-≤ (suc-≤ p) hn = h↑ (h-≤ p hn)
 
 h! : ∀ {i n m}{X : Set i}
    → {p : True (n ≤? m)}

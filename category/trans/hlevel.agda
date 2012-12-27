@@ -53,7 +53,7 @@ natural-prop F G α = iso-h (lem (nat-equation F G α)) 1
 nat-hset : (F G : Functor C D) → h 2 (Nat F G)
 nat-hset F G = iso-h nat-Σ-iso 2
   (Σ-hlevel 2 (trans-hset F G)
-                          (λ α → h↑ 1 (natural-prop F G α)))
+                          (λ α → h↑ (natural-prop F G α)))
   where
     open NatΣ F G
 

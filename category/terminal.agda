@@ -26,7 +26,7 @@ private
     open _⊣_ _ _ t
 
     term-univ : (Y : obj C) → contr (hom C Y X)
-    term-univ Y = iso-h (adj Y tt) 0 (h↑ 0 ⊤-contr tt tt) 
+    term-univ Y = iso-h (adj Y tt) 0 (h↑ ⊤-contr tt tt) 
 
     ! : (Y : obj C) → hom C Y X
     ! Y = proj₁ (term-univ Y)

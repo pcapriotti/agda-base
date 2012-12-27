@@ -45,9 +45,9 @@ contr⇒isProp : ∀ {i} {X : Set i} → contr X → isProp X
 contr⇒isProp (x , p) = λ x' x'' → sym (p x') ⊚ p x''
 
 -- h-levels are upwards closed
-h↑ : ∀ {i}{X : Set i} (n : ℕ) → h n X → h (suc n) X
-h↑ 0 c = isProp⇒h1 _ (contr⇒isProp c)
-h↑ (suc n) hn = λ x x' → h↑ n (hn x x')
+h↑ : ∀ {i n}{X : Set i} → h n X → h (suc n) X
+h↑ {n = 0} c = isProp⇒h1 _ (contr⇒isProp c)
+h↑ {n = suc n} hn = λ x x' → h↑ (hn x x')
 
 -- Prop: the set of propositions
 HProp : ∀ i → Set (lsuc i)
