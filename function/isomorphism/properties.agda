@@ -79,18 +79,17 @@ iso≡ : ∀ {i j}{X : Set i}{Y : Set j}
 iso≡ isom = iso'≡ (≅⇒≅' isom)
 
 -- isomorphisms preserve h-levels
-iso-h : ∀ {i j}{X : Set i}{Y : Set j}
+iso-h : ∀ {i j n}{X : Set i}{Y : Set j}
       → X ≅ Y
-      → (n : ℕ)
       → h n X
       → h n Y
-iso-h {Y = Y} isom 0 (x , f) = to x , f'
+iso-h {n = 0} {Y = Y} isom (x , f) = to x , f'
   where
     open _≅_ isom
 
     f' : (y : Y) → to x ≡ y
     f' y = cong to (f (from y)) ⊚ iso₂ y
-iso-h {Y = Y} isom (suc n) f = f'
+iso-h {n = suc n} {Y = Y} isom f = f'
   where
     open _≅_ isom
 
@@ -98,7 +97,7 @@ iso-h {Y = Y} isom (suc n) f = f'
     f' y y' = subst₂ (λ α β → h n (α ≡ β))
                      (iso₂ y)
                      (iso₂ y')
-                     (iso-h (iso≡ isom) n (f (from y) (from y')))
+                     (iso-h (iso≡ isom) (f (from y) (from y')))
 
 -- lifting is an isomorphism
 lift-iso : ∀ {i} j (X : Set i) → X ≅ ↑ j X

@@ -39,14 +39,11 @@ retract-contr {Y = Y} f g r (x , c) = (f x , c')
     c' : (y : Y) → f x ≡ y
     c' y = cong f (c (g y)) ⊚ r y
 
--- lifting preserves contractibility
-↑-contr : ∀ {i} j {X : Set i}
-        → contr X
-        → contr (↑ j X)
-↑-contr j {X} (x , cx) = lift x , lift-cx
-  where
-    lift-cx : (l : ↑ j X) → lift x ≡ l
-    lift-cx (lift x') = cong lift (cx x')
+-- lifting preserves h-levels
+↑-contr : ∀ {i n} j {X : Set i}
+        → h n X
+        → h n (↑ j X)
+↑-contr j {X} = iso-h (lift-iso j X)
 
 -- exponentials preserve contractibility (given extensionality)
 exp-contr : ∀ {i j}{X : Set i}{Y : Set j}
@@ -100,7 +97,7 @@ exp-contr {X = X} {Y = Y} ext (y , c) = (const y , c')
     c : (x : X)(y : Y x) → (x₀ , proj₁ (hy x₀)) ≡ (x , y)
     c x y = cong (λ x → (x , proj₁ (hy x))) (cx x)
           ⊚ cong (_,_ x) (proj₂ (hy x) y)
-Σ-hlevel (suc n) hx hy = λ a b → iso-h Σ-split-iso n
+Σ-hlevel (suc n) hx hy = λ a b → iso-h Σ-split-iso
   (Σ-hlevel n (hx _ _) (λ p → hy (proj₁ b) _ _))
 
 -- × preserves h-levels
