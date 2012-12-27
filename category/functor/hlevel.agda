@@ -8,6 +8,8 @@ module category.functor.hlevel {i j i' j'}
 open import level
 open import sum
 open import category.functor.core
+open import category.trans.core
+  using (_⇒_) renaming (Id to Idn)
 open import equality.core
 open import equality.calculus using (uncongΣ)
 open import function.extensionality
@@ -73,3 +75,6 @@ func-equality F G p = iso⇒inj isom _ _ mappings≡
     mappings≡ : to F ≡ to G
     mappings≡ = uncongΣ
       (p , h1⇒isProp (func-prop (func-to-mapping G)) _ _)
+
+func-coerce : {F G : Functor C D} → F ≡ G → F ⇒ G
+func-coerce {F}{.F} refl = Idn F

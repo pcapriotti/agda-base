@@ -1,7 +1,8 @@
 {-# OPTIONS --without-K #-}
 
 open import category.category
-open import category.functor
+open import category.functor.core
+open import category.functor.hlevel
 open import equality.core
 
 module category.functor.properties where
