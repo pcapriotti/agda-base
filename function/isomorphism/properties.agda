@@ -1,6 +1,7 @@
 {-# OPTIONS --without-K #-}
 module function.isomorphism.properties where
 
+open import level
 open import sum
 open import sets.nat
 open import equality.core
@@ -98,3 +99,7 @@ iso-h {Y = Y} isom (suc n) f = f'
                      (iso₂ y)
                      (iso₂ y')
                      (iso-h (iso≡ isom) n (f (from y) (from y')))
+
+-- lifting is an isomorphism
+lift-iso : ∀ {i} j (X : Set i) → X ≅ ↑ j X
+lift-iso j X = iso lift lower (λ _ → refl) (λ _ → refl)
