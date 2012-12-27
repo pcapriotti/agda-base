@@ -11,7 +11,7 @@ open import function using (_∘_; const)
 
 open import hott.hlevel using
   (contr; singl-contr; contr⇒isProp)
-open import hott.univalence.properties
+open import hott.univalence.properties.core
 
 -- assume contractible spaces are closed under Π
 private

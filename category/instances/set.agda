@@ -14,8 +14,7 @@ set : ∀ i → Category (lsuc i) i
 set i = record
   { obj = HSet i
   ; hom = λ A B → (proj₁ A → proj₁ B)
-  ; trunc = λ { _ (B , h2B)
-              → Π-hlevel strong-ext 2 (λ _ → h2B) }
+  ; trunc = λ { _ (B , h2B) → Π-hlevel (λ _ → h2B) }
   ; id = λ A → f.id {A = proj₁ A}
   ; _∘_ = f._∘'_
   ; left-unit = λ f → refl

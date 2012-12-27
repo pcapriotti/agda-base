@@ -9,7 +9,7 @@ open import function.isomorphism
 open import function.extensionality.core
 open import function.extensionality.proof-dep
 open import hott.hlevel
-open import hott.univalence.properties
+open import hott.univalence.properties.core
 
 private
   module Dummy {i j}(X : Set i)(Y : X → Set j)

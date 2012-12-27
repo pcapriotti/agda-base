@@ -33,14 +33,14 @@ private
     nat-Σ-iso = iso unnat-Σ nat-Σ (λ x → refl) (λ x → refl)
 
 trans-hset : (F G : Functor C D) → h 2 (Trans F G)
-trans-hset F G = Π-hlevel strong-ext 2 (λ X → trunc _ _) 
+trans-hset F G = Π-hlevel (λ X → trunc _ _) 
   where open Category D
 
 natural-prop : (F G : Functor C D)
              → (α : Trans F G)
              → h 1 (natural F G α)
 natural-prop F G α = iso-h (lem (nat-equation F G α))
-  (Π-hlevel strong-ext 1 (λ m → trunc _ _ _ _))
+  (Π-hlevel (λ m → trunc _ _ _ _))
   where
     open Category D using (trunc)
 
@@ -52,8 +52,8 @@ natural-prop F G α = iso-h (lem (nat-equation F G α))
 
 nat-hset : (F G : Functor C D) → h 2 (Nat F G)
 nat-hset F G = iso-h nat-Σ-iso
-  (Σ-hlevel 2 (trans-hset F G)
-                          (λ α → h↑ (natural-prop F G α)))
+  (Σ-hlevel (trans-hset F G)
+            (λ α → h↑ (natural-prop F G α)))
   where
     open NatΣ F G
 
