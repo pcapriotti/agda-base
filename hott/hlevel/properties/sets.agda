@@ -24,7 +24,7 @@ open import hott.hlevel
 hedberg : ∀ {i} {A : Set i}
         → ((x y : A) → Dec (x ≡ y))
         → h 2 A
-hedberg {A = A} dec x y = isProp⇒h1 (x ≡ y) prop
+hedberg {A = A} dec x y = prop⇒h1 (x ≡ y) ≡-prop
   where
     open ≡-Reasoning
 
@@ -44,8 +44,8 @@ hedberg {A = A} dec x y = isProp⇒h1 (x ≡ y) prop
                   → canonical p ⊚ sym (canonical refl) ≡ p
     canonical-inv refl = left-inverse (canonical refl)
   
-    prop : {x y : A}(p q : x ≡ y) → p ≡ q
-    prop p q = begin
+    ≡-prop : {x y : A}(p q : x ≡ y) → p ≡ q
+    ≡-prop p q = begin
         p
       ≡⟨ sym (canonical-inv p) ⟩
         canonical p ⊚ sym (canonical refl)

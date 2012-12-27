@@ -63,5 +63,5 @@ nat-equality : {F G : Functor C D}
              → n₁ ≡ n₂
 nat-equality {F}{G} (nt α _) (nt β _) p = cong unnat-Σ (uncongΣ (p , p'))
   where
-    p' = h1⇒isProp (natural-prop F G β) _ _
+    p' = h1⇒prop (natural-prop F G β) _ _
     open NatΣ F G

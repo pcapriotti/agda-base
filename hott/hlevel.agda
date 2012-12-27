@@ -19,8 +19,8 @@ contr : ∀ {i} → Set i → Set i
 contr = h 0
 
 -- a set is propositional if all elements are equal
-isProp : ∀ {i} → Set i → Set i
-isProp X = (x x' : X) → x ≡ x'
+prop : ∀ {i} → Set i → Set i
+prop X = (x x' : X) → x ≡ x'
 
 -- propositional and h1 are equivalent
 
@@ -28,11 +28,11 @@ isProp X = (x x' : X) → x ≡ x'
 --             h1 says that all elements are equal and
 --                all equality proofs are equal)
 
-h1⇒isProp : ∀ {i} {X : Set i} → h 1 X → isProp X
-h1⇒isProp h1 x x' = proj₁ $ h1 x x' 
+h1⇒prop : ∀ {i} {X : Set i} → h 1 X → prop X
+h1⇒prop h1 x x' = proj₁ $ h1 x x' 
 
-isProp⇒h1 : ∀ {i} (X : Set i) → isProp X → h 1 X
-isProp⇒h1 X f x y = p₀ x y , lem x y
+prop⇒h1 : ∀ {i} (X : Set i) → prop X → h 1 X
+prop⇒h1 X f x y = p₀ x y , lem x y
   where
     p₀ : (x y : X) → x ≡ y
     p₀ x y = f x y ⊚ (f y y)⁻¹
@@ -41,17 +41,17 @@ isProp⇒h1 X f x y = p₀ x y , lem x y
     lem x .x refl = left-inverse (f x x)
 
 -- a contractible set is propositional
-contr⇒isProp : ∀ {i} {X : Set i} → contr X → isProp X
-contr⇒isProp (x , p) = λ x' x'' → sym (p x') ⊚ p x''
+contr⇒prop : ∀ {i} {X : Set i} → contr X → prop X
+contr⇒prop (x , p) = λ x' x'' → sym (p x') ⊚ p x''
 
 -- h-levels are upwards closed
 h↑ : ∀ {i n}{X : Set i} → h n X → h (suc n) X
-h↑ {n = 0} c = isProp⇒h1 _ (contr⇒isProp c)
+h↑ {n = 0} c = prop⇒h1 _ (contr⇒prop c)
 h↑ {n = suc n} hn = λ x x' → h↑ (hn x x')
 
 -- Prop: the set of propositions
 HProp : ∀ i → Set (lsuc i)
-HProp i = Σ (Set i) isProp
+HProp i = Σ (Set i) prop
 
 -- HSet : sets
 HSet : ∀ i → Set (lsuc i)

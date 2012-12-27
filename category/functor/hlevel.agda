@@ -74,7 +74,7 @@ func-equality F G p = iso⇒inj isom _ _ mappings≡
 
     mappings≡ : to F ≡ to G
     mappings≡ = uncongΣ
-      (p , h1⇒isProp (func-prop (func-to-mapping G)) _ _)
+      (p , h1⇒prop (func-prop (func-to-mapping G)) _ _)
 
 func-coerce : {F G : Functor C D} → F ≡ G → F ⇒ G
 func-coerce {F}{.F} refl = Idn F

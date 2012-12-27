@@ -10,7 +10,7 @@ open import function.extensionality.proof
 open import function using (_∘_; const)
 
 open import hott.hlevel using
-  (contr; singl-contr; contr⇒isProp)
+  (contr; singl-contr; contr⇒prop)
 open import hott.univalence.properties.core
 
 -- assume contractible spaces are closed under Π
@@ -37,7 +37,7 @@ private
           g* x = g x , h x
 
           p : f* ≡ g*
-          p = contr⇒isProp U-contr f* g*
+          p = contr⇒prop U-contr f* g*
 
     abstract
       extensionality' : ∀ {i j} → Extensionality' i j

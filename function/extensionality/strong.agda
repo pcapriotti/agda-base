@@ -50,7 +50,7 @@ private
           (Π-contr (λ x → singl-contr (f x)))
 
         e-contr' : (u : E) → (f , R f) ≡ u
-        e-contr' u = contr⇒isProp e-contr (f , R f) u
+        e-contr' u = contr⇒prop e-contr (f , R f) u
 
         strong-id : happly (ext f f (R f)) ≡ R f
         strong-id = cong happly (ext-id f)
