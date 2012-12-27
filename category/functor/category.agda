@@ -1,8 +1,8 @@
 {-# OPTIONS --without-K #-}
 
 open import category.category
-open import category.functor using (Functor)
-open import category.trans
+open import category.functor.core using (Functor)
+open import category.trans.core
 open import category.trans.hlevel
 open import category.trans.properties
 

@@ -87,24 +87,22 @@ exp-contr {X = X} {Y = Y} ext (y , c) = (const y , c')
   subst (h n) (ext f g) (Π-hlevel ext n (λ x → hn x (f x) (g x)))
 
 -- Σ preserves h-levels
-Σ-hlevel : ∀ {i j} {X : Set i}{Y : X → Set j}
-         → (n : ℕ) → h n X
-         → ((x : X) → h n (Y x))
+Σ-hlevel : ∀ {i j n} {X : Set i}{Y : X → Set j}
+         → h n X → ((x : X) → h n (Y x))
          → h n (Σ X Y)
-Σ-hlevel {X = X}{Y} 0 (x₀ , cx) hy =
+Σ-hlevel {n = 0}{X = X}{Y} (x₀ , cx) hy =
   (x₀ , proj₁ (hy x₀)) , λ { (x , y) → c x y }
   where
     c : (x : X)(y : Y x) → (x₀ , proj₁ (hy x₀)) ≡ (x , y)
     c x y = cong (λ x → (x , proj₁ (hy x))) (cx x)
           ⊚ cong (_,_ x) (proj₂ (hy x) y)
-Σ-hlevel (suc n) hx hy = λ a b → iso-h Σ-split-iso
-  (Σ-hlevel n (hx _ _) (λ p → hy (proj₁ b) _ _))
+Σ-hlevel {n = suc n} hx hy = λ a b → iso-h Σ-split-iso
+  (Σ-hlevel (hx _ _) (λ p → hy (proj₁ b) _ _))
 
 -- × preserves h-levels
-×-hlevel : ∀ {i j}{X : Set i}{Y : Set j}
-         → (n : ℕ) → h n X → h n Y
-         → h n (X × Y)
-×-hlevel n hx hy = Σ-hlevel n hx (λ _ → hy)
+×-hlevel : ∀ {i j n}{X : Set i}{Y : Set j}
+         → h n X → h n Y → h n (X × Y)
+×-hlevel hx hy = Σ-hlevel hx (λ _ → hy)
 
 -- any property is preserved by isomorphism
 iso-subst : ∀ {i j} {X : Set i}{Y : Set i}

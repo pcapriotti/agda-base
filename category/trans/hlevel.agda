@@ -4,7 +4,7 @@ open import sum
 open import equality.core
 open import equality.calculus
 open import category.category
-open import category.functor
+open import category.functor.core
 open import category.trans.core
 open import hott.hlevel
 open import function.extensionality

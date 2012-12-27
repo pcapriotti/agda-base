@@ -3,7 +3,7 @@
 open import level using (_⊔_)
 open import sum
 open import category.category
-open import category.functor using
+open import category.functor.core using
   (Functor; module Functor)
 open import equality.core
 open import equality.calculus using (_⊚_; _⁻¹)

@@ -8,7 +8,7 @@ open import function.isomorphism using (_≅_; module _≅_)
   renaming ( apply to apply≅
            ; invert to invert≅ )
 open import category.category
-open import category.functor
+open import category.functor.core
   using ( Functor; module Functor
         ; Id; _∘_ )
 open import category.trans.core

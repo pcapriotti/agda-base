@@ -3,7 +3,7 @@
 open import sum
 open import equality.core
 open import category.category
-open import category.functor
+open import category.functor.core
   using (Functor; module Functor)
 open import category.trans.core
 open import category.trans.hlevel
