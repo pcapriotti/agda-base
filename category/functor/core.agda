@@ -81,6 +81,7 @@ _∘_ {C = C} {D} {E} F G = record
                ; id to id₃
                ; _∘_ to _∘₃_ )
     open Functor
+infixl 5 _∘_
 
 open Category
 

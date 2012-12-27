@@ -6,4 +6,3 @@ open import category.functor.core public
 open import category.functor.hlevel public
 open import category.functor.category public
 open import category.functor.adjoint public
-
