@@ -24,7 +24,7 @@ open import hott.hlevel
 hedberg : ∀ {i} {A : Set i}
         → ((x y : A) → Dec (x ≡ y))
         → h 2 A
-hedberg {A = A} dec x y = prop⇒h1 (x ≡ y) ≡-prop
+hedberg {A = A} dec x y = prop⇒h1 ≡-prop
   where
     open ≡-Reasoning
 

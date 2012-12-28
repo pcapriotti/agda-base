@@ -31,8 +31,8 @@ prop X = (x x' : X) → x ≡ x'
 h1⇒prop : ∀ {i} {X : Set i} → h 1 X → prop X
 h1⇒prop h1 x x' = proj₁ $ h1 x x' 
 
-prop⇒h1 : ∀ {i} (X : Set i) → prop X → h 1 X
-prop⇒h1 X f x y = p₀ x y , lem x y
+prop⇒h1 : ∀ {i} {X : Set i} → prop X → h 1 X
+prop⇒h1 {X = X} f x y = p₀ x y , lem x y
   where
     p₀ : (x y : X) → x ≡ y
     p₀ x y = f x y ⊚ (f y y)⁻¹
@@ -46,7 +46,7 @@ contr⇒prop (x , p) = λ x' x'' → sym (p x') ⊚ p x''
 
 -- h-levels are upwards closed
 h↑ : ∀ {i n}{X : Set i} → h n X → h (suc n) X
-h↑ {n = 0} c = prop⇒h1 _ (contr⇒prop c)
+h↑ {n = 0} c = prop⇒h1 (contr⇒prop c)
 h↑ {n = suc n} hn = λ x x' → h↑ (hn x x')
 
 -- Prop: the set of propositions
