@@ -4,7 +4,7 @@ module category.limit.properties where
 
 open import category.category
 open import category.functor
-open import category.limit
+open import category.limit.core
 open import category.kan-extension
 open import category.kan-extension.properties
 open import category.instances.unit

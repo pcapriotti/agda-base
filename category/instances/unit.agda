@@ -2,6 +2,7 @@
 module category.instances.unit where
 
 open import level
+open import sum
 open import category.category
 open import category.functor
   using (Functor; Const)
@@ -13,7 +14,7 @@ open import hott.hlevel
 open import hott.hlevel.properties
 
 unit-groupoid : Groupoid _ _
-unit-groupoid = discrete ⊤ (h! ⊤-contr)
+unit-groupoid = discrete (⊤ , h! ⊤-contr)
 
 unit : Category _ _
 unit = Groupoid.cat unit-groupoid

@@ -57,6 +57,10 @@ HProp i = Σ (Set i) prop
 HSet : ∀ i → Set (lsuc i)
 HSet i = Σ (Set i) (h 2)
 
+-- Types by h-level (shifted by 2)
+Type : ∀ i → ℕ → Set (lsuc i)
+Type i n = Σ (Set i) (h (suc (suc n)))
+
 -- the inverse image of a y ∈ Y considering a function f : X → Y
 _⁻¹_ : ∀ {i k} {X : Set i} {Y : Set k} → (X → Y) → Y → Set (i ⊔ k)
 f ⁻¹ y = Σ _ λ x → f x ≡ y
