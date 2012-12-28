@@ -2,11 +2,14 @@
 
 open import sum
 open import equality.core
+open import equality.calculus using (_⊚_)
+open import function.isomorphism
+  using (_≅_; iso)
 open import function.extensionality
 open import category.category
 open import category.functor
 open import category.trans
-  using (_⇒_)
+  using (_⇒_; nt)
 open import category.trans.hlevel
   using (nat-equality)
 open import category.instances.set
@@ -15,6 +18,7 @@ module category.yoneda {i j}(C : Category i j) where
 
 open Category C
   renaming (_∘_ to _⋆_)
+open Functor
 
 hom-func : obj → Functor C (set j)
 hom-func X = record
@@ -41,3 +45,21 @@ y = record
       ( extensionality' _ _ λ _
       → extensionality _ _ λ h
       → sym (associativity f g h) ) }
+
+-- Yoneda lemma
+y-iso : (X : obj)(F : Functor C (set j))
+      → (hom-func X ⇒ F) ≅ proj₁ (apply F X)
+y-iso X F = record
+  { to = λ { (nt α _) → α X (id X) }
+  ; from = λ u → record
+      { α = λ Y f → map F f u
+      ; α-nat = λ f
+              → extensionality' _ _ λ g
+              → ext-apply (map-hom F g f) u }
+  ; iso₁ = λ { (nt α α-nat)
+             → nat-equality _ _
+             ( extensionality' _ _ λ Y
+             → extensionality _ _ λ f
+             → ext-apply (sym (α-nat f)) (id X)
+             ⊚ cong (α Y) (right-unit f)) }
+  ; iso₂ = λ u → ext-apply (map-id F X) u }
