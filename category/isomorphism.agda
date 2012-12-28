@@ -1,7 +1,7 @@
 {-# OPTIONS --without-K #-}
 open import category.category
 
-module category.isomorphism {i j}(C : Category i j) where
+module category.isomorphism where
 
 open import hott.hlevel.properties
 open import hott.univalence.properties
@@ -13,10 +13,11 @@ open import equality.core
 open import equality.calculus using (uncongΣ)
 open import hott.hlevel
 
-open Category C
+open Category using (obj)
 
-record cat-iso (x y : obj) : Set j where
+record cat-iso {i j}(C : Category i j)(x y : obj C) : Set j where
   constructor c-iso
+  open Category C
   field
     to : hom x y
     from : hom y x
@@ -24,15 +25,17 @@ record cat-iso (x y : obj) : Set j where
     iso₁ : from ∘ to ≡ id x
     iso₂ : to ∘ from ≡ id y
 
-≡⇒iso : {x y : obj} → x ≡ y → cat-iso x y
-≡⇒iso {x}{.x} refl = record
+≡⇒iso : ∀ {i j}(C : Category i j){x y : obj C} → x ≡ y → cat-iso C x y
+≡⇒iso C {x}{.x} refl = record
   { to = id x
   ; from = id x
   ; iso₁ = left-unit _
   ; iso₂ = left-unit _ }
+  where open Category C
 
 private
-  module Properties (x y : obj) where
+  module Properties {i j}{C : Category i j}(x y : obj C) where
+    open Category C
     inverses : hom x y × hom y x → Set _
     inverses (t , f) = f ∘ t ≡ id x
                      × t ∘ f ≡ id y
@@ -45,24 +48,27 @@ private
     E : Set _
     E = Σ (hom x y × hom y x) inverses
 
-    e-iso : E ≅ cat-iso x y
+    e-iso : E ≅ cat-iso C x y
     e-iso = record
       { to = λ { ((t , f) , (i₁ , i₂)) → c-iso t f i₁ i₂ }
       ; from = λ { (c-iso t f i₁ i₂) → ((t , f) , (i₁ , i₂)) }
       ; iso₁ = λ _ → refl
       ; iso₂ = λ _ → refl }
 
-cat-iso-hset : ∀ x y → h 2 (cat-iso x y)
-cat-iso-hset x y = iso-h e-iso
+cat-iso-hset : ∀ {i j}{C : Category i j} (x y : obj C) → h 2 (cat-iso C x y)
+cat-iso-hset {C = C} x y = iso-h e-iso
   ( Σ-hlevel (×-hlevel (trunc x y) (trunc y x))
              (λ tf → h↑ (inverses-h1 tf)) )
-  where open Properties x y
+  where
+    open Category C
+    open Properties x y
 
-cat-iso-equality : ∀ {x y} {p q : cat-iso x y}
+cat-iso-equality : ∀ {i j}{C : Category i j}{x y : obj C}
+                   {p q : cat-iso C x y}
                  → (cat-iso.to p ≡ cat-iso.to q)
                  → (cat-iso.from p ≡ cat-iso.from q)
                  → p ≡ q
-cat-iso-equality {x}{y}{p}{q} t f = cong (apply≅ e-iso)
+cat-iso-equality {C = C}{x}{y}{p}{q} t f = cong (apply≅ e-iso)
   (uncongΣ (cong₂ _,_ t f , h1⇒prop (inverses-h1 _) _ _))
   where open Properties x y
 

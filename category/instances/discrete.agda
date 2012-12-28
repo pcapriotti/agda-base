@@ -57,26 +57,26 @@ discrete-univ A x y = proj₂ (≅⇒≈ lem-iso)
     C = discrete-cat A
 
     iso₁ : ∀ {x y} → (p : x ≡ y)
-         → cat-iso.to C (≡⇒iso C p) ≡ p
+         → cat-iso.to (≡⇒iso C p) ≡ p
     iso₁ refl = refl
 
     iso₁' : ∀ {x y} → (p : x ≡ y)
-          → cat-iso.from C (≡⇒iso C p) ≡ sym p
+          → cat-iso.from (≡⇒iso C p) ≡ sym p
     iso₁' refl = refl
 
     iso-inv : ∀ {x y} → (isom : cat-iso C x y)
-            → sym (cat-iso.to C isom) ≡ cat-iso.from C isom
-    iso-inv isom = inverse-unique _ _ (cat-iso.iso₁ C isom)
+            → sym (cat-iso.to isom) ≡ cat-iso.from isom
+    iso-inv isom = inverse-unique _ _ (cat-iso.iso₁ isom)
 
     iso₂ : ∀ {x y} → (isom : cat-iso C x y)
-        → ≡⇒iso C (cat-iso.to C isom) ≡ isom
-    iso₂ isom = cat-iso-equality C
-      (iso₁ (cat-iso.to C isom))
-      (iso₁' (cat-iso.to C isom) ⊚ iso-inv isom)
+        → ≡⇒iso C (cat-iso.to isom) ≡ isom
+    iso₂ isom = cat-iso-equality
+      (iso₁ (cat-iso.to isom))
+      (iso₁' (cat-iso.to isom) ⊚ iso-inv isom)
 
     lem-iso : (x ≡ y) ≅ cat-iso C x y
     lem-iso = record
-      { to = ≡⇒iso C {x} {y}
-      ; from = cat-iso.to C
+      { to = ≡⇒iso C
+      ; from = cat-iso.to
       ; iso₁ = iso₁
       ; iso₂ = iso₂ }
