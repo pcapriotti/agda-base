@@ -115,3 +115,9 @@ inverse-comp : ∀ {i} {X : Set i} {x y z : X}
                (p : x ≡ y)(q : y ≡ z)
              → sym (p ⊚ q) ≡ sym q ⊚ sym p
 inverse-comp refl q = sym (left-unit (sym q))
+
+inverse-unique : ∀ {i} {X : Set i} {x y : X}
+                 (p : x ≡ y)(q : y ≡ x)
+               → p ⊚ q ≡ refl
+               → sym p ≡ q
+inverse-unique refl q t = sym t

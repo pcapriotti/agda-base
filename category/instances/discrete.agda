@@ -3,12 +3,16 @@ module category.instances.discrete where
 
 open import sum
 open import category.category
+open import category.univalence
 open import category.groupoid
 open import category.functor using (Functor)
+open import category.isomorphism
 open import equality.core
 import equality.properties as E
 open import equality.calculus
+open import function.isomorphism
 open import hott.hlevel
+open import hott.coherence
 
 open Groupoid using (cat)
 open Category using (obj; id)
@@ -46,3 +50,33 @@ discrete-func : ∀ {i j}{A : Type i 1}{B : Type j 1}
               → (proj₁ A → proj₁ B)
               → Functor (discrete-cat A) (discrete-cat B)
 discrete-func f = discrete-lift f
+
+discrete-univ : ∀ {i} (A : Type i 1) → univalent (discrete-cat A)
+discrete-univ A x y = proj₂ (≅⇒≈ lem-iso)
+  where
+    C = discrete-cat A
+
+    iso₁ : ∀ {x y} → (p : x ≡ y)
+         → cat-iso.to C (≡⇒iso C p) ≡ p
+    iso₁ refl = refl
+
+    iso₁' : ∀ {x y} → (p : x ≡ y)
+          → cat-iso.from C (≡⇒iso C p) ≡ sym p
+    iso₁' refl = refl
+
+    iso-inv : ∀ {x y} → (isom : cat-iso C x y)
+            → sym (cat-iso.to C isom) ≡ cat-iso.from C isom
+    iso-inv isom = inverse-unique _ _ (cat-iso.iso₁ C isom)
+
+    iso₂ : ∀ {x y} → (isom : cat-iso C x y)
+        → ≡⇒iso C (cat-iso.to C isom) ≡ isom
+    iso₂ isom = cat-iso-equality C
+      (iso₁ (cat-iso.to C isom))
+      (iso₁' (cat-iso.to C isom) ⊚ iso-inv isom)
+
+    lem-iso : (x ≡ y) ≅ cat-iso C x y
+    lem-iso = record
+      { to = ≡⇒iso C {x} {y}
+      ; from = cat-iso.to C
+      ; iso₁ = iso₁
+      ; iso₂ = iso₂ }

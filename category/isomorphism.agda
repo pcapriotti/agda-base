@@ -52,16 +52,18 @@ private
       ; iso₁ = λ _ → refl
       ; iso₂ = λ _ → refl }
 
-    cat-iso-hset : h 2 (cat-iso x y)
-    cat-iso-hset = iso-h e-iso
-      ( Σ-hlevel (×-hlevel (trunc x y) (trunc y x))
-                 (λ tf → h↑ (inverses-h1 tf)) )
+cat-iso-hset : ∀ x y → h 2 (cat-iso x y)
+cat-iso-hset x y = iso-h e-iso
+  ( Σ-hlevel (×-hlevel (trunc x y) (trunc y x))
+             (λ tf → h↑ (inverses-h1 tf)) )
+  where open Properties x y
 
-    cat-iso-equality : {p q : cat-iso x y}
-                     → (cat-iso.to p ≡ cat-iso.to q)
-                     → (cat-iso.from p ≡ cat-iso.from q)
-                     → p ≡ q
-    cat-iso-equality {p}{q} t f = cong (apply≅ e-iso)
-      (uncongΣ (cong₂ _,_ t f , h1⇒prop (inverses-h1 _) _ _))
+cat-iso-equality : ∀ {x y} {p q : cat-iso x y}
+                 → (cat-iso.to p ≡ cat-iso.to q)
+                 → (cat-iso.from p ≡ cat-iso.from q)
+                 → p ≡ q
+cat-iso-equality {x}{y}{p}{q} t f = cong (apply≅ e-iso)
+  (uncongΣ (cong₂ _,_ t f , h1⇒prop (inverses-h1 _) _ _))
+  where open Properties x y
 
 open Properties public
