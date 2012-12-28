@@ -9,12 +9,12 @@ open import function using (_$_)
 open import function.isomorphism using (_≅_ ; iso)
 
 -- a function is a weak equivalence, if the inverse images of all points are contractible
-isWeakEquiv : ∀ {i k} {X : Set i} {Y : Set k} (f : X → Y) → Set (i ⊔ k)
-isWeakEquiv {_} {_} {X} {Y} f = (y : Y) → contr $ f ⁻¹ y
+weak-equiv : ∀ {i k} {X : Set i} {Y : Set k} (f : X → Y) → Set (i ⊔ k)
+weak-equiv {_} {_} {X} {Y} f = (y : Y) → contr $ f ⁻¹ y
 
 -- weak equivalences
 _≈_ : ∀ {i j} (X : Set i) (Y : Set j) → Set _
-X ≈ Y = Σ (X → Y) λ f → isWeakEquiv f
+X ≈ Y = Σ (X → Y) λ f → weak-equiv f
 
 apply≈ : ∀ {i} {X Y : Set i} → X ≈ Y → X → Y
 apply≈ = proj₁
@@ -36,5 +36,5 @@ invert≈ (_ , we) y = proj₁ (proj₁ (we y))
 
 -- being a weak equivalence is propositional
 -- we-prop : ∀ {i j}{X : Set i}{Y : Set j}{f : X → Y}
---         → prop (isWeakEquiv f)
+--         → prop (weak-equiv f)
 -- we-prop = {!!}

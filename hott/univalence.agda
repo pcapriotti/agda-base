@@ -13,7 +13,7 @@ open import hott.weak-equivalence
 coerce : ∀ {i} {X Y : Set i} → X ≡ Y → X → Y
 coerce refl = id
 
-coerce-equiv : ∀ {i} {X Y : Set i} → (p : X ≡ Y) → isWeakEquiv (coerce p)
+coerce-equiv : ∀ {i} {X Y : Set i} → (p : X ≡ Y) → weak-equiv (coerce p)
 coerce-equiv refl x = (x , refl) , λ { (.x , refl) → refl }
 
 -- mapping from propositional equality to weak equivalence
@@ -21,7 +21,7 @@ coerce-equiv refl x = (x , refl) , λ { (.x , refl) → refl }
 ≡⇒≈ p = coerce p , coerce-equiv p
 
 Univalence : ∀ i → Set (lsuc i)
-Univalence i = {X Y : Set i} → isWeakEquiv $ ≡⇒≈ {X = X} {Y = Y}
+Univalence i = {X Y : Set i} → weak-equiv $ ≡⇒≈ {X = X} {Y = Y}
 
 postulate univalence : ∀ {i} → Univalence i
 

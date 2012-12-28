@@ -91,7 +91,7 @@ lem-homotopy-nat H refl = left-unit _
             K y
           ∎
 
-    we : isWeakEquiv f
+    we : weak-equiv f
     we y = (g y , K y) ,
            λ { (x , p) → sym (uncongΣ (contr-fiber y x p)) }
 
@@ -332,6 +332,6 @@ vogt-lemma {X = X}{Y = Y} isom = K' , coherent
 -- 3) coherent isomorphisms are the same as weak equivalences
 -- 4) higher dimensional coherence follows from isCoherent
 
-inj+surj⇒weakEquiv : ∀ {i} {X Y : Set i} (f : X → Y) → isInjective f → isSurjective f → isWeakEquiv f
+inj+surj⇒weakEquiv : ∀ {i} {X Y : Set i} (f : X → Y) → isInjective f → isSurjective f → weak-equiv f
 inj+surj⇒weakEquiv f inj surj =
    proj₂ (≅⇒≈ (inj+surj⇒iso f inj surj))

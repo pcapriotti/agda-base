@@ -103,13 +103,13 @@ non-simply-connected = go not-is-equiv
         γ true = refl
         γ false = refl
 
-    not-is-equiv : isWeakEquiv not
+    not-is-equiv : weak-equiv not
     not-is-equiv = proj₂ (≅'⇒≈ not-iso)
 
     -- this extra step ensures that not-is-equiv is not 
     -- normalized, as that makes type checking extremely
     -- slow
-    go : isWeakEquiv not → ¬ (loop ≡ refl)
+    go : weak-equiv not → ¬ (loop ≡ refl)
     go not-is-equiv loop-trivial = inv-non-trivial inv-trivial
       where
         not-equiv : Bool ≈ Bool
