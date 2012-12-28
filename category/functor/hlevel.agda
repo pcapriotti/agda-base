@@ -65,10 +65,10 @@ private
     ; iso₂ = λ _ → refl
     }
 
-func-equality : (F G : Functor C D)
+func-equality : {F G : Functor C D}
               → func-to-mapping F ≡ func-to-mapping G
               → F ≡ G
-func-equality F G p = iso⇒inj isom _ _ mappings≡
+func-equality {F}{G} p = iso⇒inj isom _ _ mappings≡
   where
     open _≅_ isom
 

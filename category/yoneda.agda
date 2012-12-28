@@ -37,13 +37,10 @@ y : Functor (op C) (Func C (set j))
 y = record
   { apply = hom-func
   ; map = hom-map
-  ; map-id = λ X → nat-equality _ _
-      ( ext' λ _
-      → ext
-        right-unit)
-  ; map-hom = λ g f → nat-equality _ _
-      ( ext' λ _
-      → ext λ h
+  ; map-id = λ X → nat-equality
+      ( ext' λ _ → ext right-unit)
+  ; map-hom = λ g f → nat-equality
+      ( ext' λ _ → ext λ h
       → sym (associativity f g h) ) }
 
 -- Yoneda lemma
@@ -57,7 +54,7 @@ y-iso X F = record
               → ext' λ g
               → ext-apply (map-hom F g f) u }
   ; iso₁ = λ { (nt α α-nat)
-             → nat-equality _ _
+             → nat-equality
              ( ext' λ Y
              → ext λ f
              → ext-apply (sym (α-nat f)) (id X)

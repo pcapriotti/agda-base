@@ -58,10 +58,10 @@ nat-hset F G = iso-h nat-Σ-iso
     open NatΣ F G
 
 nat-equality : {F G : Functor C D}
-             → (n₁ n₂ : Nat F G)
+             → {n₁ n₂ : Nat F G}
              → (Nat.α n₁ ≡ Nat.α n₂)
              → n₁ ≡ n₂
-nat-equality {F}{G} (nt α _) (nt β _) p = cong unnat-Σ (uncongΣ (p , p'))
+nat-equality {F}{G} {nt α _} {nt β _} p = cong unnat-Σ (uncongΣ (p , p'))
   where
     p' = h1⇒prop (natural-prop F G β) _ _
     open NatΣ F G
