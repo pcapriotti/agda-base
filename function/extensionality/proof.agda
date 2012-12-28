@@ -122,8 +122,8 @@ private
 -- Now, to prove extensionality, we take a pair of extensionally equal
 -- functions, and we want to prove that they are propositionally equal
 abstract
-  extensionality₀ : ∀ {i j} → Extensionality i j
-  extensionality₀ {i}{j} {X} {Y} f g h = main
+  ext₀ : ∀ {i j} → Extensionality i j
+  ext₀ {i}{j} {X} {Y} {f} {g} h = main
     where
       -- Let Y' be the path space of Y
       open Paths Y renaming (Δ to Y')
@@ -179,12 +179,12 @@ abstract
           k x = (f x , (g x , h x))
 
 abstract
-  extensionality : ∀ {i j} → Extensionality i j
-  extensionality f g h = extensionality₀ f g h
-                       ⊚ extensionality₀ g g (λ _ → refl) ⁻¹
+  ext : ∀ {i j} → Extensionality i j
+  ext h = ext₀ h
+        ⊚ ext₀ (λ _ → refl) ⁻¹
 
   -- computation rule for extensionality
   ext-id : ∀ {i j}{X : Set i}{Y : Set j}
          → (f : X → Y)
-         → extensionality f f (λ _ → refl) ≡ refl
-  ext-id f = left-inverse (extensionality₀ f f (λ x → refl))
+         → ext {f = f} {f} (λ _ → refl) ≡ refl
+  ext-id f = left-inverse (ext₀ (λ x → refl))

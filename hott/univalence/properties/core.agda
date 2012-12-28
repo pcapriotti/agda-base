@@ -53,7 +53,7 @@ abstract
   exp-contr {X = X} {Y = Y} ext (y , c) = (const y , c')
     where
       c' : (u : X → Y) → const y ≡ u
-      c' u = ext _ _ (c ∘ u)
+      c' u = ext (c ∘ u)
 
   -- Π preserves contractibility (given extensionality)
   Π-contr : ∀ {i j}{X : Set i}{Y : X → Set j}
@@ -73,7 +73,7 @@ abstract
       trivial _ = Z
 
       trivial≡Y : trivial ≡ Y
-      trivial≡Y = ext _ _ (λ x → contr-contr Z-contr (f x))
+      trivial≡Y = ext (λ x → contr-contr Z-contr (f x))
 
       trivial-contr : contr ((x : X) → trivial x)
       trivial-contr = exp-contr ext Z-contr
@@ -83,9 +83,9 @@ abstract
            → (∀ {i j} → StrongExt i j)
            → ((x : X) → h n (Y x))
            → h n ((x : X) → Y x)
-  Π-hlevel {n = 0} ext c = Π-contr (λ f g → coerce (ext f g)) c
+  Π-hlevel {n = 0} ext c = Π-contr (coerce ext) c
   Π-hlevel {n = suc n} {X = X}{Y} ext hn = λ f g →
-    subst (h n) (ext f g) (Π-hlevel ext (λ x → hn x (f x) (g x)))
+    subst (h n) ext (Π-hlevel ext (λ x → hn x (f x) (g x)))
 
   -- Σ preserves h-levels
   Σ-hlevel : ∀ {i j n} {X : Set i}{Y : X → Set j}

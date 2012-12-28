@@ -26,7 +26,7 @@ lookup-tabulate-ext {n = suc m} f (suc i) =
 lookup-tabulate : ∀ {i}{A : Set i}{n : ℕ}
                 → (f : Fin n → A)
                 → lookup (tabulate f) ≡ f
-lookup-tabulate f = extensionality _ _ (lookup-tabulate-ext f)
+lookup-tabulate f = ext (lookup-tabulate-ext f)
 
 lookup-iso : ∀ {i}{A : Set i}{n : ℕ}
            → Vec A n ≅ (Fin n → A)

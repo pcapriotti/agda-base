@@ -21,8 +21,8 @@ private
              → contr ((x : X) → Y x)) where
 
     abstract
-      ext' : ∀ {i j} → Extensionality' i j
-      ext' {i} {j} {X = X} {Y = Y} f g h = cong (λ u → proj₁ ∘ u) p
+      ext₀' : ∀ {i j} → Extensionality' i j
+      ext₀' {i} {j} {X = X} {Y = Y} {f}{g} h = cong (λ u → proj₁ ∘ u) p
         where
           U : (x : X) → Set j
           U x = singleton (f x)
@@ -40,12 +40,12 @@ private
           p = contr⇒prop U-contr f* g*
 
     abstract
-      extensionality' : ∀ {i j} → Extensionality' i j
-      extensionality' f g h = ext' f g h ⊚ ext' g g (λ _ → refl) ⁻¹
+      ext' : ∀ {i j} → Extensionality' i j
+      ext' h = ext₀' h ⊚ ext₀' (λ _ → refl) ⁻¹
 
       ext-id' : ∀ {i j}{X : Set i}{Y : X → Set j}
               → (f : (x : X) → Y x)
-              → extensionality' f f (λ _ → refl) ≡ refl
-      ext-id' f = left-inverse (ext' f f (λ _ → refl))
+              → ext' {f = f} {f} (λ _ → refl) ≡ refl
+      ext-id' f = left-inverse (ext₀' (λ _ → refl))
 
-open Π-Contractible (Π-contr extensionality) public
+open Π-Contractible (Π-contr ext) public

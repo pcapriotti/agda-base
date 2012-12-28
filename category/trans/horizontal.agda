@@ -40,7 +40,7 @@ infix 5 _▸_
 interchange : {F G : Functor D E}(n : F ⇒ G){H K : Functor C D}(m : H ⇒ K)
             → (G ◂ m) ∘n (n ▸ H) ≡ (n ▸ K) ∘n (F ◂ m)
 interchange (nt _ α-nat) (nt β _) =
-  sym (nat-equality _ _ (extensionality' _ _ (λ X → α-nat (β X))))
+  sym (nat-equality _ _ (ext' λ X → α-nat (β X)))
 
 _◾_ : {F G : Functor D E}(n : F ⇒ G){H K : Functor C D}(m : H ⇒ K)
     → F ∘ H ⇒ G ∘ K

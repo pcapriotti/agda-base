@@ -24,13 +24,13 @@ hom-func : obj → Functor C (set j)
 hom-func X = record
   { apply = λ Y → (hom X Y , trunc X Y)
   ; map = _⋆_
-  ; map-id = λ _ → extensionality _ _ λ x → left-unit x
-  ; map-hom = λ f g → extensionality _ _ λ x → associativity x f g }
+  ; map-id = λ _ → ext λ x → left-unit x
+  ; map-hom = λ f g → ext λ x → associativity x f g }
 
 hom-map : {X X' : obj}(f : hom X X') → hom-func X' ⇒ hom-func X
 hom-map f = record
   { α = λ Y g → g ⋆ f
-  ; α-nat = λ h → extensionality _ _ λ g → associativity f g h }
+  ; α-nat = λ h → ext λ g → associativity f g h }
 
 -- Yoneda embedding
 y : Functor (op C) (Func C (set j))
@@ -38,12 +38,12 @@ y = record
   { apply = hom-func
   ; map = hom-map
   ; map-id = λ X → nat-equality _ _
-      ( extensionality' _ _ λ _
-      → extensionality _ _
+      ( ext' λ _
+      → ext
         right-unit)
   ; map-hom = λ g f → nat-equality _ _
-      ( extensionality' _ _ λ _
-      → extensionality _ _ λ h
+      ( ext' λ _
+      → ext λ h
       → sym (associativity f g h) ) }
 
 -- Yoneda lemma
@@ -54,12 +54,12 @@ y-iso X F = record
   ; from = λ u → record
       { α = λ Y f → map F f u
       ; α-nat = λ f
-              → extensionality' _ _ λ g
+              → ext' λ g
               → ext-apply (map-hom F g f) u }
   ; iso₁ = λ { (nt α α-nat)
              → nat-equality _ _
-             ( extensionality' _ _ λ Y
-             → extensionality _ _ λ f
+             ( ext' λ Y
+             → ext λ f
              → ext-apply (sym (α-nat f)) (id X)
              ⊚ cong (α Y) (right-unit f)) }
   ; iso₂ = λ u → ext-apply (map-id F X) u }
