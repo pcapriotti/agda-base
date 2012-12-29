@@ -4,3 +4,4 @@ module equality where
 open import equality.core public
 open import equality.reasoning public
 open import equality.calculus public
+open import equality.isomorphisms public

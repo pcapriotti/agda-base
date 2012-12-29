@@ -4,7 +4,6 @@ module README where
 -- Preliminaries
 
 import sum
-import sum.properties
 
 import equality
 import sets

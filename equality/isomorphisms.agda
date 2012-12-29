@@ -1,5 +1,5 @@
 {-# OPTIONS --without-K #-}
-module sum.properties where
+module equality.isomorphisms where
 
 open import sum
 open import equality.core
