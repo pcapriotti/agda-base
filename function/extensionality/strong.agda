@@ -10,6 +10,7 @@ open import function.extensionality.core
 open import function.extensionality.proof
 open import function.extensionality.proof-dep
 open import hott.hlevel
+open import hott.coherence
 open import hott.univalence.properties.core
 
 private

@@ -3,10 +3,14 @@
 
 module sets.nat where
 
-open import level     using (lzero)
-open import equality  using (_≡_; refl; cong)
-open import function  using (_$_; _∘_)
-open import decidable using (Dec; yes; no)
+open import level
+  using (lzero)
+open import equality.core
+  using (_≡_; refl; cong)
+open import function
+  using (_$_; _∘_)
+open import decidable
+  using (Dec; yes; no)
 
 infixl 7 _*_
 infixl 6 _+_

@@ -4,7 +4,6 @@ module README where
 -- Preliminaries
 
 import sum
-
 import equality
 import sets
 import decidable

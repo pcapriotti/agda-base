@@ -10,6 +10,7 @@ open import sum using
   (Σ ; _,_ ; proj₁ ; proj₂)
 open import hott.hlevel
 open import hott.weak-equivalence
+open import hott.univalence
 
 -- a coherent isomophism is one determined by a weak equivalence
 isCoherent : ∀ {i j} {X : Set i}{Y : Set j} → X ≅ Y → Set _
@@ -335,3 +336,7 @@ vogt-lemma {X = X}{Y = Y} isom = K' , coherent
 inj+surj⇒weakEquiv : ∀ {i} {X Y : Set i} (f : X → Y) → isInjective f → isSurjective f → weak-equiv f
 inj+surj⇒weakEquiv f inj surj =
    proj₂ (≅⇒≈ (inj+surj⇒iso f inj surj))
+
+-- isomorphism implies equality
+≅⇒≡ : ∀ {i}{X Y : Set i} → X ≅ Y → X ≡ Y
+≅⇒≡ isom = ≈⇒≡ (≅⇒≈ isom)

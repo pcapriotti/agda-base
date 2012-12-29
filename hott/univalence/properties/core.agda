@@ -19,10 +19,6 @@ open import hott.coherence
 open import hott.univalence
 
 abstract
-  -- isomorphism implies equality
-  ≅⇒≡ : ∀ {i}{X Y : Set i} → X ≅ Y → X ≡ Y
-  ≅⇒≡ isom = ≈⇒≡ (≅⇒≈ isom)
-
   -- any two contractible types are equal
   contr-contr : ∀ {i} {X Y : Set i}
               → contr X → contr Y
