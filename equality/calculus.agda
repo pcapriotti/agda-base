@@ -11,11 +11,16 @@ cong' : ∀ {i j} {X : Set i}{Y : X → Set j}
       → subst Y p (f x) ≡ f x'
 cong' _ refl = refl
 
-subst-naturality : ∀ {i j} {X : Set i} {Y : Set j}
+subst-naturality : ∀ {i i' j} {X : Set i} {Y : Set i'}
                    {x x' : X} (P : Y → Set j)
                    (f : X → Y)(p : x ≡ x')(u : P (f x))
                  → subst (P ∘ f) p u ≡ subst P (cong f p) u
 subst-naturality _ _ refl _ = refl
+
+subst-hom : ∀ {i j}{X : Set i}(P : X → Set j){x y z : X}
+          → (p : x ≡ y)(q : y ≡ z)(u : P x)
+          → subst P q (subst P p u) ≡ subst P (p ⊚ q) u
+subst-hom _ refl q u = refl
 
 subst-eq : ∀ {i} {X : Set i}{x y z : X}
          → (p : y ≡ x)(q : y ≡ z)

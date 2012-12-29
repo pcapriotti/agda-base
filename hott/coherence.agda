@@ -21,7 +21,7 @@ isCoherent f = ∀ x → cong to (iso₁ x) ≡ iso₂ (to x)
   where
     open _≅_ f
 
-isCoherent₂ : ∀ {i} {X Y : Set i} → X ≅ Y → Set i
+isCoherent₂ : ∀ {i j} {X : Set i}{Y : Set j} → X ≅ Y → Set _
 isCoherent₂ f = ∀ y → cong from (iso₂ y) ≡ iso₁ (from y)
   where
     open _≅_ f
@@ -193,7 +193,7 @@ lem-whiskering f H x = begin
   where
     open ≡-Reasoning
 
-coCoherence : ∀ {i}{X Y : Set i}
+coCoherence : ∀ {i j}{X : Set i}{Y : Set j}
               (iso : X ≅ Y)
             → isCoherent iso
             → isCoherent₂ iso
@@ -341,9 +341,9 @@ abstract
   -- isomorphism implies equality
   ≅⇒≡ : ∀ {i}{X Y : Set i} → X ≅ Y → X ≡ Y
   ≅⇒≡ isom = ≈⇒≡ (≅⇒≈ isom)
-
+  
   ≅⇒≡-coherence : ∀ {i}{X Y : Set i}
                 → (isom : X ≅ Y)
                 → coerce (≅⇒≡ isom)
                 ≡ _≅_.to isom
-  ≅⇒≡-coherence isom = uni-coherence (≅⇒≈ isom)
+  ≅⇒≡-coherence _ = uni-coherence _

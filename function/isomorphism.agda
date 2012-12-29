@@ -5,6 +5,7 @@ open import level using (_⊔_)
 open import equality.core
 open import equality.groupoid
 open import equality.reasoning
+open import function
 open import sum
 open import function.extensionality.core
 
@@ -16,6 +17,12 @@ record _≅_ {i j}(X : Set i)(Y : Set j) : Set (i ⊔ j) where
     from : Y → X
     iso₁ : (x : X) → from (to x) ≡ x
     iso₂ : (y : Y) → to (from y) ≡ y
+
+refl≅ : ∀ {i}{X Y : Set i} → X ≡ Y → X ≅ Y
+refl≅ refl = iso id id (λ _ → refl) (λ _ → refl)
+
+sym≅ : ∀ {i}{X Y : Set i} → X ≅ Y → Y ≅ X
+sym≅ (iso f g H K) = iso g f K H
 
 private
   module Dummy {i j}{X : Set i}{Y : Set j} where
@@ -49,7 +56,4 @@ private
 
           K : (y : Y) → f (g y) ≡ y
           K y = proj₂ (surj-f y)
-
-      sym≅ : X ≅ Y → Y ≅ X
-      sym≅ (iso f g H K) = iso g f K H
 open Dummy public
