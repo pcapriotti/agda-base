@@ -337,6 +337,13 @@ inj+surj⇒weakEquiv : ∀ {i} {X Y : Set i} (f : X → Y) → isInjective f →
 inj+surj⇒weakEquiv f inj surj =
    proj₂ (≅⇒≈ (inj+surj⇒iso f inj surj))
 
--- isomorphism implies equality
-≅⇒≡ : ∀ {i}{X Y : Set i} → X ≅ Y → X ≡ Y
-≅⇒≡ isom = ≈⇒≡ (≅⇒≈ isom)
+abstract
+  -- isomorphism implies equality
+  ≅⇒≡ : ∀ {i}{X Y : Set i} → X ≅ Y → X ≡ Y
+  ≅⇒≡ isom = ≈⇒≡ (≅⇒≈ isom)
+
+  ≅⇒≡-coherence : ∀ {i}{X Y : Set i}
+                → (isom : X ≅ Y)
+                → coerce (≅⇒≡ isom)
+                ≡ _≅_.to isom
+  ≅⇒≡-coherence isom = uni-coherence (≅⇒≈ isom)
