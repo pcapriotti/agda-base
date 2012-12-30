@@ -21,7 +21,7 @@ record _≅_ {i j}(X : Set i)(Y : Set j) : Set (i ⊔ j) where
 refl≅ : ∀ {i}{X Y : Set i} → X ≡ Y → X ≅ Y
 refl≅ refl = iso id id (λ _ → refl) (λ _ → refl)
 
-sym≅ : ∀ {i}{X Y : Set i} → X ≅ Y → Y ≅ X
+sym≅ : ∀ {i j}{X : Set i}{Y : Set j} → X ≅ Y → Y ≅ X
 sym≅ (iso f g H K) = iso g f K H
 
 trans≅ : ∀ {i}{X Y Z : Set i}
