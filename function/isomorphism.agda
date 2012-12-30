@@ -24,7 +24,7 @@ refl≅ refl = iso id id (λ _ → refl) (λ _ → refl)
 sym≅ : ∀ {i j}{X : Set i}{Y : Set j} → X ≅ Y → Y ≅ X
 sym≅ (iso f g H K) = iso g f K H
 
-trans≅ : ∀ {i}{X Y Z : Set i}
+trans≅ : ∀ {i j k}{X : Set i}{Y : Set j}{Z : Set k}
        → X ≅ Y → Y ≅ Z → X ≅ Z
 trans≅ (iso f g H K) (iso f' g' H' K') = record
   { to = f' ∘ f

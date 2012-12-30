@@ -46,7 +46,7 @@ alt-weak-equiv-Σ {X = X}{Y = Y} =
     ≡⟨ ΠΣ-swap ⟩
       Σ ((y : Y) → f ⁻¹ y) (λ { gβ
       → (y : Y)(x : f ⁻¹ y) → gβ y ≡ x })
-    ≡⟨ ≅⇒≡ (Σ-cong-iso ΠΣ-swap-iso) ⟩
+    ≡⟨ ≅⇒≡ (Σ-cong-iso ΠΣ-swap-iso (λ _ → refl≅ refl)) ⟩
       ( Σ (Σ (Y → X) λ g → (y : Y) → f (g y) ≡ y) λ { (g , β)
       → (y : Y)(x : f ⁻¹ y) → (g y , β y) ≡ x } )
     ≡⟨ cong (Σ _) ( ext λ { (g , β)

@@ -24,29 +24,43 @@ open import hott.coherence
           (λ {(a , b) → refl })
           (a , b) (a' , b')
 
-Σ-cong-iso : ∀ {i i' j}{X : Set i}{X' : Set i'}{Y : X → Set j}
+Σ-cong-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
+             {Y : X → Set j}{Y' : X' → Set j'}
            → (isom : X ≅ X')
-           → Σ X Y ≅ Σ X' (Y ∘ _≅_.from isom)
-Σ-cong-iso {X = X}{X'}{Y} isom = record
-  { to = λ { (x , y) → (f x , subst Y (sym (H x)) y) }
-  ; from = λ { (x , y) → (g x , y) }
-  ; iso₁ = λ { (x , y) → uncongΣ (H x ,
-        subst-hom Y (sym (H x)) (H x) y
-      ⊚ cong (λ p → subst Y p y) (right-inverse (H x)) ) }
-  ; iso₂ = λ { (x , y) → uncongΣ (K x ,
-        subst-naturality Y g (K x) _
-      ⊚ (subst-hom Y (sym (H (g x))) (cong g (K x)) y
-      ⊚ cong (λ p → subst Y p y) (lem x) ) ) } }
+           → ((x' : X') → Y (invert isom x') ≅ Y' x')
+           → Σ X Y ≅ Σ X' Y'
+Σ-cong-iso {X = X}{X'}{Y}{Y'} isom isom' = trans≅ Σ-iso (Σ-iso' isom')
   where
-    isom' = ≅⇒≅' isom
-    γ = proj₂ isom'
-    open _≅_ (proj₁ isom')
+    isom-c = ≅⇒≅' isom
+    γ = proj₂ isom-c
+    open _≅_ (proj₁ isom-c)
       renaming ( to to f ; from to g
                ; iso₁ to H; iso₂ to K )
 
     lem : (x : X') → sym (H (g x)) ⊚ cong g (K x) ≡ refl
     lem x = cong (λ z → sym (H (g x)) ⊚ z) (coCoherence _ γ x)
           ⊚ right-inverse (H (g x))
+
+    Σ-iso : Σ X Y ≅ Σ X' (Y ∘ invert isom)
+    Σ-iso = record
+      { to = λ { (x , y) → (f x , subst Y (sym (H x)) y) }
+      ; from = λ { (x , y) → (g x , y) }
+      ; iso₁ = λ { (x , y) → uncongΣ (H x ,
+            subst-hom Y (sym (H x)) (H x) y
+          ⊚ cong (λ p → subst Y p y) (right-inverse (H x)) ) }
+      ; iso₂ = λ { (x , y) → uncongΣ (K x ,
+            subst-naturality Y g (K x) _
+          ⊚ (subst-hom Y (sym (H (g x))) (cong g (K x)) y
+          ⊚ cong (λ p → subst Y p y) (lem x) ) ) } }
+
+    Σ-iso' : ∀ {i j j'}{X : Set i}{Y : X → Set j}{Y' : X → Set j'}
+           → ((x : X) → Y x ≅ Y' x)
+           → Σ X Y ≅ Σ X Y'
+    Σ-iso' isom = record
+      { to = λ { (x , y) → (x , apply (isom x) y) }
+      ; from = λ { (x , y') → (x , invert (isom x) y') }
+      ; iso₁ = λ { (x , y) → uncongΣ (refl , _≅_.iso₁ (isom x) y) }
+      ; iso₂ = λ { (x , y') → uncongΣ (refl , _≅_.iso₂ (isom x) y') } }
 
 ΠΣ-swap-iso : ∀ {i j k}{X : Set i}{Y : X → Set j}
             → {Z : (x : X) → Y x → Set k}
