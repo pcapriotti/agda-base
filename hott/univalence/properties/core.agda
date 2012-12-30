@@ -5,17 +5,16 @@ open import sum
 open import level using (lsuc; ↑; lift)
 open import equality.core
 open import equality.calculus
-open import equality.isomorphisms.core
+open import equality.isomorphisms
 open import function using (_∘_; const)
 open import function.extensionality.core
 open import function.isomorphism
 open import function.isomorphism.properties
 open import sets.unit
 open import sets.nat using (ℕ; suc)
-open import hott.hlevel using (h; contr)
+open import hott.hlevel
 open import hott.hlevel.properties.sets using (⊤-contr)
-open import hott.weak-equivalence using (_≈_)
-open import hott.coherence
+open import hott.weak-equivalence.core using (_≈_)
 open import hott.univalence
 
 abstract
@@ -23,8 +22,24 @@ abstract
   contr-contr : ∀ {i} {X Y : Set i}
               → contr X → contr Y
               → X ≡ Y
-  contr-contr {X = X}{Y = Y} (x , cx) (y , cy) =
-    ≅⇒≡ (iso (const y) (const x) cx cy)
+  contr-contr {X = X}{Y = Y} (x , cx) (y , cy) = ≈⇒≡ (f , we)
+    where
+      f : X → Y
+      f _ = y
+
+      K : (y' : Y) → f x ≡ y'
+      K = cy
+
+      cy-y : cy y ≡ refl
+      cy-y = proj₁ (h↑ (h↑ (y , cy)) y y (cy y) refl)
+
+      lem : (y' : Y)(x' : f ⁻¹ y')
+          → (x , K y') ≡ x'
+      lem .(f x') (x' , refl) =
+        uncongΣ (cx x' , subst-const (cx x') (cy y) ⊚ cy-y)
+
+      we : (y' : Y) → contr (f ⁻¹ y')
+      we y' = (x , K y') , lem y'
 
   -- a retract of a contractible type is contractible
   retract-contr : ∀ {i j} {X : Set i}{Y : Set j}
@@ -100,9 +115,3 @@ abstract
   ×-hlevel : ∀ {i j n}{X : Set i}{Y : Set j}
            → h n X → h n Y → h n (X × Y)
   ×-hlevel hx hy = Σ-hlevel hx (λ _ → hy)
-
-  -- any property is preserved by isomorphism
-  iso-subst : ∀ {i j} {X : Set i}{Y : Set i}
-             → (P : Set i → Set j)
-             → X ≅ Y → P X → P Y
-  iso-subst P isom = subst P (≅⇒≡ isom)

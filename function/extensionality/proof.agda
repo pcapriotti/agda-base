@@ -8,8 +8,9 @@ open import equality.calculus
 open import equality.reasoning
 open import function using (id; _∘_)
 open import function.isomorphism
-open import hott.weak-equivalence
-open import hott.coherence
+open import function.isomorphism.coherent
+open import hott.hlevel
+open import hott.weak-equivalence.core
 open import hott.univalence
 open import function.extensionality.core
 
@@ -34,21 +35,22 @@ private
 
     -- X can be embedded into Δ via the "diagonal" function δ
     δ : X → Δ
-    δ x = (x , (x , refl))
+    δ x = (x , x , refl)
 
-    -- δ and π₁ form an isomorphism between X and Δ
-    Δ-iso : X ≅ Δ
-    Δ-iso = iso δ π₁ H K
+    -- δ is a weak-equivalence between X and Δ
+    δ-we : weak-equiv δ
+    δ-we (x , .x , refl) = (x , refl)
+                         , (λ { (x' , p) → lem _ x' p })
       where
-        H : (x : X) → π₁ (δ x) ≡ x
-        H x = refl
+        K : (d : Δ) → δ (π₁ d) ≡ d
+        K (x , .x , refl) = refl
 
-        K : (x' : Δ) → δ (π₁ x') ≡ x'
-        K (x , (.x , refl)) = refl
+        lem : (d : Δ)(x : X)(p : δ x ≡ d)
+            → _≡_ {A = δ ⁻¹ d} (π₁ d , K d) (x , p)
+        lem .(x , x , refl) x refl = refl
 
-    -- hence we obtain a weak equivalence
     Δ-equiv : X ≈ Δ
-    Δ-equiv = ≅⇒≈ Δ-iso
+    Δ-equiv = δ , δ-we
 
   -- now we use univalence to show that a weak equivalence between X and
   -- Y lifts to a weak equivalence between the exponentials (A → X) and

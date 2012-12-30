@@ -38,7 +38,6 @@ import category.instances.empty
 import hott.hlevel
 import hott.hlevel.properties
 import hott.weak-equivalence
-import hott.coherence
 import hott.univalence
 import hott.univalence.properties
 

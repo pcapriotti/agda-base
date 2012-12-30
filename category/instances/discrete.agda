@@ -12,7 +12,7 @@ import equality.properties as E
 open import equality.calculus
 open import function.isomorphism
 open import hott.hlevel
-open import hott.coherence
+open import hott.weak-equivalence
 
 open Groupoid using (cat)
 open Category using (obj; id)

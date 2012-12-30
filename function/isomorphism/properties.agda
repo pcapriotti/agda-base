@@ -8,7 +8,7 @@ open import equality.core
 open import equality.calculus
 open import equality.reasoning
 open import function.isomorphism
-open import hott.coherence
+open import function.isomorphism.coherent
 open import hott.hlevel
 
 private
@@ -18,7 +18,7 @@ private
       isom : X ≅ Y
       isom = proj₁ isom'
 
-      γ : isCoherent isom
+      γ : coherent isom
       γ = proj₂ isom'
 
     open _≅_ isom

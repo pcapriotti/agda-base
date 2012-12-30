@@ -1,5 +1,8 @@
 {-# OPTIONS --without-K #-}
-module hott.weak-equivalence.alternative where
+open import function.extensionality.core
+
+module hott.weak-equivalence.alternative 
+  (ext' : ∀ {i j} → Extensionality' i j) where
 
 open import level using (_⊔_)
 open import sum
@@ -7,103 +10,108 @@ open import equality.core
 open import equality.calculus
 open import equality.isomorphisms
 open import function
-open import function.extensionality
 open import function.isomorphism
+open import function.isomorphism.coherent
 open import hott.hlevel
-open import hott.weak-equivalence
-open import hott.coherence
+open import hott.weak-equivalence.core
 
 private
   module Properties {i j}{X : Set i}{Y : Set j} where
     open ≅-Reasoning
 
-    A : (f : X → Y)(g : Y → X) → Set _
-    A f g = (x : X) → g (f x) ≡ x
+    private
+      A : (f : X → Y)(g : Y → X) → Set _
+      A f g = (x : X) → g (f x) ≡ x
 
-    B : (f : X → Y)(g : Y → X) → Set _
-    B f g = (y : Y) → f (g y) ≡ y
-    
-    GB : (f : X → Y) → Set _
-    GB f = Σ (Y → X) (B f)
-     
-    Φ : (f : X → Y)(g : Y → X) → Set _
-    Φ f g = (y : Y)(x : X) → f x ≡ y → g y ≡ x
+      B : (f : X → Y)(g : Y → X) → Set _
+      B f g = (y : Y) → f (g y) ≡ y
 
-    Ψ : (f : X → Y)(g : Y → X)(β : B f g)(φ : Φ f g) → Set _
-    Ψ f g β φ = (y : Y)(x : X)(p : f x ≡ y) → cong f (φ y x p) ⊚ p ≡ β y
+      GB : (f : X → Y) → Set _
+      GB f = Σ (Y → X) (B f)
 
-    W : Set _
-    W = Σ (X → Y) λ f
-      → Σ (GB f) λ { (g , β)
-      → Σ (Φ f g) (Ψ f g β) }
+      Φ : (f : X → Y)(g : Y → X) → Set _
+      Φ f g = (y : Y)(x : X) → f x ≡ y → g y ≡ x
 
-    -- isomorphism inside Π
-    Π-iso : ∀ {i j j'} {X : Set i}
-            {Y : X → Set j}{Y' : X → Set j'}
-          → ((x : X) → Y x ≅ Y' x)
-          → ((x : X) → Y x)
-          ≅ ((x : X) → Y' x)
-    Π-iso = Π-cong-iso ext' refl≅
+      Ψ : (f : X → Y)(g : Y → X)(β : B f g)(φ : Φ f g) → Set _
+      Ψ f g β φ = (y : Y)(x : X)(p : f x ≡ y) → cong f (φ y x p) ⊚ p ≡ β y
 
-    -- flipped transitivity of isomorphism
-    -- makes some proofs easier to read
-    _⋆_ : ∀ {i j k}{X : Set i}{Y : Set j}{Z : Set k}
-        → Y ≅ Z → X ≅ Y → X ≅ Z
-    isom ⋆ isom' = trans≅ isom' isom
+      W : Set _
+      W = Σ (X → Y) λ f
+        → Σ (GB f) λ { (g , β)
+        → Σ (Φ f g) (Ψ f g β) }
 
-    -- inverse image contractible ≅ (φ , ψ)
-    contr-split : (f : X → Y)(g : Y → X)(β : B f g)
-                → ((y : Y)(x : f ⁻¹ y) → (g y , β y) ≡ x)
-                ≅ Σ (Φ f g) (Ψ f g β)
-    contr-split f g β = begin
-        ((y : Y)(x : f ⁻¹ y) → (g y , β y) ≡ x)
-      ≅⟨ (Π-iso λ y → curry-iso (λ x p → (g y , β y) ≡ (x , p))) ⟩
-        ((y : Y)(x : X)(p : f x ≡ y) → (g y , β y) ≡ (x , p))
-      ≅⟨ (Π-iso λ y → Π-iso λ x → Π-iso λ p
-       → sym≅ (Σ-split-iso {b = β y}{b' = p})) ⟩
-        ((y : Y)(x : X)(p : f x ≡ y) → Σ (g y ≡ x) λ q
-              → subst (λ x → f x ≡ y) q (β y) ≡ p)
-      ≅⟨ (ΠΣ-swap-iso ⋆ Π-iso λ y
-       → ΠΣ-swap-iso ⋆ Π-iso λ x
-       → ΠΣ-swap-iso {Z = λ p q → subst (λ x → f x ≡ y) q (β y) ≡ p}) ⟩
-       ( Σ (Φ f g) λ φ
-       → (y : Y)(x : X)(p : f x ≡ y)
-              → subst (λ x → f x ≡ y) (φ y x p) (β y) ≡ p )
-      ≅⟨ (Σ-cong-iso refl≅ λ φ
-       → Π-iso λ y → Π-iso λ x → Π-iso λ p
-       → ≡⇒≅ (lem f g β φ y x p)) ⟩
-        Σ (Φ f g) (Ψ f g β)
-      ∎
-      where
-        lem : (f : X → Y)(g : Y → X)(β : (y : Y) → f (g y) ≡ y)
-              (φ : (y : Y)(x : X) → f x ≡ y → g y ≡ x)
-            → (y : Y)(x : X)(p : f x ≡ y)
-            → (subst (λ x → f x ≡ y) (φ y x p) (β y) ≡ p)
-            ≡ (cong f (φ y x p) ⊚ p ≡ β y)
-        lem f g β φ y x p = cong (λ z → z ≡ p)
-          ( subst-naturality (λ x → x ≡ y) f (φ y x p) (β y)
-          ⊚ subst-eq (cong f (φ y x p)) (β y) )
-          ⊚ sym (move-≡ (cong f (φ y x p)) p (β y))
+      -- isomorphism inside Π
+      Π-iso : ∀ {i j j'} {X : Set i}
+              {Y : X → Set j}{Y' : X → Set j'}
+            → ((x : X) → Y x ≅ Y' x)
+            → ((x : X) → Y x)
+            ≅ ((x : X) → Y' x)
+      Π-iso = Π-cong-iso ext' refl≅
 
-    -- weak equivalence ≅ (f , g , β , φ , ψ)
-    weak-equiv-split : (X ≈ Y) ≅ W
-    weak-equiv-split =
-      Σ-cong-iso refl≅ (λ f → begin
-          weak-equiv f
-        ≅⟨ ΠΣ-swap-iso ⟩
-          Σ ((y : Y) → f ⁻¹ y) (λ { gβ
-          → (y : Y)(x : f ⁻¹ y) → gβ y ≡ x })
-        ≅⟨ Σ-cong-iso ΠΣ-swap-iso (λ _ → refl≅) ⟩
-          ( Σ (GB f) λ { (g , β)
-          → (y : Y)(x : f ⁻¹ y) → (g y , β y) ≡ x } )
-        ≅⟨ Σ-cong-iso refl≅ (λ { (g , β) → contr-split f g β }) ⟩
-          ( Σ (GB f) λ { (g , β)
-          → Σ (Φ f g) (Ψ f g β) } )
-        ∎ )
+      -- flipped transitivity of isomorphism
+      -- makes some proofs easier to read
+      _⋆_ : ∀ {i j k}{X : Set i}{Y : Set j}{Z : Set k}
+          → Y ≅ Z → X ≅ Y → X ≅ Z
+      isom ⋆ isom' = trans≅ isom' isom
+
+      -- inverse image contractible ≅ (φ , ψ)
+      contr-split : (f : X → Y)(g : Y → X)(β : B f g)
+                  → ((y : Y)(x : f ⁻¹ y) → (g y , β y) ≡ x)
+                  ≅ Σ (Φ f g) (Ψ f g β)
+      contr-split f g β = begin
+          ((y : Y)(x : f ⁻¹ y) → (g y , β y) ≡ x)
+        ≅⟨ (Π-iso λ y → curry-iso (λ x p → (g y , β y) ≡ (x , p))) ⟩
+          ((y : Y)(x : X)(p : f x ≡ y) → (g y , β y) ≡ (x , p))
+        ≅⟨ (Π-iso λ y → Π-iso λ x → Π-iso λ p
+         → sym≅ (Σ-split-iso {b = β y}{b' = p})) ⟩
+          ((y : Y)(x : X)(p : f x ≡ y) → Σ (g y ≡ x) λ q
+                → subst (λ x → f x ≡ y) q (β y) ≡ p)
+        ≅⟨ (ΠΣ-swap-iso ⋆ Π-iso λ y
+         → ΠΣ-swap-iso ⋆ Π-iso λ x
+         → ΠΣ-swap-iso {Z = λ p q → subst (λ x → f x ≡ y) q (β y) ≡ p}) ⟩
+         ( Σ (Φ f g) λ φ
+         → (y : Y)(x : X)(p : f x ≡ y)
+                → subst (λ x → f x ≡ y) (φ y x p) (β y) ≡ p )
+        ≅⟨ (Σ-cong-iso refl≅ λ φ
+         → Π-iso λ y → Π-iso λ x → Π-iso λ p
+         → lem f g β φ y x p) ⟩
+          Σ (Φ f g) (Ψ f g β)
+        ∎
+        where
+          lem : (f : X → Y)(g : Y → X)(β : (y : Y) → f (g y) ≡ y)
+                (φ : (y : Y)(x : X) → f x ≡ y → g y ≡ x)
+              → (y : Y)(x : X)(p : f x ≡ y)
+              → (subst (λ x → f x ≡ y) (φ y x p) (β y) ≡ p)
+              ≅ (cong f (φ y x p) ⊚ p ≡ β y)
+          lem f g β φ y x p = begin
+              subst (λ x → f x ≡ y) (φ y x p) (β y) ≡ p
+            ≡⟨ cong (λ z → z ≡ p)
+                    ( subst-naturality (λ x → x ≡ y) f (φ y x p) (β y)
+                    ⊚ subst-eq (cong f (φ y x p)) (β y) ) ⟩
+              sym (cong f (φ y x p)) ⊚ β y ≡ p
+            ≅⟨ sym≅ (move-≡-iso (cong f (φ y x p)) p (β y)) ⟩
+              cong f (φ y x p) ⊚ p ≡ β y
+            ∎
+
+      -- weak equivalence ≅ (f , g , β , φ , ψ)
+      weak-equiv-split : (X ≈ Y) ≅ W
+      weak-equiv-split =
+        Σ-cong-iso refl≅ (λ f → begin
+            weak-equiv f
+          ≅⟨ ΠΣ-swap-iso ⟩
+            Σ ((y : Y) → f ⁻¹ y) (λ { gβ
+            → (y : Y)(x : f ⁻¹ y) → gβ y ≡ x })
+          ≅⟨ Σ-cong-iso ΠΣ-swap-iso (λ _ → refl≅) ⟩
+            ( Σ (GB f) λ { (g , β)
+            → (y : Y)(x : f ⁻¹ y) → (g y , β y) ≡ x } )
+          ≅⟨ Σ-cong-iso refl≅ (λ { (g , β) → contr-split f g β }) ⟩
+            ( Σ (GB f) λ { (g , β)
+            → Σ (Φ f g) (Ψ f g β) } )
+          ∎ )
 
     -- weak-equivalence ≅ coherent isomorphism
-    weak-equiv-coherent-iso : (X ≈ Y) ≅ (X ≅' Y)
-    weak-equiv-coherent-iso = begin
+    ≈⇔≅' : (X ≈ Y) ≅ (X ≅' Y)
+    ≈⇔≅' = begin
         X ≈ Y
       ≅⟨ weak-equiv-split ⟩
         W
@@ -115,7 +123,7 @@ private
         ( Σ (X → Y) λ f
         → Σ (GB f) λ { (g , K)
         → Σ (A f g) λ H
-        → isCoherent (iso f g H K) } )
+        → coherent (iso f g H K) } )
       ≅⟨ iso (λ { (f , (g , K) , H , γ) → iso f g H K , γ })
              (λ { (iso f g H K , γ) → (f , (g , K) , H , γ) })
              (λ _ → refl) (λ _ → refl) ⟩
@@ -139,17 +147,17 @@ private
             lem φ .(f x) x refl = refl
 
         ψ≅γ : (f : X → Y)(g : Y → X)(H : A f g)(K : B f g)
-            → Ψ' f g K H ≅ isCoherent (iso f g H K)
+            → Ψ' f g K H ≅ coherent (iso f g H K)
         ψ≅γ f g H K = record
           { to = to
           ; from = from
           ; iso₁ = λ ψ → ext' λ y → ext' λ x → ext' λ p → lem₁ ψ y x p
           ; iso₂ = λ γ → ext' λ x → lem₂ γ x }
           where
-            to : Ψ' f g K H → isCoherent (iso f g H K)
+            to : Ψ' f g K H → coherent (iso f g H K)
             to ψ x = sym (left-unit _) ⊚ ψ (f x) x refl
 
-            from : isCoherent (iso f g H K) → Ψ' f g K H
+            from : coherent (iso f g H K) → Ψ' f g K H
             from γ .(f x) x refl = left-unit _ ⊚ γ x
 
             lem₁ : (ψ : Ψ' f g K H)(y : Y)(x : X)(p : f x ≡ y)
@@ -162,7 +170,7 @@ private
                 (left-unit (cong f (H x))) _
                 (φ (f x) x refl)
 
-            lem₂ : (γ : isCoherent (iso f g H K))(x : X)
+            lem₂ : (γ : coherent (iso f g H K))(x : X)
                  → to (from γ) x ≡ γ x
             lem₂ γ x =
               J (λ u v q → (z : f (g (f x)) ≡ f x)
@@ -171,4 +179,12 @@ private
                 (λ u z r → refl) _ _
                 (left-unit (cong f (H x))) _
                 (γ x)
-open Properties public using (weak-equiv-coherent-iso)
+
+    open _≅_ ≈⇔≅' public using ()
+      renaming ( to to ≈⇒≅'
+               ; from to ≅'⇒≈ )
+
+    ≅⇒≈ : (X ≅ Y) → (X ≈ Y)
+    ≅⇒≈ = ≅'⇒≈ ∘ ≅⇒≅'
+
+open Properties public

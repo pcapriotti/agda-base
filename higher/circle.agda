@@ -8,7 +8,7 @@ open import sets.bool
 open import equality.core
 open import equality.calculus
 open import equality.reasoning
-open import hott.coherence
+open import function.isomorphism.coherent
 open import hott.weak-equivalence
 open import hott.univalence
 open import function.isomorphism using (iso)
