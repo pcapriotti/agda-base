@@ -35,6 +35,30 @@ trans≅ (iso f g H K) (iso f' g' H' K') = record
   ; iso₁ = λ x → cong g (H' (f x)) ⊚ H x
   ; iso₂ = λ y → cong f' (K (g' y)) ⊚ K' y }
 
+module ≅-Reasoning where
+  infix  4 _IsRelatedTo_
+  infix  2 _∎
+  infixr 2 _≅⟨_⟩_
+  infixr 2 _≡⟨_⟩_
+  infix  1 begin_
+
+  data _IsRelatedTo_ {i j}(x : Set i)(y : Set j) : Set (i ⊔ j) where
+    relTo : x ≅ y → x IsRelatedTo y
+
+  begin_ : ∀ {i j}{X : Set i}{Y : Set j} → X IsRelatedTo Y → X ≅ Y
+  begin relTo p = p
+
+  _≅⟨_⟩_ : ∀ {i j k} (X : Set i) {Y : Set j}{Z : Set k}
+         → X ≅ Y → Y IsRelatedTo Z → X IsRelatedTo Z
+  _ ≅⟨ p ⟩ relTo q = relTo (trans≅ p q)
+
+  _≡⟨_⟩_ : ∀ {i j} (X : Set i) {Y : Set i} {Z : Set j}
+         → X ≡ Y → Y IsRelatedTo Z → X IsRelatedTo Z
+  _ ≡⟨ p ⟩ relTo q = relTo (trans≅ (≡⇒≅ p) q)
+
+  _∎ : ∀ {i} (X : Set i) → X IsRelatedTo X
+  _∎ _ = relTo refl≅
+  
 private
   module Dummy {i j}{X : Set i}{Y : Set j} where
       isInjective : (f : X → Y) → Set _
