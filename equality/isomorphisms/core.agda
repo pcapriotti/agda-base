@@ -1,4 +1,5 @@
 {-# OPTIONS --without-K #-}
+
 module equality.isomorphisms.core where
 
 open import sum
@@ -6,6 +7,7 @@ open import equality.core
 open import equality.calculus
 open import function
 open import function.isomorphism
+open import function.extensionality.core
 open import hott.coherence
 
 Σ-split-iso : ∀ {i j}{X : Set i}{Y : X → Set j}
@@ -41,7 +43,7 @@ open import hott.coherence
     lem x = cong (λ z → sym (H (g x)) ⊚ z) (coCoherence _ γ x)
           ⊚ right-inverse (H (g x))
 
-    Σ-iso : Σ X Y ≅ Σ X' (Y ∘ invert isom)
+    Σ-iso : Σ X Y ≅ Σ X' (Y ∘ g)
     Σ-iso = record
       { to = λ { (x , y) → (f x , subst Y (sym (H x)) y) }
       ; from = λ { (x , y) → (g x , y) }
@@ -61,6 +63,40 @@ open import hott.coherence
       ; from = λ { (x , y') → (x , invert (isom x) y') }
       ; iso₁ = λ { (x , y) → uncongΣ (refl , _≅_.iso₁ (isom x) y) }
       ; iso₂ = λ { (x , y') → uncongΣ (refl , _≅_.iso₂ (isom x) y') } }
+
+Π-cong-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
+             {Y : X → Set j}{Y' : X' → Set j'}
+           → (ext' : ∀ {i j} → Extensionality' i j)
+           → (isom : X ≅ X')
+           → ((x' : X') → Y (invert isom x') ≅ Y' x')
+           → ((x : X) → Y x)
+           ≅ ((x' : X') → Y' x')
+Π-cong-iso {X = X}{X'}{Y}{Y'} ext' isom isom' =
+  trans≅ (Π-iso (≅⇒≅' isom)) (Π-iso' isom')
+  where
+    Π-iso : (isom : X ≅' X')
+          → ((x : X) → Y x)
+          ≅ ((x' : X') → Y (invert (proj₁ isom) x'))
+    Π-iso (iso f g H K , γ) = record
+      { to = λ h x' → h (g x')
+      ; from = λ h' x → subst Y (H x) (h' (f x))
+      ; iso₁ = λ h → ext' λ x → cong' h (H x)
+      ; iso₂ = λ h' → ext' λ x' → 
+              cong (λ p → subst Y p _) (sym (γ' x'))
+            ⊚ sym (subst-naturality Y g (K x') _)
+            ⊚ cong' h' (K x') }
+      where γ' = coCoherence (iso f g H K) γ
+
+    Π-iso' : ∀ {i j j'}{X : Set i}
+             {Y : X → Set j}{Y' : X → Set j'}
+           → ((x : X) → Y x ≅ Y' x)
+           → ((x : X) → Y x)
+           ≅ ((x : X) → Y' x)
+    Π-iso' isom = record
+      { to = λ h x → apply (isom x) (h x) 
+      ; from = λ h' x → invert (isom x) (h' x)
+      ; iso₁ = λ h → ext' λ x → _≅_.iso₁ (isom x) _
+      ; iso₂ = λ h' → ext' λ x → _≅_.iso₂ (isom x) _ }
 
 ΠΣ-swap-iso : ∀ {i j k}{X : Set i}{Y : X → Set j}
             → {Z : (x : X) → Y x → Set k}

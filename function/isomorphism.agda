@@ -18,8 +18,11 @@ record _≅_ {i j}(X : Set i)(Y : Set j) : Set (i ⊔ j) where
     iso₁ : (x : X) → from (to x) ≡ x
     iso₂ : (y : Y) → to (from y) ≡ y
 
-refl≅ : ∀ {i}{X Y : Set i} → X ≡ Y → X ≅ Y
-refl≅ refl = iso id id (λ _ → refl) (λ _ → refl)
+refl≅ : ∀ {i}{X : Set i} → X ≅ X
+refl≅ = iso id id (λ _ → refl) (λ _ → refl)
+
+≡⇒≅ : ∀ {i}{X Y : Set i} → X ≡ Y → X ≅ Y
+≡⇒≅ refl = refl≅
 
 sym≅ : ∀ {i j}{X : Set i}{Y : Set j} → X ≅ Y → Y ≅ X
 sym≅ (iso f g H K) = iso g f K H

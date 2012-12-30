@@ -26,7 +26,7 @@ open import hott.univalence
 
 Σ-cong : ∀ {i j}{X : Set i}{X' : Set i}{Y : X → Set j}
        → (p : X ≡ X')
-       → (Σ X Y ≡ Σ X' (Y ∘ invert (refl≅ p)))
+       → (Σ X Y ≡ Σ X' (Y ∘ invert (≡⇒≅ p)))
 Σ-cong {X = X}{.X}{Y} refl = refl
 
 ΠΣ-swap : ∀ {i j k}{X : Set i}{Y : X → Set j}
