@@ -3,7 +3,9 @@ module hott.hlevel.properties.sets where
 
 open import decidable
 open import sum
-open import equality
+open import equality.core
+open import equality.calculus
+open import equality.reasoning
 open import function using (id; const)
 open import sets.empty
 open import sets.unit

@@ -5,7 +5,7 @@ open import sum
 open import level using (lsuc; ↑; lift)
 open import equality.core
 open import equality.calculus
-open import equality.isomorphisms
+open import equality.isomorphisms.core
 open import function using (_∘_; const)
 open import function.extensionality.core
 open import function.isomorphism

@@ -6,7 +6,7 @@ module sets.bool where
 open import sets.empty     using (⊥)
 open import sets.unit      using (⊤)
 open import decidable using (Dec; yes; no)
-open import equality             using (_≡_; refl)
+open import equality.core        using (_≡_; refl)
 open import level     using (Level)
 
 infixr 6 _∧_

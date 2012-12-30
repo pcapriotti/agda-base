@@ -24,6 +24,14 @@ refl≅ refl = iso id id (λ _ → refl) (λ _ → refl)
 sym≅ : ∀ {i}{X Y : Set i} → X ≅ Y → Y ≅ X
 sym≅ (iso f g H K) = iso g f K H
 
+trans≅ : ∀ {i}{X Y Z : Set i}
+       → X ≅ Y → Y ≅ Z → X ≅ Z
+trans≅ (iso f g H K) (iso f' g' H' K') = record
+  { to = f' ∘ f
+  ; from = g ∘ g'
+  ; iso₁ = λ x → cong g (H' (f x)) ⊚ H x
+  ; iso₂ = λ y → cong f' (K (g' y)) ⊚ K' y }
+
 private
   module Dummy {i j}{X : Set i}{Y : Set j} where
       isInjective : (f : X → Y) → Set _
