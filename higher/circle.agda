@@ -90,7 +90,7 @@ open Eliminators public
 open Eliminators' public
 
 non-simply-connected : ¬ (loop ≡ refl)
-non-simply-connected = go not-is-equiv
+non-simply-connected loop-trivial = inv-non-trivial inv-trivial
   where
     not-iso : Bool ≅' Bool
     not-iso = iso not not H H , γ
@@ -103,69 +103,64 @@ non-simply-connected = go not-is-equiv
         γ true = refl
         γ false = refl
 
-    not-is-equiv : weak-equiv not
-    not-is-equiv = proj₂ (≅'⇒≈ not-iso)
+    abstract
+      not-is-equiv : weak-equiv not
+      not-is-equiv = proj₂ (≅'⇒≈ not-iso)
 
-    -- this extra step ensures that not-is-equiv is not 
-    -- normalized, as that makes type checking extremely
-    -- slow
-    go : weak-equiv not → ¬ (loop ≡ refl)
-    go not-is-equiv loop-trivial = inv-non-trivial inv-trivial
+    not-equiv : Bool ≈ Bool
+    not-equiv = not , not-is-equiv
+
+    inv : Bool ≡ Bool
+    inv = ≈⇒≡ not-equiv
+
+    inv-non-trivial : ¬ (inv ≡ refl)
+    inv-non-trivial q = distinct absurd
       where
-        not-equiv : Bool ≈ Bool
-        not-equiv = not , not-is-equiv
+        open ≡-Reasoning
 
-        inv : Bool ≡ Bool
-        inv = ≈⇒≡ not-equiv
+        distinct : false ≡ true → ⊥
+        distinct ()
 
-        inv-non-trivial : ¬ (inv ≡ refl)
-        inv-non-trivial q = distinct absurd
-          where
-            open ≡-Reasoning
-
-            distinct : false ≡ true → ⊥
-            distinct ()
-
-            absurd : false ≡ true
-            absurd = begin
-                false
-              ≡⟨ refl ⟩
-                not true
-              ≡⟨ cong (λ g → g true)
-                      (sym (uni-coherence not-equiv)) ⟩
-                coerce inv true
-              ≡⟨ cong (λ z → coerce z true) q ⟩
-                coerce refl true
-              ≡⟨ refl ⟩
-                true
-              ∎
-
-        f : S¹ → Set
-        f = elim Bool inv
-
-        β₁ : f base ≡ Bool
-        β₁ = β-base Bool inv 
-
-        f' : base ≡ base → Bool ≡ Bool
-        f' p = sym β₁ ⊚ cong f p ⊚ β₁
-
-        β₂ : f' loop ≡ inv
-        β₂ = β-loop Bool inv
-
-        inv-trivial : inv ≡ refl
-        inv-trivial = begin
-            inv
-          ≡⟨ sym β₂ ⟩
-            f' loop
-          ≡⟨ cong f' loop-trivial ⟩
-            f' refl
+        absurd : false ≡ true
+        absurd = begin
+            false
           ≡⟨ refl ⟩
-            sym β₁ ⊚ refl ⊚ β₁
-          ≡⟨ cong (λ z → z ⊚ β₁)
-                  (left-unit (sym β₁)) ⟩
-            sym β₁ ⊚ β₁
-          ≡⟨ right-inverse β₁ ⟩
-            refl
+            not true
+          ≡⟨ cong (λ g → g true)
+                  (sym (uni-coherence not-equiv)) ⟩
+            coerce inv true
+          ≡⟨ cong (λ z → coerce z true) q ⟩
+            coerce refl true
+          ≡⟨ refl ⟩
+            true
           ∎
-          where
-            open ≡-Reasoning
+
+    f : S¹ → Set
+    f = elim Bool inv
+
+    β₁ : f base ≡ Bool
+    β₁ = β-base Bool inv 
+
+    f' : base ≡ base → Bool ≡ Bool
+    f' p = sym β₁ ⊚ cong f p ⊚ β₁
+
+    β₂ : f' loop ≡ inv
+    β₂ = β-loop Bool inv
+
+    inv-trivial : inv ≡ refl
+    inv-trivial = begin
+        inv
+      ≡⟨ sym β₂ ⟩
+        f' loop
+      ≡⟨ cong f' loop-trivial ⟩
+        f' refl
+      ≡⟨ refl ⟩
+        sym β₁ ⊚ refl ⊚ β₁
+      ≡⟨ cong (λ z → z ⊚ β₁)
+              (left-unit (sym β₁)) ⟩
+        sym β₁ ⊚ β₁
+      ≡⟨ right-inverse β₁ ⟩
+        refl
+      ∎
+      where
+        open ≡-Reasoning
