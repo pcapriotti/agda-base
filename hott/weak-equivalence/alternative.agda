@@ -4,7 +4,6 @@ open import function.extensionality.core
 module hott.weak-equivalence.alternative 
   (ext' : ∀ {i j} → Extensionality' i j) where
 
-open import level using (_⊔_)
 open import sum
 open import equality.core
 open import equality.calculus

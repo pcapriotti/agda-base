@@ -22,16 +22,13 @@ private
     R : (f : (x : X) → Y x) → f ~ f
     R f x = refl
 
-    happly : {f g : (x : X) → Y x} → f ≡ g → f ~ g
-    happly refl x = refl
+    ext-ext-apply : {f g : (x : X) → Y x} (p : f ≡ g)
+               → ext' (ext-apply p) ≡ p
+    ext-ext-apply {f} refl = ext-id' f
 
-    ext-happly : {f g : (x : X) → Y x} (p : f ≡ g)
-               → ext' (happly p) ≡ p
-    ext-happly {f} refl = ext-id' f
-
-    happly-ext : (f g : (x : X) → Y x) (h : f ~ g)
-               → happly (ext' h) ≡ h
-    happly-ext f g h = subst (λ {(g , h) → happly (ext' h) ≡ h})
+    ext-apply-ext : (f g : (x : X) → Y x) (h : f ~ g)
+               → ext-apply (ext' h) ≡ h
+    ext-apply-ext f g h = subst (λ {(g , h) → ext-apply (ext' h) ≡ h})
                          (e-contr' (g , h))
                          strong-id
       where
@@ -48,12 +45,12 @@ private
         e-contr' : (u : E) → (f , R f) ≡ u
         e-contr' u = contr⇒prop e-contr (f , R f) u
 
-        strong-id : happly (ext' (R f)) ≡ R f
-        strong-id = cong happly (ext-id' f)
+        strong-id : ext-apply (ext' (R f)) ≡ R f
+        strong-id = cong ext-apply (ext-id' f)
 
     strong-ext-iso : {f g : (x : X) → Y x}
                    → (f ~ g) ≅ (f ≡ g)
-    strong-ext-iso {f}{g} = iso ext' happly (happly-ext f g) ext-happly
+    strong-ext-iso {f}{g} = iso ext' ext-apply (ext-apply-ext f g) ext-ext-apply
 
     strong-ext : {f g : (x : X) → Y x} → (f ~ g) ≡ (f ≡ g)
     strong-ext = ≅⇒≡ strong-ext-iso
