@@ -118,6 +118,14 @@ curry-iso _ = record
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
+impl-iso : ∀ {i j}{X : Set i}{Y : X → Set j}
+         → ((x : X) → Y x) ≅ ({x : X} → Y x)
+impl-iso = record
+  { to = λ f → f _
+  ; from = λ f _ → f
+  ; iso₁ = λ _ → refl
+  ; iso₂ = λ _ → refl }
+
 -- rewriting lemmas for equations on equalities
 sym≡-iso : ∀ {i}{X : Set i}{x y : X}
          → (p q : x ≡ y)

@@ -4,6 +4,9 @@ module hott.univalence.properties where
 open import sum
 open import equality.core
 open import equality.calculus
+open import equality.isomorphisms
+open import function.isomorphism
+open import function.isomorphism.properties
 open import function.extensionality
 open import sets.nat using (suc)
 open import hott.hlevel
@@ -17,6 +20,11 @@ abstract
            → ((x : X) → h n (Y x))
            → h n ((x : X) → Y x)
   Π-hlevel = Core.Π-hlevel strong-ext
+
+  Π-hlevel-impl : ∀ {i j n} {X : Set i}{Y : X → Set j}
+                → ((x : X) → h n (Y x))
+                → h n ({x : X} → Y x)
+  Π-hlevel-impl {X = X}{Y} hY = iso-h impl-iso (Π-hlevel hY)
 
   -- being contractible is a proposition
   contr-h1 : ∀ {i}(X : Set i) → h 1 (contr X)
