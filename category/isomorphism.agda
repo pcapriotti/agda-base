@@ -56,7 +56,7 @@ private
       ; iso₂ = λ _ → refl }
 
 cat-iso-hset : ∀ {i j}{C : Category i j} (x y : obj C) → h 2 (cat-iso C x y)
-cat-iso-hset {C = C} x y = iso-h e-iso
+cat-iso-hset {C = C} x y = iso-hlevel e-iso
   ( Σ-hlevel (×-hlevel (trunc x y) (trunc y x))
              (λ tf → h↑ (inverses-h1 tf)) )
   where

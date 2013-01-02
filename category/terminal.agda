@@ -8,10 +8,10 @@ open import category.functor using (Const)
 open import category.functor.adjoint
 open import category.instances.unit
 open import function.isomorphism
-open import function.isomorphism.properties
 open import sets.unit
 open import hott.hlevel
 open import hott.hlevel.properties
+open import hott.univalence.properties
 
 open Category
 
@@ -26,7 +26,7 @@ private
     open _⊣_ _ _ t
 
     term-univ : (Y : obj C) → contr (hom C Y X)
-    term-univ Y = iso-h (adj Y tt) (h↑ ⊤-contr tt tt) 
+    term-univ Y = iso-hlevel (adj Y tt) (h↑ ⊤-contr tt tt) 
 
     ! : (Y : obj C) → hom C Y X
     ! Y = proj₁ (term-univ Y)

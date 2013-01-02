@@ -39,7 +39,7 @@ trans-hset F G = Π-hlevel (λ X → trunc _ _)
 natural-prop : (F G : Functor C D)
              → (α : Trans F G)
              → h 1 (natural F G α)
-natural-prop F G α = iso-h (lem (nat-equation F G α))
+natural-prop F G α = iso-hlevel (lem (nat-equation F G α))
   (Π-hlevel (λ m → trunc _ _ _ _))
   where
     open Category D using (trunc)
@@ -51,7 +51,7 @@ natural-prop F G α = iso-h (lem (nat-equation F G α))
                 (λ _ → refl) (λ _ → refl)
 
 nat-hset : (F G : Functor C D) → h 2 (Nat F G)
-nat-hset F G = iso-h nat-Σ-iso
+nat-hset F G = iso-hlevel nat-Σ-iso
   (Σ-hlevel (trans-hset F G)
             (λ α → h↑ (natural-prop F G α)))
   where

@@ -41,21 +41,37 @@ abstract
       we : (y' : Y) → contr (f ⁻¹ y')
       we y' = (x , K y') , lem y'
 
-  -- a retract of a contractible type is contractible
-  retract-contr : ∀ {i j} {X : Set i}{Y : Set j}
-                → (f : X → Y)(g : Y → X)
-                → ((y : Y) → f (g y) ≡ y)
-                → contr X → contr Y
-  retract-contr {Y = Y} f g r (x , c) = (f x , c')
+  -- retractions preserve hlevels
+  retract-hlevel : ∀ {i j n} {X : Set i}{Y : Set j}
+                 → (f : X → Y)(g : Y → X)
+                 → ((y : Y) → f (g y) ≡ y)
+                 → h n X → h n Y
+  retract-hlevel {n = 0}{X}{Y} f g r (x , c) = (f x , c')
     where
       c' : (y : Y) → f x ≡ y
       c' y = cong f (c (g y)) ⊚ r y
+  retract-hlevel {n = suc n}{X}{Y} f g r hX = λ y y'
+    → retract-hlevel f' g' r' (hX (g y) (g y'))
+    where
+      f' : {y y' : Y} → g y ≡ g y' → y ≡ y'
+      f' {y}{y'} p = sym (r y) ⊚ cong f p ⊚ r y'
+
+      g' : {y y' : Y} → y ≡ y' → g y ≡ g y'
+      g' = cong g
+
+      r' : {y y' : Y}(p : y ≡ y') → f' (g' p) ≡ p
+      r' {y}{.y} refl = cong (λ α → α ⊚ r y) (left-unit (sym (r y)))
+                      ⊚ right-inverse (r y)
+
+  iso-hlevel : ∀ {i j n}{X : Set i}{Y : Set j}
+             → X ≅ Y → h n X → h n Y
+  iso-hlevel (iso f g H K) = retract-hlevel f g K
 
   -- lifting preserves h-levels
   ↑-contr : ∀ {i n} j {X : Set i}
           → h n X
           → h n (↑ j X)
-  ↑-contr j {X} = iso-h (lift-iso j X)
+  ↑-contr j {X} = iso-hlevel (lift-iso j X)
 
   -- exponentials preserve contractibility (given extensionality)
   exp-contr : ∀ {i j}{X : Set i}{Y : Set j}
@@ -108,7 +124,7 @@ abstract
       c : (x : X)(y : Y x) → (x₀ , proj₁ (hy x₀)) ≡ (x , y)
       c x y = cong (λ x → (x , proj₁ (hy x))) (cx x)
             ⊚ cong (_,_ x) (proj₂ (hy x) y)
-  Σ-hlevel {n = suc n} hx hy = λ a b → iso-h Σ-split-iso
+  Σ-hlevel {n = suc n} hx hy = λ a b → iso-hlevel Σ-split-iso
     (Σ-hlevel (hx _ _) (λ p → hy (proj₁ b) _ _))
 
   -- × preserves h-levels

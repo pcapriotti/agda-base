@@ -24,7 +24,7 @@ abstract
   Π-hlevel-impl : ∀ {i j n} {X : Set i}{Y : X → Set j}
                 → ((x : X) → h n (Y x))
                 → h n ({x : X} → Y x)
-  Π-hlevel-impl {X = X}{Y} hY = iso-h impl-iso (Π-hlevel hY)
+  Π-hlevel-impl {X = X}{Y} hY = iso-hlevel impl-iso (Π-hlevel hY)
 
   -- being contractible is a proposition
   contr-h1 : ∀ {i}(X : Set i) → h 1 (contr X)

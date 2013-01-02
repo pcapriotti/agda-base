@@ -36,7 +36,7 @@ private
         E = Σ ((x : X) → Y x) λ g → f ~ g
 
         e-contr : contr E
-        e-contr = retract-contr
+        e-contr = retract-hlevel
           (λ u → proj₁ ∘ u , proj₂ ∘ u)
           (λ {(g , h) x → g x , h x})
           (λ {(g , h) → refl})

@@ -4,11 +4,11 @@ module category.univalence where
 open import sum
 open import equality.core
 open import function.isomorphism
-open import function.isomorphism.properties
 open import category.category
 open import category.isomorphism
 open import hott.weak-equivalence
 open import hott.hlevel
+open import hott.univalence.properties
 
 open Category
 
@@ -22,4 +22,4 @@ private
   
     -- the object set of a univalent category has h-level 3
     obj-h3 : h 3 (obj C)
-    obj-h3 x y = iso-h (sym≅ (iso≅eq x y)) (cat-iso-hset x y)
+    obj-h3 x y = iso-hlevel (sym≅ (iso≅eq x y)) (cat-iso-hset x y)
