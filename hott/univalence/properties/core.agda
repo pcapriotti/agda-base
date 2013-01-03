@@ -1,6 +1,8 @@
 {-# OPTIONS --without-K #-}
 module hott.univalence.properties.core where
 
+open import level
+open import decidable
 open import sum
 open import level using (lsuc; ↑; lift)
 open import equality.core
@@ -10,10 +12,11 @@ open import function using (_∘_; const)
 open import function.extensionality.core
 open import function.isomorphism
 open import function.isomorphism.properties
+open import sets.bool
 open import sets.unit
-open import sets.nat using (ℕ; suc)
+open import sets.nat using (ℕ; suc; _≤?_)
 open import hott.hlevel
-open import hott.hlevel.properties.sets using (⊤-contr)
+open import hott.hlevel.properties using (⊤-contr; bool-set; h!)
 open import hott.weak-equivalence.core using (_≈_)
 open import hott.univalence
 
@@ -131,3 +134,37 @@ abstract
   ×-hlevel : ∀ {i j n}{X : Set i}{Y : Set j}
            → h n X → h n Y → h n (X × Y)
   ×-hlevel hx hy = Σ-hlevel hx (λ _ → hy)
+
+  -- ⊎ preserves h-levels
+  ⊎-hlevel : ∀ {i j n}{X : Set i}{Y : Set j}
+           → {p : True (2 ≤? n)}
+           → h n X → h n Y → h n (X ⊎ Y)
+  ⊎-hlevel {i}{j}{n} {X}{Y} {p} hx hy = iso-hlevel lem
+    (Σ-hlevel (h! {p = p} bool-set) P-hlevel)
+    where
+      P : Bool → Set (i ⊔ j)
+      P true = ↑ j X
+      P false = ↑ i Y
+
+      P-hlevel : (b : Bool) → h n (P b)
+      P-hlevel true = iso-hlevel (lift-iso j X) hx
+      P-hlevel false = iso-hlevel (lift-iso i Y) hy
+
+      lem : Σ Bool P ≅ (X ⊎ Y)
+      lem = iso f g H K
+        where
+          f : (Σ Bool P) → (X ⊎ Y)
+          f (true , lift x) = inj₁ x
+          f (false , lift y) = inj₂ y
+
+          g : (X ⊎ Y) → (Σ Bool P)
+          g (inj₁ x) = (true , lift x)
+          g (inj₂ y) = (false , lift y)
+
+          H : (x : Σ Bool P) → g (f x) ≡ x
+          H (true , lift x) = refl
+          H (false , lift y) = refl
+
+          K : (x : X ⊎ Y) → f (g x) ≡ x
+          K (inj₁ x) = refl
+          K (inj₂ y) = refl

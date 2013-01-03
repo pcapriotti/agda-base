@@ -6,6 +6,7 @@ open import level using (_⊔_)
 open import equality.core hiding (singleton)
 open import equality.calculus
 open import equality.reasoning
+open import hott.hlevel
 
 data List : Graph X (i ⊔ k) where
   nil : ∀ {x} → List x x
@@ -14,6 +15,63 @@ data List : Graph X (i ⊔ k) where
       → List y z
       → List x z
 infixr 5 _∷_
+
+private
+  module HLevel (hX : h 3 X)(hW : h 2 (total-space W)) where
+    open import decidable
+    open import sum
+    open import sets.empty
+    open import sets.unit
+    open import function.extensionality
+    open import function.isomorphism
+    open import w renaming (W to W-type)
+    open import hott.hlevel.properties
+    open import hott.univalence.properties
+
+    I : Set i
+    I = X × X 
+
+    A : I → Set _
+    A (x , y) = (x ≡ y) ⊎ Σ (total-space W) λ { ((x' , y') , w) → (x' ≡ x) }
+
+    A-hlevel : (i : I) → h 2 (A i)
+    A-hlevel (x , y) = ⊎-hlevel {p = tt} (hX x y)
+      (Σ-hlevel hW (λ { ((x' , _) , _) → hX x' x }))
+
+    B : (i : I) → A i → Set _
+    B (x , .x) (inj₁ refl) = ⊥
+    B (.x , z) (inj₂ (((x , y) , w) , refl)) = ⊤
+
+    r : (i : I)(a : A i) → B i a → I
+    r (x , .x) (inj₁ refl) ()
+    r (.x , z) (inj₂ (((x , y) , w) , refl)) _ = y , z
+
+    List' : X → X → Set _
+    List' x y = W-type I A B r (x , y)
+
+    list-iso : (x y : X) → List' x y ≅ List x y
+    list-iso _ _ = iso f g iso₁ iso₂
+      where
+        f : {x y : X} → List' x y → List x y
+        f {x}{.x} (sup (inj₁ refl) _) = nil
+        f {.x}{z} (sup (inj₂ (((x , y) , w) , refl)) u) = w ∷ f (u tt)
+
+        g : {x y : X} → List x y → List' x y
+        g {x}{.x} nil = sup (inj₁ refl) (λ ())
+        g {.x}{.z} (_∷_ {x}{y}{z} w ws) =
+          sup (inj₂ (((x , y) , w) , refl)) (λ _ → g ws)
+
+        iso₁ : {x y : X}(ws : List' x y) → g (f ws) ≡ ws
+        iso₁ {x}{.x} (sup (inj₁ refl) _) = cong (sup (inj₁ refl)) (ext' λ ())
+        iso₁ {.x}{z} (sup (inj₂ (((x , y) , w) , refl)) u) =
+          cong (sup (inj₂ (((x , y) , w) , refl))) (ext λ { tt → iso₁ (u tt) })
+
+        iso₂ : {x y : X}(ws : List x y) → f (g ws) ≡ ws
+        iso₂ {x}{.x} nil = refl
+        iso₂ (w ∷ ws) = cong (_∷_ w) (iso₂ ws)
+
+    list-hlevel : (x y : X) → h 2 (List x y)
+    list-hlevel x y = iso-hlevel (list-iso x y) (w-hlevel (λ { (x , y) → A-hlevel (x , y) }) (x , y))
 
 _++_ : ∀ {x y z} → List x y → List y z → List x z
 nil ++ ws = ws
