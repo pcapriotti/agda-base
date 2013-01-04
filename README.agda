@@ -9,6 +9,7 @@ import sets
 import decidable
 import function
 import level
+import w
 
 import equality.solver
 
