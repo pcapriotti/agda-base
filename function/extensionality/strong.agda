@@ -22,15 +22,15 @@ private
     R : (f : (x : X) → Y x) → f ~ f
     R f x = refl
 
-    ext-ext-apply : {f g : (x : X) → Y x} (p : f ≡ g)
-               → ext' (ext-apply p) ≡ p
-    ext-ext-apply {f} refl = ext-id' f
+    iso₁ : {f g : (x : X) → Y x} (p : f ≡ g)
+         → ext' (ext-inv p) ≡ p
+    iso₁ {f} refl = ext-id' f
 
-    ext-apply-ext : (f g : (x : X) → Y x) (h : f ~ g)
-               → ext-apply (ext' h) ≡ h
-    ext-apply-ext f g h = subst (λ {(g , h) → ext-apply (ext' h) ≡ h})
-                         (e-contr' (g , h))
-                         strong-id
+    iso₂ : (f g : (x : X) → Y x) (h : f ~ g)
+         → ext-inv (ext' h) ≡ h
+    iso₂ f g h = subst (λ {(g , h) → ext-inv (ext' h) ≡ h})
+                       (e-contr' (g , h))
+                       strong-id
       where
         E : Set (i ⊔ j)
         E = Σ ((x : X) → Y x) λ g → f ~ g
@@ -45,12 +45,12 @@ private
         e-contr' : (u : E) → (f , R f) ≡ u
         e-contr' u = contr⇒prop e-contr (f , R f) u
 
-        strong-id : ext-apply (ext' (R f)) ≡ R f
-        strong-id = cong ext-apply (ext-id' f)
+        strong-id : ext-inv (ext' (R f)) ≡ R f
+        strong-id = cong ext-inv (ext-id' f)
 
     strong-ext-iso : {f g : (x : X) → Y x}
                    → (f ~ g) ≅ (f ≡ g)
-    strong-ext-iso {f}{g} = iso ext' ext-apply (ext-apply-ext f g) ext-ext-apply
+    strong-ext-iso {f}{g} = iso ext' ext-inv (iso₂ f g) iso₁
 
     strong-ext : {f g : (x : X) → Y x} → (f ~ g) ≡ (f ≡ g)
     strong-ext = ≅⇒≡ strong-ext-iso

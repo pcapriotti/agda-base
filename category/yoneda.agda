@@ -52,11 +52,11 @@ y-iso X F = record
       { α = λ Y f → map F f u
       ; α-nat = λ f
               → ext' λ g
-              → ext-apply (map-hom F g f) u }
+              → ext-inv (map-hom F g f) u }
   ; iso₁ = λ { (nt α α-nat)
              → nat-equality
              ( ext' λ Y
              → ext λ f
-             → ext-apply (sym (α-nat f)) (id X)
+             → ext-inv (sym (α-nat f)) (id X)
              ⊚ cong (α Y) (right-unit f)) }
-  ; iso₂ = λ u → ext-apply (map-id F X) u }
+  ; iso₂ = λ u → ext-inv (map-id F X) u }

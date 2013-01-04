@@ -33,12 +33,12 @@ cat-iso-h2 : ∀ {i}{A B : HSet i}
            ≅ cat-iso (set i) A B
 cat-iso-h2 = record
   { to = λ { (iso f g H K) → (c-iso f g (ext' H) (ext' K)) }
-  ; from = λ { (c-iso f g H K) → (iso f g (ext-apply H) (ext-apply K)) }
+  ; from = λ { (c-iso f g H K) → (iso f g (ext-inv H) (ext-inv K)) }
   ; iso₁ = λ { (iso f g H K)
              → cong (λ { ((f , g) , (H , K)) → iso f g H K })
                        (uncongΣ (refl , cong₂ _,_
-                        (ext' λ x → ext-apply (_≅_.iso₁ strong-ext-iso H) x)
-                        (ext' λ x → ext-apply (_≅_.iso₁ strong-ext-iso K) x))) }
+                        (ext' λ x → ext-inv (_≅_.iso₁ strong-ext-iso H) x)
+                        (ext' λ x → ext-inv (_≅_.iso₁ strong-ext-iso K) x))) }
   ; iso₂ = λ _ → cat-iso-equality refl refl }
 
 -- equality of HSets is the same as equality of the underlying types
