@@ -1,12 +1,12 @@
 {-# OPTIONS --without-K #-}
 
-module equality.isomorphisms where
+module function.isomorphism.utils where
 
 open import sum
 open import equality.core
 open import equality.calculus
 open import function.core
-open import function.isomorphism
+open import function.isomorphism.core
 open import function.isomorphism.coherent
 open import function.extensionality.core
 

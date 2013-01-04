@@ -5,7 +5,6 @@ open import level
 open import sum
 open import equality.core
 open import equality.calculus
-open import equality.isomorphisms
 open import function.extensionality
 open import function.isomorphism
 open import function.isomorphism.properties

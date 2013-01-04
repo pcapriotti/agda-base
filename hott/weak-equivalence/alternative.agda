@@ -6,11 +6,9 @@ module hott.weak-equivalence.alternative where
 open import sum
 open import equality.core
 open import equality.calculus
-open import equality.isomorphisms
 open import function.core
 open import function.extensionality.dependent
 open import function.isomorphism
-open import function.isomorphism.coherent
 open import hott.hlevel.core
 open import hott.weak-equivalence.core
 
