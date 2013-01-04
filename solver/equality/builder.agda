@@ -1,5 +1,5 @@
 {-# OPTIONS --without-K #-}
-module equality.solver.builder where
+module solver.equality.builder where
 
 open import level using (lzero; lsuc; _⊔_)
 open import decidable
@@ -11,8 +11,8 @@ open import equality.calculus
 open import sets.fin using (Fin; zero; suc; _≟_)
 open import sets.vec using (Vec; _!_; _∷_; [])
 
-open import equality.solver.core
-open import equality.solver.term
+open import solver.equality.core
+open import solver.equality.term
 
 private
   transport-dec : ∀ {i j}{X : Set i}{Y : Set j}

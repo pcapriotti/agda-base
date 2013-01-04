@@ -1,5 +1,5 @@
 {-# OPTIONS --without-K #-}
-module equality.solver.core where
+module solver.equality.core where
 
 open import sum
 open import decidable

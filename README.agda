@@ -11,7 +11,9 @@ import function
 import level
 import w
 
-import equality.solver
+-- solvers
+
+import solver.equality
 
 -- categories
 

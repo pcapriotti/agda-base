@@ -1,5 +1,5 @@
 {-# OPTIONS --without-K #-}
-module equality.solver {i}(X : Set i) where
+module solver.equality {i}(X : Set i) where
 
 open import decidable
 open import sum
@@ -12,8 +12,8 @@ open import sets.nat using (ℕ)
 open import sets.fin hiding (_≟_)
 open import sets.vec
 
-open import equality.solver.core
-open import equality.solver.builder
+open import solver.equality.core
+open import solver.equality.builder
 
 open ≡-Reasoning
 
@@ -30,17 +30,17 @@ module WithDec {n k} (W : Graph (Fin n) k)(dec : DecGraph W) where
   open DecGraph dec
 
   module Terms where
-    import equality.solver.term as M
+    import solver.equality.term as M
     open M W public
   open Terms hiding (module WithEnv)
 
   module Words where
-    import equality.solver.word as M
+    import solver.equality.word as M
     open M W public
   open Words hiding (module WithEnv)
 
   module Lists where
-    import equality.solver.list as L
+    import solver.equality.list as L
     open L Word public
     open WithInvolution word-inv public
   open Lists hiding (module WithEnv)

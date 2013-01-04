@@ -1,5 +1,5 @@
 {-# OPTIONS --without-K #-}
-module equality.solver.example where
+module solver.equality.example where
 
 open import sum
 open import equality.core
@@ -7,10 +7,10 @@ open import equality.calculus
 open import sets.fin using (Fin; zero; suc; _≟_)
 open import sets.vec
 
-open import equality.solver
-open import equality.solver.core
-open import equality.solver.builder
-open import equality.solver.term
+open import solver.equality
+open import solver.equality.core
+open import solver.equality.builder
+open import solver.equality.term
   hiding (module WithEnv)
 
 open WithDec

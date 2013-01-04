@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
-open import equality.solver.core
-module equality.solver.word {i k}{X : Set i}(W : Graph X k) where
+open import solver.equality.core
+module solver.equality.word {i k}{X : Set i}(W : Graph X k) where
 
 open import level using (_⊔_)
 open import equality.core
