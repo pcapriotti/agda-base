@@ -4,7 +4,7 @@ module hott.weak-equivalence where
 open import equality.core
 open import function
 open import function.isomorphism
-open import function.extensionality.proof-dep
+open import function.extensionality.dependent
 open import hott.univalence
 
 open import hott.weak-equivalence.alternative public

@@ -7,8 +7,8 @@ open import function
 open import equality.core
 open import function.isomorphism
 open import function.extensionality.core
-open import function.extensionality.proof
-open import function.extensionality.proof-dep
+open import function.extensionality.nondep
+open import function.extensionality.dependent
 open import hott.hlevel.core
 open import hott.hlevel.properties
 open import hott.weak-equivalence

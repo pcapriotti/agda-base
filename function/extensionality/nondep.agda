@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 
-module function.extensionality.proof where
+module function.extensionality.nondep where
 
 open import sum
 open import equality.core

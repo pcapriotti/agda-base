@@ -1,4 +1,4 @@
-module function.extensionality.proof-dep where
+module function.extensionality.dependent where
 
 open import level using (_⊔_; ↑; lift)
 open import sets.unit
@@ -6,7 +6,7 @@ open import sum
 open import equality.core
 open import equality.calculus
 open import function.extensionality.core
-open import function.extensionality.proof
+open import function.extensionality.nondep
 open import function using (_∘_; const)
 
 open import hott.hlevel.core

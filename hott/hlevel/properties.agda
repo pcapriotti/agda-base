@@ -9,7 +9,7 @@ open import equality.calculus
 open import sets.nat
 open import sets.unit
 open import function
-open import function.extensionality.proof
+open import function.extensionality.nondep
 open import function.isomorphism
 open import function.isomorphism.properties
 open import hott.hlevel.core

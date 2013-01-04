@@ -8,7 +8,7 @@ open import equality.core
 open import equality.calculus
 open import equality.isomorphisms
 open import function
-open import function.extensionality.proof-dep
+open import function.extensionality.dependent
 open import function.isomorphism
 open import function.isomorphism.coherent
 open import hott.hlevel.core
