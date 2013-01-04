@@ -9,7 +9,7 @@ open import function.isomorphism
 open import equality.core
 open import equality.calculus
 open import sets.fin using (Fin; zero; suc; _≟_)
-open import sets.vec using (Vec; _!_; _∷_; [])
+open import sets.vec using (Vec; _!_; _∷_; []; lookup)
 
 open import solver.equality.core
 open import solver.equality.term
@@ -55,13 +55,27 @@ private
 
         K : (e : E) → f (g e) ≡ e
         K ((.(source v i) , .(target v i)) , fin-element i) = refl
-
+        
     fin-graph-dec : ∀ {n} (v : Vec (X × X) n)
                   → ((x y : X) → Dec (x ≡ y))
                   → DecGraph (fin-graph v)
     fin-graph-dec {n} v dec = dec-total dec (transport-dec (total-space-finite v) _≟_)
           
 open FinGraph public
+
+fin-env : ∀ {i k n}{X : Set i}(v : Vec (Fin k × Fin k) n)(xs : Vec X k)
+        → ((i : Fin n) → xs ! proj₁ (v ! i) ≡ xs ! proj₂ (v ! i))
+        → Env (fin-graph (Fin k) v) X
+fin-env {k = k}{X = X} v xs f = record
+  { imap = lookup xs
+  ; gmap = lookup' v f }
+  where
+    lookup' : ∀ {n}(v : Vec (Fin k × Fin k) n)
+            → ((i : Fin n) → xs ! proj₁ (v ! i) ≡ xs ! proj₂ (v ! i))
+            → ∀ {i j} → fin-graph (Fin k) v i j → (xs ! i) ≡ (xs ! j)
+    lookup' [] f (fin-element ())
+    lookup' ((i , j) ∷ v) f (fin-element zero) = f zero
+    lookup' ((i , j) ∷ v) f (fin-element (suc n)) = lookup' v (f ∘ suc) (fin-element n)
 
 HOTerm' : ∀ {i n} {X : Set i} → Graph X lzero → Vec (X × X) n → X → X → Set i
 HOTerm' W [] x y = Term W x y
