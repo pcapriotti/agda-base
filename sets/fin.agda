@@ -37,3 +37,7 @@ _≟_ (suc i) zero = no (λ p → disj i (sym p))
 _≟_ {suc n} (suc i) (suc j) with i ≟ j
 ... | yes p = yes (cong suc p)
 ... | no a = no (λ p → a (suc-inj i j p))
+
+toℕ : ∀ {n} → Fin n → ℕ
+toℕ zero = 0
+toℕ (suc i) = suc (toℕ i)
