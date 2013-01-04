@@ -3,7 +3,7 @@
 
 module decidable where
 
-open import level            using (Level)
+open import level using (Level)
 open import sets.empty using (⊥; ¬_)
 open import sets.unit using (⊤; tt)
 
