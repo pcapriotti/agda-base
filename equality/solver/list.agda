@@ -9,8 +9,11 @@ open import equality.reasoning
 open import sets.nat using (refl-≤)
 open import hott.hlevel
 
-import category.free.list as F
-open F W public
+open import category.free.list public
+  renaming (List to FList)
+
+List : Graph X (i ⊔ k)
+List = FList W
 
 module WithInvolution (inv : Involution W) where
   open Involution inv
@@ -22,10 +25,10 @@ module WithInvolution (inv : Involution W) where
   reverse++ : ∀ {x y z} (ws : List x y) (us : List y z)
             → reverse (ws ++ us)
             ≡ reverse us ++ reverse ws
-  reverse++ nil us = sym (nil-right-inverse (reverse us))
+  reverse++ nil us = sym (nil-right-unit (reverse us))
   reverse++ (w ∷ ws) us =
       cong (λ α → α ++ (τ w ∷ nil)) (reverse++ ws us)
-    ⊚ sym (assoc++ (reverse us) (reverse ws) (τ w ∷ nil))
+    ⊚ sym (++-assoc (reverse us) (reverse ws) (τ w ∷ nil))
 
   reverse-reverse : ∀ {x y} (ws : List x y)
                   → reverse (reverse ws) ≡ ws
