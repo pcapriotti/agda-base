@@ -3,8 +3,8 @@
 
 module sets.unit where
 
-data ⊤ : Set where
-  tt : ⊤
+record ⊤ : Set where
+  constructor tt
 
 ⊤-elim : (P : ⊤ → Set) → P tt → (x : ⊤) → P x
 ⊤-elim P ptt tt = ptt
