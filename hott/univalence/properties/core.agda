@@ -14,7 +14,7 @@ open import function.isomorphism
 open import function.isomorphism.properties
 open import sets.bool
 open import sets.unit
-open import sets.nat using (ℕ; suc; _≤?_)
+open import sets.nat using (ℕ; suc; _≤_)
 open import hott.hlevel
 open import hott.hlevel.properties using (⊤-contr; bool-set; h!)
 open import hott.weak-equivalence.core using (_≈_)
@@ -137,10 +137,9 @@ abstract
 
   -- ⊎ preserves h-levels
   ⊎-hlevel : ∀ {i j n}{X : Set i}{Y : Set j}
-           → {p : True (2 ≤? n)}
-           → h n X → h n Y → h n (X ⊎ Y)
-  ⊎-hlevel {i}{j}{n} {X}{Y} {p} hx hy = iso-hlevel lem
-    (Σ-hlevel (h! {p = p} bool-set) P-hlevel)
+           → 2 ≤ n → h n X → h n Y → h n (X ⊎ Y)
+  ⊎-hlevel {i}{j}{n} {X}{Y} p hx hy = iso-hlevel lem
+    (Σ-hlevel (h! {p = decide p} bool-set) P-hlevel)
     where
       P : Bool → Set (i ⊔ j)
       P true = ↑ j X

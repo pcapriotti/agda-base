@@ -5,7 +5,7 @@ module decidable where
 
 open import level            using (Level)
 open import sets.empty using (⊥; ¬_)
-open import sets.unit using (⊤)
+open import sets.unit using (⊤; tt)
 
 -- Decidable relations.
 
@@ -20,3 +20,7 @@ True (no _) = ⊥
 witness : ∀ {i}{P : Set i}{d : Dec P} → True d → P
 witness {d = yes x} _ = x
 witness {d = no _} ()
+
+decide : ∀ {i} {P : Set i} {d : Dec P} → P → True d
+decide {d = yes p} = λ _ → tt
+decide {d = no f} = f

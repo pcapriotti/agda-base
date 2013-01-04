@@ -6,6 +6,7 @@ open import level using (_⊔_)
 open import equality.core hiding (singleton)
 open import equality.calculus
 open import equality.reasoning
+open import sets.nat using (refl-≤)
 open import hott.hlevel
 
 data List : Graph X (i ⊔ k) where
@@ -35,7 +36,7 @@ private
     A (x , y) = (x ≡ y) ⊎ Σ (total-space W) λ { ((x' , y') , w) → (x' ≡ x) }
 
     A-hlevel : (i : I) → h 2 (A i)
-    A-hlevel (x , y) = ⊎-hlevel {p = tt} (hX x y)
+    A-hlevel (x , y) = ⊎-hlevel (refl-≤ 2) (hX x y)
       (Σ-hlevel hW (λ { ((x' , _) , _) → hX x' x }))
 
     B : (i : I) → A i → Set _
