@@ -10,10 +10,6 @@ import decidable
 import function
 import level
 
-import function.isomorphism
-import function.isomorphism.properties
-import function.extensionality
-
 import equality.solver
 
 -- categories

@@ -4,7 +4,7 @@ module equality.calculus where
 open import sum using (Σ ; _,_ ; proj₁; proj₂)
 open import equality.core
 open import equality.groupoid public
-open import function using (id ; _∘_)
+open import function.core using (id ; _∘_)
 
 cong' : ∀ {i j} {X : Set i}{Y : X → Set j}
         {x x' : X}(f : (x : X) → Y x)(p : x ≡ x')

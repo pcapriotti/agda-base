@@ -5,9 +5,9 @@ open import sets.unit
 open import sum
 open import equality.core
 open import equality.calculus
+open import function.core using (_∘_; const)
 open import function.extensionality.core
 open import function.extensionality.nondep
-open import function using (_∘_; const)
 
 open import hott.hlevel.core
 open import hott.hlevel.properties

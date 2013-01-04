@@ -5,7 +5,7 @@ module equality.isomorphisms where
 open import sum
 open import equality.core
 open import equality.calculus
-open import function
+open import function.core
 open import function.isomorphism
 open import function.isomorphism.coherent
 open import function.extensionality.core

@@ -3,7 +3,7 @@ module equality.core where
 
 open import sum
 open import level using ()
-open import function using (id)
+open import function.core using (id)
 
 infix 4 _≡_
 

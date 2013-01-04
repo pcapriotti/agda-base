@@ -7,7 +7,7 @@ open import sets.nat
 open import equality.core
 open import equality.calculus
 open import equality.reasoning
-open import function.isomorphism
+open import function.isomorphism.core
 open import function.isomorphism.coherent
 open import hott.hlevel.core
 

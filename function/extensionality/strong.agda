@@ -3,7 +3,7 @@ module function.extensionality.strong where
 
 open import level
 open import sum
-open import function
+open import function.core
 open import equality.core
 open import function.isomorphism
 open import function.extensionality.core

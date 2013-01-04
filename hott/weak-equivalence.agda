@@ -2,7 +2,7 @@
 module hott.weak-equivalence where
 
 open import equality.core
-open import function
+open import function.core
 open import function.isomorphism
 open import function.extensionality.dependent
 open import hott.univalence

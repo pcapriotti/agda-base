@@ -5,7 +5,7 @@ open import level using (lsuc)
 open import sum using (_,_ ; proj₁)
 open import equality.core
 open import equality.reasoning
-open import function using (_$_ ; id)
+open import function.core using (_$_ ; id)
 open import function.isomorphism using (_≅_ ; module _≅_)
 open import hott.weak-equivalence.core
 

@@ -6,7 +6,7 @@ open import sum
 open import sets.nat
 open import equality.core
 open import equality.groupoid
-open import function using (_$_)
+open import function.core using (_$_)
 
 -- h-levels
 h : ∀ {i} → ℕ → Set i → Set i

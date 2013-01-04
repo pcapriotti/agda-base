@@ -7,7 +7,7 @@ open import level
   using (lzero)
 open import equality.core
   using (_≡_; refl; cong)
-open import function
+open import function.core
   using (_$_; _∘_)
 open import decidable
   using (Dec; yes; no)

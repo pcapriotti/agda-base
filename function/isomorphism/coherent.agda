@@ -5,8 +5,8 @@ open import sum
 open import equality.core
 open import equality.calculus
 open import equality.reasoning
-open import function
-open import function.isomorphism
+open import function.core
+open import function.isomorphism.core
 
 coherent : ∀ {i j} {X : Set i}{Y : Set j} → X ≅ Y → Set _
 coherent f = ∀ x → cong to (iso₁ x) ≡ iso₂ (to x)
