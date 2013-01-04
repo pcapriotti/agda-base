@@ -1,0 +1,2428 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >solver.equality.list</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >open</a
+      ><a name="33"
+      > </a
+      ><a name="34" class="Keyword"
+      >import</a
+      ><a name="40"
+      > </a
+      ><a name="41" href="solver.equality.core.html#1" class="Module"
+      >solver.equality.core</a
+      ><a name="61"
+      >
+</a
+      ><a name="62" class="Keyword"
+      >module</a
+      ><a name="68"
+      > </a
+      ><a name="69" href="solver.equality.list.html#1" class="Module"
+      >solver.equality.list</a
+      ><a name="89"
+      > </a
+      ><a name="90" class="Symbol"
+      >{</a
+      ><a name="91" href="solver.equality.list.html#91" class="Bound"
+      >i</a
+      ><a name="92"
+      > </a
+      ><a name="93" href="solver.equality.list.html#93" class="Bound"
+      >k</a
+      ><a name="94" class="Symbol"
+      >}{</a
+      ><a name="96" href="solver.equality.list.html#96" class="Bound"
+      >X</a
+      ><a name="97"
+      > </a
+      ><a name="98" class="Symbol"
+      >:</a
+      ><a name="99"
+      > </a
+      ><a name="100" class="PrimitiveType"
+      >Set</a
+      ><a name="103"
+      > </a
+      ><a name="104" href="solver.equality.list.html#91" class="Bound"
+      >i</a
+      ><a name="105" class="Symbol"
+      >}(</a
+      ><a name="107" href="solver.equality.list.html#107" class="Bound"
+      >W</a
+      ><a name="108"
+      > </a
+      ><a name="109" class="Symbol"
+      >:</a
+      ><a name="110"
+      > </a
+      ><a name="111" href="solver.equality.core.html#383" class="Function"
+      >Graph</a
+      ><a name="116"
+      > </a
+      ><a name="117" href="solver.equality.list.html#96" class="Bound"
+      >X</a
+      ><a name="118"
+      > </a
+      ><a name="119" href="solver.equality.list.html#93" class="Bound"
+      >k</a
+      ><a name="120" class="Symbol"
+      >)</a
+      ><a name="121"
+      > </a
+      ><a name="122" class="Keyword"
+      >where</a
+      ><a name="127"
+      >
+
+</a
+      ><a name="129" class="Keyword"
+      >open</a
+      ><a name="133"
+      > </a
+      ><a name="134" class="Keyword"
+      >import</a
+      ><a name="140"
+      > </a
+      ><a name="141" href="level.html#1" class="Module"
+      >level</a
+      ><a name="146"
+      > </a
+      ><a name="147" class="Keyword"
+      >using</a
+      ><a name="152"
+      > </a
+      ><a name="153" class="Symbol"
+      >(</a
+      ><a name="154"
+      >_&#8852;_</a
+      ><a name="157" class="Symbol"
+      >)</a
+      ><a name="158"
+      >
+</a
+      ><a name="159" class="Keyword"
+      >open</a
+      ><a name="163"
+      > </a
+      ><a name="164" class="Keyword"
+      >import</a
+      ><a name="170"
+      > </a
+      ><a name="171" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="184"
+      > </a
+      ><a name="185" class="Keyword"
+      >hiding</a
+      ><a name="191"
+      > </a
+      ><a name="192" class="Symbol"
+      >(</a
+      ><a name="193"
+      >singleton</a
+      ><a name="202" class="Symbol"
+      >)</a
+      ><a name="203"
+      >
+</a
+      ><a name="204" class="Keyword"
+      >open</a
+      ><a name="208"
+      > </a
+      ><a name="209" class="Keyword"
+      >import</a
+      ><a name="215"
+      > </a
+      ><a name="216" href="equality.calculus.html#1" class="Module"
+      >equality.calculus</a
+      ><a name="233"
+      >
+</a
+      ><a name="234" class="Keyword"
+      >open</a
+      ><a name="238"
+      > </a
+      ><a name="239" class="Keyword"
+      >import</a
+      ><a name="245"
+      > </a
+      ><a name="246" href="equality.reasoning.html#1" class="Module"
+      >equality.reasoning</a
+      ><a name="264"
+      >
+</a
+      ><a name="265" class="Keyword"
+      >open</a
+      ><a name="269"
+      > </a
+      ><a name="270" class="Keyword"
+      >import</a
+      ><a name="276"
+      > </a
+      ><a name="277" href="hott.hlevel.html#1" class="Module"
+      >hott.hlevel</a
+      ><a name="288"
+      >
+
+</a
+      ><a name="290" class="Keyword"
+      >open</a
+      ><a name="294"
+      > </a
+      ><a name="295" class="Keyword"
+      >import</a
+      ><a name="301"
+      > </a
+      ><a name="302" href="category.free.list.html#1" class="Module"
+      >category.free.list</a
+      ><a name="320"
+      > </a
+      ><a name="321" class="Keyword"
+      >public</a
+      ><a name="327"
+      >
+  </a
+      ><a name="330" class="Keyword"
+      >renaming</a
+      ><a name="338"
+      > </a
+      ><a name="339" class="Symbol"
+      >(</a
+      ><a name="340"
+      >List </a
+      ><a name="345" class="Symbol"
+      >to</a
+      ><a name="347"
+      > FList</a
+      ><a name="353" class="Symbol"
+      >)</a
+      ><a name="354"
+      >
+
+</a
+      ><a name="356" href="solver.equality.list.html#356" class="Function"
+      >List</a
+      ><a name="360"
+      > </a
+      ><a name="361" class="Symbol"
+      >:</a
+      ><a name="362"
+      > </a
+      ><a name="363" href="solver.equality.core.html#383" class="Function"
+      >Graph</a
+      ><a name="368"
+      > </a
+      ><a name="369" href="solver.equality.list.html#96" class="Bound"
+      >X</a
+      ><a name="370"
+      > </a
+      ><a name="371" class="Symbol"
+      >(</a
+      ><a name="372" href="solver.equality.list.html#91" class="Bound"
+      >i</a
+      ><a name="373"
+      > </a
+      ><a name="374" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="375"
+      > </a
+      ><a name="376" href="solver.equality.list.html#93" class="Bound"
+      >k</a
+      ><a name="377" class="Symbol"
+      >)</a
+      ><a name="378"
+      >
+</a
+      ><a name="379" href="solver.equality.list.html#356" class="Function"
+      >List</a
+      ><a name="383"
+      > </a
+      ><a name="384" class="Symbol"
+      >=</a
+      ><a name="385"
+      > </a
+      ><a name="386" href="category.free.list.html#280" class="Datatype"
+      >FList</a
+      ><a name="391"
+      > </a
+      ><a name="392" href="solver.equality.list.html#107" class="Bound"
+      >W</a
+      ><a name="393"
+      >
+
+</a
+      ><a name="395" class="Keyword"
+      >module</a
+      ><a name="401"
+      > </a
+      ><a name="402" href="solver.equality.list.html#402" class="Module"
+      >WithInvolution</a
+      ><a name="416"
+      > </a
+      ><a name="417" class="Symbol"
+      >(</a
+      ><a name="418" href="solver.equality.list.html#418" class="Bound"
+      >inv</a
+      ><a name="421"
+      > </a
+      ><a name="422" class="Symbol"
+      >:</a
+      ><a name="423"
+      > </a
+      ><a name="424" href="solver.equality.core.html#1009" class="Record"
+      >Involution</a
+      ><a name="434"
+      > </a
+      ><a name="435" href="solver.equality.list.html#107" class="Bound"
+      >W</a
+      ><a name="436" class="Symbol"
+      >)</a
+      ><a name="437"
+      > </a
+      ><a name="438" class="Keyword"
+      >where</a
+      ><a name="443"
+      >
+  </a
+      ><a name="446" class="Keyword"
+      >open</a
+      ><a name="450"
+      > </a
+      ><a name="451" href="solver.equality.core.html#1009" class="Module"
+      >Involution</a
+      ><a name="461"
+      > </a
+      ><a name="462" href="solver.equality.list.html#418" class="Bound"
+      >inv</a
+      ><a name="465"
+      >
+
+  </a
+      ><a name="469" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="476"
+      > </a
+      ><a name="477" class="Symbol"
+      >:</a
+      ><a name="478"
+      > </a
+      ><a name="479" class="Symbol"
+      >&#8704;</a
+      ><a name="480"
+      > </a
+      ><a name="481" class="Symbol"
+      >{</a
+      ><a name="482" href="solver.equality.list.html#482" class="Bound"
+      >x</a
+      ><a name="483"
+      > </a
+      ><a name="484" href="solver.equality.list.html#484" class="Bound"
+      >y</a
+      ><a name="485" class="Symbol"
+      >}</a
+      ><a name="486"
+      > </a
+      ><a name="487" class="Symbol"
+      >&#8594;</a
+      ><a name="488"
+      > </a
+      ><a name="489" href="solver.equality.list.html#356" class="Function"
+      >List</a
+      ><a name="493"
+      > </a
+      ><a name="494" href="solver.equality.list.html#482" class="Bound"
+      >x</a
+      ><a name="495"
+      > </a
+      ><a name="496" href="solver.equality.list.html#484" class="Bound"
+      >y</a
+      ><a name="497"
+      > </a
+      ><a name="498" class="Symbol"
+      >&#8594;</a
+      ><a name="499"
+      > </a
+      ><a name="500" href="solver.equality.list.html#356" class="Function"
+      >List</a
+      ><a name="504"
+      > </a
+      ><a name="505" href="solver.equality.list.html#484" class="Bound"
+      >y</a
+      ><a name="506"
+      > </a
+      ><a name="507" href="solver.equality.list.html#482" class="Bound"
+      >x</a
+      ><a name="508"
+      >
+  </a
+      ><a name="511" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="518"
+      > </a
+      ><a name="519" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="522"
+      > </a
+      ><a name="523" class="Symbol"
+      >=</a
+      ><a name="524"
+      > </a
+      ><a name="525" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="528"
+      >
+  </a
+      ><a name="531" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="538"
+      > </a
+      ><a name="539" class="Symbol"
+      >(</a
+      ><a name="540" href="solver.equality.list.html#540" class="Bound"
+      >w</a
+      ><a name="541"
+      > </a
+      ><a name="542" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="543"
+      > </a
+      ><a name="544" href="solver.equality.list.html#544" class="Bound"
+      >ws</a
+      ><a name="546" class="Symbol"
+      >)</a
+      ><a name="547"
+      > </a
+      ><a name="548" class="Symbol"
+      >=</a
+      ><a name="549"
+      > </a
+      ><a name="550" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="557"
+      > </a
+      ><a name="558" href="solver.equality.list.html#544" class="Bound"
+      >ws</a
+      ><a name="560"
+      > </a
+      ><a name="561" href="category.free.list.html#2579" class="Function Operator"
+      >++</a
+      ><a name="563"
+      > </a
+      ><a name="564" class="Symbol"
+      >(</a
+      ><a name="565" href="solver.equality.core.html#1084" class="Function"
+      >&#964;</a
+      ><a name="566"
+      > </a
+      ><a name="567" href="solver.equality.list.html#540" class="Bound"
+      >w</a
+      ><a name="568"
+      > </a
+      ><a name="569" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="570"
+      > </a
+      ><a name="571" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="574" class="Symbol"
+      >)</a
+      ><a name="575"
+      >
+
+  </a
+      ><a name="579" href="solver.equality.list.html#579" class="Function"
+      >reverse++</a
+      ><a name="588"
+      > </a
+      ><a name="589" class="Symbol"
+      >:</a
+      ><a name="590"
+      > </a
+      ><a name="591" class="Symbol"
+      >&#8704;</a
+      ><a name="592"
+      > </a
+      ><a name="593" class="Symbol"
+      >{</a
+      ><a name="594" href="solver.equality.list.html#594" class="Bound"
+      >x</a
+      ><a name="595"
+      > </a
+      ><a name="596" href="solver.equality.list.html#596" class="Bound"
+      >y</a
+      ><a name="597"
+      > </a
+      ><a name="598" href="solver.equality.list.html#598" class="Bound"
+      >z</a
+      ><a name="599" class="Symbol"
+      >}</a
+      ><a name="600"
+      > </a
+      ><a name="601" class="Symbol"
+      >(</a
+      ><a name="602" href="solver.equality.list.html#602" class="Bound"
+      >ws</a
+      ><a name="604"
+      > </a
+      ><a name="605" class="Symbol"
+      >:</a
+      ><a name="606"
+      > </a
+      ><a name="607" href="solver.equality.list.html#356" class="Function"
+      >List</a
+      ><a name="611"
+      > </a
+      ><a name="612" href="solver.equality.list.html#594" class="Bound"
+      >x</a
+      ><a name="613"
+      > </a
+      ><a name="614" href="solver.equality.list.html#596" class="Bound"
+      >y</a
+      ><a name="615" class="Symbol"
+      >)</a
+      ><a name="616"
+      > </a
+      ><a name="617" class="Symbol"
+      >(</a
+      ><a name="618" href="solver.equality.list.html#618" class="Bound"
+      >us</a
+      ><a name="620"
+      > </a
+      ><a name="621" class="Symbol"
+      >:</a
+      ><a name="622"
+      > </a
+      ><a name="623" href="solver.equality.list.html#356" class="Function"
+      >List</a
+      ><a name="627"
+      > </a
+      ><a name="628" href="solver.equality.list.html#596" class="Bound"
+      >y</a
+      ><a name="629"
+      > </a
+      ><a name="630" href="solver.equality.list.html#598" class="Bound"
+      >z</a
+      ><a name="631" class="Symbol"
+      >)</a
+      ><a name="632"
+      >
+            </a
+      ><a name="645" class="Symbol"
+      >&#8594;</a
+      ><a name="646"
+      > </a
+      ><a name="647" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="654"
+      > </a
+      ><a name="655" class="Symbol"
+      >(</a
+      ><a name="656" href="solver.equality.list.html#602" class="Bound"
+      >ws</a
+      ><a name="658"
+      > </a
+      ><a name="659" href="category.free.list.html#2579" class="Function Operator"
+      >++</a
+      ><a name="661"
+      > </a
+      ><a name="662" href="solver.equality.list.html#618" class="Bound"
+      >us</a
+      ><a name="664" class="Symbol"
+      >)</a
+      ><a name="665"
+      >
+            </a
+      ><a name="678" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="679"
+      > </a
+      ><a name="680" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="687"
+      > </a
+      ><a name="688" href="solver.equality.list.html#618" class="Bound"
+      >us</a
+      ><a name="690"
+      > </a
+      ><a name="691" href="category.free.list.html#2579" class="Function Operator"
+      >++</a
+      ><a name="693"
+      > </a
+      ><a name="694" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="701"
+      > </a
+      ><a name="702" href="solver.equality.list.html#602" class="Bound"
+      >ws</a
+      ><a name="704"
+      >
+  </a
+      ><a name="707" href="solver.equality.list.html#579" class="Function"
+      >reverse++</a
+      ><a name="716"
+      > </a
+      ><a name="717" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="720"
+      > </a
+      ><a name="721" href="solver.equality.list.html#721" class="Bound"
+      >us</a
+      ><a name="723"
+      > </a
+      ><a name="724" class="Symbol"
+      >=</a
+      ><a name="725"
+      > </a
+      ><a name="726" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="729"
+      > </a
+      ><a name="730" class="Symbol"
+      >(</a
+      ><a name="731" href="category.free.list.html#2947" class="Function"
+      >nil-right-unit</a
+      ><a name="745"
+      > </a
+      ><a name="746" class="Symbol"
+      >(</a
+      ><a name="747" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="754"
+      > </a
+      ><a name="755" href="solver.equality.list.html#721" class="Bound"
+      >us</a
+      ><a name="757" class="Symbol"
+      >))</a
+      ><a name="759"
+      >
+  </a
+      ><a name="762" href="solver.equality.list.html#579" class="Function"
+      >reverse++</a
+      ><a name="771"
+      > </a
+      ><a name="772" class="Symbol"
+      >(</a
+      ><a name="773" href="solver.equality.list.html#773" class="Bound"
+      >w</a
+      ><a name="774"
+      > </a
+      ><a name="775" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="776"
+      > </a
+      ><a name="777" href="solver.equality.list.html#777" class="Bound"
+      >ws</a
+      ><a name="779" class="Symbol"
+      >)</a
+      ><a name="780"
+      > </a
+      ><a name="781" href="solver.equality.list.html#781" class="Bound"
+      >us</a
+      ><a name="783"
+      > </a
+      ><a name="784" class="Symbol"
+      >=</a
+      ><a name="785"
+      >
+      </a
+      ><a name="792" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="796"
+      > </a
+      ><a name="797" class="Symbol"
+      >(&#955;</a
+      ><a name="799"
+      > </a
+      ><a name="800" href="solver.equality.list.html#800" class="Bound"
+      >&#945;</a
+      ><a name="801"
+      > </a
+      ><a name="802" class="Symbol"
+      >&#8594;</a
+      ><a name="803"
+      > </a
+      ><a name="804" href="solver.equality.list.html#800" class="Bound"
+      >&#945;</a
+      ><a name="805"
+      > </a
+      ><a name="806" href="category.free.list.html#2579" class="Function Operator"
+      >++</a
+      ><a name="808"
+      > </a
+      ><a name="809" class="Symbol"
+      >(</a
+      ><a name="810" href="solver.equality.core.html#1084" class="Function"
+      >&#964;</a
+      ><a name="811"
+      > </a
+      ><a name="812" href="solver.equality.list.html#773" class="Bound"
+      >w</a
+      ><a name="813"
+      > </a
+      ><a name="814" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="815"
+      > </a
+      ><a name="816" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="819" class="Symbol"
+      >))</a
+      ><a name="821"
+      > </a
+      ><a name="822" class="Symbol"
+      >(</a
+      ><a name="823" href="solver.equality.list.html#579" class="Function"
+      >reverse++</a
+      ><a name="832"
+      > </a
+      ><a name="833" href="solver.equality.list.html#777" class="Bound"
+      >ws</a
+      ><a name="835"
+      > </a
+      ><a name="836" href="solver.equality.list.html#781" class="Bound"
+      >us</a
+      ><a name="838" class="Symbol"
+      >)</a
+      ><a name="839"
+      >
+    </a
+      ><a name="844" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="845"
+      > </a
+      ><a name="846" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="849"
+      > </a
+      ><a name="850" class="Symbol"
+      >(</a
+      ><a name="851" href="category.free.list.html#2713" class="Function"
+      >++-assoc</a
+      ><a name="859"
+      > </a
+      ><a name="860" class="Symbol"
+      >(</a
+      ><a name="861" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="868"
+      > </a
+      ><a name="869" href="solver.equality.list.html#781" class="Bound"
+      >us</a
+      ><a name="871" class="Symbol"
+      >)</a
+      ><a name="872"
+      > </a
+      ><a name="873" class="Symbol"
+      >(</a
+      ><a name="874" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="881"
+      > </a
+      ><a name="882" href="solver.equality.list.html#777" class="Bound"
+      >ws</a
+      ><a name="884" class="Symbol"
+      >)</a
+      ><a name="885"
+      > </a
+      ><a name="886" class="Symbol"
+      >(</a
+      ><a name="887" href="solver.equality.core.html#1084" class="Function"
+      >&#964;</a
+      ><a name="888"
+      > </a
+      ><a name="889" href="solver.equality.list.html#773" class="Bound"
+      >w</a
+      ><a name="890"
+      > </a
+      ><a name="891" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="892"
+      > </a
+      ><a name="893" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="896" class="Symbol"
+      >))</a
+      ><a name="898"
+      >
+
+  </a
+      ><a name="902" href="solver.equality.list.html#902" class="Function"
+      >reverse-reverse</a
+      ><a name="917"
+      > </a
+      ><a name="918" class="Symbol"
+      >:</a
+      ><a name="919"
+      > </a
+      ><a name="920" class="Symbol"
+      >&#8704;</a
+      ><a name="921"
+      > </a
+      ><a name="922" class="Symbol"
+      >{</a
+      ><a name="923" href="solver.equality.list.html#923" class="Bound"
+      >x</a
+      ><a name="924"
+      > </a
+      ><a name="925" href="solver.equality.list.html#925" class="Bound"
+      >y</a
+      ><a name="926" class="Symbol"
+      >}</a
+      ><a name="927"
+      > </a
+      ><a name="928" class="Symbol"
+      >(</a
+      ><a name="929" href="solver.equality.list.html#929" class="Bound"
+      >ws</a
+      ><a name="931"
+      > </a
+      ><a name="932" class="Symbol"
+      >:</a
+      ><a name="933"
+      > </a
+      ><a name="934" href="solver.equality.list.html#356" class="Function"
+      >List</a
+      ><a name="938"
+      > </a
+      ><a name="939" href="solver.equality.list.html#923" class="Bound"
+      >x</a
+      ><a name="940"
+      > </a
+      ><a name="941" href="solver.equality.list.html#925" class="Bound"
+      >y</a
+      ><a name="942" class="Symbol"
+      >)</a
+      ><a name="943"
+      >
+                  </a
+      ><a name="962" class="Symbol"
+      >&#8594;</a
+      ><a name="963"
+      > </a
+      ><a name="964" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="971"
+      > </a
+      ><a name="972" class="Symbol"
+      >(</a
+      ><a name="973" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="980"
+      > </a
+      ><a name="981" href="solver.equality.list.html#929" class="Bound"
+      >ws</a
+      ><a name="983" class="Symbol"
+      >)</a
+      ><a name="984"
+      > </a
+      ><a name="985" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="986"
+      > </a
+      ><a name="987" href="solver.equality.list.html#929" class="Bound"
+      >ws</a
+      ><a name="989"
+      >
+  </a
+      ><a name="992" href="solver.equality.list.html#902" class="Function"
+      >reverse-reverse</a
+      ><a name="1007"
+      > </a
+      ><a name="1008" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="1011"
+      > </a
+      ><a name="1012" class="Symbol"
+      >=</a
+      ><a name="1013"
+      > </a
+      ><a name="1014" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1018"
+      >
+  </a
+      ><a name="1021" href="solver.equality.list.html#902" class="Function"
+      >reverse-reverse</a
+      ><a name="1036"
+      > </a
+      ><a name="1037" class="Symbol"
+      >(</a
+      ><a name="1038" href="solver.equality.list.html#1038" class="Bound"
+      >w</a
+      ><a name="1039"
+      > </a
+      ><a name="1040" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="1041"
+      > </a
+      ><a name="1042" href="solver.equality.list.html#1042" class="Bound"
+      >ws</a
+      ><a name="1044" class="Symbol"
+      >)</a
+      ><a name="1045"
+      > </a
+      ><a name="1046" class="Symbol"
+      >=</a
+      ><a name="1047"
+      >
+      </a
+      ><a name="1054" href="solver.equality.list.html#579" class="Function"
+      >reverse++</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" class="Symbol"
+      >(</a
+      ><a name="1065" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="1072"
+      > </a
+      ><a name="1073" href="solver.equality.list.html#1042" class="Bound"
+      >ws</a
+      ><a name="1075" class="Symbol"
+      >)</a
+      ><a name="1076"
+      > </a
+      ><a name="1077" class="Symbol"
+      >(</a
+      ><a name="1078" href="solver.equality.core.html#1084" class="Function"
+      >&#964;</a
+      ><a name="1079"
+      > </a
+      ><a name="1080" href="solver.equality.list.html#1038" class="Bound"
+      >w</a
+      ><a name="1081"
+      > </a
+      ><a name="1082" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="1083"
+      > </a
+      ><a name="1084" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="1087" class="Symbol"
+      >)</a
+      ><a name="1088"
+      >
+    </a
+      ><a name="1093" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1094"
+      > </a
+      ><a name="1095" href="equality.core.html#480" class="Function"
+      >cong&#8322;</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >_&#8759;_</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" class="Symbol"
+      >(</a
+      ><a name="1106" href="solver.equality.core.html#1116" class="Function"
+      >&#964;-&#964;</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" href="solver.equality.list.html#1038" class="Bound"
+      >w</a
+      ><a name="1111" class="Symbol"
+      >)</a
+      ><a name="1112"
+      > </a
+      ><a name="1113" class="Symbol"
+      >(</a
+      ><a name="1114" href="solver.equality.list.html#902" class="Function"
+      >reverse-reverse</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" href="solver.equality.list.html#1042" class="Bound"
+      >ws</a
+      ><a name="1132" class="Symbol"
+      >)</a
+      ><a name="1133"
+      >
+
+</a
+      ><a name="1135" class="Keyword"
+      >module</a
+      ><a name="1141"
+      > </a
+      ><a name="1142" href="solver.equality.list.html#1142" class="Module"
+      >WithEnv</a
+      ><a name="1149"
+      > </a
+      ><a name="1150" class="Symbol"
+      >{</a
+      ><a name="1151" href="solver.equality.list.html#1151" class="Bound"
+      >j</a
+      ><a name="1152" class="Symbol"
+      >}{</a
+      ><a name="1154" href="solver.equality.list.html#1154" class="Bound"
+      >X'</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" class="Symbol"
+      >:</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" class="PrimitiveType"
+      >Set</a
+      ><a name="1162"
+      > </a
+      ><a name="1163" href="solver.equality.list.html#1151" class="Bound"
+      >j</a
+      ><a name="1164" class="Symbol"
+      >}(</a
+      ><a name="1166" href="solver.equality.list.html#1166" class="Bound"
+      >env</a
+      ><a name="1169"
+      > </a
+      ><a name="1170" class="Symbol"
+      >:</a
+      ><a name="1171"
+      > </a
+      ><a name="1172" href="solver.equality.core.html#684" class="Function"
+      >Env</a
+      ><a name="1175"
+      > </a
+      ><a name="1176" href="solver.equality.list.html#107" class="Bound"
+      >W</a
+      ><a name="1177"
+      > </a
+      ><a name="1178" href="solver.equality.list.html#1154" class="Bound"
+      >X'</a
+      ><a name="1180" class="Symbol"
+      >)</a
+      ><a name="1181"
+      > </a
+      ><a name="1182" class="Keyword"
+      >where</a
+      ><a name="1187"
+      >
+  </a
+      ><a name="1190" class="Keyword"
+      >open</a
+      ><a name="1194"
+      > </a
+      ><a name="1195" href="equality.reasoning.html#96" class="Module"
+      >&#8801;-Reasoning</a
+      ><a name="1206"
+      >
+  
+  </a
+      ><a name="1212" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" class="Symbol"
+      >:</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" href="solver.equality.core.html#684" class="Function"
+      >Env</a
+      ><a name="1222"
+      > </a
+      ><a name="1223" href="solver.equality.list.html#356" class="Function"
+      >List</a
+      ><a name="1227"
+      > </a
+      ><a name="1228" href="solver.equality.list.html#1154" class="Bound"
+      >X'</a
+      ><a name="1230"
+      >
+  </a
+      ><a name="1233" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1237"
+      > </a
+      ><a name="1238" class="Symbol"
+      >=</a
+      ><a name="1239"
+      > </a
+      ><a name="1240" class="Keyword"
+      >record</a
+      ><a name="1246"
+      > </a
+      ><a name="1247" class="Symbol"
+      >{</a
+      ><a name="1248"
+      > </a
+      ><a name="1249" class="Field"
+      >imap</a
+      ><a name="1253"
+      > </a
+      ><a name="1254" class="Symbol"
+      >=</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" href="solver.equality.core.html#591" class="Function"
+      >imap</a
+      ><a name="1260"
+      > </a
+      ><a name="1261" href="solver.equality.list.html#1166" class="Bound"
+      >env</a
+      ><a name="1264"
+      > </a
+      ><a name="1265" class="Symbol"
+      >;</a
+      ><a name="1266"
+      > </a
+      ><a name="1267" class="Field"
+      >gmap</a
+      ><a name="1271"
+      > </a
+      ><a name="1272" class="Symbol"
+      >=</a
+      ><a name="1273"
+      > </a
+      ><a name="1274" href="solver.equality.list.html#1295" class="Function"
+      >go</a
+      ><a name="1276"
+      > </a
+      ><a name="1277" class="Symbol"
+      >}</a
+      ><a name="1278"
+      >
+    </a
+      ><a name="1283" class="Keyword"
+      >where</a
+      ><a name="1288"
+      >
+      </a
+      ><a name="1295" href="solver.equality.list.html#1295" class="Function"
+      >go</a
+      ><a name="1297"
+      > </a
+      ><a name="1298" class="Symbol"
+      >:</a
+      ><a name="1299"
+      > </a
+      ><a name="1300" class="Symbol"
+      >&#8704;</a
+      ><a name="1301"
+      > </a
+      ><a name="1302" class="Symbol"
+      >{</a
+      ><a name="1303" href="solver.equality.list.html#1303" class="Bound"
+      >x</a
+      ><a name="1304"
+      > </a
+      ><a name="1305" href="solver.equality.list.html#1305" class="Bound"
+      >y</a
+      ><a name="1306" class="Symbol"
+      >}</a
+      ><a name="1307"
+      > </a
+      ><a name="1308" class="Symbol"
+      >&#8594;</a
+      ><a name="1309"
+      > </a
+      ><a name="1310" href="solver.equality.list.html#356" class="Function"
+      >List</a
+      ><a name="1314"
+      > </a
+      ><a name="1315" href="solver.equality.list.html#1303" class="Bound"
+      >x</a
+      ><a name="1316"
+      > </a
+      ><a name="1317" href="solver.equality.list.html#1305" class="Bound"
+      >y</a
+      ><a name="1318"
+      > </a
+      ><a name="1319" class="Symbol"
+      >&#8594;</a
+      ><a name="1320"
+      > </a
+      ><a name="1321" href="solver.equality.core.html#591" class="Function"
+      >imap</a
+      ><a name="1325"
+      > </a
+      ><a name="1326" href="solver.equality.list.html#1166" class="Bound"
+      >env</a
+      ><a name="1329"
+      > </a
+      ><a name="1330" href="solver.equality.list.html#1303" class="Bound"
+      >x</a
+      ><a name="1331"
+      > </a
+      ><a name="1332" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1333"
+      > </a
+      ><a name="1334" href="solver.equality.core.html#591" class="Function"
+      >imap</a
+      ><a name="1338"
+      > </a
+      ><a name="1339" href="solver.equality.list.html#1166" class="Bound"
+      >env</a
+      ><a name="1342"
+      > </a
+      ><a name="1343" href="solver.equality.list.html#1305" class="Bound"
+      >y</a
+      ><a name="1344"
+      >
+      </a
+      ><a name="1351" href="solver.equality.list.html#1295" class="Function"
+      >go</a
+      ><a name="1353"
+      > </a
+      ><a name="1354" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="1357"
+      > </a
+      ><a name="1358" class="Symbol"
+      >=</a
+      ><a name="1359"
+      > </a
+      ><a name="1360" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1364"
+      >
+      </a
+      ><a name="1371" href="solver.equality.list.html#1295" class="Function"
+      >go</a
+      ><a name="1373"
+      > </a
+      ><a name="1374" class="Symbol"
+      >(</a
+      ><a name="1375" href="solver.equality.list.html#1375" class="Bound"
+      >w</a
+      ><a name="1376"
+      > </a
+      ><a name="1377" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="1378"
+      > </a
+      ><a name="1379" href="solver.equality.list.html#1379" class="Bound"
+      >ws</a
+      ><a name="1381" class="Symbol"
+      >)</a
+      ><a name="1382"
+      > </a
+      ><a name="1383" class="Symbol"
+      >=</a
+      ><a name="1384"
+      > </a
+      ><a name="1385" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1389"
+      > </a
+      ><a name="1390" href="solver.equality.list.html#1166" class="Bound"
+      >env</a
+      ><a name="1393"
+      > </a
+      ><a name="1394" href="solver.equality.list.html#1375" class="Bound"
+      >w</a
+      ><a name="1395"
+      > </a
+      ><a name="1396" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1397"
+      > </a
+      ><a name="1398" href="solver.equality.list.html#1295" class="Function"
+      >go</a
+      ><a name="1400"
+      > </a
+      ><a name="1401" href="solver.equality.list.html#1379" class="Bound"
+      >ws</a
+      ><a name="1403"
+      >
+
+  </a
+      ><a name="1407" href="solver.equality.list.html#1407" class="Function"
+      >singleton</a
+      ><a name="1416"
+      > </a
+      ><a name="1417" class="Symbol"
+      >:</a
+      ><a name="1418"
+      > </a
+      ><a name="1419" class="Symbol"
+      >&#8704;</a
+      ><a name="1420"
+      > </a
+      ><a name="1421" class="Symbol"
+      >{</a
+      ><a name="1422" href="solver.equality.list.html#1422" class="Bound"
+      >x</a
+      ><a name="1423"
+      > </a
+      ><a name="1424" href="solver.equality.list.html#1424" class="Bound"
+      >y</a
+      ><a name="1425" class="Symbol"
+      >}(</a
+      ><a name="1427" href="solver.equality.list.html#1427" class="Bound"
+      >w</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" class="Symbol"
+      >:</a
+      ><a name="1430"
+      > </a
+      ><a name="1431" href="solver.equality.list.html#107" class="Bound"
+      >W</a
+      ><a name="1432"
+      > </a
+      ><a name="1433" href="solver.equality.list.html#1422" class="Bound"
+      >x</a
+      ><a name="1434"
+      > </a
+      ><a name="1435" href="solver.equality.list.html#1424" class="Bound"
+      >y</a
+      ><a name="1436" class="Symbol"
+      >)</a
+      ><a name="1437"
+      > </a
+      ><a name="1438" class="Symbol"
+      >&#8594;</a
+      ><a name="1439"
+      > </a
+      ><a name="1440" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1444"
+      > </a
+      ><a name="1445" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1449"
+      > </a
+      ><a name="1450" class="Symbol"
+      >(</a
+      ><a name="1451" href="solver.equality.list.html#1427" class="Bound"
+      >w</a
+      ><a name="1452"
+      > </a
+      ><a name="1453" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="1454"
+      > </a
+      ><a name="1455" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="1458" class="Symbol"
+      >)</a
+      ><a name="1459"
+      > </a
+      ><a name="1460" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1461"
+      > </a
+      ><a name="1462" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1466"
+      > </a
+      ><a name="1467" href="solver.equality.list.html#1166" class="Bound"
+      >env</a
+      ><a name="1470"
+      > </a
+      ><a name="1471" href="solver.equality.list.html#1427" class="Bound"
+      >w</a
+      ><a name="1472"
+      >
+  </a
+      ><a name="1475" href="solver.equality.list.html#1407" class="Function"
+      >singleton</a
+      ><a name="1484"
+      > </a
+      ><a name="1485" href="solver.equality.list.html#1485" class="Bound"
+      >w</a
+      ><a name="1486"
+      > </a
+      ><a name="1487" class="Symbol"
+      >=</a
+      ><a name="1488"
+      > </a
+      ><a name="1489" href="equality.groupoid.html#235" class="Function"
+      >left-unit</a
+      ><a name="1498"
+      > </a
+      ><a name="1499" class="Symbol"
+      >(</a
+      ><a name="1500" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1504"
+      > </a
+      ><a name="1505" href="solver.equality.list.html#1166" class="Bound"
+      >env</a
+      ><a name="1508"
+      > </a
+      ><a name="1509" href="solver.equality.list.html#1485" class="Bound"
+      >w</a
+      ><a name="1510" class="Symbol"
+      >)</a
+      ><a name="1511"
+      >
+
+  </a
+      ><a name="1515" href="solver.equality.list.html#1515" class="Function"
+      >eval++</a
+      ><a name="1521"
+      > </a
+      ><a name="1522" class="Symbol"
+      >:</a
+      ><a name="1523"
+      > </a
+      ><a name="1524" class="Symbol"
+      >&#8704;</a
+      ><a name="1525"
+      > </a
+      ><a name="1526" class="Symbol"
+      >{</a
+      ><a name="1527" href="solver.equality.list.html#1527" class="Bound"
+      >x</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" href="solver.equality.list.html#1529" class="Bound"
+      >y</a
+      ><a name="1530"
+      > </a
+      ><a name="1531" href="solver.equality.list.html#1531" class="Bound"
+      >z</a
+      ><a name="1532" class="Symbol"
+      >}(</a
+      ><a name="1534" href="solver.equality.list.html#1534" class="Bound"
+      >ws</a
+      ><a name="1536"
+      > </a
+      ><a name="1537" class="Symbol"
+      >:</a
+      ><a name="1538"
+      > </a
+      ><a name="1539" href="solver.equality.list.html#356" class="Function"
+      >List</a
+      ><a name="1543"
+      > </a
+      ><a name="1544" href="solver.equality.list.html#1527" class="Bound"
+      >x</a
+      ><a name="1545"
+      > </a
+      ><a name="1546" href="solver.equality.list.html#1529" class="Bound"
+      >y</a
+      ><a name="1547" class="Symbol"
+      >)(</a
+      ><a name="1549" href="solver.equality.list.html#1549" class="Bound"
+      >us</a
+      ><a name="1551"
+      > </a
+      ><a name="1552" class="Symbol"
+      >:</a
+      ><a name="1553"
+      > </a
+      ><a name="1554" href="solver.equality.list.html#356" class="Function"
+      >List</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" href="solver.equality.list.html#1529" class="Bound"
+      >y</a
+      ><a name="1560"
+      > </a
+      ><a name="1561" href="solver.equality.list.html#1531" class="Bound"
+      >z</a
+      ><a name="1562" class="Symbol"
+      >)</a
+      ><a name="1563"
+      >
+         </a
+      ><a name="1573" class="Symbol"
+      >&#8594;</a
+      ><a name="1574"
+      > </a
+      ><a name="1575" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1579"
+      > </a
+      ><a name="1580" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" class="Symbol"
+      >(</a
+      ><a name="1586" href="solver.equality.list.html#1534" class="Bound"
+      >ws</a
+      ><a name="1588"
+      > </a
+      ><a name="1589" href="category.free.list.html#2579" class="Function Operator"
+      >++</a
+      ><a name="1591"
+      > </a
+      ><a name="1592" href="solver.equality.list.html#1549" class="Bound"
+      >us</a
+      ><a name="1594" class="Symbol"
+      >)</a
+      ><a name="1595"
+      > </a
+      ><a name="1596" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1597"
+      > </a
+      ><a name="1598" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1602"
+      > </a
+      ><a name="1603" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1607"
+      > </a
+      ><a name="1608" href="solver.equality.list.html#1534" class="Bound"
+      >ws</a
+      ><a name="1610"
+      > </a
+      ><a name="1611" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1612"
+      > </a
+      ><a name="1613" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1617"
+      > </a
+      ><a name="1618" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1622"
+      > </a
+      ><a name="1623" href="solver.equality.list.html#1549" class="Bound"
+      >us</a
+      ><a name="1625"
+      >
+  </a
+      ><a name="1628" href="solver.equality.list.html#1515" class="Function"
+      >eval++</a
+      ><a name="1634"
+      > </a
+      ><a name="1635" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="1638"
+      > </a
+      ><a name="1639" href="solver.equality.list.html#1639" class="Bound"
+      >us</a
+      ><a name="1641"
+      > </a
+      ><a name="1642" class="Symbol"
+      >=</a
+      ><a name="1643"
+      > </a
+      ><a name="1644" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1648"
+      >
+  </a
+      ><a name="1651" href="solver.equality.list.html#1515" class="Function"
+      >eval++</a
+      ><a name="1657"
+      > </a
+      ><a name="1658" class="Symbol"
+      >(</a
+      ><a name="1659" href="solver.equality.list.html#1659" class="Bound"
+      >w</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" href="solver.equality.list.html#1663" class="Bound"
+      >ws</a
+      ><a name="1665" class="Symbol"
+      >)</a
+      ><a name="1666"
+      > </a
+      ><a name="1667" href="solver.equality.list.html#1667" class="Bound"
+      >us</a
+      ><a name="1669"
+      > </a
+      ><a name="1670" class="Symbol"
+      >=</a
+      ><a name="1671"
+      > </a
+      ><a name="1672" href="equality.reasoning.html#423" class="Function Operator"
+      >begin</a
+      ><a name="1677"
+      >
+      </a
+      ><a name="1684" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" href="solver.equality.list.html#1166" class="Bound"
+      >env</a
+      ><a name="1692"
+      > </a
+      ><a name="1693" href="solver.equality.list.html#1659" class="Bound"
+      >w</a
+      ><a name="1694"
+      > </a
+      ><a name="1695" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1696"
+      > </a
+      ><a name="1697" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1701"
+      > </a
+      ><a name="1702" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1706"
+      > </a
+      ><a name="1707" class="Symbol"
+      >(</a
+      ><a name="1708" href="solver.equality.list.html#1663" class="Bound"
+      >ws</a
+      ><a name="1710"
+      > </a
+      ><a name="1711" href="category.free.list.html#2579" class="Function Operator"
+      >++</a
+      ><a name="1713"
+      > </a
+      ><a name="1714" href="solver.equality.list.html#1667" class="Bound"
+      >us</a
+      ><a name="1716" class="Symbol"
+      >)</a
+      ><a name="1717"
+      >
+    </a
+      ><a name="1722" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1724"
+      > </a
+      ><a name="1725" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1729"
+      > </a
+      ><a name="1730" class="Symbol"
+      >(&#955;</a
+      ><a name="1732"
+      > </a
+      ><a name="1733" href="solver.equality.list.html#1733" class="Bound"
+      >&#945;</a
+      ><a name="1734"
+      > </a
+      ><a name="1735" class="Symbol"
+      >&#8594;</a
+      ><a name="1736"
+      > </a
+      ><a name="1737" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1741"
+      > </a
+      ><a name="1742" href="solver.equality.list.html#1166" class="Bound"
+      >env</a
+      ><a name="1745"
+      > </a
+      ><a name="1746" href="solver.equality.list.html#1659" class="Bound"
+      >w</a
+      ><a name="1747"
+      > </a
+      ><a name="1748" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1749"
+      > </a
+      ><a name="1750" href="solver.equality.list.html#1733" class="Bound"
+      >&#945;</a
+      ><a name="1751" class="Symbol"
+      >)</a
+      ><a name="1752"
+      > </a
+      ><a name="1753" class="Symbol"
+      >(</a
+      ><a name="1754" href="solver.equality.list.html#1515" class="Function"
+      >eval++</a
+      ><a name="1760"
+      > </a
+      ><a name="1761" href="solver.equality.list.html#1663" class="Bound"
+      >ws</a
+      ><a name="1763"
+      > </a
+      ><a name="1764" href="solver.equality.list.html#1667" class="Bound"
+      >us</a
+      ><a name="1766" class="Symbol"
+      >)</a
+      ><a name="1767"
+      > </a
+      ><a name="1768" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1769"
+      >
+      </a
+      ><a name="1776" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1780"
+      > </a
+      ><a name="1781" href="solver.equality.list.html#1166" class="Bound"
+      >env</a
+      ><a name="1784"
+      > </a
+      ><a name="1785" href="solver.equality.list.html#1659" class="Bound"
+      >w</a
+      ><a name="1786"
+      > </a
+      ><a name="1787" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1788"
+      > </a
+      ><a name="1789" class="Symbol"
+      >(</a
+      ><a name="1790" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1794"
+      > </a
+      ><a name="1795" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1799"
+      > </a
+      ><a name="1800" href="solver.equality.list.html#1663" class="Bound"
+      >ws</a
+      ><a name="1802"
+      > </a
+      ><a name="1803" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1804"
+      > </a
+      ><a name="1805" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1809"
+      > </a
+      ><a name="1810" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1814"
+      > </a
+      ><a name="1815" href="solver.equality.list.html#1667" class="Bound"
+      >us</a
+      ><a name="1817" class="Symbol"
+      >)</a
+      ><a name="1818"
+      >
+    </a
+      ><a name="1823" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1825"
+      > </a
+      ><a name="1826" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="1829"
+      > </a
+      ><a name="1830" class="Symbol"
+      >(</a
+      ><a name="1831" href="equality.groupoid.html#459" class="Function"
+      >associativity</a
+      ><a name="1844"
+      > </a
+      ><a name="1845" class="Symbol"
+      >(</a
+      ><a name="1846" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1850"
+      > </a
+      ><a name="1851" href="solver.equality.list.html#1166" class="Bound"
+      >env</a
+      ><a name="1854"
+      > </a
+      ><a name="1855" href="solver.equality.list.html#1659" class="Bound"
+      >w</a
+      ><a name="1856" class="Symbol"
+      >)</a
+      ><a name="1857"
+      > </a
+      ><a name="1858" class="Symbol"
+      >(</a
+      ><a name="1859" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1863"
+      > </a
+      ><a name="1864" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1868"
+      > </a
+      ><a name="1869" href="solver.equality.list.html#1663" class="Bound"
+      >ws</a
+      ><a name="1871" class="Symbol"
+      >)</a
+      ><a name="1872"
+      > </a
+      ><a name="1873" class="Symbol"
+      >(</a
+      ><a name="1874" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1878"
+      > </a
+      ><a name="1879" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1883"
+      > </a
+      ><a name="1884" href="solver.equality.list.html#1667" class="Bound"
+      >us</a
+      ><a name="1886" class="Symbol"
+      >))</a
+      ><a name="1888"
+      > </a
+      ><a name="1889" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1890"
+      >
+      </a
+      ><a name="1897" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1901"
+      > </a
+      ><a name="1902" href="solver.equality.list.html#1166" class="Bound"
+      >env</a
+      ><a name="1905"
+      > </a
+      ><a name="1906" href="solver.equality.list.html#1659" class="Bound"
+      >w</a
+      ><a name="1907"
+      > </a
+      ><a name="1908" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1909"
+      > </a
+      ><a name="1910" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1914"
+      > </a
+      ><a name="1915" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1919"
+      > </a
+      ><a name="1920" href="solver.equality.list.html#1663" class="Bound"
+      >ws</a
+      ><a name="1922"
+      > </a
+      ><a name="1923" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1924"
+      > </a
+      ><a name="1925" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="1929"
+      > </a
+      ><a name="1930" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="1934"
+      > </a
+      ><a name="1935" href="solver.equality.list.html#1667" class="Bound"
+      >us</a
+      ><a name="1937"
+      >
+    </a
+      ><a name="1942" href="equality.reasoning.html#594" class="Function Operator"
+      >&#8718;</a
+      ><a name="1943"
+      >
+
+</a
+      ><a name="1945" class="Keyword"
+      >module</a
+      ><a name="1951"
+      > </a
+      ><a name="1952" href="solver.equality.list.html#1952" class="Module"
+      >WithEnvInvolution</a
+      ><a name="1969"
+      > </a
+      ><a name="1970" class="Symbol"
+      >{</a
+      ><a name="1971" href="solver.equality.list.html#1971" class="Bound"
+      >j</a
+      ><a name="1972" class="Symbol"
+      >}{</a
+      ><a name="1974" href="solver.equality.list.html#1974" class="Bound"
+      >X'</a
+      ><a name="1976"
+      > </a
+      ><a name="1977" class="Symbol"
+      >:</a
+      ><a name="1978"
+      > </a
+      ><a name="1979" class="PrimitiveType"
+      >Set</a
+      ><a name="1982"
+      > </a
+      ><a name="1983" href="solver.equality.list.html#1971" class="Bound"
+      >j</a
+      ><a name="1984" class="Symbol"
+      >}(</a
+      ><a name="1986" href="solver.equality.list.html#1986" class="Bound"
+      >env</a
+      ><a name="1989"
+      > </a
+      ><a name="1990" class="Symbol"
+      >:</a
+      ><a name="1991"
+      > </a
+      ><a name="1992" href="solver.equality.core.html#684" class="Function"
+      >Env</a
+      ><a name="1995"
+      > </a
+      ><a name="1996" href="solver.equality.list.html#107" class="Bound"
+      >W</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" href="solver.equality.list.html#1974" class="Bound"
+      >X'</a
+      ><a name="2000" class="Symbol"
+      >)</a
+      ><a name="2001"
+      > </a
+      ><a name="2002" class="Symbol"
+      >(</a
+      ><a name="2003" href="solver.equality.list.html#2003" class="Bound"
+      >env-inv</a
+      ><a name="2010"
+      > </a
+      ><a name="2011" class="Symbol"
+      >:</a
+      ><a name="2012"
+      > </a
+      ><a name="2013" href="solver.equality.core.html#1163" class="Record"
+      >EnvInvolution</a
+      ><a name="2026"
+      > </a
+      ><a name="2027" href="solver.equality.list.html#107" class="Bound"
+      >W</a
+      ><a name="2028"
+      > </a
+      ><a name="2029" href="solver.equality.list.html#1986" class="Bound"
+      >env</a
+      ><a name="2032" class="Symbol"
+      >)</a
+      ><a name="2033"
+      > </a
+      ><a name="2034" class="Keyword"
+      >where</a
+      ><a name="2039"
+      >
+  </a
+      ><a name="2042" class="Keyword"
+      >open</a
+      ><a name="2046"
+      > </a
+      ><a name="2047" href="solver.equality.core.html#1163" class="Module"
+      >EnvInvolution</a
+      ><a name="2060"
+      > </a
+      ><a name="2061" href="solver.equality.list.html#2003" class="Bound"
+      >env-inv</a
+      ><a name="2068"
+      >
+  </a
+      ><a name="2071" class="Keyword"
+      >open</a
+      ><a name="2075"
+      > </a
+      ><a name="2076" href="solver.equality.list.html#1142" class="Module"
+      >WithEnv</a
+      ><a name="2083"
+      > </a
+      ><a name="2084" href="solver.equality.list.html#1986" class="Bound"
+      >env</a
+      ><a name="2087"
+      >
+  </a
+      ><a name="2090" class="Keyword"
+      >open</a
+      ><a name="2094"
+      > </a
+      ><a name="2095" href="solver.equality.list.html#402" class="Module"
+      >WithInvolution</a
+      ><a name="2109"
+      > </a
+      ><a name="2110" href="solver.equality.core.html#1317" class="Function"
+      >inv</a
+      ><a name="2113"
+      >
+  </a
+      ><a name="2116" class="Keyword"
+      >open</a
+      ><a name="2120"
+      > </a
+      ><a name="2121" href="equality.reasoning.html#96" class="Module"
+      >&#8801;-Reasoning</a
+      ><a name="2132"
+      >
+
+  </a
+      ><a name="2136" href="solver.equality.list.html#2136" class="Function"
+      >reverse-inv</a
+      ><a name="2147"
+      > </a
+      ><a name="2148" class="Symbol"
+      >:</a
+      ><a name="2149"
+      > </a
+      ><a name="2150" class="Symbol"
+      >&#8704;</a
+      ><a name="2151"
+      > </a
+      ><a name="2152" class="Symbol"
+      >{</a
+      ><a name="2153" href="solver.equality.list.html#2153" class="Bound"
+      >x</a
+      ><a name="2154"
+      > </a
+      ><a name="2155" href="solver.equality.list.html#2155" class="Bound"
+      >y</a
+      ><a name="2156" class="Symbol"
+      >}(</a
+      ><a name="2158" href="solver.equality.list.html#2158" class="Bound"
+      >t</a
+      ><a name="2159"
+      > </a
+      ><a name="2160" class="Symbol"
+      >:</a
+      ><a name="2161"
+      > </a
+      ><a name="2162" href="solver.equality.list.html#356" class="Function"
+      >List</a
+      ><a name="2166"
+      > </a
+      ><a name="2167" href="solver.equality.list.html#2153" class="Bound"
+      >x</a
+      ><a name="2168"
+      > </a
+      ><a name="2169" href="solver.equality.list.html#2155" class="Bound"
+      >y</a
+      ><a name="2170" class="Symbol"
+      >)</a
+      ><a name="2171"
+      >
+              </a
+      ><a name="2186" class="Symbol"
+      >&#8594;</a
+      ><a name="2187"
+      > </a
+      ><a name="2188" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="2192"
+      > </a
+      ><a name="2193" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="2197"
+      > </a
+      ><a name="2198" class="Symbol"
+      >(</a
+      ><a name="2199" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="2206"
+      > </a
+      ><a name="2207" href="solver.equality.list.html#2158" class="Bound"
+      >t</a
+      ><a name="2208" class="Symbol"
+      >)</a
+      ><a name="2209"
+      > </a
+      ><a name="2210" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2211"
+      > </a
+      ><a name="2212" class="Symbol"
+      >(</a
+      ><a name="2213" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="2217"
+      > </a
+      ><a name="2218" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="2222"
+      > </a
+      ><a name="2223" href="solver.equality.list.html#2158" class="Bound"
+      >t</a
+      ><a name="2224" class="Symbol"
+      >)</a
+      ><a name="2225"
+      > </a
+      ><a name="2226" href="equality.groupoid.html#88" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2228"
+      >
+  </a
+      ><a name="2231" href="solver.equality.list.html#2136" class="Function"
+      >reverse-inv</a
+      ><a name="2242"
+      > </a
+      ><a name="2243" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="2246"
+      > </a
+      ><a name="2247" class="Symbol"
+      >=</a
+      ><a name="2248"
+      > </a
+      ><a name="2249" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="2253"
+      >
+  </a
+      ><a name="2256" href="solver.equality.list.html#2136" class="Function"
+      >reverse-inv</a
+      ><a name="2267"
+      > </a
+      ><a name="2268" class="Symbol"
+      >(</a
+      ><a name="2269" href="solver.equality.list.html#2269" class="Bound"
+      >w</a
+      ><a name="2270"
+      > </a
+      ><a name="2271" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="2272"
+      > </a
+      ><a name="2273" href="solver.equality.list.html#2273" class="Bound"
+      >ws</a
+      ><a name="2275" class="Symbol"
+      >)</a
+      ><a name="2276"
+      > </a
+      ><a name="2277" class="Symbol"
+      >=</a
+      ><a name="2278"
+      > </a
+      ><a name="2279" href="equality.reasoning.html#423" class="Function Operator"
+      >begin</a
+      ><a name="2284"
+      >
+      </a
+      ><a name="2291" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="2295"
+      > </a
+      ><a name="2296" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="2300"
+      > </a
+      ><a name="2301" class="Symbol"
+      >(</a
+      ><a name="2302" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="2309"
+      > </a
+      ><a name="2310" href="solver.equality.list.html#2273" class="Bound"
+      >ws</a
+      ><a name="2312"
+      > </a
+      ><a name="2313" href="category.free.list.html#2579" class="Function Operator"
+      >++</a
+      ><a name="2315"
+      > </a
+      ><a name="2316" class="Symbol"
+      >(</a
+      ><a name="2317" href="solver.equality.core.html#1084" class="Function"
+      >&#964;</a
+      ><a name="2318"
+      > </a
+      ><a name="2319" href="solver.equality.list.html#2269" class="Bound"
+      >w</a
+      ><a name="2320"
+      > </a
+      ><a name="2321" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="2322"
+      > </a
+      ><a name="2323" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="2326" class="Symbol"
+      >))</a
+      ><a name="2328"
+      >
+    </a
+      ><a name="2333" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="2335"
+      > </a
+      ><a name="2336" href="solver.equality.list.html#1515" class="Function"
+      >eval++</a
+      ><a name="2342"
+      > </a
+      ><a name="2343" class="Symbol"
+      >(</a
+      ><a name="2344" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="2351"
+      > </a
+      ><a name="2352" href="solver.equality.list.html#2273" class="Bound"
+      >ws</a
+      ><a name="2354" class="Symbol"
+      >)</a
+      ><a name="2355"
+      > </a
+      ><a name="2356" class="Symbol"
+      >(</a
+      ><a name="2357" href="solver.equality.core.html#1084" class="Function"
+      >&#964;</a
+      ><a name="2358"
+      > </a
+      ><a name="2359" href="solver.equality.list.html#2269" class="Bound"
+      >w</a
+      ><a name="2360"
+      > </a
+      ><a name="2361" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="2362"
+      > </a
+      ><a name="2363" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="2366" class="Symbol"
+      >)</a
+      ><a name="2367"
+      > </a
+      ><a name="2368" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="2369"
+      >
+      </a
+      ><a name="2376" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="2380"
+      > </a
+      ><a name="2381" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="2385"
+      > </a
+      ><a name="2386" class="Symbol"
+      >(</a
+      ><a name="2387" href="solver.equality.list.html#469" class="Function"
+      >reverse</a
+      ><a name="2394"
+      > </a
+      ><a name="2395" href="solver.equality.list.html#2273" class="Bound"
+      >ws</a
+      ><a name="2397" class="Symbol"
+      >)</a
+      ><a name="2398"
+      > </a
+      ><a name="2399" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="2400"
+      > </a
+      ><a name="2401" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="2405"
+      > </a
+      ><a name="2406" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="2410"
+      > </a
+      ><a name="2411" class="Symbol"
+      >(</a
+      ><a name="2412" href="solver.equality.core.html#1084" class="Function"
+      >&#964;</a
+      ><a name="2413"
+      > </a
+      ><a name="2414" href="solver.equality.list.html#2269" class="Bound"
+      >w</a
+      ><a name="2415"
+      > </a
+      ><a name="2416" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="2417"
+      > </a
+      ><a name="2418" href="category.free.list.html#359" class="InductiveConstructor"
+      >nil</a
+      ><a name="2421" class="Symbol"
+      >)</a
+      ><a name="2422"
+      >
+    </a
+      ><a name="2427" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="2429"
+      > </a
+      ><a name="2430" href="equality.core.html#480" class="Function"
+      >cong&#8322;</a
+      ><a name="2435"
+      > </a
+      ><a name="2436" href="equality.groupoid.html#147" class="Function Operator"
+      >_&#8858;_</a
+      ><a name="2439"
+      > </a
+      ><a name="2440" class="Symbol"
+      >(</a
+      ><a name="2441" href="solver.equality.list.html#2136" class="Function"
+      >reverse-inv</a
+      ><a name="2452"
+      > </a
+      ><a name="2453" href="solver.equality.list.html#2273" class="Bound"
+      >ws</a
+      ><a name="2455" class="Symbol"
+      >)</a
+      ><a name="2456"
+      >
+                </a
+      ><a name="2473" class="Symbol"
+      >(</a
+      ><a name="2474" href="solver.equality.list.html#1407" class="Function"
+      >singleton</a
+      ><a name="2483"
+      > </a
+      ><a name="2484" class="Symbol"
+      >(</a
+      ><a name="2485" href="solver.equality.core.html#1084" class="Function"
+      >&#964;</a
+      ><a name="2486"
+      > </a
+      ><a name="2487" href="solver.equality.list.html#2269" class="Bound"
+      >w</a
+      ><a name="2488" class="Symbol"
+      >)</a
+      ><a name="2489"
+      > </a
+      ><a name="2490" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="2491"
+      > </a
+      ><a name="2492" href="solver.equality.core.html#1372" class="Function"
+      >&#964;-correct</a
+      ><a name="2501"
+      > </a
+      ><a name="2502" href="solver.equality.list.html#2269" class="Bound"
+      >w</a
+      ><a name="2503" class="Symbol"
+      >)</a
+      ><a name="2504"
+      > </a
+      ><a name="2505" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="2506"
+      >
+      </a
+      ><a name="2513" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="2517"
+      > </a
+      ><a name="2518" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="2522"
+      > </a
+      ><a name="2523" href="solver.equality.list.html#2273" class="Bound"
+      >ws</a
+      ><a name="2525"
+      > </a
+      ><a name="2526" href="equality.groupoid.html#88" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2528"
+      > </a
+      ><a name="2529" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="2530"
+      > </a
+      ><a name="2531" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="2535"
+      > </a
+      ><a name="2536" href="solver.equality.list.html#1986" class="Bound"
+      >env</a
+      ><a name="2539"
+      > </a
+      ><a name="2540" href="solver.equality.list.html#2269" class="Bound"
+      >w</a
+      ><a name="2541"
+      > </a
+      ><a name="2542" href="equality.groupoid.html#88" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2544"
+      >
+    </a
+      ><a name="2549" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="2551"
+      > </a
+      ><a name="2552" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="2555"
+      > </a
+      ><a name="2556" class="Symbol"
+      >(</a
+      ><a name="2557" href="equality.calculus.html#3644" class="Function"
+      >inverse-comp</a
+      ><a name="2569"
+      > </a
+      ><a name="2570" class="Symbol"
+      >(</a
+      ><a name="2571" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="2575"
+      > </a
+      ><a name="2576" href="solver.equality.list.html#1986" class="Bound"
+      >env</a
+      ><a name="2579"
+      > </a
+      ><a name="2580" href="solver.equality.list.html#2269" class="Bound"
+      >w</a
+      ><a name="2581" class="Symbol"
+      >)</a
+      ><a name="2582"
+      > </a
+      ><a name="2583" class="Symbol"
+      >(</a
+      ><a name="2584" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="2588"
+      > </a
+      ><a name="2589" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="2593"
+      > </a
+      ><a name="2594" href="solver.equality.list.html#2273" class="Bound"
+      >ws</a
+      ><a name="2596" class="Symbol"
+      >))</a
+      ><a name="2598"
+      > </a
+      ><a name="2599" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="2600"
+      >
+      </a
+      ><a name="2607" href="solver.equality.core.html#609" class="Function"
+      >gmap</a
+      ><a name="2611"
+      > </a
+      ><a name="2612" href="solver.equality.list.html#1212" class="Function"
+      >eval</a
+      ><a name="2616"
+      > </a
+      ><a name="2617" class="Symbol"
+      >(</a
+      ><a name="2618" href="solver.equality.list.html#2269" class="Bound"
+      >w</a
+      ><a name="2619"
+      > </a
+      ><a name="2620" href="category.free.list.html#386" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="2621"
+      > </a
+      ><a name="2622" href="solver.equality.list.html#2273" class="Bound"
+      >ws</a
+      ><a name="2624" class="Symbol"
+      >)</a
+      ><a name="2625"
+      > </a
+      ><a name="2626" href="equality.groupoid.html#88" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="2628"
+      >
+    </a
+      ><a name="2633" href="equality.reasoning.html#594" class="Function Operator"
+      >&#8718;</a
+      ><a name="2634"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

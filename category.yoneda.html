@@ -1,0 +1,1551 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >category.yoneda</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >open</a
+      ><a name="34"
+      > </a
+      ><a name="35" class="Keyword"
+      >import</a
+      ><a name="41"
+      > </a
+      ><a name="42" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="45"
+      >
+</a
+      ><a name="46" class="Keyword"
+      >open</a
+      ><a name="50"
+      > </a
+      ><a name="51" class="Keyword"
+      >import</a
+      ><a name="57"
+      > </a
+      ><a name="58" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="71"
+      >
+</a
+      ><a name="72" class="Keyword"
+      >open</a
+      ><a name="76"
+      > </a
+      ><a name="77" class="Keyword"
+      >import</a
+      ><a name="83"
+      > </a
+      ><a name="84" href="equality.calculus.html#1" class="Module"
+      >equality.calculus</a
+      ><a name="101"
+      > </a
+      ><a name="102" class="Keyword"
+      >using</a
+      ><a name="107"
+      > </a
+      ><a name="108" class="Symbol"
+      >(</a
+      ><a name="109"
+      >_&#8858;_</a
+      ><a name="112" class="Symbol"
+      >)</a
+      ><a name="113"
+      >
+</a
+      ><a name="114" class="Keyword"
+      >open</a
+      ><a name="118"
+      > </a
+      ><a name="119" class="Keyword"
+      >import</a
+      ><a name="125"
+      > </a
+      ><a name="126" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="146"
+      >
+  </a
+      ><a name="149" class="Keyword"
+      >using</a
+      ><a name="154"
+      > </a
+      ><a name="155" class="Symbol"
+      >(</a
+      ><a name="156"
+      >_&#8773;_</a
+      ><a name="159" class="Symbol"
+      >;</a
+      ><a name="160"
+      > iso</a
+      ><a name="164" class="Symbol"
+      >)</a
+      ><a name="165"
+      >
+</a
+      ><a name="166" class="Keyword"
+      >open</a
+      ><a name="170"
+      > </a
+      ><a name="171" class="Keyword"
+      >import</a
+      ><a name="177"
+      > </a
+      ><a name="178" href="function.extensionality.html#1" class="Module"
+      >function.extensionality</a
+      ><a name="201"
+      >
+</a
+      ><a name="202" class="Keyword"
+      >open</a
+      ><a name="206"
+      > </a
+      ><a name="207" class="Keyword"
+      >import</a
+      ><a name="213"
+      > </a
+      ><a name="214" href="category.category.html#1" class="Module"
+      >category.category</a
+      ><a name="231"
+      >
+</a
+      ><a name="232" class="Keyword"
+      >open</a
+      ><a name="236"
+      > </a
+      ><a name="237" class="Keyword"
+      >import</a
+      ><a name="243"
+      > </a
+      ><a name="244" href="category.functor.html#1" class="Module"
+      >category.functor</a
+      ><a name="260"
+      >
+</a
+      ><a name="261" class="Keyword"
+      >open</a
+      ><a name="265"
+      > </a
+      ><a name="266" class="Keyword"
+      >import</a
+      ><a name="272"
+      > </a
+      ><a name="273" href="category.trans.html#1" class="Module"
+      >category.trans</a
+      ><a name="287"
+      >
+  </a
+      ><a name="290" class="Keyword"
+      >using</a
+      ><a name="295"
+      > </a
+      ><a name="296" class="Symbol"
+      >(</a
+      ><a name="297"
+      >_&#8658;_</a
+      ><a name="300" class="Symbol"
+      >;</a
+      ><a name="301"
+      > nt</a
+      ><a name="304" class="Symbol"
+      >)</a
+      ><a name="305"
+      >
+</a
+      ><a name="306" class="Keyword"
+      >open</a
+      ><a name="310"
+      > </a
+      ><a name="311" class="Keyword"
+      >import</a
+      ><a name="317"
+      > </a
+      ><a name="318" href="category.trans.hlevel.html#1" class="Module"
+      >category.trans.hlevel</a
+      ><a name="339"
+      >
+  </a
+      ><a name="342" class="Keyword"
+      >using</a
+      ><a name="347"
+      > </a
+      ><a name="348" class="Symbol"
+      >(</a
+      ><a name="349"
+      >nat-equality</a
+      ><a name="361" class="Symbol"
+      >)</a
+      ><a name="362"
+      >
+</a
+      ><a name="363" class="Keyword"
+      >open</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="Keyword"
+      >import</a
+      ><a name="374"
+      > </a
+      ><a name="375" href="category.instances.set.html#1" class="Module"
+      >category.instances.set</a
+      ><a name="397"
+      >
+
+</a
+      ><a name="399" class="Keyword"
+      >module</a
+      ><a name="405"
+      > </a
+      ><a name="406" href="category.yoneda.html#1" class="Module"
+      >category.yoneda</a
+      ><a name="421"
+      > </a
+      ><a name="422" class="Symbol"
+      >{</a
+      ><a name="423" href="category.yoneda.html#423" class="Bound"
+      >i</a
+      ><a name="424"
+      > </a
+      ><a name="425" href="category.yoneda.html#425" class="Bound"
+      >j</a
+      ><a name="426" class="Symbol"
+      >}(</a
+      ><a name="428" href="category.yoneda.html#428" class="Bound"
+      >C</a
+      ><a name="429"
+      > </a
+      ><a name="430" class="Symbol"
+      >:</a
+      ><a name="431"
+      > </a
+      ><a name="432" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="440"
+      > </a
+      ><a name="441" href="category.yoneda.html#423" class="Bound"
+      >i</a
+      ><a name="442"
+      > </a
+      ><a name="443" href="category.yoneda.html#425" class="Bound"
+      >j</a
+      ><a name="444" class="Symbol"
+      >)</a
+      ><a name="445"
+      > </a
+      ><a name="446" class="Keyword"
+      >where</a
+      ><a name="451"
+      >
+
+</a
+      ><a name="453" class="Keyword"
+      >open</a
+      ><a name="457"
+      > </a
+      ><a name="458" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="466"
+      > </a
+      ><a name="467" href="category.yoneda.html#428" class="Bound"
+      >C</a
+      ><a name="468"
+      >
+  </a
+      ><a name="471" class="Keyword"
+      >renaming</a
+      ><a name="479"
+      > </a
+      ><a name="480" class="Symbol"
+      >(</a
+      ><a name="481"
+      >_&#8728;_ </a
+      ><a name="485" class="Symbol"
+      >to</a
+      ><a name="487"
+      > _&#8902;_</a
+      ><a name="491" class="Symbol"
+      >)</a
+      ><a name="492"
+      >
+</a
+      ><a name="493" class="Keyword"
+      >open</a
+      ><a name="497"
+      > </a
+      ><a name="498" href="category.functor.core.html#253" class="Module"
+      >Functor</a
+      ><a name="505"
+      >
+
+</a
+      ><a name="507" href="category.yoneda.html#507" class="Function"
+      >hom-func</a
+      ><a name="515"
+      > </a
+      ><a name="516" class="Symbol"
+      >:</a
+      ><a name="517"
+      > </a
+      ><a name="518" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="521"
+      > </a
+      ><a name="522" class="Symbol"
+      >&#8594;</a
+      ><a name="523"
+      > </a
+      ><a name="524" href="category.functor.core.html#253" class="Record"
+      >Functor</a
+      ><a name="531"
+      > </a
+      ><a name="532" href="category.yoneda.html#428" class="Bound"
+      >C</a
+      ><a name="533"
+      > </a
+      ><a name="534" class="Symbol"
+      >(</a
+      ><a name="535" href="category.instances.set.html#470" class="Function"
+      >set</a
+      ><a name="538"
+      > </a
+      ><a name="539" href="category.yoneda.html#425" class="Bound"
+      >j</a
+      ><a name="540" class="Symbol"
+      >)</a
+      ><a name="541"
+      >
+</a
+      ><a name="542" href="category.yoneda.html#507" class="Function"
+      >hom-func</a
+      ><a name="550"
+      > </a
+      ><a name="551" href="category.yoneda.html#551" class="Bound"
+      >X</a
+      ><a name="552"
+      > </a
+      ><a name="553" class="Symbol"
+      >=</a
+      ><a name="554"
+      > </a
+      ><a name="555" class="Keyword"
+      >record</a
+      ><a name="561"
+      >
+  </a
+      ><a name="564" class="Symbol"
+      >{</a
+      ><a name="565"
+      > </a
+      ><a name="566" class="Field"
+      >apply</a
+      ><a name="571"
+      > </a
+      ><a name="572" class="Symbol"
+      >=</a
+      ><a name="573"
+      > </a
+      ><a name="574" class="Symbol"
+      >&#955;</a
+      ><a name="575"
+      > </a
+      ><a name="576" href="category.yoneda.html#576" class="Bound"
+      >Y</a
+      ><a name="577"
+      > </a
+      ><a name="578" class="Symbol"
+      >&#8594;</a
+      ><a name="579"
+      > </a
+      ><a name="580" class="Symbol"
+      >(</a
+      ><a name="581" href="category.category.html#308" class="Function"
+      >hom</a
+      ><a name="584"
+      > </a
+      ><a name="585" href="category.yoneda.html#551" class="Bound"
+      >X</a
+      ><a name="586"
+      > </a
+      ><a name="587" href="category.yoneda.html#576" class="Bound"
+      >Y</a
+      ><a name="588"
+      > </a
+      ><a name="589" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="590"
+      > </a
+      ><a name="591" href="category.category.html#337" class="Function"
+      >trunc</a
+      ><a name="596"
+      > </a
+      ><a name="597" href="category.yoneda.html#551" class="Bound"
+      >X</a
+      ><a name="598"
+      > </a
+      ><a name="599" href="category.yoneda.html#576" class="Bound"
+      >Y</a
+      ><a name="600" class="Symbol"
+      >)</a
+      ><a name="601"
+      >
+  </a
+      ><a name="604" class="Symbol"
+      >;</a
+      ><a name="605"
+      > </a
+      ><a name="606" class="Field"
+      >map</a
+      ><a name="609"
+      > </a
+      ><a name="610" class="Symbol"
+      >=</a
+      ><a name="611"
+      > </a
+      ><a name="612" href="category.category.html#401" class="Function Operator"
+      >_&#8902;_</a
+      ><a name="615"
+      >
+  </a
+      ><a name="618" class="Symbol"
+      >;</a
+      ><a name="619"
+      > </a
+      ><a name="620" class="Field"
+      >map-id</a
+      ><a name="626"
+      > </a
+      ><a name="627" class="Symbol"
+      >=</a
+      ><a name="628"
+      > </a
+      ><a name="629" class="Symbol"
+      >&#955;</a
+      ><a name="630"
+      > </a
+      ><a name="631" href="category.yoneda.html#631" class="Bound"
+      >_</a
+      ><a name="632"
+      > </a
+      ><a name="633" class="Symbol"
+      >&#8594;</a
+      ><a name="634"
+      > </a
+      ><a name="635" href="function.extensionality.nondep.html#5284" class="Function"
+      >ext</a
+      ><a name="638"
+      > </a
+      ><a name="639" class="Symbol"
+      >&#955;</a
+      ><a name="640"
+      > </a
+      ><a name="641" href="category.yoneda.html#641" class="Bound"
+      >x</a
+      ><a name="642"
+      > </a
+      ><a name="643" class="Symbol"
+      >&#8594;</a
+      ><a name="644"
+      > </a
+      ><a name="645" href="category.category.html#456" class="Function"
+      >left-unit</a
+      ><a name="654"
+      > </a
+      ><a name="655" href="category.yoneda.html#641" class="Bound"
+      >x</a
+      ><a name="656"
+      >
+  </a
+      ><a name="659" class="Symbol"
+      >;</a
+      ><a name="660"
+      > </a
+      ><a name="661" class="Field"
+      >map-hom</a
+      ><a name="668"
+      > </a
+      ><a name="669" class="Symbol"
+      >=</a
+      ><a name="670"
+      > </a
+      ><a name="671" class="Symbol"
+      >&#955;</a
+      ><a name="672"
+      > </a
+      ><a name="673" href="category.yoneda.html#673" class="Bound"
+      >f</a
+      ><a name="674"
+      > </a
+      ><a name="675" href="category.yoneda.html#675" class="Bound"
+      >g</a
+      ><a name="676"
+      > </a
+      ><a name="677" class="Symbol"
+      >&#8594;</a
+      ><a name="678"
+      > </a
+      ><a name="679" href="function.extensionality.nondep.html#5284" class="Function"
+      >ext</a
+      ><a name="682"
+      > </a
+      ><a name="683" class="Symbol"
+      >&#955;</a
+      ><a name="684"
+      > </a
+      ><a name="685" href="category.yoneda.html#685" class="Bound"
+      >x</a
+      ><a name="686"
+      > </a
+      ><a name="687" class="Symbol"
+      >&#8594;</a
+      ><a name="688"
+      > </a
+      ><a name="689" href="category.category.html#598" class="Function"
+      >associativity</a
+      ><a name="702"
+      > </a
+      ><a name="703" href="category.yoneda.html#685" class="Bound"
+      >x</a
+      ><a name="704"
+      > </a
+      ><a name="705" href="category.yoneda.html#673" class="Bound"
+      >f</a
+      ><a name="706"
+      > </a
+      ><a name="707" href="category.yoneda.html#675" class="Bound"
+      >g</a
+      ><a name="708"
+      > </a
+      ><a name="709" class="Symbol"
+      >}</a
+      ><a name="710"
+      >
+
+</a
+      ><a name="712" href="category.yoneda.html#712" class="Function"
+      >hom-map</a
+      ><a name="719"
+      > </a
+      ><a name="720" class="Symbol"
+      >:</a
+      ><a name="721"
+      > </a
+      ><a name="722" class="Symbol"
+      >{</a
+      ><a name="723" href="category.yoneda.html#723" class="Bound"
+      >X</a
+      ><a name="724"
+      > </a
+      ><a name="725" href="category.yoneda.html#725" class="Bound"
+      >X'</a
+      ><a name="727"
+      > </a
+      ><a name="728" class="Symbol"
+      >:</a
+      ><a name="729"
+      > </a
+      ><a name="730" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="733" class="Symbol"
+      >}(</a
+      ><a name="735" href="category.yoneda.html#735" class="Bound"
+      >f</a
+      ><a name="736"
+      > </a
+      ><a name="737" class="Symbol"
+      >:</a
+      ><a name="738"
+      > </a
+      ><a name="739" href="category.category.html#308" class="Function"
+      >hom</a
+      ><a name="742"
+      > </a
+      ><a name="743" href="category.yoneda.html#723" class="Bound"
+      >X</a
+      ><a name="744"
+      > </a
+      ><a name="745" href="category.yoneda.html#725" class="Bound"
+      >X'</a
+      ><a name="747" class="Symbol"
+      >)</a
+      ><a name="748"
+      > </a
+      ><a name="749" class="Symbol"
+      >&#8594;</a
+      ><a name="750"
+      > </a
+      ><a name="751" href="category.yoneda.html#507" class="Function"
+      >hom-func</a
+      ><a name="759"
+      > </a
+      ><a name="760" href="category.yoneda.html#725" class="Bound"
+      >X'</a
+      ><a name="762"
+      > </a
+      ><a name="763" href="category.trans.core.html#950" class="Function Operator"
+      >&#8658;</a
+      ><a name="764"
+      > </a
+      ><a name="765" href="category.yoneda.html#507" class="Function"
+      >hom-func</a
+      ><a name="773"
+      > </a
+      ><a name="774" href="category.yoneda.html#723" class="Bound"
+      >X</a
+      ><a name="775"
+      >
+</a
+      ><a name="776" href="category.yoneda.html#712" class="Function"
+      >hom-map</a
+      ><a name="783"
+      > </a
+      ><a name="784" href="category.yoneda.html#784" class="Bound"
+      >f</a
+      ><a name="785"
+      > </a
+      ><a name="786" class="Symbol"
+      >=</a
+      ><a name="787"
+      > </a
+      ><a name="788" class="Keyword"
+      >record</a
+      ><a name="794"
+      >
+  </a
+      ><a name="797" class="Symbol"
+      >{</a
+      ><a name="798"
+      > </a
+      ><a name="799" class="Field"
+      >&#945;</a
+      ><a name="800"
+      > </a
+      ><a name="801" class="Symbol"
+      >=</a
+      ><a name="802"
+      > </a
+      ><a name="803" class="Symbol"
+      >&#955;</a
+      ><a name="804"
+      > </a
+      ><a name="805" href="category.yoneda.html#805" class="Bound"
+      >Y</a
+      ><a name="806"
+      > </a
+      ><a name="807" href="category.yoneda.html#807" class="Bound"
+      >g</a
+      ><a name="808"
+      > </a
+      ><a name="809" class="Symbol"
+      >&#8594;</a
+      ><a name="810"
+      > </a
+      ><a name="811" href="category.yoneda.html#807" class="Bound"
+      >g</a
+      ><a name="812"
+      > </a
+      ><a name="813" href="category.category.html#401" class="Function Operator"
+      >&#8902;</a
+      ><a name="814"
+      > </a
+      ><a name="815" href="category.yoneda.html#784" class="Bound"
+      >f</a
+      ><a name="816"
+      >
+  </a
+      ><a name="819" class="Symbol"
+      >;</a
+      ><a name="820"
+      > </a
+      ><a name="821" class="Field"
+      >&#945;-nat</a
+      ><a name="826"
+      > </a
+      ><a name="827" class="Symbol"
+      >=</a
+      ><a name="828"
+      > </a
+      ><a name="829" class="Symbol"
+      >&#955;</a
+      ><a name="830"
+      > </a
+      ><a name="831" href="category.yoneda.html#831" class="Bound"
+      >h</a
+      ><a name="832"
+      > </a
+      ><a name="833" class="Symbol"
+      >&#8594;</a
+      ><a name="834"
+      > </a
+      ><a name="835" href="function.extensionality.nondep.html#5284" class="Function"
+      >ext</a
+      ><a name="838"
+      > </a
+      ><a name="839" class="Symbol"
+      >&#955;</a
+      ><a name="840"
+      > </a
+      ><a name="841" href="category.yoneda.html#841" class="Bound"
+      >g</a
+      ><a name="842"
+      > </a
+      ><a name="843" class="Symbol"
+      >&#8594;</a
+      ><a name="844"
+      > </a
+      ><a name="845" href="category.category.html#598" class="Function"
+      >associativity</a
+      ><a name="858"
+      > </a
+      ><a name="859" href="category.yoneda.html#784" class="Bound"
+      >f</a
+      ><a name="860"
+      > </a
+      ><a name="861" href="category.yoneda.html#841" class="Bound"
+      >g</a
+      ><a name="862"
+      > </a
+      ><a name="863" href="category.yoneda.html#831" class="Bound"
+      >h</a
+      ><a name="864"
+      > </a
+      ><a name="865" class="Symbol"
+      >}</a
+      ><a name="866"
+      >
+
+</a
+      ><a name="868" class="Comment"
+      >-- Yoneda embedding</a
+      ><a name="887"
+      >
+</a
+      ><a name="888" href="category.yoneda.html#888" class="Function"
+      >y</a
+      ><a name="889"
+      > </a
+      ><a name="890" class="Symbol"
+      >:</a
+      ><a name="891"
+      > </a
+      ><a name="892" href="category.functor.core.html#253" class="Record"
+      >Functor</a
+      ><a name="899"
+      > </a
+      ><a name="900" class="Symbol"
+      >(</a
+      ><a name="901" href="category.category.html#855" class="Function"
+      >op</a
+      ><a name="903"
+      > </a
+      ><a name="904" href="category.yoneda.html#428" class="Bound"
+      >C</a
+      ><a name="905" class="Symbol"
+      >)</a
+      ><a name="906"
+      > </a
+      ><a name="907" class="Symbol"
+      >(</a
+      ><a name="908" href="category.functor.category.html#311" class="Function"
+      >Func</a
+      ><a name="912"
+      > </a
+      ><a name="913" href="category.yoneda.html#428" class="Bound"
+      >C</a
+      ><a name="914"
+      > </a
+      ><a name="915" class="Symbol"
+      >(</a
+      ><a name="916" href="category.instances.set.html#470" class="Function"
+      >set</a
+      ><a name="919"
+      > </a
+      ><a name="920" href="category.yoneda.html#425" class="Bound"
+      >j</a
+      ><a name="921" class="Symbol"
+      >))</a
+      ><a name="923"
+      >
+</a
+      ><a name="924" href="category.yoneda.html#888" class="Function"
+      >y</a
+      ><a name="925"
+      > </a
+      ><a name="926" class="Symbol"
+      >=</a
+      ><a name="927"
+      > </a
+      ><a name="928" class="Keyword"
+      >record</a
+      ><a name="934"
+      >
+  </a
+      ><a name="937" class="Symbol"
+      >{</a
+      ><a name="938"
+      > </a
+      ><a name="939" class="Field"
+      >apply</a
+      ><a name="944"
+      > </a
+      ><a name="945" class="Symbol"
+      >=</a
+      ><a name="946"
+      > </a
+      ><a name="947" href="category.yoneda.html#507" class="Function"
+      >hom-func</a
+      ><a name="955"
+      >
+  </a
+      ><a name="958" class="Symbol"
+      >;</a
+      ><a name="959"
+      > </a
+      ><a name="960" class="Field"
+      >map</a
+      ><a name="963"
+      > </a
+      ><a name="964" class="Symbol"
+      >=</a
+      ><a name="965"
+      > </a
+      ><a name="966" href="category.yoneda.html#712" class="Function"
+      >hom-map</a
+      ><a name="973"
+      >
+  </a
+      ><a name="976" class="Symbol"
+      >;</a
+      ><a name="977"
+      > </a
+      ><a name="978" class="Field"
+      >map-id</a
+      ><a name="984"
+      > </a
+      ><a name="985" class="Symbol"
+      >=</a
+      ><a name="986"
+      > </a
+      ><a name="987" class="Symbol"
+      >&#955;</a
+      ><a name="988"
+      > </a
+      ><a name="989" href="category.yoneda.html#989" class="Bound"
+      >X</a
+      ><a name="990"
+      > </a
+      ><a name="991" class="Symbol"
+      >&#8594;</a
+      ><a name="992"
+      > </a
+      ><a name="993" href="category.trans.hlevel.html#1591" class="Function"
+      >nat-equality</a
+      ><a name="1005"
+      >
+      </a
+      ><a name="1012" class="Symbol"
+      >(</a
+      ><a name="1013"
+      > </a
+      ><a name="1014" href="function.extensionality.dependent.html#812" class="Function"
+      >ext'</a
+      ><a name="1018"
+      > </a
+      ><a name="1019" class="Symbol"
+      >&#955;</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" href="category.yoneda.html#1021" class="Bound"
+      >_</a
+      ><a name="1022"
+      > </a
+      ><a name="1023" class="Symbol"
+      >&#8594;</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" href="function.extensionality.nondep.html#5284" class="Function"
+      >ext</a
+      ><a name="1028"
+      > </a
+      ><a name="1029" href="category.category.html#526" class="Function"
+      >right-unit</a
+      ><a name="1039" class="Symbol"
+      >)</a
+      ><a name="1040"
+      >
+  </a
+      ><a name="1043" class="Symbol"
+      >;</a
+      ><a name="1044"
+      > </a
+      ><a name="1045" class="Field"
+      >map-hom</a
+      ><a name="1052"
+      > </a
+      ><a name="1053" class="Symbol"
+      >=</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" class="Symbol"
+      >&#955;</a
+      ><a name="1056"
+      > </a
+      ><a name="1057" href="category.yoneda.html#1057" class="Bound"
+      >g</a
+      ><a name="1058"
+      > </a
+      ><a name="1059" href="category.yoneda.html#1059" class="Bound"
+      >f</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" class="Symbol"
+      >&#8594;</a
+      ><a name="1062"
+      > </a
+      ><a name="1063" href="category.trans.hlevel.html#1591" class="Function"
+      >nat-equality</a
+      ><a name="1075"
+      >
+      </a
+      ><a name="1082" class="Symbol"
+      >(</a
+      ><a name="1083"
+      > </a
+      ><a name="1084" href="function.extensionality.dependent.html#812" class="Function"
+      >ext'</a
+      ><a name="1088"
+      > </a
+      ><a name="1089" class="Symbol"
+      >&#955;</a
+      ><a name="1090"
+      > </a
+      ><a name="1091" href="category.yoneda.html#1091" class="Bound"
+      >_</a
+      ><a name="1092"
+      > </a
+      ><a name="1093" class="Symbol"
+      >&#8594;</a
+      ><a name="1094"
+      > </a
+      ><a name="1095" href="function.extensionality.nondep.html#5284" class="Function"
+      >ext</a
+      ><a name="1098"
+      > </a
+      ><a name="1099" class="Symbol"
+      >&#955;</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" href="category.yoneda.html#1101" class="Bound"
+      >h</a
+      ><a name="1102"
+      >
+      </a
+      ><a name="1109" class="Symbol"
+      >&#8594;</a
+      ><a name="1110"
+      > </a
+      ><a name="1111" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="1114"
+      > </a
+      ><a name="1115" class="Symbol"
+      >(</a
+      ><a name="1116" href="category.category.html#598" class="Function"
+      >associativity</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" href="category.yoneda.html#1059" class="Bound"
+      >f</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" href="category.yoneda.html#1057" class="Bound"
+      >g</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" href="category.yoneda.html#1101" class="Bound"
+      >h</a
+      ><a name="1135" class="Symbol"
+      >)</a
+      ><a name="1136"
+      > </a
+      ><a name="1137" class="Symbol"
+      >)</a
+      ><a name="1138"
+      > </a
+      ><a name="1139" class="Symbol"
+      >}</a
+      ><a name="1140"
+      >
+
+</a
+      ><a name="1142" class="Comment"
+      >-- Yoneda lemma</a
+      ><a name="1157"
+      >
+</a
+      ><a name="1158" href="category.yoneda.html#1158" class="Function"
+      >y-iso</a
+      ><a name="1163"
+      > </a
+      ><a name="1164" class="Symbol"
+      >:</a
+      ><a name="1165"
+      > </a
+      ><a name="1166" class="Symbol"
+      >(</a
+      ><a name="1167" href="category.yoneda.html#1167" class="Bound"
+      >X</a
+      ><a name="1168"
+      > </a
+      ><a name="1169" class="Symbol"
+      >:</a
+      ><a name="1170"
+      > </a
+      ><a name="1171" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="1174" class="Symbol"
+      >)(</a
+      ><a name="1176" href="category.yoneda.html#1176" class="Bound"
+      >F</a
+      ><a name="1177"
+      > </a
+      ><a name="1178" class="Symbol"
+      >:</a
+      ><a name="1179"
+      > </a
+      ><a name="1180" href="category.functor.core.html#253" class="Record"
+      >Functor</a
+      ><a name="1187"
+      > </a
+      ><a name="1188" href="category.yoneda.html#428" class="Bound"
+      >C</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" class="Symbol"
+      >(</a
+      ><a name="1191" href="category.instances.set.html#470" class="Function"
+      >set</a
+      ><a name="1194"
+      > </a
+      ><a name="1195" href="category.yoneda.html#425" class="Bound"
+      >j</a
+      ><a name="1196" class="Symbol"
+      >))</a
+      ><a name="1198"
+      >
+      </a
+      ><a name="1205" class="Symbol"
+      >&#8594;</a
+      ><a name="1206"
+      > </a
+      ><a name="1207" class="Symbol"
+      >(</a
+      ><a name="1208" href="category.yoneda.html#507" class="Function"
+      >hom-func</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" href="category.yoneda.html#1167" class="Bound"
+      >X</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" href="category.trans.core.html#950" class="Function Operator"
+      >&#8658;</a
+      ><a name="1220"
+      > </a
+      ><a name="1221" href="category.yoneda.html#1176" class="Bound"
+      >F</a
+      ><a name="1222" class="Symbol"
+      >)</a
+      ><a name="1223"
+      > </a
+      ><a name="1224" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="1225"
+      > </a
+      ><a name="1226" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" class="Symbol"
+      >(</a
+      ><a name="1233" href="category.functor.core.html#607" class="Function"
+      >apply</a
+      ><a name="1238"
+      > </a
+      ><a name="1239" href="category.yoneda.html#1176" class="Bound"
+      >F</a
+      ><a name="1240"
+      > </a
+      ><a name="1241" href="category.yoneda.html#1167" class="Bound"
+      >X</a
+      ><a name="1242" class="Symbol"
+      >)</a
+      ><a name="1243"
+      >
+</a
+      ><a name="1244" href="category.yoneda.html#1158" class="Function"
+      >y-iso</a
+      ><a name="1249"
+      > </a
+      ><a name="1250" href="category.yoneda.html#1250" class="Bound"
+      >X</a
+      ><a name="1251"
+      > </a
+      ><a name="1252" href="category.yoneda.html#1252" class="Bound"
+      >F</a
+      ><a name="1253"
+      > </a
+      ><a name="1254" class="Symbol"
+      >=</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" class="Keyword"
+      >record</a
+      ><a name="1262"
+      >
+  </a
+      ><a name="1265" class="Symbol"
+      >{</a
+      ><a name="1266"
+      > </a
+      ><a name="1267" class="Field"
+      >to</a
+      ><a name="1269"
+      > </a
+      ><a name="1270" class="Symbol"
+      >=</a
+      ><a name="1271"
+      > </a
+      ><a name="1272" class="Symbol"
+      >&#955;</a
+      ><a name="1273"
+      > </a
+      ><a name="1274" class="Symbol"
+      >{</a
+      ><a name="1275"
+      > </a
+      ><a name="1276" class="Symbol"
+      >(</a
+      ><a name="1277" href="category.trans.core.html#894" class="InductiveConstructor"
+      >nt</a
+      ><a name="1279"
+      > </a
+      ><a name="1280" href="category.yoneda.html#1280" class="Bound"
+      >&#945;</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" class="Symbol"
+      >_)</a
+      ><a name="1284"
+      > </a
+      ><a name="1285" class="Symbol"
+      >&#8594;</a
+      ><a name="1286"
+      > </a
+      ><a name="1287" href="category.yoneda.html#1280" class="Bound"
+      >&#945;</a
+      ><a name="1288"
+      > </a
+      ><a name="1289" href="category.yoneda.html#1250" class="Bound"
+      >X</a
+      ><a name="1290"
+      > </a
+      ><a name="1291" class="Symbol"
+      >(</a
+      ><a name="1292" href="category.category.html#372" class="Function"
+      >id</a
+      ><a name="1294"
+      > </a
+      ><a name="1295" href="category.yoneda.html#1250" class="Bound"
+      >X</a
+      ><a name="1296" class="Symbol"
+      >)</a
+      ><a name="1297"
+      > </a
+      ><a name="1298" class="Symbol"
+      >}</a
+      ><a name="1299"
+      >
+  </a
+      ><a name="1302" class="Symbol"
+      >;</a
+      ><a name="1303"
+      > </a
+      ><a name="1304" class="Field"
+      >from</a
+      ><a name="1308"
+      > </a
+      ><a name="1309" class="Symbol"
+      >=</a
+      ><a name="1310"
+      > </a
+      ><a name="1311" class="Symbol"
+      >&#955;</a
+      ><a name="1312"
+      > </a
+      ><a name="1313" href="category.yoneda.html#1313" class="Bound"
+      >u</a
+      ><a name="1314"
+      > </a
+      ><a name="1315" class="Symbol"
+      >&#8594;</a
+      ><a name="1316"
+      > </a
+      ><a name="1317" class="Keyword"
+      >record</a
+      ><a name="1323"
+      >
+      </a
+      ><a name="1330" class="Symbol"
+      >{</a
+      ><a name="1331"
+      > </a
+      ><a name="1332" class="Field"
+      >&#945;</a
+      ><a name="1333"
+      > </a
+      ><a name="1334" class="Symbol"
+      >=</a
+      ><a name="1335"
+      > </a
+      ><a name="1336" class="Symbol"
+      >&#955;</a
+      ><a name="1337"
+      > </a
+      ><a name="1338" href="category.yoneda.html#1338" class="Bound"
+      >Y</a
+      ><a name="1339"
+      > </a
+      ><a name="1340" href="category.yoneda.html#1340" class="Bound"
+      >f</a
+      ><a name="1341"
+      > </a
+      ><a name="1342" class="Symbol"
+      >&#8594;</a
+      ><a name="1343"
+      > </a
+      ><a name="1344" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1347"
+      > </a
+      ><a name="1348" href="category.yoneda.html#1252" class="Bound"
+      >F</a
+      ><a name="1349"
+      > </a
+      ><a name="1350" href="category.yoneda.html#1340" class="Bound"
+      >f</a
+      ><a name="1351"
+      > </a
+      ><a name="1352" href="category.yoneda.html#1313" class="Bound"
+      >u</a
+      ><a name="1353"
+      >
+      </a
+      ><a name="1360" class="Symbol"
+      >;</a
+      ><a name="1361"
+      > </a
+      ><a name="1362" class="Field"
+      >&#945;-nat</a
+      ><a name="1367"
+      > </a
+      ><a name="1368" class="Symbol"
+      >=</a
+      ><a name="1369"
+      > </a
+      ><a name="1370" class="Symbol"
+      >&#955;</a
+      ><a name="1371"
+      > </a
+      ><a name="1372" href="category.yoneda.html#1372" class="Bound"
+      >f</a
+      ><a name="1373"
+      >
+              </a
+      ><a name="1388" class="Symbol"
+      >&#8594;</a
+      ><a name="1389"
+      > </a
+      ><a name="1390" href="function.extensionality.dependent.html#812" class="Function"
+      >ext'</a
+      ><a name="1394"
+      > </a
+      ><a name="1395" class="Symbol"
+      >&#955;</a
+      ><a name="1396"
+      > </a
+      ><a name="1397" href="category.yoneda.html#1397" class="Bound"
+      >g</a
+      ><a name="1398"
+      >
+              </a
+      ><a name="1413" class="Symbol"
+      >&#8594;</a
+      ><a name="1414"
+      > </a
+      ><a name="1415" href="function.extensionality.core.html#705" class="Function"
+      >ext-inv</a
+      ><a name="1422"
+      > </a
+      ><a name="1423" class="Symbol"
+      >(</a
+      ><a name="1424" href="category.functor.core.html#792" class="Function"
+      >map-hom</a
+      ><a name="1431"
+      > </a
+      ><a name="1432" href="category.yoneda.html#1252" class="Bound"
+      >F</a
+      ><a name="1433"
+      > </a
+      ><a name="1434" href="category.yoneda.html#1397" class="Bound"
+      >g</a
+      ><a name="1435"
+      > </a
+      ><a name="1436" href="category.yoneda.html#1372" class="Bound"
+      >f</a
+      ><a name="1437" class="Symbol"
+      >)</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" href="category.yoneda.html#1313" class="Bound"
+      >u</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" class="Symbol"
+      >}</a
+      ><a name="1442"
+      >
+  </a
+      ><a name="1445" class="Symbol"
+      >;</a
+      ><a name="1446"
+      > </a
+      ><a name="1447" class="Field"
+      >iso&#8321;</a
+      ><a name="1451"
+      > </a
+      ><a name="1452" class="Symbol"
+      >=</a
+      ><a name="1453"
+      > </a
+      ><a name="1454" class="Symbol"
+      >&#955;</a
+      ><a name="1455"
+      > </a
+      ><a name="1456" class="Symbol"
+      >{</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" class="Symbol"
+      >(</a
+      ><a name="1459" href="category.trans.core.html#894" class="InductiveConstructor"
+      >nt</a
+      ><a name="1461"
+      > </a
+      ><a name="1462" href="category.yoneda.html#1462" class="Bound"
+      >&#945;</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" href="category.yoneda.html#1464" class="Bound"
+      >&#945;-nat</a
+      ><a name="1469" class="Symbol"
+      >)</a
+      ><a name="1470"
+      >
+             </a
+      ><a name="1484" class="Symbol"
+      >&#8594;</a
+      ><a name="1485"
+      > </a
+      ><a name="1486" href="category.trans.hlevel.html#1591" class="Function"
+      >nat-equality</a
+      ><a name="1498"
+      >
+             </a
+      ><a name="1512" class="Symbol"
+      >(</a
+      ><a name="1513"
+      > </a
+      ><a name="1514" href="function.extensionality.dependent.html#812" class="Function"
+      >ext'</a
+      ><a name="1518"
+      > </a
+      ><a name="1519" class="Symbol"
+      >&#955;</a
+      ><a name="1520"
+      > </a
+      ><a name="1521" href="category.yoneda.html#1521" class="Bound"
+      >Y</a
+      ><a name="1522"
+      >
+             </a
+      ><a name="1536" class="Symbol"
+      >&#8594;</a
+      ><a name="1537"
+      > </a
+      ><a name="1538" href="function.extensionality.nondep.html#5284" class="Function"
+      >ext</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" class="Symbol"
+      >&#955;</a
+      ><a name="1543"
+      > </a
+      ><a name="1544" href="category.yoneda.html#1544" class="Bound"
+      >f</a
+      ><a name="1545"
+      >
+             </a
+      ><a name="1559" class="Symbol"
+      >&#8594;</a
+      ><a name="1560"
+      > </a
+      ><a name="1561" href="function.extensionality.core.html#705" class="Function"
+      >ext-inv</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" class="Symbol"
+      >(</a
+      ><a name="1570" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="1573"
+      > </a
+      ><a name="1574" class="Symbol"
+      >(</a
+      ><a name="1575" href="category.yoneda.html#1464" class="Bound"
+      >&#945;-nat</a
+      ><a name="1580"
+      > </a
+      ><a name="1581" href="category.yoneda.html#1544" class="Bound"
+      >f</a
+      ><a name="1582" class="Symbol"
+      >))</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" class="Symbol"
+      >(</a
+      ><a name="1586" href="category.category.html#372" class="Function"
+      >id</a
+      ><a name="1588"
+      > </a
+      ><a name="1589" href="category.yoneda.html#1250" class="Bound"
+      >X</a
+      ><a name="1590" class="Symbol"
+      >)</a
+      ><a name="1591"
+      >
+             </a
+      ><a name="1605" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1606"
+      > </a
+      ><a name="1607" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1611"
+      > </a
+      ><a name="1612" class="Symbol"
+      >(</a
+      ><a name="1613" href="category.yoneda.html#1462" class="Bound"
+      >&#945;</a
+      ><a name="1614"
+      > </a
+      ><a name="1615" href="category.yoneda.html#1521" class="Bound"
+      >Y</a
+      ><a name="1616" class="Symbol"
+      >)</a
+      ><a name="1617"
+      > </a
+      ><a name="1618" class="Symbol"
+      >(</a
+      ><a name="1619" href="category.category.html#526" class="Function"
+      >right-unit</a
+      ><a name="1629"
+      > </a
+      ><a name="1630" href="category.yoneda.html#1544" class="Bound"
+      >f</a
+      ><a name="1631" class="Symbol"
+      >))</a
+      ><a name="1633"
+      > </a
+      ><a name="1634" class="Symbol"
+      >}</a
+      ><a name="1635"
+      >
+  </a
+      ><a name="1638" class="Symbol"
+      >;</a
+      ><a name="1639"
+      > </a
+      ><a name="1640" class="Field"
+      >iso&#8322;</a
+      ><a name="1644"
+      > </a
+      ><a name="1645" class="Symbol"
+      >=</a
+      ><a name="1646"
+      > </a
+      ><a name="1647" class="Symbol"
+      >&#955;</a
+      ><a name="1648"
+      > </a
+      ><a name="1649" href="category.yoneda.html#1649" class="Bound"
+      >u</a
+      ><a name="1650"
+      > </a
+      ><a name="1651" class="Symbol"
+      >&#8594;</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" href="function.extensionality.core.html#705" class="Function"
+      >ext-inv</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" class="Symbol"
+      >(</a
+      ><a name="1662" href="category.functor.core.html#731" class="Function"
+      >map-id</a
+      ><a name="1668"
+      > </a
+      ><a name="1669" href="category.yoneda.html#1252" class="Bound"
+      >F</a
+      ><a name="1670"
+      > </a
+      ><a name="1671" href="category.yoneda.html#1250" class="Bound"
+      >X</a
+      ><a name="1672" class="Symbol"
+      >)</a
+      ><a name="1673"
+      > </a
+      ><a name="1674" href="category.yoneda.html#1649" class="Bound"
+      >u</a
+      ><a name="1675"
+      > </a
+      ><a name="1676" class="Symbol"
+      >}</a
+      ><a name="1677"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

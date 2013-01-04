@@ -1,0 +1,5597 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >function.isomorphism.utils</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="function.isomorphism.utils.html#1" class="Module"
+      >function.isomorphism.utils</a
+      ><a name="63"
+      > </a
+      ><a name="64" class="Keyword"
+      >where</a
+      ><a name="69"
+      >
+
+</a
+      ><a name="71" class="Keyword"
+      >open</a
+      ><a name="75"
+      > </a
+      ><a name="76" class="Keyword"
+      >import</a
+      ><a name="82"
+      > </a
+      ><a name="83" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="86"
+      >
+</a
+      ><a name="87" class="Keyword"
+      >open</a
+      ><a name="91"
+      > </a
+      ><a name="92" class="Keyword"
+      >import</a
+      ><a name="98"
+      > </a
+      ><a name="99" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="112"
+      >
+</a
+      ><a name="113" class="Keyword"
+      >open</a
+      ><a name="117"
+      > </a
+      ><a name="118" class="Keyword"
+      >import</a
+      ><a name="124"
+      > </a
+      ><a name="125" href="equality.calculus.html#1" class="Module"
+      >equality.calculus</a
+      ><a name="142"
+      >
+</a
+      ><a name="143" class="Keyword"
+      >open</a
+      ><a name="147"
+      > </a
+      ><a name="148" class="Keyword"
+      >import</a
+      ><a name="154"
+      > </a
+      ><a name="155" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="168"
+      >
+</a
+      ><a name="169" class="Keyword"
+      >open</a
+      ><a name="173"
+      > </a
+      ><a name="174" class="Keyword"
+      >import</a
+      ><a name="180"
+      > </a
+      ><a name="181" href="function.isomorphism.core.html#1" class="Module"
+      >function.isomorphism.core</a
+      ><a name="206"
+      >
+</a
+      ><a name="207" class="Keyword"
+      >open</a
+      ><a name="211"
+      > </a
+      ><a name="212" class="Keyword"
+      >import</a
+      ><a name="218"
+      > </a
+      ><a name="219" href="function.isomorphism.coherent.html#1" class="Module"
+      >function.isomorphism.coherent</a
+      ><a name="248"
+      >
+</a
+      ><a name="249" class="Keyword"
+      >open</a
+      ><a name="253"
+      > </a
+      ><a name="254" class="Keyword"
+      >import</a
+      ><a name="260"
+      > </a
+      ><a name="261" href="function.extensionality.core.html#1" class="Module"
+      >function.extensionality.core</a
+      ><a name="289"
+      >
+
+</a
+      ><a name="291" href="function.isomorphism.utils.html#291" class="Function"
+      >&#931;-split-iso</a
+      ><a name="302"
+      > </a
+      ><a name="303" class="Symbol"
+      >:</a
+      ><a name="304"
+      > </a
+      ><a name="305" class="Symbol"
+      >&#8704;</a
+      ><a name="306"
+      > </a
+      ><a name="307" class="Symbol"
+      >{</a
+      ><a name="308" href="function.isomorphism.utils.html#308" class="Bound"
+      >i</a
+      ><a name="309"
+      > </a
+      ><a name="310" href="function.isomorphism.utils.html#310" class="Bound"
+      >j</a
+      ><a name="311" class="Symbol"
+      >}{</a
+      ><a name="313" href="function.isomorphism.utils.html#313" class="Bound"
+      >X</a
+      ><a name="314"
+      > </a
+      ><a name="315" class="Symbol"
+      >:</a
+      ><a name="316"
+      > </a
+      ><a name="317" class="PrimitiveType"
+      >Set</a
+      ><a name="320"
+      > </a
+      ><a name="321" href="function.isomorphism.utils.html#308" class="Bound"
+      >i</a
+      ><a name="322" class="Symbol"
+      >}{</a
+      ><a name="324" href="function.isomorphism.utils.html#324" class="Bound"
+      >Y</a
+      ><a name="325"
+      > </a
+      ><a name="326" class="Symbol"
+      >:</a
+      ><a name="327"
+      > </a
+      ><a name="328" href="function.isomorphism.utils.html#313" class="Bound"
+      >X</a
+      ><a name="329"
+      > </a
+      ><a name="330" class="Symbol"
+      >&#8594;</a
+      ><a name="331"
+      > </a
+      ><a name="332" class="PrimitiveType"
+      >Set</a
+      ><a name="335"
+      > </a
+      ><a name="336" href="function.isomorphism.utils.html#310" class="Bound"
+      >j</a
+      ><a name="337" class="Symbol"
+      >}</a
+      ><a name="338"
+      >
+            </a
+      ><a name="351" class="Symbol"
+      >&#8594;</a
+      ><a name="352"
+      > </a
+      ><a name="353" class="Symbol"
+      >{</a
+      ><a name="354" href="function.isomorphism.utils.html#354" class="Bound"
+      >a</a
+      ><a name="355"
+      > </a
+      ><a name="356" href="function.isomorphism.utils.html#356" class="Bound"
+      >a'</a
+      ><a name="358"
+      > </a
+      ><a name="359" class="Symbol"
+      >:</a
+      ><a name="360"
+      > </a
+      ><a name="361" href="function.isomorphism.utils.html#313" class="Bound"
+      >X</a
+      ><a name="362" class="Symbol"
+      >}{</a
+      ><a name="364" href="function.isomorphism.utils.html#364" class="Bound"
+      >b</a
+      ><a name="365"
+      > </a
+      ><a name="366" class="Symbol"
+      >:</a
+      ><a name="367"
+      > </a
+      ><a name="368" href="function.isomorphism.utils.html#324" class="Bound"
+      >Y</a
+      ><a name="369"
+      > </a
+      ><a name="370" href="function.isomorphism.utils.html#354" class="Bound"
+      >a</a
+      ><a name="371" class="Symbol"
+      >}{</a
+      ><a name="373" href="function.isomorphism.utils.html#373" class="Bound"
+      >b'</a
+      ><a name="375"
+      > </a
+      ><a name="376" class="Symbol"
+      >:</a
+      ><a name="377"
+      > </a
+      ><a name="378" href="function.isomorphism.utils.html#324" class="Bound"
+      >Y</a
+      ><a name="379"
+      > </a
+      ><a name="380" href="function.isomorphism.utils.html#356" class="Bound"
+      >a'</a
+      ><a name="382" class="Symbol"
+      >}</a
+      ><a name="383"
+      >
+            </a
+      ><a name="396" class="Symbol"
+      >&#8594;</a
+      ><a name="397"
+      > </a
+      ><a name="398" class="Symbol"
+      >(</a
+      ><a name="399" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="400"
+      > </a
+      ><a name="401" class="Symbol"
+      >(</a
+      ><a name="402" href="function.isomorphism.utils.html#354" class="Bound"
+      >a</a
+      ><a name="403"
+      > </a
+      ><a name="404" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="405"
+      > </a
+      ><a name="406" href="function.isomorphism.utils.html#356" class="Bound"
+      >a'</a
+      ><a name="408" class="Symbol"
+      >)</a
+      ><a name="409"
+      > </a
+      ><a name="410" class="Symbol"
+      >&#955;</a
+      ><a name="411"
+      > </a
+      ><a name="412" href="function.isomorphism.utils.html#412" class="Bound"
+      >q</a
+      ><a name="413"
+      > </a
+      ><a name="414" class="Symbol"
+      >&#8594;</a
+      ><a name="415"
+      > </a
+      ><a name="416" href="equality.core.html#652" class="Function"
+      >subst</a
+      ><a name="421"
+      > </a
+      ><a name="422" href="function.isomorphism.utils.html#324" class="Bound"
+      >Y</a
+      ><a name="423"
+      > </a
+      ><a name="424" href="function.isomorphism.utils.html#412" class="Bound"
+      >q</a
+      ><a name="425"
+      > </a
+      ><a name="426" href="function.isomorphism.utils.html#364" class="Bound"
+      >b</a
+      ><a name="427"
+      > </a
+      ><a name="428" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="429"
+      > </a
+      ><a name="430" href="function.isomorphism.utils.html#373" class="Bound"
+      >b'</a
+      ><a name="432" class="Symbol"
+      >)</a
+      ><a name="433"
+      >
+            </a
+      ><a name="446" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="447"
+      > </a
+      ><a name="448" class="Symbol"
+      >((</a
+      ><a name="450" href="function.isomorphism.utils.html#354" class="Bound"
+      >a</a
+      ><a name="451"
+      > </a
+      ><a name="452" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="453"
+      > </a
+      ><a name="454" href="function.isomorphism.utils.html#364" class="Bound"
+      >b</a
+      ><a name="455" class="Symbol"
+      >)</a
+      ><a name="456"
+      > </a
+      ><a name="457" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="458"
+      > </a
+      ><a name="459" class="Symbol"
+      >(</a
+      ><a name="460" href="function.isomorphism.utils.html#356" class="Bound"
+      >a'</a
+      ><a name="462"
+      > </a
+      ><a name="463" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="464"
+      > </a
+      ><a name="465" href="function.isomorphism.utils.html#373" class="Bound"
+      >b'</a
+      ><a name="467" class="Symbol"
+      >))</a
+      ><a name="469"
+      >
+</a
+      ><a name="470" href="function.isomorphism.utils.html#291" class="Function"
+      >&#931;-split-iso</a
+      ><a name="481"
+      > </a
+      ><a name="482" class="Symbol"
+      >{</a
+      ><a name="483"
+      >Y </a
+      ><a name="485" class="Symbol"
+      >=</a
+      ><a name="486"
+      > </a
+      ><a name="487" href="function.isomorphism.utils.html#487" class="Bound"
+      >Y</a
+      ><a name="488" class="Symbol"
+      >}{</a
+      ><a name="490" href="function.isomorphism.utils.html#490" class="Bound"
+      >a</a
+      ><a name="491" class="Symbol"
+      >}{</a
+      ><a name="493" href="function.isomorphism.utils.html#493" class="Bound"
+      >a'</a
+      ><a name="495" class="Symbol"
+      >}{</a
+      ><a name="497" href="function.isomorphism.utils.html#497" class="Bound"
+      >b</a
+      ><a name="498" class="Symbol"
+      >}{</a
+      ><a name="500" href="function.isomorphism.utils.html#500" class="Bound"
+      >b'</a
+      ><a name="502" class="Symbol"
+      >}</a
+      ><a name="503"
+      > </a
+      ><a name="504" class="Symbol"
+      >=</a
+      ><a name="505"
+      > </a
+      ><a name="506" href="function.isomorphism.core.html#359" class="InductiveConstructor"
+      >iso</a
+      ><a name="509"
+      > </a
+      ><a name="510" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="517"
+      > </a
+      ><a name="518" href="equality.calculus.html#1481" class="Function"
+      >cong&#931;</a
+      ><a name="523"
+      > </a
+      ><a name="524" href="function.isomorphism.utils.html#540" class="Function"
+      >H</a
+      ><a name="525"
+      > </a
+      ><a name="526" href="function.isomorphism.utils.html#716" class="Function"
+      >K</a
+      ><a name="527"
+      >
+  </a
+      ><a name="530" class="Keyword"
+      >where</a
+      ><a name="535"
+      >
+    </a
+      ><a name="540" href="function.isomorphism.utils.html#540" class="Function"
+      >H</a
+      ><a name="541"
+      > </a
+      ><a name="542" class="Symbol"
+      >:</a
+      ><a name="543"
+      > </a
+      ><a name="544" class="Symbol"
+      >&#8704;</a
+      ><a name="545"
+      > </a
+      ><a name="546" class="Symbol"
+      >{</a
+      ><a name="547" href="function.isomorphism.utils.html#547" class="Bound"
+      >a</a
+      ><a name="548"
+      > </a
+      ><a name="549" href="function.isomorphism.utils.html#549" class="Bound"
+      >a'</a
+      ><a name="551" class="Symbol"
+      >}{</a
+      ><a name="553" href="function.isomorphism.utils.html#553" class="Bound"
+      >b</a
+      ><a name="554"
+      > </a
+      ><a name="555" class="Symbol"
+      >:</a
+      ><a name="556"
+      > </a
+      ><a name="557" href="function.isomorphism.utils.html#487" class="Bound"
+      >Y</a
+      ><a name="558"
+      > </a
+      ><a name="559" href="function.isomorphism.utils.html#547" class="Bound"
+      >a</a
+      ><a name="560" class="Symbol"
+      >}{</a
+      ><a name="562" href="function.isomorphism.utils.html#562" class="Bound"
+      >b'</a
+      ><a name="564"
+      > </a
+      ><a name="565" class="Symbol"
+      >:</a
+      ><a name="566"
+      > </a
+      ><a name="567" href="function.isomorphism.utils.html#487" class="Bound"
+      >Y</a
+      ><a name="568"
+      > </a
+      ><a name="569" href="function.isomorphism.utils.html#549" class="Bound"
+      >a'</a
+      ><a name="571" class="Symbol"
+      >}</a
+      ><a name="572"
+      >
+      </a
+      ><a name="579" class="Symbol"
+      >&#8594;</a
+      ><a name="580"
+      > </a
+      ><a name="581" class="Symbol"
+      >(</a
+      ><a name="582" href="function.isomorphism.utils.html#582" class="Bound"
+      >p</a
+      ><a name="583"
+      > </a
+      ><a name="584" class="Symbol"
+      >:</a
+      ><a name="585"
+      > </a
+      ><a name="586" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="587"
+      > </a
+      ><a name="588" class="Symbol"
+      >(</a
+      ><a name="589" href="function.isomorphism.utils.html#547" class="Bound"
+      >a</a
+      ><a name="590"
+      > </a
+      ><a name="591" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="592"
+      > </a
+      ><a name="593" href="function.isomorphism.utils.html#549" class="Bound"
+      >a'</a
+      ><a name="595" class="Symbol"
+      >)</a
+      ><a name="596"
+      > </a
+      ><a name="597" class="Symbol"
+      >&#955;</a
+      ><a name="598"
+      > </a
+      ><a name="599" href="function.isomorphism.utils.html#599" class="Bound"
+      >q</a
+      ><a name="600"
+      > </a
+      ><a name="601" class="Symbol"
+      >&#8594;</a
+      ><a name="602"
+      > </a
+      ><a name="603" href="equality.core.html#652" class="Function"
+      >subst</a
+      ><a name="608"
+      > </a
+      ><a name="609" href="function.isomorphism.utils.html#487" class="Bound"
+      >Y</a
+      ><a name="610"
+      > </a
+      ><a name="611" href="function.isomorphism.utils.html#599" class="Bound"
+      >q</a
+      ><a name="612"
+      > </a
+      ><a name="613" href="function.isomorphism.utils.html#553" class="Bound"
+      >b</a
+      ><a name="614"
+      > </a
+      ><a name="615" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="616"
+      > </a
+      ><a name="617" href="function.isomorphism.utils.html#562" class="Bound"
+      >b'</a
+      ><a name="619" class="Symbol"
+      >)</a
+      ><a name="620"
+      >
+      </a
+      ><a name="627" class="Symbol"
+      >&#8594;</a
+      ><a name="628"
+      > </a
+      ><a name="629" href="equality.calculus.html#1481" class="Function"
+      >cong&#931;</a
+      ><a name="634"
+      > </a
+      ><a name="635" class="Symbol"
+      >(</a
+      ><a name="636" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="643"
+      > </a
+      ><a name="644" class="Symbol"
+      >{</a
+      ><a name="645"
+      >a </a
+      ><a name="647" class="Symbol"
+      >=</a
+      ><a name="648"
+      > </a
+      ><a name="649" href="function.isomorphism.utils.html#547" class="Bound"
+      >a</a
+      ><a name="650" class="Symbol"
+      >}{</a
+      ><a name="652"
+      >a' </a
+      ><a name="655" class="Symbol"
+      >=</a
+      ><a name="656"
+      > </a
+      ><a name="657" href="function.isomorphism.utils.html#549" class="Bound"
+      >a'</a
+      ><a name="659" class="Symbol"
+      >}{</a
+      ><a name="661"
+      >b </a
+      ><a name="663" class="Symbol"
+      >=</a
+      ><a name="664"
+      > </a
+      ><a name="665" href="function.isomorphism.utils.html#553" class="Bound"
+      >b</a
+      ><a name="666" class="Symbol"
+      >}{</a
+      ><a name="668"
+      >b' </a
+      ><a name="671" class="Symbol"
+      >=</a
+      ><a name="672"
+      > </a
+      ><a name="673" href="function.isomorphism.utils.html#562" class="Bound"
+      >b'</a
+      ><a name="675" class="Symbol"
+      >}</a
+      ><a name="676"
+      > </a
+      ><a name="677" href="function.isomorphism.utils.html#582" class="Bound"
+      >p</a
+      ><a name="678" class="Symbol"
+      >)</a
+      ><a name="679"
+      > </a
+      ><a name="680" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="681"
+      > </a
+      ><a name="682" href="function.isomorphism.utils.html#582" class="Bound"
+      >p</a
+      ><a name="683"
+      >
+    </a
+      ><a name="688" href="function.isomorphism.utils.html#540" class="Function"
+      >H</a
+      ><a name="689"
+      > </a
+      ><a name="690" class="Symbol"
+      >(</a
+      ><a name="691" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="695"
+      > </a
+      ><a name="696" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="697"
+      > </a
+      ><a name="698" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="702" class="Symbol"
+      >)</a
+      ><a name="703"
+      > </a
+      ><a name="704" class="Symbol"
+      >=</a
+      ><a name="705"
+      > </a
+      ><a name="706" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="710"
+      >
+
+    </a
+      ><a name="716" href="function.isomorphism.utils.html#716" class="Function"
+      >K</a
+      ><a name="717"
+      > </a
+      ><a name="718" class="Symbol"
+      >:</a
+      ><a name="719"
+      > </a
+      ><a name="720" class="Symbol"
+      >(</a
+      ><a name="721" href="function.isomorphism.utils.html#721" class="Bound"
+      >p</a
+      ><a name="722"
+      > </a
+      ><a name="723" class="Symbol"
+      >:</a
+      ><a name="724"
+      > </a
+      ><a name="725" class="Symbol"
+      >(</a
+      ><a name="726" href="function.isomorphism.utils.html#490" class="Bound"
+      >a</a
+      ><a name="727"
+      > </a
+      ><a name="728" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="729"
+      > </a
+      ><a name="730" href="function.isomorphism.utils.html#497" class="Bound"
+      >b</a
+      ><a name="731" class="Symbol"
+      >)</a
+      ><a name="732"
+      > </a
+      ><a name="733" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="734"
+      > </a
+      ><a name="735" class="Symbol"
+      >(</a
+      ><a name="736" href="function.isomorphism.utils.html#493" class="Bound"
+      >a'</a
+      ><a name="738"
+      > </a
+      ><a name="739" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="740"
+      > </a
+      ><a name="741" href="function.isomorphism.utils.html#500" class="Bound"
+      >b'</a
+      ><a name="743" class="Symbol"
+      >))</a
+      ><a name="745"
+      > </a
+      ><a name="746" class="Symbol"
+      >&#8594;</a
+      ><a name="747"
+      > </a
+      ><a name="748" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="755"
+      > </a
+      ><a name="756" class="Symbol"
+      >(</a
+      ><a name="757" href="equality.calculus.html#1481" class="Function"
+      >cong&#931;</a
+      ><a name="762"
+      > </a
+      ><a name="763" href="function.isomorphism.utils.html#721" class="Bound"
+      >p</a
+      ><a name="764" class="Symbol"
+      >)</a
+      ><a name="765"
+      > </a
+      ><a name="766" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="767"
+      > </a
+      ><a name="768" href="function.isomorphism.utils.html#721" class="Bound"
+      >p</a
+      ><a name="769"
+      >
+    </a
+      ><a name="774" href="function.isomorphism.utils.html#716" class="Function"
+      >K</a
+      ><a name="775"
+      > </a
+      ><a name="776" class="Symbol"
+      >=</a
+      ><a name="777"
+      > </a
+      ><a name="778" href="equality.core.html#1016" class="Function"
+      >J</a
+      ><a name="779"
+      > </a
+      ><a name="780" class="Symbol"
+      >(&#955;</a
+      ><a name="782"
+      > </a
+      ><a name="783" href="function.isomorphism.utils.html#783" class="Bound"
+      >u</a
+      ><a name="784"
+      > </a
+      ><a name="785" href="function.isomorphism.utils.html#785" class="Bound"
+      >v</a
+      ><a name="786"
+      > </a
+      ><a name="787" href="function.isomorphism.utils.html#787" class="Bound"
+      >p</a
+      ><a name="788"
+      > </a
+      ><a name="789" class="Symbol"
+      >&#8594;</a
+      ><a name="790"
+      > </a
+      ><a name="791" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="798"
+      > </a
+      ><a name="799" class="Symbol"
+      >(</a
+      ><a name="800" href="equality.calculus.html#1481" class="Function"
+      >cong&#931;</a
+      ><a name="805"
+      > </a
+      ><a name="806" href="function.isomorphism.utils.html#787" class="Bound"
+      >p</a
+      ><a name="807" class="Symbol"
+      >)</a
+      ><a name="808"
+      > </a
+      ><a name="809" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="810"
+      > </a
+      ><a name="811" href="function.isomorphism.utils.html#787" class="Bound"
+      >p</a
+      ><a name="812" class="Symbol"
+      >)</a
+      ><a name="813"
+      >
+          </a
+      ><a name="824" class="Symbol"
+      >(&#955;</a
+      ><a name="826"
+      > </a
+      ><a name="827" class="Symbol"
+      >{(</a
+      ><a name="829" href="function.isomorphism.utils.html#829" class="Bound"
+      >a</a
+      ><a name="830"
+      > </a
+      ><a name="831" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="832"
+      > </a
+      ><a name="833" href="function.isomorphism.utils.html#833" class="Bound"
+      >b</a
+      ><a name="834" class="Symbol"
+      >)</a
+      ><a name="835"
+      > </a
+      ><a name="836" class="Symbol"
+      >&#8594;</a
+      ><a name="837"
+      > </a
+      ><a name="838" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="842"
+      > </a
+      ><a name="843" class="Symbol"
+      >})</a
+      ><a name="845"
+      >
+          </a
+      ><a name="856" class="Symbol"
+      >(</a
+      ><a name="857" href="function.isomorphism.utils.html#490" class="Bound"
+      >a</a
+      ><a name="858"
+      > </a
+      ><a name="859" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="860"
+      > </a
+      ><a name="861" href="function.isomorphism.utils.html#497" class="Bound"
+      >b</a
+      ><a name="862" class="Symbol"
+      >)</a
+      ><a name="863"
+      > </a
+      ><a name="864" class="Symbol"
+      >(</a
+      ><a name="865" href="function.isomorphism.utils.html#493" class="Bound"
+      >a'</a
+      ><a name="867"
+      > </a
+      ><a name="868" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="869"
+      > </a
+      ><a name="870" href="function.isomorphism.utils.html#500" class="Bound"
+      >b'</a
+      ><a name="872" class="Symbol"
+      >)</a
+      ><a name="873"
+      >
+
+</a
+      ><a name="875" href="function.isomorphism.utils.html#875" class="Function"
+      >&#931;-cong-iso</a
+      ><a name="885"
+      > </a
+      ><a name="886" class="Symbol"
+      >:</a
+      ><a name="887"
+      > </a
+      ><a name="888" class="Symbol"
+      >&#8704;</a
+      ><a name="889"
+      > </a
+      ><a name="890" class="Symbol"
+      >{</a
+      ><a name="891" href="function.isomorphism.utils.html#891" class="Bound"
+      >i</a
+      ><a name="892"
+      > </a
+      ><a name="893" href="function.isomorphism.utils.html#893" class="Bound"
+      >i'</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="function.isomorphism.utils.html#896" class="Bound"
+      >j</a
+      ><a name="897"
+      > </a
+      ><a name="898" href="function.isomorphism.utils.html#898" class="Bound"
+      >j'</a
+      ><a name="900" class="Symbol"
+      >}{</a
+      ><a name="902" href="function.isomorphism.utils.html#902" class="Bound"
+      >X</a
+      ><a name="903"
+      > </a
+      ><a name="904" class="Symbol"
+      >:</a
+      ><a name="905"
+      > </a
+      ><a name="906" class="PrimitiveType"
+      >Set</a
+      ><a name="909"
+      > </a
+      ><a name="910" href="function.isomorphism.utils.html#891" class="Bound"
+      >i</a
+      ><a name="911" class="Symbol"
+      >}{</a
+      ><a name="913" href="function.isomorphism.utils.html#913" class="Bound"
+      >X'</a
+      ><a name="915"
+      > </a
+      ><a name="916" class="Symbol"
+      >:</a
+      ><a name="917"
+      > </a
+      ><a name="918" class="PrimitiveType"
+      >Set</a
+      ><a name="921"
+      > </a
+      ><a name="922" href="function.isomorphism.utils.html#893" class="Bound"
+      >i'</a
+      ><a name="924" class="Symbol"
+      >}</a
+      ><a name="925"
+      >
+             </a
+      ><a name="939" class="Symbol"
+      >{</a
+      ><a name="940" href="function.isomorphism.utils.html#940" class="Bound"
+      >Y</a
+      ><a name="941"
+      > </a
+      ><a name="942" class="Symbol"
+      >:</a
+      ><a name="943"
+      > </a
+      ><a name="944" href="function.isomorphism.utils.html#902" class="Bound"
+      >X</a
+      ><a name="945"
+      > </a
+      ><a name="946" class="Symbol"
+      >&#8594;</a
+      ><a name="947"
+      > </a
+      ><a name="948" class="PrimitiveType"
+      >Set</a
+      ><a name="951"
+      > </a
+      ><a name="952" href="function.isomorphism.utils.html#896" class="Bound"
+      >j</a
+      ><a name="953" class="Symbol"
+      >}{</a
+      ><a name="955" href="function.isomorphism.utils.html#955" class="Bound"
+      >Y'</a
+      ><a name="957"
+      > </a
+      ><a name="958" class="Symbol"
+      >:</a
+      ><a name="959"
+      > </a
+      ><a name="960" href="function.isomorphism.utils.html#913" class="Bound"
+      >X'</a
+      ><a name="962"
+      > </a
+      ><a name="963" class="Symbol"
+      >&#8594;</a
+      ><a name="964"
+      > </a
+      ><a name="965" class="PrimitiveType"
+      >Set</a
+      ><a name="968"
+      > </a
+      ><a name="969" href="function.isomorphism.utils.html#898" class="Bound"
+      >j'</a
+      ><a name="971" class="Symbol"
+      >}</a
+      ><a name="972"
+      >
+           </a
+      ><a name="984" class="Symbol"
+      >&#8594;</a
+      ><a name="985"
+      > </a
+      ><a name="986" class="Symbol"
+      >(</a
+      ><a name="987" href="function.isomorphism.utils.html#987" class="Bound"
+      >isom</a
+      ><a name="991"
+      > </a
+      ><a name="992" class="Symbol"
+      >:</a
+      ><a name="993"
+      > </a
+      ><a name="994" href="function.isomorphism.utils.html#902" class="Bound"
+      >X</a
+      ><a name="995"
+      > </a
+      ><a name="996" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="997"
+      > </a
+      ><a name="998" href="function.isomorphism.utils.html#913" class="Bound"
+      >X'</a
+      ><a name="1000" class="Symbol"
+      >)</a
+      ><a name="1001"
+      >
+           </a
+      ><a name="1013" class="Symbol"
+      >&#8594;</a
+      ><a name="1014"
+      > </a
+      ><a name="1015" class="Symbol"
+      >((</a
+      ><a name="1017" href="function.isomorphism.utils.html#1017" class="Bound"
+      >x'</a
+      ><a name="1019"
+      > </a
+      ><a name="1020" class="Symbol"
+      >:</a
+      ><a name="1021"
+      > </a
+      ><a name="1022" href="function.isomorphism.utils.html#913" class="Bound"
+      >X'</a
+      ><a name="1024" class="Symbol"
+      >)</a
+      ><a name="1025"
+      > </a
+      ><a name="1026" class="Symbol"
+      >&#8594;</a
+      ><a name="1027"
+      > </a
+      ><a name="1028" href="function.isomorphism.utils.html#940" class="Bound"
+      >Y</a
+      ><a name="1029"
+      > </a
+      ><a name="1030" class="Symbol"
+      >(</a
+      ><a name="1031" href="function.isomorphism.core.html#390" class="Function"
+      >invert</a
+      ><a name="1037"
+      > </a
+      ><a name="1038" href="function.isomorphism.utils.html#987" class="Bound"
+      >isom</a
+      ><a name="1042"
+      > </a
+      ><a name="1043" href="function.isomorphism.utils.html#1017" class="Bound"
+      >x'</a
+      ><a name="1045" class="Symbol"
+      >)</a
+      ><a name="1046"
+      > </a
+      ><a name="1047" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="1048"
+      > </a
+      ><a name="1049" href="function.isomorphism.utils.html#955" class="Bound"
+      >Y'</a
+      ><a name="1051"
+      > </a
+      ><a name="1052" href="function.isomorphism.utils.html#1017" class="Bound"
+      >x'</a
+      ><a name="1054" class="Symbol"
+      >)</a
+      ><a name="1055"
+      >
+           </a
+      ><a name="1067" class="Symbol"
+      >&#8594;</a
+      ><a name="1068"
+      > </a
+      ><a name="1069" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="1070"
+      > </a
+      ><a name="1071" href="function.isomorphism.utils.html#902" class="Bound"
+      >X</a
+      ><a name="1072"
+      > </a
+      ><a name="1073" href="function.isomorphism.utils.html#940" class="Bound"
+      >Y</a
+      ><a name="1074"
+      > </a
+      ><a name="1075" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="1076"
+      > </a
+      ><a name="1077" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="1078"
+      > </a
+      ><a name="1079" href="function.isomorphism.utils.html#913" class="Bound"
+      >X'</a
+      ><a name="1081"
+      > </a
+      ><a name="1082" href="function.isomorphism.utils.html#955" class="Bound"
+      >Y'</a
+      ><a name="1084"
+      >
+</a
+      ><a name="1085" href="function.isomorphism.utils.html#875" class="Function"
+      >&#931;-cong-iso</a
+      ><a name="1095"
+      > </a
+      ><a name="1096" class="Symbol"
+      >{</a
+      ><a name="1097"
+      >X </a
+      ><a name="1099" class="Symbol"
+      >=</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" href="function.isomorphism.utils.html#1101" class="Bound"
+      >X</a
+      ><a name="1102" class="Symbol"
+      >}{</a
+      ><a name="1104" href="function.isomorphism.utils.html#1104" class="Bound"
+      >X'</a
+      ><a name="1106" class="Symbol"
+      >}{</a
+      ><a name="1108" href="function.isomorphism.utils.html#1108" class="Bound"
+      >Y</a
+      ><a name="1109" class="Symbol"
+      >}{</a
+      ><a name="1111" href="function.isomorphism.utils.html#1111" class="Bound"
+      >Y'</a
+      ><a name="1113" class="Symbol"
+      >}</a
+      ><a name="1114"
+      > </a
+      ><a name="1115" href="function.isomorphism.utils.html#1115" class="Bound"
+      >isom</a
+      ><a name="1119"
+      > </a
+      ><a name="1120" href="function.isomorphism.utils.html#1120" class="Bound"
+      >isom'</a
+      ><a name="1125"
+      > </a
+      ><a name="1126" class="Symbol"
+      >=</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" href="function.isomorphism.core.html#702" class="Function"
+      >trans&#8773;</a
+      ><a name="1134"
+      > </a
+      ><a name="1135" href="function.isomorphism.utils.html#1476" class="Function"
+      >&#931;-iso</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" class="Symbol"
+      >(</a
+      ><a name="1142" href="function.isomorphism.utils.html#1976" class="Function"
+      >&#931;-iso'</a
+      ><a name="1148"
+      > </a
+      ><a name="1149" href="function.isomorphism.utils.html#1120" class="Bound"
+      >isom'</a
+      ><a name="1154" class="Symbol"
+      >)</a
+      ><a name="1155"
+      >
+  </a
+      ><a name="1158" class="Keyword"
+      >where</a
+      ><a name="1163"
+      >
+    </a
+      ><a name="1168" href="function.isomorphism.utils.html#1168" class="Function"
+      >isom-c</a
+      ><a name="1174"
+      > </a
+      ><a name="1175" class="Symbol"
+      >=</a
+      ><a name="1176"
+      > </a
+      ><a name="1177" href="function.isomorphism.coherent.html#6084" class="Function"
+      >&#8773;&#8658;&#8773;'</a
+      ><a name="1181"
+      > </a
+      ><a name="1182" href="function.isomorphism.utils.html#1115" class="Bound"
+      >isom</a
+      ><a name="1186"
+      >
+    </a
+      ><a name="1191" href="function.isomorphism.utils.html#1191" class="Function"
+      >&#947;</a
+      ><a name="1192"
+      > </a
+      ><a name="1193" class="Symbol"
+      >=</a
+      ><a name="1194"
+      > </a
+      ><a name="1195" href="sum.html#233" class="Function"
+      >proj&#8322;</a
+      ><a name="1200"
+      > </a
+      ><a name="1201" href="function.isomorphism.utils.html#1168" class="Function"
+      >isom-c</a
+      ><a name="1207"
+      >
+    </a
+      ><a name="1212" class="Keyword"
+      >open</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" href="function.isomorphism.core.html#293" class="Module Operator"
+      >_&#8773;_</a
+      ><a name="1220"
+      > </a
+      ><a name="1221" class="Symbol"
+      >(</a
+      ><a name="1222" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1227"
+      > </a
+      ><a name="1228" href="function.isomorphism.utils.html#1168" class="Function"
+      >isom-c</a
+      ><a name="1234" class="Symbol"
+      >)</a
+      ><a name="1235"
+      >
+      </a
+      ><a name="1242" class="Keyword"
+      >renaming</a
+      ><a name="1250"
+      > </a
+      ><a name="1251" class="Symbol"
+      >(</a
+      ><a name="1252"
+      > to </a
+      ><a name="1256" class="Symbol"
+      >to</a
+      ><a name="1258"
+      > f </a
+      ><a name="1261" class="Symbol"
+      >;</a
+      ><a name="1262"
+      > from </a
+      ><a name="1268" class="Symbol"
+      >to</a
+      ><a name="1270"
+      > g
+               </a
+      ><a name="1288" class="Symbol"
+      >;</a
+      ><a name="1289"
+      > iso&#8321; </a
+      ><a name="1295" class="Symbol"
+      >to</a
+      ><a name="1297"
+      > H</a
+      ><a name="1299" class="Symbol"
+      >;</a
+      ><a name="1300"
+      > iso&#8322; </a
+      ><a name="1306" class="Symbol"
+      >to</a
+      ><a name="1308"
+      > K </a
+      ><a name="1311" class="Symbol"
+      >)</a
+      ><a name="1312"
+      >
+
+    </a
+      ><a name="1318" href="function.isomorphism.utils.html#1318" class="Function"
+      >lem</a
+      ><a name="1321"
+      > </a
+      ><a name="1322" class="Symbol"
+      >:</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" class="Symbol"
+      >(</a
+      ><a name="1325" href="function.isomorphism.utils.html#1325" class="Bound"
+      >x</a
+      ><a name="1326"
+      > </a
+      ><a name="1327" class="Symbol"
+      >:</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" href="function.isomorphism.utils.html#1104" class="Bound"
+      >X'</a
+      ><a name="1331" class="Symbol"
+      >)</a
+      ><a name="1332"
+      > </a
+      ><a name="1333" class="Symbol"
+      >&#8594;</a
+      ><a name="1334"
+      > </a
+      ><a name="1335" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="1338"
+      > </a
+      ><a name="1339" class="Symbol"
+      >(</a
+      ><a name="1340" href="function.isomorphism.core.html#407" class="Function"
+      >H</a
+      ><a name="1341"
+      > </a
+      ><a name="1342" class="Symbol"
+      >(</a
+      ><a name="1343" href="function.isomorphism.core.html#390" class="Function"
+      >g</a
+      ><a name="1344"
+      > </a
+      ><a name="1345" href="function.isomorphism.utils.html#1325" class="Bound"
+      >x</a
+      ><a name="1346" class="Symbol"
+      >))</a
+      ><a name="1348"
+      > </a
+      ><a name="1349" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1350"
+      > </a
+      ><a name="1351" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1355"
+      > </a
+      ><a name="1356" href="function.isomorphism.core.html#390" class="Function"
+      >g</a
+      ><a name="1357"
+      > </a
+      ><a name="1358" class="Symbol"
+      >(</a
+      ><a name="1359" href="function.isomorphism.core.html#444" class="Function"
+      >K</a
+      ><a name="1360"
+      > </a
+      ><a name="1361" href="function.isomorphism.utils.html#1325" class="Bound"
+      >x</a
+      ><a name="1362" class="Symbol"
+      >)</a
+      ><a name="1363"
+      > </a
+      ><a name="1364" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1365"
+      > </a
+      ><a name="1366" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1370"
+      >
+    </a
+      ><a name="1375" href="function.isomorphism.utils.html#1318" class="Function"
+      >lem</a
+      ><a name="1378"
+      > </a
+      ><a name="1379" href="function.isomorphism.utils.html#1379" class="Bound"
+      >x</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" class="Symbol"
+      >=</a
+      ><a name="1382"
+      > </a
+      ><a name="1383" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1387"
+      > </a
+      ><a name="1388" class="Symbol"
+      >(&#955;</a
+      ><a name="1390"
+      > </a
+      ><a name="1391" href="function.isomorphism.utils.html#1391" class="Bound"
+      >z</a
+      ><a name="1392"
+      > </a
+      ><a name="1393" class="Symbol"
+      >&#8594;</a
+      ><a name="1394"
+      > </a
+      ><a name="1395" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="1398"
+      > </a
+      ><a name="1399" class="Symbol"
+      >(</a
+      ><a name="1400" href="function.isomorphism.core.html#407" class="Function"
+      >H</a
+      ><a name="1401"
+      > </a
+      ><a name="1402" class="Symbol"
+      >(</a
+      ><a name="1403" href="function.isomorphism.core.html#390" class="Function"
+      >g</a
+      ><a name="1404"
+      > </a
+      ><a name="1405" href="function.isomorphism.utils.html#1379" class="Bound"
+      >x</a
+      ><a name="1406" class="Symbol"
+      >))</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1410"
+      > </a
+      ><a name="1411" href="function.isomorphism.utils.html#1391" class="Bound"
+      >z</a
+      ><a name="1412" class="Symbol"
+      >)</a
+      ><a name="1413"
+      > </a
+      ><a name="1414" class="Symbol"
+      >(</a
+      ><a name="1415" href="function.isomorphism.coherent.html#2177" class="Function"
+      >co-coherence</a
+      ><a name="1427"
+      > </a
+      ><a name="1428" class="Symbol"
+      >_</a
+      ><a name="1429"
+      > </a
+      ><a name="1430" href="function.isomorphism.utils.html#1191" class="Function"
+      >&#947;</a
+      ><a name="1431"
+      > </a
+      ><a name="1432" href="function.isomorphism.utils.html#1379" class="Bound"
+      >x</a
+      ><a name="1433" class="Symbol"
+      >)</a
+      ><a name="1434"
+      >
+          </a
+      ><a name="1445" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1446"
+      > </a
+      ><a name="1447" href="equality.groupoid.html#751" class="Function"
+      >right-inverse</a
+      ><a name="1460"
+      > </a
+      ><a name="1461" class="Symbol"
+      >(</a
+      ><a name="1462" href="function.isomorphism.core.html#407" class="Function"
+      >H</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" class="Symbol"
+      >(</a
+      ><a name="1465" href="function.isomorphism.core.html#390" class="Function"
+      >g</a
+      ><a name="1466"
+      > </a
+      ><a name="1467" href="function.isomorphism.utils.html#1379" class="Bound"
+      >x</a
+      ><a name="1468" class="Symbol"
+      >))</a
+      ><a name="1470"
+      >
+
+    </a
+      ><a name="1476" href="function.isomorphism.utils.html#1476" class="Function"
+      >&#931;-iso</a
+      ><a name="1481"
+      > </a
+      ><a name="1482" class="Symbol"
+      >:</a
+      ><a name="1483"
+      > </a
+      ><a name="1484" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="1485"
+      > </a
+      ><a name="1486" href="function.isomorphism.utils.html#1101" class="Bound"
+      >X</a
+      ><a name="1487"
+      > </a
+      ><a name="1488" href="function.isomorphism.utils.html#1108" class="Bound"
+      >Y</a
+      ><a name="1489"
+      > </a
+      ><a name="1490" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="1491"
+      > </a
+      ><a name="1492" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="1493"
+      > </a
+      ><a name="1494" href="function.isomorphism.utils.html#1104" class="Bound"
+      >X'</a
+      ><a name="1496"
+      > </a
+      ><a name="1497" class="Symbol"
+      >(</a
+      ><a name="1498" href="function.isomorphism.utils.html#1108" class="Bound"
+      >Y</a
+      ><a name="1499"
+      > </a
+      ><a name="1500" href="function.core.html#148" class="Function Operator"
+      >&#8728;</a
+      ><a name="1501"
+      > </a
+      ><a name="1502" href="function.isomorphism.core.html#390" class="Function"
+      >g</a
+      ><a name="1503" class="Symbol"
+      >)</a
+      ><a name="1504"
+      >
+    </a
+      ><a name="1509" href="function.isomorphism.utils.html#1476" class="Function"
+      >&#931;-iso</a
+      ><a name="1514"
+      > </a
+      ><a name="1515" class="Symbol"
+      >=</a
+      ><a name="1516"
+      > </a
+      ><a name="1517" class="Keyword"
+      >record</a
+      ><a name="1523"
+      >
+      </a
+      ><a name="1530" class="Symbol"
+      >{</a
+      ><a name="1531"
+      > </a
+      ><a name="1532" class="Field"
+      >to</a
+      ><a name="1534"
+      > </a
+      ><a name="1535" class="Symbol"
+      >=</a
+      ><a name="1536"
+      > </a
+      ><a name="1537" class="Symbol"
+      >&#955;</a
+      ><a name="1538"
+      > </a
+      ><a name="1539" class="Symbol"
+      >{</a
+      ><a name="1540"
+      > </a
+      ><a name="1541" class="Symbol"
+      >(</a
+      ><a name="1542" href="function.isomorphism.utils.html#1542" class="Bound"
+      >x</a
+      ><a name="1543"
+      > </a
+      ><a name="1544" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1545"
+      > </a
+      ><a name="1546" href="function.isomorphism.utils.html#1546" class="Bound"
+      >y</a
+      ><a name="1547" class="Symbol"
+      >)</a
+      ><a name="1548"
+      > </a
+      ><a name="1549" class="Symbol"
+      >&#8594;</a
+      ><a name="1550"
+      > </a
+      ><a name="1551" class="Symbol"
+      >(</a
+      ><a name="1552" href="function.isomorphism.core.html#375" class="Function"
+      >f</a
+      ><a name="1553"
+      > </a
+      ><a name="1554" href="function.isomorphism.utils.html#1542" class="Bound"
+      >x</a
+      ><a name="1555"
+      > </a
+      ><a name="1556" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1557"
+      > </a
+      ><a name="1558" href="equality.core.html#652" class="Function"
+      >subst</a
+      ><a name="1563"
+      > </a
+      ><a name="1564" href="function.isomorphism.utils.html#1108" class="Bound"
+      >Y</a
+      ><a name="1565"
+      > </a
+      ><a name="1566" class="Symbol"
+      >(</a
+      ><a name="1567" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="1570"
+      > </a
+      ><a name="1571" class="Symbol"
+      >(</a
+      ><a name="1572" href="function.isomorphism.core.html#407" class="Function"
+      >H</a
+      ><a name="1573"
+      > </a
+      ><a name="1574" href="function.isomorphism.utils.html#1542" class="Bound"
+      >x</a
+      ><a name="1575" class="Symbol"
+      >))</a
+      ><a name="1577"
+      > </a
+      ><a name="1578" href="function.isomorphism.utils.html#1546" class="Bound"
+      >y</a
+      ><a name="1579" class="Symbol"
+      >)</a
+      ><a name="1580"
+      > </a
+      ><a name="1581" class="Symbol"
+      >}</a
+      ><a name="1582"
+      >
+      </a
+      ><a name="1589" class="Symbol"
+      >;</a
+      ><a name="1590"
+      > </a
+      ><a name="1591" class="Field"
+      >from</a
+      ><a name="1595"
+      > </a
+      ><a name="1596" class="Symbol"
+      >=</a
+      ><a name="1597"
+      > </a
+      ><a name="1598" class="Symbol"
+      >&#955;</a
+      ><a name="1599"
+      > </a
+      ><a name="1600" class="Symbol"
+      >{</a
+      ><a name="1601"
+      > </a
+      ><a name="1602" class="Symbol"
+      >(</a
+      ><a name="1603" href="function.isomorphism.utils.html#1603" class="Bound"
+      >x</a
+      ><a name="1604"
+      > </a
+      ><a name="1605" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1606"
+      > </a
+      ><a name="1607" href="function.isomorphism.utils.html#1607" class="Bound"
+      >y</a
+      ><a name="1608" class="Symbol"
+      >)</a
+      ><a name="1609"
+      > </a
+      ><a name="1610" class="Symbol"
+      >&#8594;</a
+      ><a name="1611"
+      > </a
+      ><a name="1612" class="Symbol"
+      >(</a
+      ><a name="1613" href="function.isomorphism.core.html#390" class="Function"
+      >g</a
+      ><a name="1614"
+      > </a
+      ><a name="1615" href="function.isomorphism.utils.html#1603" class="Bound"
+      >x</a
+      ><a name="1616"
+      > </a
+      ><a name="1617" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1618"
+      > </a
+      ><a name="1619" href="function.isomorphism.utils.html#1607" class="Bound"
+      >y</a
+      ><a name="1620" class="Symbol"
+      >)</a
+      ><a name="1621"
+      > </a
+      ><a name="1622" class="Symbol"
+      >}</a
+      ><a name="1623"
+      >
+      </a
+      ><a name="1630" class="Symbol"
+      >;</a
+      ><a name="1631"
+      > </a
+      ><a name="1632" class="Field"
+      >iso&#8321;</a
+      ><a name="1636"
+      > </a
+      ><a name="1637" class="Symbol"
+      >=</a
+      ><a name="1638"
+      > </a
+      ><a name="1639" class="Symbol"
+      >&#955;</a
+      ><a name="1640"
+      > </a
+      ><a name="1641" class="Symbol"
+      >{</a
+      ><a name="1642"
+      > </a
+      ><a name="1643" class="Symbol"
+      >(</a
+      ><a name="1644" href="function.isomorphism.utils.html#1644" class="Bound"
+      >x</a
+      ><a name="1645"
+      > </a
+      ><a name="1646" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1647"
+      > </a
+      ><a name="1648" href="function.isomorphism.utils.html#1648" class="Bound"
+      >y</a
+      ><a name="1649" class="Symbol"
+      >)</a
+      ><a name="1650"
+      > </a
+      ><a name="1651" class="Symbol"
+      >&#8594;</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" class="Symbol"
+      >(</a
+      ><a name="1662" href="function.isomorphism.core.html#407" class="Function"
+      >H</a
+      ><a name="1663"
+      > </a
+      ><a name="1664" href="function.isomorphism.utils.html#1644" class="Bound"
+      >x</a
+      ><a name="1665"
+      > </a
+      ><a name="1666" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1667"
+      >
+            </a
+      ><a name="1680" href="equality.calculus.html#613" class="Function"
+      >subst-hom</a
+      ><a name="1689"
+      > </a
+      ><a name="1690" href="function.isomorphism.utils.html#1108" class="Bound"
+      >Y</a
+      ><a name="1691"
+      > </a
+      ><a name="1692" class="Symbol"
+      >(</a
+      ><a name="1693" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="1696"
+      > </a
+      ><a name="1697" class="Symbol"
+      >(</a
+      ><a name="1698" href="function.isomorphism.core.html#407" class="Function"
+      >H</a
+      ><a name="1699"
+      > </a
+      ><a name="1700" href="function.isomorphism.utils.html#1644" class="Bound"
+      >x</a
+      ><a name="1701" class="Symbol"
+      >))</a
+      ><a name="1703"
+      > </a
+      ><a name="1704" class="Symbol"
+      >(</a
+      ><a name="1705" href="function.isomorphism.core.html#407" class="Function"
+      >H</a
+      ><a name="1706"
+      > </a
+      ><a name="1707" href="function.isomorphism.utils.html#1644" class="Bound"
+      >x</a
+      ><a name="1708" class="Symbol"
+      >)</a
+      ><a name="1709"
+      > </a
+      ><a name="1710" href="function.isomorphism.utils.html#1648" class="Bound"
+      >y</a
+      ><a name="1711"
+      >
+          </a
+      ><a name="1722" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1723"
+      > </a
+      ><a name="1724" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1728"
+      > </a
+      ><a name="1729" class="Symbol"
+      >(&#955;</a
+      ><a name="1731"
+      > </a
+      ><a name="1732" href="function.isomorphism.utils.html#1732" class="Bound"
+      >p</a
+      ><a name="1733"
+      > </a
+      ><a name="1734" class="Symbol"
+      >&#8594;</a
+      ><a name="1735"
+      > </a
+      ><a name="1736" href="equality.core.html#652" class="Function"
+      >subst</a
+      ><a name="1741"
+      > </a
+      ><a name="1742" href="function.isomorphism.utils.html#1108" class="Bound"
+      >Y</a
+      ><a name="1743"
+      > </a
+      ><a name="1744" href="function.isomorphism.utils.html#1732" class="Bound"
+      >p</a
+      ><a name="1745"
+      > </a
+      ><a name="1746" href="function.isomorphism.utils.html#1648" class="Bound"
+      >y</a
+      ><a name="1747" class="Symbol"
+      >)</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" class="Symbol"
+      >(</a
+      ><a name="1750" href="equality.groupoid.html#751" class="Function"
+      >right-inverse</a
+      ><a name="1763"
+      > </a
+      ><a name="1764" class="Symbol"
+      >(</a
+      ><a name="1765" href="function.isomorphism.core.html#407" class="Function"
+      >H</a
+      ><a name="1766"
+      > </a
+      ><a name="1767" href="function.isomorphism.utils.html#1644" class="Bound"
+      >x</a
+      ><a name="1768" class="Symbol"
+      >))</a
+      ><a name="1770"
+      > </a
+      ><a name="1771" class="Symbol"
+      >)</a
+      ><a name="1772"
+      > </a
+      ><a name="1773" class="Symbol"
+      >}</a
+      ><a name="1774"
+      >
+      </a
+      ><a name="1781" class="Symbol"
+      >;</a
+      ><a name="1782"
+      > </a
+      ><a name="1783" class="Field"
+      >iso&#8322;</a
+      ><a name="1787"
+      > </a
+      ><a name="1788" class="Symbol"
+      >=</a
+      ><a name="1789"
+      > </a
+      ><a name="1790" class="Symbol"
+      >&#955;</a
+      ><a name="1791"
+      > </a
+      ><a name="1792" class="Symbol"
+      >{</a
+      ><a name="1793"
+      > </a
+      ><a name="1794" class="Symbol"
+      >(</a
+      ><a name="1795" href="function.isomorphism.utils.html#1795" class="Bound"
+      >x</a
+      ><a name="1796"
+      > </a
+      ><a name="1797" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1798"
+      > </a
+      ><a name="1799" href="function.isomorphism.utils.html#1799" class="Bound"
+      >y</a
+      ><a name="1800" class="Symbol"
+      >)</a
+      ><a name="1801"
+      > </a
+      ><a name="1802" class="Symbol"
+      >&#8594;</a
+      ><a name="1803"
+      > </a
+      ><a name="1804" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="1811"
+      > </a
+      ><a name="1812" class="Symbol"
+      >(</a
+      ><a name="1813" href="function.isomorphism.core.html#444" class="Function"
+      >K</a
+      ><a name="1814"
+      > </a
+      ><a name="1815" href="function.isomorphism.utils.html#1795" class="Bound"
+      >x</a
+      ><a name="1816"
+      > </a
+      ><a name="1817" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1818"
+      >
+            </a
+      ><a name="1831" href="equality.calculus.html#360" class="Function"
+      >subst-naturality</a
+      ><a name="1847"
+      > </a
+      ><a name="1848" href="function.isomorphism.utils.html#1108" class="Bound"
+      >Y</a
+      ><a name="1849"
+      > </a
+      ><a name="1850" href="function.isomorphism.core.html#390" class="Function"
+      >g</a
+      ><a name="1851"
+      > </a
+      ><a name="1852" class="Symbol"
+      >(</a
+      ><a name="1853" href="function.isomorphism.core.html#444" class="Function"
+      >K</a
+      ><a name="1854"
+      > </a
+      ><a name="1855" href="function.isomorphism.utils.html#1795" class="Bound"
+      >x</a
+      ><a name="1856" class="Symbol"
+      >)</a
+      ><a name="1857"
+      > </a
+      ><a name="1858" class="Symbol"
+      >_</a
+      ><a name="1859"
+      >
+          </a
+      ><a name="1870" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1871"
+      > </a
+      ><a name="1872" class="Symbol"
+      >(</a
+      ><a name="1873" href="equality.calculus.html#613" class="Function"
+      >subst-hom</a
+      ><a name="1882"
+      > </a
+      ><a name="1883" href="function.isomorphism.utils.html#1108" class="Bound"
+      >Y</a
+      ><a name="1884"
+      > </a
+      ><a name="1885" class="Symbol"
+      >(</a
+      ><a name="1886" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="1889"
+      > </a
+      ><a name="1890" class="Symbol"
+      >(</a
+      ><a name="1891" href="function.isomorphism.core.html#407" class="Function"
+      >H</a
+      ><a name="1892"
+      > </a
+      ><a name="1893" class="Symbol"
+      >(</a
+      ><a name="1894" href="function.isomorphism.core.html#390" class="Function"
+      >g</a
+      ><a name="1895"
+      > </a
+      ><a name="1896" href="function.isomorphism.utils.html#1795" class="Bound"
+      >x</a
+      ><a name="1897" class="Symbol"
+      >)))</a
+      ><a name="1900"
+      > </a
+      ><a name="1901" class="Symbol"
+      >(</a
+      ><a name="1902" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1906"
+      > </a
+      ><a name="1907" href="function.isomorphism.core.html#390" class="Function"
+      >g</a
+      ><a name="1908"
+      > </a
+      ><a name="1909" class="Symbol"
+      >(</a
+      ><a name="1910" href="function.isomorphism.core.html#444" class="Function"
+      >K</a
+      ><a name="1911"
+      > </a
+      ><a name="1912" href="function.isomorphism.utils.html#1795" class="Bound"
+      >x</a
+      ><a name="1913" class="Symbol"
+      >))</a
+      ><a name="1915"
+      > </a
+      ><a name="1916" href="function.isomorphism.utils.html#1799" class="Bound"
+      >y</a
+      ><a name="1917"
+      >
+          </a
+      ><a name="1928" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1929"
+      > </a
+      ><a name="1930" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1934"
+      > </a
+      ><a name="1935" class="Symbol"
+      >(&#955;</a
+      ><a name="1937"
+      > </a
+      ><a name="1938" href="function.isomorphism.utils.html#1938" class="Bound"
+      >p</a
+      ><a name="1939"
+      > </a
+      ><a name="1940" class="Symbol"
+      >&#8594;</a
+      ><a name="1941"
+      > </a
+      ><a name="1942" href="equality.core.html#652" class="Function"
+      >subst</a
+      ><a name="1947"
+      > </a
+      ><a name="1948" href="function.isomorphism.utils.html#1108" class="Bound"
+      >Y</a
+      ><a name="1949"
+      > </a
+      ><a name="1950" href="function.isomorphism.utils.html#1938" class="Bound"
+      >p</a
+      ><a name="1951"
+      > </a
+      ><a name="1952" href="function.isomorphism.utils.html#1799" class="Bound"
+      >y</a
+      ><a name="1953" class="Symbol"
+      >)</a
+      ><a name="1954"
+      > </a
+      ><a name="1955" class="Symbol"
+      >(</a
+      ><a name="1956" href="function.isomorphism.utils.html#1318" class="Function"
+      >lem</a
+      ><a name="1959"
+      > </a
+      ><a name="1960" href="function.isomorphism.utils.html#1795" class="Bound"
+      >x</a
+      ><a name="1961" class="Symbol"
+      >)</a
+      ><a name="1962"
+      > </a
+      ><a name="1963" class="Symbol"
+      >)</a
+      ><a name="1964"
+      > </a
+      ><a name="1965" class="Symbol"
+      >)</a
+      ><a name="1966"
+      > </a
+      ><a name="1967" class="Symbol"
+      >}</a
+      ><a name="1968"
+      > </a
+      ><a name="1969" class="Symbol"
+      >}</a
+      ><a name="1970"
+      >
+
+    </a
+      ><a name="1976" href="function.isomorphism.utils.html#1976" class="Function"
+      >&#931;-iso'</a
+      ><a name="1982"
+      > </a
+      ><a name="1983" class="Symbol"
+      >:</a
+      ><a name="1984"
+      > </a
+      ><a name="1985" class="Symbol"
+      >&#8704;</a
+      ><a name="1986"
+      > </a
+      ><a name="1987" class="Symbol"
+      >{</a
+      ><a name="1988" href="function.isomorphism.utils.html#1988" class="Bound"
+      >i</a
+      ><a name="1989"
+      > </a
+      ><a name="1990" href="function.isomorphism.utils.html#1990" class="Bound"
+      >j</a
+      ><a name="1991"
+      > </a
+      ><a name="1992" href="function.isomorphism.utils.html#1992" class="Bound"
+      >j'</a
+      ><a name="1994" class="Symbol"
+      >}{</a
+      ><a name="1996" href="function.isomorphism.utils.html#1996" class="Bound"
+      >X</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" class="Symbol"
+      >:</a
+      ><a name="1999"
+      > </a
+      ><a name="2000" class="PrimitiveType"
+      >Set</a
+      ><a name="2003"
+      > </a
+      ><a name="2004" href="function.isomorphism.utils.html#1988" class="Bound"
+      >i</a
+      ><a name="2005" class="Symbol"
+      >}{</a
+      ><a name="2007" href="function.isomorphism.utils.html#2007" class="Bound"
+      >Y</a
+      ><a name="2008"
+      > </a
+      ><a name="2009" class="Symbol"
+      >:</a
+      ><a name="2010"
+      > </a
+      ><a name="2011" href="function.isomorphism.utils.html#1996" class="Bound"
+      >X</a
+      ><a name="2012"
+      > </a
+      ><a name="2013" class="Symbol"
+      >&#8594;</a
+      ><a name="2014"
+      > </a
+      ><a name="2015" class="PrimitiveType"
+      >Set</a
+      ><a name="2018"
+      > </a
+      ><a name="2019" href="function.isomorphism.utils.html#1990" class="Bound"
+      >j</a
+      ><a name="2020" class="Symbol"
+      >}{</a
+      ><a name="2022" href="function.isomorphism.utils.html#2022" class="Bound"
+      >Y'</a
+      ><a name="2024"
+      > </a
+      ><a name="2025" class="Symbol"
+      >:</a
+      ><a name="2026"
+      > </a
+      ><a name="2027" href="function.isomorphism.utils.html#1996" class="Bound"
+      >X</a
+      ><a name="2028"
+      > </a
+      ><a name="2029" class="Symbol"
+      >&#8594;</a
+      ><a name="2030"
+      > </a
+      ><a name="2031" class="PrimitiveType"
+      >Set</a
+      ><a name="2034"
+      > </a
+      ><a name="2035" href="function.isomorphism.utils.html#1992" class="Bound"
+      >j'</a
+      ><a name="2037" class="Symbol"
+      >}</a
+      ><a name="2038"
+      >
+           </a
+      ><a name="2050" class="Symbol"
+      >&#8594;</a
+      ><a name="2051"
+      > </a
+      ><a name="2052" class="Symbol"
+      >((</a
+      ><a name="2054" href="function.isomorphism.utils.html#2054" class="Bound"
+      >x</a
+      ><a name="2055"
+      > </a
+      ><a name="2056" class="Symbol"
+      >:</a
+      ><a name="2057"
+      > </a
+      ><a name="2058" href="function.isomorphism.utils.html#1996" class="Bound"
+      >X</a
+      ><a name="2059" class="Symbol"
+      >)</a
+      ><a name="2060"
+      > </a
+      ><a name="2061" class="Symbol"
+      >&#8594;</a
+      ><a name="2062"
+      > </a
+      ><a name="2063" href="function.isomorphism.utils.html#2007" class="Bound"
+      >Y</a
+      ><a name="2064"
+      > </a
+      ><a name="2065" href="function.isomorphism.utils.html#2054" class="Bound"
+      >x</a
+      ><a name="2066"
+      > </a
+      ><a name="2067" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="2068"
+      > </a
+      ><a name="2069" href="function.isomorphism.utils.html#2022" class="Bound"
+      >Y'</a
+      ><a name="2071"
+      > </a
+      ><a name="2072" href="function.isomorphism.utils.html#2054" class="Bound"
+      >x</a
+      ><a name="2073" class="Symbol"
+      >)</a
+      ><a name="2074"
+      >
+           </a
+      ><a name="2086" class="Symbol"
+      >&#8594;</a
+      ><a name="2087"
+      > </a
+      ><a name="2088" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="2089"
+      > </a
+      ><a name="2090" href="function.isomorphism.utils.html#1996" class="Bound"
+      >X</a
+      ><a name="2091"
+      > </a
+      ><a name="2092" href="function.isomorphism.utils.html#2007" class="Bound"
+      >Y</a
+      ><a name="2093"
+      > </a
+      ><a name="2094" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="2095"
+      > </a
+      ><a name="2096" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="2097"
+      > </a
+      ><a name="2098" href="function.isomorphism.utils.html#1996" class="Bound"
+      >X</a
+      ><a name="2099"
+      > </a
+      ><a name="2100" href="function.isomorphism.utils.html#2022" class="Bound"
+      >Y'</a
+      ><a name="2102"
+      >
+    </a
+      ><a name="2107" href="function.isomorphism.utils.html#1976" class="Function"
+      >&#931;-iso'</a
+      ><a name="2113"
+      > </a
+      ><a name="2114" href="function.isomorphism.utils.html#2114" class="Bound"
+      >isom</a
+      ><a name="2118"
+      > </a
+      ><a name="2119" class="Symbol"
+      >=</a
+      ><a name="2120"
+      > </a
+      ><a name="2121" class="Keyword"
+      >record</a
+      ><a name="2127"
+      >
+      </a
+      ><a name="2134" class="Symbol"
+      >{</a
+      ><a name="2135"
+      > </a
+      ><a name="2136" class="Field"
+      >to</a
+      ><a name="2138"
+      > </a
+      ><a name="2139" class="Symbol"
+      >=</a
+      ><a name="2140"
+      > </a
+      ><a name="2141" class="Symbol"
+      >&#955;</a
+      ><a name="2142"
+      > </a
+      ><a name="2143" class="Symbol"
+      >{</a
+      ><a name="2144"
+      > </a
+      ><a name="2145" class="Symbol"
+      >(</a
+      ><a name="2146" href="function.isomorphism.utils.html#2146" class="Bound"
+      >x</a
+      ><a name="2147"
+      > </a
+      ><a name="2148" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2149"
+      > </a
+      ><a name="2150" href="function.isomorphism.utils.html#2150" class="Bound"
+      >y</a
+      ><a name="2151" class="Symbol"
+      >)</a
+      ><a name="2152"
+      > </a
+      ><a name="2153" class="Symbol"
+      >&#8594;</a
+      ><a name="2154"
+      > </a
+      ><a name="2155" class="Symbol"
+      >(</a
+      ><a name="2156" href="function.isomorphism.utils.html#2146" class="Bound"
+      >x</a
+      ><a name="2157"
+      > </a
+      ><a name="2158" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2159"
+      > </a
+      ><a name="2160" href="function.isomorphism.core.html#375" class="Function"
+      >apply</a
+      ><a name="2165"
+      > </a
+      ><a name="2166" class="Symbol"
+      >(</a
+      ><a name="2167" href="function.isomorphism.utils.html#2114" class="Bound"
+      >isom</a
+      ><a name="2171"
+      > </a
+      ><a name="2172" href="function.isomorphism.utils.html#2146" class="Bound"
+      >x</a
+      ><a name="2173" class="Symbol"
+      >)</a
+      ><a name="2174"
+      > </a
+      ><a name="2175" href="function.isomorphism.utils.html#2150" class="Bound"
+      >y</a
+      ><a name="2176" class="Symbol"
+      >)</a
+      ><a name="2177"
+      > </a
+      ><a name="2178" class="Symbol"
+      >}</a
+      ><a name="2179"
+      >
+      </a
+      ><a name="2186" class="Symbol"
+      >;</a
+      ><a name="2187"
+      > </a
+      ><a name="2188" class="Field"
+      >from</a
+      ><a name="2192"
+      > </a
+      ><a name="2193" class="Symbol"
+      >=</a
+      ><a name="2194"
+      > </a
+      ><a name="2195" class="Symbol"
+      >&#955;</a
+      ><a name="2196"
+      > </a
+      ><a name="2197" class="Symbol"
+      >{</a
+      ><a name="2198"
+      > </a
+      ><a name="2199" class="Symbol"
+      >(</a
+      ><a name="2200" href="function.isomorphism.utils.html#2200" class="Bound"
+      >x</a
+      ><a name="2201"
+      > </a
+      ><a name="2202" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2203"
+      > </a
+      ><a name="2204" href="function.isomorphism.utils.html#2204" class="Bound"
+      >y'</a
+      ><a name="2206" class="Symbol"
+      >)</a
+      ><a name="2207"
+      > </a
+      ><a name="2208" class="Symbol"
+      >&#8594;</a
+      ><a name="2209"
+      > </a
+      ><a name="2210" class="Symbol"
+      >(</a
+      ><a name="2211" href="function.isomorphism.utils.html#2200" class="Bound"
+      >x</a
+      ><a name="2212"
+      > </a
+      ><a name="2213" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2214"
+      > </a
+      ><a name="2215" href="function.isomorphism.core.html#390" class="Function"
+      >invert</a
+      ><a name="2221"
+      > </a
+      ><a name="2222" class="Symbol"
+      >(</a
+      ><a name="2223" href="function.isomorphism.utils.html#2114" class="Bound"
+      >isom</a
+      ><a name="2227"
+      > </a
+      ><a name="2228" href="function.isomorphism.utils.html#2200" class="Bound"
+      >x</a
+      ><a name="2229" class="Symbol"
+      >)</a
+      ><a name="2230"
+      > </a
+      ><a name="2231" href="function.isomorphism.utils.html#2204" class="Bound"
+      >y'</a
+      ><a name="2233" class="Symbol"
+      >)</a
+      ><a name="2234"
+      > </a
+      ><a name="2235" class="Symbol"
+      >}</a
+      ><a name="2236"
+      >
+      </a
+      ><a name="2243" class="Symbol"
+      >;</a
+      ><a name="2244"
+      > </a
+      ><a name="2245" class="Field"
+      >iso&#8321;</a
+      ><a name="2249"
+      > </a
+      ><a name="2250" class="Symbol"
+      >=</a
+      ><a name="2251"
+      > </a
+      ><a name="2252" class="Symbol"
+      >&#955;</a
+      ><a name="2253"
+      > </a
+      ><a name="2254" class="Symbol"
+      >{</a
+      ><a name="2255"
+      > </a
+      ><a name="2256" class="Symbol"
+      >(</a
+      ><a name="2257" href="function.isomorphism.utils.html#2257" class="Bound"
+      >x</a
+      ><a name="2258"
+      > </a
+      ><a name="2259" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2260"
+      > </a
+      ><a name="2261" href="function.isomorphism.utils.html#2261" class="Bound"
+      >y</a
+      ><a name="2262" class="Symbol"
+      >)</a
+      ><a name="2263"
+      > </a
+      ><a name="2264" class="Symbol"
+      >&#8594;</a
+      ><a name="2265"
+      > </a
+      ><a name="2266" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="2273"
+      > </a
+      ><a name="2274" class="Symbol"
+      >(</a
+      ><a name="2275" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="2279"
+      > </a
+      ><a name="2280" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2281"
+      > </a
+      ><a name="2282" href="function.isomorphism.core.html#407" class="Function"
+      >_&#8773;_.iso&#8321;</a
+      ><a name="2290"
+      > </a
+      ><a name="2291" class="Symbol"
+      >(</a
+      ><a name="2292" href="function.isomorphism.utils.html#2114" class="Bound"
+      >isom</a
+      ><a name="2296"
+      > </a
+      ><a name="2297" href="function.isomorphism.utils.html#2257" class="Bound"
+      >x</a
+      ><a name="2298" class="Symbol"
+      >)</a
+      ><a name="2299"
+      > </a
+      ><a name="2300" href="function.isomorphism.utils.html#2261" class="Bound"
+      >y</a
+      ><a name="2301" class="Symbol"
+      >)</a
+      ><a name="2302"
+      > </a
+      ><a name="2303" class="Symbol"
+      >}</a
+      ><a name="2304"
+      >
+      </a
+      ><a name="2311" class="Symbol"
+      >;</a
+      ><a name="2312"
+      > </a
+      ><a name="2313" class="Field"
+      >iso&#8322;</a
+      ><a name="2317"
+      > </a
+      ><a name="2318" class="Symbol"
+      >=</a
+      ><a name="2319"
+      > </a
+      ><a name="2320" class="Symbol"
+      >&#955;</a
+      ><a name="2321"
+      > </a
+      ><a name="2322" class="Symbol"
+      >{</a
+      ><a name="2323"
+      > </a
+      ><a name="2324" class="Symbol"
+      >(</a
+      ><a name="2325" href="function.isomorphism.utils.html#2325" class="Bound"
+      >x</a
+      ><a name="2326"
+      > </a
+      ><a name="2327" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2328"
+      > </a
+      ><a name="2329" href="function.isomorphism.utils.html#2329" class="Bound"
+      >y'</a
+      ><a name="2331" class="Symbol"
+      >)</a
+      ><a name="2332"
+      > </a
+      ><a name="2333" class="Symbol"
+      >&#8594;</a
+      ><a name="2334"
+      > </a
+      ><a name="2335" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="2342"
+      > </a
+      ><a name="2343" class="Symbol"
+      >(</a
+      ><a name="2344" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="2348"
+      > </a
+      ><a name="2349" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2350"
+      > </a
+      ><a name="2351" href="function.isomorphism.core.html#444" class="Function"
+      >_&#8773;_.iso&#8322;</a
+      ><a name="2359"
+      > </a
+      ><a name="2360" class="Symbol"
+      >(</a
+      ><a name="2361" href="function.isomorphism.utils.html#2114" class="Bound"
+      >isom</a
+      ><a name="2365"
+      > </a
+      ><a name="2366" href="function.isomorphism.utils.html#2325" class="Bound"
+      >x</a
+      ><a name="2367" class="Symbol"
+      >)</a
+      ><a name="2368"
+      > </a
+      ><a name="2369" href="function.isomorphism.utils.html#2329" class="Bound"
+      >y'</a
+      ><a name="2371" class="Symbol"
+      >)</a
+      ><a name="2372"
+      > </a
+      ><a name="2373" class="Symbol"
+      >}</a
+      ><a name="2374"
+      > </a
+      ><a name="2375" class="Symbol"
+      >}</a
+      ><a name="2376"
+      >
+
+</a
+      ><a name="2378" href="function.isomorphism.utils.html#2378" class="Function"
+      >&#928;-cong-iso</a
+      ><a name="2388"
+      > </a
+      ><a name="2389" class="Symbol"
+      >:</a
+      ><a name="2390"
+      > </a
+      ><a name="2391" class="Symbol"
+      >&#8704;</a
+      ><a name="2392"
+      > </a
+      ><a name="2393" class="Symbol"
+      >{</a
+      ><a name="2394" href="function.isomorphism.utils.html#2394" class="Bound"
+      >i</a
+      ><a name="2395"
+      > </a
+      ><a name="2396" href="function.isomorphism.utils.html#2396" class="Bound"
+      >i'</a
+      ><a name="2398"
+      > </a
+      ><a name="2399" href="function.isomorphism.utils.html#2399" class="Bound"
+      >j</a
+      ><a name="2400"
+      > </a
+      ><a name="2401" href="function.isomorphism.utils.html#2401" class="Bound"
+      >j'</a
+      ><a name="2403" class="Symbol"
+      >}{</a
+      ><a name="2405" href="function.isomorphism.utils.html#2405" class="Bound"
+      >X</a
+      ><a name="2406"
+      > </a
+      ><a name="2407" class="Symbol"
+      >:</a
+      ><a name="2408"
+      > </a
+      ><a name="2409" class="PrimitiveType"
+      >Set</a
+      ><a name="2412"
+      > </a
+      ><a name="2413" href="function.isomorphism.utils.html#2394" class="Bound"
+      >i</a
+      ><a name="2414" class="Symbol"
+      >}{</a
+      ><a name="2416" href="function.isomorphism.utils.html#2416" class="Bound"
+      >X'</a
+      ><a name="2418"
+      > </a
+      ><a name="2419" class="Symbol"
+      >:</a
+      ><a name="2420"
+      > </a
+      ><a name="2421" class="PrimitiveType"
+      >Set</a
+      ><a name="2424"
+      > </a
+      ><a name="2425" href="function.isomorphism.utils.html#2396" class="Bound"
+      >i'</a
+      ><a name="2427" class="Symbol"
+      >}</a
+      ><a name="2428"
+      >
+             </a
+      ><a name="2442" class="Symbol"
+      >{</a
+      ><a name="2443" href="function.isomorphism.utils.html#2443" class="Bound"
+      >Y</a
+      ><a name="2444"
+      > </a
+      ><a name="2445" class="Symbol"
+      >:</a
+      ><a name="2446"
+      > </a
+      ><a name="2447" href="function.isomorphism.utils.html#2405" class="Bound"
+      >X</a
+      ><a name="2448"
+      > </a
+      ><a name="2449" class="Symbol"
+      >&#8594;</a
+      ><a name="2450"
+      > </a
+      ><a name="2451" class="PrimitiveType"
+      >Set</a
+      ><a name="2454"
+      > </a
+      ><a name="2455" href="function.isomorphism.utils.html#2399" class="Bound"
+      >j</a
+      ><a name="2456" class="Symbol"
+      >}{</a
+      ><a name="2458" href="function.isomorphism.utils.html#2458" class="Bound"
+      >Y'</a
+      ><a name="2460"
+      > </a
+      ><a name="2461" class="Symbol"
+      >:</a
+      ><a name="2462"
+      > </a
+      ><a name="2463" href="function.isomorphism.utils.html#2416" class="Bound"
+      >X'</a
+      ><a name="2465"
+      > </a
+      ><a name="2466" class="Symbol"
+      >&#8594;</a
+      ><a name="2467"
+      > </a
+      ><a name="2468" class="PrimitiveType"
+      >Set</a
+      ><a name="2471"
+      > </a
+      ><a name="2472" href="function.isomorphism.utils.html#2401" class="Bound"
+      >j'</a
+      ><a name="2474" class="Symbol"
+      >}</a
+      ><a name="2475"
+      >
+           </a
+      ><a name="2487" class="Symbol"
+      >&#8594;</a
+      ><a name="2488"
+      > </a
+      ><a name="2489" class="Symbol"
+      >(</a
+      ><a name="2490" href="function.isomorphism.utils.html#2490" class="Bound"
+      >ext'</a
+      ><a name="2494"
+      > </a
+      ><a name="2495" class="Symbol"
+      >:</a
+      ><a name="2496"
+      > </a
+      ><a name="2497" class="Symbol"
+      >&#8704;</a
+      ><a name="2498"
+      > </a
+      ><a name="2499" class="Symbol"
+      >{</a
+      ><a name="2500" href="function.isomorphism.utils.html#2500" class="Bound"
+      >i</a
+      ><a name="2501"
+      > </a
+      ><a name="2502" href="function.isomorphism.utils.html#2502" class="Bound"
+      >j</a
+      ><a name="2503" class="Symbol"
+      >}</a
+      ><a name="2504"
+      > </a
+      ><a name="2505" class="Symbol"
+      >&#8594;</a
+      ><a name="2506"
+      > </a
+      ><a name="2507" href="function.extensionality.core.html#329" class="Function"
+      >Extensionality'</a
+      ><a name="2522"
+      > </a
+      ><a name="2523" href="function.isomorphism.utils.html#2500" class="Bound"
+      >i</a
+      ><a name="2524"
+      > </a
+      ><a name="2525" href="function.isomorphism.utils.html#2502" class="Bound"
+      >j</a
+      ><a name="2526" class="Symbol"
+      >)</a
+      ><a name="2527"
+      >
+           </a
+      ><a name="2539" class="Symbol"
+      >&#8594;</a
+      ><a name="2540"
+      > </a
+      ><a name="2541" class="Symbol"
+      >(</a
+      ><a name="2542" href="function.isomorphism.utils.html#2542" class="Bound"
+      >isom</a
+      ><a name="2546"
+      > </a
+      ><a name="2547" class="Symbol"
+      >:</a
+      ><a name="2548"
+      > </a
+      ><a name="2549" href="function.isomorphism.utils.html#2405" class="Bound"
+      >X</a
+      ><a name="2550"
+      > </a
+      ><a name="2551" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="2552"
+      > </a
+      ><a name="2553" href="function.isomorphism.utils.html#2416" class="Bound"
+      >X'</a
+      ><a name="2555" class="Symbol"
+      >)</a
+      ><a name="2556"
+      >
+           </a
+      ><a name="2568" class="Symbol"
+      >&#8594;</a
+      ><a name="2569"
+      > </a
+      ><a name="2570" class="Symbol"
+      >((</a
+      ><a name="2572" href="function.isomorphism.utils.html#2572" class="Bound"
+      >x'</a
+      ><a name="2574"
+      > </a
+      ><a name="2575" class="Symbol"
+      >:</a
+      ><a name="2576"
+      > </a
+      ><a name="2577" href="function.isomorphism.utils.html#2416" class="Bound"
+      >X'</a
+      ><a name="2579" class="Symbol"
+      >)</a
+      ><a name="2580"
+      > </a
+      ><a name="2581" class="Symbol"
+      >&#8594;</a
+      ><a name="2582"
+      > </a
+      ><a name="2583" href="function.isomorphism.utils.html#2443" class="Bound"
+      >Y</a
+      ><a name="2584"
+      > </a
+      ><a name="2585" class="Symbol"
+      >(</a
+      ><a name="2586" href="function.isomorphism.core.html#390" class="Function"
+      >invert</a
+      ><a name="2592"
+      > </a
+      ><a name="2593" href="function.isomorphism.utils.html#2542" class="Bound"
+      >isom</a
+      ><a name="2597"
+      > </a
+      ><a name="2598" href="function.isomorphism.utils.html#2572" class="Bound"
+      >x'</a
+      ><a name="2600" class="Symbol"
+      >)</a
+      ><a name="2601"
+      > </a
+      ><a name="2602" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="2603"
+      > </a
+      ><a name="2604" href="function.isomorphism.utils.html#2458" class="Bound"
+      >Y'</a
+      ><a name="2606"
+      > </a
+      ><a name="2607" href="function.isomorphism.utils.html#2572" class="Bound"
+      >x'</a
+      ><a name="2609" class="Symbol"
+      >)</a
+      ><a name="2610"
+      >
+           </a
+      ><a name="2622" class="Symbol"
+      >&#8594;</a
+      ><a name="2623"
+      > </a
+      ><a name="2624" class="Symbol"
+      >((</a
+      ><a name="2626" href="function.isomorphism.utils.html#2626" class="Bound"
+      >x</a
+      ><a name="2627"
+      > </a
+      ><a name="2628" class="Symbol"
+      >:</a
+      ><a name="2629"
+      > </a
+      ><a name="2630" href="function.isomorphism.utils.html#2405" class="Bound"
+      >X</a
+      ><a name="2631" class="Symbol"
+      >)</a
+      ><a name="2632"
+      > </a
+      ><a name="2633" class="Symbol"
+      >&#8594;</a
+      ><a name="2634"
+      > </a
+      ><a name="2635" href="function.isomorphism.utils.html#2443" class="Bound"
+      >Y</a
+      ><a name="2636"
+      > </a
+      ><a name="2637" href="function.isomorphism.utils.html#2626" class="Bound"
+      >x</a
+      ><a name="2638" class="Symbol"
+      >)</a
+      ><a name="2639"
+      >
+           </a
+      ><a name="2651" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="2652"
+      > </a
+      ><a name="2653" class="Symbol"
+      >((</a
+      ><a name="2655" href="function.isomorphism.utils.html#2655" class="Bound"
+      >x'</a
+      ><a name="2657"
+      > </a
+      ><a name="2658" class="Symbol"
+      >:</a
+      ><a name="2659"
+      > </a
+      ><a name="2660" href="function.isomorphism.utils.html#2416" class="Bound"
+      >X'</a
+      ><a name="2662" class="Symbol"
+      >)</a
+      ><a name="2663"
+      > </a
+      ><a name="2664" class="Symbol"
+      >&#8594;</a
+      ><a name="2665"
+      > </a
+      ><a name="2666" href="function.isomorphism.utils.html#2458" class="Bound"
+      >Y'</a
+      ><a name="2668"
+      > </a
+      ><a name="2669" href="function.isomorphism.utils.html#2655" class="Bound"
+      >x'</a
+      ><a name="2671" class="Symbol"
+      >)</a
+      ><a name="2672"
+      >
+</a
+      ><a name="2673" href="function.isomorphism.utils.html#2378" class="Function"
+      >&#928;-cong-iso</a
+      ><a name="2683"
+      > </a
+      ><a name="2684" class="Symbol"
+      >{</a
+      ><a name="2685"
+      >X </a
+      ><a name="2687" class="Symbol"
+      >=</a
+      ><a name="2688"
+      > </a
+      ><a name="2689" href="function.isomorphism.utils.html#2689" class="Bound"
+      >X</a
+      ><a name="2690" class="Symbol"
+      >}{</a
+      ><a name="2692" href="function.isomorphism.utils.html#2692" class="Bound"
+      >X'</a
+      ><a name="2694" class="Symbol"
+      >}{</a
+      ><a name="2696" href="function.isomorphism.utils.html#2696" class="Bound"
+      >Y</a
+      ><a name="2697" class="Symbol"
+      >}{</a
+      ><a name="2699" href="function.isomorphism.utils.html#2699" class="Bound"
+      >Y'</a
+      ><a name="2701" class="Symbol"
+      >}</a
+      ><a name="2702"
+      > </a
+      ><a name="2703" href="function.isomorphism.utils.html#2703" class="Bound"
+      >ext'</a
+      ><a name="2707"
+      > </a
+      ><a name="2708" href="function.isomorphism.utils.html#2708" class="Bound"
+      >isom</a
+      ><a name="2712"
+      > </a
+      ><a name="2713" href="function.isomorphism.utils.html#2713" class="Bound"
+      >isom'</a
+      ><a name="2718"
+      > </a
+      ><a name="2719" class="Symbol"
+      >=</a
+      ><a name="2720"
+      >
+  </a
+      ><a name="2723" href="function.isomorphism.core.html#702" class="Function"
+      >trans&#8773;</a
+      ><a name="2729"
+      > </a
+      ><a name="2730" class="Symbol"
+      >(</a
+      ><a name="2731" href="function.isomorphism.utils.html#2777" class="Function"
+      >&#928;-iso</a
+      ><a name="2736"
+      > </a
+      ><a name="2737" class="Symbol"
+      >(</a
+      ><a name="2738" href="function.isomorphism.coherent.html#6084" class="Function"
+      >&#8773;&#8658;&#8773;'</a
+      ><a name="2742"
+      > </a
+      ><a name="2743" href="function.isomorphism.utils.html#2708" class="Bound"
+      >isom</a
+      ><a name="2747" class="Symbol"
+      >))</a
+      ><a name="2749"
+      > </a
+      ><a name="2750" class="Symbol"
+      >(</a
+      ><a name="2751" href="function.isomorphism.utils.html#3267" class="Function"
+      >&#928;-iso'</a
+      ><a name="2757"
+      > </a
+      ><a name="2758" href="function.isomorphism.utils.html#2713" class="Bound"
+      >isom'</a
+      ><a name="2763" class="Symbol"
+      >)</a
+      ><a name="2764"
+      >
+  </a
+      ><a name="2767" class="Keyword"
+      >where</a
+      ><a name="2772"
+      >
+    </a
+      ><a name="2777" href="function.isomorphism.utils.html#2777" class="Function"
+      >&#928;-iso</a
+      ><a name="2782"
+      > </a
+      ><a name="2783" class="Symbol"
+      >:</a
+      ><a name="2784"
+      > </a
+      ><a name="2785" class="Symbol"
+      >(</a
+      ><a name="2786" href="function.isomorphism.utils.html#2786" class="Bound"
+      >isom</a
+      ><a name="2790"
+      > </a
+      ><a name="2791" class="Symbol"
+      >:</a
+      ><a name="2792"
+      > </a
+      ><a name="2793" href="function.isomorphism.utils.html#2689" class="Bound"
+      >X</a
+      ><a name="2794"
+      > </a
+      ><a name="2795" href="function.isomorphism.coherent.html#644" class="Function Operator"
+      >&#8773;'</a
+      ><a name="2797"
+      > </a
+      ><a name="2798" href="function.isomorphism.utils.html#2692" class="Bound"
+      >X'</a
+      ><a name="2800" class="Symbol"
+      >)</a
+      ><a name="2801"
+      >
+          </a
+      ><a name="2812" class="Symbol"
+      >&#8594;</a
+      ><a name="2813"
+      > </a
+      ><a name="2814" class="Symbol"
+      >((</a
+      ><a name="2816" href="function.isomorphism.utils.html#2816" class="Bound"
+      >x</a
+      ><a name="2817"
+      > </a
+      ><a name="2818" class="Symbol"
+      >:</a
+      ><a name="2819"
+      > </a
+      ><a name="2820" href="function.isomorphism.utils.html#2689" class="Bound"
+      >X</a
+      ><a name="2821" class="Symbol"
+      >)</a
+      ><a name="2822"
+      > </a
+      ><a name="2823" class="Symbol"
+      >&#8594;</a
+      ><a name="2824"
+      > </a
+      ><a name="2825" href="function.isomorphism.utils.html#2696" class="Bound"
+      >Y</a
+      ><a name="2826"
+      > </a
+      ><a name="2827" href="function.isomorphism.utils.html#2816" class="Bound"
+      >x</a
+      ><a name="2828" class="Symbol"
+      >)</a
+      ><a name="2829"
+      >
+          </a
+      ><a name="2840" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="2841"
+      > </a
+      ><a name="2842" class="Symbol"
+      >((</a
+      ><a name="2844" href="function.isomorphism.utils.html#2844" class="Bound"
+      >x'</a
+      ><a name="2846"
+      > </a
+      ><a name="2847" class="Symbol"
+      >:</a
+      ><a name="2848"
+      > </a
+      ><a name="2849" href="function.isomorphism.utils.html#2692" class="Bound"
+      >X'</a
+      ><a name="2851" class="Symbol"
+      >)</a
+      ><a name="2852"
+      > </a
+      ><a name="2853" class="Symbol"
+      >&#8594;</a
+      ><a name="2854"
+      > </a
+      ><a name="2855" href="function.isomorphism.utils.html#2696" class="Bound"
+      >Y</a
+      ><a name="2856"
+      > </a
+      ><a name="2857" class="Symbol"
+      >(</a
+      ><a name="2858" href="function.isomorphism.core.html#390" class="Function"
+      >invert</a
+      ><a name="2864"
+      > </a
+      ><a name="2865" class="Symbol"
+      >(</a
+      ><a name="2866" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="2871"
+      > </a
+      ><a name="2872" href="function.isomorphism.utils.html#2786" class="Bound"
+      >isom</a
+      ><a name="2876" class="Symbol"
+      >)</a
+      ><a name="2877"
+      > </a
+      ><a name="2878" href="function.isomorphism.utils.html#2844" class="Bound"
+      >x'</a
+      ><a name="2880" class="Symbol"
+      >))</a
+      ><a name="2882"
+      >
+    </a
+      ><a name="2887" href="function.isomorphism.utils.html#2777" class="Function"
+      >&#928;-iso</a
+      ><a name="2892"
+      > </a
+      ><a name="2893" class="Symbol"
+      >(</a
+      ><a name="2894" href="function.isomorphism.core.html#359" class="InductiveConstructor"
+      >iso</a
+      ><a name="2897"
+      > </a
+      ><a name="2898" href="function.isomorphism.utils.html#2898" class="Bound"
+      >f</a
+      ><a name="2899"
+      > </a
+      ><a name="2900" href="function.isomorphism.utils.html#2900" class="Bound"
+      >g</a
+      ><a name="2901"
+      > </a
+      ><a name="2902" href="function.isomorphism.utils.html#2902" class="Bound"
+      >H</a
+      ><a name="2903"
+      > </a
+      ><a name="2904" href="function.isomorphism.utils.html#2904" class="Bound"
+      >K</a
+      ><a name="2905"
+      > </a
+      ><a name="2906" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2907"
+      > </a
+      ><a name="2908" href="function.isomorphism.utils.html#2908" class="Bound"
+      >&#947;</a
+      ><a name="2909" class="Symbol"
+      >)</a
+      ><a name="2910"
+      > </a
+      ><a name="2911" class="Symbol"
+      >=</a
+      ><a name="2912"
+      > </a
+      ><a name="2913" class="Keyword"
+      >record</a
+      ><a name="2919"
+      >
+      </a
+      ><a name="2926" class="Symbol"
+      >{</a
+      ><a name="2927"
+      > </a
+      ><a name="2928" class="Field"
+      >to</a
+      ><a name="2930"
+      > </a
+      ><a name="2931" class="Symbol"
+      >=</a
+      ><a name="2932"
+      > </a
+      ><a name="2933" class="Symbol"
+      >&#955;</a
+      ><a name="2934"
+      > </a
+      ><a name="2935" href="function.isomorphism.utils.html#2935" class="Bound"
+      >h</a
+      ><a name="2936"
+      > </a
+      ><a name="2937" href="function.isomorphism.utils.html#2937" class="Bound"
+      >x'</a
+      ><a name="2939"
+      > </a
+      ><a name="2940" class="Symbol"
+      >&#8594;</a
+      ><a name="2941"
+      > </a
+      ><a name="2942" href="function.isomorphism.utils.html#2935" class="Bound"
+      >h</a
+      ><a name="2943"
+      > </a
+      ><a name="2944" class="Symbol"
+      >(</a
+      ><a name="2945" href="function.isomorphism.utils.html#2900" class="Bound"
+      >g</a
+      ><a name="2946"
+      > </a
+      ><a name="2947" href="function.isomorphism.utils.html#2937" class="Bound"
+      >x'</a
+      ><a name="2949" class="Symbol"
+      >)</a
+      ><a name="2950"
+      >
+      </a
+      ><a name="2957" class="Symbol"
+      >;</a
+      ><a name="2958"
+      > </a
+      ><a name="2959" class="Field"
+      >from</a
+      ><a name="2963"
+      > </a
+      ><a name="2964" class="Symbol"
+      >=</a
+      ><a name="2965"
+      > </a
+      ><a name="2966" class="Symbol"
+      >&#955;</a
+      ><a name="2967"
+      > </a
+      ><a name="2968" href="function.isomorphism.utils.html#2968" class="Bound"
+      >h'</a
+      ><a name="2970"
+      > </a
+      ><a name="2971" href="function.isomorphism.utils.html#2971" class="Bound"
+      >x</a
+      ><a name="2972"
+      > </a
+      ><a name="2973" class="Symbol"
+      >&#8594;</a
+      ><a name="2974"
+      > </a
+      ><a name="2975" href="equality.core.html#652" class="Function"
+      >subst</a
+      ><a name="2980"
+      > </a
+      ><a name="2981" href="function.isomorphism.utils.html#2696" class="Bound"
+      >Y</a
+      ><a name="2982"
+      > </a
+      ><a name="2983" class="Symbol"
+      >(</a
+      ><a name="2984" href="function.isomorphism.utils.html#2902" class="Bound"
+      >H</a
+      ><a name="2985"
+      > </a
+      ><a name="2986" href="function.isomorphism.utils.html#2971" class="Bound"
+      >x</a
+      ><a name="2987" class="Symbol"
+      >)</a
+      ><a name="2988"
+      > </a
+      ><a name="2989" class="Symbol"
+      >(</a
+      ><a name="2990" href="function.isomorphism.utils.html#2968" class="Bound"
+      >h'</a
+      ><a name="2992"
+      > </a
+      ><a name="2993" class="Symbol"
+      >(</a
+      ><a name="2994" href="function.isomorphism.utils.html#2898" class="Bound"
+      >f</a
+      ><a name="2995"
+      > </a
+      ><a name="2996" href="function.isomorphism.utils.html#2971" class="Bound"
+      >x</a
+      ><a name="2997" class="Symbol"
+      >))</a
+      ><a name="2999"
+      >
+      </a
+      ><a name="3006" class="Symbol"
+      >;</a
+      ><a name="3007"
+      > </a
+      ><a name="3008" class="Field"
+      >iso&#8321;</a
+      ><a name="3012"
+      > </a
+      ><a name="3013" class="Symbol"
+      >=</a
+      ><a name="3014"
+      > </a
+      ><a name="3015" class="Symbol"
+      >&#955;</a
+      ><a name="3016"
+      > </a
+      ><a name="3017" href="function.isomorphism.utils.html#3017" class="Bound"
+      >h</a
+      ><a name="3018"
+      > </a
+      ><a name="3019" class="Symbol"
+      >&#8594;</a
+      ><a name="3020"
+      > </a
+      ><a name="3021" href="function.isomorphism.utils.html#2703" class="Bound"
+      >ext'</a
+      ><a name="3025"
+      > </a
+      ><a name="3026" class="Symbol"
+      >&#955;</a
+      ><a name="3027"
+      > </a
+      ><a name="3028" href="function.isomorphism.utils.html#3028" class="Bound"
+      >x</a
+      ><a name="3029"
+      > </a
+      ><a name="3030" class="Symbol"
+      >&#8594;</a
+      ><a name="3031"
+      > </a
+      ><a name="3032" href="equality.calculus.html#215" class="Function"
+      >cong'</a
+      ><a name="3037"
+      > </a
+      ><a name="3038" href="function.isomorphism.utils.html#3017" class="Bound"
+      >h</a
+      ><a name="3039"
+      > </a
+      ><a name="3040" class="Symbol"
+      >(</a
+      ><a name="3041" href="function.isomorphism.utils.html#2902" class="Bound"
+      >H</a
+      ><a name="3042"
+      > </a
+      ><a name="3043" href="function.isomorphism.utils.html#3028" class="Bound"
+      >x</a
+      ><a name="3044" class="Symbol"
+      >)</a
+      ><a name="3045"
+      >
+      </a
+      ><a name="3052" class="Symbol"
+      >;</a
+      ><a name="3053"
+      > </a
+      ><a name="3054" class="Field"
+      >iso&#8322;</a
+      ><a name="3058"
+      > </a
+      ><a name="3059" class="Symbol"
+      >=</a
+      ><a name="3060"
+      > </a
+      ><a name="3061" class="Symbol"
+      >&#955;</a
+      ><a name="3062"
+      > </a
+      ><a name="3063" href="function.isomorphism.utils.html#3063" class="Bound"
+      >h'</a
+      ><a name="3065"
+      > </a
+      ><a name="3066" class="Symbol"
+      >&#8594;</a
+      ><a name="3067"
+      > </a
+      ><a name="3068" href="function.isomorphism.utils.html#2703" class="Bound"
+      >ext'</a
+      ><a name="3072"
+      > </a
+      ><a name="3073" class="Symbol"
+      >&#955;</a
+      ><a name="3074"
+      > </a
+      ><a name="3075" href="function.isomorphism.utils.html#3075" class="Bound"
+      >x'</a
+      ><a name="3077"
+      > </a
+      ><a name="3078" class="Symbol"
+      >&#8594;</a
+      ><a name="3079"
+      > 
+              </a
+      ><a name="3095" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="3099"
+      > </a
+      ><a name="3100" class="Symbol"
+      >(&#955;</a
+      ><a name="3102"
+      > </a
+      ><a name="3103" href="function.isomorphism.utils.html#3103" class="Bound"
+      >p</a
+      ><a name="3104"
+      > </a
+      ><a name="3105" class="Symbol"
+      >&#8594;</a
+      ><a name="3106"
+      > </a
+      ><a name="3107" href="equality.core.html#652" class="Function"
+      >subst</a
+      ><a name="3112"
+      > </a
+      ><a name="3113" href="function.isomorphism.utils.html#2696" class="Bound"
+      >Y</a
+      ><a name="3114"
+      > </a
+      ><a name="3115" href="function.isomorphism.utils.html#3103" class="Bound"
+      >p</a
+      ><a name="3116"
+      > </a
+      ><a name="3117" class="Symbol"
+      >_)</a
+      ><a name="3119"
+      > </a
+      ><a name="3120" class="Symbol"
+      >(</a
+      ><a name="3121" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="3124"
+      > </a
+      ><a name="3125" class="Symbol"
+      >(</a
+      ><a name="3126" href="function.isomorphism.utils.html#3228" class="Function"
+      >&#947;'</a
+      ><a name="3128"
+      > </a
+      ><a name="3129" href="function.isomorphism.utils.html#3075" class="Bound"
+      >x'</a
+      ><a name="3131" class="Symbol"
+      >))</a
+      ><a name="3133"
+      >
+            </a
+      ><a name="3146" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="3147"
+      > </a
+      ><a name="3148" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="3151"
+      > </a
+      ><a name="3152" class="Symbol"
+      >(</a
+      ><a name="3153" href="equality.calculus.html#360" class="Function"
+      >subst-naturality</a
+      ><a name="3169"
+      > </a
+      ><a name="3170" href="function.isomorphism.utils.html#2696" class="Bound"
+      >Y</a
+      ><a name="3171"
+      > </a
+      ><a name="3172" href="function.isomorphism.utils.html#2900" class="Bound"
+      >g</a
+      ><a name="3173"
+      > </a
+      ><a name="3174" class="Symbol"
+      >(</a
+      ><a name="3175" href="function.isomorphism.utils.html#2904" class="Bound"
+      >K</a
+      ><a name="3176"
+      > </a
+      ><a name="3177" href="function.isomorphism.utils.html#3075" class="Bound"
+      >x'</a
+      ><a name="3179" class="Symbol"
+      >)</a
+      ><a name="3180"
+      > </a
+      ><a name="3181" class="Symbol"
+      >_)</a
+      ><a name="3183"
+      >
+            </a
+      ><a name="3196" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="3197"
+      > </a
+      ><a name="3198" href="equality.calculus.html#215" class="Function"
+      >cong'</a
+      ><a name="3203"
+      > </a
+      ><a name="3204" href="function.isomorphism.utils.html#3063" class="Bound"
+      >h'</a
+      ><a name="3206"
+      > </a
+      ><a name="3207" class="Symbol"
+      >(</a
+      ><a name="3208" href="function.isomorphism.utils.html#2904" class="Bound"
+      >K</a
+      ><a name="3209"
+      > </a
+      ><a name="3210" href="function.isomorphism.utils.html#3075" class="Bound"
+      >x'</a
+      ><a name="3212" class="Symbol"
+      >)</a
+      ><a name="3213"
+      > </a
+      ><a name="3214" class="Symbol"
+      >}</a
+      ><a name="3215"
+      >
+      </a
+      ><a name="3222" class="Keyword"
+      >where</a
+      ><a name="3227"
+      > </a
+      ><a name="3228" href="function.isomorphism.utils.html#3228" class="Function"
+      >&#947;'</a
+      ><a name="3230"
+      > </a
+      ><a name="3231" class="Symbol"
+      >=</a
+      ><a name="3232"
+      > </a
+      ><a name="3233" href="function.isomorphism.coherent.html#2177" class="Function"
+      >co-coherence</a
+      ><a name="3245"
+      > </a
+      ><a name="3246" class="Symbol"
+      >(</a
+      ><a name="3247" href="function.isomorphism.core.html#359" class="InductiveConstructor"
+      >iso</a
+      ><a name="3250"
+      > </a
+      ><a name="3251" href="function.isomorphism.utils.html#2898" class="Bound"
+      >f</a
+      ><a name="3252"
+      > </a
+      ><a name="3253" href="function.isomorphism.utils.html#2900" class="Bound"
+      >g</a
+      ><a name="3254"
+      > </a
+      ><a name="3255" href="function.isomorphism.utils.html#2902" class="Bound"
+      >H</a
+      ><a name="3256"
+      > </a
+      ><a name="3257" href="function.isomorphism.utils.html#2904" class="Bound"
+      >K</a
+      ><a name="3258" class="Symbol"
+      >)</a
+      ><a name="3259"
+      > </a
+      ><a name="3260" href="function.isomorphism.utils.html#2908" class="Bound"
+      >&#947;</a
+      ><a name="3261"
+      >
+
+    </a
+      ><a name="3267" href="function.isomorphism.utils.html#3267" class="Function"
+      >&#928;-iso'</a
+      ><a name="3273"
+      > </a
+      ><a name="3274" class="Symbol"
+      >:</a
+      ><a name="3275"
+      > </a
+      ><a name="3276" class="Symbol"
+      >&#8704;</a
+      ><a name="3277"
+      > </a
+      ><a name="3278" class="Symbol"
+      >{</a
+      ><a name="3279" href="function.isomorphism.utils.html#3279" class="Bound"
+      >i</a
+      ><a name="3280"
+      > </a
+      ><a name="3281" href="function.isomorphism.utils.html#3281" class="Bound"
+      >j</a
+      ><a name="3282"
+      > </a
+      ><a name="3283" href="function.isomorphism.utils.html#3283" class="Bound"
+      >j'</a
+      ><a name="3285" class="Symbol"
+      >}{</a
+      ><a name="3287" href="function.isomorphism.utils.html#3287" class="Bound"
+      >X</a
+      ><a name="3288"
+      > </a
+      ><a name="3289" class="Symbol"
+      >:</a
+      ><a name="3290"
+      > </a
+      ><a name="3291" class="PrimitiveType"
+      >Set</a
+      ><a name="3294"
+      > </a
+      ><a name="3295" href="function.isomorphism.utils.html#3279" class="Bound"
+      >i</a
+      ><a name="3296" class="Symbol"
+      >}</a
+      ><a name="3297"
+      >
+             </a
+      ><a name="3311" class="Symbol"
+      >{</a
+      ><a name="3312" href="function.isomorphism.utils.html#3312" class="Bound"
+      >Y</a
+      ><a name="3313"
+      > </a
+      ><a name="3314" class="Symbol"
+      >:</a
+      ><a name="3315"
+      > </a
+      ><a name="3316" href="function.isomorphism.utils.html#3287" class="Bound"
+      >X</a
+      ><a name="3317"
+      > </a
+      ><a name="3318" class="Symbol"
+      >&#8594;</a
+      ><a name="3319"
+      > </a
+      ><a name="3320" class="PrimitiveType"
+      >Set</a
+      ><a name="3323"
+      > </a
+      ><a name="3324" href="function.isomorphism.utils.html#3281" class="Bound"
+      >j</a
+      ><a name="3325" class="Symbol"
+      >}{</a
+      ><a name="3327" href="function.isomorphism.utils.html#3327" class="Bound"
+      >Y'</a
+      ><a name="3329"
+      > </a
+      ><a name="3330" class="Symbol"
+      >:</a
+      ><a name="3331"
+      > </a
+      ><a name="3332" href="function.isomorphism.utils.html#3287" class="Bound"
+      >X</a
+      ><a name="3333"
+      > </a
+      ><a name="3334" class="Symbol"
+      >&#8594;</a
+      ><a name="3335"
+      > </a
+      ><a name="3336" class="PrimitiveType"
+      >Set</a
+      ><a name="3339"
+      > </a
+      ><a name="3340" href="function.isomorphism.utils.html#3283" class="Bound"
+      >j'</a
+      ><a name="3342" class="Symbol"
+      >}</a
+      ><a name="3343"
+      >
+           </a
+      ><a name="3355" class="Symbol"
+      >&#8594;</a
+      ><a name="3356"
+      > </a
+      ><a name="3357" class="Symbol"
+      >((</a
+      ><a name="3359" href="function.isomorphism.utils.html#3359" class="Bound"
+      >x</a
+      ><a name="3360"
+      > </a
+      ><a name="3361" class="Symbol"
+      >:</a
+      ><a name="3362"
+      > </a
+      ><a name="3363" href="function.isomorphism.utils.html#3287" class="Bound"
+      >X</a
+      ><a name="3364" class="Symbol"
+      >)</a
+      ><a name="3365"
+      > </a
+      ><a name="3366" class="Symbol"
+      >&#8594;</a
+      ><a name="3367"
+      > </a
+      ><a name="3368" href="function.isomorphism.utils.html#3312" class="Bound"
+      >Y</a
+      ><a name="3369"
+      > </a
+      ><a name="3370" href="function.isomorphism.utils.html#3359" class="Bound"
+      >x</a
+      ><a name="3371"
+      > </a
+      ><a name="3372" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="3373"
+      > </a
+      ><a name="3374" href="function.isomorphism.utils.html#3327" class="Bound"
+      >Y'</a
+      ><a name="3376"
+      > </a
+      ><a name="3377" href="function.isomorphism.utils.html#3359" class="Bound"
+      >x</a
+      ><a name="3378" class="Symbol"
+      >)</a
+      ><a name="3379"
+      >
+           </a
+      ><a name="3391" class="Symbol"
+      >&#8594;</a
+      ><a name="3392"
+      > </a
+      ><a name="3393" class="Symbol"
+      >((</a
+      ><a name="3395" href="function.isomorphism.utils.html#3395" class="Bound"
+      >x</a
+      ><a name="3396"
+      > </a
+      ><a name="3397" class="Symbol"
+      >:</a
+      ><a name="3398"
+      > </a
+      ><a name="3399" href="function.isomorphism.utils.html#3287" class="Bound"
+      >X</a
+      ><a name="3400" class="Symbol"
+      >)</a
+      ><a name="3401"
+      > </a
+      ><a name="3402" class="Symbol"
+      >&#8594;</a
+      ><a name="3403"
+      > </a
+      ><a name="3404" href="function.isomorphism.utils.html#3312" class="Bound"
+      >Y</a
+      ><a name="3405"
+      > </a
+      ><a name="3406" href="function.isomorphism.utils.html#3395" class="Bound"
+      >x</a
+      ><a name="3407" class="Symbol"
+      >)</a
+      ><a name="3408"
+      >
+           </a
+      ><a name="3420" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="3421"
+      > </a
+      ><a name="3422" class="Symbol"
+      >((</a
+      ><a name="3424" href="function.isomorphism.utils.html#3424" class="Bound"
+      >x</a
+      ><a name="3425"
+      > </a
+      ><a name="3426" class="Symbol"
+      >:</a
+      ><a name="3427"
+      > </a
+      ><a name="3428" href="function.isomorphism.utils.html#3287" class="Bound"
+      >X</a
+      ><a name="3429" class="Symbol"
+      >)</a
+      ><a name="3430"
+      > </a
+      ><a name="3431" class="Symbol"
+      >&#8594;</a
+      ><a name="3432"
+      > </a
+      ><a name="3433" href="function.isomorphism.utils.html#3327" class="Bound"
+      >Y'</a
+      ><a name="3435"
+      > </a
+      ><a name="3436" href="function.isomorphism.utils.html#3424" class="Bound"
+      >x</a
+      ><a name="3437" class="Symbol"
+      >)</a
+      ><a name="3438"
+      >
+    </a
+      ><a name="3443" href="function.isomorphism.utils.html#3267" class="Function"
+      >&#928;-iso'</a
+      ><a name="3449"
+      > </a
+      ><a name="3450" href="function.isomorphism.utils.html#3450" class="Bound"
+      >isom</a
+      ><a name="3454"
+      > </a
+      ><a name="3455" class="Symbol"
+      >=</a
+      ><a name="3456"
+      > </a
+      ><a name="3457" class="Keyword"
+      >record</a
+      ><a name="3463"
+      >
+      </a
+      ><a name="3470" class="Symbol"
+      >{</a
+      ><a name="3471"
+      > </a
+      ><a name="3472" class="Field"
+      >to</a
+      ><a name="3474"
+      > </a
+      ><a name="3475" class="Symbol"
+      >=</a
+      ><a name="3476"
+      > </a
+      ><a name="3477" class="Symbol"
+      >&#955;</a
+      ><a name="3478"
+      > </a
+      ><a name="3479" href="function.isomorphism.utils.html#3479" class="Bound"
+      >h</a
+      ><a name="3480"
+      > </a
+      ><a name="3481" href="function.isomorphism.utils.html#3481" class="Bound"
+      >x</a
+      ><a name="3482"
+      > </a
+      ><a name="3483" class="Symbol"
+      >&#8594;</a
+      ><a name="3484"
+      > </a
+      ><a name="3485" href="function.isomorphism.core.html#375" class="Function"
+      >apply</a
+      ><a name="3490"
+      > </a
+      ><a name="3491" class="Symbol"
+      >(</a
+      ><a name="3492" href="function.isomorphism.utils.html#3450" class="Bound"
+      >isom</a
+      ><a name="3496"
+      > </a
+      ><a name="3497" href="function.isomorphism.utils.html#3481" class="Bound"
+      >x</a
+      ><a name="3498" class="Symbol"
+      >)</a
+      ><a name="3499"
+      > </a
+      ><a name="3500" class="Symbol"
+      >(</a
+      ><a name="3501" href="function.isomorphism.utils.html#3479" class="Bound"
+      >h</a
+      ><a name="3502"
+      > </a
+      ><a name="3503" href="function.isomorphism.utils.html#3481" class="Bound"
+      >x</a
+      ><a name="3504" class="Symbol"
+      >)</a
+      ><a name="3505"
+      > 
+      </a
+      ><a name="3513" class="Symbol"
+      >;</a
+      ><a name="3514"
+      > </a
+      ><a name="3515" class="Field"
+      >from</a
+      ><a name="3519"
+      > </a
+      ><a name="3520" class="Symbol"
+      >=</a
+      ><a name="3521"
+      > </a
+      ><a name="3522" class="Symbol"
+      >&#955;</a
+      ><a name="3523"
+      > </a
+      ><a name="3524" href="function.isomorphism.utils.html#3524" class="Bound"
+      >h'</a
+      ><a name="3526"
+      > </a
+      ><a name="3527" href="function.isomorphism.utils.html#3527" class="Bound"
+      >x</a
+      ><a name="3528"
+      > </a
+      ><a name="3529" class="Symbol"
+      >&#8594;</a
+      ><a name="3530"
+      > </a
+      ><a name="3531" href="function.isomorphism.core.html#390" class="Function"
+      >invert</a
+      ><a name="3537"
+      > </a
+      ><a name="3538" class="Symbol"
+      >(</a
+      ><a name="3539" href="function.isomorphism.utils.html#3450" class="Bound"
+      >isom</a
+      ><a name="3543"
+      > </a
+      ><a name="3544" href="function.isomorphism.utils.html#3527" class="Bound"
+      >x</a
+      ><a name="3545" class="Symbol"
+      >)</a
+      ><a name="3546"
+      > </a
+      ><a name="3547" class="Symbol"
+      >(</a
+      ><a name="3548" href="function.isomorphism.utils.html#3524" class="Bound"
+      >h'</a
+      ><a name="3550"
+      > </a
+      ><a name="3551" href="function.isomorphism.utils.html#3527" class="Bound"
+      >x</a
+      ><a name="3552" class="Symbol"
+      >)</a
+      ><a name="3553"
+      >
+      </a
+      ><a name="3560" class="Symbol"
+      >;</a
+      ><a name="3561"
+      > </a
+      ><a name="3562" class="Field"
+      >iso&#8321;</a
+      ><a name="3566"
+      > </a
+      ><a name="3567" class="Symbol"
+      >=</a
+      ><a name="3568"
+      > </a
+      ><a name="3569" class="Symbol"
+      >&#955;</a
+      ><a name="3570"
+      > </a
+      ><a name="3571" href="function.isomorphism.utils.html#3571" class="Bound"
+      >h</a
+      ><a name="3572"
+      > </a
+      ><a name="3573" class="Symbol"
+      >&#8594;</a
+      ><a name="3574"
+      > </a
+      ><a name="3575" href="function.isomorphism.utils.html#2703" class="Bound"
+      >ext'</a
+      ><a name="3579"
+      > </a
+      ><a name="3580" class="Symbol"
+      >&#955;</a
+      ><a name="3581"
+      > </a
+      ><a name="3582" href="function.isomorphism.utils.html#3582" class="Bound"
+      >x</a
+      ><a name="3583"
+      > </a
+      ><a name="3584" class="Symbol"
+      >&#8594;</a
+      ><a name="3585"
+      > </a
+      ><a name="3586" href="function.isomorphism.core.html#407" class="Function"
+      >_&#8773;_.iso&#8321;</a
+      ><a name="3594"
+      > </a
+      ><a name="3595" class="Symbol"
+      >(</a
+      ><a name="3596" href="function.isomorphism.utils.html#3450" class="Bound"
+      >isom</a
+      ><a name="3600"
+      > </a
+      ><a name="3601" href="function.isomorphism.utils.html#3582" class="Bound"
+      >x</a
+      ><a name="3602" class="Symbol"
+      >)</a
+      ><a name="3603"
+      > </a
+      ><a name="3604" class="Symbol"
+      >_</a
+      ><a name="3605"
+      >
+      </a
+      ><a name="3612" class="Symbol"
+      >;</a
+      ><a name="3613"
+      > </a
+      ><a name="3614" class="Field"
+      >iso&#8322;</a
+      ><a name="3618"
+      > </a
+      ><a name="3619" class="Symbol"
+      >=</a
+      ><a name="3620"
+      > </a
+      ><a name="3621" class="Symbol"
+      >&#955;</a
+      ><a name="3622"
+      > </a
+      ><a name="3623" href="function.isomorphism.utils.html#3623" class="Bound"
+      >h'</a
+      ><a name="3625"
+      > </a
+      ><a name="3626" class="Symbol"
+      >&#8594;</a
+      ><a name="3627"
+      > </a
+      ><a name="3628" href="function.isomorphism.utils.html#2703" class="Bound"
+      >ext'</a
+      ><a name="3632"
+      > </a
+      ><a name="3633" class="Symbol"
+      >&#955;</a
+      ><a name="3634"
+      > </a
+      ><a name="3635" href="function.isomorphism.utils.html#3635" class="Bound"
+      >x</a
+      ><a name="3636"
+      > </a
+      ><a name="3637" class="Symbol"
+      >&#8594;</a
+      ><a name="3638"
+      > </a
+      ><a name="3639" href="function.isomorphism.core.html#444" class="Function"
+      >_&#8773;_.iso&#8322;</a
+      ><a name="3647"
+      > </a
+      ><a name="3648" class="Symbol"
+      >(</a
+      ><a name="3649" href="function.isomorphism.utils.html#3450" class="Bound"
+      >isom</a
+      ><a name="3653"
+      > </a
+      ><a name="3654" href="function.isomorphism.utils.html#3635" class="Bound"
+      >x</a
+      ><a name="3655" class="Symbol"
+      >)</a
+      ><a name="3656"
+      > </a
+      ><a name="3657" class="Symbol"
+      >_</a
+      ><a name="3658"
+      > </a
+      ><a name="3659" class="Symbol"
+      >}</a
+      ><a name="3660"
+      >
+
+</a
+      ><a name="3662" href="function.isomorphism.utils.html#3662" class="Function"
+      >&#928;&#931;-swap-iso</a
+      ><a name="3673"
+      > </a
+      ><a name="3674" class="Symbol"
+      >:</a
+      ><a name="3675"
+      > </a
+      ><a name="3676" class="Symbol"
+      >&#8704;</a
+      ><a name="3677"
+      > </a
+      ><a name="3678" class="Symbol"
+      >{</a
+      ><a name="3679" href="function.isomorphism.utils.html#3679" class="Bound"
+      >i</a
+      ><a name="3680"
+      > </a
+      ><a name="3681" href="function.isomorphism.utils.html#3681" class="Bound"
+      >j</a
+      ><a name="3682"
+      > </a
+      ><a name="3683" href="function.isomorphism.utils.html#3683" class="Bound"
+      >k</a
+      ><a name="3684" class="Symbol"
+      >}{</a
+      ><a name="3686" href="function.isomorphism.utils.html#3686" class="Bound"
+      >X</a
+      ><a name="3687"
+      > </a
+      ><a name="3688" class="Symbol"
+      >:</a
+      ><a name="3689"
+      > </a
+      ><a name="3690" class="PrimitiveType"
+      >Set</a
+      ><a name="3693"
+      > </a
+      ><a name="3694" href="function.isomorphism.utils.html#3679" class="Bound"
+      >i</a
+      ><a name="3695" class="Symbol"
+      >}{</a
+      ><a name="3697" href="function.isomorphism.utils.html#3697" class="Bound"
+      >Y</a
+      ><a name="3698"
+      > </a
+      ><a name="3699" class="Symbol"
+      >:</a
+      ><a name="3700"
+      > </a
+      ><a name="3701" href="function.isomorphism.utils.html#3686" class="Bound"
+      >X</a
+      ><a name="3702"
+      > </a
+      ><a name="3703" class="Symbol"
+      >&#8594;</a
+      ><a name="3704"
+      > </a
+      ><a name="3705" class="PrimitiveType"
+      >Set</a
+      ><a name="3708"
+      > </a
+      ><a name="3709" href="function.isomorphism.utils.html#3681" class="Bound"
+      >j</a
+      ><a name="3710" class="Symbol"
+      >}</a
+      ><a name="3711"
+      >
+            </a
+      ><a name="3724" class="Symbol"
+      >&#8594;</a
+      ><a name="3725"
+      > </a
+      ><a name="3726" class="Symbol"
+      >{</a
+      ><a name="3727" href="function.isomorphism.utils.html#3727" class="Bound"
+      >Z</a
+      ><a name="3728"
+      > </a
+      ><a name="3729" class="Symbol"
+      >:</a
+      ><a name="3730"
+      > </a
+      ><a name="3731" class="Symbol"
+      >(</a
+      ><a name="3732" href="function.isomorphism.utils.html#3732" class="Bound"
+      >x</a
+      ><a name="3733"
+      > </a
+      ><a name="3734" class="Symbol"
+      >:</a
+      ><a name="3735"
+      > </a
+      ><a name="3736" href="function.isomorphism.utils.html#3686" class="Bound"
+      >X</a
+      ><a name="3737" class="Symbol"
+      >)</a
+      ><a name="3738"
+      > </a
+      ><a name="3739" class="Symbol"
+      >&#8594;</a
+      ><a name="3740"
+      > </a
+      ><a name="3741" href="function.isomorphism.utils.html#3697" class="Bound"
+      >Y</a
+      ><a name="3742"
+      > </a
+      ><a name="3743" href="function.isomorphism.utils.html#3732" class="Bound"
+      >x</a
+      ><a name="3744"
+      > </a
+      ><a name="3745" class="Symbol"
+      >&#8594;</a
+      ><a name="3746"
+      > </a
+      ><a name="3747" class="PrimitiveType"
+      >Set</a
+      ><a name="3750"
+      > </a
+      ><a name="3751" href="function.isomorphism.utils.html#3683" class="Bound"
+      >k</a
+      ><a name="3752" class="Symbol"
+      >}</a
+      ><a name="3753"
+      >
+            </a
+      ><a name="3766" class="Symbol"
+      >&#8594;</a
+      ><a name="3767"
+      > </a
+      ><a name="3768" class="Symbol"
+      >((</a
+      ><a name="3770" href="function.isomorphism.utils.html#3770" class="Bound"
+      >x</a
+      ><a name="3771"
+      > </a
+      ><a name="3772" class="Symbol"
+      >:</a
+      ><a name="3773"
+      > </a
+      ><a name="3774" href="function.isomorphism.utils.html#3686" class="Bound"
+      >X</a
+      ><a name="3775" class="Symbol"
+      >)</a
+      ><a name="3776"
+      > </a
+      ><a name="3777" class="Symbol"
+      >&#8594;</a
+      ><a name="3778"
+      > </a
+      ><a name="3779" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="3780"
+      > </a
+      ><a name="3781" class="Symbol"
+      >(</a
+      ><a name="3782" href="function.isomorphism.utils.html#3697" class="Bound"
+      >Y</a
+      ><a name="3783"
+      > </a
+      ><a name="3784" href="function.isomorphism.utils.html#3770" class="Bound"
+      >x</a
+      ><a name="3785" class="Symbol"
+      >)</a
+      ><a name="3786"
+      > </a
+      ><a name="3787" class="Symbol"
+      >&#955;</a
+      ><a name="3788"
+      > </a
+      ><a name="3789" href="function.isomorphism.utils.html#3789" class="Bound"
+      >y</a
+      ><a name="3790"
+      > </a
+      ><a name="3791" class="Symbol"
+      >&#8594;</a
+      ><a name="3792"
+      > </a
+      ><a name="3793" href="function.isomorphism.utils.html#3727" class="Bound"
+      >Z</a
+      ><a name="3794"
+      > </a
+      ><a name="3795" href="function.isomorphism.utils.html#3770" class="Bound"
+      >x</a
+      ><a name="3796"
+      > </a
+      ><a name="3797" href="function.isomorphism.utils.html#3789" class="Bound"
+      >y</a
+      ><a name="3798" class="Symbol"
+      >)</a
+      ><a name="3799"
+      >
+            </a
+      ><a name="3812" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="3813"
+      > </a
+      ><a name="3814" class="Symbol"
+      >(</a
+      ><a name="3815" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="3816"
+      > </a
+      ><a name="3817" class="Symbol"
+      >((</a
+      ><a name="3819" href="function.isomorphism.utils.html#3819" class="Bound"
+      >x</a
+      ><a name="3820"
+      > </a
+      ><a name="3821" class="Symbol"
+      >:</a
+      ><a name="3822"
+      > </a
+      ><a name="3823" href="function.isomorphism.utils.html#3686" class="Bound"
+      >X</a
+      ><a name="3824" class="Symbol"
+      >)</a
+      ><a name="3825"
+      > </a
+      ><a name="3826" class="Symbol"
+      >&#8594;</a
+      ><a name="3827"
+      > </a
+      ><a name="3828" href="function.isomorphism.utils.html#3697" class="Bound"
+      >Y</a
+      ><a name="3829"
+      > </a
+      ><a name="3830" href="function.isomorphism.utils.html#3819" class="Bound"
+      >x</a
+      ><a name="3831" class="Symbol"
+      >)</a
+      ><a name="3832"
+      > </a
+      ><a name="3833" class="Symbol"
+      >&#955;</a
+      ><a name="3834"
+      > </a
+      ><a name="3835" href="function.isomorphism.utils.html#3835" class="Bound"
+      >f</a
+      ><a name="3836"
+      > </a
+      ><a name="3837" class="Symbol"
+      >&#8594;</a
+      ><a name="3838"
+      > </a
+      ><a name="3839" class="Symbol"
+      >((</a
+      ><a name="3841" href="function.isomorphism.utils.html#3841" class="Bound"
+      >x</a
+      ><a name="3842"
+      > </a
+      ><a name="3843" class="Symbol"
+      >:</a
+      ><a name="3844"
+      > </a
+      ><a name="3845" href="function.isomorphism.utils.html#3686" class="Bound"
+      >X</a
+      ><a name="3846" class="Symbol"
+      >)</a
+      ><a name="3847"
+      > </a
+      ><a name="3848" class="Symbol"
+      >&#8594;</a
+      ><a name="3849"
+      > </a
+      ><a name="3850" href="function.isomorphism.utils.html#3727" class="Bound"
+      >Z</a
+      ><a name="3851"
+      > </a
+      ><a name="3852" href="function.isomorphism.utils.html#3841" class="Bound"
+      >x</a
+      ><a name="3853"
+      > </a
+      ><a name="3854" class="Symbol"
+      >(</a
+      ><a name="3855" href="function.isomorphism.utils.html#3835" class="Bound"
+      >f</a
+      ><a name="3856"
+      > </a
+      ><a name="3857" href="function.isomorphism.utils.html#3841" class="Bound"
+      >x</a
+      ><a name="3858" class="Symbol"
+      >)))</a
+      ><a name="3861"
+      >
+</a
+      ><a name="3862" href="function.isomorphism.utils.html#3662" class="Function"
+      >&#928;&#931;-swap-iso</a
+      ><a name="3873"
+      > </a
+      ><a name="3874" class="Symbol"
+      >=</a
+      ><a name="3875"
+      > </a
+      ><a name="3876" class="Keyword"
+      >record</a
+      ><a name="3882"
+      >
+  </a
+      ><a name="3885" class="Symbol"
+      >{</a
+      ><a name="3886"
+      > </a
+      ><a name="3887" class="Field"
+      >to</a
+      ><a name="3889"
+      > </a
+      ><a name="3890" class="Symbol"
+      >=</a
+      ><a name="3891"
+      > </a
+      ><a name="3892" class="Symbol"
+      >&#955;</a
+      ><a name="3893"
+      > </a
+      ><a name="3894" href="function.isomorphism.utils.html#3894" class="Bound"
+      >f</a
+      ><a name="3895"
+      > </a
+      ><a name="3896" class="Symbol"
+      >&#8594;</a
+      ><a name="3897"
+      > </a
+      ><a name="3898" class="Symbol"
+      >(</a
+      ><a name="3899" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="3904"
+      > </a
+      ><a name="3905" href="function.core.html#148" class="Function Operator"
+      >&#8728;</a
+      ><a name="3906"
+      > </a
+      ><a name="3907" href="function.isomorphism.utils.html#3894" class="Bound"
+      >f</a
+      ><a name="3908"
+      > </a
+      ><a name="3909" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3910"
+      > </a
+      ><a name="3911" href="sum.html#233" class="Function"
+      >proj&#8322;</a
+      ><a name="3916"
+      > </a
+      ><a name="3917" href="function.core.html#148" class="Function Operator"
+      >&#8728;</a
+      ><a name="3918"
+      > </a
+      ><a name="3919" href="function.isomorphism.utils.html#3894" class="Bound"
+      >f</a
+      ><a name="3920" class="Symbol"
+      >)</a
+      ><a name="3921"
+      >
+  </a
+      ><a name="3924" class="Symbol"
+      >;</a
+      ><a name="3925"
+      > </a
+      ><a name="3926" class="Field"
+      >from</a
+      ><a name="3930"
+      > </a
+      ><a name="3931" class="Symbol"
+      >=</a
+      ><a name="3932"
+      > </a
+      ><a name="3933" class="Symbol"
+      >&#955;</a
+      ><a name="3934"
+      > </a
+      ><a name="3935" class="Symbol"
+      >{</a
+      ><a name="3936"
+      > </a
+      ><a name="3937" class="Symbol"
+      >(</a
+      ><a name="3938" href="function.isomorphism.utils.html#3938" class="Bound"
+      >f</a
+      ><a name="3939"
+      > </a
+      ><a name="3940" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3941"
+      > </a
+      ><a name="3942" href="function.isomorphism.utils.html#3942" class="Bound"
+      >g</a
+      ><a name="3943" class="Symbol"
+      >)</a
+      ><a name="3944"
+      > </a
+      ><a name="3945" href="function.isomorphism.utils.html#3945" class="Bound"
+      >x</a
+      ><a name="3946"
+      > </a
+      ><a name="3947" class="Symbol"
+      >&#8594;</a
+      ><a name="3948"
+      > </a
+      ><a name="3949" class="Symbol"
+      >(</a
+      ><a name="3950" href="function.isomorphism.utils.html#3938" class="Bound"
+      >f</a
+      ><a name="3951"
+      > </a
+      ><a name="3952" href="function.isomorphism.utils.html#3945" class="Bound"
+      >x</a
+      ><a name="3953"
+      > </a
+      ><a name="3954" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3955"
+      > </a
+      ><a name="3956" href="function.isomorphism.utils.html#3942" class="Bound"
+      >g</a
+      ><a name="3957"
+      > </a
+      ><a name="3958" href="function.isomorphism.utils.html#3945" class="Bound"
+      >x</a
+      ><a name="3959" class="Symbol"
+      >)</a
+      ><a name="3960"
+      > </a
+      ><a name="3961" class="Symbol"
+      >}</a
+      ><a name="3962"
+      >
+  </a
+      ><a name="3965" class="Symbol"
+      >;</a
+      ><a name="3966"
+      > </a
+      ><a name="3967" class="Field"
+      >iso&#8321;</a
+      ><a name="3971"
+      > </a
+      ><a name="3972" class="Symbol"
+      >=</a
+      ><a name="3973"
+      > </a
+      ><a name="3974" class="Symbol"
+      >&#955;</a
+      ><a name="3975"
+      > </a
+      ><a name="3976" href="function.isomorphism.utils.html#3976" class="Bound"
+      >_</a
+      ><a name="3977"
+      > </a
+      ><a name="3978" class="Symbol"
+      >&#8594;</a
+      ><a name="3979"
+      > </a
+      ><a name="3980" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="3984"
+      >
+  </a
+      ><a name="3987" class="Symbol"
+      >;</a
+      ><a name="3988"
+      > </a
+      ><a name="3989" class="Field"
+      >iso&#8322;</a
+      ><a name="3993"
+      > </a
+      ><a name="3994" class="Symbol"
+      >=</a
+      ><a name="3995"
+      > </a
+      ><a name="3996" class="Symbol"
+      >&#955;</a
+      ><a name="3997"
+      > </a
+      ><a name="3998" href="function.isomorphism.utils.html#3998" class="Bound"
+      >_</a
+      ><a name="3999"
+      > </a
+      ><a name="4000" class="Symbol"
+      >&#8594;</a
+      ><a name="4001"
+      > </a
+      ><a name="4002" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="4006"
+      > </a
+      ><a name="4007" class="Symbol"
+      >}</a
+      ><a name="4008"
+      >
+
+</a
+      ><a name="4010" href="function.isomorphism.utils.html#4010" class="Function"
+      >curry-iso</a
+      ><a name="4019"
+      > </a
+      ><a name="4020" class="Symbol"
+      >:</a
+      ><a name="4021"
+      > </a
+      ><a name="4022" class="Symbol"
+      >&#8704;</a
+      ><a name="4023"
+      > </a
+      ><a name="4024" class="Symbol"
+      >{</a
+      ><a name="4025" href="function.isomorphism.utils.html#4025" class="Bound"
+      >i</a
+      ><a name="4026"
+      > </a
+      ><a name="4027" href="function.isomorphism.utils.html#4027" class="Bound"
+      >j</a
+      ><a name="4028"
+      > </a
+      ><a name="4029" href="function.isomorphism.utils.html#4029" class="Bound"
+      >k</a
+      ><a name="4030" class="Symbol"
+      >}{</a
+      ><a name="4032" href="function.isomorphism.utils.html#4032" class="Bound"
+      >X</a
+      ><a name="4033"
+      > </a
+      ><a name="4034" class="Symbol"
+      >:</a
+      ><a name="4035"
+      > </a
+      ><a name="4036" class="PrimitiveType"
+      >Set</a
+      ><a name="4039"
+      > </a
+      ><a name="4040" href="function.isomorphism.utils.html#4025" class="Bound"
+      >i</a
+      ><a name="4041" class="Symbol"
+      >}{</a
+      ><a name="4043" href="function.isomorphism.utils.html#4043" class="Bound"
+      >Y</a
+      ><a name="4044"
+      > </a
+      ><a name="4045" class="Symbol"
+      >:</a
+      ><a name="4046"
+      > </a
+      ><a name="4047" href="function.isomorphism.utils.html#4032" class="Bound"
+      >X</a
+      ><a name="4048"
+      > </a
+      ><a name="4049" class="Symbol"
+      >&#8594;</a
+      ><a name="4050"
+      > </a
+      ><a name="4051" class="PrimitiveType"
+      >Set</a
+      ><a name="4054"
+      > </a
+      ><a name="4055" href="function.isomorphism.utils.html#4027" class="Bound"
+      >j</a
+      ><a name="4056" class="Symbol"
+      >}</a
+      ><a name="4057"
+      >
+            </a
+      ><a name="4070" class="Symbol"
+      >(</a
+      ><a name="4071" href="function.isomorphism.utils.html#4071" class="Bound"
+      >Z</a
+      ><a name="4072"
+      > </a
+      ><a name="4073" class="Symbol"
+      >:</a
+      ><a name="4074"
+      > </a
+      ><a name="4075" class="Symbol"
+      >(</a
+      ><a name="4076" href="function.isomorphism.utils.html#4076" class="Bound"
+      >x</a
+      ><a name="4077"
+      > </a
+      ><a name="4078" class="Symbol"
+      >:</a
+      ><a name="4079"
+      > </a
+      ><a name="4080" href="function.isomorphism.utils.html#4032" class="Bound"
+      >X</a
+      ><a name="4081" class="Symbol"
+      >)</a
+      ><a name="4082"
+      > </a
+      ><a name="4083" class="Symbol"
+      >&#8594;</a
+      ><a name="4084"
+      > </a
+      ><a name="4085" href="function.isomorphism.utils.html#4043" class="Bound"
+      >Y</a
+      ><a name="4086"
+      > </a
+      ><a name="4087" href="function.isomorphism.utils.html#4076" class="Bound"
+      >x</a
+      ><a name="4088"
+      > </a
+      ><a name="4089" class="Symbol"
+      >&#8594;</a
+      ><a name="4090"
+      > </a
+      ><a name="4091" class="PrimitiveType"
+      >Set</a
+      ><a name="4094"
+      > </a
+      ><a name="4095" href="function.isomorphism.utils.html#4029" class="Bound"
+      >k</a
+      ><a name="4096" class="Symbol"
+      >)</a
+      ><a name="4097"
+      >
+          </a
+      ><a name="4108" class="Symbol"
+      >&#8594;</a
+      ><a name="4109"
+      > </a
+      ><a name="4110" class="Symbol"
+      >((</a
+      ><a name="4112" href="function.isomorphism.utils.html#4112" class="Bound"
+      >xy</a
+      ><a name="4114"
+      > </a
+      ><a name="4115" class="Symbol"
+      >:</a
+      ><a name="4116"
+      > </a
+      ><a name="4117" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="4118"
+      > </a
+      ><a name="4119" href="function.isomorphism.utils.html#4032" class="Bound"
+      >X</a
+      ><a name="4120"
+      > </a
+      ><a name="4121" href="function.isomorphism.utils.html#4043" class="Bound"
+      >Y</a
+      ><a name="4122" class="Symbol"
+      >)</a
+      ><a name="4123"
+      > </a
+      ><a name="4124" class="Symbol"
+      >&#8594;</a
+      ><a name="4125"
+      > </a
+      ><a name="4126" href="function.isomorphism.utils.html#4071" class="Bound"
+      >Z</a
+      ><a name="4127"
+      > </a
+      ><a name="4128" class="Symbol"
+      >(</a
+      ><a name="4129" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="4134"
+      > </a
+      ><a name="4135" href="function.isomorphism.utils.html#4112" class="Bound"
+      >xy</a
+      ><a name="4137" class="Symbol"
+      >)</a
+      ><a name="4138"
+      > </a
+      ><a name="4139" class="Symbol"
+      >(</a
+      ><a name="4140" href="sum.html#233" class="Function"
+      >proj&#8322;</a
+      ><a name="4145"
+      > </a
+      ><a name="4146" href="function.isomorphism.utils.html#4112" class="Bound"
+      >xy</a
+      ><a name="4148" class="Symbol"
+      >))</a
+      ><a name="4150"
+      >
+          </a
+      ><a name="4161" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="4162"
+      > </a
+      ><a name="4163" class="Symbol"
+      >((</a
+      ><a name="4165" href="function.isomorphism.utils.html#4165" class="Bound"
+      >x</a
+      ><a name="4166"
+      > </a
+      ><a name="4167" class="Symbol"
+      >:</a
+      ><a name="4168"
+      > </a
+      ><a name="4169" href="function.isomorphism.utils.html#4032" class="Bound"
+      >X</a
+      ><a name="4170" class="Symbol"
+      >)</a
+      ><a name="4171"
+      > </a
+      ><a name="4172" class="Symbol"
+      >&#8594;</a
+      ><a name="4173"
+      > </a
+      ><a name="4174" class="Symbol"
+      >(</a
+      ><a name="4175" href="function.isomorphism.utils.html#4175" class="Bound"
+      >y</a
+      ><a name="4176"
+      > </a
+      ><a name="4177" class="Symbol"
+      >:</a
+      ><a name="4178"
+      > </a
+      ><a name="4179" href="function.isomorphism.utils.html#4043" class="Bound"
+      >Y</a
+      ><a name="4180"
+      > </a
+      ><a name="4181" href="function.isomorphism.utils.html#4165" class="Bound"
+      >x</a
+      ><a name="4182" class="Symbol"
+      >)</a
+      ><a name="4183"
+      > </a
+      ><a name="4184" class="Symbol"
+      >&#8594;</a
+      ><a name="4185"
+      > </a
+      ><a name="4186" href="function.isomorphism.utils.html#4071" class="Bound"
+      >Z</a
+      ><a name="4187"
+      > </a
+      ><a name="4188" href="function.isomorphism.utils.html#4165" class="Bound"
+      >x</a
+      ><a name="4189"
+      > </a
+      ><a name="4190" href="function.isomorphism.utils.html#4175" class="Bound"
+      >y</a
+      ><a name="4191" class="Symbol"
+      >)</a
+      ><a name="4192"
+      >
+</a
+      ><a name="4193" href="function.isomorphism.utils.html#4010" class="Function"
+      >curry-iso</a
+      ><a name="4202"
+      > </a
+      ><a name="4203" class="Symbol"
+      >_</a
+      ><a name="4204"
+      > </a
+      ><a name="4205" class="Symbol"
+      >=</a
+      ><a name="4206"
+      > </a
+      ><a name="4207" class="Keyword"
+      >record</a
+      ><a name="4213"
+      >
+  </a
+      ><a name="4216" class="Symbol"
+      >{</a
+      ><a name="4217"
+      > </a
+      ><a name="4218" class="Field"
+      >to</a
+      ><a name="4220"
+      > </a
+      ><a name="4221" class="Symbol"
+      >=</a
+      ><a name="4222"
+      > </a
+      ><a name="4223" class="Symbol"
+      >&#955;</a
+      ><a name="4224"
+      > </a
+      ><a name="4225" href="function.isomorphism.utils.html#4225" class="Bound"
+      >f</a
+      ><a name="4226"
+      > </a
+      ><a name="4227" href="function.isomorphism.utils.html#4227" class="Bound"
+      >x</a
+      ><a name="4228"
+      > </a
+      ><a name="4229" href="function.isomorphism.utils.html#4229" class="Bound"
+      >y</a
+      ><a name="4230"
+      > </a
+      ><a name="4231" class="Symbol"
+      >&#8594;</a
+      ><a name="4232"
+      > </a
+      ><a name="4233" href="function.isomorphism.utils.html#4225" class="Bound"
+      >f</a
+      ><a name="4234"
+      > </a
+      ><a name="4235" class="Symbol"
+      >(</a
+      ><a name="4236" href="function.isomorphism.utils.html#4227" class="Bound"
+      >x</a
+      ><a name="4237"
+      > </a
+      ><a name="4238" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4239"
+      > </a
+      ><a name="4240" href="function.isomorphism.utils.html#4229" class="Bound"
+      >y</a
+      ><a name="4241" class="Symbol"
+      >)</a
+      ><a name="4242"
+      >
+  </a
+      ><a name="4245" class="Symbol"
+      >;</a
+      ><a name="4246"
+      > </a
+      ><a name="4247" class="Field"
+      >from</a
+      ><a name="4251"
+      > </a
+      ><a name="4252" class="Symbol"
+      >=</a
+      ><a name="4253"
+      > </a
+      ><a name="4254" class="Symbol"
+      >&#955;</a
+      ><a name="4255"
+      > </a
+      ><a name="4256" class="Symbol"
+      >{</a
+      ><a name="4257"
+      > </a
+      ><a name="4258" href="function.isomorphism.utils.html#4258" class="Bound"
+      >f</a
+      ><a name="4259"
+      > </a
+      ><a name="4260" class="Symbol"
+      >(</a
+      ><a name="4261" href="function.isomorphism.utils.html#4261" class="Bound"
+      >x</a
+      ><a name="4262"
+      > </a
+      ><a name="4263" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4264"
+      > </a
+      ><a name="4265" href="function.isomorphism.utils.html#4265" class="Bound"
+      >y</a
+      ><a name="4266" class="Symbol"
+      >)</a
+      ><a name="4267"
+      > </a
+      ><a name="4268" class="Symbol"
+      >&#8594;</a
+      ><a name="4269"
+      > </a
+      ><a name="4270" href="function.isomorphism.utils.html#4258" class="Bound"
+      >f</a
+      ><a name="4271"
+      > </a
+      ><a name="4272" href="function.isomorphism.utils.html#4261" class="Bound"
+      >x</a
+      ><a name="4273"
+      > </a
+      ><a name="4274" href="function.isomorphism.utils.html#4265" class="Bound"
+      >y</a
+      ><a name="4275"
+      > </a
+      ><a name="4276" class="Symbol"
+      >}</a
+      ><a name="4277"
+      >
+  </a
+      ><a name="4280" class="Symbol"
+      >;</a
+      ><a name="4281"
+      > </a
+      ><a name="4282" class="Field"
+      >iso&#8321;</a
+      ><a name="4286"
+      > </a
+      ><a name="4287" class="Symbol"
+      >=</a
+      ><a name="4288"
+      > </a
+      ><a name="4289" class="Symbol"
+      >&#955;</a
+      ><a name="4290"
+      > </a
+      ><a name="4291" href="function.isomorphism.utils.html#4291" class="Bound"
+      >_</a
+      ><a name="4292"
+      > </a
+      ><a name="4293" class="Symbol"
+      >&#8594;</a
+      ><a name="4294"
+      > </a
+      ><a name="4295" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="4299"
+      >
+  </a
+      ><a name="4302" class="Symbol"
+      >;</a
+      ><a name="4303"
+      > </a
+      ><a name="4304" class="Field"
+      >iso&#8322;</a
+      ><a name="4308"
+      > </a
+      ><a name="4309" class="Symbol"
+      >=</a
+      ><a name="4310"
+      > </a
+      ><a name="4311" class="Symbol"
+      >&#955;</a
+      ><a name="4312"
+      > </a
+      ><a name="4313" href="function.isomorphism.utils.html#4313" class="Bound"
+      >_</a
+      ><a name="4314"
+      > </a
+      ><a name="4315" class="Symbol"
+      >&#8594;</a
+      ><a name="4316"
+      > </a
+      ><a name="4317" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="4321"
+      > </a
+      ><a name="4322" class="Symbol"
+      >}</a
+      ><a name="4323"
+      >
+
+</a
+      ><a name="4325" href="function.isomorphism.utils.html#4325" class="Function"
+      >impl-iso</a
+      ><a name="4333"
+      > </a
+      ><a name="4334" class="Symbol"
+      >:</a
+      ><a name="4335"
+      > </a
+      ><a name="4336" class="Symbol"
+      >&#8704;</a
+      ><a name="4337"
+      > </a
+      ><a name="4338" class="Symbol"
+      >{</a
+      ><a name="4339" href="function.isomorphism.utils.html#4339" class="Bound"
+      >i</a
+      ><a name="4340"
+      > </a
+      ><a name="4341" href="function.isomorphism.utils.html#4341" class="Bound"
+      >j</a
+      ><a name="4342" class="Symbol"
+      >}{</a
+      ><a name="4344" href="function.isomorphism.utils.html#4344" class="Bound"
+      >X</a
+      ><a name="4345"
+      > </a
+      ><a name="4346" class="Symbol"
+      >:</a
+      ><a name="4347"
+      > </a
+      ><a name="4348" class="PrimitiveType"
+      >Set</a
+      ><a name="4351"
+      > </a
+      ><a name="4352" href="function.isomorphism.utils.html#4339" class="Bound"
+      >i</a
+      ><a name="4353" class="Symbol"
+      >}{</a
+      ><a name="4355" href="function.isomorphism.utils.html#4355" class="Bound"
+      >Y</a
+      ><a name="4356"
+      > </a
+      ><a name="4357" class="Symbol"
+      >:</a
+      ><a name="4358"
+      > </a
+      ><a name="4359" href="function.isomorphism.utils.html#4344" class="Bound"
+      >X</a
+      ><a name="4360"
+      > </a
+      ><a name="4361" class="Symbol"
+      >&#8594;</a
+      ><a name="4362"
+      > </a
+      ><a name="4363" class="PrimitiveType"
+      >Set</a
+      ><a name="4366"
+      > </a
+      ><a name="4367" href="function.isomorphism.utils.html#4341" class="Bound"
+      >j</a
+      ><a name="4368" class="Symbol"
+      >}</a
+      ><a name="4369"
+      >
+         </a
+      ><a name="4379" class="Symbol"
+      >&#8594;</a
+      ><a name="4380"
+      > </a
+      ><a name="4381" class="Symbol"
+      >((</a
+      ><a name="4383" href="function.isomorphism.utils.html#4383" class="Bound"
+      >x</a
+      ><a name="4384"
+      > </a
+      ><a name="4385" class="Symbol"
+      >:</a
+      ><a name="4386"
+      > </a
+      ><a name="4387" href="function.isomorphism.utils.html#4344" class="Bound"
+      >X</a
+      ><a name="4388" class="Symbol"
+      >)</a
+      ><a name="4389"
+      > </a
+      ><a name="4390" class="Symbol"
+      >&#8594;</a
+      ><a name="4391"
+      > </a
+      ><a name="4392" href="function.isomorphism.utils.html#4355" class="Bound"
+      >Y</a
+      ><a name="4393"
+      > </a
+      ><a name="4394" href="function.isomorphism.utils.html#4383" class="Bound"
+      >x</a
+      ><a name="4395" class="Symbol"
+      >)</a
+      ><a name="4396"
+      > </a
+      ><a name="4397" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="4398"
+      > </a
+      ><a name="4399" class="Symbol"
+      >({</a
+      ><a name="4401" href="function.isomorphism.utils.html#4401" class="Bound"
+      >x</a
+      ><a name="4402"
+      > </a
+      ><a name="4403" class="Symbol"
+      >:</a
+      ><a name="4404"
+      > </a
+      ><a name="4405" href="function.isomorphism.utils.html#4344" class="Bound"
+      >X</a
+      ><a name="4406" class="Symbol"
+      >}</a
+      ><a name="4407"
+      > </a
+      ><a name="4408" class="Symbol"
+      >&#8594;</a
+      ><a name="4409"
+      > </a
+      ><a name="4410" href="function.isomorphism.utils.html#4355" class="Bound"
+      >Y</a
+      ><a name="4411"
+      > </a
+      ><a name="4412" href="function.isomorphism.utils.html#4401" class="Bound"
+      >x</a
+      ><a name="4413" class="Symbol"
+      >)</a
+      ><a name="4414"
+      >
+</a
+      ><a name="4415" href="function.isomorphism.utils.html#4325" class="Function"
+      >impl-iso</a
+      ><a name="4423"
+      > </a
+      ><a name="4424" class="Symbol"
+      >=</a
+      ><a name="4425"
+      > </a
+      ><a name="4426" class="Keyword"
+      >record</a
+      ><a name="4432"
+      >
+  </a
+      ><a name="4435" class="Symbol"
+      >{</a
+      ><a name="4436"
+      > </a
+      ><a name="4437" class="Field"
+      >to</a
+      ><a name="4439"
+      > </a
+      ><a name="4440" class="Symbol"
+      >=</a
+      ><a name="4441"
+      > </a
+      ><a name="4442" class="Symbol"
+      >&#955;</a
+      ><a name="4443"
+      > </a
+      ><a name="4444" href="function.isomorphism.utils.html#4444" class="Bound"
+      >f</a
+      ><a name="4445"
+      > </a
+      ><a name="4446" class="Symbol"
+      >&#8594;</a
+      ><a name="4447"
+      > </a
+      ><a name="4448" href="function.isomorphism.utils.html#4444" class="Bound"
+      >f</a
+      ><a name="4449"
+      > </a
+      ><a name="4450" class="Symbol"
+      >_</a
+      ><a name="4451"
+      >
+  </a
+      ><a name="4454" class="Symbol"
+      >;</a
+      ><a name="4455"
+      > </a
+      ><a name="4456" class="Field"
+      >from</a
+      ><a name="4460"
+      > </a
+      ><a name="4461" class="Symbol"
+      >=</a
+      ><a name="4462"
+      > </a
+      ><a name="4463" class="Symbol"
+      >&#955;</a
+      ><a name="4464"
+      > </a
+      ><a name="4465" href="function.isomorphism.utils.html#4465" class="Bound"
+      >f</a
+      ><a name="4466"
+      > </a
+      ><a name="4467" href="function.isomorphism.utils.html#4467" class="Bound"
+      >_</a
+      ><a name="4468"
+      > </a
+      ><a name="4469" class="Symbol"
+      >&#8594;</a
+      ><a name="4470"
+      > </a
+      ><a name="4471" href="function.isomorphism.utils.html#4465" class="Bound"
+      >f</a
+      ><a name="4472"
+      >
+  </a
+      ><a name="4475" class="Symbol"
+      >;</a
+      ><a name="4476"
+      > </a
+      ><a name="4477" class="Field"
+      >iso&#8321;</a
+      ><a name="4481"
+      > </a
+      ><a name="4482" class="Symbol"
+      >=</a
+      ><a name="4483"
+      > </a
+      ><a name="4484" class="Symbol"
+      >&#955;</a
+      ><a name="4485"
+      > </a
+      ><a name="4486" href="function.isomorphism.utils.html#4486" class="Bound"
+      >_</a
+      ><a name="4487"
+      > </a
+      ><a name="4488" class="Symbol"
+      >&#8594;</a
+      ><a name="4489"
+      > </a
+      ><a name="4490" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="4494"
+      >
+  </a
+      ><a name="4497" class="Symbol"
+      >;</a
+      ><a name="4498"
+      > </a
+      ><a name="4499" class="Field"
+      >iso&#8322;</a
+      ><a name="4503"
+      > </a
+      ><a name="4504" class="Symbol"
+      >=</a
+      ><a name="4505"
+      > </a
+      ><a name="4506" class="Symbol"
+      >&#955;</a
+      ><a name="4507"
+      > </a
+      ><a name="4508" href="function.isomorphism.utils.html#4508" class="Bound"
+      >_</a
+      ><a name="4509"
+      > </a
+      ><a name="4510" class="Symbol"
+      >&#8594;</a
+      ><a name="4511"
+      > </a
+      ><a name="4512" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="4516"
+      > </a
+      ><a name="4517" class="Symbol"
+      >}</a
+      ><a name="4518"
+      >
+
+</a
+      ><a name="4520" class="Comment"
+      >-- rewriting lemmas for equations on equalities</a
+      ><a name="4567"
+      >
+</a
+      ><a name="4568" href="function.isomorphism.utils.html#4568" class="Function"
+      >sym&#8801;-iso</a
+      ><a name="4576"
+      > </a
+      ><a name="4577" class="Symbol"
+      >:</a
+      ><a name="4578"
+      > </a
+      ><a name="4579" class="Symbol"
+      >&#8704;</a
+      ><a name="4580"
+      > </a
+      ><a name="4581" class="Symbol"
+      >{</a
+      ><a name="4582" href="function.isomorphism.utils.html#4582" class="Bound"
+      >i</a
+      ><a name="4583" class="Symbol"
+      >}{</a
+      ><a name="4585" href="function.isomorphism.utils.html#4585" class="Bound"
+      >X</a
+      ><a name="4586"
+      > </a
+      ><a name="4587" class="Symbol"
+      >:</a
+      ><a name="4588"
+      > </a
+      ><a name="4589" class="PrimitiveType"
+      >Set</a
+      ><a name="4592"
+      > </a
+      ><a name="4593" href="function.isomorphism.utils.html#4582" class="Bound"
+      >i</a
+      ><a name="4594" class="Symbol"
+      >}{</a
+      ><a name="4596" href="function.isomorphism.utils.html#4596" class="Bound"
+      >x</a
+      ><a name="4597"
+      > </a
+      ><a name="4598" href="function.isomorphism.utils.html#4598" class="Bound"
+      >y</a
+      ><a name="4599"
+      > </a
+      ><a name="4600" class="Symbol"
+      >:</a
+      ><a name="4601"
+      > </a
+      ><a name="4602" href="function.isomorphism.utils.html#4585" class="Bound"
+      >X</a
+      ><a name="4603" class="Symbol"
+      >}</a
+      ><a name="4604"
+      >
+         </a
+      ><a name="4614" class="Symbol"
+      >&#8594;</a
+      ><a name="4615"
+      > </a
+      ><a name="4616" class="Symbol"
+      >(</a
+      ><a name="4617" href="function.isomorphism.utils.html#4617" class="Bound"
+      >p</a
+      ><a name="4618"
+      > </a
+      ><a name="4619" href="function.isomorphism.utils.html#4619" class="Bound"
+      >q</a
+      ><a name="4620"
+      > </a
+      ><a name="4621" class="Symbol"
+      >:</a
+      ><a name="4622"
+      > </a
+      ><a name="4623" href="function.isomorphism.utils.html#4596" class="Bound"
+      >x</a
+      ><a name="4624"
+      > </a
+      ><a name="4625" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4626"
+      > </a
+      ><a name="4627" href="function.isomorphism.utils.html#4598" class="Bound"
+      >y</a
+      ><a name="4628" class="Symbol"
+      >)</a
+      ><a name="4629"
+      >
+         </a
+      ><a name="4639" class="Symbol"
+      >&#8594;</a
+      ><a name="4640"
+      > </a
+      ><a name="4641" class="Symbol"
+      >(</a
+      ><a name="4642" href="function.isomorphism.utils.html#4617" class="Bound"
+      >p</a
+      ><a name="4643"
+      > </a
+      ><a name="4644" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4645"
+      > </a
+      ><a name="4646" href="function.isomorphism.utils.html#4619" class="Bound"
+      >q</a
+      ><a name="4647" class="Symbol"
+      >)</a
+      ><a name="4648"
+      >
+         </a
+      ><a name="4658" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="4659"
+      > </a
+      ><a name="4660" class="Symbol"
+      >(</a
+      ><a name="4661" href="function.isomorphism.utils.html#4619" class="Bound"
+      >q</a
+      ><a name="4662"
+      > </a
+      ><a name="4663" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4664"
+      > </a
+      ><a name="4665" href="function.isomorphism.utils.html#4617" class="Bound"
+      >p</a
+      ><a name="4666" class="Symbol"
+      >)</a
+      ><a name="4667"
+      >
+</a
+      ><a name="4668" href="function.isomorphism.utils.html#4568" class="Function"
+      >sym&#8801;-iso</a
+      ><a name="4676"
+      > </a
+      ><a name="4677" href="function.isomorphism.utils.html#4677" class="Bound"
+      >p</a
+      ><a name="4678"
+      > </a
+      ><a name="4679" href="function.isomorphism.utils.html#4679" class="Bound"
+      >q</a
+      ><a name="4680"
+      > </a
+      ><a name="4681" class="Symbol"
+      >=</a
+      ><a name="4682"
+      > </a
+      ><a name="4683" href="function.isomorphism.core.html#359" class="InductiveConstructor"
+      >iso</a
+      ><a name="4686"
+      > </a
+      ><a name="4687" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="4690"
+      > </a
+      ><a name="4691" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="4694"
+      > </a
+      ><a name="4695" href="equality.calculus.html#3526" class="Function"
+      >double-inverse</a
+      ><a name="4709"
+      > </a
+      ><a name="4710" href="equality.calculus.html#3526" class="Function"
+      >double-inverse</a
+      ><a name="4724"
+      >
+
+</a
+      ><a name="4726" href="function.isomorphism.utils.html#4726" class="Function"
+      >move-&#8801;-iso</a
+      ><a name="4736"
+      > </a
+      ><a name="4737" class="Symbol"
+      >:</a
+      ><a name="4738"
+      > </a
+      ><a name="4739" class="Symbol"
+      >&#8704;</a
+      ><a name="4740"
+      > </a
+      ><a name="4741" class="Symbol"
+      >{</a
+      ><a name="4742" href="function.isomorphism.utils.html#4742" class="Bound"
+      >i</a
+      ><a name="4743" class="Symbol"
+      >}{</a
+      ><a name="4745" href="function.isomorphism.utils.html#4745" class="Bound"
+      >X</a
+      ><a name="4746"
+      > </a
+      ><a name="4747" class="Symbol"
+      >:</a
+      ><a name="4748"
+      > </a
+      ><a name="4749" class="PrimitiveType"
+      >Set</a
+      ><a name="4752"
+      > </a
+      ><a name="4753" href="function.isomorphism.utils.html#4742" class="Bound"
+      >i</a
+      ><a name="4754" class="Symbol"
+      >}{</a
+      ><a name="4756" href="function.isomorphism.utils.html#4756" class="Bound"
+      >x</a
+      ><a name="4757"
+      > </a
+      ><a name="4758" href="function.isomorphism.utils.html#4758" class="Bound"
+      >y</a
+      ><a name="4759"
+      > </a
+      ><a name="4760" href="function.isomorphism.utils.html#4760" class="Bound"
+      >z</a
+      ><a name="4761"
+      > </a
+      ><a name="4762" class="Symbol"
+      >:</a
+      ><a name="4763"
+      > </a
+      ><a name="4764" href="function.isomorphism.utils.html#4745" class="Bound"
+      >X</a
+      ><a name="4765" class="Symbol"
+      >}</a
+      ><a name="4766"
+      >
+           </a
+      ><a name="4778" class="Symbol"
+      >&#8594;</a
+      ><a name="4779"
+      > </a
+      ><a name="4780" class="Symbol"
+      >(</a
+      ><a name="4781" href="function.isomorphism.utils.html#4781" class="Bound"
+      >p</a
+      ><a name="4782"
+      > </a
+      ><a name="4783" class="Symbol"
+      >:</a
+      ><a name="4784"
+      > </a
+      ><a name="4785" href="function.isomorphism.utils.html#4756" class="Bound"
+      >x</a
+      ><a name="4786"
+      > </a
+      ><a name="4787" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4788"
+      > </a
+      ><a name="4789" href="function.isomorphism.utils.html#4758" class="Bound"
+      >y</a
+      ><a name="4790" class="Symbol"
+      >)(</a
+      ><a name="4792" href="function.isomorphism.utils.html#4792" class="Bound"
+      >q</a
+      ><a name="4793"
+      > </a
+      ><a name="4794" class="Symbol"
+      >:</a
+      ><a name="4795"
+      > </a
+      ><a name="4796" href="function.isomorphism.utils.html#4758" class="Bound"
+      >y</a
+      ><a name="4797"
+      > </a
+      ><a name="4798" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4799"
+      > </a
+      ><a name="4800" href="function.isomorphism.utils.html#4760" class="Bound"
+      >z</a
+      ><a name="4801" class="Symbol"
+      >)(</a
+      ><a name="4803" href="function.isomorphism.utils.html#4803" class="Bound"
+      >r</a
+      ><a name="4804"
+      > </a
+      ><a name="4805" class="Symbol"
+      >:</a
+      ><a name="4806"
+      > </a
+      ><a name="4807" href="function.isomorphism.utils.html#4756" class="Bound"
+      >x</a
+      ><a name="4808"
+      > </a
+      ><a name="4809" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4810"
+      > </a
+      ><a name="4811" href="function.isomorphism.utils.html#4760" class="Bound"
+      >z</a
+      ><a name="4812" class="Symbol"
+      >)</a
+      ><a name="4813"
+      >
+           </a
+      ><a name="4825" class="Symbol"
+      >&#8594;</a
+      ><a name="4826"
+      > </a
+      ><a name="4827" class="Symbol"
+      >(</a
+      ><a name="4828" href="function.isomorphism.utils.html#4781" class="Bound"
+      >p</a
+      ><a name="4829"
+      > </a
+      ><a name="4830" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="4831"
+      > </a
+      ><a name="4832" href="function.isomorphism.utils.html#4792" class="Bound"
+      >q</a
+      ><a name="4833"
+      > </a
+      ><a name="4834" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4835"
+      > </a
+      ><a name="4836" href="function.isomorphism.utils.html#4803" class="Bound"
+      >r</a
+      ><a name="4837" class="Symbol"
+      >)</a
+      ><a name="4838"
+      >
+           </a
+      ><a name="4850" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="4851"
+      > </a
+      ><a name="4852" class="Symbol"
+      >(</a
+      ><a name="4853" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="4856"
+      > </a
+      ><a name="4857" href="function.isomorphism.utils.html#4781" class="Bound"
+      >p</a
+      ><a name="4858"
+      > </a
+      ><a name="4859" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="4860"
+      > </a
+      ><a name="4861" href="function.isomorphism.utils.html#4803" class="Bound"
+      >r</a
+      ><a name="4862"
+      > </a
+      ><a name="4863" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4864"
+      > </a
+      ><a name="4865" href="function.isomorphism.utils.html#4792" class="Bound"
+      >q</a
+      ><a name="4866" class="Symbol"
+      >)</a
+      ><a name="4867"
+      >
+</a
+      ><a name="4868" href="function.isomorphism.utils.html#4726" class="Function"
+      >move-&#8801;-iso</a
+      ><a name="4878"
+      > </a
+      ><a name="4879" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="4883"
+      > </a
+      ><a name="4884" class="Symbol"
+      >=</a
+      ><a name="4885"
+      > </a
+      ><a name="4886" href="function.isomorphism.utils.html#4568" class="Function"
+      >sym&#8801;-iso</a
+      ><a name="4894"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

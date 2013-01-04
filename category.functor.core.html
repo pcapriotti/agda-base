@@ -1,0 +1,2182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >category.functor.core</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="category.functor.core.html#1" class="Module"
+      >category.functor.core</a
+      ><a name="58"
+      > </a
+      ><a name="59" class="Keyword"
+      >where</a
+      ><a name="64"
+      >
+
+</a
+      ><a name="66" class="Keyword"
+      >open</a
+      ><a name="70"
+      > </a
+      ><a name="71" class="Keyword"
+      >import</a
+      ><a name="77"
+      > </a
+      ><a name="78" href="category.category.html#1" class="Module"
+      >category.category</a
+      ><a name="95"
+      >
+</a
+      ><a name="96" class="Keyword"
+      >open</a
+      ><a name="100"
+      > </a
+      ><a name="101" class="Keyword"
+      >import</a
+      ><a name="107"
+      > </a
+      ><a name="108" href="function.html#1" class="Module"
+      >function</a
+      ><a name="116"
+      > </a
+      ><a name="117" class="Keyword"
+      >using</a
+      ><a name="122"
+      > </a
+      ><a name="123" class="Symbol"
+      >()</a
+      ><a name="125"
+      > </a
+      ><a name="126" class="Keyword"
+      >renaming</a
+      ><a name="134"
+      > </a
+      ><a name="135" class="Symbol"
+      >(</a
+      ><a name="136"
+      >id </a
+      ><a name="139" class="Symbol"
+      >to</a
+      ><a name="141"
+      > &#953; </a
+      ><a name="144" class="Symbol"
+      >;</a
+      ><a name="145"
+      > _&#8728;_ </a
+      ><a name="150" class="Symbol"
+      >to</a
+      ><a name="152"
+      > _&#8902;_</a
+      ><a name="156" class="Symbol"
+      >)</a
+      ><a name="157"
+      >
+</a
+      ><a name="158" class="Keyword"
+      >open</a
+      ><a name="162"
+      > </a
+      ><a name="163" class="Keyword"
+      >import</a
+      ><a name="169"
+      > </a
+      ><a name="170" href="level.html#1" class="Module"
+      >level</a
+      ><a name="175"
+      > </a
+      ><a name="176" class="Keyword"
+      >using</a
+      ><a name="181"
+      > </a
+      ><a name="182" class="Symbol"
+      >(</a
+      ><a name="183"
+      >_&#8852;_</a
+      ><a name="186" class="Symbol"
+      >)</a
+      ><a name="187"
+      >
+</a
+      ><a name="188" class="Keyword"
+      >open</a
+      ><a name="192"
+      > </a
+      ><a name="193" class="Keyword"
+      >import</a
+      ><a name="199"
+      > </a
+      ><a name="200" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="213"
+      > </a
+      ><a name="214" class="Keyword"
+      >using</a
+      ><a name="219"
+      > </a
+      ><a name="220" class="Symbol"
+      >(</a
+      ><a name="221"
+      >_&#8801;_ </a
+      ><a name="225" class="Symbol"
+      >;</a
+      ><a name="226"
+      > refl </a
+      ><a name="232" class="Symbol"
+      >;</a
+      ><a name="233"
+      > cong</a
+      ><a name="238" class="Symbol"
+      >;</a
+      ><a name="239"
+      > sym</a
+      ><a name="243" class="Symbol"
+      >)</a
+      ><a name="244"
+      >
+
+</a
+      ><a name="246" class="Keyword"
+      >record</a
+      ><a name="252"
+      > </a
+      ><a name="253" href="category.functor.core.html#253" class="Record"
+      >Functor</a
+      ><a name="260"
+      > </a
+      ><a name="261" class="Symbol"
+      >{</a
+      ><a name="262" href="category.functor.core.html#262" class="Bound"
+      >i</a
+      ><a name="263"
+      > </a
+      ><a name="264" href="category.functor.core.html#264" class="Bound"
+      >j</a
+      ><a name="265"
+      > </a
+      ><a name="266" href="category.functor.core.html#266" class="Bound"
+      >i'</a
+      ><a name="268"
+      > </a
+      ><a name="269" href="category.functor.core.html#269" class="Bound"
+      >j'</a
+      ><a name="271" class="Symbol"
+      >}</a
+      ><a name="272"
+      >
+               </a
+      ><a name="288" class="Symbol"
+      >(</a
+      ><a name="289" href="category.functor.core.html#289" class="Bound"
+      >C</a
+      ><a name="290"
+      > </a
+      ><a name="291" class="Symbol"
+      >:</a
+      ><a name="292"
+      > </a
+      ><a name="293" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="301"
+      > </a
+      ><a name="302" href="category.functor.core.html#262" class="Bound"
+      >i</a
+      ><a name="303"
+      > </a
+      ><a name="304" href="category.functor.core.html#264" class="Bound"
+      >j</a
+      ><a name="305" class="Symbol"
+      >)</a
+      ><a name="306"
+      >
+               </a
+      ><a name="322" class="Symbol"
+      >(</a
+      ><a name="323" href="category.functor.core.html#323" class="Bound"
+      >D</a
+      ><a name="324"
+      > </a
+      ><a name="325" class="Symbol"
+      >:</a
+      ><a name="326"
+      > </a
+      ><a name="327" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="335"
+      > </a
+      ><a name="336" href="category.functor.core.html#266" class="Bound"
+      >i'</a
+      ><a name="338"
+      > </a
+      ><a name="339" href="category.functor.core.html#269" class="Bound"
+      >j'</a
+      ><a name="341" class="Symbol"
+      >)</a
+      ><a name="342"
+      >
+             </a
+      ><a name="356" class="Symbol"
+      >:</a
+      ><a name="357"
+      > </a
+      ><a name="358" class="PrimitiveType"
+      >Set</a
+      ><a name="361"
+      > </a
+      ><a name="362" class="Symbol"
+      >(</a
+      ><a name="363" href="category.functor.core.html#262" class="Bound"
+      >i</a
+      ><a name="364"
+      > </a
+      ><a name="365" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="366"
+      > </a
+      ><a name="367" href="category.functor.core.html#264" class="Bound"
+      >j</a
+      ><a name="368"
+      > </a
+      ><a name="369" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="370"
+      > </a
+      ><a name="371" href="category.functor.core.html#266" class="Bound"
+      >i'</a
+      ><a name="373"
+      > </a
+      ><a name="374" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="375"
+      > </a
+      ><a name="376" href="category.functor.core.html#269" class="Bound"
+      >j'</a
+      ><a name="378" class="Symbol"
+      >)</a
+      ><a name="379"
+      > </a
+      ><a name="380" class="Keyword"
+      >where</a
+      ><a name="385"
+      >
+  </a
+      ><a name="388" class="Keyword"
+      >constructor</a
+      ><a name="399"
+      > </a
+      ><a name="400" href="category.functor.core.html#400" class="InductiveConstructor"
+      >functor</a
+      ><a name="407"
+      >
+
+  </a
+      ><a name="411" class="Keyword"
+      >open</a
+      ><a name="415"
+      > </a
+      ><a name="416" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="424"
+      > </a
+      ><a name="425" class="Keyword"
+      >hiding</a
+      ><a name="431"
+      > </a
+      ><a name="432" class="Symbol"
+      >(</a
+      ><a name="433"
+      >hom </a
+      ><a name="437" class="Symbol"
+      >;</a
+      ><a name="438"
+      > id </a
+      ><a name="442" class="Symbol"
+      >;</a
+      ><a name="443"
+      > _&#8728;_</a
+      ><a name="447" class="Symbol"
+      >)</a
+      ><a name="448"
+      >
+  </a
+      ><a name="451" class="Keyword"
+      >open</a
+      ><a name="455"
+      > </a
+      ><a name="456" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="464"
+      > </a
+      ><a name="465" href="category.functor.core.html#289" class="Bound"
+      >C</a
+      ><a name="466"
+      > </a
+      ><a name="467" class="Keyword"
+      >using</a
+      ><a name="472"
+      > </a
+      ><a name="473" class="Symbol"
+      >(</a
+      ><a name="474"
+      >hom </a
+      ><a name="478" class="Symbol"
+      >;</a
+      ><a name="479"
+      > id </a
+      ><a name="483" class="Symbol"
+      >;</a
+      ><a name="484"
+      > _&#8728;_</a
+      ><a name="488" class="Symbol"
+      >)</a
+      ><a name="489"
+      >
+  </a
+      ><a name="492" class="Keyword"
+      >open</a
+      ><a name="496"
+      > </a
+      ><a name="497" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="505"
+      > </a
+      ><a name="506" href="category.functor.core.html#323" class="Bound"
+      >D</a
+      ><a name="507"
+      > </a
+      ><a name="508" class="Keyword"
+      >using</a
+      ><a name="513"
+      > </a
+      ><a name="514" class="Symbol"
+      >()</a
+      ><a name="516"
+      >
+    </a
+      ><a name="521" class="Keyword"
+      >renaming</a
+      ><a name="529"
+      > </a
+      ><a name="530" class="Symbol"
+      >(</a
+      ><a name="531"
+      > hom </a
+      ><a name="536" class="Symbol"
+      >to</a
+      ><a name="538"
+      > hom'
+             </a
+      ><a name="557" class="Symbol"
+      >;</a
+      ><a name="558"
+      > id </a
+      ><a name="562" class="Symbol"
+      >to</a
+      ><a name="564"
+      > id'
+             </a
+      ><a name="582" class="Symbol"
+      >;</a
+      ><a name="583"
+      > _&#8728;_ </a
+      ><a name="588" class="Symbol"
+      >to</a
+      ><a name="590"
+      > _&#8728;'_ </a
+      ><a name="596" class="Symbol"
+      >)</a
+      ><a name="597"
+      >
+
+  </a
+      ><a name="601" class="Keyword"
+      >field</a
+      ><a name="606"
+      > </a
+      ><a name="607" href="category.functor.core.html#607" class="Field"
+      >apply</a
+      ><a name="612"
+      > </a
+      ><a name="613" class="Symbol"
+      >:</a
+      ><a name="614"
+      > </a
+      ><a name="615" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="618"
+      > </a
+      ><a name="619" href="category.functor.core.html#289" class="Bound"
+      >C</a
+      ><a name="620"
+      > </a
+      ><a name="621" class="Symbol"
+      >&#8594;</a
+      ><a name="622"
+      > </a
+      ><a name="623" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="626"
+      > </a
+      ><a name="627" href="category.functor.core.html#323" class="Bound"
+      >D</a
+      ><a name="628"
+      >
+  </a
+      ><a name="631" class="Keyword"
+      >private</a
+      ><a name="638"
+      > </a
+      ><a name="639" href="category.functor.core.html#639" class="Function"
+      >F</a
+      ><a name="640"
+      > </a
+      ><a name="641" class="Symbol"
+      >=</a
+      ><a name="642"
+      > </a
+      ><a name="643" href="category.functor.core.html#607" class="Function"
+      >apply</a
+      ><a name="648"
+      >
+  </a
+      ><a name="651" class="Keyword"
+      >field</a
+      ><a name="656"
+      > </a
+      ><a name="657" href="category.functor.core.html#657" class="Field"
+      >map</a
+      ><a name="660"
+      > </a
+      ><a name="661" class="Symbol"
+      >:</a
+      ><a name="662"
+      > </a
+      ><a name="663" class="Symbol"
+      >{</a
+      ><a name="664" href="category.functor.core.html#664" class="Bound"
+      >X</a
+      ><a name="665"
+      > </a
+      ><a name="666" href="category.functor.core.html#666" class="Bound"
+      >Y</a
+      ><a name="667"
+      > </a
+      ><a name="668" class="Symbol"
+      >:</a
+      ><a name="669"
+      > </a
+      ><a name="670" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="673"
+      > </a
+      ><a name="674" href="category.functor.core.html#289" class="Bound"
+      >C</a
+      ><a name="675" class="Symbol"
+      >}</a
+      ><a name="676"
+      >
+            </a
+      ><a name="689" class="Symbol"
+      >&#8594;</a
+      ><a name="690"
+      > </a
+      ><a name="691" href="category.category.html#308" class="Function"
+      >hom</a
+      ><a name="694"
+      > </a
+      ><a name="695" href="category.functor.core.html#664" class="Bound"
+      >X</a
+      ><a name="696"
+      > </a
+      ><a name="697" href="category.functor.core.html#666" class="Bound"
+      >Y</a
+      ><a name="698"
+      > </a
+      ><a name="699" class="Symbol"
+      >&#8594;</a
+      ><a name="700"
+      > </a
+      ><a name="701" href="category.category.html#308" class="Function"
+      >hom'</a
+      ><a name="705"
+      > </a
+      ><a name="706" class="Symbol"
+      >(</a
+      ><a name="707" href="category.functor.core.html#639" class="Bound"
+      >F</a
+      ><a name="708"
+      > </a
+      ><a name="709" href="category.functor.core.html#664" class="Bound"
+      >X</a
+      ><a name="710" class="Symbol"
+      >)</a
+      ><a name="711"
+      > </a
+      ><a name="712" class="Symbol"
+      >(</a
+      ><a name="713" href="category.functor.core.html#639" class="Bound"
+      >F</a
+      ><a name="714"
+      > </a
+      ><a name="715" href="category.functor.core.html#666" class="Bound"
+      >Y</a
+      ><a name="716" class="Symbol"
+      >)</a
+      ><a name="717"
+      >
+
+  </a
+      ><a name="721" class="Keyword"
+      >field</a
+      ><a name="726"
+      >
+    </a
+      ><a name="731" href="category.functor.core.html#731" class="Field"
+      >map-id</a
+      ><a name="737"
+      > </a
+      ><a name="738" class="Symbol"
+      >:</a
+      ><a name="739"
+      > </a
+      ><a name="740" class="Symbol"
+      >(</a
+      ><a name="741" href="category.functor.core.html#741" class="Bound"
+      >X</a
+      ><a name="742"
+      > </a
+      ><a name="743" class="Symbol"
+      >:</a
+      ><a name="744"
+      > </a
+      ><a name="745" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="748"
+      > </a
+      ><a name="749" href="category.functor.core.html#289" class="Bound"
+      >C</a
+      ><a name="750" class="Symbol"
+      >)</a
+      ><a name="751"
+      >
+           </a
+      ><a name="763" class="Symbol"
+      >&#8594;</a
+      ><a name="764"
+      > </a
+      ><a name="765" href="category.functor.core.html#657" class="Bound"
+      >map</a
+      ><a name="768"
+      > </a
+      ><a name="769" class="Symbol"
+      >(</a
+      ><a name="770" href="category.category.html#372" class="Function"
+      >id</a
+      ><a name="772"
+      > </a
+      ><a name="773" href="category.functor.core.html#741" class="Bound"
+      >X</a
+      ><a name="774" class="Symbol"
+      >)</a
+      ><a name="775"
+      > </a
+      ><a name="776" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="777"
+      > </a
+      ><a name="778" href="category.category.html#372" class="Function"
+      >id'</a
+      ><a name="781"
+      > </a
+      ><a name="782" class="Symbol"
+      >(</a
+      ><a name="783" href="category.functor.core.html#639" class="Bound"
+      >F</a
+      ><a name="784"
+      > </a
+      ><a name="785" href="category.functor.core.html#741" class="Bound"
+      >X</a
+      ><a name="786" class="Symbol"
+      >)</a
+      ><a name="787"
+      >
+    </a
+      ><a name="792" href="category.functor.core.html#792" class="Field"
+      >map-hom</a
+      ><a name="799"
+      > </a
+      ><a name="800" class="Symbol"
+      >:</a
+      ><a name="801"
+      > </a
+      ><a name="802" class="Symbol"
+      >{</a
+      ><a name="803" href="category.functor.core.html#803" class="Bound"
+      >X</a
+      ><a name="804"
+      > </a
+      ><a name="805" href="category.functor.core.html#805" class="Bound"
+      >Y</a
+      ><a name="806"
+      > </a
+      ><a name="807" href="category.functor.core.html#807" class="Bound"
+      >Z</a
+      ><a name="808"
+      > </a
+      ><a name="809" class="Symbol"
+      >:</a
+      ><a name="810"
+      > </a
+      ><a name="811" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="814"
+      > </a
+      ><a name="815" href="category.functor.core.html#289" class="Bound"
+      >C</a
+      ><a name="816" class="Symbol"
+      >}</a
+      ><a name="817"
+      >
+              </a
+      ><a name="832" class="Symbol"
+      >(</a
+      ><a name="833" href="category.functor.core.html#833" class="Bound"
+      >f</a
+      ><a name="834"
+      > </a
+      ><a name="835" class="Symbol"
+      >:</a
+      ><a name="836"
+      > </a
+      ><a name="837" href="category.category.html#308" class="Function"
+      >hom</a
+      ><a name="840"
+      > </a
+      ><a name="841" href="category.functor.core.html#803" class="Bound"
+      >X</a
+      ><a name="842"
+      > </a
+      ><a name="843" href="category.functor.core.html#805" class="Bound"
+      >Y</a
+      ><a name="844" class="Symbol"
+      >)(</a
+      ><a name="846" href="category.functor.core.html#846" class="Bound"
+      >g</a
+      ><a name="847"
+      > </a
+      ><a name="848" class="Symbol"
+      >:</a
+      ><a name="849"
+      > </a
+      ><a name="850" href="category.category.html#308" class="Function"
+      >hom</a
+      ><a name="853"
+      > </a
+      ><a name="854" href="category.functor.core.html#805" class="Bound"
+      >Y</a
+      ><a name="855"
+      > </a
+      ><a name="856" href="category.functor.core.html#807" class="Bound"
+      >Z</a
+      ><a name="857" class="Symbol"
+      >)</a
+      ><a name="858"
+      >
+            </a
+      ><a name="871" class="Symbol"
+      >&#8594;</a
+      ><a name="872"
+      > </a
+      ><a name="873" href="category.functor.core.html#657" class="Bound"
+      >map</a
+      ><a name="876"
+      > </a
+      ><a name="877" class="Symbol"
+      >(</a
+      ><a name="878" href="category.functor.core.html#846" class="Bound"
+      >g</a
+      ><a name="879"
+      > </a
+      ><a name="880" href="category.category.html#401" class="Function Operator"
+      >&#8728;</a
+      ><a name="881"
+      > </a
+      ><a name="882" href="category.functor.core.html#833" class="Bound"
+      >f</a
+      ><a name="883" class="Symbol"
+      >)</a
+      ><a name="884"
+      > </a
+      ><a name="885" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="886"
+      > </a
+      ><a name="887" href="category.functor.core.html#657" class="Bound"
+      >map</a
+      ><a name="890"
+      > </a
+      ><a name="891" href="category.functor.core.html#846" class="Bound"
+      >g</a
+      ><a name="892"
+      > </a
+      ><a name="893" href="category.category.html#401" class="Function Operator"
+      >&#8728;'</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="category.functor.core.html#657" class="Bound"
+      >map</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="category.functor.core.html#833" class="Bound"
+      >f</a
+      ><a name="901"
+      >
+
+</a
+      ><a name="903" href="category.functor.core.html#903" class="Function"
+      >Id</a
+      ><a name="905"
+      > </a
+      ><a name="906" class="Symbol"
+      >:</a
+      ><a name="907"
+      > </a
+      ><a name="908" class="Symbol"
+      >&#8704;</a
+      ><a name="909"
+      > </a
+      ><a name="910" class="Symbol"
+      >{</a
+      ><a name="911" href="category.functor.core.html#911" class="Bound"
+      >i</a
+      ><a name="912"
+      > </a
+      ><a name="913" href="category.functor.core.html#913" class="Bound"
+      >j</a
+      ><a name="914" class="Symbol"
+      >}(</a
+      ><a name="916" href="category.functor.core.html#916" class="Bound"
+      >C</a
+      ><a name="917"
+      > </a
+      ><a name="918" class="Symbol"
+      >:</a
+      ><a name="919"
+      > </a
+      ><a name="920" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="928"
+      > </a
+      ><a name="929" href="category.functor.core.html#911" class="Bound"
+      >i</a
+      ><a name="930"
+      > </a
+      ><a name="931" href="category.functor.core.html#913" class="Bound"
+      >j</a
+      ><a name="932" class="Symbol"
+      >)</a
+      ><a name="933"
+      > </a
+      ><a name="934" class="Symbol"
+      >&#8594;</a
+      ><a name="935"
+      > </a
+      ><a name="936" href="category.functor.core.html#253" class="Record"
+      >Functor</a
+      ><a name="943"
+      > </a
+      ><a name="944" href="category.functor.core.html#916" class="Bound"
+      >C</a
+      ><a name="945"
+      > </a
+      ><a name="946" href="category.functor.core.html#916" class="Bound"
+      >C</a
+      ><a name="947"
+      >
+</a
+      ><a name="948" href="category.functor.core.html#903" class="Function"
+      >Id</a
+      ><a name="950"
+      > </a
+      ><a name="951" href="category.functor.core.html#951" class="Bound"
+      >C</a
+      ><a name="952"
+      > </a
+      ><a name="953" class="Symbol"
+      >=</a
+      ><a name="954"
+      > </a
+      ><a name="955" class="Keyword"
+      >record</a
+      ><a name="961"
+      >
+  </a
+      ><a name="964" class="Symbol"
+      >{</a
+      ><a name="965"
+      > </a
+      ><a name="966" class="Field"
+      >apply</a
+      ><a name="971"
+      > </a
+      ><a name="972" class="Symbol"
+      >=</a
+      ><a name="973"
+      > </a
+      ><a name="974" href="function.core.html#439" class="Function"
+      >&#953;</a
+      ><a name="975"
+      >
+  </a
+      ><a name="978" class="Symbol"
+      >;</a
+      ><a name="979"
+      > </a
+      ><a name="980" class="Field"
+      >map</a
+      ><a name="983"
+      > </a
+      ><a name="984" class="Symbol"
+      >=</a
+      ><a name="985"
+      > </a
+      ><a name="986" href="function.core.html#439" class="Function"
+      >&#953;</a
+      ><a name="987"
+      >
+  </a
+      ><a name="990" class="Symbol"
+      >;</a
+      ><a name="991"
+      > </a
+      ><a name="992" class="Field"
+      >map-id</a
+      ><a name="998"
+      > </a
+      ><a name="999" class="Symbol"
+      >=</a
+      ><a name="1000"
+      > </a
+      ><a name="1001" class="Symbol"
+      >&#955;</a
+      ><a name="1002"
+      > </a
+      ><a name="1003" href="category.functor.core.html#1003" class="Bound"
+      >_</a
+      ><a name="1004"
+      > </a
+      ><a name="1005" class="Symbol"
+      >&#8594;</a
+      ><a name="1006"
+      > </a
+      ><a name="1007" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1011"
+      >
+  </a
+      ><a name="1014" class="Symbol"
+      >;</a
+      ><a name="1015"
+      > </a
+      ><a name="1016" class="Field"
+      >map-hom</a
+      ><a name="1023"
+      > </a
+      ><a name="1024" class="Symbol"
+      >=</a
+      ><a name="1025"
+      > </a
+      ><a name="1026" class="Symbol"
+      >&#955;</a
+      ><a name="1027"
+      > </a
+      ><a name="1028" href="category.functor.core.html#1028" class="Bound"
+      >_</a
+      ><a name="1029"
+      > </a
+      ><a name="1030" href="category.functor.core.html#1030" class="Bound"
+      >_</a
+      ><a name="1031"
+      > </a
+      ><a name="1032" class="Symbol"
+      >&#8594;</a
+      ><a name="1033"
+      > </a
+      ><a name="1034" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1038"
+      > </a
+      ><a name="1039" class="Symbol"
+      >}</a
+      ><a name="1040"
+      >
+
+</a
+      ><a name="1042" href="category.functor.core.html#1042" class="Function Operator"
+      >_&#8728;_</a
+      ><a name="1045"
+      > </a
+      ><a name="1046" class="Symbol"
+      >:</a
+      ><a name="1047"
+      > </a
+      ><a name="1048" class="Symbol"
+      >&#8704;</a
+      ><a name="1049"
+      > </a
+      ><a name="1050" class="Symbol"
+      >{</a
+      ><a name="1051" href="category.functor.core.html#1051" class="Bound"
+      >i&#8321;</a
+      ><a name="1053"
+      > </a
+      ><a name="1054" href="category.functor.core.html#1054" class="Bound"
+      >j&#8321;</a
+      ><a name="1056"
+      > </a
+      ><a name="1057" href="category.functor.core.html#1057" class="Bound"
+      >i&#8322;</a
+      ><a name="1059"
+      > </a
+      ><a name="1060" href="category.functor.core.html#1060" class="Bound"
+      >j&#8322;</a
+      ><a name="1062"
+      > </a
+      ><a name="1063" href="category.functor.core.html#1063" class="Bound"
+      >i&#8323;</a
+      ><a name="1065"
+      > </a
+      ><a name="1066" href="category.functor.core.html#1066" class="Bound"
+      >j&#8323;</a
+      ><a name="1068" class="Symbol"
+      >}</a
+      ><a name="1069"
+      >
+          </a
+      ><a name="1080" class="Symbol"
+      >{</a
+      ><a name="1081" href="category.functor.core.html#1081" class="Bound"
+      >C</a
+      ><a name="1082"
+      > </a
+      ><a name="1083" class="Symbol"
+      >:</a
+      ><a name="1084"
+      > </a
+      ><a name="1085" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" href="category.functor.core.html#1051" class="Bound"
+      >i&#8321;</a
+      ><a name="1096"
+      > </a
+      ><a name="1097" href="category.functor.core.html#1054" class="Bound"
+      >j&#8321;</a
+      ><a name="1099" class="Symbol"
+      >}</a
+      ><a name="1100"
+      >
+          </a
+      ><a name="1111" class="Symbol"
+      >{</a
+      ><a name="1112" href="category.functor.core.html#1112" class="Bound"
+      >D</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" class="Symbol"
+      >:</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="1124"
+      > </a
+      ><a name="1125" href="category.functor.core.html#1057" class="Bound"
+      >i&#8322;</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" href="category.functor.core.html#1060" class="Bound"
+      >j&#8322;</a
+      ><a name="1130" class="Symbol"
+      >}</a
+      ><a name="1131"
+      >
+          </a
+      ><a name="1142" class="Symbol"
+      >{</a
+      ><a name="1143" href="category.functor.core.html#1143" class="Bound"
+      >E</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" class="Symbol"
+      >:</a
+      ><a name="1146"
+      > </a
+      ><a name="1147" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="1155"
+      > </a
+      ><a name="1156" href="category.functor.core.html#1063" class="Bound"
+      >i&#8323;</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" href="category.functor.core.html#1066" class="Bound"
+      >j&#8323;</a
+      ><a name="1161" class="Symbol"
+      >}</a
+      ><a name="1162"
+      >
+        </a
+      ><a name="1171" class="Symbol"
+      >&#8594;</a
+      ><a name="1172"
+      > </a
+      ><a name="1173" href="category.functor.core.html#253" class="Record"
+      >Functor</a
+      ><a name="1180"
+      > </a
+      ><a name="1181" href="category.functor.core.html#1112" class="Bound"
+      >D</a
+      ><a name="1182"
+      > </a
+      ><a name="1183" href="category.functor.core.html#1143" class="Bound"
+      >E</a
+      ><a name="1184"
+      >
+        </a
+      ><a name="1193" class="Symbol"
+      >&#8594;</a
+      ><a name="1194"
+      > </a
+      ><a name="1195" href="category.functor.core.html#253" class="Record"
+      >Functor</a
+      ><a name="1202"
+      > </a
+      ><a name="1203" href="category.functor.core.html#1081" class="Bound"
+      >C</a
+      ><a name="1204"
+      > </a
+      ><a name="1205" href="category.functor.core.html#1112" class="Bound"
+      >D</a
+      ><a name="1206"
+      >
+        </a
+      ><a name="1215" class="Symbol"
+      >&#8594;</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" href="category.functor.core.html#253" class="Record"
+      >Functor</a
+      ><a name="1224"
+      > </a
+      ><a name="1225" href="category.functor.core.html#1081" class="Bound"
+      >C</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" href="category.functor.core.html#1143" class="Bound"
+      >E</a
+      ><a name="1228"
+      >
+</a
+      ><a name="1229" href="category.functor.core.html#1042" class="Function Operator"
+      >_&#8728;_</a
+      ><a name="1232"
+      > </a
+      ><a name="1233" class="Symbol"
+      >{</a
+      ><a name="1234"
+      >C </a
+      ><a name="1236" class="Symbol"
+      >=</a
+      ><a name="1237"
+      > </a
+      ><a name="1238" href="category.functor.core.html#1238" class="Bound"
+      >C</a
+      ><a name="1239" class="Symbol"
+      >}</a
+      ><a name="1240"
+      > </a
+      ><a name="1241" class="Symbol"
+      >{</a
+      ><a name="1242" href="category.functor.core.html#1242" class="Bound"
+      >D</a
+      ><a name="1243" class="Symbol"
+      >}</a
+      ><a name="1244"
+      > </a
+      ><a name="1245" class="Symbol"
+      >{</a
+      ><a name="1246" href="category.functor.core.html#1246" class="Bound"
+      >E</a
+      ><a name="1247" class="Symbol"
+      >}</a
+      ><a name="1248"
+      > </a
+      ><a name="1249" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1250"
+      > </a
+      ><a name="1251" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1252"
+      > </a
+      ><a name="1253" class="Symbol"
+      >=</a
+      ><a name="1254"
+      > </a
+      ><a name="1255" class="Keyword"
+      >record</a
+      ><a name="1261"
+      >
+  </a
+      ><a name="1264" class="Symbol"
+      >{</a
+      ><a name="1265"
+      > </a
+      ><a name="1266" class="Field"
+      >apply</a
+      ><a name="1271"
+      > </a
+      ><a name="1272" class="Symbol"
+      >=</a
+      ><a name="1273"
+      > </a
+      ><a name="1274" href="category.functor.core.html#607" class="Function"
+      >apply</a
+      ><a name="1279"
+      > </a
+      ><a name="1280" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="function.core.html#148" class="Function Operator"
+      >&#8902;</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" href="category.functor.core.html#607" class="Function"
+      >apply</a
+      ><a name="1289"
+      > </a
+      ><a name="1290" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1291"
+      >
+  </a
+      ><a name="1294" class="Symbol"
+      >;</a
+      ><a name="1295"
+      > </a
+      ><a name="1296" class="Field"
+      >map</a
+      ><a name="1299"
+      > </a
+      ><a name="1300" class="Symbol"
+      >=</a
+      ><a name="1301"
+      > </a
+      ><a name="1302" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1305"
+      > </a
+      ><a name="1306" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1307"
+      > </a
+      ><a name="1308" href="function.core.html#148" class="Function Operator"
+      >&#8902;</a
+      ><a name="1309"
+      > </a
+      ><a name="1310" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1313"
+      > </a
+      ><a name="1314" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1315"
+      >
+  </a
+      ><a name="1318" class="Symbol"
+      >;</a
+      ><a name="1319"
+      > </a
+      ><a name="1320" class="Field"
+      >map-id</a
+      ><a name="1326"
+      > </a
+      ><a name="1327" class="Symbol"
+      >=</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" class="Symbol"
+      >&#955;</a
+      ><a name="1330"
+      > </a
+      ><a name="1331" href="category.functor.core.html#1331" class="Bound"
+      >X</a
+      ><a name="1332"
+      > </a
+      ><a name="1333" class="Symbol"
+      >&#8594;</a
+      ><a name="1334"
+      > </a
+      ><a name="1335" href="equality.reasoning.html#423" class="Function Operator"
+      >begin</a
+      ><a name="1340"
+      >
+        </a
+      ><a name="1349" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1352"
+      > </a
+      ><a name="1353" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1354"
+      > </a
+      ><a name="1355" class="Symbol"
+      >(</a
+      ><a name="1356" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1359"
+      > </a
+      ><a name="1360" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1361"
+      > </a
+      ><a name="1362" class="Symbol"
+      >(</a
+      ><a name="1363" href="category.category.html#372" class="Function"
+      >id&#8321;</a
+      ><a name="1366"
+      > </a
+      ><a name="1367" class="Symbol"
+      >_))</a
+      ><a name="1370"
+      >
+      </a
+      ><a name="1377" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1379"
+      > </a
+      ><a name="1380" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1384"
+      > </a
+      ><a name="1385" class="Symbol"
+      >(</a
+      ><a name="1386" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1389"
+      > </a
+      ><a name="1390" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1391" class="Symbol"
+      >)</a
+      ><a name="1392"
+      > </a
+      ><a name="1393" class="Symbol"
+      >(</a
+      ><a name="1394" href="category.functor.core.html#731" class="Function"
+      >map-id</a
+      ><a name="1400"
+      > </a
+      ><a name="1401" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1402"
+      > </a
+      ><a name="1403" href="category.functor.core.html#1331" class="Bound"
+      >X</a
+      ><a name="1404" class="Symbol"
+      >)</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1407"
+      >
+        </a
+      ><a name="1416" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1419"
+      > </a
+      ><a name="1420" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1421"
+      > </a
+      ><a name="1422" class="Symbol"
+      >(</a
+      ><a name="1423" href="category.category.html#372" class="Function"
+      >id&#8322;</a
+      ><a name="1426"
+      > </a
+      ><a name="1427" class="Symbol"
+      >_)</a
+      ><a name="1429"
+      >
+      </a
+      ><a name="1436" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" href="category.functor.core.html#731" class="Function"
+      >map-id</a
+      ><a name="1445"
+      > </a
+      ><a name="1446" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1447"
+      > </a
+      ><a name="1448" class="Symbol"
+      >_</a
+      ><a name="1449"
+      > </a
+      ><a name="1450" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1451"
+      >
+        </a
+      ><a name="1460" href="category.category.html#372" class="Function"
+      >id&#8323;</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" class="Symbol"
+      >_</a
+      ><a name="1465"
+      >
+      </a
+      ><a name="1472" href="equality.reasoning.html#594" class="Function Operator"
+      >&#8718;</a
+      ><a name="1473"
+      >
+  </a
+      ><a name="1476" class="Symbol"
+      >;</a
+      ><a name="1477"
+      > </a
+      ><a name="1478" class="Field"
+      >map-hom</a
+      ><a name="1485"
+      > </a
+      ><a name="1486" class="Symbol"
+      >=</a
+      ><a name="1487"
+      > </a
+      ><a name="1488" class="Symbol"
+      >&#955;</a
+      ><a name="1489"
+      > </a
+      ><a name="1490" href="category.functor.core.html#1490" class="Bound"
+      >f</a
+      ><a name="1491"
+      > </a
+      ><a name="1492" href="category.functor.core.html#1492" class="Bound"
+      >g</a
+      ><a name="1493"
+      > </a
+      ><a name="1494" class="Symbol"
+      >&#8594;</a
+      ><a name="1495"
+      > </a
+      ><a name="1496" href="equality.reasoning.html#423" class="Function Operator"
+      >begin</a
+      ><a name="1501"
+      >
+        </a
+      ><a name="1510" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1513"
+      > </a
+      ><a name="1514" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1515"
+      > </a
+      ><a name="1516" class="Symbol"
+      >(</a
+      ><a name="1517" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1520"
+      > </a
+      ><a name="1521" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1522"
+      > </a
+      ><a name="1523" class="Symbol"
+      >(</a
+      ><a name="1524" href="category.functor.core.html#1492" class="Bound"
+      >g</a
+      ><a name="1525"
+      > </a
+      ><a name="1526" href="category.category.html#401" class="Function Operator"
+      >&#8728;&#8321;</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" href="category.functor.core.html#1490" class="Bound"
+      >f</a
+      ><a name="1530" class="Symbol"
+      >))</a
+      ><a name="1532"
+      >
+      </a
+      ><a name="1539" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1546"
+      > </a
+      ><a name="1547" class="Symbol"
+      >(</a
+      ><a name="1548" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1551"
+      > </a
+      ><a name="1552" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1553" class="Symbol"
+      >)</a
+      ><a name="1554"
+      > </a
+      ><a name="1555" class="Symbol"
+      >(</a
+      ><a name="1556" href="category.functor.core.html#792" class="Function"
+      >map-hom</a
+      ><a name="1563"
+      > </a
+      ><a name="1564" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1565"
+      > </a
+      ><a name="1566" href="category.functor.core.html#1490" class="Bound"
+      >f</a
+      ><a name="1567"
+      > </a
+      ><a name="1568" href="category.functor.core.html#1492" class="Bound"
+      >g</a
+      ><a name="1569" class="Symbol"
+      >)</a
+      ><a name="1570"
+      > </a
+      ><a name="1571" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1572"
+      >
+        </a
+      ><a name="1581" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" class="Symbol"
+      >(</a
+      ><a name="1588" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1591"
+      > </a
+      ><a name="1592" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1593"
+      > </a
+      ><a name="1594" href="category.functor.core.html#1492" class="Bound"
+      >g</a
+      ><a name="1595"
+      > </a
+      ><a name="1596" href="category.category.html#401" class="Function Operator"
+      >&#8728;&#8322;</a
+      ><a name="1598"
+      > </a
+      ><a name="1599" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1602"
+      > </a
+      ><a name="1603" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1604"
+      > </a
+      ><a name="1605" href="category.functor.core.html#1490" class="Bound"
+      >f</a
+      ><a name="1606" class="Symbol"
+      >)</a
+      ><a name="1607"
+      >
+      </a
+      ><a name="1614" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1616"
+      > </a
+      ><a name="1617" href="category.functor.core.html#792" class="Function"
+      >map-hom</a
+      ><a name="1624"
+      > </a
+      ><a name="1625" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1626"
+      > </a
+      ><a name="1627" class="Symbol"
+      >(</a
+      ><a name="1628" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1631"
+      > </a
+      ><a name="1632" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1633"
+      > </a
+      ><a name="1634" href="category.functor.core.html#1490" class="Bound"
+      >f</a
+      ><a name="1635" class="Symbol"
+      >)</a
+      ><a name="1636"
+      > </a
+      ><a name="1637" class="Symbol"
+      >(</a
+      ><a name="1638" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1641"
+      > </a
+      ><a name="1642" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1643"
+      > </a
+      ><a name="1644" href="category.functor.core.html#1492" class="Bound"
+      >g</a
+      ><a name="1645" class="Symbol"
+      >)</a
+      ><a name="1646"
+      > </a
+      ><a name="1647" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1648"
+      >
+        </a
+      ><a name="1657" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" class="Symbol"
+      >(</a
+      ><a name="1664" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1667"
+      > </a
+      ><a name="1668" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1669"
+      > </a
+      ><a name="1670" href="category.functor.core.html#1492" class="Bound"
+      >g</a
+      ><a name="1671" class="Symbol"
+      >)</a
+      ><a name="1672"
+      > </a
+      ><a name="1673" href="category.category.html#401" class="Function Operator"
+      >&#8728;&#8323;</a
+      ><a name="1675"
+      > </a
+      ><a name="1676" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1679"
+      > </a
+      ><a name="1680" href="category.functor.core.html#1249" class="Bound"
+      >F</a
+      ><a name="1681"
+      > </a
+      ><a name="1682" class="Symbol"
+      >(</a
+      ><a name="1683" href="category.functor.core.html#657" class="Function"
+      >map</a
+      ><a name="1686"
+      > </a
+      ><a name="1687" href="category.functor.core.html#1251" class="Bound"
+      >G</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" href="category.functor.core.html#1490" class="Bound"
+      >f</a
+      ><a name="1690" class="Symbol"
+      >)</a
+      ><a name="1691"
+      >
+      </a
+      ><a name="1698" href="equality.reasoning.html#594" class="Function Operator"
+      >&#8718;</a
+      ><a name="1699"
+      > </a
+      ><a name="1700" class="Symbol"
+      >}</a
+      ><a name="1701"
+      >
+  </a
+      ><a name="1704" class="Keyword"
+      >where</a
+      ><a name="1709"
+      >
+    </a
+      ><a name="1714" class="Keyword"
+      >open</a
+      ><a name="1718"
+      > </a
+      ><a name="1719" class="Keyword"
+      >import</a
+      ><a name="1725"
+      > </a
+      ><a name="1726" href="equality.reasoning.html#1" class="Module"
+      >equality.reasoning</a
+      ><a name="1744"
+      >
+    </a
+      ><a name="1749" class="Keyword"
+      >open</a
+      ><a name="1753"
+      > </a
+      ><a name="1754" href="equality.reasoning.html#96" class="Module"
+      >&#8801;-Reasoning</a
+      ><a name="1765"
+      >
+
+    </a
+      ><a name="1771" class="Keyword"
+      >open</a
+      ><a name="1775"
+      > </a
+      ><a name="1776" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="1784"
+      > </a
+      ><a name="1785" class="Keyword"
+      >hiding</a
+      ><a name="1791"
+      > </a
+      ><a name="1792" class="Symbol"
+      >(</a
+      ><a name="1793"
+      >hom </a
+      ><a name="1797" class="Symbol"
+      >;</a
+      ><a name="1798"
+      > id </a
+      ><a name="1802" class="Symbol"
+      >;</a
+      ><a name="1803"
+      > _&#8728;_</a
+      ><a name="1807" class="Symbol"
+      >)</a
+      ><a name="1808"
+      >
+    </a
+      ><a name="1813" class="Keyword"
+      >open</a
+      ><a name="1817"
+      > </a
+      ><a name="1818" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="1826"
+      > </a
+      ><a name="1827" href="category.functor.core.html#1238" class="Bound"
+      >C</a
+      ><a name="1828"
+      > </a
+      ><a name="1829" class="Keyword"
+      >using</a
+      ><a name="1834"
+      > </a
+      ><a name="1835" class="Symbol"
+      >()</a
+      ><a name="1837"
+      >
+      </a
+      ><a name="1844" class="Keyword"
+      >renaming</a
+      ><a name="1852"
+      > </a
+      ><a name="1853" class="Symbol"
+      >(</a
+      ><a name="1854"
+      > hom </a
+      ><a name="1859" class="Symbol"
+      >to</a
+      ><a name="1861"
+      > hom&#8321;
+               </a
+      ><a name="1882" class="Symbol"
+      >;</a
+      ><a name="1883"
+      > id </a
+      ><a name="1887" class="Symbol"
+      >to</a
+      ><a name="1889"
+      > id&#8321;
+               </a
+      ><a name="1909" class="Symbol"
+      >;</a
+      ><a name="1910"
+      > _&#8728;_ </a
+      ><a name="1915" class="Symbol"
+      >to</a
+      ><a name="1917"
+      > _&#8728;&#8321;_ </a
+      ><a name="1923" class="Symbol"
+      >)</a
+      ><a name="1924"
+      >
+    </a
+      ><a name="1929" class="Keyword"
+      >open</a
+      ><a name="1933"
+      > </a
+      ><a name="1934" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="1942"
+      > </a
+      ><a name="1943" href="category.functor.core.html#1242" class="Bound"
+      >D</a
+      ><a name="1944"
+      > </a
+      ><a name="1945" class="Keyword"
+      >using</a
+      ><a name="1950"
+      > </a
+      ><a name="1951" class="Symbol"
+      >()</a
+      ><a name="1953"
+      >
+      </a
+      ><a name="1960" class="Keyword"
+      >renaming</a
+      ><a name="1968"
+      > </a
+      ><a name="1969" class="Symbol"
+      >(</a
+      ><a name="1970"
+      > hom </a
+      ><a name="1975" class="Symbol"
+      >to</a
+      ><a name="1977"
+      > hom&#8322;
+               </a
+      ><a name="1998" class="Symbol"
+      >;</a
+      ><a name="1999"
+      > id </a
+      ><a name="2003" class="Symbol"
+      >to</a
+      ><a name="2005"
+      > id&#8322;
+               </a
+      ><a name="2025" class="Symbol"
+      >;</a
+      ><a name="2026"
+      > _&#8728;_ </a
+      ><a name="2031" class="Symbol"
+      >to</a
+      ><a name="2033"
+      > _&#8728;&#8322;_ </a
+      ><a name="2039" class="Symbol"
+      >)</a
+      ><a name="2040"
+      >
+    </a
+      ><a name="2045" class="Keyword"
+      >open</a
+      ><a name="2049"
+      > </a
+      ><a name="2050" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="2058"
+      > </a
+      ><a name="2059" href="category.functor.core.html#1246" class="Bound"
+      >E</a
+      ><a name="2060"
+      > </a
+      ><a name="2061" class="Keyword"
+      >using</a
+      ><a name="2066"
+      > </a
+      ><a name="2067" class="Symbol"
+      >()</a
+      ><a name="2069"
+      >
+      </a
+      ><a name="2076" class="Keyword"
+      >renaming</a
+      ><a name="2084"
+      > </a
+      ><a name="2085" class="Symbol"
+      >(</a
+      ><a name="2086"
+      > hom </a
+      ><a name="2091" class="Symbol"
+      >to</a
+      ><a name="2093"
+      > hom&#8323;
+               </a
+      ><a name="2114" class="Symbol"
+      >;</a
+      ><a name="2115"
+      > id </a
+      ><a name="2119" class="Symbol"
+      >to</a
+      ><a name="2121"
+      > id&#8323;
+               </a
+      ><a name="2141" class="Symbol"
+      >;</a
+      ><a name="2142"
+      > _&#8728;_ </a
+      ><a name="2147" class="Symbol"
+      >to</a
+      ><a name="2149"
+      > _&#8728;&#8323;_ </a
+      ><a name="2155" class="Symbol"
+      >)</a
+      ><a name="2156"
+      >
+    </a
+      ><a name="2161" class="Keyword"
+      >open</a
+      ><a name="2165"
+      > </a
+      ><a name="2166" href="category.functor.core.html#253" class="Module"
+      >Functor</a
+      ><a name="2173"
+      >
+</a
+      ><a name="2174" class="Keyword"
+      >infixl</a
+      ><a name="2180"
+      > </a
+      ><a name="2181" class="Number"
+      >5</a
+      ><a name="2182"
+      > _&#8728;_
+
+</a
+      ><a name="2188" class="Keyword"
+      >open</a
+      ><a name="2192"
+      > </a
+      ><a name="2193" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="2201"
+      >
+
+</a
+      ><a name="2203" href="category.functor.core.html#2203" class="Function"
+      >Const</a
+      ><a name="2208"
+      > </a
+      ><a name="2209" class="Symbol"
+      >:</a
+      ><a name="2210"
+      > </a
+      ><a name="2211" class="Symbol"
+      >&#8704;</a
+      ><a name="2212"
+      > </a
+      ><a name="2213" class="Symbol"
+      >{</a
+      ><a name="2214" href="category.functor.core.html#2214" class="Bound"
+      >i</a
+      ><a name="2215"
+      > </a
+      ><a name="2216" href="category.functor.core.html#2216" class="Bound"
+      >j</a
+      ><a name="2217"
+      > </a
+      ><a name="2218" href="category.functor.core.html#2218" class="Bound"
+      >i'</a
+      ><a name="2220"
+      > </a
+      ><a name="2221" href="category.functor.core.html#2221" class="Bound"
+      >j'</a
+      ><a name="2223" class="Symbol"
+      >}(</a
+      ><a name="2225" href="category.functor.core.html#2225" class="Bound"
+      >C</a
+      ><a name="2226"
+      > </a
+      ><a name="2227" class="Symbol"
+      >:</a
+      ><a name="2228"
+      > </a
+      ><a name="2229" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="2237"
+      > </a
+      ><a name="2238" href="category.functor.core.html#2214" class="Bound"
+      >i</a
+      ><a name="2239"
+      > </a
+      ><a name="2240" href="category.functor.core.html#2216" class="Bound"
+      >j</a
+      ><a name="2241" class="Symbol"
+      >){</a
+      ><a name="2243" href="category.functor.core.html#2243" class="Bound"
+      >D</a
+      ><a name="2244"
+      > </a
+      ><a name="2245" class="Symbol"
+      >:</a
+      ><a name="2246"
+      > </a
+      ><a name="2247" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="2255"
+      > </a
+      ><a name="2256" href="category.functor.core.html#2218" class="Bound"
+      >i'</a
+      ><a name="2258"
+      > </a
+      ><a name="2259" href="category.functor.core.html#2221" class="Bound"
+      >j'</a
+      ><a name="2261" class="Symbol"
+      >}</a
+      ><a name="2262"
+      >
+      </a
+      ><a name="2269" class="Symbol"
+      >&#8594;</a
+      ><a name="2270"
+      > </a
+      ><a name="2271" class="Symbol"
+      >(</a
+      ><a name="2272" href="category.functor.core.html#2272" class="Bound"
+      >X</a
+      ><a name="2273"
+      > </a
+      ><a name="2274" class="Symbol"
+      >:</a
+      ><a name="2275"
+      > </a
+      ><a name="2276" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="2279"
+      > </a
+      ><a name="2280" href="category.functor.core.html#2243" class="Bound"
+      >D</a
+      ><a name="2281" class="Symbol"
+      >)</a
+      ><a name="2282"
+      > </a
+      ><a name="2283" class="Symbol"
+      >&#8594;</a
+      ><a name="2284"
+      > </a
+      ><a name="2285" href="category.functor.core.html#253" class="Record"
+      >Functor</a
+      ><a name="2292"
+      > </a
+      ><a name="2293" href="category.functor.core.html#2225" class="Bound"
+      >C</a
+      ><a name="2294"
+      > </a
+      ><a name="2295" href="category.functor.core.html#2243" class="Bound"
+      >D</a
+      ><a name="2296"
+      >
+</a
+      ><a name="2297" href="category.functor.core.html#2203" class="Function"
+      >Const</a
+      ><a name="2302"
+      > </a
+      ><a name="2303" href="category.functor.core.html#2303" class="Bound"
+      >C</a
+      ><a name="2304"
+      > </a
+      ><a name="2305" class="Symbol"
+      >{</a
+      ><a name="2306" href="category.functor.core.html#2306" class="Bound"
+      >D</a
+      ><a name="2307" class="Symbol"
+      >}</a
+      ><a name="2308"
+      > </a
+      ><a name="2309" href="category.functor.core.html#2309" class="Bound"
+      >X</a
+      ><a name="2310"
+      > </a
+      ><a name="2311" class="Symbol"
+      >=</a
+      ><a name="2312"
+      > </a
+      ><a name="2313" class="Keyword"
+      >record</a
+      ><a name="2319"
+      >
+  </a
+      ><a name="2322" class="Symbol"
+      >{</a
+      ><a name="2323"
+      > </a
+      ><a name="2324" class="Field"
+      >apply</a
+      ><a name="2329"
+      > </a
+      ><a name="2330" class="Symbol"
+      >=</a
+      ><a name="2331"
+      > </a
+      ><a name="2332" class="Symbol"
+      >&#955;</a
+      ><a name="2333"
+      > </a
+      ><a name="2334" href="category.functor.core.html#2334" class="Bound"
+      >_</a
+      ><a name="2335"
+      > </a
+      ><a name="2336" class="Symbol"
+      >&#8594;</a
+      ><a name="2337"
+      > </a
+      ><a name="2338" href="category.functor.core.html#2309" class="Bound"
+      >X</a
+      ><a name="2339"
+      >
+  </a
+      ><a name="2342" class="Symbol"
+      >;</a
+      ><a name="2343"
+      > </a
+      ><a name="2344" class="Field"
+      >map</a
+      ><a name="2347"
+      > </a
+      ><a name="2348" class="Symbol"
+      >=</a
+      ><a name="2349"
+      > </a
+      ><a name="2350" class="Symbol"
+      >&#955;</a
+      ><a name="2351"
+      > </a
+      ><a name="2352" href="category.functor.core.html#2352" class="Bound"
+      >_</a
+      ><a name="2353"
+      > </a
+      ><a name="2354" class="Symbol"
+      >&#8594;</a
+      ><a name="2355"
+      > </a
+      ><a name="2356" href="category.category.html#372" class="Function"
+      >id</a
+      ><a name="2358"
+      > </a
+      ><a name="2359" href="category.functor.core.html#2306" class="Bound"
+      >D</a
+      ><a name="2360"
+      > </a
+      ><a name="2361" href="category.functor.core.html#2309" class="Bound"
+      >X</a
+      ><a name="2362"
+      >
+  </a
+      ><a name="2365" class="Symbol"
+      >;</a
+      ><a name="2366"
+      > </a
+      ><a name="2367" class="Field"
+      >map-id</a
+      ><a name="2373"
+      > </a
+      ><a name="2374" class="Symbol"
+      >=</a
+      ><a name="2375"
+      > </a
+      ><a name="2376" class="Symbol"
+      >&#955;</a
+      ><a name="2377"
+      > </a
+      ><a name="2378" href="category.functor.core.html#2378" class="Bound"
+      >_</a
+      ><a name="2379"
+      > </a
+      ><a name="2380" class="Symbol"
+      >&#8594;</a
+      ><a name="2381"
+      > </a
+      ><a name="2382" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="2386"
+      >
+  </a
+      ><a name="2389" class="Symbol"
+      >;</a
+      ><a name="2390"
+      > </a
+      ><a name="2391" class="Field"
+      >map-hom</a
+      ><a name="2398"
+      > </a
+      ><a name="2399" class="Symbol"
+      >=</a
+      ><a name="2400"
+      > </a
+      ><a name="2401" class="Symbol"
+      >&#955;</a
+      ><a name="2402"
+      > </a
+      ><a name="2403" href="category.functor.core.html#2403" class="Bound"
+      >_</a
+      ><a name="2404"
+      > </a
+      ><a name="2405" href="category.functor.core.html#2405" class="Bound"
+      >_</a
+      ><a name="2406"
+      > </a
+      ><a name="2407" class="Symbol"
+      >&#8594;</a
+      ><a name="2408"
+      > </a
+      ><a name="2409" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="2412"
+      > </a
+      ><a name="2413" class="Symbol"
+      >(</a
+      ><a name="2414" href="category.category.html#526" class="Function"
+      >right-unit</a
+      ><a name="2424"
+      > </a
+      ><a name="2425" href="category.functor.core.html#2306" class="Bound"
+      >D</a
+      ><a name="2426"
+      > </a
+      ><a name="2427" class="Symbol"
+      >_)</a
+      ><a name="2429"
+      > </a
+      ><a name="2430" class="Symbol"
+      >}</a
+      ></pre
+    ></body
+  ></html
+>

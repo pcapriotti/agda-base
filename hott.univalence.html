@@ -1,0 +1,1193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >hott.univalence</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="hott.univalence.html#1" class="Module"
+      >hott.univalence</a
+      ><a name="51"
+      > </a
+      ><a name="52" class="Keyword"
+      >where</a
+      ><a name="57"
+      >
+
+</a
+      ><a name="59" class="Keyword"
+      >open</a
+      ><a name="63"
+      > </a
+      ><a name="64" class="Keyword"
+      >import</a
+      ><a name="70"
+      > </a
+      ><a name="71" href="level.html#1" class="Module"
+      >level</a
+      ><a name="76"
+      > </a
+      ><a name="77" class="Keyword"
+      >using</a
+      ><a name="82"
+      > </a
+      ><a name="83" class="Symbol"
+      >(</a
+      ><a name="84"
+      >lsuc</a
+      ><a name="88" class="Symbol"
+      >)</a
+      ><a name="89"
+      >
+</a
+      ><a name="90" class="Keyword"
+      >open</a
+      ><a name="94"
+      > </a
+      ><a name="95" class="Keyword"
+      >import</a
+      ><a name="101"
+      > </a
+      ><a name="102" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="105"
+      > </a
+      ><a name="106" class="Keyword"
+      >using</a
+      ><a name="111"
+      > </a
+      ><a name="112" class="Symbol"
+      >(</a
+      ><a name="113"
+      >_,_ </a
+      ><a name="117" class="Symbol"
+      >;</a
+      ><a name="118"
+      > proj&#8321;</a
+      ><a name="124" class="Symbol"
+      >)</a
+      ><a name="125"
+      >
+</a
+      ><a name="126" class="Keyword"
+      >open</a
+      ><a name="130"
+      > </a
+      ><a name="131" class="Keyword"
+      >import</a
+      ><a name="137"
+      > </a
+      ><a name="138" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="151"
+      >
+</a
+      ><a name="152" class="Keyword"
+      >open</a
+      ><a name="156"
+      > </a
+      ><a name="157" class="Keyword"
+      >import</a
+      ><a name="163"
+      > </a
+      ><a name="164" href="equality.reasoning.html#1" class="Module"
+      >equality.reasoning</a
+      ><a name="182"
+      >
+</a
+      ><a name="183" class="Keyword"
+      >open</a
+      ><a name="187"
+      > </a
+      ><a name="188" class="Keyword"
+      >import</a
+      ><a name="194"
+      > </a
+      ><a name="195" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="208"
+      > </a
+      ><a name="209" class="Keyword"
+      >using</a
+      ><a name="214"
+      > </a
+      ><a name="215" class="Symbol"
+      >(</a
+      ><a name="216"
+      >_$_ </a
+      ><a name="220" class="Symbol"
+      >;</a
+      ><a name="221"
+      > id</a
+      ><a name="224" class="Symbol"
+      >)</a
+      ><a name="225"
+      >
+</a
+      ><a name="226" class="Keyword"
+      >open</a
+      ><a name="230"
+      > </a
+      ><a name="231" class="Keyword"
+      >import</a
+      ><a name="237"
+      > </a
+      ><a name="238" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="258"
+      > </a
+      ><a name="259" class="Keyword"
+      >using</a
+      ><a name="264"
+      > </a
+      ><a name="265" class="Symbol"
+      >(</a
+      ><a name="266"
+      >_&#8773;_ </a
+      ><a name="270" class="Symbol"
+      >;</a
+      ><a name="271"
+      > </a
+      ><a name="272" class="Keyword"
+      >module</a
+      ><a name="278"
+      > _&#8773;_</a
+      ><a name="282" class="Symbol"
+      >)</a
+      ><a name="283"
+      >
+</a
+      ><a name="284" class="Keyword"
+      >open</a
+      ><a name="288"
+      > </a
+      ><a name="289" class="Keyword"
+      >import</a
+      ><a name="295"
+      > </a
+      ><a name="296" href="hott.weak-equivalence.core.html#1" class="Module"
+      >hott.weak-equivalence.core</a
+      ><a name="322"
+      >
+
+</a
+      ><a name="324" class="Comment"
+      >-- mapping from equality to function</a
+      ><a name="360"
+      >
+</a
+      ><a name="361" href="hott.univalence.html#361" class="Function"
+      >coerce</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="Symbol"
+      >:</a
+      ><a name="369"
+      > </a
+      ><a name="370" class="Symbol"
+      >&#8704;</a
+      ><a name="371"
+      > </a
+      ><a name="372" class="Symbol"
+      >{</a
+      ><a name="373" href="hott.univalence.html#373" class="Bound"
+      >i</a
+      ><a name="374" class="Symbol"
+      >}</a
+      ><a name="375"
+      > </a
+      ><a name="376" class="Symbol"
+      >{</a
+      ><a name="377" href="hott.univalence.html#377" class="Bound"
+      >X</a
+      ><a name="378"
+      > </a
+      ><a name="379" href="hott.univalence.html#379" class="Bound"
+      >Y</a
+      ><a name="380"
+      > </a
+      ><a name="381" class="Symbol"
+      >:</a
+      ><a name="382"
+      > </a
+      ><a name="383" class="PrimitiveType"
+      >Set</a
+      ><a name="386"
+      > </a
+      ><a name="387" href="hott.univalence.html#373" class="Bound"
+      >i</a
+      ><a name="388" class="Symbol"
+      >}</a
+      ><a name="389"
+      > </a
+      ><a name="390" class="Symbol"
+      >&#8594;</a
+      ><a name="391"
+      > </a
+      ><a name="392" href="hott.univalence.html#377" class="Bound"
+      >X</a
+      ><a name="393"
+      > </a
+      ><a name="394" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="395"
+      > </a
+      ><a name="396" href="hott.univalence.html#379" class="Bound"
+      >Y</a
+      ><a name="397"
+      > </a
+      ><a name="398" class="Symbol"
+      >&#8594;</a
+      ><a name="399"
+      > </a
+      ><a name="400" href="hott.univalence.html#377" class="Bound"
+      >X</a
+      ><a name="401"
+      > </a
+      ><a name="402" class="Symbol"
+      >&#8594;</a
+      ><a name="403"
+      > </a
+      ><a name="404" href="hott.univalence.html#379" class="Bound"
+      >Y</a
+      ><a name="405"
+      >
+</a
+      ><a name="406" href="hott.univalence.html#361" class="Function"
+      >coerce</a
+      ><a name="412"
+      > </a
+      ><a name="413" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="417"
+      > </a
+      ><a name="418" class="Symbol"
+      >=</a
+      ><a name="419"
+      > </a
+      ><a name="420" href="function.core.html#439" class="Function"
+      >id</a
+      ><a name="422"
+      >
+
+</a
+      ><a name="424" href="hott.univalence.html#424" class="Function"
+      >coerce-equiv</a
+      ><a name="436"
+      > </a
+      ><a name="437" class="Symbol"
+      >:</a
+      ><a name="438"
+      > </a
+      ><a name="439" class="Symbol"
+      >&#8704;</a
+      ><a name="440"
+      > </a
+      ><a name="441" class="Symbol"
+      >{</a
+      ><a name="442" href="hott.univalence.html#442" class="Bound"
+      >i</a
+      ><a name="443" class="Symbol"
+      >}</a
+      ><a name="444"
+      > </a
+      ><a name="445" class="Symbol"
+      >{</a
+      ><a name="446" href="hott.univalence.html#446" class="Bound"
+      >X</a
+      ><a name="447"
+      > </a
+      ><a name="448" href="hott.univalence.html#448" class="Bound"
+      >Y</a
+      ><a name="449"
+      > </a
+      ><a name="450" class="Symbol"
+      >:</a
+      ><a name="451"
+      > </a
+      ><a name="452" class="PrimitiveType"
+      >Set</a
+      ><a name="455"
+      > </a
+      ><a name="456" href="hott.univalence.html#442" class="Bound"
+      >i</a
+      ><a name="457" class="Symbol"
+      >}</a
+      ><a name="458"
+      > </a
+      ><a name="459" class="Symbol"
+      >&#8594;</a
+      ><a name="460"
+      > </a
+      ><a name="461" class="Symbol"
+      >(</a
+      ><a name="462" href="hott.univalence.html#462" class="Bound"
+      >p</a
+      ><a name="463"
+      > </a
+      ><a name="464" class="Symbol"
+      >:</a
+      ><a name="465"
+      > </a
+      ><a name="466" href="hott.univalence.html#446" class="Bound"
+      >X</a
+      ><a name="467"
+      > </a
+      ><a name="468" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="469"
+      > </a
+      ><a name="470" href="hott.univalence.html#448" class="Bound"
+      >Y</a
+      ><a name="471" class="Symbol"
+      >)</a
+      ><a name="472"
+      > </a
+      ><a name="473" class="Symbol"
+      >&#8594;</a
+      ><a name="474"
+      > </a
+      ><a name="475" href="hott.weak-equivalence.core.html#437" class="Function"
+      >weak-equiv</a
+      ><a name="485"
+      > </a
+      ><a name="486" class="Symbol"
+      >(</a
+      ><a name="487" href="hott.univalence.html#361" class="Function"
+      >coerce</a
+      ><a name="493"
+      > </a
+      ><a name="494" href="hott.univalence.html#462" class="Bound"
+      >p</a
+      ><a name="495" class="Symbol"
+      >)</a
+      ><a name="496"
+      >
+</a
+      ><a name="497" href="hott.univalence.html#424" class="Function"
+      >coerce-equiv</a
+      ><a name="509"
+      > </a
+      ><a name="510" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="514"
+      > </a
+      ><a name="515" href="hott.univalence.html#515" class="Bound"
+      >x</a
+      ><a name="516"
+      > </a
+      ><a name="517" class="Symbol"
+      >=</a
+      ><a name="518"
+      > </a
+      ><a name="519" class="Symbol"
+      >(</a
+      ><a name="520" href="hott.univalence.html#515" class="Bound"
+      >x</a
+      ><a name="521"
+      > </a
+      ><a name="522" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="523"
+      > </a
+      ><a name="524" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="528" class="Symbol"
+      >)</a
+      ><a name="529"
+      > </a
+      ><a name="530" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="531"
+      > </a
+      ><a name="532" class="Symbol"
+      >&#955;</a
+      ><a name="533"
+      > </a
+      ><a name="534" class="Symbol"
+      >{</a
+      ><a name="535"
+      > </a
+      ><a name="536" class="Symbol"
+      >(</a
+      ><a name="537" class="DottedPattern Symbol"
+      >.</a
+      ><a name="538" href="hott.univalence.html#515" class="DottedPattern Bound"
+      >x</a
+      ><a name="539"
+      > </a
+      ><a name="540" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="541"
+      > </a
+      ><a name="542" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="546" class="Symbol"
+      >)</a
+      ><a name="547"
+      > </a
+      ><a name="548" class="Symbol"
+      >&#8594;</a
+      ><a name="549"
+      > </a
+      ><a name="550" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="554"
+      > </a
+      ><a name="555" class="Symbol"
+      >}</a
+      ><a name="556"
+      >
+
+</a
+      ><a name="558" class="Comment"
+      >-- mapping from propositional equality to weak equivalence</a
+      ><a name="616"
+      >
+</a
+      ><a name="617" href="hott.univalence.html#617" class="Function"
+      >&#8801;&#8658;&#8776;</a
+      ><a name="620"
+      > </a
+      ><a name="621" class="Symbol"
+      >:</a
+      ><a name="622"
+      > </a
+      ><a name="623" class="Symbol"
+      >&#8704;</a
+      ><a name="624"
+      > </a
+      ><a name="625" class="Symbol"
+      >{</a
+      ><a name="626" href="hott.univalence.html#626" class="Bound"
+      >i</a
+      ><a name="627" class="Symbol"
+      >}</a
+      ><a name="628"
+      > </a
+      ><a name="629" class="Symbol"
+      >{</a
+      ><a name="630" href="hott.univalence.html#630" class="Bound"
+      >X</a
+      ><a name="631"
+      > </a
+      ><a name="632" href="hott.univalence.html#632" class="Bound"
+      >Y</a
+      ><a name="633"
+      > </a
+      ><a name="634" class="Symbol"
+      >:</a
+      ><a name="635"
+      > </a
+      ><a name="636" class="PrimitiveType"
+      >Set</a
+      ><a name="639"
+      > </a
+      ><a name="640" href="hott.univalence.html#626" class="Bound"
+      >i</a
+      ><a name="641" class="Symbol"
+      >}</a
+      ><a name="642"
+      > </a
+      ><a name="643" class="Symbol"
+      >&#8594;</a
+      ><a name="644"
+      > </a
+      ><a name="645" href="hott.univalence.html#630" class="Bound"
+      >X</a
+      ><a name="646"
+      > </a
+      ><a name="647" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="648"
+      > </a
+      ><a name="649" href="hott.univalence.html#632" class="Bound"
+      >Y</a
+      ><a name="650"
+      > </a
+      ><a name="651" class="Symbol"
+      >&#8594;</a
+      ><a name="652"
+      > </a
+      ><a name="653" href="hott.univalence.html#630" class="Bound"
+      >X</a
+      ><a name="654"
+      > </a
+      ><a name="655" href="hott.weak-equivalence.core.html#586" class="Function Operator"
+      >&#8776;</a
+      ><a name="656"
+      > </a
+      ><a name="657" href="hott.univalence.html#632" class="Bound"
+      >Y</a
+      ><a name="658"
+      >
+</a
+      ><a name="659" href="hott.univalence.html#617" class="Function"
+      >&#8801;&#8658;&#8776;</a
+      ><a name="662"
+      > </a
+      ><a name="663" href="hott.univalence.html#663" class="Bound"
+      >p</a
+      ><a name="664"
+      > </a
+      ><a name="665" class="Symbol"
+      >=</a
+      ><a name="666"
+      > </a
+      ><a name="667" href="hott.univalence.html#361" class="Function"
+      >coerce</a
+      ><a name="673"
+      > </a
+      ><a name="674" href="hott.univalence.html#663" class="Bound"
+      >p</a
+      ><a name="675"
+      > </a
+      ><a name="676" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="677"
+      > </a
+      ><a name="678" href="hott.univalence.html#424" class="Function"
+      >coerce-equiv</a
+      ><a name="690"
+      > </a
+      ><a name="691" href="hott.univalence.html#663" class="Bound"
+      >p</a
+      ><a name="692"
+      >
+
+</a
+      ><a name="694" href="hott.univalence.html#694" class="Function"
+      >Univalence</a
+      ><a name="704"
+      > </a
+      ><a name="705" class="Symbol"
+      >:</a
+      ><a name="706"
+      > </a
+      ><a name="707" class="Symbol"
+      >&#8704;</a
+      ><a name="708"
+      > </a
+      ><a name="709" href="hott.univalence.html#709" class="Bound"
+      >i</a
+      ><a name="710"
+      > </a
+      ><a name="711" class="Symbol"
+      >&#8594;</a
+      ><a name="712"
+      > </a
+      ><a name="713" class="PrimitiveType"
+      >Set</a
+      ><a name="716"
+      > </a
+      ><a name="717" class="Symbol"
+      >(</a
+      ><a name="718" href="level.html#106" class="Primitive"
+      >lsuc</a
+      ><a name="722"
+      > </a
+      ><a name="723" href="hott.univalence.html#709" class="Bound"
+      >i</a
+      ><a name="724" class="Symbol"
+      >)</a
+      ><a name="725"
+      >
+</a
+      ><a name="726" href="hott.univalence.html#694" class="Function"
+      >Univalence</a
+      ><a name="736"
+      > </a
+      ><a name="737" href="hott.univalence.html#737" class="Bound"
+      >i</a
+      ><a name="738"
+      > </a
+      ><a name="739" class="Symbol"
+      >=</a
+      ><a name="740"
+      > </a
+      ><a name="741" class="Symbol"
+      >{</a
+      ><a name="742" href="hott.univalence.html#742" class="Bound"
+      >X</a
+      ><a name="743"
+      > </a
+      ><a name="744" href="hott.univalence.html#744" class="Bound"
+      >Y</a
+      ><a name="745"
+      > </a
+      ><a name="746" class="Symbol"
+      >:</a
+      ><a name="747"
+      > </a
+      ><a name="748" class="PrimitiveType"
+      >Set</a
+      ><a name="751"
+      > </a
+      ><a name="752" href="hott.univalence.html#737" class="Bound"
+      >i</a
+      ><a name="753" class="Symbol"
+      >}</a
+      ><a name="754"
+      > </a
+      ><a name="755" class="Symbol"
+      >&#8594;</a
+      ><a name="756"
+      > </a
+      ><a name="757" href="hott.weak-equivalence.core.html#437" class="Function"
+      >weak-equiv</a
+      ><a name="767"
+      > </a
+      ><a name="768" href="function.core.html#551" class="Function Operator"
+      >$</a
+      ><a name="769"
+      > </a
+      ><a name="770" href="hott.univalence.html#617" class="Function"
+      >&#8801;&#8658;&#8776;</a
+      ><a name="773"
+      > </a
+      ><a name="774" class="Symbol"
+      >{</a
+      ><a name="775"
+      >X </a
+      ><a name="777" class="Symbol"
+      >=</a
+      ><a name="778"
+      > </a
+      ><a name="779" href="hott.univalence.html#742" class="Bound"
+      >X</a
+      ><a name="780" class="Symbol"
+      >}</a
+      ><a name="781"
+      > </a
+      ><a name="782" class="Symbol"
+      >{</a
+      ><a name="783"
+      >Y </a
+      ><a name="785" class="Symbol"
+      >=</a
+      ><a name="786"
+      > </a
+      ><a name="787" href="hott.univalence.html#744" class="Bound"
+      >Y</a
+      ><a name="788" class="Symbol"
+      >}</a
+      ><a name="789"
+      >
+
+</a
+      ><a name="791" class="Keyword"
+      >postulate</a
+      ><a name="800"
+      > </a
+      ><a name="801" href="hott.univalence.html#801" class="Postulate"
+      >univalence</a
+      ><a name="811"
+      > </a
+      ><a name="812" class="Symbol"
+      >:</a
+      ><a name="813"
+      > </a
+      ><a name="814" class="Symbol"
+      >&#8704;</a
+      ><a name="815"
+      > </a
+      ><a name="816" class="Symbol"
+      >{</a
+      ><a name="817" href="hott.univalence.html#817" class="Bound"
+      >i</a
+      ><a name="818" class="Symbol"
+      >}</a
+      ><a name="819"
+      > </a
+      ><a name="820" class="Symbol"
+      >&#8594;</a
+      ><a name="821"
+      > </a
+      ><a name="822" href="hott.univalence.html#694" class="Function"
+      >Univalence</a
+      ><a name="832"
+      > </a
+      ><a name="833" href="hott.univalence.html#817" class="Bound"
+      >i</a
+      ><a name="834"
+      >
+
+</a
+      ><a name="836" class="Keyword"
+      >private</a
+      ><a name="843"
+      >
+  </a
+      ><a name="846" class="Keyword"
+      >module</a
+      ><a name="852"
+      > </a
+      ><a name="853" href="hott.univalence.html#853" class="Module"
+      >Properties</a
+      ><a name="863"
+      > </a
+      ><a name="864" class="Symbol"
+      >{</a
+      ><a name="865" href="hott.univalence.html#865" class="Bound"
+      >i</a
+      ><a name="866" class="Symbol"
+      >}</a
+      ><a name="867"
+      > </a
+      ><a name="868" class="Symbol"
+      >{</a
+      ><a name="869" href="hott.univalence.html#869" class="Bound"
+      >X</a
+      ><a name="870"
+      > </a
+      ><a name="871" href="hott.univalence.html#871" class="Bound"
+      >Y</a
+      ><a name="872"
+      > </a
+      ><a name="873" class="Symbol"
+      >:</a
+      ><a name="874"
+      > </a
+      ><a name="875" class="PrimitiveType"
+      >Set</a
+      ><a name="878"
+      > </a
+      ><a name="879" href="hott.univalence.html#865" class="Bound"
+      >i</a
+      ><a name="880" class="Symbol"
+      >}</a
+      ><a name="881"
+      > </a
+      ><a name="882" class="Keyword"
+      >where</a
+      ><a name="887"
+      >
+    </a
+      ><a name="892" href="hott.univalence.html#892" class="Function"
+      >uni-equiv</a
+      ><a name="901"
+      > </a
+      ><a name="902" class="Symbol"
+      >:</a
+      ><a name="903"
+      > </a
+      ><a name="904" class="Symbol"
+      >(</a
+      ><a name="905" href="hott.univalence.html#869" class="Bound"
+      >X</a
+      ><a name="906"
+      > </a
+      ><a name="907" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="908"
+      > </a
+      ><a name="909" href="hott.univalence.html#871" class="Bound"
+      >Y</a
+      ><a name="910" class="Symbol"
+      >)</a
+      ><a name="911"
+      > </a
+      ><a name="912" href="hott.weak-equivalence.core.html#586" class="Function Operator"
+      >&#8776;</a
+      ><a name="913"
+      > </a
+      ><a name="914" class="Symbol"
+      >(</a
+      ><a name="915" href="hott.univalence.html#869" class="Bound"
+      >X</a
+      ><a name="916"
+      > </a
+      ><a name="917" href="hott.weak-equivalence.core.html#586" class="Function Operator"
+      >&#8776;</a
+      ><a name="918"
+      > </a
+      ><a name="919" href="hott.univalence.html#871" class="Bound"
+      >Y</a
+      ><a name="920" class="Symbol"
+      >)</a
+      ><a name="921"
+      >
+    </a
+      ><a name="926" href="hott.univalence.html#892" class="Function"
+      >uni-equiv</a
+      ><a name="935"
+      > </a
+      ><a name="936" class="Symbol"
+      >=</a
+      ><a name="937"
+      > </a
+      ><a name="938" href="hott.univalence.html#617" class="Function"
+      >&#8801;&#8658;&#8776;</a
+      ><a name="941"
+      > </a
+      ><a name="942" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="943"
+      > </a
+      ><a name="944" href="hott.univalence.html#801" class="Postulate"
+      >univalence</a
+      ><a name="954"
+      >
+
+    </a
+      ><a name="960" href="hott.univalence.html#960" class="Function"
+      >uni-iso</a
+      ><a name="967"
+      > </a
+      ><a name="968" class="Symbol"
+      >:</a
+      ><a name="969"
+      > </a
+      ><a name="970" class="Symbol"
+      >(</a
+      ><a name="971" href="hott.univalence.html#869" class="Bound"
+      >X</a
+      ><a name="972"
+      > </a
+      ><a name="973" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="974"
+      > </a
+      ><a name="975" href="hott.univalence.html#871" class="Bound"
+      >Y</a
+      ><a name="976" class="Symbol"
+      >)</a
+      ><a name="977"
+      > </a
+      ><a name="978" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="979"
+      > </a
+      ><a name="980" class="Symbol"
+      >(</a
+      ><a name="981" href="hott.univalence.html#869" class="Bound"
+      >X</a
+      ><a name="982"
+      > </a
+      ><a name="983" href="hott.weak-equivalence.core.html#586" class="Function Operator"
+      >&#8776;</a
+      ><a name="984"
+      > </a
+      ><a name="985" href="hott.univalence.html#871" class="Bound"
+      >Y</a
+      ><a name="986" class="Symbol"
+      >)</a
+      ><a name="987"
+      >
+    </a
+      ><a name="992" href="hott.univalence.html#960" class="Function"
+      >uni-iso</a
+      ><a name="999"
+      > </a
+      ><a name="1000" class="Symbol"
+      >=</a
+      ><a name="1001"
+      > </a
+      ><a name="1002" href="hott.weak-equivalence.core.html#731" class="Function"
+      >&#8776;&#8658;&#8773;</a
+      ><a name="1005"
+      > </a
+      ><a name="1006" href="hott.univalence.html#892" class="Function"
+      >uni-equiv</a
+      ><a name="1015"
+      >
+    </a
+      ><a name="1020" class="Keyword"
+      >open</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" href="function.isomorphism.core.html#293" class="Module Operator"
+      >_&#8773;_</a
+      ><a name="1028"
+      > </a
+      ><a name="1029" href="hott.univalence.html#960" class="Function"
+      >uni-iso</a
+      ><a name="1036"
+      > </a
+      ><a name="1037" class="Keyword"
+      >public</a
+      ><a name="1043"
+      > </a
+      ><a name="1044" class="Keyword"
+      >using</a
+      ><a name="1049"
+      > </a
+      ><a name="1050" class="Symbol"
+      >()</a
+      ><a name="1052"
+      >
+      </a
+      ><a name="1059" class="Keyword"
+      >renaming</a
+      ><a name="1067"
+      > </a
+      ><a name="1068" class="Symbol"
+      >(</a
+      ><a name="1069"
+      >from </a
+      ><a name="1074" class="Symbol"
+      >to</a
+      ><a name="1076"
+      > &#8776;&#8658;&#8801;</a
+      ><a name="1080" class="Symbol"
+      >)</a
+      ><a name="1081"
+      >
+
+    </a
+      ><a name="1087" href="hott.univalence.html#1087" class="Function"
+      >uni-coherence</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" class="Symbol"
+      >:</a
+      ><a name="1102"
+      > </a
+      ><a name="1103" class="Symbol"
+      >(</a
+      ><a name="1104" href="hott.univalence.html#1104" class="Bound"
+      >f</a
+      ><a name="1105"
+      > </a
+      ><a name="1106" class="Symbol"
+      >:</a
+      ><a name="1107"
+      > </a
+      ><a name="1108" href="hott.univalence.html#869" class="Bound"
+      >X</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" href="hott.weak-equivalence.core.html#586" class="Function Operator"
+      >&#8776;</a
+      ><a name="1111"
+      > </a
+      ><a name="1112" href="hott.univalence.html#871" class="Bound"
+      >Y</a
+      ><a name="1113" class="Symbol"
+      >)</a
+      ><a name="1114"
+      > </a
+      ><a name="1115" class="Symbol"
+      >&#8594;</a
+      ><a name="1116"
+      > </a
+      ><a name="1117" href="hott.univalence.html#361" class="Function"
+      >coerce</a
+      ><a name="1123"
+      > </a
+      ><a name="1124" class="Symbol"
+      >(</a
+      ><a name="1125" href="function.isomorphism.core.html#390" class="Function"
+      >&#8776;&#8658;&#8801;</a
+      ><a name="1128"
+      > </a
+      ><a name="1129" href="hott.univalence.html#1104" class="Bound"
+      >f</a
+      ><a name="1130" class="Symbol"
+      >)</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1139"
+      > </a
+      ><a name="1140" href="hott.univalence.html#1104" class="Bound"
+      >f</a
+      ><a name="1141"
+      >
+    </a
+      ><a name="1146" href="hott.univalence.html#1087" class="Function"
+      >uni-coherence</a
+      ><a name="1159"
+      > </a
+      ><a name="1160" href="hott.univalence.html#1160" class="Bound"
+      >f</a
+      ><a name="1161"
+      > </a
+      ><a name="1162" class="Symbol"
+      >=</a
+      ><a name="1163"
+      > </a
+      ><a name="1164" href="equality.reasoning.html#423" class="Function Operator"
+      >begin</a
+      ><a name="1169"
+      >
+        </a
+      ><a name="1178" href="hott.univalence.html#361" class="Function"
+      >coerce</a
+      ><a name="1184"
+      > </a
+      ><a name="1185" class="Symbol"
+      >(</a
+      ><a name="1186" href="function.isomorphism.core.html#390" class="Function"
+      >&#8776;&#8658;&#8801;</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" href="hott.univalence.html#1160" class="Bound"
+      >f</a
+      ><a name="1191" class="Symbol"
+      >)</a
+      ><a name="1192"
+      >
+      </a
+      ><a name="1199" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1201"
+      > </a
+      ><a name="1202" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1206"
+      > </a
+      ><a name="1207" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1208"
+      >
+        </a
+      ><a name="1217" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1222"
+      > </a
+      ><a name="1223" class="Symbol"
+      >(</a
+      ><a name="1224" href="hott.univalence.html#617" class="Function"
+      >&#8801;&#8658;&#8776;</a
+      ><a name="1227"
+      > </a
+      ><a name="1228" class="Symbol"
+      >(</a
+      ><a name="1229" href="function.isomorphism.core.html#390" class="Function"
+      >&#8776;&#8658;&#8801;</a
+      ><a name="1232"
+      > </a
+      ><a name="1233" href="hott.univalence.html#1160" class="Bound"
+      >f</a
+      ><a name="1234" class="Symbol"
+      >))</a
+      ><a name="1236"
+      >
+      </a
+      ><a name="1243" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1245"
+      > </a
+      ><a name="1246" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1250"
+      > </a
+      ><a name="1251" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1256"
+      > </a
+      ><a name="1257" class="Symbol"
+      >(</a
+      ><a name="1258" href="function.isomorphism.core.html#444" class="Function"
+      >iso&#8322;</a
+      ><a name="1262"
+      > </a
+      ><a name="1263" href="hott.univalence.html#1160" class="Bound"
+      >f</a
+      ><a name="1264" class="Symbol"
+      >)</a
+      ><a name="1265"
+      > </a
+      ><a name="1266" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1267"
+      >
+        </a
+      ><a name="1276" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="hott.univalence.html#1160" class="Bound"
+      >f</a
+      ><a name="1283"
+      >
+      </a
+      ><a name="1290" href="equality.reasoning.html#594" class="Function Operator"
+      >&#8718;</a
+      ><a name="1291"
+      >
+      </a
+      ><a name="1298" class="Keyword"
+      >where</a
+      ><a name="1303"
+      >
+        </a
+      ><a name="1312" class="Keyword"
+      >open</a
+      ><a name="1316"
+      > </a
+      ><a name="1317" href="equality.reasoning.html#96" class="Module"
+      >&#8801;-Reasoning</a
+      ><a name="1328"
+      >
+        </a
+      ><a name="1337" class="Keyword"
+      >open</a
+      ><a name="1341"
+      > </a
+      ><a name="1342" href="function.isomorphism.core.html#293" class="Module Operator"
+      >_&#8773;_</a
+      ><a name="1345"
+      > </a
+      ><a name="1346" href="hott.univalence.html#960" class="Function"
+      >uni-iso</a
+      ><a name="1353"
+      > </a
+      ><a name="1354" class="Keyword"
+      >using</a
+      ><a name="1359"
+      > </a
+      ><a name="1360" class="Symbol"
+      >(</a
+      ><a name="1361"
+      >iso&#8322;</a
+      ><a name="1365" class="Symbol"
+      >)</a
+      ><a name="1366"
+      >
+
+</a
+      ><a name="1368" class="Keyword"
+      >open</a
+      ><a name="1372"
+      > </a
+      ><a name="1373" href="hott.univalence.html#853" class="Module"
+      >Properties</a
+      ><a name="1383"
+      > </a
+      ><a name="1384" class="Keyword"
+      >public</a
+      ><a name="1390"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

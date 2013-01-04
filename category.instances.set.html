@@ -1,0 +1,3507 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >category.instances.set</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="category.instances.set.html#1" class="Module"
+      >category.instances.set</a
+      ><a name="58"
+      > </a
+      ><a name="59" class="Keyword"
+      >where</a
+      ><a name="64"
+      >
+
+</a
+      ><a name="66" class="Keyword"
+      >open</a
+      ><a name="70"
+      > </a
+      ><a name="71" class="Keyword"
+      >import</a
+      ><a name="77"
+      > </a
+      ><a name="78" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="81"
+      >
+</a
+      ><a name="82" class="Keyword"
+      >open</a
+      ><a name="86"
+      > </a
+      ><a name="87" class="Keyword"
+      >import</a
+      ><a name="93"
+      > </a
+      ><a name="94" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="107"
+      >
+</a
+      ><a name="108" class="Keyword"
+      >open</a
+      ><a name="112"
+      > </a
+      ><a name="113" class="Keyword"
+      >import</a
+      ><a name="119"
+      > </a
+      ><a name="120" href="equality.calculus.html#1" class="Module"
+      >equality.calculus</a
+      ><a name="137"
+      >
+</a
+      ><a name="138" class="Keyword"
+      >open</a
+      ><a name="142"
+      > </a
+      ><a name="143" class="Keyword"
+      >import</a
+      ><a name="149"
+      > </a
+      ><a name="150" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="170"
+      >
+</a
+      ><a name="171" class="Keyword"
+      >open</a
+      ><a name="175"
+      > </a
+      ><a name="176" class="Keyword"
+      >import</a
+      ><a name="182"
+      > </a
+      ><a name="183" href="function.isomorphism.coherent.html#1" class="Module"
+      >function.isomorphism.coherent</a
+      ><a name="212"
+      >
+</a
+      ><a name="213" class="Keyword"
+      >open</a
+      ><a name="217"
+      > </a
+      ><a name="218" class="Keyword"
+      >import</a
+      ><a name="224"
+      > </a
+      ><a name="225" href="function.extensionality.html#1" class="Module"
+      >function.extensionality</a
+      ><a name="248"
+      >
+</a
+      ><a name="249" class="Keyword"
+      >open</a
+      ><a name="253"
+      > </a
+      ><a name="254" class="Keyword"
+      >import</a
+      ><a name="260"
+      > </a
+      ><a name="261" href="level.html#1" class="Module"
+      >level</a
+      ><a name="266"
+      > </a
+      ><a name="267" class="Keyword"
+      >using</a
+      ><a name="272"
+      > </a
+      ><a name="273" class="Symbol"
+      >(</a
+      ><a name="274"
+      >lzero </a
+      ><a name="280" class="Symbol"
+      >;</a
+      ><a name="281"
+      > lsuc</a
+      ><a name="286" class="Symbol"
+      >)</a
+      ><a name="287"
+      >
+</a
+      ><a name="288" class="Keyword"
+      >open</a
+      ><a name="292"
+      > </a
+      ><a name="293" class="Keyword"
+      >import</a
+      ><a name="299"
+      > </a
+      ><a name="300" href="category.category.html#1" class="Module"
+      >category.category</a
+      ><a name="317"
+      >
+</a
+      ><a name="318" class="Keyword"
+      >open</a
+      ><a name="322"
+      > </a
+      ><a name="323" class="Keyword"
+      >import</a
+      ><a name="329"
+      > </a
+      ><a name="330" href="category.isomorphism.html#1" class="Module"
+      >category.isomorphism</a
+      ><a name="350"
+      >
+</a
+      ><a name="351" class="Keyword"
+      >open</a
+      ><a name="355"
+      > </a
+      ><a name="356" class="Keyword"
+      >import</a
+      ><a name="362"
+      > </a
+      ><a name="363" href="category.univalence.html#1" class="Module"
+      >category.univalence</a
+      ><a name="382"
+      >
+</a
+      ><a name="383" class="Keyword"
+      >open</a
+      ><a name="387"
+      > </a
+      ><a name="388" class="Keyword"
+      >import</a
+      ><a name="394"
+      > </a
+      ><a name="395" href="hott.hlevel.html#1" class="Module"
+      >hott.hlevel</a
+      ><a name="406"
+      >
+</a
+      ><a name="407" class="Keyword"
+      >open</a
+      ><a name="411"
+      > </a
+      ><a name="412" class="Keyword"
+      >import</a
+      ><a name="418"
+      > </a
+      ><a name="419" href="hott.univalence.html#1" class="Module"
+      >hott.univalence</a
+      ><a name="434"
+      >
+</a
+      ><a name="435" class="Keyword"
+      >open</a
+      ><a name="439"
+      > </a
+      ><a name="440" class="Keyword"
+      >import</a
+      ><a name="446"
+      > </a
+      ><a name="447" href="hott.weak-equivalence.html#1" class="Module"
+      >hott.weak-equivalence</a
+      ><a name="468"
+      >
+
+</a
+      ><a name="470" href="category.instances.set.html#470" class="Function"
+      >set</a
+      ><a name="473"
+      > </a
+      ><a name="474" class="Symbol"
+      >:</a
+      ><a name="475"
+      > </a
+      ><a name="476" class="Symbol"
+      >&#8704;</a
+      ><a name="477"
+      > </a
+      ><a name="478" href="category.instances.set.html#478" class="Bound"
+      >i</a
+      ><a name="479"
+      > </a
+      ><a name="480" class="Symbol"
+      >&#8594;</a
+      ><a name="481"
+      > </a
+      ><a name="482" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="490"
+      > </a
+      ><a name="491" class="Symbol"
+      >(</a
+      ><a name="492" href="level.html#106" class="Primitive"
+      >lsuc</a
+      ><a name="496"
+      > </a
+      ><a name="497" href="category.instances.set.html#478" class="Bound"
+      >i</a
+      ><a name="498" class="Symbol"
+      >)</a
+      ><a name="499"
+      > </a
+      ><a name="500" href="category.instances.set.html#478" class="Bound"
+      >i</a
+      ><a name="501"
+      >
+</a
+      ><a name="502" href="category.instances.set.html#470" class="Function"
+      >set</a
+      ><a name="505"
+      > </a
+      ><a name="506" href="category.instances.set.html#506" class="Bound"
+      >i</a
+      ><a name="507"
+      > </a
+      ><a name="508" class="Symbol"
+      >=</a
+      ><a name="509"
+      > </a
+      ><a name="510" class="Keyword"
+      >record</a
+      ><a name="516"
+      >
+  </a
+      ><a name="519" class="Symbol"
+      >{</a
+      ><a name="520"
+      > </a
+      ><a name="521" class="Field"
+      >obj</a
+      ><a name="524"
+      > </a
+      ><a name="525" class="Symbol"
+      >=</a
+      ><a name="526"
+      > </a
+      ><a name="527" href="hott.hlevel.core.html#1520" class="Function"
+      >HSet</a
+      ><a name="531"
+      > </a
+      ><a name="532" href="category.instances.set.html#506" class="Bound"
+      >i</a
+      ><a name="533"
+      >
+  </a
+      ><a name="536" class="Symbol"
+      >;</a
+      ><a name="537"
+      > </a
+      ><a name="538" class="Field"
+      >hom</a
+      ><a name="541"
+      > </a
+      ><a name="542" class="Symbol"
+      >=</a
+      ><a name="543"
+      > </a
+      ><a name="544" class="Symbol"
+      >&#955;</a
+      ><a name="545"
+      > </a
+      ><a name="546" href="category.instances.set.html#546" class="Bound"
+      >A</a
+      ><a name="547"
+      > </a
+      ><a name="548" href="category.instances.set.html#548" class="Bound"
+      >B</a
+      ><a name="549"
+      > </a
+      ><a name="550" class="Symbol"
+      >&#8594;</a
+      ><a name="551"
+      > </a
+      ><a name="552" class="Symbol"
+      >(</a
+      ><a name="553" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="558"
+      > </a
+      ><a name="559" href="category.instances.set.html#546" class="Bound"
+      >A</a
+      ><a name="560"
+      > </a
+      ><a name="561" class="Symbol"
+      >&#8594;</a
+      ><a name="562"
+      > </a
+      ><a name="563" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="568"
+      > </a
+      ><a name="569" href="category.instances.set.html#548" class="Bound"
+      >B</a
+      ><a name="570" class="Symbol"
+      >)</a
+      ><a name="571"
+      >
+  </a
+      ><a name="574" class="Symbol"
+      >;</a
+      ><a name="575"
+      > </a
+      ><a name="576" class="Field"
+      >trunc</a
+      ><a name="581"
+      > </a
+      ><a name="582" class="Symbol"
+      >=</a
+      ><a name="583"
+      > </a
+      ><a name="584" class="Symbol"
+      >&#955;</a
+      ><a name="585"
+      > </a
+      ><a name="586" class="Symbol"
+      >{</a
+      ><a name="587"
+      > </a
+      ><a name="588" class="Symbol"
+      >_</a
+      ><a name="589"
+      > </a
+      ><a name="590" class="Symbol"
+      >(</a
+      ><a name="591" href="category.instances.set.html#591" class="Bound"
+      >B</a
+      ><a name="592"
+      > </a
+      ><a name="593" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="594"
+      > </a
+      ><a name="595" href="category.instances.set.html#595" class="Bound"
+      >h2B</a
+      ><a name="598" class="Symbol"
+      >)</a
+      ><a name="599"
+      > </a
+      ><a name="600" class="Symbol"
+      >&#8594;</a
+      ><a name="601"
+      > </a
+      ><a name="602" href="hott.hlevel.closure.html#645" class="Function"
+      >&#928;-hlevel</a
+      ><a name="610"
+      > </a
+      ><a name="611" class="Symbol"
+      >(&#955;</a
+      ><a name="613"
+      > </a
+      ><a name="614" href="category.instances.set.html#614" class="Bound"
+      >_</a
+      ><a name="615"
+      > </a
+      ><a name="616" class="Symbol"
+      >&#8594;</a
+      ><a name="617"
+      > </a
+      ><a name="618" href="category.instances.set.html#595" class="Bound"
+      >h2B</a
+      ><a name="621" class="Symbol"
+      >)</a
+      ><a name="622"
+      > </a
+      ><a name="623" class="Symbol"
+      >}</a
+      ><a name="624"
+      >
+  </a
+      ><a name="627" class="Symbol"
+      >;</a
+      ><a name="628"
+      > </a
+      ><a name="629" class="Field"
+      >id</a
+      ><a name="631"
+      > </a
+      ><a name="632" class="Symbol"
+      >=</a
+      ><a name="633"
+      > </a
+      ><a name="634" class="Symbol"
+      >&#955;</a
+      ><a name="635"
+      > </a
+      ><a name="636" href="category.instances.set.html#636" class="Bound"
+      >A</a
+      ><a name="637"
+      > </a
+      ><a name="638" href="category.instances.set.html#638" class="Bound"
+      >x</a
+      ><a name="639"
+      > </a
+      ><a name="640" class="Symbol"
+      >&#8594;</a
+      ><a name="641"
+      > </a
+      ><a name="642" href="category.instances.set.html#638" class="Bound"
+      >x</a
+      ><a name="643"
+      >
+  </a
+      ><a name="646" class="Symbol"
+      >;</a
+      ><a name="647"
+      > </a
+      ><a name="648" class="Field Operator"
+      >_&#8728;_</a
+      ><a name="651"
+      > </a
+      ><a name="652" class="Symbol"
+      >=</a
+      ><a name="653"
+      > </a
+      ><a name="654" class="Symbol"
+      >&#955;</a
+      ><a name="655"
+      > </a
+      ><a name="656" href="category.instances.set.html#656" class="Bound"
+      >f</a
+      ><a name="657"
+      > </a
+      ><a name="658" href="category.instances.set.html#658" class="Bound"
+      >g</a
+      ><a name="659"
+      > </a
+      ><a name="660" href="category.instances.set.html#660" class="Bound"
+      >x</a
+      ><a name="661"
+      > </a
+      ><a name="662" class="Symbol"
+      >&#8594;</a
+      ><a name="663"
+      > </a
+      ><a name="664" href="category.instances.set.html#656" class="Bound"
+      >f</a
+      ><a name="665"
+      > </a
+      ><a name="666" class="Symbol"
+      >(</a
+      ><a name="667" href="category.instances.set.html#658" class="Bound"
+      >g</a
+      ><a name="668"
+      > </a
+      ><a name="669" href="category.instances.set.html#660" class="Bound"
+      >x</a
+      ><a name="670" class="Symbol"
+      >)</a
+      ><a name="671"
+      >
+  </a
+      ><a name="674" class="Symbol"
+      >;</a
+      ><a name="675"
+      > </a
+      ><a name="676" class="Field"
+      >left-unit</a
+      ><a name="685"
+      > </a
+      ><a name="686" class="Symbol"
+      >=</a
+      ><a name="687"
+      > </a
+      ><a name="688" class="Symbol"
+      >&#955;</a
+      ><a name="689"
+      > </a
+      ><a name="690" href="category.instances.set.html#690" class="Bound"
+      >f</a
+      ><a name="691"
+      > </a
+      ><a name="692" class="Symbol"
+      >&#8594;</a
+      ><a name="693"
+      > </a
+      ><a name="694" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="698"
+      >
+  </a
+      ><a name="701" class="Symbol"
+      >;</a
+      ><a name="702"
+      > </a
+      ><a name="703" class="Field"
+      >right-unit</a
+      ><a name="713"
+      > </a
+      ><a name="714" class="Symbol"
+      >=</a
+      ><a name="715"
+      > </a
+      ><a name="716" class="Symbol"
+      >&#955;</a
+      ><a name="717"
+      > </a
+      ><a name="718" href="category.instances.set.html#718" class="Bound"
+      >f</a
+      ><a name="719"
+      > </a
+      ><a name="720" class="Symbol"
+      >&#8594;</a
+      ><a name="721"
+      > </a
+      ><a name="722" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="726"
+      >
+  </a
+      ><a name="729" class="Symbol"
+      >;</a
+      ><a name="730"
+      > </a
+      ><a name="731" class="Field"
+      >associativity</a
+      ><a name="744"
+      > </a
+      ><a name="745" class="Symbol"
+      >=</a
+      ><a name="746"
+      > </a
+      ><a name="747" class="Symbol"
+      >&#955;</a
+      ><a name="748"
+      > </a
+      ><a name="749" href="category.instances.set.html#749" class="Bound"
+      >f</a
+      ><a name="750"
+      > </a
+      ><a name="751" href="category.instances.set.html#751" class="Bound"
+      >g</a
+      ><a name="752"
+      > </a
+      ><a name="753" href="category.instances.set.html#753" class="Bound"
+      >h</a
+      ><a name="754"
+      > </a
+      ><a name="755" class="Symbol"
+      >&#8594;</a
+      ><a name="756"
+      > </a
+      ><a name="757" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="761"
+      > </a
+      ><a name="762" class="Symbol"
+      >}</a
+      ><a name="763"
+      >
+
+</a
+      ><a name="765" class="Comment"
+      >-- isomorphism in the category of sets is the same</a
+      ><a name="815"
+      >
+</a
+      ><a name="816" class="Comment"
+      >-- as isomorphism of types</a
+      ><a name="842"
+      >
+</a
+      ><a name="843" href="category.instances.set.html#843" class="Function"
+      >cat-iso-h2</a
+      ><a name="853"
+      > </a
+      ><a name="854" class="Symbol"
+      >:</a
+      ><a name="855"
+      > </a
+      ><a name="856" class="Symbol"
+      >&#8704;</a
+      ><a name="857"
+      > </a
+      ><a name="858" class="Symbol"
+      >{</a
+      ><a name="859" href="category.instances.set.html#859" class="Bound"
+      >i</a
+      ><a name="860" class="Symbol"
+      >}{</a
+      ><a name="862" href="category.instances.set.html#862" class="Bound"
+      >A</a
+      ><a name="863"
+      > </a
+      ><a name="864" href="category.instances.set.html#864" class="Bound"
+      >B</a
+      ><a name="865"
+      > </a
+      ><a name="866" class="Symbol"
+      >:</a
+      ><a name="867"
+      > </a
+      ><a name="868" href="hott.hlevel.core.html#1520" class="Function"
+      >HSet</a
+      ><a name="872"
+      > </a
+      ><a name="873" href="category.instances.set.html#859" class="Bound"
+      >i</a
+      ><a name="874" class="Symbol"
+      >}</a
+      ><a name="875"
+      >
+           </a
+      ><a name="887" class="Symbol"
+      >&#8594;</a
+      ><a name="888"
+      > </a
+      ><a name="889" class="Symbol"
+      >(</a
+      ><a name="890" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="category.instances.set.html#862" class="Bound"
+      >A</a
+      ><a name="897"
+      > </a
+      ><a name="898" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="905"
+      > </a
+      ><a name="906" href="category.instances.set.html#864" class="Bound"
+      >B</a
+      ><a name="907" class="Symbol"
+      >)</a
+      ><a name="908"
+      >
+           </a
+      ><a name="920" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="921"
+      > </a
+      ><a name="922" href="category.isomorphism.html#383" class="Record"
+      >cat-iso</a
+      ><a name="929"
+      > </a
+      ><a name="930" class="Symbol"
+      >(</a
+      ><a name="931" href="category.instances.set.html#470" class="Function"
+      >set</a
+      ><a name="934"
+      > </a
+      ><a name="935" href="category.instances.set.html#859" class="Bound"
+      >i</a
+      ><a name="936" class="Symbol"
+      >)</a
+      ><a name="937"
+      > </a
+      ><a name="938" href="category.instances.set.html#862" class="Bound"
+      >A</a
+      ><a name="939"
+      > </a
+      ><a name="940" href="category.instances.set.html#864" class="Bound"
+      >B</a
+      ><a name="941"
+      >
+</a
+      ><a name="942" href="category.instances.set.html#843" class="Function"
+      >cat-iso-h2</a
+      ><a name="952"
+      > </a
+      ><a name="953" class="Symbol"
+      >=</a
+      ><a name="954"
+      > </a
+      ><a name="955" class="Keyword"
+      >record</a
+      ><a name="961"
+      >
+  </a
+      ><a name="964" class="Symbol"
+      >{</a
+      ><a name="965"
+      > </a
+      ><a name="966" class="Field"
+      >to</a
+      ><a name="968"
+      > </a
+      ><a name="969" class="Symbol"
+      >=</a
+      ><a name="970"
+      > </a
+      ><a name="971" class="Symbol"
+      >&#955;</a
+      ><a name="972"
+      > </a
+      ><a name="973" class="Symbol"
+      >{</a
+      ><a name="974"
+      > </a
+      ><a name="975" class="Symbol"
+      >(</a
+      ><a name="976" href="function.isomorphism.core.html#359" class="InductiveConstructor"
+      >iso</a
+      ><a name="979"
+      > </a
+      ><a name="980" href="category.instances.set.html#980" class="Bound"
+      >f</a
+      ><a name="981"
+      > </a
+      ><a name="982" href="category.instances.set.html#982" class="Bound"
+      >g</a
+      ><a name="983"
+      > </a
+      ><a name="984" href="category.instances.set.html#984" class="Bound"
+      >H</a
+      ><a name="985"
+      > </a
+      ><a name="986" href="category.instances.set.html#986" class="Bound"
+      >K</a
+      ><a name="987" class="Symbol"
+      >)</a
+      ><a name="988"
+      > </a
+      ><a name="989" class="Symbol"
+      >&#8594;</a
+      ><a name="990"
+      > </a
+      ><a name="991" class="Symbol"
+      >(</a
+      ><a name="992" href="category.isomorphism.html#456" class="InductiveConstructor"
+      >c-iso</a
+      ><a name="997"
+      > </a
+      ><a name="998" href="category.instances.set.html#980" class="Bound"
+      >f</a
+      ><a name="999"
+      > </a
+      ><a name="1000" href="category.instances.set.html#982" class="Bound"
+      >g</a
+      ><a name="1001"
+      > </a
+      ><a name="1002" class="Symbol"
+      >(</a
+      ><a name="1003" href="function.extensionality.dependent.html#812" class="Function"
+      >ext'</a
+      ><a name="1007"
+      > </a
+      ><a name="1008" href="category.instances.set.html#984" class="Bound"
+      >H</a
+      ><a name="1009" class="Symbol"
+      >)</a
+      ><a name="1010"
+      > </a
+      ><a name="1011" class="Symbol"
+      >(</a
+      ><a name="1012" href="function.extensionality.dependent.html#812" class="Function"
+      >ext'</a
+      ><a name="1016"
+      > </a
+      ><a name="1017" href="category.instances.set.html#986" class="Bound"
+      >K</a
+      ><a name="1018" class="Symbol"
+      >))</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" class="Symbol"
+      >}</a
+      ><a name="1022"
+      >
+  </a
+      ><a name="1025" class="Symbol"
+      >;</a
+      ><a name="1026"
+      > </a
+      ><a name="1027" class="Field"
+      >from</a
+      ><a name="1031"
+      > </a
+      ><a name="1032" class="Symbol"
+      >=</a
+      ><a name="1033"
+      > </a
+      ><a name="1034" class="Symbol"
+      >&#955;</a
+      ><a name="1035"
+      > </a
+      ><a name="1036" class="Symbol"
+      >{</a
+      ><a name="1037"
+      > </a
+      ><a name="1038" class="Symbol"
+      >(</a
+      ><a name="1039" href="category.isomorphism.html#456" class="InductiveConstructor"
+      >c-iso</a
+      ><a name="1044"
+      > </a
+      ><a name="1045" href="category.instances.set.html#1045" class="Bound"
+      >f</a
+      ><a name="1046"
+      > </a
+      ><a name="1047" href="category.instances.set.html#1047" class="Bound"
+      >g</a
+      ><a name="1048"
+      > </a
+      ><a name="1049" href="category.instances.set.html#1049" class="Bound"
+      >H</a
+      ><a name="1050"
+      > </a
+      ><a name="1051" href="category.instances.set.html#1051" class="Bound"
+      >K</a
+      ><a name="1052" class="Symbol"
+      >)</a
+      ><a name="1053"
+      > </a
+      ><a name="1054" class="Symbol"
+      >&#8594;</a
+      ><a name="1055"
+      > </a
+      ><a name="1056" class="Symbol"
+      >(</a
+      ><a name="1057" href="function.isomorphism.core.html#359" class="InductiveConstructor"
+      >iso</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" href="category.instances.set.html#1045" class="Bound"
+      >f</a
+      ><a name="1062"
+      > </a
+      ><a name="1063" href="category.instances.set.html#1047" class="Bound"
+      >g</a
+      ><a name="1064"
+      > </a
+      ><a name="1065" class="Symbol"
+      >(</a
+      ><a name="1066" href="function.extensionality.core.html#705" class="Function"
+      >ext-inv</a
+      ><a name="1073"
+      > </a
+      ><a name="1074" href="category.instances.set.html#1049" class="Bound"
+      >H</a
+      ><a name="1075" class="Symbol"
+      >)</a
+      ><a name="1076"
+      > </a
+      ><a name="1077" class="Symbol"
+      >(</a
+      ><a name="1078" href="function.extensionality.core.html#705" class="Function"
+      >ext-inv</a
+      ><a name="1085"
+      > </a
+      ><a name="1086" href="category.instances.set.html#1051" class="Bound"
+      >K</a
+      ><a name="1087" class="Symbol"
+      >))</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" class="Symbol"
+      >}</a
+      ><a name="1091"
+      >
+  </a
+      ><a name="1094" class="Symbol"
+      >;</a
+      ><a name="1095"
+      > </a
+      ><a name="1096" class="Field"
+      >iso&#8321;</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" class="Symbol"
+      >=</a
+      ><a name="1102"
+      > </a
+      ><a name="1103" class="Symbol"
+      >&#955;</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" class="Symbol"
+      >{</a
+      ><a name="1106"
+      > </a
+      ><a name="1107" class="Symbol"
+      >(</a
+      ><a name="1108" href="function.isomorphism.core.html#359" class="InductiveConstructor"
+      >iso</a
+      ><a name="1111"
+      > </a
+      ><a name="1112" href="category.instances.set.html#1112" class="Bound"
+      >f</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" href="category.instances.set.html#1114" class="Bound"
+      >g</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" href="category.instances.set.html#1116" class="Bound"
+      >H</a
+      ><a name="1117"
+      > </a
+      ><a name="1118" href="category.instances.set.html#1118" class="Bound"
+      >K</a
+      ><a name="1119" class="Symbol"
+      >)</a
+      ><a name="1120"
+      >
+             </a
+      ><a name="1134" class="Symbol"
+      >&#8594;</a
+      ><a name="1135"
+      > </a
+      ><a name="1136" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" class="Symbol"
+      >(&#955;</a
+      ><a name="1143"
+      > </a
+      ><a name="1144" class="Symbol"
+      >{</a
+      ><a name="1145"
+      > </a
+      ><a name="1146" class="Symbol"
+      >((</a
+      ><a name="1148" href="category.instances.set.html#1148" class="Bound"
+      >f</a
+      ><a name="1149"
+      > </a
+      ><a name="1150" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1151"
+      > </a
+      ><a name="1152" href="category.instances.set.html#1152" class="Bound"
+      >g</a
+      ><a name="1153" class="Symbol"
+      >)</a
+      ><a name="1154"
+      > </a
+      ><a name="1155" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" class="Symbol"
+      >(</a
+      ><a name="1158" href="category.instances.set.html#1158" class="Bound"
+      >H</a
+      ><a name="1159"
+      > </a
+      ><a name="1160" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1161"
+      > </a
+      ><a name="1162" href="category.instances.set.html#1162" class="Bound"
+      >K</a
+      ><a name="1163" class="Symbol"
+      >))</a
+      ><a name="1165"
+      > </a
+      ><a name="1166" class="Symbol"
+      >&#8594;</a
+      ><a name="1167"
+      > </a
+      ><a name="1168" href="function.isomorphism.core.html#359" class="InductiveConstructor"
+      >iso</a
+      ><a name="1171"
+      > </a
+      ><a name="1172" href="category.instances.set.html#1148" class="Bound"
+      >f</a
+      ><a name="1173"
+      > </a
+      ><a name="1174" href="category.instances.set.html#1152" class="Bound"
+      >g</a
+      ><a name="1175"
+      > </a
+      ><a name="1176" href="category.instances.set.html#1158" class="Bound"
+      >H</a
+      ><a name="1177"
+      > </a
+      ><a name="1178" href="category.instances.set.html#1162" class="Bound"
+      >K</a
+      ><a name="1179"
+      > </a
+      ><a name="1180" class="Symbol"
+      >})</a
+      ><a name="1182"
+      >
+                       </a
+      ><a name="1206" class="Symbol"
+      >(</a
+      ><a name="1207" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="1214"
+      > </a
+      ><a name="1215" class="Symbol"
+      >(</a
+      ><a name="1216" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1220"
+      > </a
+      ><a name="1221" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1222"
+      > </a
+      ><a name="1223" href="equality.core.html#480" class="Function"
+      >cong&#8322;</a
+      ><a name="1228"
+      > </a
+      ><a name="1229" href="sum.html#203" class="InductiveConstructor Operator"
+      >_,_</a
+      ><a name="1232"
+      >
+                        </a
+      ><a name="1257" class="Symbol"
+      >(</a
+      ><a name="1258" href="function.extensionality.dependent.html#812" class="Function"
+      >ext'</a
+      ><a name="1262"
+      > </a
+      ><a name="1263" class="Symbol"
+      >&#955;</a
+      ><a name="1264"
+      > </a
+      ><a name="1265" href="category.instances.set.html#1265" class="Bound"
+      >x</a
+      ><a name="1266"
+      > </a
+      ><a name="1267" class="Symbol"
+      >&#8594;</a
+      ><a name="1268"
+      > </a
+      ><a name="1269" href="function.extensionality.core.html#705" class="Function"
+      >ext-inv</a
+      ><a name="1276"
+      > </a
+      ><a name="1277" class="Symbol"
+      >(</a
+      ><a name="1278" href="function.isomorphism.core.html#407" class="Function"
+      >_&#8773;_.iso&#8321;</a
+      ><a name="1286"
+      > </a
+      ><a name="1287" href="function.extensionality.strong.html#1435" class="Function"
+      >strong-ext-iso</a
+      ><a name="1301"
+      > </a
+      ><a name="1302" href="category.instances.set.html#1116" class="Bound"
+      >H</a
+      ><a name="1303" class="Symbol"
+      >)</a
+      ><a name="1304"
+      > </a
+      ><a name="1305" href="category.instances.set.html#1265" class="Bound"
+      >x</a
+      ><a name="1306" class="Symbol"
+      >)</a
+      ><a name="1307"
+      >
+                        </a
+      ><a name="1332" class="Symbol"
+      >(</a
+      ><a name="1333" href="function.extensionality.dependent.html#812" class="Function"
+      >ext'</a
+      ><a name="1337"
+      > </a
+      ><a name="1338" class="Symbol"
+      >&#955;</a
+      ><a name="1339"
+      > </a
+      ><a name="1340" href="category.instances.set.html#1340" class="Bound"
+      >x</a
+      ><a name="1341"
+      > </a
+      ><a name="1342" class="Symbol"
+      >&#8594;</a
+      ><a name="1343"
+      > </a
+      ><a name="1344" href="function.extensionality.core.html#705" class="Function"
+      >ext-inv</a
+      ><a name="1351"
+      > </a
+      ><a name="1352" class="Symbol"
+      >(</a
+      ><a name="1353" href="function.isomorphism.core.html#407" class="Function"
+      >_&#8773;_.iso&#8321;</a
+      ><a name="1361"
+      > </a
+      ><a name="1362" href="function.extensionality.strong.html#1435" class="Function"
+      >strong-ext-iso</a
+      ><a name="1376"
+      > </a
+      ><a name="1377" href="category.instances.set.html#1118" class="Bound"
+      >K</a
+      ><a name="1378" class="Symbol"
+      >)</a
+      ><a name="1379"
+      > </a
+      ><a name="1380" href="category.instances.set.html#1340" class="Bound"
+      >x</a
+      ><a name="1381" class="Symbol"
+      >)))</a
+      ><a name="1384"
+      > </a
+      ><a name="1385" class="Symbol"
+      >}</a
+      ><a name="1386"
+      >
+  </a
+      ><a name="1389" class="Symbol"
+      >;</a
+      ><a name="1390"
+      > </a
+      ><a name="1391" class="Field"
+      >iso&#8322;</a
+      ><a name="1395"
+      > </a
+      ><a name="1396" class="Symbol"
+      >=</a
+      ><a name="1397"
+      > </a
+      ><a name="1398" class="Symbol"
+      >&#955;</a
+      ><a name="1399"
+      > </a
+      ><a name="1400" href="category.instances.set.html#1400" class="Bound"
+      >_</a
+      ><a name="1401"
+      > </a
+      ><a name="1402" class="Symbol"
+      >&#8594;</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" href="category.isomorphism.html#1691" class="Function"
+      >cat-iso-equality</a
+      ><a name="1420"
+      > </a
+      ><a name="1421" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1425"
+      > </a
+      ><a name="1426" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1430"
+      > </a
+      ><a name="1431" class="Symbol"
+      >}</a
+      ><a name="1432"
+      >
+
+</a
+      ><a name="1434" class="Comment"
+      >-- equality of HSets is the same as equality of the underlying types</a
+      ><a name="1502"
+      >
+</a
+      ><a name="1503" href="category.instances.set.html#1503" class="Function"
+      >hset-equality</a
+      ><a name="1516"
+      > </a
+      ><a name="1517" class="Symbol"
+      >:</a
+      ><a name="1518"
+      > </a
+      ><a name="1519" class="Symbol"
+      >&#8704;</a
+      ><a name="1520"
+      > </a
+      ><a name="1521" class="Symbol"
+      >{</a
+      ><a name="1522" href="category.instances.set.html#1522" class="Bound"
+      >i</a
+      ><a name="1523" class="Symbol"
+      >}{</a
+      ><a name="1525" href="category.instances.set.html#1525" class="Bound"
+      >A</a
+      ><a name="1526"
+      > </a
+      ><a name="1527" href="category.instances.set.html#1527" class="Bound"
+      >B</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" class="Symbol"
+      >:</a
+      ><a name="1530"
+      > </a
+      ><a name="1531" href="hott.hlevel.core.html#1520" class="Function"
+      >HSet</a
+      ><a name="1535"
+      > </a
+      ><a name="1536" href="category.instances.set.html#1522" class="Bound"
+      >i</a
+      ><a name="1537" class="Symbol"
+      >}</a
+      ><a name="1538"
+      >
+              </a
+      ><a name="1553" class="Symbol"
+      >&#8594;</a
+      ><a name="1554"
+      > </a
+      ><a name="1555" class="Symbol"
+      >(</a
+      ><a name="1556" href="category.instances.set.html#1525" class="Bound"
+      >A</a
+      ><a name="1557"
+      > </a
+      ><a name="1558" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1559"
+      > </a
+      ><a name="1560" href="category.instances.set.html#1527" class="Bound"
+      >B</a
+      ><a name="1561" class="Symbol"
+      >)</a
+      ><a name="1562"
+      >
+              </a
+      ><a name="1577" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="1578"
+      > </a
+      ><a name="1579" class="Symbol"
+      >(</a
+      ><a name="1580" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1585"
+      > </a
+      ><a name="1586" href="category.instances.set.html#1525" class="Bound"
+      >A</a
+      ><a name="1587"
+      > </a
+      ><a name="1588" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1589"
+      > </a
+      ><a name="1590" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1595"
+      > </a
+      ><a name="1596" href="category.instances.set.html#1527" class="Bound"
+      >B</a
+      ><a name="1597" class="Symbol"
+      >)</a
+      ><a name="1598"
+      >
+</a
+      ><a name="1599" href="category.instances.set.html#1503" class="Function"
+      >hset-equality</a
+      ><a name="1612"
+      > </a
+      ><a name="1613" class="Symbol"
+      >{</a
+      ><a name="1614" href="category.instances.set.html#1614" class="Bound"
+      >i</a
+      ><a name="1615" class="Symbol"
+      >}{</a
+      ><a name="1617"
+      >A </a
+      ><a name="1619" class="Symbol"
+      >=</a
+      ><a name="1620"
+      > </a
+      ><a name="1621" href="category.instances.set.html#1621" class="Bound"
+      >A</a
+      ><a name="1622" class="Symbol"
+      >}{</a
+      ><a name="1624"
+      >B </a
+      ><a name="1626" class="Symbol"
+      >=</a
+      ><a name="1627"
+      > </a
+      ><a name="1628" href="category.instances.set.html#1628" class="Bound"
+      >B</a
+      ><a name="1629" class="Symbol"
+      >}</a
+      ><a name="1630"
+      > </a
+      ><a name="1631" class="Symbol"
+      >=</a
+      ><a name="1632"
+      > </a
+      ><a name="1633" class="Keyword"
+      >record</a
+      ><a name="1639"
+      >
+  </a
+      ><a name="1642" class="Symbol"
+      >{</a
+      ><a name="1643"
+      > </a
+      ><a name="1644" class="Field"
+      >to</a
+      ><a name="1646"
+      > </a
+      ><a name="1647" class="Symbol"
+      >=</a
+      ><a name="1648"
+      > </a
+      ><a name="1649" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1653"
+      > </a
+      ><a name="1654" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1659"
+      >
+  </a
+      ><a name="1662" class="Symbol"
+      >;</a
+      ><a name="1663"
+      > </a
+      ><a name="1664" class="Field"
+      >from</a
+      ><a name="1668"
+      > </a
+      ><a name="1669" class="Symbol"
+      >=</a
+      ><a name="1670"
+      > </a
+      ><a name="1671" class="Symbol"
+      >&#955;</a
+      ><a name="1672"
+      > </a
+      ><a name="1673" href="category.instances.set.html#1673" class="Bound"
+      >p</a
+      ><a name="1674"
+      > </a
+      ><a name="1675" class="Symbol"
+      >&#8594;</a
+      ><a name="1676"
+      > </a
+      ><a name="1677" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="1684"
+      > </a
+      ><a name="1685" class="Symbol"
+      >(</a
+      ><a name="1686" href="category.instances.set.html#1673" class="Bound"
+      >p</a
+      ><a name="1687"
+      > </a
+      ><a name="1688" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1689"
+      > </a
+      ><a name="1690" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1695"
+      > </a
+      ><a name="1696" class="Symbol"
+      >(</a
+      ><a name="1697" href="hott.hlevel.closure.html#3107" class="Function"
+      >hn-h1</a
+      ><a name="1702"
+      > </a
+      ><a name="1703" class="Number"
+      >2</a
+      ><a name="1704"
+      > </a
+      ><a name="1705" class="Symbol"
+      >_</a
+      ><a name="1706"
+      > </a
+      ><a name="1707" class="Symbol"
+      >_</a
+      ><a name="1708"
+      > </a
+      ><a name="1709" class="Symbol"
+      >_))</a
+      ><a name="1712"
+      >
+  </a
+      ><a name="1715" class="Symbol"
+      >;</a
+      ><a name="1716"
+      > </a
+      ><a name="1717" class="Field"
+      >iso&#8321;</a
+      ><a name="1721"
+      > </a
+      ><a name="1722" class="Symbol"
+      >=</a
+      ><a name="1723"
+      > </a
+      ><a name="1724" href="category.instances.set.html#1772" class="Function"
+      >iso&#8321;</a
+      ><a name="1728"
+      > </a
+      ><a name="1729" href="category.instances.set.html#1621" class="Bound"
+      >A</a
+      ><a name="1730"
+      > </a
+      ><a name="1731" href="category.instances.set.html#1628" class="Bound"
+      >B</a
+      ><a name="1732"
+      >
+  </a
+      ><a name="1735" class="Symbol"
+      >;</a
+      ><a name="1736"
+      > </a
+      ><a name="1737" class="Field"
+      >iso&#8322;</a
+      ><a name="1741"
+      > </a
+      ><a name="1742" class="Symbol"
+      >=</a
+      ><a name="1743"
+      > </a
+      ><a name="1744" class="Symbol"
+      >&#955;</a
+      ><a name="1745"
+      > </a
+      ><a name="1746" href="category.instances.set.html#1746" class="Bound"
+      >p</a
+      ><a name="1747"
+      > </a
+      ><a name="1748" class="Symbol"
+      >&#8594;</a
+      ><a name="1749"
+      > </a
+      ><a name="1750" href="category.instances.set.html#1994" class="Function"
+      >lem</a
+      ><a name="1753"
+      > </a
+      ><a name="1754" href="category.instances.set.html#1746" class="Bound"
+      >p</a
+      ><a name="1755"
+      > </a
+      ><a name="1756" class="Symbol"
+      >_</a
+      ><a name="1757"
+      > </a
+      ><a name="1758" class="Symbol"
+      >}</a
+      ><a name="1759"
+      >
+  </a
+      ><a name="1762" class="Keyword"
+      >where</a
+      ><a name="1767"
+      >
+    </a
+      ><a name="1772" href="category.instances.set.html#1772" class="Function"
+      >iso&#8321;</a
+      ><a name="1776"
+      > </a
+      ><a name="1777" class="Symbol"
+      >:</a
+      ><a name="1778"
+      > </a
+      ><a name="1779" class="Symbol"
+      >(</a
+      ><a name="1780" href="category.instances.set.html#1780" class="Bound"
+      >A</a
+      ><a name="1781"
+      > </a
+      ><a name="1782" href="category.instances.set.html#1782" class="Bound"
+      >B</a
+      ><a name="1783"
+      > </a
+      ><a name="1784" class="Symbol"
+      >:</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" href="hott.hlevel.core.html#1520" class="Function"
+      >HSet</a
+      ><a name="1790"
+      > </a
+      ><a name="1791" href="category.instances.set.html#1614" class="Bound"
+      >i</a
+      ><a name="1792" class="Symbol"
+      >)(</a
+      ><a name="1794" href="category.instances.set.html#1794" class="Bound"
+      >p</a
+      ><a name="1795"
+      > </a
+      ><a name="1796" class="Symbol"
+      >:</a
+      ><a name="1797"
+      > </a
+      ><a name="1798" href="category.instances.set.html#1780" class="Bound"
+      >A</a
+      ><a name="1799"
+      > </a
+      ><a name="1800" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1801"
+      > </a
+      ><a name="1802" href="category.instances.set.html#1782" class="Bound"
+      >B</a
+      ><a name="1803" class="Symbol"
+      >)</a
+      ><a name="1804"
+      >
+         </a
+      ><a name="1814" class="Symbol"
+      >&#8594;</a
+      ><a name="1815"
+      > </a
+      ><a name="1816" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="1823"
+      > </a
+      ><a name="1824" class="Symbol"
+      >(</a
+      ><a name="1825" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1829"
+      > </a
+      ><a name="1830" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1835"
+      > </a
+      ><a name="1836" href="category.instances.set.html#1794" class="Bound"
+      >p</a
+      ><a name="1837"
+      > </a
+      ><a name="1838" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1839"
+      > </a
+      ><a name="1840" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1845"
+      > </a
+      ><a name="1846" class="Symbol"
+      >(</a
+      ><a name="1847" href="hott.hlevel.closure.html#3107" class="Function"
+      >hn-h1</a
+      ><a name="1852"
+      > </a
+      ><a name="1853" class="Number"
+      >2</a
+      ><a name="1854"
+      > </a
+      ><a name="1855" class="Symbol"
+      >_</a
+      ><a name="1856"
+      > </a
+      ><a name="1857" class="Symbol"
+      >_</a
+      ><a name="1858"
+      > </a
+      ><a name="1859" class="Symbol"
+      >_))</a
+      ><a name="1862"
+      > </a
+      ><a name="1863" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1864"
+      > </a
+      ><a name="1865" href="category.instances.set.html#1794" class="Bound"
+      >p</a
+      ><a name="1866"
+      >
+    </a
+      ><a name="1871" href="category.instances.set.html#1772" class="Function"
+      >iso&#8321;</a
+      ><a name="1875"
+      > </a
+      ><a name="1876" class="Symbol"
+      >(</a
+      ><a name="1877" href="category.instances.set.html#1877" class="Bound"
+      >A</a
+      ><a name="1878"
+      > </a
+      ><a name="1879" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1880"
+      > </a
+      ><a name="1881" href="category.instances.set.html#1881" class="Bound"
+      >hA</a
+      ><a name="1883" class="Symbol"
+      >)</a
+      ><a name="1884"
+      > </a
+      ><a name="1885" class="DottedPattern Symbol"
+      >.(</a
+      ><a name="1887" href="category.instances.set.html#1877" class="DottedPattern Bound"
+      >A</a
+      ><a name="1888"
+      > </a
+      ><a name="1889" href="sum.html#203" class="DottedPattern InductiveConstructor Operator"
+      >,</a
+      ><a name="1890"
+      > </a
+      ><a name="1891" href="category.instances.set.html#1881" class="DottedPattern Bound"
+      >hA</a
+      ><a name="1893" class="DottedPattern Symbol"
+      >)</a
+      ><a name="1894"
+      > </a
+      ><a name="1895" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1899"
+      > </a
+      ><a name="1900" class="Symbol"
+      >=</a
+      ><a name="1901"
+      >
+      </a
+      ><a name="1908" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1912"
+      > </a
+      ><a name="1913" class="Symbol"
+      >(&#955;</a
+      ><a name="1915"
+      > </a
+      ><a name="1916" href="category.instances.set.html#1916" class="Bound"
+      >q</a
+      ><a name="1917"
+      > </a
+      ><a name="1918" class="Symbol"
+      >&#8594;</a
+      ><a name="1919"
+      > </a
+      ><a name="1920" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="1927"
+      > </a
+      ><a name="1928" class="Symbol"
+      >(</a
+      ><a name="1929" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1933"
+      > </a
+      ><a name="1934" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1935"
+      > </a
+      ><a name="1936" href="category.instances.set.html#1916" class="Bound"
+      >q</a
+      ><a name="1937" class="Symbol"
+      >))</a
+      ><a name="1939"
+      >
+           </a
+      ><a name="1951" class="Symbol"
+      >(</a
+      ><a name="1952" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1957"
+      > </a
+      ><a name="1958" class="Symbol"
+      >(</a
+      ><a name="1959" href="hott.hlevel.core.html#1292" class="Function"
+      >h&#8593;</a
+      ><a name="1961"
+      > </a
+      ><a name="1962" class="Symbol"
+      >(</a
+      ><a name="1963" href="hott.hlevel.closure.html#3107" class="Function"
+      >hn-h1</a
+      ><a name="1968"
+      > </a
+      ><a name="1969" class="Number"
+      >2</a
+      ><a name="1970"
+      > </a
+      ><a name="1971" href="category.instances.set.html#1877" class="Bound"
+      >A</a
+      ><a name="1972" class="Symbol"
+      >)</a
+      ><a name="1973"
+      > </a
+      ><a name="1974" href="category.instances.set.html#1881" class="Bound"
+      >hA</a
+      ><a name="1976"
+      > </a
+      ><a name="1977" href="category.instances.set.html#1881" class="Bound"
+      >hA</a
+      ><a name="1979"
+      > </a
+      ><a name="1980" class="Symbol"
+      >_</a
+      ><a name="1981"
+      > </a
+      ><a name="1982" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1986" class="Symbol"
+      >))</a
+      ><a name="1988"
+      >
+
+    </a
+      ><a name="1994" href="category.instances.set.html#1994" class="Function"
+      >lem</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" class="Symbol"
+      >:</a
+      ><a name="1999"
+      > </a
+      ><a name="2000" class="Symbol"
+      >&#8704;</a
+      ><a name="2001"
+      > </a
+      ><a name="2002" class="Symbol"
+      >{</a
+      ><a name="2003" href="category.instances.set.html#2003" class="Bound"
+      >i</a
+      ><a name="2004"
+      > </a
+      ><a name="2005" href="category.instances.set.html#2005" class="Bound"
+      >j</a
+      ><a name="2006" class="Symbol"
+      >}{</a
+      ><a name="2008" href="category.instances.set.html#2008" class="Bound"
+      >A</a
+      ><a name="2009"
+      > </a
+      ><a name="2010" class="Symbol"
+      >:</a
+      ><a name="2011"
+      > </a
+      ><a name="2012" class="PrimitiveType"
+      >Set</a
+      ><a name="2015"
+      > </a
+      ><a name="2016" href="category.instances.set.html#2003" class="Bound"
+      >i</a
+      ><a name="2017" class="Symbol"
+      >}{</a
+      ><a name="2019" href="category.instances.set.html#2019" class="Bound"
+      >B</a
+      ><a name="2020"
+      > </a
+      ><a name="2021" class="Symbol"
+      >:</a
+      ><a name="2022"
+      > </a
+      ><a name="2023" href="category.instances.set.html#2008" class="Bound"
+      >A</a
+      ><a name="2024"
+      > </a
+      ><a name="2025" class="Symbol"
+      >&#8594;</a
+      ><a name="2026"
+      > </a
+      ><a name="2027" class="PrimitiveType"
+      >Set</a
+      ><a name="2030"
+      > </a
+      ><a name="2031" href="category.instances.set.html#2005" class="Bound"
+      >j</a
+      ><a name="2032" class="Symbol"
+      >}</a
+      ><a name="2033"
+      >
+          </a
+      ><a name="2044" class="Symbol"
+      >{</a
+      ><a name="2045" href="category.instances.set.html#2045" class="Bound"
+      >x</a
+      ><a name="2046"
+      > </a
+      ><a name="2047" href="category.instances.set.html#2047" class="Bound"
+      >x'</a
+      ><a name="2049"
+      > </a
+      ><a name="2050" class="Symbol"
+      >:</a
+      ><a name="2051"
+      > </a
+      ><a name="2052" href="category.instances.set.html#2008" class="Bound"
+      >A</a
+      ><a name="2053" class="Symbol"
+      >}{</a
+      ><a name="2055" href="category.instances.set.html#2055" class="Bound"
+      >y</a
+      ><a name="2056"
+      > </a
+      ><a name="2057" class="Symbol"
+      >:</a
+      ><a name="2058"
+      > </a
+      ><a name="2059" href="category.instances.set.html#2019" class="Bound"
+      >B</a
+      ><a name="2060"
+      > </a
+      ><a name="2061" href="category.instances.set.html#2045" class="Bound"
+      >x</a
+      ><a name="2062" class="Symbol"
+      >}{</a
+      ><a name="2064" href="category.instances.set.html#2064" class="Bound"
+      >y'</a
+      ><a name="2066"
+      > </a
+      ><a name="2067" class="Symbol"
+      >:</a
+      ><a name="2068"
+      > </a
+      ><a name="2069" href="category.instances.set.html#2019" class="Bound"
+      >B</a
+      ><a name="2070"
+      > </a
+      ><a name="2071" href="category.instances.set.html#2047" class="Bound"
+      >x'</a
+      ><a name="2073" class="Symbol"
+      >}</a
+      ><a name="2074"
+      >
+          </a
+      ><a name="2085" class="Symbol"
+      >(</a
+      ><a name="2086" href="category.instances.set.html#2086" class="Bound"
+      >p</a
+      ><a name="2087"
+      > </a
+      ><a name="2088" class="Symbol"
+      >:</a
+      ><a name="2089"
+      > </a
+      ><a name="2090" href="category.instances.set.html#2045" class="Bound"
+      >x</a
+      ><a name="2091"
+      > </a
+      ><a name="2092" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2093"
+      > </a
+      ><a name="2094" href="category.instances.set.html#2047" class="Bound"
+      >x'</a
+      ><a name="2096" class="Symbol"
+      >)(</a
+      ><a name="2098" href="category.instances.set.html#2098" class="Bound"
+      >q</a
+      ><a name="2099"
+      > </a
+      ><a name="2100" class="Symbol"
+      >:</a
+      ><a name="2101"
+      > </a
+      ><a name="2102" href="equality.core.html#652" class="Function"
+      >subst</a
+      ><a name="2107"
+      > </a
+      ><a name="2108" href="category.instances.set.html#2019" class="Bound"
+      >B</a
+      ><a name="2109"
+      > </a
+      ><a name="2110" href="category.instances.set.html#2086" class="Bound"
+      >p</a
+      ><a name="2111"
+      > </a
+      ><a name="2112" href="category.instances.set.html#2055" class="Bound"
+      >y</a
+      ><a name="2113"
+      > </a
+      ><a name="2114" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2115"
+      > </a
+      ><a name="2116" href="category.instances.set.html#2064" class="Bound"
+      >y'</a
+      ><a name="2118" class="Symbol"
+      >)</a
+      ><a name="2119"
+      >
+        </a
+      ><a name="2128" class="Symbol"
+      >&#8594;</a
+      ><a name="2129"
+      > </a
+      ><a name="2130" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="2134"
+      > </a
+      ><a name="2135" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="2140"
+      > </a
+      ><a name="2141" class="Symbol"
+      >(</a
+      ><a name="2142" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="2149"
+      > </a
+      ><a name="2150" class="Symbol"
+      >{</a
+      ><a name="2151"
+      >B </a
+      ><a name="2153" class="Symbol"
+      >=</a
+      ><a name="2154"
+      > </a
+      ><a name="2155" href="category.instances.set.html#2019" class="Bound"
+      >B</a
+      ><a name="2156" class="Symbol"
+      >}</a
+      ><a name="2157"
+      > </a
+      ><a name="2158" class="Symbol"
+      >(</a
+      ><a name="2159" href="category.instances.set.html#2086" class="Bound"
+      >p</a
+      ><a name="2160"
+      > </a
+      ><a name="2161" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2162"
+      > </a
+      ><a name="2163" href="category.instances.set.html#2098" class="Bound"
+      >q</a
+      ><a name="2164" class="Symbol"
+      >))</a
+      ><a name="2166"
+      > </a
+      ><a name="2167" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2168"
+      > </a
+      ><a name="2169" href="category.instances.set.html#2086" class="Bound"
+      >p</a
+      ><a name="2170"
+      >
+    </a
+      ><a name="2175" href="category.instances.set.html#1994" class="Function"
+      >lem</a
+      ><a name="2178"
+      > </a
+      ><a name="2179" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="2183"
+      > </a
+      ><a name="2184" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="2188"
+      > </a
+      ><a name="2189" class="Symbol"
+      >=</a
+      ><a name="2190"
+      > </a
+      ><a name="2191" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="2195"
+      >
+
+</a
+      ><a name="2197" class="Comment"
+      >-- isomorphisms between hsets are automatically coherent</a
+      ><a name="2253"
+      >
+</a
+      ><a name="2254" href="category.instances.set.html#2254" class="Function"
+      >iso-coherence-h2</a
+      ><a name="2270"
+      > </a
+      ><a name="2271" class="Symbol"
+      >:</a
+      ><a name="2272"
+      > </a
+      ><a name="2273" class="Symbol"
+      >&#8704;</a
+      ><a name="2274"
+      > </a
+      ><a name="2275" class="Symbol"
+      >{</a
+      ><a name="2276" href="category.instances.set.html#2276" class="Bound"
+      >i</a
+      ><a name="2277" class="Symbol"
+      >}{</a
+      ><a name="2279" href="category.instances.set.html#2279" class="Bound"
+      >A</a
+      ><a name="2280"
+      > </a
+      ><a name="2281" href="category.instances.set.html#2281" class="Bound"
+      >B</a
+      ><a name="2282"
+      > </a
+      ><a name="2283" class="Symbol"
+      >:</a
+      ><a name="2284"
+      > </a
+      ><a name="2285" href="hott.hlevel.core.html#1520" class="Function"
+      >HSet</a
+      ><a name="2289"
+      > </a
+      ><a name="2290" href="category.instances.set.html#2276" class="Bound"
+      >i</a
+      ><a name="2291" class="Symbol"
+      >}</a
+      ><a name="2292"
+      >
+                 </a
+      ><a name="2310" class="Symbol"
+      >&#8594;</a
+      ><a name="2311"
+      > </a
+      ><a name="2312" class="Symbol"
+      >(</a
+      ><a name="2313" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="2318"
+      > </a
+      ><a name="2319" href="category.instances.set.html#2279" class="Bound"
+      >A</a
+      ><a name="2320"
+      > </a
+      ><a name="2321" href="function.isomorphism.coherent.html#644" class="Function Operator"
+      >&#8773;'</a
+      ><a name="2323"
+      > </a
+      ><a name="2324" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="2329"
+      > </a
+      ><a name="2330" href="category.instances.set.html#2281" class="Bound"
+      >B</a
+      ><a name="2331" class="Symbol"
+      >)</a
+      ><a name="2332"
+      >
+                 </a
+      ><a name="2350" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="2351"
+      > </a
+      ><a name="2352" class="Symbol"
+      >(</a
+      ><a name="2353" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="2358"
+      > </a
+      ><a name="2359" href="category.instances.set.html#2279" class="Bound"
+      >A</a
+      ><a name="2360"
+      > </a
+      ><a name="2361" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="2362"
+      > </a
+      ><a name="2363" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="2368"
+      > </a
+      ><a name="2369" href="category.instances.set.html#2281" class="Bound"
+      >B</a
+      ><a name="2370" class="Symbol"
+      >)</a
+      ><a name="2371"
+      >
+</a
+      ><a name="2372" href="category.instances.set.html#2254" class="Function"
+      >iso-coherence-h2</a
+      ><a name="2388"
+      > </a
+      ><a name="2389" class="Symbol"
+      >{</a
+      ><a name="2390"
+      >A </a
+      ><a name="2392" class="Symbol"
+      >=</a
+      ><a name="2393"
+      > </a
+      ><a name="2394" href="category.instances.set.html#2394" class="Bound"
+      >A</a
+      ><a name="2395"
+      > </a
+      ><a name="2396" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2397"
+      > </a
+      ><a name="2398" href="category.instances.set.html#2398" class="Bound"
+      >hA</a
+      ><a name="2400" class="Symbol"
+      >}{</a
+      ><a name="2402"
+      >B </a
+      ><a name="2404" class="Symbol"
+      >=</a
+      ><a name="2405"
+      > </a
+      ><a name="2406" href="category.instances.set.html#2406" class="Bound"
+      >B</a
+      ><a name="2407"
+      > </a
+      ><a name="2408" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2409"
+      > </a
+      ><a name="2410" href="category.instances.set.html#2410" class="Bound"
+      >hB</a
+      ><a name="2412" class="Symbol"
+      >}</a
+      ><a name="2413"
+      > </a
+      ><a name="2414" class="Symbol"
+      >=</a
+      ><a name="2415"
+      >
+  </a
+      ><a name="2418" href="category.instances.set.html#2474" class="Function"
+      >lem-contr</a
+      ><a name="2427"
+      > </a
+      ><a name="2428" class="Symbol"
+      >(&#955;</a
+      ><a name="2430"
+      > </a
+      ><a name="2431" href="category.instances.set.html#2431" class="Bound"
+      >_</a
+      ><a name="2432"
+      > </a
+      ><a name="2433" class="Symbol"
+      >&#8594;</a
+      ><a name="2434"
+      > </a
+      ><a name="2435" href="hott.hlevel.closure.html#645" class="Function"
+      >&#928;-hlevel</a
+      ><a name="2443"
+      > </a
+      ><a name="2444" class="Symbol"
+      >&#955;</a
+      ><a name="2445"
+      > </a
+      ><a name="2446" href="category.instances.set.html#2446" class="Bound"
+      >x</a
+      ><a name="2447"
+      > </a
+      ><a name="2448" class="Symbol"
+      >&#8594;</a
+      ><a name="2449"
+      > </a
+      ><a name="2450" href="category.instances.set.html#2410" class="Bound"
+      >hB</a
+      ><a name="2452"
+      > </a
+      ><a name="2453" class="Symbol"
+      >_</a
+      ><a name="2454"
+      > </a
+      ><a name="2455" class="Symbol"
+      >_</a
+      ><a name="2456"
+      > </a
+      ><a name="2457" class="Symbol"
+      >_</a
+      ><a name="2458"
+      > </a
+      ><a name="2459" class="Symbol"
+      >_)</a
+      ><a name="2461"
+      >
+  </a
+      ><a name="2464" class="Keyword"
+      >where</a
+      ><a name="2469"
+      >
+    </a
+      ><a name="2474" href="category.instances.set.html#2474" class="Function"
+      >lem-contr</a
+      ><a name="2483"
+      > </a
+      ><a name="2484" class="Symbol"
+      >:</a
+      ><a name="2485"
+      > </a
+      ><a name="2486" class="Symbol"
+      >&#8704;</a
+      ><a name="2487"
+      > </a
+      ><a name="2488" class="Symbol"
+      >{</a
+      ><a name="2489" href="category.instances.set.html#2489" class="Bound"
+      >i</a
+      ><a name="2490"
+      > </a
+      ><a name="2491" href="category.instances.set.html#2491" class="Bound"
+      >j</a
+      ><a name="2492" class="Symbol"
+      >}{</a
+      ><a name="2494" href="category.instances.set.html#2494" class="Bound"
+      >A</a
+      ><a name="2495"
+      > </a
+      ><a name="2496" class="Symbol"
+      >:</a
+      ><a name="2497"
+      > </a
+      ><a name="2498" class="PrimitiveType"
+      >Set</a
+      ><a name="2501"
+      > </a
+      ><a name="2502" href="category.instances.set.html#2489" class="Bound"
+      >i</a
+      ><a name="2503" class="Symbol"
+      >}{</a
+      ><a name="2505" href="category.instances.set.html#2505" class="Bound"
+      >B</a
+      ><a name="2506"
+      > </a
+      ><a name="2507" class="Symbol"
+      >:</a
+      ><a name="2508"
+      > </a
+      ><a name="2509" href="category.instances.set.html#2494" class="Bound"
+      >A</a
+      ><a name="2510"
+      > </a
+      ><a name="2511" class="Symbol"
+      >&#8594;</a
+      ><a name="2512"
+      > </a
+      ><a name="2513" class="PrimitiveType"
+      >Set</a
+      ><a name="2516"
+      > </a
+      ><a name="2517" href="category.instances.set.html#2491" class="Bound"
+      >j</a
+      ><a name="2518" class="Symbol"
+      >}</a
+      ><a name="2519"
+      >
+              </a
+      ><a name="2534" class="Symbol"
+      >&#8594;</a
+      ><a name="2535"
+      > </a
+      ><a name="2536" class="Symbol"
+      >((</a
+      ><a name="2538" href="category.instances.set.html#2538" class="Bound"
+      >x</a
+      ><a name="2539"
+      > </a
+      ><a name="2540" class="Symbol"
+      >:</a
+      ><a name="2541"
+      > </a
+      ><a name="2542" href="category.instances.set.html#2494" class="Bound"
+      >A</a
+      ><a name="2543" class="Symbol"
+      >)</a
+      ><a name="2544"
+      > </a
+      ><a name="2545" class="Symbol"
+      >&#8594;</a
+      ><a name="2546"
+      > </a
+      ><a name="2547" href="hott.hlevel.core.html#446" class="Function"
+      >contr</a
+      ><a name="2552"
+      > </a
+      ><a name="2553" class="Symbol"
+      >(</a
+      ><a name="2554" href="category.instances.set.html#2505" class="Bound"
+      >B</a
+      ><a name="2555"
+      > </a
+      ><a name="2556" href="category.instances.set.html#2538" class="Bound"
+      >x</a
+      ><a name="2557" class="Symbol"
+      >))</a
+      ><a name="2559"
+      >
+              </a
+      ><a name="2574" class="Symbol"
+      >&#8594;</a
+      ><a name="2575"
+      > </a
+      ><a name="2576" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="2577"
+      > </a
+      ><a name="2578" href="category.instances.set.html#2494" class="Bound"
+      >A</a
+      ><a name="2579"
+      > </a
+      ><a name="2580" href="category.instances.set.html#2505" class="Bound"
+      >B</a
+      ><a name="2581"
+      > </a
+      ><a name="2582" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="2583"
+      > </a
+      ><a name="2584" href="category.instances.set.html#2494" class="Bound"
+      >A</a
+      ><a name="2585"
+      >
+    </a
+      ><a name="2590" href="category.instances.set.html#2474" class="Function"
+      >lem-contr</a
+      ><a name="2599"
+      > </a
+      ><a name="2600" href="category.instances.set.html#2600" class="Bound"
+      >cB</a
+      ><a name="2602"
+      > </a
+      ><a name="2603" class="Symbol"
+      >=</a
+      ><a name="2604"
+      > </a
+      ><a name="2605" class="Keyword"
+      >record</a
+      ><a name="2611"
+      >
+      </a
+      ><a name="2618" class="Symbol"
+      >{</a
+      ><a name="2619"
+      > </a
+      ><a name="2620" class="Field"
+      >to</a
+      ><a name="2622"
+      > </a
+      ><a name="2623" class="Symbol"
+      >=</a
+      ><a name="2624"
+      > </a
+      ><a name="2625" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="2630"
+      >
+      </a
+      ><a name="2637" class="Symbol"
+      >;</a
+      ><a name="2638"
+      > </a
+      ><a name="2639" class="Field"
+      >from</a
+      ><a name="2643"
+      > </a
+      ><a name="2644" class="Symbol"
+      >=</a
+      ><a name="2645"
+      > </a
+      ><a name="2646" class="Symbol"
+      >&#955;</a
+      ><a name="2647"
+      > </a
+      ><a name="2648" href="category.instances.set.html#2648" class="Bound"
+      >a</a
+      ><a name="2649"
+      > </a
+      ><a name="2650" class="Symbol"
+      >&#8594;</a
+      ><a name="2651"
+      > </a
+      ><a name="2652" href="category.instances.set.html#2648" class="Bound"
+      >a</a
+      ><a name="2653"
+      > </a
+      ><a name="2654" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2655"
+      > </a
+      ><a name="2656" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="2661"
+      > </a
+      ><a name="2662" class="Symbol"
+      >(</a
+      ><a name="2663" href="category.instances.set.html#2600" class="Bound"
+      >cB</a
+      ><a name="2665"
+      > </a
+      ><a name="2666" href="category.instances.set.html#2648" class="Bound"
+      >a</a
+      ><a name="2667" class="Symbol"
+      >)</a
+      ><a name="2668"
+      >
+      </a
+      ><a name="2675" class="Symbol"
+      >;</a
+      ><a name="2676"
+      > </a
+      ><a name="2677" class="Field"
+      >iso&#8321;</a
+      ><a name="2681"
+      > </a
+      ><a name="2682" class="Symbol"
+      >=</a
+      ><a name="2683"
+      > </a
+      ><a name="2684" class="Symbol"
+      >&#955;</a
+      ><a name="2685"
+      > </a
+      ><a name="2686" class="Symbol"
+      >{</a
+      ><a name="2687"
+      > </a
+      ><a name="2688" class="Symbol"
+      >(</a
+      ><a name="2689" href="category.instances.set.html#2689" class="Bound"
+      >a</a
+      ><a name="2690"
+      > </a
+      ><a name="2691" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2692"
+      > </a
+      ><a name="2693" href="category.instances.set.html#2693" class="Bound"
+      >b</a
+      ><a name="2694" class="Symbol"
+      >)</a
+      ><a name="2695"
+      > </a
+      ><a name="2696" class="Symbol"
+      >&#8594;</a
+      ><a name="2697"
+      > </a
+      ><a name="2698" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="2705"
+      > </a
+      ><a name="2706" class="Symbol"
+      >(</a
+      ><a name="2707" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="2711"
+      > </a
+      ><a name="2712" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2713"
+      > </a
+      ><a name="2714" href="sum.html#233" class="Function"
+      >proj&#8322;</a
+      ><a name="2719"
+      > </a
+      ><a name="2720" class="Symbol"
+      >(</a
+      ><a name="2721" href="category.instances.set.html#2600" class="Bound"
+      >cB</a
+      ><a name="2723"
+      > </a
+      ><a name="2724" href="category.instances.set.html#2689" class="Bound"
+      >a</a
+      ><a name="2725" class="Symbol"
+      >)</a
+      ><a name="2726"
+      > </a
+      ><a name="2727" href="category.instances.set.html#2693" class="Bound"
+      >b</a
+      ><a name="2728" class="Symbol"
+      >)</a
+      ><a name="2729"
+      > </a
+      ><a name="2730" class="Symbol"
+      >}</a
+      ><a name="2731"
+      >
+      </a
+      ><a name="2738" class="Symbol"
+      >;</a
+      ><a name="2739"
+      > </a
+      ><a name="2740" class="Field"
+      >iso&#8322;</a
+      ><a name="2744"
+      > </a
+      ><a name="2745" class="Symbol"
+      >=</a
+      ><a name="2746"
+      > </a
+      ><a name="2747" class="Symbol"
+      >&#955;</a
+      ><a name="2748"
+      > </a
+      ><a name="2749" href="category.instances.set.html#2749" class="Bound"
+      >_</a
+      ><a name="2750"
+      > </a
+      ><a name="2751" class="Symbol"
+      >&#8594;</a
+      ><a name="2752"
+      > </a
+      ><a name="2753" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="2757"
+      > </a
+      ><a name="2758" class="Symbol"
+      >}</a
+      ><a name="2759"
+      >
+
+</a
+      ><a name="2761" href="category.instances.set.html#2761" class="Function"
+      >set-univ</a
+      ><a name="2769"
+      > </a
+      ><a name="2770" class="Symbol"
+      >:</a
+      ><a name="2771"
+      > </a
+      ><a name="2772" class="Symbol"
+      >&#8704;</a
+      ><a name="2773"
+      > </a
+      ><a name="2774" class="Symbol"
+      >{</a
+      ><a name="2775" href="category.instances.set.html#2775" class="Bound"
+      >i</a
+      ><a name="2776" class="Symbol"
+      >}</a
+      ><a name="2777"
+      > </a
+      ><a name="2778" class="Symbol"
+      >&#8594;</a
+      ><a name="2779"
+      > </a
+      ><a name="2780" href="category.univalence.html#275" class="Function"
+      >univalent</a
+      ><a name="2789"
+      > </a
+      ><a name="2790" class="Symbol"
+      >(</a
+      ><a name="2791" href="category.instances.set.html#470" class="Function"
+      >set</a
+      ><a name="2794"
+      > </a
+      ><a name="2795" href="category.instances.set.html#2775" class="Bound"
+      >i</a
+      ><a name="2796" class="Symbol"
+      >)</a
+      ><a name="2797"
+      >
+</a
+      ><a name="2798" href="category.instances.set.html#2761" class="Function"
+      >set-univ</a
+      ><a name="2806"
+      > </a
+      ><a name="2807" class="Symbol"
+      >{</a
+      ><a name="2808" href="category.instances.set.html#2808" class="Bound"
+      >i</a
+      ><a name="2809" class="Symbol"
+      >}</a
+      ><a name="2810"
+      > </a
+      ><a name="2811" class="Symbol"
+      >=</a
+      ><a name="2812"
+      > </a
+      ><a name="2813" class="Symbol"
+      >&#955;</a
+      ><a name="2814"
+      > </a
+      ><a name="2815" href="category.instances.set.html#2815" class="Bound"
+      >A</a
+      ><a name="2816"
+      > </a
+      ><a name="2817" href="category.instances.set.html#2817" class="Bound"
+      >B</a
+      ><a name="2818"
+      > </a
+      ><a name="2819" class="Symbol"
+      >&#8594;</a
+      ><a name="2820"
+      >
+  </a
+      ><a name="2823" href="category.instances.set.html#3016" class="Function"
+      >lem</a
+      ><a name="2826"
+      > </a
+      ><a name="2827" class="Symbol"
+      >(</a
+      ><a name="2828" href="category.isomorphism.html#582" class="Function"
+      >&#8801;&#8658;iso</a
+      ><a name="2833"
+      > </a
+      ><a name="2834" class="Symbol"
+      >(</a
+      ><a name="2835" href="category.instances.set.html#470" class="Function"
+      >set</a
+      ><a name="2838"
+      > </a
+      ><a name="2839" href="category.instances.set.html#2808" class="Bound"
+      >i</a
+      ><a name="2840" class="Symbol"
+      >)</a
+      ><a name="2841"
+      > </a
+      ><a name="2842" class="Symbol"
+      >{</a
+      ><a name="2843" href="category.instances.set.html#2815" class="Bound"
+      >A</a
+      ><a name="2844" class="Symbol"
+      >}{</a
+      ><a name="2846" href="category.instances.set.html#2817" class="Bound"
+      >B</a
+      ><a name="2847" class="Symbol"
+      >})</a
+      ><a name="2849"
+      >
+      </a
+      ><a name="2856" class="Symbol"
+      >(</a
+      ><a name="2857" href="category.instances.set.html#3282" class="Function"
+      >lem-iso</a
+      ><a name="2864"
+      > </a
+      ><a name="2865" href="category.instances.set.html#2815" class="Bound"
+      >A</a
+      ><a name="2866"
+      > </a
+      ><a name="2867" href="category.instances.set.html#2817" class="Bound"
+      >B</a
+      ><a name="2868" class="Symbol"
+      >)</a
+      ><a name="2869"
+      >
+      </a
+      ><a name="2876" class="Symbol"
+      >(</a
+      ><a name="2877" href="function.extensionality.nondep.html#5284" class="Function"
+      >ext</a
+      ><a name="2880"
+      > </a
+      ><a name="2881" class="Symbol"
+      >(</a
+      ><a name="2882" href="category.instances.set.html#3725" class="Function"
+      >lem-iso-comp</a
+      ><a name="2894"
+      > </a
+      ><a name="2895" href="category.instances.set.html#2815" class="Bound"
+      >A</a
+      ><a name="2896"
+      > </a
+      ><a name="2897" href="category.instances.set.html#2817" class="Bound"
+      >B</a
+      ><a name="2898" class="Symbol"
+      >))</a
+      ><a name="2900"
+      >
+  </a
+      ><a name="2903" class="Keyword"
+      >where</a
+      ><a name="2908"
+      >
+    </a
+      ><a name="2913" class="Keyword"
+      >open</a
+      ><a name="2917"
+      > </a
+      ><a name="2918" href="function.isomorphism.core.html#961" class="Module"
+      >&#8773;-Reasoning</a
+      ><a name="2929"
+      >
+
+    </a
+      ><a name="2935" class="Comment"
+      >-- the function corresponding to an isomorphism is a weak</a
+      ><a name="2992"
+      >
+    </a
+      ><a name="2997" class="Comment"
+      >-- equivalence</a
+      ><a name="3011"
+      >
+    </a
+      ><a name="3016" href="category.instances.set.html#3016" class="Function"
+      >lem</a
+      ><a name="3019"
+      > </a
+      ><a name="3020" class="Symbol"
+      >:</a
+      ><a name="3021"
+      > </a
+      ><a name="3022" class="Symbol"
+      >&#8704;</a
+      ><a name="3023"
+      > </a
+      ><a name="3024" class="Symbol"
+      >{</a
+      ><a name="3025" href="category.instances.set.html#3025" class="Bound"
+      >i</a
+      ><a name="3026"
+      > </a
+      ><a name="3027" href="category.instances.set.html#3027" class="Bound"
+      >j</a
+      ><a name="3028" class="Symbol"
+      >}{</a
+      ><a name="3030" href="category.instances.set.html#3030" class="Bound"
+      >X</a
+      ><a name="3031"
+      > </a
+      ><a name="3032" class="Symbol"
+      >:</a
+      ><a name="3033"
+      > </a
+      ><a name="3034" class="PrimitiveType"
+      >Set</a
+      ><a name="3037"
+      > </a
+      ><a name="3038" href="category.instances.set.html#3025" class="Bound"
+      >i</a
+      ><a name="3039" class="Symbol"
+      >}{</a
+      ><a name="3041" href="category.instances.set.html#3041" class="Bound"
+      >Y</a
+      ><a name="3042"
+      > </a
+      ><a name="3043" class="Symbol"
+      >:</a
+      ><a name="3044"
+      > </a
+      ><a name="3045" class="PrimitiveType"
+      >Set</a
+      ><a name="3048"
+      > </a
+      ><a name="3049" href="category.instances.set.html#3027" class="Bound"
+      >j</a
+      ><a name="3050" class="Symbol"
+      >}</a
+      ><a name="3051"
+      >
+          </a
+      ><a name="3062" class="Symbol"
+      >(</a
+      ><a name="3063" href="category.instances.set.html#3063" class="Bound"
+      >f</a
+      ><a name="3064"
+      > </a
+      ><a name="3065" class="Symbol"
+      >:</a
+      ><a name="3066"
+      > </a
+      ><a name="3067" href="category.instances.set.html#3030" class="Bound"
+      >X</a
+      ><a name="3068"
+      > </a
+      ><a name="3069" class="Symbol"
+      >&#8594;</a
+      ><a name="3070"
+      > </a
+      ><a name="3071" href="category.instances.set.html#3041" class="Bound"
+      >Y</a
+      ><a name="3072" class="Symbol"
+      >)(</a
+      ><a name="3074" href="category.instances.set.html#3074" class="Bound"
+      >isom</a
+      ><a name="3078"
+      > </a
+      ><a name="3079" class="Symbol"
+      >:</a
+      ><a name="3080"
+      > </a
+      ><a name="3081" href="category.instances.set.html#3030" class="Bound"
+      >X</a
+      ><a name="3082"
+      > </a
+      ><a name="3083" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="3084"
+      > </a
+      ><a name="3085" href="category.instances.set.html#3041" class="Bound"
+      >Y</a
+      ><a name="3086" class="Symbol"
+      >)</a
+      ><a name="3087"
+      >
+        </a
+      ><a name="3096" class="Symbol"
+      >&#8594;</a
+      ><a name="3097"
+      > </a
+      ><a name="3098" class="Symbol"
+      >(</a
+      ><a name="3099" href="function.isomorphism.core.html#375" class="Function"
+      >apply</a
+      ><a name="3104"
+      > </a
+      ><a name="3105" href="category.instances.set.html#3074" class="Bound"
+      >isom</a
+      ><a name="3109"
+      > </a
+      ><a name="3110" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3111"
+      > </a
+      ><a name="3112" href="category.instances.set.html#3063" class="Bound"
+      >f</a
+      ><a name="3113" class="Symbol"
+      >)</a
+      ><a name="3114"
+      >
+        </a
+      ><a name="3123" class="Symbol"
+      >&#8594;</a
+      ><a name="3124"
+      > </a
+      ><a name="3125" href="hott.weak-equivalence.core.html#437" class="Function"
+      >weak-equiv</a
+      ><a name="3135"
+      > </a
+      ><a name="3136" href="category.instances.set.html#3063" class="Bound"
+      >f</a
+      ><a name="3137"
+      >
+    </a
+      ><a name="3142" href="category.instances.set.html#3016" class="Function"
+      >lem</a
+      ><a name="3145"
+      > </a
+      ><a name="3146" class="Symbol"
+      >{</a
+      ><a name="3147"
+      >X </a
+      ><a name="3149" class="Symbol"
+      >=</a
+      ><a name="3150"
+      > </a
+      ><a name="3151" href="category.instances.set.html#3151" class="Bound"
+      >X</a
+      ><a name="3152" class="Symbol"
+      >}{</a
+      ><a name="3154"
+      >Y </a
+      ><a name="3156" class="Symbol"
+      >=</a
+      ><a name="3157"
+      > </a
+      ><a name="3158" href="category.instances.set.html#3158" class="Bound"
+      >Y</a
+      ><a name="3159" class="Symbol"
+      >}</a
+      ><a name="3160"
+      > </a
+      ><a name="3161" class="DottedPattern Symbol"
+      >.(</a
+      ><a name="3163" href="function.isomorphism.core.html#375" class="DottedPattern Function"
+      >apply</a
+      ><a name="3168"
+      > </a
+      ><a name="3169" href="category.instances.set.html#3175" class="DottedPattern Bound"
+      >isom</a
+      ><a name="3173" class="DottedPattern Symbol"
+      >)</a
+      ><a name="3174"
+      > </a
+      ><a name="3175" href="category.instances.set.html#3175" class="Bound"
+      >isom</a
+      ><a name="3179"
+      > </a
+      ><a name="3180" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="3184"
+      > </a
+      ><a name="3185" class="Symbol"
+      >=</a
+      ><a name="3186"
+      >
+      </a
+      ><a name="3193" href="sum.html#233" class="Function"
+      >proj&#8322;</a
+      ><a name="3198"
+      > </a
+      ><a name="3199" class="Symbol"
+      >(</a
+      ><a name="3200" href="hott.weak-equivalence.alternative.html#6532" class="Function"
+      >&#8773;&#8658;&#8776;</a
+      ><a name="3203"
+      > </a
+      ><a name="3204" href="category.instances.set.html#3175" class="Bound"
+      >isom</a
+      ><a name="3208" class="Symbol"
+      >)</a
+      ><a name="3209"
+      >
+
+    </a
+      ><a name="3215" class="Comment"
+      >-- equality in the category of sets is the same as isomorphism</a
+      ><a name="3277"
+      >
+    </a
+      ><a name="3282" href="category.instances.set.html#3282" class="Function"
+      >lem-iso</a
+      ><a name="3289"
+      > </a
+      ><a name="3290" class="Symbol"
+      >:</a
+      ><a name="3291"
+      > </a
+      ><a name="3292" class="Symbol"
+      >(</a
+      ><a name="3293" href="category.instances.set.html#3293" class="Bound"
+      >A</a
+      ><a name="3294"
+      > </a
+      ><a name="3295" href="category.instances.set.html#3295" class="Bound"
+      >B</a
+      ><a name="3296"
+      > </a
+      ><a name="3297" class="Symbol"
+      >:</a
+      ><a name="3298"
+      > </a
+      ><a name="3299" href="hott.hlevel.core.html#1520" class="Function"
+      >HSet</a
+      ><a name="3303"
+      > </a
+      ><a name="3304" href="category.instances.set.html#2808" class="Bound"
+      >i</a
+      ><a name="3305" class="Symbol"
+      >)</a
+      ><a name="3306"
+      > </a
+      ><a name="3307" class="Symbol"
+      >&#8594;</a
+      ><a name="3308"
+      > </a
+      ><a name="3309" class="Symbol"
+      >(</a
+      ><a name="3310" href="category.instances.set.html#3293" class="Bound"
+      >A</a
+      ><a name="3311"
+      > </a
+      ><a name="3312" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3313"
+      > </a
+      ><a name="3314" href="category.instances.set.html#3295" class="Bound"
+      >B</a
+      ><a name="3315" class="Symbol"
+      >)</a
+      ><a name="3316"
+      > </a
+      ><a name="3317" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="3318"
+      > </a
+      ><a name="3319" href="category.isomorphism.html#383" class="Record"
+      >cat-iso</a
+      ><a name="3326"
+      > </a
+      ><a name="3327" class="Symbol"
+      >(</a
+      ><a name="3328" href="category.instances.set.html#470" class="Function"
+      >set</a
+      ><a name="3331"
+      > </a
+      ><a name="3332" href="category.instances.set.html#2808" class="Bound"
+      >i</a
+      ><a name="3333" class="Symbol"
+      >)</a
+      ><a name="3334"
+      > </a
+      ><a name="3335" href="category.instances.set.html#3293" class="Bound"
+      >A</a
+      ><a name="3336"
+      > </a
+      ><a name="3337" href="category.instances.set.html#3295" class="Bound"
+      >B</a
+      ><a name="3338"
+      >
+    </a
+      ><a name="3343" href="category.instances.set.html#3282" class="Function"
+      >lem-iso</a
+      ><a name="3350"
+      > </a
+      ><a name="3351" class="Symbol"
+      >(</a
+      ><a name="3352" href="category.instances.set.html#3352" class="Bound"
+      >A</a
+      ><a name="3353"
+      > </a
+      ><a name="3354" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3355"
+      > </a
+      ><a name="3356" href="category.instances.set.html#3356" class="Bound"
+      >hA</a
+      ><a name="3358" class="Symbol"
+      >)</a
+      ><a name="3359"
+      > </a
+      ><a name="3360" class="Symbol"
+      >(</a
+      ><a name="3361" href="category.instances.set.html#3361" class="Bound"
+      >B</a
+      ><a name="3362"
+      > </a
+      ><a name="3363" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3364"
+      > </a
+      ><a name="3365" href="category.instances.set.html#3365" class="Bound"
+      >hB</a
+      ><a name="3367" class="Symbol"
+      >)</a
+      ><a name="3368"
+      > </a
+      ><a name="3369" class="Symbol"
+      >=</a
+      ><a name="3370"
+      > </a
+      ><a name="3371" href="function.isomorphism.core.html#1181" class="Function Operator"
+      >begin</a
+      ><a name="3376"
+      >
+        </a
+      ><a name="3385" class="Symbol"
+      >(</a
+      ><a name="3386" href="category.instances.set.html#3352" class="Bound"
+      >A</a
+      ><a name="3387"
+      > </a
+      ><a name="3388" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3389"
+      > </a
+      ><a name="3390" href="category.instances.set.html#3356" class="Bound"
+      >hA</a
+      ><a name="3392" class="Symbol"
+      >)</a
+      ><a name="3393"
+      > </a
+      ><a name="3394" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3395"
+      > </a
+      ><a name="3396" class="Symbol"
+      >(</a
+      ><a name="3397" href="category.instances.set.html#3361" class="Bound"
+      >B</a
+      ><a name="3398"
+      > </a
+      ><a name="3399" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3400"
+      > </a
+      ><a name="3401" href="category.instances.set.html#3365" class="Bound"
+      >hB</a
+      ><a name="3403" class="Symbol"
+      >)</a
+      ><a name="3404"
+      >
+      </a
+      ><a name="3411" href="function.isomorphism.core.html#1269" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3413"
+      > </a
+      ><a name="3414" href="category.instances.set.html#1503" class="Function"
+      >hset-equality</a
+      ><a name="3427"
+      > </a
+      ><a name="3428" href="function.isomorphism.core.html#1269" class="Function Operator"
+      >&#10217;</a
+      ><a name="3429"
+      >
+        </a
+      ><a name="3438" href="category.instances.set.html#3352" class="Bound"
+      >A</a
+      ><a name="3439"
+      > </a
+      ><a name="3440" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3441"
+      > </a
+      ><a name="3442" href="category.instances.set.html#3361" class="Bound"
+      >B</a
+      ><a name="3443"
+      >
+      </a
+      ><a name="3450" href="function.isomorphism.core.html#1269" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3452"
+      > </a
+      ><a name="3453" href="hott.univalence.html#960" class="Function"
+      >uni-iso</a
+      ><a name="3460"
+      > </a
+      ><a name="3461" href="function.isomorphism.core.html#1269" class="Function Operator"
+      >&#10217;</a
+      ><a name="3462"
+      >
+        </a
+      ><a name="3471" href="category.instances.set.html#3352" class="Bound"
+      >A</a
+      ><a name="3472"
+      > </a
+      ><a name="3473" href="hott.weak-equivalence.core.html#586" class="Function Operator"
+      >&#8776;</a
+      ><a name="3474"
+      > </a
+      ><a name="3475" href="category.instances.set.html#3361" class="Bound"
+      >B</a
+      ><a name="3476"
+      >
+      </a
+      ><a name="3483" href="function.isomorphism.core.html#1269" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3485"
+      > </a
+      ><a name="3486" href="hott.weak-equivalence.alternative.html#3867" class="Function"
+      >&#8776;&#8660;&#8773;'</a
+      ><a name="3490"
+      > </a
+      ><a name="3491" href="function.isomorphism.core.html#1269" class="Function Operator"
+      >&#10217;</a
+      ><a name="3492"
+      >
+        </a
+      ><a name="3501" href="category.instances.set.html#3352" class="Bound"
+      >A</a
+      ><a name="3502"
+      > </a
+      ><a name="3503" href="function.isomorphism.coherent.html#644" class="Function Operator"
+      >&#8773;'</a
+      ><a name="3505"
+      > </a
+      ><a name="3506" href="category.instances.set.html#3361" class="Bound"
+      >B</a
+      ><a name="3507"
+      >
+      </a
+      ><a name="3514" href="function.isomorphism.core.html#1269" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3516"
+      > </a
+      ><a name="3517" href="category.instances.set.html#2254" class="Function"
+      >iso-coherence-h2</a
+      ><a name="3533"
+      > </a
+      ><a name="3534" class="Symbol"
+      >{</a
+      ><a name="3535"
+      >A </a
+      ><a name="3537" class="Symbol"
+      >=</a
+      ><a name="3538"
+      > </a
+      ><a name="3539" href="category.instances.set.html#3352" class="Bound"
+      >A</a
+      ><a name="3540"
+      > </a
+      ><a name="3541" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3542"
+      > </a
+      ><a name="3543" href="category.instances.set.html#3356" class="Bound"
+      >hA</a
+      ><a name="3545" class="Symbol"
+      >}</a
+      ><a name="3546"
+      >
+                          </a
+      ><a name="3573" class="Symbol"
+      >{</a
+      ><a name="3574"
+      >B </a
+      ><a name="3576" class="Symbol"
+      >=</a
+      ><a name="3577"
+      > </a
+      ><a name="3578" href="category.instances.set.html#3361" class="Bound"
+      >B</a
+      ><a name="3579"
+      > </a
+      ><a name="3580" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3581"
+      > </a
+      ><a name="3582" href="category.instances.set.html#3365" class="Bound"
+      >hB</a
+      ><a name="3584" class="Symbol"
+      >}</a
+      ><a name="3585" href="function.isomorphism.core.html#1269" class="Function Operator"
+      >&#10217;</a
+      ><a name="3586"
+      >
+        </a
+      ><a name="3595" href="category.instances.set.html#3352" class="Bound"
+      >A</a
+      ><a name="3596"
+      > </a
+      ><a name="3597" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="3598"
+      > </a
+      ><a name="3599" href="category.instances.set.html#3361" class="Bound"
+      >B</a
+      ><a name="3600"
+      >
+      </a
+      ><a name="3607" href="function.isomorphism.core.html#1269" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3609"
+      > </a
+      ><a name="3610" href="category.instances.set.html#843" class="Function"
+      >cat-iso-h2</a
+      ><a name="3620"
+      > </a
+      ><a name="3621" href="function.isomorphism.core.html#1269" class="Function Operator"
+      >&#10217;</a
+      ><a name="3622"
+      >
+        </a
+      ><a name="3631" href="category.isomorphism.html#383" class="Record"
+      >cat-iso</a
+      ><a name="3638"
+      > </a
+      ><a name="3639" class="Symbol"
+      >(</a
+      ><a name="3640" href="category.instances.set.html#470" class="Function"
+      >set</a
+      ><a name="3643"
+      > </a
+      ><a name="3644" href="category.instances.set.html#2808" class="Bound"
+      >i</a
+      ><a name="3645" class="Symbol"
+      >)</a
+      ><a name="3646"
+      > </a
+      ><a name="3647" class="Symbol"
+      >(</a
+      ><a name="3648" href="category.instances.set.html#3352" class="Bound"
+      >A</a
+      ><a name="3649"
+      > </a
+      ><a name="3650" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3651"
+      > </a
+      ><a name="3652" href="category.instances.set.html#3356" class="Bound"
+      >hA</a
+      ><a name="3654" class="Symbol"
+      >)</a
+      ><a name="3655"
+      > </a
+      ><a name="3656" class="Symbol"
+      >(</a
+      ><a name="3657" href="category.instances.set.html#3361" class="Bound"
+      >B</a
+      ><a name="3658"
+      > </a
+      ><a name="3659" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3660"
+      > </a
+      ><a name="3661" href="category.instances.set.html#3365" class="Bound"
+      >hB</a
+      ><a name="3663" class="Symbol"
+      >)</a
+      ><a name="3664"
+      >
+      </a
+      ><a name="3671" href="function.isomorphism.core.html#1574" class="Function Operator"
+      >&#8718;</a
+      ><a name="3672"
+      >
+
+    </a
+      ><a name="3678" class="Comment"
+      >-- the above isomorphism is given by &#8801;&#8658;iso</a
+      ><a name="3720"
+      >
+    </a
+      ><a name="3725" href="category.instances.set.html#3725" class="Function"
+      >lem-iso-comp</a
+      ><a name="3737"
+      > </a
+      ><a name="3738" class="Symbol"
+      >:</a
+      ><a name="3739"
+      > </a
+      ><a name="3740" class="Symbol"
+      >(</a
+      ><a name="3741" href="category.instances.set.html#3741" class="Bound"
+      >A</a
+      ><a name="3742"
+      > </a
+      ><a name="3743" href="category.instances.set.html#3743" class="Bound"
+      >B</a
+      ><a name="3744"
+      > </a
+      ><a name="3745" class="Symbol"
+      >:</a
+      ><a name="3746"
+      > </a
+      ><a name="3747" href="hott.hlevel.core.html#1520" class="Function"
+      >HSet</a
+      ><a name="3751"
+      > </a
+      ><a name="3752" href="category.instances.set.html#2808" class="Bound"
+      >i</a
+      ><a name="3753" class="Symbol"
+      >)(</a
+      ><a name="3755" href="category.instances.set.html#3755" class="Bound"
+      >p</a
+      ><a name="3756"
+      > </a
+      ><a name="3757" class="Symbol"
+      >:</a
+      ><a name="3758"
+      > </a
+      ><a name="3759" href="category.instances.set.html#3741" class="Bound"
+      >A</a
+      ><a name="3760"
+      > </a
+      ><a name="3761" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3762"
+      > </a
+      ><a name="3763" href="category.instances.set.html#3743" class="Bound"
+      >B</a
+      ><a name="3764" class="Symbol"
+      >)</a
+      ><a name="3765"
+      >
+                 </a
+      ><a name="3783" class="Symbol"
+      >&#8594;</a
+      ><a name="3784"
+      > </a
+      ><a name="3785" href="function.isomorphism.core.html#375" class="Function"
+      >apply</a
+      ><a name="3790"
+      > </a
+      ><a name="3791" class="Symbol"
+      >(</a
+      ><a name="3792" href="category.instances.set.html#3282" class="Function"
+      >lem-iso</a
+      ><a name="3799"
+      > </a
+      ><a name="3800" href="category.instances.set.html#3741" class="Bound"
+      >A</a
+      ><a name="3801"
+      > </a
+      ><a name="3802" href="category.instances.set.html#3743" class="Bound"
+      >B</a
+      ><a name="3803" class="Symbol"
+      >)</a
+      ><a name="3804"
+      > </a
+      ><a name="3805" href="category.instances.set.html#3755" class="Bound"
+      >p</a
+      ><a name="3806"
+      >
+                 </a
+      ><a name="3824" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3825"
+      > </a
+      ><a name="3826" href="category.isomorphism.html#582" class="Function"
+      >&#8801;&#8658;iso</a
+      ><a name="3831"
+      > </a
+      ><a name="3832" class="Symbol"
+      >(</a
+      ><a name="3833" href="category.instances.set.html#470" class="Function"
+      >set</a
+      ><a name="3836"
+      > </a
+      ><a name="3837" href="category.instances.set.html#2808" class="Bound"
+      >i</a
+      ><a name="3838" class="Symbol"
+      >)</a
+      ><a name="3839"
+      > </a
+      ><a name="3840" href="category.instances.set.html#3755" class="Bound"
+      >p</a
+      ><a name="3841"
+      >
+    </a
+      ><a name="3846" href="category.instances.set.html#3725" class="Function"
+      >lem-iso-comp</a
+      ><a name="3858"
+      > </a
+      ><a name="3859" href="category.instances.set.html#3859" class="Bound"
+      >A</a
+      ><a name="3860"
+      > </a
+      ><a name="3861" class="DottedPattern Symbol"
+      >.</a
+      ><a name="3862" href="category.instances.set.html#3859" class="DottedPattern Bound"
+      >A</a
+      ><a name="3863"
+      > </a
+      ><a name="3864" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="3868"
+      > </a
+      ><a name="3869" class="Symbol"
+      >=</a
+      ><a name="3870"
+      >
+      </a
+      ><a name="3877" href="equality.core.html#480" class="Function"
+      >cong&#8322;</a
+      ><a name="3882"
+      > </a
+      ><a name="3883" class="Symbol"
+      >(</a
+      ><a name="3884" href="category.isomorphism.html#456" class="InductiveConstructor"
+      >c-iso</a
+      ><a name="3889"
+      > </a
+      ><a name="3890" class="Symbol"
+      >(&#955;</a
+      ><a name="3892"
+      > </a
+      ><a name="3893" href="category.instances.set.html#3893" class="Bound"
+      >x</a
+      ><a name="3894"
+      > </a
+      ><a name="3895" class="Symbol"
+      >&#8594;</a
+      ><a name="3896"
+      > </a
+      ><a name="3897" href="category.instances.set.html#3893" class="Bound"
+      >x</a
+      ><a name="3898" class="Symbol"
+      >)</a
+      ><a name="3899"
+      > </a
+      ><a name="3900" class="Symbol"
+      >(&#955;</a
+      ><a name="3902"
+      > </a
+      ><a name="3903" href="category.instances.set.html#3903" class="Bound"
+      >x</a
+      ><a name="3904"
+      > </a
+      ><a name="3905" class="Symbol"
+      >&#8594;</a
+      ><a name="3906"
+      > </a
+      ><a name="3907" href="category.instances.set.html#3903" class="Bound"
+      >x</a
+      ><a name="3908" class="Symbol"
+      >))</a
+      ><a name="3910"
+      >
+            </a
+      ><a name="3923" class="Symbol"
+      >(</a
+      ><a name="3924" href="function.extensionality.dependent.html#895" class="Function"
+      >ext-id'</a
+      ><a name="3931"
+      > </a
+      ><a name="3932" class="Symbol"
+      >_)</a
+      ><a name="3934"
+      > </a
+      ><a name="3935" class="Symbol"
+      >(</a
+      ><a name="3936" href="function.extensionality.dependent.html#895" class="Function"
+      >ext-id'</a
+      ><a name="3943"
+      > </a
+      ><a name="3944" class="Symbol"
+      >_)</a
+      ><a name="3946"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

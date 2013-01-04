@@ -1,0 +1,1951 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >category.isomorphism</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >open</a
+      ><a name="33"
+      > </a
+      ><a name="34" class="Keyword"
+      >import</a
+      ><a name="40"
+      > </a
+      ><a name="41" href="category.category.html#1" class="Module"
+      >category.category</a
+      ><a name="58"
+      >
+
+</a
+      ><a name="60" class="Keyword"
+      >module</a
+      ><a name="66"
+      > </a
+      ><a name="67" href="category.isomorphism.html#1" class="Module"
+      >category.isomorphism</a
+      ><a name="87"
+      > </a
+      ><a name="88" class="Keyword"
+      >where</a
+      ><a name="93"
+      >
+
+</a
+      ><a name="95" class="Keyword"
+      >open</a
+      ><a name="99"
+      > </a
+      ><a name="100" class="Keyword"
+      >import</a
+      ><a name="106"
+      > </a
+      ><a name="107" href="hott.hlevel.properties.html#1" class="Module"
+      >hott.hlevel.properties</a
+      ><a name="129"
+      >
+</a
+      ><a name="130" class="Keyword"
+      >open</a
+      ><a name="134"
+      > </a
+      ><a name="135" class="Keyword"
+      >import</a
+      ><a name="141"
+      > </a
+      ><a name="142" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="162"
+      >
+  </a
+      ><a name="165" class="Keyword"
+      >renaming</a
+      ><a name="173"
+      > </a
+      ><a name="174" class="Symbol"
+      >(</a
+      ><a name="175"
+      >apply </a
+      ><a name="181" class="Symbol"
+      >to</a
+      ><a name="183"
+      > apply&#8773;</a
+      ><a name="190" class="Symbol"
+      >)</a
+      ><a name="191"
+      >
+</a
+      ><a name="192" class="Keyword"
+      >open</a
+      ><a name="196"
+      > </a
+      ><a name="197" class="Keyword"
+      >import</a
+      ><a name="203"
+      > </a
+      ><a name="204" href="function.isomorphism.properties.html#1" class="Module"
+      >function.isomorphism.properties</a
+      ><a name="235"
+      >
+</a
+      ><a name="236" class="Keyword"
+      >open</a
+      ><a name="240"
+      > </a
+      ><a name="241" class="Keyword"
+      >import</a
+      ><a name="247"
+      > </a
+      ><a name="248" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="251"
+      >
+</a
+      ><a name="252" class="Keyword"
+      >open</a
+      ><a name="256"
+      > </a
+      ><a name="257" class="Keyword"
+      >import</a
+      ><a name="263"
+      > </a
+      ><a name="264" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="277"
+      >
+</a
+      ><a name="278" class="Keyword"
+      >open</a
+      ><a name="282"
+      > </a
+      ><a name="283" class="Keyword"
+      >import</a
+      ><a name="289"
+      > </a
+      ><a name="290" href="equality.calculus.html#1" class="Module"
+      >equality.calculus</a
+      ><a name="307"
+      > </a
+      ><a name="308" class="Keyword"
+      >using</a
+      ><a name="313"
+      > </a
+      ><a name="314" class="Symbol"
+      >(</a
+      ><a name="315"
+      >uncong&#931;</a
+      ><a name="322" class="Symbol"
+      >)</a
+      ><a name="323"
+      >
+</a
+      ><a name="324" class="Keyword"
+      >open</a
+      ><a name="328"
+      > </a
+      ><a name="329" class="Keyword"
+      >import</a
+      ><a name="335"
+      > </a
+      ><a name="336" href="hott.hlevel.html#1" class="Module"
+      >hott.hlevel</a
+      ><a name="347"
+      >
+
+</a
+      ><a name="349" class="Keyword"
+      >open</a
+      ><a name="353"
+      > </a
+      ><a name="354" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="362"
+      > </a
+      ><a name="363" class="Keyword"
+      >using</a
+      ><a name="368"
+      > </a
+      ><a name="369" class="Symbol"
+      >(</a
+      ><a name="370"
+      >obj</a
+      ><a name="373" class="Symbol"
+      >)</a
+      ><a name="374"
+      >
+
+</a
+      ><a name="376" class="Keyword"
+      >record</a
+      ><a name="382"
+      > </a
+      ><a name="383" href="category.isomorphism.html#383" class="Record"
+      >cat-iso</a
+      ><a name="390"
+      > </a
+      ><a name="391" class="Symbol"
+      >{</a
+      ><a name="392" href="category.isomorphism.html#392" class="Bound"
+      >i</a
+      ><a name="393"
+      > </a
+      ><a name="394" href="category.isomorphism.html#394" class="Bound"
+      >j</a
+      ><a name="395" class="Symbol"
+      >}(</a
+      ><a name="397" href="category.isomorphism.html#397" class="Bound"
+      >C</a
+      ><a name="398"
+      > </a
+      ><a name="399" class="Symbol"
+      >:</a
+      ><a name="400"
+      > </a
+      ><a name="401" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="409"
+      > </a
+      ><a name="410" href="category.isomorphism.html#392" class="Bound"
+      >i</a
+      ><a name="411"
+      > </a
+      ><a name="412" href="category.isomorphism.html#394" class="Bound"
+      >j</a
+      ><a name="413" class="Symbol"
+      >)(</a
+      ><a name="415" href="category.isomorphism.html#415" class="Bound"
+      >x</a
+      ><a name="416"
+      > </a
+      ><a name="417" href="category.isomorphism.html#417" class="Bound"
+      >y</a
+      ><a name="418"
+      > </a
+      ><a name="419" class="Symbol"
+      >:</a
+      ><a name="420"
+      > </a
+      ><a name="421" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="424"
+      > </a
+      ><a name="425" href="category.isomorphism.html#397" class="Bound"
+      >C</a
+      ><a name="426" class="Symbol"
+      >)</a
+      ><a name="427"
+      > </a
+      ><a name="428" class="Symbol"
+      >:</a
+      ><a name="429"
+      > </a
+      ><a name="430" class="PrimitiveType"
+      >Set</a
+      ><a name="433"
+      > </a
+      ><a name="434" href="category.isomorphism.html#394" class="Bound"
+      >j</a
+      ><a name="435"
+      > </a
+      ><a name="436" class="Keyword"
+      >where</a
+      ><a name="441"
+      >
+  </a
+      ><a name="444" class="Keyword"
+      >constructor</a
+      ><a name="455"
+      > </a
+      ><a name="456" href="category.isomorphism.html#456" class="InductiveConstructor"
+      >c-iso</a
+      ><a name="461"
+      >
+  </a
+      ><a name="464" class="Keyword"
+      >open</a
+      ><a name="468"
+      > </a
+      ><a name="469" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="477"
+      > </a
+      ><a name="478" href="category.isomorphism.html#397" class="Bound"
+      >C</a
+      ><a name="479"
+      >
+  </a
+      ><a name="482" class="Keyword"
+      >field</a
+      ><a name="487"
+      >
+    </a
+      ><a name="492" href="category.isomorphism.html#492" class="Field"
+      >to</a
+      ><a name="494"
+      > </a
+      ><a name="495" class="Symbol"
+      >:</a
+      ><a name="496"
+      > </a
+      ><a name="497" href="category.category.html#308" class="Function"
+      >hom</a
+      ><a name="500"
+      > </a
+      ><a name="501" href="category.isomorphism.html#415" class="Bound"
+      >x</a
+      ><a name="502"
+      > </a
+      ><a name="503" href="category.isomorphism.html#417" class="Bound"
+      >y</a
+      ><a name="504"
+      >
+    </a
+      ><a name="509" href="category.isomorphism.html#509" class="Field"
+      >from</a
+      ><a name="513"
+      > </a
+      ><a name="514" class="Symbol"
+      >:</a
+      ><a name="515"
+      > </a
+      ><a name="516" href="category.category.html#308" class="Function"
+      >hom</a
+      ><a name="519"
+      > </a
+      ><a name="520" href="category.isomorphism.html#417" class="Bound"
+      >y</a
+      ><a name="521"
+      > </a
+      ><a name="522" href="category.isomorphism.html#415" class="Bound"
+      >x</a
+      ><a name="523"
+      >
+
+    </a
+      ><a name="529" href="category.isomorphism.html#529" class="Field"
+      >iso&#8321;</a
+      ><a name="533"
+      > </a
+      ><a name="534" class="Symbol"
+      >:</a
+      ><a name="535"
+      > </a
+      ><a name="536" href="category.isomorphism.html#509" class="Bound"
+      >from</a
+      ><a name="540"
+      > </a
+      ><a name="541" href="category.category.html#401" class="Function Operator"
+      >&#8728;</a
+      ><a name="542"
+      > </a
+      ><a name="543" href="category.isomorphism.html#492" class="Bound"
+      >to</a
+      ><a name="545"
+      > </a
+      ><a name="546" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="547"
+      > </a
+      ><a name="548" href="category.category.html#372" class="Function"
+      >id</a
+      ><a name="550"
+      > </a
+      ><a name="551" href="category.isomorphism.html#415" class="Bound"
+      >x</a
+      ><a name="552"
+      >
+    </a
+      ><a name="557" href="category.isomorphism.html#557" class="Field"
+      >iso&#8322;</a
+      ><a name="561"
+      > </a
+      ><a name="562" class="Symbol"
+      >:</a
+      ><a name="563"
+      > </a
+      ><a name="564" href="category.isomorphism.html#492" class="Bound"
+      >to</a
+      ><a name="566"
+      > </a
+      ><a name="567" href="category.category.html#401" class="Function Operator"
+      >&#8728;</a
+      ><a name="568"
+      > </a
+      ><a name="569" href="category.isomorphism.html#509" class="Bound"
+      >from</a
+      ><a name="573"
+      > </a
+      ><a name="574" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="575"
+      > </a
+      ><a name="576" href="category.category.html#372" class="Function"
+      >id</a
+      ><a name="578"
+      > </a
+      ><a name="579" href="category.isomorphism.html#417" class="Bound"
+      >y</a
+      ><a name="580"
+      >
+
+</a
+      ><a name="582" href="category.isomorphism.html#582" class="Function"
+      >&#8801;&#8658;iso</a
+      ><a name="587"
+      > </a
+      ><a name="588" class="Symbol"
+      >:</a
+      ><a name="589"
+      > </a
+      ><a name="590" class="Symbol"
+      >&#8704;</a
+      ><a name="591"
+      > </a
+      ><a name="592" class="Symbol"
+      >{</a
+      ><a name="593" href="category.isomorphism.html#593" class="Bound"
+      >i</a
+      ><a name="594"
+      > </a
+      ><a name="595" href="category.isomorphism.html#595" class="Bound"
+      >j</a
+      ><a name="596" class="Symbol"
+      >}(</a
+      ><a name="598" href="category.isomorphism.html#598" class="Bound"
+      >C</a
+      ><a name="599"
+      > </a
+      ><a name="600" class="Symbol"
+      >:</a
+      ><a name="601"
+      > </a
+      ><a name="602" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="610"
+      > </a
+      ><a name="611" href="category.isomorphism.html#593" class="Bound"
+      >i</a
+      ><a name="612"
+      > </a
+      ><a name="613" href="category.isomorphism.html#595" class="Bound"
+      >j</a
+      ><a name="614" class="Symbol"
+      >){</a
+      ><a name="616" href="category.isomorphism.html#616" class="Bound"
+      >x</a
+      ><a name="617"
+      > </a
+      ><a name="618" href="category.isomorphism.html#618" class="Bound"
+      >y</a
+      ><a name="619"
+      > </a
+      ><a name="620" class="Symbol"
+      >:</a
+      ><a name="621"
+      > </a
+      ><a name="622" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="625"
+      > </a
+      ><a name="626" href="category.isomorphism.html#598" class="Bound"
+      >C</a
+      ><a name="627" class="Symbol"
+      >}</a
+      ><a name="628"
+      > </a
+      ><a name="629" class="Symbol"
+      >&#8594;</a
+      ><a name="630"
+      > </a
+      ><a name="631" href="category.isomorphism.html#616" class="Bound"
+      >x</a
+      ><a name="632"
+      > </a
+      ><a name="633" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="634"
+      > </a
+      ><a name="635" href="category.isomorphism.html#618" class="Bound"
+      >y</a
+      ><a name="636"
+      > </a
+      ><a name="637" class="Symbol"
+      >&#8594;</a
+      ><a name="638"
+      > </a
+      ><a name="639" href="category.isomorphism.html#383" class="Record"
+      >cat-iso</a
+      ><a name="646"
+      > </a
+      ><a name="647" href="category.isomorphism.html#598" class="Bound"
+      >C</a
+      ><a name="648"
+      > </a
+      ><a name="649" href="category.isomorphism.html#616" class="Bound"
+      >x</a
+      ><a name="650"
+      > </a
+      ><a name="651" href="category.isomorphism.html#618" class="Bound"
+      >y</a
+      ><a name="652"
+      >
+</a
+      ><a name="653" href="category.isomorphism.html#582" class="Function"
+      >&#8801;&#8658;iso</a
+      ><a name="658"
+      > </a
+      ><a name="659" href="category.isomorphism.html#659" class="Bound"
+      >C</a
+      ><a name="660"
+      > </a
+      ><a name="661" class="Symbol"
+      >{</a
+      ><a name="662" href="category.isomorphism.html#662" class="Bound"
+      >x</a
+      ><a name="663" class="Symbol"
+      >}{</a
+      ><a name="665" class="DottedPattern Symbol"
+      >.</a
+      ><a name="666" href="category.isomorphism.html#662" class="DottedPattern Bound"
+      >x</a
+      ><a name="667" class="Symbol"
+      >}</a
+      ><a name="668"
+      > </a
+      ><a name="669" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="673"
+      > </a
+      ><a name="674" class="Symbol"
+      >=</a
+      ><a name="675"
+      > </a
+      ><a name="676" class="Keyword"
+      >record</a
+      ><a name="682"
+      >
+  </a
+      ><a name="685" class="Symbol"
+      >{</a
+      ><a name="686"
+      > </a
+      ><a name="687" class="Field"
+      >to</a
+      ><a name="689"
+      > </a
+      ><a name="690" class="Symbol"
+      >=</a
+      ><a name="691"
+      > </a
+      ><a name="692" href="category.category.html#372" class="Function"
+      >id</a
+      ><a name="694"
+      > </a
+      ><a name="695" href="category.isomorphism.html#662" class="Bound"
+      >x</a
+      ><a name="696"
+      >
+  </a
+      ><a name="699" class="Symbol"
+      >;</a
+      ><a name="700"
+      > </a
+      ><a name="701" class="Field"
+      >from</a
+      ><a name="705"
+      > </a
+      ><a name="706" class="Symbol"
+      >=</a
+      ><a name="707"
+      > </a
+      ><a name="708" href="category.category.html#372" class="Function"
+      >id</a
+      ><a name="710"
+      > </a
+      ><a name="711" href="category.isomorphism.html#662" class="Bound"
+      >x</a
+      ><a name="712"
+      >
+  </a
+      ><a name="715" class="Symbol"
+      >;</a
+      ><a name="716"
+      > </a
+      ><a name="717" class="Field"
+      >iso&#8321;</a
+      ><a name="721"
+      > </a
+      ><a name="722" class="Symbol"
+      >=</a
+      ><a name="723"
+      > </a
+      ><a name="724" href="category.category.html#456" class="Function"
+      >left-unit</a
+      ><a name="733"
+      > </a
+      ><a name="734" class="Symbol"
+      >_</a
+      ><a name="735"
+      >
+  </a
+      ><a name="738" class="Symbol"
+      >;</a
+      ><a name="739"
+      > </a
+      ><a name="740" class="Field"
+      >iso&#8322;</a
+      ><a name="744"
+      > </a
+      ><a name="745" class="Symbol"
+      >=</a
+      ><a name="746"
+      > </a
+      ><a name="747" href="category.category.html#456" class="Function"
+      >left-unit</a
+      ><a name="756"
+      > </a
+      ><a name="757" class="Symbol"
+      >_</a
+      ><a name="758"
+      > </a
+      ><a name="759" class="Symbol"
+      >}</a
+      ><a name="760"
+      >
+  </a
+      ><a name="763" class="Keyword"
+      >where</a
+      ><a name="768"
+      > </a
+      ><a name="769" class="Keyword"
+      >open</a
+      ><a name="773"
+      > </a
+      ><a name="774" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="782"
+      > </a
+      ><a name="783" href="category.isomorphism.html#659" class="Bound"
+      >C</a
+      ><a name="784"
+      >
+
+</a
+      ><a name="786" class="Keyword"
+      >private</a
+      ><a name="793"
+      >
+  </a
+      ><a name="796" class="Keyword"
+      >module</a
+      ><a name="802"
+      > </a
+      ><a name="803" href="category.isomorphism.html#803" class="Module"
+      >Properties</a
+      ><a name="813"
+      > </a
+      ><a name="814" class="Symbol"
+      >{</a
+      ><a name="815" href="category.isomorphism.html#815" class="Bound"
+      >i</a
+      ><a name="816"
+      > </a
+      ><a name="817" href="category.isomorphism.html#817" class="Bound"
+      >j</a
+      ><a name="818" class="Symbol"
+      >}{</a
+      ><a name="820" href="category.isomorphism.html#820" class="Bound"
+      >C</a
+      ><a name="821"
+      > </a
+      ><a name="822" class="Symbol"
+      >:</a
+      ><a name="823"
+      > </a
+      ><a name="824" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="832"
+      > </a
+      ><a name="833" href="category.isomorphism.html#815" class="Bound"
+      >i</a
+      ><a name="834"
+      > </a
+      ><a name="835" href="category.isomorphism.html#817" class="Bound"
+      >j</a
+      ><a name="836" class="Symbol"
+      >}(</a
+      ><a name="838" href="category.isomorphism.html#838" class="Bound"
+      >x</a
+      ><a name="839"
+      > </a
+      ><a name="840" href="category.isomorphism.html#840" class="Bound"
+      >y</a
+      ><a name="841"
+      > </a
+      ><a name="842" class="Symbol"
+      >:</a
+      ><a name="843"
+      > </a
+      ><a name="844" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="847"
+      > </a
+      ><a name="848" href="category.isomorphism.html#820" class="Bound"
+      >C</a
+      ><a name="849" class="Symbol"
+      >)</a
+      ><a name="850"
+      > </a
+      ><a name="851" class="Keyword"
+      >where</a
+      ><a name="856"
+      >
+    </a
+      ><a name="861" class="Keyword"
+      >open</a
+      ><a name="865"
+      > </a
+      ><a name="866" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="874"
+      > </a
+      ><a name="875" href="category.isomorphism.html#820" class="Bound"
+      >C</a
+      ><a name="876"
+      >
+    </a
+      ><a name="881" href="category.isomorphism.html#881" class="Function"
+      >inverses</a
+      ><a name="889"
+      > </a
+      ><a name="890" class="Symbol"
+      >:</a
+      ><a name="891"
+      > </a
+      ><a name="892" href="category.category.html#308" class="Function"
+      >hom</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="category.isomorphism.html#838" class="Bound"
+      >x</a
+      ><a name="897"
+      > </a
+      ><a name="898" href="category.isomorphism.html#840" class="Bound"
+      >y</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="sum.html#265" class="Function Operator"
+      >&#215;</a
+      ><a name="901"
+      > </a
+      ><a name="902" href="category.category.html#308" class="Function"
+      >hom</a
+      ><a name="905"
+      > </a
+      ><a name="906" href="category.isomorphism.html#840" class="Bound"
+      >y</a
+      ><a name="907"
+      > </a
+      ><a name="908" href="category.isomorphism.html#838" class="Bound"
+      >x</a
+      ><a name="909"
+      > </a
+      ><a name="910" class="Symbol"
+      >&#8594;</a
+      ><a name="911"
+      > </a
+      ><a name="912" class="PrimitiveType"
+      >Set</a
+      ><a name="915"
+      > </a
+      ><a name="916" class="Symbol"
+      >_</a
+      ><a name="917"
+      >
+    </a
+      ><a name="922" href="category.isomorphism.html#881" class="Function"
+      >inverses</a
+      ><a name="930"
+      > </a
+      ><a name="931" class="Symbol"
+      >(</a
+      ><a name="932" href="category.isomorphism.html#932" class="Bound"
+      >t</a
+      ><a name="933"
+      > </a
+      ><a name="934" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="935"
+      > </a
+      ><a name="936" href="category.isomorphism.html#936" class="Bound"
+      >f</a
+      ><a name="937" class="Symbol"
+      >)</a
+      ><a name="938"
+      > </a
+      ><a name="939" class="Symbol"
+      >=</a
+      ><a name="940"
+      > </a
+      ><a name="941" href="category.isomorphism.html#936" class="Bound"
+      >f</a
+      ><a name="942"
+      > </a
+      ><a name="943" href="category.category.html#401" class="Function Operator"
+      >&#8728;</a
+      ><a name="944"
+      > </a
+      ><a name="945" href="category.isomorphism.html#932" class="Bound"
+      >t</a
+      ><a name="946"
+      > </a
+      ><a name="947" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="948"
+      > </a
+      ><a name="949" href="category.category.html#372" class="Function"
+      >id</a
+      ><a name="951"
+      > </a
+      ><a name="952" href="category.isomorphism.html#838" class="Bound"
+      >x</a
+      ><a name="953"
+      >
+                     </a
+      ><a name="975" href="sum.html#265" class="Function Operator"
+      >&#215;</a
+      ><a name="976"
+      > </a
+      ><a name="977" href="category.isomorphism.html#932" class="Bound"
+      >t</a
+      ><a name="978"
+      > </a
+      ><a name="979" href="category.category.html#401" class="Function Operator"
+      >&#8728;</a
+      ><a name="980"
+      > </a
+      ><a name="981" href="category.isomorphism.html#936" class="Bound"
+      >f</a
+      ><a name="982"
+      > </a
+      ><a name="983" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="984"
+      > </a
+      ><a name="985" href="category.category.html#372" class="Function"
+      >id</a
+      ><a name="987"
+      > </a
+      ><a name="988" href="category.isomorphism.html#840" class="Bound"
+      >y</a
+      ><a name="989"
+      >
+
+    </a
+      ><a name="995" href="category.isomorphism.html#995" class="Function"
+      >inverses-h1</a
+      ><a name="1006"
+      > </a
+      ><a name="1007" class="Symbol"
+      >:</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" class="Symbol"
+      >&#8704;</a
+      ><a name="1010"
+      > </a
+      ><a name="1011" href="category.isomorphism.html#1011" class="Bound"
+      >tf</a
+      ><a name="1013"
+      > </a
+      ><a name="1014" class="Symbol"
+      >&#8594;</a
+      ><a name="1015"
+      > </a
+      ><a name="1016" href="hott.hlevel.core.html#240" class="Function"
+      >h</a
+      ><a name="1017"
+      > </a
+      ><a name="1018" class="Number"
+      >1</a
+      ><a name="1019"
+      > </a
+      ><a name="1020" class="Symbol"
+      >(</a
+      ><a name="1021" href="category.isomorphism.html#881" class="Function"
+      >inverses</a
+      ><a name="1029"
+      > </a
+      ><a name="1030" href="category.isomorphism.html#1011" class="Bound"
+      >tf</a
+      ><a name="1032" class="Symbol"
+      >)</a
+      ><a name="1033"
+      >
+    </a
+      ><a name="1038" href="category.isomorphism.html#995" class="Function"
+      >inverses-h1</a
+      ><a name="1049"
+      > </a
+      ><a name="1050" class="Symbol"
+      >(</a
+      ><a name="1051" href="category.isomorphism.html#1051" class="Bound"
+      >t</a
+      ><a name="1052"
+      > </a
+      ><a name="1053" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" href="category.isomorphism.html#1055" class="Bound"
+      >f</a
+      ><a name="1056" class="Symbol"
+      >)</a
+      ><a name="1057"
+      > </a
+      ><a name="1058" class="Symbol"
+      >=</a
+      ><a name="1059"
+      >
+      </a
+      ><a name="1066" href="hott.hlevel.closure.html#1449" class="Function"
+      >&#215;-hlevel</a
+      ><a name="1074"
+      > </a
+      ><a name="1075" class="Symbol"
+      >(</a
+      ><a name="1076" href="category.category.html#337" class="Function"
+      >trunc</a
+      ><a name="1081"
+      > </a
+      ><a name="1082" href="category.isomorphism.html#838" class="Bound"
+      >x</a
+      ><a name="1083"
+      > </a
+      ><a name="1084" href="category.isomorphism.html#838" class="Bound"
+      >x</a
+      ><a name="1085"
+      > </a
+      ><a name="1086" class="Symbol"
+      >(</a
+      ><a name="1087" href="category.isomorphism.html#1055" class="Bound"
+      >f</a
+      ><a name="1088"
+      > </a
+      ><a name="1089" href="category.category.html#401" class="Function Operator"
+      >&#8728;</a
+      ><a name="1090"
+      > </a
+      ><a name="1091" href="category.isomorphism.html#1051" class="Bound"
+      >t</a
+      ><a name="1092" class="Symbol"
+      >)</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" class="Symbol"
+      >(</a
+      ><a name="1095" href="category.category.html#372" class="Function"
+      >id</a
+      ><a name="1097"
+      > </a
+      ><a name="1098" href="category.isomorphism.html#838" class="Bound"
+      >x</a
+      ><a name="1099" class="Symbol"
+      >))</a
+      ><a name="1101"
+      >
+               </a
+      ><a name="1117" class="Symbol"
+      >(</a
+      ><a name="1118" href="category.category.html#337" class="Function"
+      >trunc</a
+      ><a name="1123"
+      > </a
+      ><a name="1124" href="category.isomorphism.html#840" class="Bound"
+      >y</a
+      ><a name="1125"
+      > </a
+      ><a name="1126" href="category.isomorphism.html#840" class="Bound"
+      >y</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" class="Symbol"
+      >(</a
+      ><a name="1129" href="category.isomorphism.html#1051" class="Bound"
+      >t</a
+      ><a name="1130"
+      > </a
+      ><a name="1131" href="category.category.html#401" class="Function Operator"
+      >&#8728;</a
+      ><a name="1132"
+      > </a
+      ><a name="1133" href="category.isomorphism.html#1055" class="Bound"
+      >f</a
+      ><a name="1134" class="Symbol"
+      >)</a
+      ><a name="1135"
+      > </a
+      ><a name="1136" class="Symbol"
+      >(</a
+      ><a name="1137" href="category.category.html#372" class="Function"
+      >id</a
+      ><a name="1139"
+      > </a
+      ><a name="1140" href="category.isomorphism.html#840" class="Bound"
+      >y</a
+      ><a name="1141" class="Symbol"
+      >))</a
+      ><a name="1143"
+      >
+
+    </a
+      ><a name="1149" href="category.isomorphism.html#1149" class="Function"
+      >E</a
+      ><a name="1150"
+      > </a
+      ><a name="1151" class="Symbol"
+      >:</a
+      ><a name="1152"
+      > </a
+      ><a name="1153" class="PrimitiveType"
+      >Set</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" class="Symbol"
+      >_</a
+      ><a name="1158"
+      >
+    </a
+      ><a name="1163" href="category.isomorphism.html#1149" class="Function"
+      >E</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" class="Symbol"
+      >=</a
+      ><a name="1166"
+      > </a
+      ><a name="1167" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="1168"
+      > </a
+      ><a name="1169" class="Symbol"
+      >(</a
+      ><a name="1170" href="category.category.html#308" class="Function"
+      >hom</a
+      ><a name="1173"
+      > </a
+      ><a name="1174" href="category.isomorphism.html#838" class="Bound"
+      >x</a
+      ><a name="1175"
+      > </a
+      ><a name="1176" href="category.isomorphism.html#840" class="Bound"
+      >y</a
+      ><a name="1177"
+      > </a
+      ><a name="1178" href="sum.html#265" class="Function Operator"
+      >&#215;</a
+      ><a name="1179"
+      > </a
+      ><a name="1180" href="category.category.html#308" class="Function"
+      >hom</a
+      ><a name="1183"
+      > </a
+      ><a name="1184" href="category.isomorphism.html#840" class="Bound"
+      >y</a
+      ><a name="1185"
+      > </a
+      ><a name="1186" href="category.isomorphism.html#838" class="Bound"
+      >x</a
+      ><a name="1187" class="Symbol"
+      >)</a
+      ><a name="1188"
+      > </a
+      ><a name="1189" href="category.isomorphism.html#881" class="Function"
+      >inverses</a
+      ><a name="1197"
+      >
+
+    </a
+      ><a name="1203" href="category.isomorphism.html#1203" class="Function"
+      >e-iso</a
+      ><a name="1208"
+      > </a
+      ><a name="1209" class="Symbol"
+      >:</a
+      ><a name="1210"
+      > </a
+      ><a name="1211" href="category.isomorphism.html#1149" class="Function"
+      >E</a
+      ><a name="1212"
+      > </a
+      ><a name="1213" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="1214"
+      > </a
+      ><a name="1215" href="category.isomorphism.html#383" class="Record"
+      >cat-iso</a
+      ><a name="1222"
+      > </a
+      ><a name="1223" href="category.isomorphism.html#820" class="Bound"
+      >C</a
+      ><a name="1224"
+      > </a
+      ><a name="1225" href="category.isomorphism.html#838" class="Bound"
+      >x</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" href="category.isomorphism.html#840" class="Bound"
+      >y</a
+      ><a name="1228"
+      >
+    </a
+      ><a name="1233" href="category.isomorphism.html#1203" class="Function"
+      >e-iso</a
+      ><a name="1238"
+      > </a
+      ><a name="1239" class="Symbol"
+      >=</a
+      ><a name="1240"
+      > </a
+      ><a name="1241" class="Keyword"
+      >record</a
+      ><a name="1247"
+      >
+      </a
+      ><a name="1254" class="Symbol"
+      >{</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" class="Field"
+      >to</a
+      ><a name="1258"
+      > </a
+      ><a name="1259" class="Symbol"
+      >=</a
+      ><a name="1260"
+      > </a
+      ><a name="1261" class="Symbol"
+      >&#955;</a
+      ><a name="1262"
+      > </a
+      ><a name="1263" class="Symbol"
+      >{</a
+      ><a name="1264"
+      > </a
+      ><a name="1265" class="Symbol"
+      >((</a
+      ><a name="1267" href="category.isomorphism.html#1267" class="Bound"
+      >t</a
+      ><a name="1268"
+      > </a
+      ><a name="1269" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1270"
+      > </a
+      ><a name="1271" href="category.isomorphism.html#1271" class="Bound"
+      >f</a
+      ><a name="1272" class="Symbol"
+      >)</a
+      ><a name="1273"
+      > </a
+      ><a name="1274" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1275"
+      > </a
+      ><a name="1276" class="Symbol"
+      >(</a
+      ><a name="1277" href="category.isomorphism.html#1277" class="Bound"
+      >i&#8321;</a
+      ><a name="1279"
+      > </a
+      ><a name="1280" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="category.isomorphism.html#1282" class="Bound"
+      >i&#8322;</a
+      ><a name="1284" class="Symbol"
+      >))</a
+      ><a name="1286"
+      > </a
+      ><a name="1287" class="Symbol"
+      >&#8594;</a
+      ><a name="1288"
+      > </a
+      ><a name="1289" href="category.isomorphism.html#456" class="InductiveConstructor"
+      >c-iso</a
+      ><a name="1294"
+      > </a
+      ><a name="1295" href="category.isomorphism.html#1267" class="Bound"
+      >t</a
+      ><a name="1296"
+      > </a
+      ><a name="1297" href="category.isomorphism.html#1271" class="Bound"
+      >f</a
+      ><a name="1298"
+      > </a
+      ><a name="1299" href="category.isomorphism.html#1277" class="Bound"
+      >i&#8321;</a
+      ><a name="1301"
+      > </a
+      ><a name="1302" href="category.isomorphism.html#1282" class="Bound"
+      >i&#8322;</a
+      ><a name="1304"
+      > </a
+      ><a name="1305" class="Symbol"
+      >}</a
+      ><a name="1306"
+      >
+      </a
+      ><a name="1313" class="Symbol"
+      >;</a
+      ><a name="1314"
+      > </a
+      ><a name="1315" class="Field"
+      >from</a
+      ><a name="1319"
+      > </a
+      ><a name="1320" class="Symbol"
+      >=</a
+      ><a name="1321"
+      > </a
+      ><a name="1322" class="Symbol"
+      >&#955;</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" class="Symbol"
+      >{</a
+      ><a name="1325"
+      > </a
+      ><a name="1326" class="Symbol"
+      >(</a
+      ><a name="1327" href="category.isomorphism.html#456" class="InductiveConstructor"
+      >c-iso</a
+      ><a name="1332"
+      > </a
+      ><a name="1333" href="category.isomorphism.html#1333" class="Bound"
+      >t</a
+      ><a name="1334"
+      > </a
+      ><a name="1335" href="category.isomorphism.html#1335" class="Bound"
+      >f</a
+      ><a name="1336"
+      > </a
+      ><a name="1337" href="category.isomorphism.html#1337" class="Bound"
+      >i&#8321;</a
+      ><a name="1339"
+      > </a
+      ><a name="1340" href="category.isomorphism.html#1340" class="Bound"
+      >i&#8322;</a
+      ><a name="1342" class="Symbol"
+      >)</a
+      ><a name="1343"
+      > </a
+      ><a name="1344" class="Symbol"
+      >&#8594;</a
+      ><a name="1345"
+      > </a
+      ><a name="1346" class="Symbol"
+      >((</a
+      ><a name="1348" href="category.isomorphism.html#1333" class="Bound"
+      >t</a
+      ><a name="1349"
+      > </a
+      ><a name="1350" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1351"
+      > </a
+      ><a name="1352" href="category.isomorphism.html#1335" class="Bound"
+      >f</a
+      ><a name="1353" class="Symbol"
+      >)</a
+      ><a name="1354"
+      > </a
+      ><a name="1355" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1356"
+      > </a
+      ><a name="1357" class="Symbol"
+      >(</a
+      ><a name="1358" href="category.isomorphism.html#1337" class="Bound"
+      >i&#8321;</a
+      ><a name="1360"
+      > </a
+      ><a name="1361" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1362"
+      > </a
+      ><a name="1363" href="category.isomorphism.html#1340" class="Bound"
+      >i&#8322;</a
+      ><a name="1365" class="Symbol"
+      >))</a
+      ><a name="1367"
+      > </a
+      ><a name="1368" class="Symbol"
+      >}</a
+      ><a name="1369"
+      >
+      </a
+      ><a name="1376" class="Symbol"
+      >;</a
+      ><a name="1377"
+      > </a
+      ><a name="1378" class="Field"
+      >iso&#8321;</a
+      ><a name="1382"
+      > </a
+      ><a name="1383" class="Symbol"
+      >=</a
+      ><a name="1384"
+      > </a
+      ><a name="1385" class="Symbol"
+      >&#955;</a
+      ><a name="1386"
+      > </a
+      ><a name="1387" href="category.isomorphism.html#1387" class="Bound"
+      >_</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" class="Symbol"
+      >&#8594;</a
+      ><a name="1390"
+      > </a
+      ><a name="1391" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1395"
+      >
+      </a
+      ><a name="1402" class="Symbol"
+      >;</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" class="Field"
+      >iso&#8322;</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" class="Symbol"
+      >=</a
+      ><a name="1410"
+      > </a
+      ><a name="1411" class="Symbol"
+      >&#955;</a
+      ><a name="1412"
+      > </a
+      ><a name="1413" href="category.isomorphism.html#1413" class="Bound"
+      >_</a
+      ><a name="1414"
+      > </a
+      ><a name="1415" class="Symbol"
+      >&#8594;</a
+      ><a name="1416"
+      > </a
+      ><a name="1417" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1421"
+      > </a
+      ><a name="1422" class="Symbol"
+      >}</a
+      ><a name="1423"
+      >
+
+</a
+      ><a name="1425" href="category.isomorphism.html#1425" class="Function"
+      >cat-iso-hset</a
+      ><a name="1437"
+      > </a
+      ><a name="1438" class="Symbol"
+      >:</a
+      ><a name="1439"
+      > </a
+      ><a name="1440" class="Symbol"
+      >&#8704;</a
+      ><a name="1441"
+      > </a
+      ><a name="1442" class="Symbol"
+      >{</a
+      ><a name="1443" href="category.isomorphism.html#1443" class="Bound"
+      >i</a
+      ><a name="1444"
+      > </a
+      ><a name="1445" href="category.isomorphism.html#1445" class="Bound"
+      >j</a
+      ><a name="1446" class="Symbol"
+      >}{</a
+      ><a name="1448" href="category.isomorphism.html#1448" class="Bound"
+      >C</a
+      ><a name="1449"
+      > </a
+      ><a name="1450" class="Symbol"
+      >:</a
+      ><a name="1451"
+      > </a
+      ><a name="1452" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="1460"
+      > </a
+      ><a name="1461" href="category.isomorphism.html#1443" class="Bound"
+      >i</a
+      ><a name="1462"
+      > </a
+      ><a name="1463" href="category.isomorphism.html#1445" class="Bound"
+      >j</a
+      ><a name="1464" class="Symbol"
+      >}</a
+      ><a name="1465"
+      > </a
+      ><a name="1466" class="Symbol"
+      >(</a
+      ><a name="1467" href="category.isomorphism.html#1467" class="Bound"
+      >x</a
+      ><a name="1468"
+      > </a
+      ><a name="1469" href="category.isomorphism.html#1469" class="Bound"
+      >y</a
+      ><a name="1470"
+      > </a
+      ><a name="1471" class="Symbol"
+      >:</a
+      ><a name="1472"
+      > </a
+      ><a name="1473" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="1476"
+      > </a
+      ><a name="1477" href="category.isomorphism.html#1448" class="Bound"
+      >C</a
+      ><a name="1478" class="Symbol"
+      >)</a
+      ><a name="1479"
+      > </a
+      ><a name="1480" class="Symbol"
+      >&#8594;</a
+      ><a name="1481"
+      > </a
+      ><a name="1482" href="hott.hlevel.core.html#240" class="Function"
+      >h</a
+      ><a name="1483"
+      > </a
+      ><a name="1484" class="Number"
+      >2</a
+      ><a name="1485"
+      > </a
+      ><a name="1486" class="Symbol"
+      >(</a
+      ><a name="1487" href="category.isomorphism.html#383" class="Record"
+      >cat-iso</a
+      ><a name="1494"
+      > </a
+      ><a name="1495" href="category.isomorphism.html#1448" class="Bound"
+      >C</a
+      ><a name="1496"
+      > </a
+      ><a name="1497" href="category.isomorphism.html#1467" class="Bound"
+      >x</a
+      ><a name="1498"
+      > </a
+      ><a name="1499" href="category.isomorphism.html#1469" class="Bound"
+      >y</a
+      ><a name="1500" class="Symbol"
+      >)</a
+      ><a name="1501"
+      >
+</a
+      ><a name="1502" href="category.isomorphism.html#1425" class="Function"
+      >cat-iso-hset</a
+      ><a name="1514"
+      > </a
+      ><a name="1515" class="Symbol"
+      >{</a
+      ><a name="1516"
+      >C </a
+      ><a name="1518" class="Symbol"
+      >=</a
+      ><a name="1519"
+      > </a
+      ><a name="1520" href="category.isomorphism.html#1520" class="Bound"
+      >C</a
+      ><a name="1521" class="Symbol"
+      >}</a
+      ><a name="1522"
+      > </a
+      ><a name="1523" href="category.isomorphism.html#1523" class="Bound"
+      >x</a
+      ><a name="1524"
+      > </a
+      ><a name="1525" href="category.isomorphism.html#1525" class="Bound"
+      >y</a
+      ><a name="1526"
+      > </a
+      ><a name="1527" class="Symbol"
+      >=</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" href="hott.hlevel.properties.html#1519" class="Function"
+      >iso-hlevel</a
+      ><a name="1539"
+      > </a
+      ><a name="1540" href="category.isomorphism.html#1203" class="Function"
+      >e-iso</a
+      ><a name="1545"
+      >
+  </a
+      ><a name="1548" class="Symbol"
+      >(</a
+      ><a name="1549"
+      > </a
+      ><a name="1550" href="hott.hlevel.closure.html#933" class="Function"
+      >&#931;-hlevel</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" class="Symbol"
+      >(</a
+      ><a name="1560" href="hott.hlevel.closure.html#1449" class="Function"
+      >&#215;-hlevel</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" class="Symbol"
+      >(</a
+      ><a name="1570" href="category.category.html#337" class="Function"
+      >trunc</a
+      ><a name="1575"
+      > </a
+      ><a name="1576" href="category.isomorphism.html#1523" class="Bound"
+      >x</a
+      ><a name="1577"
+      > </a
+      ><a name="1578" href="category.isomorphism.html#1525" class="Bound"
+      >y</a
+      ><a name="1579" class="Symbol"
+      >)</a
+      ><a name="1580"
+      > </a
+      ><a name="1581" class="Symbol"
+      >(</a
+      ><a name="1582" href="category.category.html#337" class="Function"
+      >trunc</a
+      ><a name="1587"
+      > </a
+      ><a name="1588" href="category.isomorphism.html#1525" class="Bound"
+      >y</a
+      ><a name="1589"
+      > </a
+      ><a name="1590" href="category.isomorphism.html#1523" class="Bound"
+      >x</a
+      ><a name="1591" class="Symbol"
+      >))</a
+      ><a name="1593"
+      >
+             </a
+      ><a name="1607" class="Symbol"
+      >(&#955;</a
+      ><a name="1609"
+      > </a
+      ><a name="1610" href="category.isomorphism.html#1610" class="Bound"
+      >tf</a
+      ><a name="1612"
+      > </a
+      ><a name="1613" class="Symbol"
+      >&#8594;</a
+      ><a name="1614"
+      > </a
+      ><a name="1615" href="hott.hlevel.core.html#1292" class="Function"
+      >h&#8593;</a
+      ><a name="1617"
+      > </a
+      ><a name="1618" class="Symbol"
+      >(</a
+      ><a name="1619" href="category.isomorphism.html#995" class="Function"
+      >inverses-h1</a
+      ><a name="1630"
+      > </a
+      ><a name="1631" href="category.isomorphism.html#1610" class="Bound"
+      >tf</a
+      ><a name="1633" class="Symbol"
+      >))</a
+      ><a name="1635"
+      > </a
+      ><a name="1636" class="Symbol"
+      >)</a
+      ><a name="1637"
+      >
+  </a
+      ><a name="1640" class="Keyword"
+      >where</a
+      ><a name="1645"
+      >
+    </a
+      ><a name="1650" class="Keyword"
+      >open</a
+      ><a name="1654"
+      > </a
+      ><a name="1655" href="category.category.html#215" class="Module"
+      >Category</a
+      ><a name="1663"
+      > </a
+      ><a name="1664" href="category.isomorphism.html#1520" class="Bound"
+      >C</a
+      ><a name="1665"
+      >
+    </a
+      ><a name="1670" class="Keyword"
+      >open</a
+      ><a name="1674"
+      > </a
+      ><a name="1675" href="category.isomorphism.html#803" class="Module"
+      >Properties</a
+      ><a name="1685"
+      > </a
+      ><a name="1686" href="category.isomorphism.html#1523" class="Bound"
+      >x</a
+      ><a name="1687"
+      > </a
+      ><a name="1688" href="category.isomorphism.html#1525" class="Bound"
+      >y</a
+      ><a name="1689"
+      >
+
+</a
+      ><a name="1691" href="category.isomorphism.html#1691" class="Function"
+      >cat-iso-equality</a
+      ><a name="1707"
+      > </a
+      ><a name="1708" class="Symbol"
+      >:</a
+      ><a name="1709"
+      > </a
+      ><a name="1710" class="Symbol"
+      >&#8704;</a
+      ><a name="1711"
+      > </a
+      ><a name="1712" class="Symbol"
+      >{</a
+      ><a name="1713" href="category.isomorphism.html#1713" class="Bound"
+      >i</a
+      ><a name="1714"
+      > </a
+      ><a name="1715" href="category.isomorphism.html#1715" class="Bound"
+      >j</a
+      ><a name="1716" class="Symbol"
+      >}{</a
+      ><a name="1718" href="category.isomorphism.html#1718" class="Bound"
+      >C</a
+      ><a name="1719"
+      > </a
+      ><a name="1720" class="Symbol"
+      >:</a
+      ><a name="1721"
+      > </a
+      ><a name="1722" href="category.category.html#215" class="Record"
+      >Category</a
+      ><a name="1730"
+      > </a
+      ><a name="1731" href="category.isomorphism.html#1713" class="Bound"
+      >i</a
+      ><a name="1732"
+      > </a
+      ><a name="1733" href="category.isomorphism.html#1715" class="Bound"
+      >j</a
+      ><a name="1734" class="Symbol"
+      >}{</a
+      ><a name="1736" href="category.isomorphism.html#1736" class="Bound"
+      >x</a
+      ><a name="1737"
+      > </a
+      ><a name="1738" href="category.isomorphism.html#1738" class="Bound"
+      >y</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" class="Symbol"
+      >:</a
+      ><a name="1741"
+      > </a
+      ><a name="1742" href="category.category.html#292" class="Function"
+      >obj</a
+      ><a name="1745"
+      > </a
+      ><a name="1746" href="category.isomorphism.html#1718" class="Bound"
+      >C</a
+      ><a name="1747" class="Symbol"
+      >}</a
+      ><a name="1748"
+      >
+                   </a
+      ><a name="1768" class="Symbol"
+      >{</a
+      ><a name="1769" href="category.isomorphism.html#1769" class="Bound"
+      >p</a
+      ><a name="1770"
+      > </a
+      ><a name="1771" href="category.isomorphism.html#1771" class="Bound"
+      >q</a
+      ><a name="1772"
+      > </a
+      ><a name="1773" class="Symbol"
+      >:</a
+      ><a name="1774"
+      > </a
+      ><a name="1775" href="category.isomorphism.html#383" class="Record"
+      >cat-iso</a
+      ><a name="1782"
+      > </a
+      ><a name="1783" href="category.isomorphism.html#1718" class="Bound"
+      >C</a
+      ><a name="1784"
+      > </a
+      ><a name="1785" href="category.isomorphism.html#1736" class="Bound"
+      >x</a
+      ><a name="1786"
+      > </a
+      ><a name="1787" href="category.isomorphism.html#1738" class="Bound"
+      >y</a
+      ><a name="1788" class="Symbol"
+      >}</a
+      ><a name="1789"
+      >
+                 </a
+      ><a name="1807" class="Symbol"
+      >&#8594;</a
+      ><a name="1808"
+      > </a
+      ><a name="1809" class="Symbol"
+      >(</a
+      ><a name="1810" href="category.isomorphism.html#492" class="Function"
+      >cat-iso.to</a
+      ><a name="1820"
+      > </a
+      ><a name="1821" href="category.isomorphism.html#1769" class="Bound"
+      >p</a
+      ><a name="1822"
+      > </a
+      ><a name="1823" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1824"
+      > </a
+      ><a name="1825" href="category.isomorphism.html#492" class="Function"
+      >cat-iso.to</a
+      ><a name="1835"
+      > </a
+      ><a name="1836" href="category.isomorphism.html#1771" class="Bound"
+      >q</a
+      ><a name="1837" class="Symbol"
+      >)</a
+      ><a name="1838"
+      >
+                 </a
+      ><a name="1856" class="Symbol"
+      >&#8594;</a
+      ><a name="1857"
+      > </a
+      ><a name="1858" class="Symbol"
+      >(</a
+      ><a name="1859" href="category.isomorphism.html#509" class="Function"
+      >cat-iso.from</a
+      ><a name="1871"
+      > </a
+      ><a name="1872" href="category.isomorphism.html#1769" class="Bound"
+      >p</a
+      ><a name="1873"
+      > </a
+      ><a name="1874" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1875"
+      > </a
+      ><a name="1876" href="category.isomorphism.html#509" class="Function"
+      >cat-iso.from</a
+      ><a name="1888"
+      > </a
+      ><a name="1889" href="category.isomorphism.html#1771" class="Bound"
+      >q</a
+      ><a name="1890" class="Symbol"
+      >)</a
+      ><a name="1891"
+      >
+                 </a
+      ><a name="1909" class="Symbol"
+      >&#8594;</a
+      ><a name="1910"
+      > </a
+      ><a name="1911" href="category.isomorphism.html#1769" class="Bound"
+      >p</a
+      ><a name="1912"
+      > </a
+      ><a name="1913" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1914"
+      > </a
+      ><a name="1915" href="category.isomorphism.html#1771" class="Bound"
+      >q</a
+      ><a name="1916"
+      >
+</a
+      ><a name="1917" href="category.isomorphism.html#1691" class="Function"
+      >cat-iso-equality</a
+      ><a name="1933"
+      > </a
+      ><a name="1934" class="Symbol"
+      >{</a
+      ><a name="1935"
+      >C </a
+      ><a name="1937" class="Symbol"
+      >=</a
+      ><a name="1938"
+      > </a
+      ><a name="1939" href="category.isomorphism.html#1939" class="Bound"
+      >C</a
+      ><a name="1940" class="Symbol"
+      >}{</a
+      ><a name="1942" href="category.isomorphism.html#1942" class="Bound"
+      >x</a
+      ><a name="1943" class="Symbol"
+      >}{</a
+      ><a name="1945" href="category.isomorphism.html#1945" class="Bound"
+      >y</a
+      ><a name="1946" class="Symbol"
+      >}{</a
+      ><a name="1948" href="category.isomorphism.html#1948" class="Bound"
+      >p</a
+      ><a name="1949" class="Symbol"
+      >}{</a
+      ><a name="1951" href="category.isomorphism.html#1951" class="Bound"
+      >q</a
+      ><a name="1952" class="Symbol"
+      >}</a
+      ><a name="1953"
+      > </a
+      ><a name="1954" href="category.isomorphism.html#1954" class="Bound"
+      >t</a
+      ><a name="1955"
+      > </a
+      ><a name="1956" href="category.isomorphism.html#1956" class="Bound"
+      >f</a
+      ><a name="1957"
+      > </a
+      ><a name="1958" class="Symbol"
+      >=</a
+      ><a name="1959"
+      > </a
+      ><a name="1960" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1964"
+      > </a
+      ><a name="1965" class="Symbol"
+      >(</a
+      ><a name="1966" href="function.isomorphism.core.html#375" class="Function"
+      >apply&#8773;</a
+      ><a name="1972"
+      > </a
+      ><a name="1973" href="category.isomorphism.html#1203" class="Function"
+      >e-iso</a
+      ><a name="1978" class="Symbol"
+      >)</a
+      ><a name="1979"
+      >
+  </a
+      ><a name="1982" class="Symbol"
+      >(</a
+      ><a name="1983" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="1990"
+      > </a
+      ><a name="1991" class="Symbol"
+      >(</a
+      ><a name="1992" href="equality.core.html#480" class="Function"
+      >cong&#8322;</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" href="sum.html#203" class="InductiveConstructor Operator"
+      >_,_</a
+      ><a name="2001"
+      > </a
+      ><a name="2002" href="category.isomorphism.html#1954" class="Bound"
+      >t</a
+      ><a name="2003"
+      > </a
+      ><a name="2004" href="category.isomorphism.html#1956" class="Bound"
+      >f</a
+      ><a name="2005"
+      > </a
+      ><a name="2006" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2007"
+      > </a
+      ><a name="2008" href="hott.hlevel.core.html#800" class="Function"
+      >h1&#8658;prop</a
+      ><a name="2015"
+      > </a
+      ><a name="2016" class="Symbol"
+      >(</a
+      ><a name="2017" href="category.isomorphism.html#995" class="Function"
+      >inverses-h1</a
+      ><a name="2028"
+      > </a
+      ><a name="2029" class="Symbol"
+      >_)</a
+      ><a name="2031"
+      > </a
+      ><a name="2032" class="Symbol"
+      >_</a
+      ><a name="2033"
+      > </a
+      ><a name="2034" class="Symbol"
+      >_))</a
+      ><a name="2037"
+      >
+  </a
+      ><a name="2040" class="Keyword"
+      >where</a
+      ><a name="2045"
+      > </a
+      ><a name="2046" class="Keyword"
+      >open</a
+      ><a name="2050"
+      > </a
+      ><a name="2051" href="category.isomorphism.html#803" class="Module"
+      >Properties</a
+      ><a name="2061"
+      > </a
+      ><a name="2062" href="category.isomorphism.html#1942" class="Bound"
+      >x</a
+      ><a name="2063"
+      > </a
+      ><a name="2064" href="category.isomorphism.html#1945" class="Bound"
+      >y</a
+      ><a name="2065"
+      >
+
+</a
+      ><a name="2067" class="Keyword"
+      >open</a
+      ><a name="2071"
+      > </a
+      ><a name="2072" href="category.isomorphism.html#803" class="Module"
+      >Properties</a
+      ><a name="2082"
+      > </a
+      ><a name="2083" class="Keyword"
+      >public</a
+      ><a name="2089"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

@@ -1,0 +1,736 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >sum</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K  </a
+      ><a name="26" class="Symbol"
+      >#-}</a
+      ><a name="29"
+      >
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="40"
+      > </a
+      ><a name="41" class="Keyword"
+      >where</a
+      ><a name="46"
+      >
+
+</a
+      ><a name="48" class="Keyword"
+      >open</a
+      ><a name="52"
+      > </a
+      ><a name="53" class="Keyword"
+      >import</a
+      ><a name="59"
+      > </a
+      ><a name="60" href="level.html#1" class="Module"
+      >level</a
+      ><a name="65"
+      > </a
+      ><a name="66" class="Keyword"
+      >using</a
+      ><a name="71"
+      > </a
+      ><a name="72" class="Symbol"
+      >(</a
+      ><a name="73"
+      >Level</a
+      ><a name="78" class="Symbol"
+      >;</a
+      ><a name="79"
+      > _&#8852;_</a
+      ><a name="83" class="Symbol"
+      >)</a
+      ><a name="84"
+      >
+
+</a
+      ><a name="86" class="Keyword"
+      >infixr</a
+      ><a name="92"
+      > </a
+      ><a name="93" class="Number"
+      >4</a
+      ><a name="94"
+      > _,_
+</a
+      ><a name="99" class="Keyword"
+      >infixr</a
+      ><a name="105"
+      > </a
+      ><a name="106" class="Number"
+      >2</a
+      ><a name="107"
+      > _&#215;_
+</a
+      ><a name="112" class="Keyword"
+      >infixr</a
+      ><a name="118"
+      > </a
+      ><a name="119" class="Number"
+      >1</a
+      ><a name="120"
+      > _&#8846;_
+
+</a
+      ><a name="126" class="Keyword"
+      >record</a
+      ><a name="132"
+      > </a
+      ><a name="133" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="134"
+      > </a
+      ><a name="135" class="Symbol"
+      >{</a
+      ><a name="136" href="sum.html#136" class="Bound"
+      >a</a
+      ><a name="137"
+      > </a
+      ><a name="138" href="sum.html#138" class="Bound"
+      >b</a
+      ><a name="139" class="Symbol"
+      >}</a
+      ><a name="140"
+      > </a
+      ><a name="141" class="Symbol"
+      >(</a
+      ><a name="142" href="sum.html#142" class="Bound"
+      >A</a
+      ><a name="143"
+      > </a
+      ><a name="144" class="Symbol"
+      >:</a
+      ><a name="145"
+      > </a
+      ><a name="146" class="PrimitiveType"
+      >Set</a
+      ><a name="149"
+      > </a
+      ><a name="150" href="sum.html#136" class="Bound"
+      >a</a
+      ><a name="151" class="Symbol"
+      >)</a
+      ><a name="152"
+      > </a
+      ><a name="153" class="Symbol"
+      >(</a
+      ><a name="154" href="sum.html#154" class="Bound"
+      >B</a
+      ><a name="155"
+      > </a
+      ><a name="156" class="Symbol"
+      >:</a
+      ><a name="157"
+      > </a
+      ><a name="158" href="sum.html#142" class="Bound"
+      >A</a
+      ><a name="159"
+      > </a
+      ><a name="160" class="Symbol"
+      >&#8594;</a
+      ><a name="161"
+      > </a
+      ><a name="162" class="PrimitiveType"
+      >Set</a
+      ><a name="165"
+      > </a
+      ><a name="166" href="sum.html#138" class="Bound"
+      >b</a
+      ><a name="167" class="Symbol"
+      >)</a
+      ><a name="168"
+      > </a
+      ><a name="169" class="Symbol"
+      >:</a
+      ><a name="170"
+      > </a
+      ><a name="171" class="PrimitiveType"
+      >Set</a
+      ><a name="174"
+      > </a
+      ><a name="175" class="Symbol"
+      >(</a
+      ><a name="176" href="sum.html#136" class="Bound"
+      >a</a
+      ><a name="177"
+      > </a
+      ><a name="178" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="179"
+      > </a
+      ><a name="180" href="sum.html#138" class="Bound"
+      >b</a
+      ><a name="181" class="Symbol"
+      >)</a
+      ><a name="182"
+      > </a
+      ><a name="183" class="Keyword"
+      >where</a
+      ><a name="188"
+      >
+  </a
+      ><a name="191" class="Keyword"
+      >constructor</a
+      ><a name="202"
+      > </a
+      ><a name="203" href="sum.html#203" class="InductiveConstructor Operator"
+      >_,_</a
+      ><a name="206"
+      >
+  </a
+      ><a name="209" class="Keyword"
+      >field</a
+      ><a name="214"
+      >
+    </a
+      ><a name="219" href="sum.html#219" class="Field"
+      >proj&#8321;</a
+      ><a name="224"
+      > </a
+      ><a name="225" class="Symbol"
+      >:</a
+      ><a name="226"
+      > </a
+      ><a name="227" href="sum.html#142" class="Bound"
+      >A</a
+      ><a name="228"
+      >
+    </a
+      ><a name="233" href="sum.html#233" class="Field"
+      >proj&#8322;</a
+      ><a name="238"
+      > </a
+      ><a name="239" class="Symbol"
+      >:</a
+      ><a name="240"
+      > </a
+      ><a name="241" href="sum.html#154" class="Bound"
+      >B</a
+      ><a name="242"
+      > </a
+      ><a name="243" href="sum.html#219" class="Bound"
+      >proj&#8321;</a
+      ><a name="248"
+      >
+
+</a
+      ><a name="250" class="Keyword"
+      >open</a
+      ><a name="254"
+      > </a
+      ><a name="255" href="sum.html#133" class="Module"
+      >&#931;</a
+      ><a name="256"
+      > </a
+      ><a name="257" class="Keyword"
+      >public</a
+      ><a name="263"
+      >
+
+</a
+      ><a name="265" href="sum.html#265" class="Function Operator"
+      >_&#215;_</a
+      ><a name="268"
+      > </a
+      ><a name="269" class="Symbol"
+      >:</a
+      ><a name="270"
+      > </a
+      ><a name="271" class="Symbol"
+      >{</a
+      ><a name="272" href="sum.html#272" class="Bound"
+      >l</a
+      ><a name="273"
+      > </a
+      ><a name="274" href="sum.html#274" class="Bound"
+      >k</a
+      ><a name="275"
+      > </a
+      ><a name="276" class="Symbol"
+      >:</a
+      ><a name="277"
+      > </a
+      ><a name="278" href="level.html#75" class="Postulate"
+      >Level</a
+      ><a name="283" class="Symbol"
+      >}</a
+      ><a name="284"
+      > </a
+      ><a name="285" class="Symbol"
+      >(</a
+      ><a name="286" href="sum.html#286" class="Bound"
+      >A</a
+      ><a name="287"
+      > </a
+      ><a name="288" class="Symbol"
+      >:</a
+      ><a name="289"
+      > </a
+      ><a name="290" class="PrimitiveType"
+      >Set</a
+      ><a name="293"
+      > </a
+      ><a name="294" href="sum.html#272" class="Bound"
+      >l</a
+      ><a name="295" class="Symbol"
+      >)</a
+      ><a name="296"
+      > </a
+      ><a name="297" class="Symbol"
+      >(</a
+      ><a name="298" href="sum.html#298" class="Bound"
+      >B</a
+      ><a name="299"
+      > </a
+      ><a name="300" class="Symbol"
+      >:</a
+      ><a name="301"
+      > </a
+      ><a name="302" class="PrimitiveType"
+      >Set</a
+      ><a name="305"
+      > </a
+      ><a name="306" href="sum.html#274" class="Bound"
+      >k</a
+      ><a name="307" class="Symbol"
+      >)</a
+      ><a name="308"
+      > </a
+      ><a name="309" class="Symbol"
+      >&#8594;</a
+      ><a name="310"
+      > </a
+      ><a name="311" class="PrimitiveType"
+      >Set</a
+      ><a name="314"
+      > </a
+      ><a name="315" class="Symbol"
+      >(</a
+      ><a name="316" href="sum.html#272" class="Bound"
+      >l</a
+      ><a name="317"
+      > </a
+      ><a name="318" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="319"
+      > </a
+      ><a name="320" href="sum.html#274" class="Bound"
+      >k</a
+      ><a name="321" class="Symbol"
+      >)</a
+      ><a name="322"
+      >
+</a
+      ><a name="323" href="sum.html#323" class="Bound"
+      >A</a
+      ><a name="324"
+      > </a
+      ><a name="325" href="sum.html#265" class="Function Operator"
+      >&#215;</a
+      ><a name="326"
+      > </a
+      ><a name="327" href="sum.html#327" class="Bound"
+      >B</a
+      ><a name="328"
+      > </a
+      ><a name="329" class="Symbol"
+      >=</a
+      ><a name="330"
+      > </a
+      ><a name="331" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="332"
+      > </a
+      ><a name="333" href="sum.html#323" class="Bound"
+      >A</a
+      ><a name="334"
+      > </a
+      ><a name="335" class="Symbol"
+      >&#955;</a
+      ><a name="336"
+      > </a
+      ><a name="337" href="sum.html#337" class="Bound"
+      >_</a
+      ><a name="338"
+      > </a
+      ><a name="339" class="Symbol"
+      >&#8594;</a
+      ><a name="340"
+      > </a
+      ><a name="341" href="sum.html#327" class="Bound"
+      >B</a
+      ><a name="342"
+      >
+
+</a
+      ><a name="344" href="sum.html#344" class="Function"
+      >uncurry</a
+      ><a name="351"
+      > </a
+      ><a name="352" class="Symbol"
+      >:</a
+      ><a name="353"
+      > </a
+      ><a name="354" class="Symbol"
+      >&#8704;</a
+      ><a name="355"
+      > </a
+      ><a name="356" class="Symbol"
+      >{</a
+      ><a name="357" href="sum.html#357" class="Bound"
+      >i</a
+      ><a name="358"
+      > </a
+      ><a name="359" href="sum.html#359" class="Bound"
+      >j</a
+      ><a name="360"
+      > </a
+      ><a name="361" href="sum.html#361" class="Bound"
+      >k</a
+      ><a name="362" class="Symbol"
+      >}{</a
+      ><a name="364" href="sum.html#364" class="Bound"
+      >X</a
+      ><a name="365"
+      > </a
+      ><a name="366" class="Symbol"
+      >:</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="PrimitiveType"
+      >Set</a
+      ><a name="371"
+      > </a
+      ><a name="372" href="sum.html#357" class="Bound"
+      >i</a
+      ><a name="373" class="Symbol"
+      >}{</a
+      ><a name="375" href="sum.html#375" class="Bound"
+      >Y</a
+      ><a name="376"
+      > </a
+      ><a name="377" class="Symbol"
+      >:</a
+      ><a name="378"
+      > </a
+      ><a name="379" class="PrimitiveType"
+      >Set</a
+      ><a name="382"
+      > </a
+      ><a name="383" href="sum.html#359" class="Bound"
+      >j</a
+      ><a name="384" class="Symbol"
+      >}{</a
+      ><a name="386" href="sum.html#386" class="Bound"
+      >Z</a
+      ><a name="387"
+      > </a
+      ><a name="388" class="Symbol"
+      >:</a
+      ><a name="389"
+      > </a
+      ><a name="390" class="PrimitiveType"
+      >Set</a
+      ><a name="393"
+      > </a
+      ><a name="394" href="sum.html#361" class="Bound"
+      >k</a
+      ><a name="395" class="Symbol"
+      >}</a
+      ><a name="396"
+      >
+        </a
+      ><a name="405" class="Symbol"
+      >&#8594;</a
+      ><a name="406"
+      > </a
+      ><a name="407" class="Symbol"
+      >(</a
+      ><a name="408" href="sum.html#364" class="Bound"
+      >X</a
+      ><a name="409"
+      > </a
+      ><a name="410" class="Symbol"
+      >&#8594;</a
+      ><a name="411"
+      > </a
+      ><a name="412" href="sum.html#375" class="Bound"
+      >Y</a
+      ><a name="413"
+      > </a
+      ><a name="414" class="Symbol"
+      >&#8594;</a
+      ><a name="415"
+      > </a
+      ><a name="416" href="sum.html#386" class="Bound"
+      >Z</a
+      ><a name="417" class="Symbol"
+      >)</a
+      ><a name="418"
+      >
+        </a
+      ><a name="427" class="Symbol"
+      >&#8594;</a
+      ><a name="428"
+      > </a
+      ><a name="429" class="Symbol"
+      >(</a
+      ><a name="430" href="sum.html#364" class="Bound"
+      >X</a
+      ><a name="431"
+      > </a
+      ><a name="432" href="sum.html#265" class="Function Operator"
+      >&#215;</a
+      ><a name="433"
+      > </a
+      ><a name="434" href="sum.html#375" class="Bound"
+      >Y</a
+      ><a name="435" class="Symbol"
+      >)</a
+      ><a name="436"
+      > </a
+      ><a name="437" class="Symbol"
+      >&#8594;</a
+      ><a name="438"
+      > </a
+      ><a name="439" href="sum.html#386" class="Bound"
+      >Z</a
+      ><a name="440"
+      >
+</a
+      ><a name="441" href="sum.html#344" class="Function"
+      >uncurry</a
+      ><a name="448"
+      > </a
+      ><a name="449" href="sum.html#449" class="Bound"
+      >f</a
+      ><a name="450"
+      > </a
+      ><a name="451" class="Symbol"
+      >(</a
+      ><a name="452" href="sum.html#452" class="Bound"
+      >x</a
+      ><a name="453"
+      > </a
+      ><a name="454" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="455"
+      > </a
+      ><a name="456" href="sum.html#456" class="Bound"
+      >y</a
+      ><a name="457" class="Symbol"
+      >)</a
+      ><a name="458"
+      > </a
+      ><a name="459" class="Symbol"
+      >=</a
+      ><a name="460"
+      > </a
+      ><a name="461" href="sum.html#449" class="Bound"
+      >f</a
+      ><a name="462"
+      > </a
+      ><a name="463" href="sum.html#452" class="Bound"
+      >x</a
+      ><a name="464"
+      > </a
+      ><a name="465" href="sum.html#456" class="Bound"
+      >y</a
+      ><a name="466"
+      >
+
+</a
+      ><a name="468" class="Keyword"
+      >data</a
+      ><a name="472"
+      > </a
+      ><a name="473" href="sum.html#473" class="Datatype Operator"
+      >_&#8846;_</a
+      ><a name="476"
+      > </a
+      ><a name="477" class="Symbol"
+      >{</a
+      ><a name="478" href="sum.html#478" class="Bound"
+      >a</a
+      ><a name="479"
+      > </a
+      ><a name="480" href="sum.html#480" class="Bound"
+      >b</a
+      ><a name="481" class="Symbol"
+      >}</a
+      ><a name="482"
+      > </a
+      ><a name="483" class="Symbol"
+      >(</a
+      ><a name="484" href="sum.html#484" class="Bound"
+      >A</a
+      ><a name="485"
+      > </a
+      ><a name="486" class="Symbol"
+      >:</a
+      ><a name="487"
+      > </a
+      ><a name="488" class="PrimitiveType"
+      >Set</a
+      ><a name="491"
+      > </a
+      ><a name="492" href="sum.html#478" class="Bound"
+      >a</a
+      ><a name="493" class="Symbol"
+      >)</a
+      ><a name="494"
+      > </a
+      ><a name="495" class="Symbol"
+      >(</a
+      ><a name="496" href="sum.html#496" class="Bound"
+      >B</a
+      ><a name="497"
+      > </a
+      ><a name="498" class="Symbol"
+      >:</a
+      ><a name="499"
+      > </a
+      ><a name="500" class="PrimitiveType"
+      >Set</a
+      ><a name="503"
+      > </a
+      ><a name="504" href="sum.html#480" class="Bound"
+      >b</a
+      ><a name="505" class="Symbol"
+      >)</a
+      ><a name="506"
+      > </a
+      ><a name="507" class="Symbol"
+      >:</a
+      ><a name="508"
+      > </a
+      ><a name="509" class="PrimitiveType"
+      >Set</a
+      ><a name="512"
+      > </a
+      ><a name="513" class="Symbol"
+      >(</a
+      ><a name="514" href="sum.html#478" class="Bound"
+      >a</a
+      ><a name="515"
+      > </a
+      ><a name="516" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="517"
+      > </a
+      ><a name="518" href="sum.html#480" class="Bound"
+      >b</a
+      ><a name="519" class="Symbol"
+      >)</a
+      ><a name="520"
+      > </a
+      ><a name="521" class="Keyword"
+      >where</a
+      ><a name="526"
+      >
+  </a
+      ><a name="529" href="sum.html#529" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="533"
+      > </a
+      ><a name="534" class="Symbol"
+      >:</a
+      ><a name="535"
+      > </a
+      ><a name="536" class="Symbol"
+      >(</a
+      ><a name="537" href="sum.html#537" class="Bound"
+      >x</a
+      ><a name="538"
+      > </a
+      ><a name="539" class="Symbol"
+      >:</a
+      ><a name="540"
+      > </a
+      ><a name="541" href="sum.html#484" class="Bound"
+      >A</a
+      ><a name="542" class="Symbol"
+      >)</a
+      ><a name="543"
+      > </a
+      ><a name="544" class="Symbol"
+      >&#8594;</a
+      ><a name="545"
+      > </a
+      ><a name="546" href="sum.html#484" class="Bound"
+      >A</a
+      ><a name="547"
+      > </a
+      ><a name="548" href="sum.html#473" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="549"
+      > </a
+      ><a name="550" href="sum.html#496" class="Bound"
+      >B</a
+      ><a name="551"
+      >
+  </a
+      ><a name="554" href="sum.html#554" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="558"
+      > </a
+      ><a name="559" class="Symbol"
+      >:</a
+      ><a name="560"
+      > </a
+      ><a name="561" class="Symbol"
+      >(</a
+      ><a name="562" href="sum.html#562" class="Bound"
+      >y</a
+      ><a name="563"
+      > </a
+      ><a name="564" class="Symbol"
+      >:</a
+      ><a name="565"
+      > </a
+      ><a name="566" href="sum.html#496" class="Bound"
+      >B</a
+      ><a name="567" class="Symbol"
+      >)</a
+      ><a name="568"
+      > </a
+      ><a name="569" class="Symbol"
+      >&#8594;</a
+      ><a name="570"
+      > </a
+      ><a name="571" href="sum.html#484" class="Bound"
+      >A</a
+      ><a name="572"
+      > </a
+      ><a name="573" href="sum.html#473" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="sum.html#496" class="Bound"
+      >B</a
+      ></pre
+    ></body
+  ></html
+>
