@@ -38,7 +38,7 @@ private
               λ { ((x' , y') , w) → (x' ≡ x) }
 
     A-hlevel : (i : I) → h 2 (A i)
-    A-hlevel (x , y) = ⊎-hlevel (refl-≤ 2) (hX x y)
+    A-hlevel (x , y) = ⊎-hlevel refl-≤ (hX x y)
       (Σ-hlevel hW (λ { ((x' , _) , _) → hX x' x }))
 
     B : (i : I) → A i → Set _

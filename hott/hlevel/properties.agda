@@ -18,8 +18,11 @@ open import hott.univalence
 
 h-≤ : ∀ {i n m}{X : Set i}
     → n ≤ m → h n X → h m X
-h-≤ (refl-≤ _) hn = hn
-h-≤ (suc-≤ p) hn = h↑ (h-≤ p hn)
+h-≤ {m = 0} z≤n hX = hX
+h-≤ {m = suc m} z≤n hX = λ x y
+  → h-≤ {m = m} z≤n (h↑ hX x y)
+h-≤ (s≤s p) hX = λ x y
+  → h-≤ p (hX x y)
 
 h! : ∀ {i n m}{X : Set i}
    → {p : True (n ≤? m)}

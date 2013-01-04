@@ -6,7 +6,6 @@ open import level using (_⊔_)
 open import equality.core hiding (singleton)
 open import equality.calculus
 open import equality.reasoning
-open import sets.nat using (refl-≤)
 open import hott.hlevel
 
 open import category.free.list public

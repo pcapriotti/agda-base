@@ -4,7 +4,7 @@ module solver.equality.example where
 open import sum
 open import equality.core
 open import equality.calculus
-open import sets.fin using (Fin; zero; suc; _≟_)
+open import sets.fin
 open import sets.vec
 
 open import solver.equality

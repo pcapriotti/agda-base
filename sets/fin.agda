@@ -5,7 +5,7 @@ module sets.fin where
 open import decidable
 open import equality.core
 open import sets.empty
-open import sets.unit
+open import sets.unit public
 open import sets.nat
   hiding (_≟_)
 
@@ -49,8 +49,8 @@ toℕ (suc i) = suc (toℕ i)
 
 fromℕ : ∀ {n i} → (suc i ≤ n) → Fin n
 fromℕ {zero} ()
-fromℕ {suc n} (suc-≤ p) = suc (fromℕ p)
-fromℕ .{suc n} {n} (refl-≤ .(suc n)) = last-fin
+fromℕ {suc n} {0} _ = zero
+fromℕ {suc n} {suc i} (s≤s p) = suc (fromℕ p)
 
 #_ : ∀ {n} i {p : True (suc i ≤? n)} → Fin n
 #_ {n} i {p} = fromℕ (witness p)

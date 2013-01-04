@@ -44,25 +44,19 @@ suc a ≟ suc b | yes a≡b = yes $ cong {lzero} {lzero} suc a≡b
 suc a ≟ suc b | no ¬a≡b = no $ (λ sa≡sb → ¬a≡b (cong {lzero} {lzero} pred sa≡sb))
 
 data _≤_ : ℕ → ℕ → Set where
-  refl-≤ : ∀ n → n ≤ n
-  suc-≤ : ∀ {n m} → n ≤ m → n ≤ suc m
-
-zero-min : ∀ n → 0 ≤ n
-zero-min 0 = refl-≤ 0
-zero-min (suc n) = suc-≤ (zero-min n)
-
-cong-suc-≤ : ∀ {n m} → n ≤ m → suc n ≤ suc m
-cong-suc-≤ (refl-≤ n) = refl-≤ (suc n)
-cong-suc-≤ (suc-≤ p) = suc-≤ (cong-suc-≤ p)
+  z≤n : ∀ {n} → zero ≤ n
+  s≤s : ∀ {m n} (p : m ≤ n) → suc m ≤ suc n
 
 cong-pred-≤ : ∀ {n m} → suc n ≤ suc m → n ≤ m
-cong-pred-≤ {n} (refl-≤ .(suc n)) = refl-≤ n
-cong-pred-≤ {n}{0} (suc-≤ ())
-cong-pred-≤ {n}{suc m} (suc-≤ p) = suc-≤ (cong-pred-≤ p)
+cong-pred-≤ (s≤s p) = p
+
+refl-≤ : {n : ℕ} → n ≤ n
+refl-≤ {0} = z≤n
+refl-≤ {suc n} = s≤s refl-≤
 
 _≤?_ : (n m : ℕ) → Dec (n ≤ m)
-0 ≤? n = yes (zero-min n)
+0 ≤? n = yes z≤n
 suc _ ≤? 0 = no (λ ())
 suc n ≤? suc m with n ≤? m
-... | yes p = yes (cong-suc-≤ p)
+... | yes p = yes (s≤s p)
 ... | no f = no (f ∘ cong-pred-≤)
