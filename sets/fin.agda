@@ -6,7 +6,8 @@ open import decidable
 open import equality.core
 open import sets.empty
 open import sets.unit
-open import sets.nat using (ℕ; zero; suc)
+open import sets.nat
+  hiding (_≟_)
 
 data Fin : ℕ → Set where
   zero : {n : ℕ} → Fin (suc n)
@@ -38,6 +39,18 @@ _≟_ {suc n} (suc i) (suc j) with i ≟ j
 ... | yes p = yes (cong suc p)
 ... | no a = no (λ p → a (suc-inj i j p))
 
+last-fin : {n : ℕ} → Fin (suc n)
+last-fin {zero} = zero
+last-fin {suc n} = suc last-fin
+
 toℕ : ∀ {n} → Fin n → ℕ
 toℕ zero = 0
 toℕ (suc i) = suc (toℕ i)
+
+fromℕ : ∀ {n i} → (suc i ≤ n) → Fin n
+fromℕ {zero} ()
+fromℕ {suc n} (suc-≤ p) = suc (fromℕ p)
+fromℕ .{suc n} {n} (refl-≤ .(suc n)) = last-fin
+
+#_ : ∀ {n} i {p : True (suc i ≤? n)} → Fin n
+#_ {n} i {p} = fromℕ (witness p)
