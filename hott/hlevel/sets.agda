@@ -1,5 +1,5 @@
 {-# OPTIONS --without-K #-}
-module hott.hlevel.properties.sets where
+module hott.hlevel.sets where
 
 open import decidable
 open import sum
@@ -9,7 +9,7 @@ open import equality.reasoning
 open import function using (id; const)
 open import sets.empty
 open import sets.unit
-open import hott.hlevel
+open import hott.hlevel.core
 
 -- ⊤ is contractible
 ⊤-contr : h 0 ⊤

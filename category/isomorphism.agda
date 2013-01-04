@@ -4,7 +4,6 @@ open import category.category
 module category.isomorphism where
 
 open import hott.hlevel.properties
-open import hott.univalence.properties
 open import function.isomorphism
   renaming (apply to apply≅)
 open import function.isomorphism.properties

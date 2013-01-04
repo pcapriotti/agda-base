@@ -4,7 +4,7 @@ module hott.weak-equivalence.core where
 open import equality.core using (_≡_ ; refl ; cong)
 open import sum using (Σ ; proj₁ ; proj₂ ; _,_)
 open import level using (_⊔_)
-open import hott.hlevel using (contr ; prop ; _⁻¹_)
+open import hott.hlevel.core using (contr ; prop ; _⁻¹_)
 open import function using (_$_)
 open import function.isomorphism using (_≅_ ; iso)
 

@@ -7,7 +7,7 @@ open import equality.core
 open import category.category
 open import category.functor
   using (Functor; module Functor)
-open import hott.univalence.properties
+open import hott.hlevel
 
 -- product of categories
 -- for products *in* a category, see category.limit

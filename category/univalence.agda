@@ -8,7 +8,6 @@ open import category.category
 open import category.isomorphism
 open import hott.weak-equivalence
 open import hott.hlevel
-open import hott.univalence.properties
 
 open Category
 

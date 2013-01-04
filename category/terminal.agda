@@ -11,7 +11,6 @@ open import function.isomorphism
 open import sets.unit
 open import hott.hlevel
 open import hott.hlevel.properties
-open import hott.univalence.properties
 
 open Category
 

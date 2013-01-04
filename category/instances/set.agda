@@ -12,7 +12,6 @@ open import category.category
 open import category.isomorphism
 open import category.univalence
 open import hott.hlevel
-open import hott.univalence.properties
 open import hott.univalence
 open import hott.weak-equivalence
 

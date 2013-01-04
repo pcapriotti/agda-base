@@ -11,7 +11,6 @@ open import level using (_⊔_)
 open import equality.core
 open import equality.calculus
 open import hott.hlevel
-open import hott.hlevel.properties.sets
 
 IEnv : ∀ {i} (X : Set i) → ∀ n → Set _
 IEnv X n = Vec X n

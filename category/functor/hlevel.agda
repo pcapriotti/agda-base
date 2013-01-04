@@ -16,7 +16,6 @@ open import function.extensionality
 open import function.isomorphism
   using (_≅_; module _≅_; iso⇒inj)
 open import hott.hlevel
-open import hott.univalence.properties
 
 open Category hiding (_∘_)
 open Category C using ()

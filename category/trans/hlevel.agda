@@ -11,7 +11,6 @@ open import function.extensionality
 open import function.isomorphism using (_≅_; iso)
 open import function.isomorphism.properties
 open import hott.hlevel
-open import hott.univalence.properties
 
 module category.trans.hlevel {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where

@@ -36,10 +36,8 @@ import category.instances.empty
 -- HoTT
 
 import hott.hlevel
-import hott.hlevel.properties
 import hott.weak-equivalence
 import hott.univalence
-import hott.univalence.properties
 
 -- higher inductive types
 

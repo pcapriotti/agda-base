@@ -1,17 +1,17 @@
 {-# OPTIONS --without-K #-}
 open import function.extensionality.core
 
-module hott.weak-equivalence.alternative 
-  (ext' : ∀ {i j} → Extensionality' i j) where
+module hott.weak-equivalence.alternative where
 
 open import sum
 open import equality.core
 open import equality.calculus
 open import equality.isomorphisms
 open import function
+open import function.extensionality.proof-dep
 open import function.isomorphism
 open import function.isomorphism.coherent
-open import hott.hlevel
+open import hott.hlevel.core
 open import hott.weak-equivalence.core
 
 private

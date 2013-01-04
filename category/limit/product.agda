@@ -8,8 +8,9 @@ open import category.functor
 open import category.instances.discrete
 open import category.limit.core
 open import sets.fin
+open import sets.unit
 open import sets.vec
-open import hott.hlevel.properties
+open import hott.hlevel
 
 product-graph : Category _ _
 product-graph = discrete-cat (Fin 2 , h! (fin-set 2))

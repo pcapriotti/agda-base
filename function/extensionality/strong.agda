@@ -9,8 +9,8 @@ open import function.isomorphism
 open import function.extensionality.core
 open import function.extensionality.proof
 open import function.extensionality.proof-dep
-open import hott.hlevel
-open import hott.univalence.properties.core
+open import hott.hlevel.core
+open import hott.hlevel.properties
 open import hott.weak-equivalence
 
 private
@@ -40,7 +40,7 @@ private
           (λ u → proj₁ ∘ u , proj₂ ∘ u)
           (λ {(g , h) x → g x , h x})
           (λ {(g , h) → refl})
-          (Π-contr ext (λ x → singl-contr (f x)))
+          (Π-contr (λ x → singl-contr (f x)))
 
         e-contr' : (u : E) → (f , R f) ≡ u
         e-contr' u = contr⇒prop e-contr (f , R f) u

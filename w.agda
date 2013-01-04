@@ -11,7 +11,6 @@ open import function.isomorphism
 open import function.isomorphism.properties
 open import sets.nat using (suc)
 open import hott.hlevel
-open import hott.univalence.properties
 
 module Definition {li la lb}
                   (I : Set li)

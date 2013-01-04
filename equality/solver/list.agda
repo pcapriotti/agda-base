@@ -27,7 +27,6 @@ private
     open import function.isomorphism
     open import w renaming (W to W-type)
     open import hott.hlevel.properties
-    open import hott.univalence.properties
 
     I : Set i
     I = X × X 
