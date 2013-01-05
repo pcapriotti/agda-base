@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 
-open import category.category
+open import category.category hiding (_∘_)
 open import category.functor.core
 open import category.functor.hlevel
 open import equality.core

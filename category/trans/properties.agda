@@ -2,7 +2,7 @@
 
 open import sum
 open import equality.core
-open import category.category
+open import category.category renaming (_∘_ to _⋆_)
 open import category.functor.core
   using (Functor; module Functor)
 open import category.trans.core
@@ -13,9 +13,6 @@ module category.trans.properties {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where
 
 open Functor
-open Category D using
-  (id; right-unit; left-unit; associativity)
-  renaming (_∘_ to _⋆_)
 
 nat-right-unit : {F G : Functor C D}
               → (α : Nat F G)

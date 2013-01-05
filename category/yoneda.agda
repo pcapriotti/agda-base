@@ -7,6 +7,7 @@ open import function.isomorphism
   using (_≅_; iso)
 open import function.extensionality
 open import category.category
+  renaming (_∘_ to _⋆_)
 open import category.functor
 open import category.trans
   using (_⇒_; nt)
@@ -16,18 +17,16 @@ open import category.instances.set
 
 module category.yoneda {i j}(C : Category i j) where
 
-open Category C
-  renaming (_∘_ to _⋆_)
 open Functor
 
-hom-func : obj → Functor C (set j)
+hom-func : obj C → Functor C (set j)
 hom-func X = record
   { apply = λ Y → (hom X Y , trunc X Y)
   ; map = _⋆_
   ; map-id = λ _ → ext λ x → left-unit x
   ; map-hom = λ f g → ext λ x → associativity x f g }
 
-hom-map : {X X' : obj}(f : hom X X') → hom-func X' ⇒ hom-func X
+hom-map : {X X' : obj C}(f : hom X X') → hom-func X' ⇒ hom-func X
 hom-map f = record
   { α = λ Y g → g ⋆ f
   ; α-nat = λ h → ext λ g → associativity f g h }
@@ -44,7 +43,7 @@ y = record
       → sym (associativity f g h) ) }
 
 -- Yoneda lemma
-y-iso : (X : obj)(F : Functor C (set j))
+y-iso : (X : obj C)(F : Functor C (set j))
       → (hom-func X ⇒ F) ≅ proj₁ (apply F X)
 y-iso X F = record
   { to = λ { (nt α _) → α X (id X) }

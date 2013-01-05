@@ -17,12 +17,10 @@ product-graph = discrete-cat (Fin 2 , h! (fin-set 2))
 
 private
   module Definition {i j}{C : Category i j} where
-    open Category C
-
-    product-diagram : obj → obj → Functor product-graph C
+    product-diagram : obj C → obj C → Functor product-graph C
     product-diagram X Y = discrete-lift (lookup (X ∷ Y ∷ []))
 
-    Product : obj → obj → Set _
+    Product : obj C → obj C → Set _
     Product A B = Lim (product-diagram A B)
 
 open Definition public

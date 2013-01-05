@@ -26,6 +26,3 @@ record IsCategory {i}(obj : Set i) j : Set (i ⊔ lsuc j) where
                     (g : hom B C)
                     (h : hom C D)
                   → h ∘ g ∘ f ≡ h ∘ (g ∘ f)
-
-  mor : Set (i ⊔ j)
-  mor = Σ (obj × obj) (uncurry hom)

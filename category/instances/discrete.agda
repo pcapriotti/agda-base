@@ -3,6 +3,8 @@ module category.instances.discrete where
 
 open import sum
 open import category.category
+  hiding (right-unit)
+  renaming (left-unit to cat-left-unit)
 open import category.univalence
 open import category.groupoid
 open import category.functor using (Functor)
@@ -15,8 +17,6 @@ open import hott.hlevel
 open import hott.weak-equivalence
 
 open Groupoid using (cat)
-open Category using (obj; id)
-  renaming (left-unit to cat-left-unit)
 
 discrete : ∀ {i} → Type i 1 → Groupoid i i
 discrete (A , h3) = record
@@ -42,10 +42,10 @@ discrete-lift : ∀ {i j k}{A : Type i 1}{C : Category j k}
               → Functor (discrete-cat A) C
 discrete-lift {C = C} f = record
   { apply = f
-  ; map = λ { {X}{.X} refl → id C _ }
+  ; map = λ { {X}{.X} refl → id _ }
   ; map-id = λ _ → refl
   ; map-hom = λ { {X}{.X}{.X} refl refl
-                → sym (cat-left-unit C _) } }
+                → sym (cat-left-unit _) } }
 
 discrete-func : ∀ {i j}{A : Type i 1}{B : Type j 1}
               → (proj₁ A → proj₁ B)

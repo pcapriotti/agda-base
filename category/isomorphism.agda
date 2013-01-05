@@ -16,7 +16,6 @@ open Category using (obj)
 
 record cat-iso {i j}(C : Category i j)(x y : obj C) : Set j where
   constructor c-iso
-  open Category C
   field
     to : hom x y
     from : hom y x
@@ -30,11 +29,9 @@ record cat-iso {i j}(C : Category i j)(x y : obj C) : Set j where
   ; from = id x
   ; iso₁ = left-unit _
   ; iso₂ = left-unit _ }
-  where open Category C
 
 private
   module Properties {i j}{C : Category i j}(x y : obj C) where
-    open Category C
     inverses : hom x y × hom y x → Set _
     inverses (t , f) = f ∘ t ≡ id x
                      × t ∘ f ≡ id y
@@ -59,7 +56,6 @@ cat-iso-hset {C = C} x y = iso-hlevel e-iso
   ( Σ-hlevel (×-hlevel (trunc x y) (trunc y x))
              (λ tf → h↑ (inverses-h1 tf)) )
   where
-    open Category C
     open Properties x y
 
 cat-iso-equality : ∀ {i j}{C : Category i j}{x y : obj C}

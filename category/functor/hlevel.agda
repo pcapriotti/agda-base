@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 
-open import category.category
+open import category.category renaming (_∘_ to _⋆_)
 
 module category.functor.hlevel {i j i' j'}
   {C : Category i j}{D : Category i' j'} where
@@ -17,11 +17,6 @@ open import function.isomorphism
   using (_≅_; module _≅_; iso⇒inj)
 open import hott.hlevel
 
-open Category hiding (_∘_)
-open Category C using ()
-  renaming (_∘_ to _⋆_)
-open Category D using ()
-  renaming (_∘_ to _✦_)
 open Functor
 
 -- a "lawless" functor
@@ -29,7 +24,7 @@ record Mapping : Set (i ⊔ i' ⊔ j ⊔ j') where
   constructor mapping
   field
     m₀ : obj C → obj D
-    m₁ : ∀ {X Y} → hom C X Y → hom D (m₀ X) (m₀ Y)
+    m₁ : ∀ {X Y} → hom X Y → hom (m₀ X) (m₀ Y)
 
 func-to-mapping : Functor C D → Mapping
 func-to-mapping F = mapping (apply F) (map F)
@@ -38,20 +33,20 @@ private
   -- the condition on a mapping for being a functor
   Functorial : Mapping → Set _
   Functorial (mapping m₀ m₁) =
-      ( ∀ X → m₁ (id C X) ≡ id D (m₀ X) )
-    × ( ∀ X Y Z (g : hom C X Y) (f : hom C Y Z)
-      → m₁ (f ⋆ g) ≡ m₁ f ✦ m₁ g )
+      ( ∀ X → m₁ (id X) ≡ id (m₀ X) )
+    × ( ∀ X Y Z (g : hom X Y) (f : hom Y Z)
+      → m₁ (f ⋆ g) ≡ m₁ f ⋆ m₁ g )
 
   -- being functorial is a proposition
   func-prop : (m : Mapping) → h 1 (Functorial m)
   func-prop m = ×-hlevel
-    ( Π-hlevel λ X → trunc D _ _ _ _ )
+    ( Π-hlevel λ X → trunc _ _ _ _ )
     ( Π-hlevel λ X
       → Π-hlevel λ Y
       → Π-hlevel λ Z
       → Π-hlevel λ f
       → Π-hlevel λ g
-      → trunc D _ _ _ _ )
+      → trunc _ _ _ _ )
 
   -- a functor is the same as a functorial mapping
   isom : Functor C D ≅ Σ Mapping Functorial

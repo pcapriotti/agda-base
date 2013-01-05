@@ -2,7 +2,7 @@
 
 open import level
 open import sum
-open import category.category
+open import category.category renaming (_∘_ to _⋆_)
 open import category.functor
 open import category.trans
   using (_⇒_; nt; module Nat)
@@ -31,9 +31,6 @@ private
     ExtUniv : Extension K G → Set _
     ExtUniv (extension S (nt α _)) = Σ (S ⇒ F) λ { (nt β _) →
       (∀ X → ε X ⋆ β (apply K X) ≡ α X) }
-      where
-        open Category D using ()
-          renaming (_∘_ to _⋆_)
 open Universality public
 
 record Ran (K : Functor C C')(G : Functor C D)

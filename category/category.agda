@@ -15,6 +15,9 @@ record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
     obj : Set i
     is-cat : IsCategory obj j
 
+  mor : Set (i ⊔ j)
+  mor = Σ (obj × obj) (uncurry (IsCategory.hom is-cat))
+
   open IsCategory is-cat public
 
 -- opposite category
@@ -31,3 +34,12 @@ op C = record
     ; associativity = λ f g h → sym (associativity h g f) } }
   where
     open Category C
+
+-- interface
+
+open Category public using (obj; mor)
+private
+  module Interface {i j} ⦃ C : Category i j ⦄ where
+    open Category C using (is-cat)
+    open IsCategory is-cat public
+open Interface public

@@ -15,8 +15,6 @@ open import hott.hlevel
 module category.trans.hlevel {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where
 
-open Category using (mor; hom)
-
 private
   module NatΣ (F G : Functor C D) where
     Nat' : Set _
@@ -33,7 +31,6 @@ private
 
 trans-hset : (F G : Functor C D) → h 2 (Trans F G)
 trans-hset F G = Π-hlevel (λ X → trunc _ _) 
-  where open Category D
 
 natural-prop : (F G : Functor C D)
              → (α : Trans F G)
@@ -41,10 +38,8 @@ natural-prop : (F G : Functor C D)
 natural-prop F G α = iso-hlevel (lem (nat-equation F G α))
   (Π-hlevel (λ m → trunc _ _ _ _))
   where
-    open Category D using (trunc)
-
     lem : ∀ {i}(P : mor C → Set i)
-        → ((m : mor C) → P m) ≅ (∀ {X Y} (f : hom C X Y) → P ((X , Y) , f))
+        → ((m : mor C) → P m) ≅ (∀ {X Y} (f : hom X Y) → P ((X , Y) , f))
     lem P = iso (λ n f → n (_ , f))
                 (λ n m → n (proj₂ m))
                 (λ _ → refl) (λ _ → refl)
