@@ -20,7 +20,7 @@ monic-h1 f = Π-hlevel-impl λ z
            → Π-hlevel λ g
            → Π-hlevel λ f
            → Π-hlevel λ p
-           → trunc _ _ _ _
+           → trunc C _ _ _ _
 
 -- an isomorphism is monic
 iso-monic : ∀ {x y} (isom : cat-iso C x y)

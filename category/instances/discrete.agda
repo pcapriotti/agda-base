@@ -24,12 +24,12 @@ discrete (A , h3) = record
     { obj = A
     ; is-cat = record
       { hom = _≡_
-      ; trunc = h3
       ; id = λ x → refl {x = x}
       ; _∘_ = λ p q → trans q p
       ; left-unit = left-unit
       ; right-unit = right-unit
-      ; associativity = E.associativity } }
+      ; associativity = E.associativity }
+    ; trunc = h3 }
   ; _⁻¹ = sym
   ; left-inverse = left-inverse
   ; right-inverse = right-inverse }

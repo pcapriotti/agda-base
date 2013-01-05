@@ -38,8 +38,8 @@ private
 
     inverses-h1 : ∀ tf → h 1 (inverses tf)
     inverses-h1 (t , f) =
-      ×-hlevel (trunc x x (f ∘ t) (id x))
-               (trunc y y (t ∘ f) (id y))
+      ×-hlevel (trunc C x x (f ∘ t) (id x))
+               (trunc C y y (t ∘ f) (id y))
 
     E : Set _
     E = Σ (hom x y × hom y x) inverses
@@ -53,7 +53,7 @@ private
 
 cat-iso-hset : ∀ {i j}{C : Category i j} (x y : obj C) → h 2 (cat-iso C x y)
 cat-iso-hset {C = C} x y = iso-hlevel e-iso
-  ( Σ-hlevel (×-hlevel (trunc x y) (trunc y x))
+  ( Σ-hlevel (×-hlevel (trunc C x y) (trunc C y x))
              (λ tf → h↑ (inverses-h1 tf)) )
   where
     open Properties x y

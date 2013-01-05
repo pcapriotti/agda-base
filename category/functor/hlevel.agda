@@ -40,13 +40,13 @@ private
   -- being functorial is a proposition
   func-prop : (m : Mapping) → h 1 (Functorial m)
   func-prop m = ×-hlevel
-    ( Π-hlevel λ X → trunc _ _ _ _ )
+    ( Π-hlevel λ X → trunc D _ _ _ _ )
     ( Π-hlevel λ X
       → Π-hlevel λ Y
       → Π-hlevel λ Z
       → Π-hlevel λ f
       → Π-hlevel λ g
-      → trunc _ _ _ _ )
+      → trunc D _ _ _ _ )
 
   -- a functor is the same as a functorial mapping
   isom : Functor C D ≅ Σ Mapping Functorial

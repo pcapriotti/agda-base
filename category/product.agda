@@ -21,7 +21,6 @@ C ⊗ D = record
   ; is-cat = record
     { hom = λ { (X , Y) (X' , Y')
               → hom X X' × hom Y Y' }
-    ; trunc = λ _ _ → ×-hlevel (trunc _ _) (trunc _ _)
     ; id = λ { (X , Y) → (id X , id Y) }
     ; _∘_ = λ { (f , g) (f' , g') → (f ⋆ f' , g ⋆ g') }
     ; left-unit = λ { _ →
@@ -29,7 +28,8 @@ C ⊗ D = record
     ; right-unit = λ { _ →
         cong₂ _,_ (right-unit _)  (right-unit _) }
     ; associativity = λ { _ _ _ →
-        cong₂ _,_ (associativity _ _ _) (associativity _ _ _) } } }
+        cong₂ _,_ (associativity _ _ _) (associativity _ _ _) } }
+  ; trunc = λ _ _ → ×-hlevel (trunc C _ _) (trunc D _ _) }
 
 private
   module Properties {i₀ j₀ i₁ j₁}

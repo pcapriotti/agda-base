@@ -21,7 +21,7 @@ open Functor
 
 hom-func : obj C → Functor C (set j)
 hom-func X = record
-  { apply = λ Y → (hom X Y , trunc X Y)
+  { apply = λ Y → (hom X Y , trunc C X Y)
   ; map = _⋆_
   ; map-id = λ _ → ext λ x → left-unit x
   ; map-hom = λ f g → ext λ x → associativity x f g }

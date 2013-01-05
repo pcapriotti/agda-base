@@ -12,8 +12,6 @@ record IsCategory {i}(obj : Set i) j : Set (i ⊔ lsuc j) where
   field
     hom : obj → obj → Set j
 
-    trunc : ∀ x y → h 2 (hom x y)
-
     id : (A : obj) → hom A A
     _∘_ : {A B C : obj} → hom B C → hom A B → hom A C
 
