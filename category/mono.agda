@@ -8,7 +8,6 @@ open import category.isomorphism
 open import equality.core
 open import equality.reasoning
 open import hott.hlevel
-open import hott.univalence.properties
 
 open Category C
 
