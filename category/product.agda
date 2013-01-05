@@ -30,12 +30,17 @@ C ⊗ D = record
     ; associativity = λ { _ _ _ →
         cong₂ _,_ (associativity _ _ _) (associativity _ _ _) } }
   ; trunc = λ _ _ → ×-hlevel (trunc C _ _) (trunc D _ _) }
+  where
+    open Category C using (is-cat)
+    open Category D using (is-cat)
 
 private
   module Properties {i₀ j₀ i₁ j₁}
                     (C : Category i₀ j₀)
                     (D : Category i₁ j₁) where
     open Functor
+    open Category C using (is-cat)
+    open Category D using (is-cat)
 
     cat-proj₁ : Functor (C ⊗ D) C
     cat-proj₁ = record

@@ -12,6 +12,7 @@ record Groupoid (i j : Level) : Set (lsuc (i ⊔ j)) where
     cat : Category i j
 
   infix 9 _⁻¹
+  open Category cat using (is-cat)
 
   field
     -- structure

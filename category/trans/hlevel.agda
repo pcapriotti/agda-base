@@ -15,6 +15,9 @@ open import hott.hlevel
 module category.trans.hlevel {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where
 
+open Category C using (is-cat)
+open Category D using (is-cat)
+
 private
   module NatΣ (F G : Functor C D) where
     Nat' : Set _

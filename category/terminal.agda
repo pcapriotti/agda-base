@@ -21,6 +21,7 @@ private
   module Properties {i j}{C : Category i j}
                     (X : obj C)(t : terminal C X) where
     open _⊣_ _ _ t
+    open Category C using (is-cat)
 
     term-univ : (Y : obj C) → contr (hom Y X)
     term-univ Y = iso-hlevel (adj Y tt) (h↑ ⊤-contr tt tt) 

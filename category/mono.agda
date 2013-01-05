@@ -9,6 +9,8 @@ open import equality.core
 open import equality.reasoning
 open import hott.hlevel
 
+open Category C using (is-cat)
+
 monic : ∀ {x y} (f : hom x y) → Set _
 monic {x}{y} f = ∀ {z} (g h : hom z x)
                  → f ∘ g ≡ f ∘ h

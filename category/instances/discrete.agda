@@ -46,6 +46,7 @@ discrete-lift {C = C} f = record
   ; map-id = λ _ → refl
   ; map-hom = λ { {X}{.X}{.X} refl refl
                 → sym (cat-left-unit _) } }
+  where open Category C using (is-cat)
 
 discrete-func : ∀ {i j}{A : Type i 1}{B : Type j 1}
               → (proj₁ A → proj₁ B)

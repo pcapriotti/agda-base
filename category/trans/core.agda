@@ -13,6 +13,8 @@ module category.trans.core {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where
 
 open Functor using (apply; map)
+open Category C using (is-cat)
+open Category D using (is-cat)
 
 Trans : Functor C D → Functor C D → Set _
 Trans F G = ∀ X → hom (apply F X) (apply G X)

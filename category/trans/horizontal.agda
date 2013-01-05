@@ -13,6 +13,9 @@ module category.trans.horizontal {i₀}{j₀}{i₁}{j₁}{i₂}{j₂}
   {C : Category i₀ j₀}{D : Category i₁ j₁}{E : Category i₂ j₂} where
 
 open Functor
+open Category C using (is-cat)
+open Category D using (is-cat)
+open Category E using (is-cat)
   
 _◂_ : (H : Functor D E){F G : Functor C D}(n : F ⇒ G) → H ∘ F ⇒ H ∘ G
 _◂_ H {F}{G} (nt α α-nat) = nt Hα Hα-nat

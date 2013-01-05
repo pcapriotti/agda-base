@@ -43,8 +43,4 @@ op C = record
 -- interface
 
 open Category public using (obj; mor; trunc)
-private
-  module Interface {i j} ⦃ C : Category i j ⦄ where
-    open Category C using (is-cat)
-    open IsCategory is-cat public
-open Interface public
+open IsCategory ⦃...⦄ public
