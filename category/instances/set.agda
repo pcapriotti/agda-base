@@ -18,13 +18,14 @@ open import hott.weak-equivalence
 set : ∀ i → Category (lsuc i) i
 set i = record
   { obj = HSet i
-  ; hom = λ A B → (proj₁ A → proj₁ B)
-  ; trunc = λ { _ (B , h2B) → Π-hlevel (λ _ → h2B) }
-  ; id = λ A x → x
-  ; _∘_ = λ f g x → f (g x)
-  ; left-unit = λ f → refl
-  ; right-unit = λ f → refl
-  ; associativity = λ f g h → refl }
+  ; is-cat = record
+    { hom = λ A B → (proj₁ A → proj₁ B)
+    ; trunc = λ { _ (B , h2B) → Π-hlevel (λ _ → h2B) }
+    ; id = λ A x → x
+    ; _∘_ = λ f g x → f (g x)
+    ; left-unit = λ f → refl
+    ; right-unit = λ f → refl
+    ; associativity = λ f g h → refl } }
 
 -- isomorphism in the category of sets is the same
 -- as isomorphism of types

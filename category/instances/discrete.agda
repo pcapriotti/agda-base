@@ -22,13 +22,14 @@ discrete : ∀ {i} → Type i 1 → Groupoid i i
 discrete (A , h3) = record
   { cat = record
     { obj = A
-    ; hom = _≡_
-    ; trunc = h3
-    ; id = λ x → refl {x = x}
-    ; _∘_ = λ p q → trans q p
-    ; left-unit = left-unit
-    ; right-unit = right-unit
-    ; associativity = E.associativity }
+    ; is-cat = record
+      { hom = _≡_
+      ; trunc = h3
+      ; id = λ x → refl {x = x}
+      ; _∘_ = λ p q → trans q p
+      ; left-unit = left-unit
+      ; right-unit = right-unit
+      ; associativity = E.associativity } }
   ; _⁻¹ = sym
   ; left-inverse = left-inverse
   ; right-inverse = right-inverse }

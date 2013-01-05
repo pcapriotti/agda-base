@@ -19,18 +19,18 @@ _⊗_ : ∀ {i j i' j'}
     → Category (i ⊔ i') (j ⊔ j')
 C ⊗ D = record
   { obj = obj C × obj D
-  ; hom = λ { (X , Y) (X' , Y')
-            → hom C X X' × hom D Y Y' }
-  ; trunc = λ _ _ → ×-hlevel (trunc C _ _) (trunc D _ _)
-  ; id = λ { (X , Y) → (id C X , id D Y) }
-  ; _∘_ = λ { (f , g) (f' , g') → (f ⋆ f' , g ✦ g') }
-  ; left-unit = λ { _ →
-      cong₂ _,_ (left-unit C _)  (left-unit D _) }
-  ; right-unit = λ { _ →
-      cong₂ _,_ (right-unit C _)  (right-unit D _) }
-  ; associativity = λ { _ _ _ →
-      cong₂ _,_ (associativity C _ _ _) (associativity D _ _ _) }
-  }
+  ; is-cat = record
+    { hom = λ { (X , Y) (X' , Y')
+              → hom C X X' × hom D Y Y' }
+    ; trunc = λ _ _ → ×-hlevel (trunc C _ _) (trunc D _ _)
+    ; id = λ { (X , Y) → (id C X , id D Y) }
+    ; _∘_ = λ { (f , g) (f' , g') → (f ⋆ f' , g ✦ g') }
+    ; left-unit = λ { _ →
+        cong₂ _,_ (left-unit C _)  (left-unit D _) }
+    ; right-unit = λ { _ →
+        cong₂ _,_ (right-unit C _)  (right-unit D _) }
+    ; associativity = λ { _ _ _ →
+        cong₂ _,_ (associativity C _ _ _) (associativity D _ _ _) } } }
   where
     open Category C using ()
       renaming (_∘_ to _⋆_)

@@ -8,40 +8,26 @@ open import function using (flip)
 open import equality.core
 open import hott.hlevel
 
+open import category.class
+
 record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
-  infixl 8 _∘_
   field
     obj : Set i
-    hom : obj → obj → Set j
+    is-cat : IsCategory obj j
 
-    trunc : ∀ x y → h 2 (hom x y)
-
-    id : (A : obj) → hom A A
-    _∘_ : {A B C : obj} → hom B C → hom A B → hom A C
-
-    left-unit : {A B : obj}(f : hom A B)
-              → id B ∘ f ≡ f
-    right-unit : {A B : obj}(f : hom A B)
-               → f ∘ id A ≡ f
-    associativity : {A B C D : obj}
-                    (f : hom A B)
-                    (g : hom B C)
-                    (h : hom C D)
-                  → h ∘ g ∘ f ≡ h ∘ (g ∘ f)
-
-  mor : Set (i ⊔ j)
-  mor = Σ (obj × obj) (uncurry hom)
+  open IsCategory is-cat public
 
 -- opposite category
 op : ∀ {i j} → Category i j → Category i j
 op C = record
   { obj = obj
-  ; hom = flip hom
-  ; trunc = flip trunc
-  ; id = id
-  ; _∘_ = flip _∘_
-  ; left-unit = right-unit
-  ; right-unit = left-unit
-  ; associativity = λ f g h → sym (associativity h g f) }
+  ; is-cat = record
+    { hom = flip hom
+    ; trunc = flip trunc
+    ; id = id
+    ; _∘_ = flip _∘_
+    ; left-unit = right-unit
+    ; right-unit = left-unit
+    ; associativity = λ f g h → sym (associativity h g f) } }
   where
     open Category C
