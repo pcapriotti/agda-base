@@ -12,9 +12,10 @@ open import category.class
 
 record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
   field
-    obj : Set i
-    is-cat : IsCategory obj j
+    carrier : CatCarrier i j
+    is-cat : IsCategory carrier
 
+  open CatCarrier carrier
   open IsCategory is-cat
 
   field
@@ -23,15 +24,17 @@ record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
   mor : Set (i ⊔ j)
   mor = Σ (obj × obj) (uncurry hom)
 
+  open CatCarrier carrier public
   open IsCategory is-cat public
 
 -- opposite category
 op : ∀ {i j} → Category i j → Category i j
 op C = record
-  { obj = obj
+  { carrier = record
+    { obj = obj
+    ; hom = flip hom }
   ; is-cat = record
-    { hom = flip hom
-    ; id = id
+    { id = id
     ; _∘_ = flip _∘_
     ; left-unit = right-unit
     ; right-unit = left-unit
@@ -43,4 +46,9 @@ op C = record
 -- interface
 
 open Category public using (obj; mor; trunc)
-open IsCategory ⦃...⦄ public
+private
+  module Interface {i j} ⦃ C : Category i j ⦄ where
+    open Category C using (is-cat)
+    open Category C public using (hom)
+    open IsCategory is-cat public
+open Interface public

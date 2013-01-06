@@ -21,10 +21,11 @@ open Groupoid using (cat)
 discrete : ∀ {i} → Type i 1 → Groupoid i i
 discrete (A , h3) = record
   { cat = record
-    { obj = A
+    { carrier = record
+      { obj = A
+      ; hom = _≡_ }
     ; is-cat = record
-      { hom = _≡_
-      ; id = λ x → refl {x = x}
+      { id = λ x → refl {x = x}
       ; _∘_ = λ p q → trans q p
       ; left-unit = left-unit
       ; right-unit = right-unit

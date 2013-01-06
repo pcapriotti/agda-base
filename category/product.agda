@@ -17,11 +17,12 @@ _⊗_ : ∀ {i j i' j'}
     → Category i j → Category i' j'
     → Category (i ⊔ i') (j ⊔ j')
 C ⊗ D = record
-  { obj = obj C × obj D
+  { carrier = record
+    { obj = obj C × obj D
+    ; hom = λ { (X , Y) (X' , Y')
+            → hom X X' × hom Y Y' } }
   ; is-cat = record
-    { hom = λ { (X , Y) (X' , Y')
-              → hom X X' × hom Y Y' }
-    ; id = λ { (X , Y) → (id X , id Y) }
+    { id = λ { (X , Y) → (id X , id Y) }
     ; _∘_ = λ { (f , g) (f' , g') → (f ⋆ f' , g ⋆ g') }
     ; left-unit = λ { _ →
         cong₂ _,_ (left-unit _)  (left-unit _) }

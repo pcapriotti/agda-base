@@ -16,22 +16,14 @@ open import hott.hlevel
 open import hott.univalence
 open import hott.weak-equivalence
 
-set-cat : ∀ {i} → IsCategory (Set i) i
-set-cat = record
-  { hom = λ A B → A → B
-  ; id = λ A x → x
-  ; _∘_ = λ f g x → f (g x)
-  ; left-unit = λ f → refl
-  ; right-unit = λ f → refl
-  ; associativity = λ f g h → refl }
-
 set : ∀ i → Category (lsuc i) i
 set i = record
-  { obj = HSet i
+  { carrier = record
+    { obj = HSet i
+    ; hom = λ A B → proj₁ A → proj₁ B }
   ; is-cat = record
-    { hom = λ A B → hom (proj₁ A) (proj₁ B)
-    ; id = λ A → id (proj₁ A)
-    ; _∘_ = λ f g → f ∘ g
+    { id = λ A x → x
+    ; _∘_ = λ f g x → f (g x)
     ; left-unit = λ f → refl
     ; right-unit = λ f → refl
     ; associativity = λ f g h → refl }

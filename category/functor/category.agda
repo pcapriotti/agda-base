@@ -11,10 +11,11 @@ module category.functor.category {i}{j}{i'}{j'}
 
 Func : Category _ _
 Func = record
-  { obj = Functor C D
+  { carrier = record
+    { obj = Functor C D
+    ; hom = Nat }
   ; is-cat = record
-    { hom = Nat
-    ; _∘_ = _∘_
+    { _∘_ = _∘_
     ; id = Id
     ; associativity = nat-assoc
     ; left-unit = nat-left-unit

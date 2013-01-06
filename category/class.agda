@@ -7,11 +7,15 @@ open import sum
 open import equality.core
 open import hott.hlevel
 
-record IsCategory {i}(obj : Set i) j : Set (i ⊔ lsuc j) where
-  infixl 8 _∘_
+record CatCarrier i j : Set (lsuc (i ⊔ j)) where
   field
+    obj : Set i
     hom : obj → obj → Set j
 
+record IsCategory {i j}(carrier : CatCarrier i j) : Set (i ⊔ j) where
+  infixl 8 _∘_
+  open CatCarrier carrier
+  field
     id : (A : obj) → hom A A
     _∘_ : {A B C : obj} → hom B C → hom A B → hom A C
 
