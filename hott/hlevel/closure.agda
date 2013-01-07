@@ -16,7 +16,8 @@ open import sets.nat using (ℕ; suc; _≤_)
 open import hott.hlevel.core
 open import hott.hlevel.sets using (⊤-contr; bool-set)
 open import hott.hlevel.properties
-open import hott.weak-equivalence.core using (_≈_)
+open import hott.weak-equivalence.core
+  using (weak-equiv; _≈_)
 open import hott.univalence
 
 abstract
@@ -96,3 +97,10 @@ abstract
   hn-h1 : ∀ {i} n (X : Set i) → h 1 (h n X)
   hn-h1 0 X = contr-h1 X
   hn-h1 (suc n) X = Π-hlevel λ x → Π-hlevel λ y → hn-h1 n (x ≡ y)
+
+  -- being a weak equivalence is a proposition
+  weak-equiv-h1 : ∀ {i j}{X : Set i}{Y : Set j}
+                → (f : X → Y)
+                → h 1 (weak-equiv f)
+  weak-equiv-h1 f = Π-hlevel λ y
+                  → contr-h1 _
