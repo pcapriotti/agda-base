@@ -3,6 +3,7 @@ module category where
 
 import category.class
 import category.category
+import category.free
 import category.groupoid
 import category.functor
 import category.trans
