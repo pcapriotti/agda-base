@@ -13,11 +13,13 @@ free-cat : ∀ {i j}{X : Set i}(W : X → X → Set j)
          → h 3 X → h 2 (Σ (X × X) (uncurry W))
          → Category i (i ⊔ j)
 free-cat {X = X} W hX hW = record
-  { obj = X
-  ; hom = List W
-  ; trunc = list-hlevel hX hW
-  ; id = λ x → nil
-  ; _∘_ = λ ws us → us ++ ws
-  ; left-unit = nil-right-unit
-  ; right-unit = λ _ → refl
-  ; associativity = ++-assoc }
+  { carrier = record
+    { obj = X
+    ; hom = List W }
+  ; is-cat = record
+    { id = λ x → nil
+    ; _∘_ = λ ws us → us ++ ws
+    ; left-unit = nil-right-unit
+    ; right-unit = λ _ → refl
+    ; associativity = ++-assoc }
+  ; trunc = list-hlevel hX hW }
