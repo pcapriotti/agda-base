@@ -15,7 +15,7 @@ private
   module Definition {li la lb}
                     (I : Set li)
                     (A : I → Set la)
-                    (B : (i : I) → A i → Set lb) 
+                    (B : (i : I) → A i → Set lb)
                     (r : (i : I)(a : A i)(b : B i a) → I) where
     data W (i : I) : Set (la ⊔ lb) where
       sup : (a : A i) → ((b : B i a) → W (r i a b)) → W i
