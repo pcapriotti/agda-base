@@ -20,79 +20,90 @@ postulate
 {-# BUILTIN SHARP    ♯_ #-}
 {-# BUILTIN FLAT     ♭  #-}
 
--- non-indexed M types, A and B define a container
-module Definition (A : Set)
-                  (B : A → Set) where
-  -- functor associated to this container
-  F : Set → Set
-  F X = Σ A λ a → (B a → X)
+module Definition (I : Set)
+                  (A : I → Set)
+                  (B : {i : I} → A i → Set)
+                  (r : {i : I}{a : A i} → B a → I) where
+
+  -- functor associated to this indexed container
+  F : (I → Set) → I → Set
+  F X i = Σ (A i) λ a → (b : B a) → X (r b)
+
+  -- homsets in the slice category
+  _↝_ : (X Y : I → Set) → Set
+  X ↝ Y = {i : I} → X i → Y i
 
   -- morphism map for the functor F
-  fmap : {X Y : Set}
-       → (X → Y)
-       → F X → F Y
-  fmap g (a , f) = a , g ∘ f
+  imap : (X : I → Set)
+       → {Y : I → Set}
+       → (X ↝ Y)
+       → (F X ↝ F Y)
+  imap _ g {i} (a , f) = a , g ∘ f
 
-  -- definition of M-types using native Agda coinduction
-  data M : Set where
-    inf : (a : A) → (B a → ∞ M) → M
+  -- definition of indexed M-types using native Agda coinduction
+  data M (i : I) : Set where
+    inf : (a : A i) → ((b : B a) → ∞ (M (r b))) → M i
 
   -- the terminal coalgebra
-  out : M → F M
+  out : M ↝ F M
   out (inf a f) = a , ♭ ∘ f
 
   -- normally, the constructor can be defined in terms of out and unfold, but
   -- Agda provides it natively, together with a definitional β rule
-  inM' : F M → M
+  inM' : F M ↝ M
   inM' (a , f) = inf a (λ x → ♯ (f x))
 
-  inM'-β : (x : F M) → out (inM' x) ≡ x
+  inM'-β : {i : I}(x : F M i) → out (inM' x) ≡ x
   inM'-β x = refl
 
-  module Elim {X : Set}
-              (α : X → F X) where
+  module Elim {X : I → Set}
+              (α : X ↝ F X) where
     -- anamorphisms
-    unfold : X → M
-    unfold x = inf a f
+    unfold : X ↝ M
+    unfold {i} x = inf a f
       where
-        u : F X
+        u : F X i
         u = α x
 
-        a : A
+        a : A i
         a = proj₁ u
 
-        f : B a → ∞ M
+        f : (b : B a) → ∞ (M (r b))
         f b = ♯ unfold (proj₂ u b)
 
     -- computational rule for anamorphisms
     -- this holds definitionally
-    unfold-β : (x : X) → out (unfold x) ≡ fmap unfold (α x)
+    unfold-β : {i : I}(x : X i)
+             → out (unfold x) ≡ imap X unfold (α x)
     unfold-β x = refl
 
     -- the corresponding η rule doesn't hold, so we postulate it
     postulate
-      unfold-η : (h : X → M)
-               → ((x : X) → out (h x) ≡ fmap h (α x))
-               → (x : X) → h x ≡ unfold x
+      unfold-η : (h : X ↝ M)
+               → (∀ {i} (x : X i) → out (h x) ≡ imap X h (α x))
+               → ∀ {i} (x : X i) → h x ≡ unfold x
   open Elim
 
   -- using η, we can prove that the unfolding of out is the identity
-  unfold-id : (x : M) → unfold out x ≡ x
+  unfold-id : ∀ {i} (x : M i) → unfold out x ≡ x
   unfold-id x = sym (unfold-η out id (λ _ → refl) x)
 
   -- the usual definition of the constructor
-  inM : F M → M
-  inM = unfold (fmap out)
+  inM : F M ↝ M
+  inM = unfold (imap M out)
 
   -- the constructor is the inverse of the destructor
-  inM-η : (x : M) → inM (out x) ≡ x
+  inM-η : ∀ {i} (x : M i) → inM (out x) ≡ x
   inM-η x = unfold-η out (inM ∘ out) (λ _ → refl) x ⊚ unfold-id x
 
-  inM-β : (x : F M) → out (inM x) ≡ x
-  inM-β x = cong (λ h → fmap h x) (ext' inM-η)
+  inM-β : ∀ {i} (x : F M i) → out (inM x) ≡ x
+  inM-β {i} x = cong u (impl-ext' (λ i → ext' inM-η))
+    where
+      u : (M ↝ M) → F M i
+      u h = imap M h {i} x
 
   -- now we can prove that the constructor provided by Agda is equal to the
   -- usual one
-  inM-alt : (x : F M) → inM' x ≡ inM x
+  inM-alt : ∀ {i} (x : F M i) → inM' x ≡ inM x
   inM-alt x = sym (inM-η (inM' x))
 open Definition
