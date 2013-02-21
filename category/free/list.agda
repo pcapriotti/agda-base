@@ -27,7 +27,7 @@ private
     open import sets.unit
     open import function.extensionality
     open import function.isomorphism
-    open import w renaming (W to W-type)
+    open import container.w renaming (W to W-type)
     open import hott.hlevel.properties
 
     I : Set i

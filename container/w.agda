@@ -1,5 +1,5 @@
 {-# OPTIONS --without-K #-}
-module w where
+module container.w where
 
 open import level
 open import sum
