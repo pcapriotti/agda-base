@@ -19,8 +19,36 @@ private
                     (B : {i : I} → A i → Set lb)
                     (r : {i : I}{a : A i} → B a → I) where
     open Container I A B r
+
+    -- definition of indexed W-types using a type family
     data W (i : I) : Set (la ⊔ lb) where
       sup : (a : A i) → ((b : B a) → W (r b)) → W i
+
+    -- initial F-algebra
+    inW : F W ↝ W
+    inW (a , f) = sup a f
+
+    module Elim {X : I → Set _}
+                (α : F X ↝ X) where
+      -- catamorphisms
+      fold : W ↝ X
+      fold (sup a f) = α (a , λ b → fold (f b))
+
+      -- computational rule for catamorphisms
+      -- this holds definitionally
+      fold-β : ∀ {i} (x : F W i) → fold (inW x) ≡ α (imap W fold x)
+      fold-β x = refl
+
+      -- η-rule, this is only propositional
+      fold-η : (h : W ↝ X)
+             → (∀ {i} (x : F W i) → h (inW x) ≡ α (imap W h x))
+             → ∀ {i} (x : W i) → h x ≡ fold x
+      fold-η h p (sup a f) = p (a , λ b → f b) ⊚ lem
+        where
+          lem : α (a , (λ b → h (f b)))
+              ≡ α (a , (λ b → fold (f b)))
+          lem = cong (λ z → α (a , z))
+                     (ext' λ b → fold-η h p (f b))
 
 private
   module Properties {li la lb}
