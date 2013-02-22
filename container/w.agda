@@ -81,18 +81,17 @@ private
                   (r : {i : I}{a : A i} → B a → I) where
     open Definition I A B r
 
-    private
-      substW : {i : I}{a a' : A i}(p : a ≡ a')(b : B a)
-             → W (r (subst B p b)) → W (r b)
-      substW refl _ x = x
+    substW : {i : I}{a a' : A i}(p : a ≡ a')(b : B a)
+           → W (r (subst B p b)) → W (r b)
+    substW refl _ x = x
 
-      substW-β : ∀ {i} {a a' : A i}
-                 (f : (b : B a) → W (r b))
-                 (f' : (b : B a') → W (r b))
-                 (p : a ≡ a')
-               → (subst (λ a → (b : B a) → W (r b)) p f ≡ f')
-               ≅ ((b : B a) → f b ≡ substW p b (f' (subst B p b)))
-      substW-β f f' refl = sym≅ strong-ext-iso
+    substW-β : ∀ {i} {a a' : A i}
+               (f : (b : B a) → W (r b))
+               (f' : (b : B a') → W (r b))
+               (p : a ≡ a')
+             → (subst (λ a → (b : B a) → W (r b)) p f ≡ f')
+             ≅ ((b : B a) → f b ≡ substW p b (f' (subst B p b)))
+    substW-β f f' refl = sym≅ strong-ext-iso
 
     -- structural equality for W types
     -- dual to coinductive bisimilarity
@@ -113,19 +112,34 @@ private
 
     open Definition I-≡ A-≡ B-≡ (λ {j}{p} → r-≡ {j}{p})
       using ()
-      renaming ( W to W-≡ ; fixpoint to fixpoint-≡ )
+      renaming ( F to F-≡'
+               ; W to W-≡
+               ; fixpoint to fixpoint-≡ )
+
+    F-≡ : ∀ {lx}
+        → (∀ {i} → W i → W i → Set lx)
+        → (∀ {i} → W i → W i → Set _)
+    F-≡ X  u v = F-≡' (λ {(i , u , v) → X {i} u v}) (_ , u , v)
 
     _≡W_ : ∀ {i} → W i → W i → Set _
     _≡W_ {i} u v = W-≡ (i , u , v)
 
-    str-iso : ∀ {i}{u v : W i} → (u ≡ v) ≅ (u ≡W v)
-    str-iso {i}{sup a f}{sup a' f'} = begin
+    fixpoint-W : ∀ {i}{u v : W i} → (u ≡ v) ≅ F-≡ _≡_ u v
+    fixpoint-W {i}{sup a f}{sup a' f'} = begin
         (sup a f ≡ sup a' f')
       ≅⟨ iso≡ (fixpoint i) ⟩
         (apply (fixpoint i) (sup a f) ≡ apply (fixpoint i) (sup a' f'))
       ≅⟨ sym≅ Σ-split-iso ⟩
         (Σ (a ≡ a') λ p → subst (λ a → (b : B a) → W (r b)) p f ≡ f')
       ≅⟨ Σ-cong-iso refl≅ (substW-β f f') ⟩
+        (Σ (a ≡ a') λ p → ∀ b → f b ≡ substW p b (f' (subst B p b)))
+      ∎
+      where open ≅-Reasoning
+
+    str-iso : ∀ {i}{u v : W i} → (u ≡ v) ≅ (u ≡W v)
+    str-iso {i}{sup a f}{sup a' f'} = begin
+        (sup a f ≡ sup a' f')
+      ≅⟨ fixpoint-W ⟩
         (Σ (a ≡ a') λ p → ∀ b → f b ≡ substW p b (f' (subst B p b)))
       ≅⟨ Σ-cong-iso refl≅ (λ a → Π-cong-iso ext' refl≅ λ b → str-iso) ⟩
         (Σ (a ≡ a') λ p → ∀ b → f b ≡W substW p b (f' (subst B p b)))
@@ -141,57 +155,18 @@ private
                     {B : {i : I} → A i → Set lb}
                     {r : {i : I}{a : A i} → B a → I} where
     open Definition I A B r
-
-    W' : I → Set _
-    W' i = Σ (A i) λ a → ((b : B a) → W (r b))
-
-    w-unfold : (i : I) → W i ≅ W' i
-    w-unfold _ = iso f g H K
-      where
-        f : {i : I} → W i → W' i
-        f (sup a f) = a , f
-
-        g : {i : I} → W' i → W i
-        g (a , f) = sup a f
-
-        H : {i : I}(w : W i) → g (f w) ≡ w
-        H (sup a f) = refl
-
-        K : {i : I}(w : W' i) → f (g w) ≡ w
-        K (a , f) = refl
+    open Equality I A B r
 
     w-hlevel : ∀ {n} → ((i : I) → h (suc n) (A i)) → (i : I) → h (suc n) (W i)
-    w-hlevel hA i (sup a f) (sup a' f') = iso-hlevel (sym≅ lem-iso)
+    w-hlevel hA i (sup a f) (sup a' f') = iso-hlevel (sym≅ lem)
       (Σ-hlevel (hA i a a') (λ p → Π-hlevel λ b → w-hlevel hA _ _ _))
       where
-        open ≅-Reasoning
+        lem : ∀ {i}{a a' : A i}
+              {f : (b : B a) → W (r b)}
+              {f' : (b : B a') → W (r b)}
+            → (sup a f ≡ sup a' f')
+            ≅ Σ (a ≡ a') λ p → ∀ b → f b ≡ substW p b (f' (subst B p b))
+        lem = fixpoint-W
 
-        transport : ∀ {l la lb}{X : Set l}
-                    {A : Set la}{B : A → Set lb}
-                  → {a a' : A}(p : a ≡ a')
-                  → (k : {a : A} → B a → X)
-                  → (b : B a)
-                  → k (subst B p b) ≡ k b
-        transport refl k b = refl
-
-        lem-transport : {a a' : A i}
-                        (f : (b : B a) → W (r b))
-                        (f' : (b : B a') → W (r b))
-                        (p : a ≡ a')
-                      → (subst (λ a → (b : B a) → W (r b)) p f ≡ f')
-                      ≅ ((b : B a) → f b ≡ subst W (transport p r b) (f' (subst B p b)))
-        lem-transport f f' refl = sym≅ strong-ext-iso
-
-        lem-iso : (sup a f ≡ sup a' f')
-                ≅ Σ (a ≡ a') λ p → ∀ b → f b ≡ subst W (transport p r b) (f' (subst B p b))
-        lem-iso = begin
-            (sup a f ≡ sup a' f')
-          ≅⟨ iso≡ (w-unfold i) ⟩
-            (apply (w-unfold i) (sup a f) ≡ apply (w-unfold i) (sup a' f'))
-          ≅⟨ sym≅ Σ-split-iso ⟩
-            (Σ (a ≡ a') λ p → subst (λ a → (b : B a) → W (r b)) p f ≡ f')
-          ≅⟨ Σ-cong-iso refl≅ (lem-transport f f') ⟩
-            (Σ (a ≡ a') λ p → ∀ b → f b ≡ subst W (transport p r b) (f' (subst B p b)))
-          ∎
 open Definition public
 open Properties public using (w-hlevel)
