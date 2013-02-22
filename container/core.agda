@@ -13,16 +13,17 @@ module Container {li la lb}
                  (r : {i : I}{a : A i} → B a → I) where
 
   -- functor associated to this indexed container
-  F : (I → Set (la ⊔ lb)) → I → Set _
+  F : ∀ {lx} → (I → Set lx) → I → Set _
   F X i = Σ (A i) λ a → (b : B a) → X (r b)
 
   -- homsets in the slice category
-  _↝_ : (X Y : I → Set (la ⊔ lb)) → Set _
+  _↝_ : ∀ {lx ly} → (I → Set lx) → (I → Set ly) → Set _
   X ↝ Y = {i : I} → X i → Y i
 
   -- morphism map for the functor F
-  imap : (X : I → Set _)
-       → {Y : I → Set _}
+  imap : ∀ {lx ly}
+       → (X : I → Set lx)
+       → {Y : I → Set ly}
        → (X ↝ Y)
        → (F X ↝ F Y)
   imap _ g {i} (a , f) = a , g ∘ f
