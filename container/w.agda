@@ -12,6 +12,8 @@ open import sets.nat using (suc)
 open import sets.unit
 open import hott.hlevel
 open import container.core
+open import container.fixpoint
+open import container.equality
 
 private
   module Definition {li la lb} (c : Container li la lb) where
@@ -70,42 +72,11 @@ private
         K (a , f) = refl
 
 private
-  module Equality {li la lb}(c : Container li la lb) where
+  module Properties {li la lb}(c : Container li la lb) where
     open Definition c
 
-    substW : {i : I}{a a' : A i}(p : a ≡ a')(b : B a)
-           → W (r (subst B p b)) → W (r b)
-    substW refl _ x = x
-
-    substW-β : ∀ {i} {a a' : A i}
-               (f : (b : B a) → W (r b))
-               (f' : (b : B a') → W (r b))
-               (p : a ≡ a')
-             → (subst (λ a → (b : B a) → W (r b)) p f ≡ f')
-             ≅ ((b : B a) → f b ≡ substW p b (f' (subst B p b)))
-    substW-β f f' refl = sym≅ strong-ext-iso
-
-    -- structural equality for W types
-    -- dual to coinductive bisimilarity
-    I-≡ : Set (li ⊔ la ⊔ lb)
-    I-≡ = Σ I λ i → W i × W i
-
-    A-≡ : I-≡ → Set la
-    A-≡ (_ , sup a _ , sup a' _) = a ≡ a'
-
-    B-≡-type : I-≡ → Set _
-    B-≡-type (i , u , v) = A-≡ (i , u , v) → Set lb
-
-    B-≡ : {j : I-≡} → B-≡-type j
-    B-≡ {_ , sup a _ , _} _ = B a
-
-    r-≡ : {j : I-≡}{p : A-≡ j} → B-≡ p → I-≡
-    r-≡ {i , sup a f , sup a' f'}{p} b = r b , f b , substW p b (f' (subst B p b))
-
-    c-≡ : Container (li ⊔ la ⊔ lb) la lb
-    c-≡ = container I-≡ A-≡ B-≡ (λ {j}{p} → r-≡ {j}{p})
-
-    open Definition c-≡
+    open Equality c (fix W fixpoint)
+    open Definition equality
       using ()
       renaming ( F to F-≡'
                ; W to W-≡
@@ -126,8 +97,8 @@ private
         (apply (fixpoint i) (sup a f) ≡ apply (fixpoint i) (sup a' f'))
       ≅⟨ sym≅ Σ-split-iso ⟩
         (Σ (a ≡ a') λ p → subst (λ a → (b : B a) → W (r b)) p f ≡ f')
-      ≅⟨ Σ-cong-iso refl≅ (substW-β f f') ⟩
-        (Σ (a ≡ a') λ p → ∀ b → f b ≡ substW p b (f' (subst B p b)))
+      ≅⟨ Σ-cong-iso refl≅ (substX-β f f') ⟩
+        (Σ (a ≡ a') λ p → ∀ b → f b ≡ substX p b (f' (subst B p b)))
       ∎
       where open ≅-Reasoning
 
@@ -135,18 +106,13 @@ private
     str-iso {i}{sup a f}{sup a' f'} = begin
         (sup a f ≡ sup a' f')
       ≅⟨ fixpoint-W ⟩
-        (Σ (a ≡ a') λ p → ∀ b → f b ≡ substW p b (f' (subst B p b)))
+        (Σ (a ≡ a') λ p → ∀ b → f b ≡ substX p b (f' (subst B p b)))
       ≅⟨ Σ-cong-iso refl≅ (λ a → Π-cong-iso ext' refl≅ λ b → str-iso) ⟩
-        (Σ (a ≡ a') λ p → ∀ b → f b ≡W substW p b (f' (subst B p b)))
+        (Σ (a ≡ a') λ p → ∀ b → f b ≡W substX p b (f' (subst B p b)))
       ≅⟨ sym≅ (fixpoint-≡ _) ⟩
         (sup a f ≡W sup a' f')
       ∎
       where open ≅-Reasoning
-
-private
-  module Properties {li la lb}(c : Container li la lb) where
-    open Definition c
-    open Equality c
 
     w-hlevel : ∀ {n} → ((i : I) → h (suc n) (A i)) → (i : I) → h (suc n) (W i)
     w-hlevel hA i (sup a f) (sup a' f') = iso-hlevel (sym≅ lem)
@@ -156,7 +122,7 @@ private
               {f : (b : B a) → W (r b)}
               {f' : (b : B a') → W (r b)}
             → (sup a f ≡ sup a' f')
-            ≅ Σ (a ≡ a') λ p → ∀ b → f b ≡ substW p b (f' (subst B p b))
+            ≅ Σ (a ≡ a') λ p → ∀ b → f b ≡ substX p b (f' (subst B p b))
         lem = fixpoint-W
 
 open Definition public
