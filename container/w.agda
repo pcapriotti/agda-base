@@ -14,12 +14,8 @@ open import hott.hlevel
 open import container.core
 
 private
-  module Definition {li la lb}
-                    (I : Set li)
-                    (A : I → Set la)
-                    (B : {i : I} → A i → Set lb)
-                    (r : {i : I}{a : A i} → B a → I) where
-    open Container I A B r public
+  module Definition {li la lb} (c : Container li la lb) where
+    open Container c public
 
     -- definition of indexed W-types using a type family
     data W (i : I) : Set (la ⊔ lb) where
@@ -74,12 +70,8 @@ private
         K (a , f) = refl
 
 private
-  module Equality {li la lb}
-                  (I : Set li)
-                  (A : I → Set la)
-                  (B : {i : I} → A i → Set lb)
-                  (r : {i : I}{a : A i} → B a → I) where
-    open Definition I A B r
+  module Equality {li la lb}(c : Container li la lb) where
+    open Definition c
 
     substW : {i : I}{a a' : A i}(p : a ≡ a')(b : B a)
            → W (r (subst B p b)) → W (r b)
@@ -110,7 +102,10 @@ private
     r-≡ : {j : I-≡}{p : A-≡ j} → B-≡ p → I-≡
     r-≡ {i , sup a f , sup a' f'}{p} b = r b , f b , substW p b (f' (subst B p b))
 
-    open Definition I-≡ A-≡ B-≡ (λ {j}{p} → r-≡ {j}{p})
+    c-≡ : Container (li ⊔ la ⊔ lb) la lb
+    c-≡ = container I-≡ A-≡ B-≡ (λ {j}{p} → r-≡ {j}{p})
+
+    open Definition c-≡
       using ()
       renaming ( F to F-≡'
                ; W to W-≡
@@ -149,13 +144,9 @@ private
       where open ≅-Reasoning
 
 private
-  module Properties {li la lb}
-                    {I : Set li}
-                    {A : I → Set la}
-                    {B : {i : I} → A i → Set lb}
-                    {r : {i : I}{a : A i} → B a → I} where
-    open Definition I A B r
-    open Equality I A B r
+  module Properties {li la lb}(c : Container li la lb) where
+    open Definition c
+    open Equality c
 
     w-hlevel : ∀ {n} → ((i : I) → h (suc n) (A i)) → (i : I) → h (suc n) (W i)
     w-hlevel hA i (sup a f) (sup a' f') = iso-hlevel (sym≅ lem)

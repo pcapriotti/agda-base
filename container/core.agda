@@ -6,11 +6,13 @@ open import level
 open import sum
 open import function.core
 
-module Container {li la lb}
-                 (I : Set li)
-                 (A : I → Set la)
-                 (B : {i : I} → A i → Set lb)
-                 (r : {i : I}{a : A i} → B a → I) where
+record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
+  constructor container
+  field
+    I : Set li
+    A : I → Set la
+    B : {i : I} → A i → Set lb
+    r : {i : I}{a : A i} → B a → I
 
   -- functor associated to this indexed container
   F : ∀ {lx} → (I → Set lx) → I → Set _

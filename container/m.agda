@@ -22,12 +22,8 @@ postulate
 {-# BUILTIN FLAT     ♭  #-}
 
 private
-  module Definition {li la lb}
-                    (I : Set li)
-                    (A : I → Set la)
-                    (B : {i : I} → A i → Set lb)
-                    (r : {i : I}{a : A i} → B a → I) where
-    open Container I A B r
+  module Definition {li la lb}(c : Container li la lb) where
+    open Container c
 
     -- definition of indexed M-types using native Agda coinduction
     data M (i : I) : Set (la ⊔ lb) where
@@ -45,7 +41,7 @@ private
     inM'-β : {i : I}(x : F M i) → out (inM' x) ≡ x
     inM'-β x = refl
 
-    module Elim {X : I → Set _}
+    module Elim {lx}{X : I → Set lx}
                 (α : X ↝ F X) where
       -- anamorphisms
       unfold : X ↝ M
