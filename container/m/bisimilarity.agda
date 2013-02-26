@@ -30,6 +30,9 @@ private
     _≡M_ : ∀ {i}(u v : M i) → Set _
     u ≡M v = S.M (_ , u , v)
 
+    reflM : ∀ {i}{u : M i} → u ≡M u
+    reflM = S.inf refl (λ b → ♯ reflM)
+
     module Singl where
       c-singl : Container (li ⊔ la ⊔ lb) la lb
       c-singl = record
@@ -86,16 +89,23 @@ private
                                       (λ {((inf a f , inf .a f') , inf refl h) → refl })
                                       ((u , v) , p)
 
-    m-ext : ∀ {i}{u v : M i} → u ≡M v → u ≡ v
-    m-ext {i}{u}{v} p = begin
-        u
-      ≡⟨ sym (section₁ u) ⟩
-        extract (lift₁ u)
-      ≡⟨ cong extract (contr⇒prop (m-contr Singl-A-contr (i , u)) _ _) ⟩
-        extract (lift₂ p)
-      ≡⟨ section₂ p ⟩
-        v
-      ∎
-      where open ≡-Reasoning
+    abstract
+      m-ext₀ : ∀ {i}{u v : M i} → u ≡M v → u ≡ v
+      m-ext₀ {i}{u}{v} p = begin
+          u
+        ≡⟨ sym (section₁ u) ⟩
+          extract (lift₁ u)
+        ≡⟨ cong extract (contr⇒prop (m-contr Singl-A-contr (i , u)) _ _) ⟩
+          extract (lift₂ p)
+        ≡⟨ section₂ p ⟩
+          v
+        ∎
+        where open ≡-Reasoning
 
-open Bisimilarity public using (_≡M_; m-ext)
+    m-ext : ∀ {i}{u v : M i} → u ≡M v → u ≡ v
+    m-ext p = m-ext₀ p ⊚ sym (m-ext₀ reflM)
+
+    m-ext-id : ∀ {i}{u : M i} → m-ext (reflM {u = u}) ≡ refl
+    m-ext-id = left-inverse (m-ext₀ reflM)
+
+open Bisimilarity public using (_≡M_; m-ext; m-ext-id)
