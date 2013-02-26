@@ -92,3 +92,12 @@ private
           K : (y : Y) → f (g y) ≡ y
           K y = proj₂ (surj-f y)
 open Dummy public
+
+_↣_ : (A B : Set) → Set
+A ↣ B = Σ (A → B) (λ f → isInjective f)
+
+_∘i_ : {A B C : Set} → (B ↣ C) → (A ↣ B) → (A ↣ C) -- composition of injections:
+(g , p) ∘i (f , q) = g ∘ f , r
+   where
+     r : (x x' : _) → g (f x) ≡ g (f x') → x ≡ x'
+     r x x' s = q x x' (p (f x) (f x') s)
