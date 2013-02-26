@@ -7,4 +7,3 @@ import container.fixpoint
 import container.equality
 import container.m
 import container.w
-import container.bisimilarity

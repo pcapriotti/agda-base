@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 
-module container.bisimilarity where
+module container.m.bisimilarity where
 
 open import level
 open import sum
@@ -11,7 +11,8 @@ open import function.core
 open import container.core
 open import container.equality
 open import container.fixpoint
-open import container.m
+open import container.m.core
+open import container.m.hlevel
 open import hott.hlevel.core
 
 private
@@ -97,4 +98,4 @@ private
       ∎
       where open ≡-Reasoning
 
-open Bisimilarity public using (m-ext)
+open Bisimilarity public using (_≡M_; m-ext)
