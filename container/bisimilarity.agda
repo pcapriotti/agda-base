@@ -6,11 +6,13 @@ open import level
 open import sum
 open import equality.core
 open import equality.calculus
+open import equality.reasoning
 open import function.core
 open import container.core
 open import container.equality
 open import container.fixpoint
 open import container.m
+open import hott.hlevel.core
 
 private
   module Bisimilarity {li la lb}(c : Container li la lb) where
@@ -39,6 +41,9 @@ private
 
     Singl-M : ∀ {i} (u : M i) → Set _
     Singl-M {i} u = Singl.M (i , u)
+
+    Singl-A-contr : ∀ i → contr (Singl.A i)
+    Singl-A-contr (i , u) = singl-contr (head u)
 
     extract : ∀ {i}{u : M i} → Singl-M u → M i
     extract {u = inf .a h} (inf (a , refl) f) =
@@ -80,4 +85,16 @@ private
                                       (λ {((inf a f , inf .a f') , inf refl h) → refl })
                                       ((u , v) , p)
 
-open Bisimilarity public
+    m-ext : ∀ {i}{u v : M i} → u ≡M v → u ≡ v
+    m-ext {i}{u}{v} p = begin
+        u
+      ≡⟨ sym (section₁ u) ⟩
+        extract (lift₁ u)
+      ≡⟨ cong extract (contr⇒prop (m-contr Singl-A-contr (i , u)) _ _) ⟩
+        extract (lift₂ p)
+      ≡⟨ section₂ p ⟩
+        v
+      ∎
+      where open ≡-Reasoning
+
+open Bisimilarity public using (m-ext)
