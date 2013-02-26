@@ -27,11 +27,12 @@ private
     open import sets.unit
     open import function.extensionality
     open import function.isomorphism
+    open import container.core using (container)
     open import container.w renaming (W to W-type)
     open import hott.hlevel.properties
 
     I : Set i
-    I = X × X 
+    I = X × X
 
     A : I → Set _
     A (x , y) = (x ≡ y) ⊎ Σ (Σ (X × X) (uncurry W))
@@ -41,16 +42,16 @@ private
     A-hlevel (x , y) = ⊎-hlevel refl-≤ (hX x y)
       (Σ-hlevel hW (λ { ((x' , _) , _) → hX x' x }))
 
-    B : (i : I) → A i → Set _
-    B (x , .x) (inj₁ refl) = ⊥
-    B (.x , z) (inj₂ (((x , y) , w) , refl)) = ⊤
+    B : {i : I} → A i → Set _
+    B {x , .x} (inj₁ refl) = ⊥
+    B {.x , z} (inj₂ (((x , y) , w) , refl)) = ⊤
 
-    r : (i : I)(a : A i) → B i a → I
-    r (x , .x) (inj₁ refl) ()
-    r (.x , z) (inj₂ (((x , y) , w) , refl)) _ = y , z
+    r : {i : I}{a : A i} → B a → I
+    r {x , .x} {inj₁ refl} ()
+    r {.x , z} {inj₂ (((x , y) , w) , refl)} _ = y , z
 
     List' : X → X → Set _
-    List' x y = W-type I A B r (x , y)
+    List' x y = W-type (container I A B r) (x , y)
 
     list-iso : (x y : X) → List' x y ≅ List W x y
     list-iso _ _ = iso f g iso₁ iso₂

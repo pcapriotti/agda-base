@@ -17,7 +17,7 @@ open import container.equality
 
 private
   module Definition {li la lb} (c : Container li la lb) where
-    open Container c public
+    open Container c
 
     -- definition of indexed W-types using a type family
     data W (i : I) : Set (la ⊔ lb) where
@@ -72,14 +72,17 @@ private
         K (a , f) = refl
 
 private
-  module Properties {li la lb}(c : Container li la lb) where
+  module Properties {li la lb}{c : Container li la lb} where
+    open Container c
     open Definition c
 
     open Equality c (fix W fixpoint)
+    open Container equality
+      using ()
+      renaming (F to F-≡')
     open Definition equality
       using ()
-      renaming ( F to F-≡'
-               ; W to W-≡
+      renaming ( W to W-≡
                ; fixpoint to fixpoint-≡ )
 
     F-≡ : ∀ {lx}
