@@ -101,3 +101,6 @@ _∘i_ : {A B C : Set} → (B ↣ C) → (A ↣ B) → (A ↣ C) -- composition 
    where
      r : (x x' : _) → g (f x) ≡ g (f x') → x ≡ x'
      r x x' s = q x x' (p (f x) (f x') s)
+
+_↠_ : (A B : Set) → Set
+A ↠ B = Σ (A → B)(λ f → isSurjective f)
