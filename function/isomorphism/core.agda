@@ -58,7 +58,7 @@ module ≅-Reasoning where
 
   _∎ : ∀ {i} (X : Set i) → X IsRelatedTo X
   _∎ _ = relTo refl≅
-  
+
 private
   module Dummy {i j}{X : Set i}{Y : Set j} where
       isInjective : (f : X → Y) → Set _
@@ -87,7 +87,7 @@ private
           g y = proj₁ (surj-f y)
 
           H : (x : X) → g (f x) ≡ x
-          H x = inj-f (g (f x)) x (proj₂ (surj-f (f x))) 
+          H x = inj-f (g (f x)) x (proj₂ (surj-f (f x)))
 
           K : (y : Y) → f (g y) ≡ y
           K y = proj₂ (surj-f y)
