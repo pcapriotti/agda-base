@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >container.fixpoint</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="container.fixpoint.html#1" class="Module"
+      >container.fixpoint</a
+      ><a name="55"
+      > </a
+      ><a name="56" class="Keyword"
+      >where</a
+      ><a name="61"
+      >
+
+</a
+      ><a name="63" class="Keyword"
+      >open</a
+      ><a name="67"
+      > </a
+      ><a name="68" class="Keyword"
+      >import</a
+      ><a name="74"
+      > </a
+      ><a name="75" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="78"
+      >
+</a
+      ><a name="79" class="Keyword"
+      >open</a
+      ><a name="83"
+      > </a
+      ><a name="84" class="Keyword"
+      >import</a
+      ><a name="90"
+      > </a
+      ><a name="91" href="level.html#1" class="Module"
+      >level</a
+      ><a name="96"
+      >
+</a
+      ><a name="97" class="Keyword"
+      >open</a
+      ><a name="101"
+      > </a
+      ><a name="102" class="Keyword"
+      >import</a
+      ><a name="108"
+      > </a
+      ><a name="109" href="container.core.html#1" class="Module"
+      >container.core</a
+      ><a name="123"
+      >
+</a
+      ><a name="124" class="Keyword"
+      >open</a
+      ><a name="128"
+      > </a
+      ><a name="129" class="Keyword"
+      >import</a
+      ><a name="135"
+      > </a
+      ><a name="136" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="149"
+      >
+</a
+      ><a name="150" class="Keyword"
+      >open</a
+      ><a name="154"
+      > </a
+      ><a name="155" class="Keyword"
+      >import</a
+      ><a name="161"
+      > </a
+      ><a name="162" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="182"
+      >
+
+</a
+      ><a name="184" class="Keyword"
+      >record</a
+      ><a name="190"
+      > </a
+      ><a name="191" href="container.fixpoint.html#191" class="Record"
+      >Fixpoint</a
+      ><a name="199"
+      > </a
+      ><a name="200" class="Symbol"
+      >{</a
+      ><a name="201" href="container.fixpoint.html#201" class="Bound"
+      >li</a
+      ><a name="203"
+      > </a
+      ><a name="204" href="container.fixpoint.html#204" class="Bound"
+      >la</a
+      ><a name="206"
+      > </a
+      ><a name="207" href="container.fixpoint.html#207" class="Bound"
+      >lb</a
+      ><a name="209" class="Symbol"
+      >}</a
+      ><a name="210"
+      >
+                </a
+      ><a name="227" class="Symbol"
+      >(</a
+      ><a name="228" href="container.fixpoint.html#228" class="Bound"
+      >c</a
+      ><a name="229"
+      > </a
+      ><a name="230" class="Symbol"
+      >:</a
+      ><a name="231"
+      > </a
+      ><a name="232" href="container.core.html#127" class="Record"
+      >Container</a
+      ><a name="241"
+      > </a
+      ><a name="242" href="container.fixpoint.html#201" class="Bound"
+      >li</a
+      ><a name="244"
+      > </a
+      ><a name="245" href="container.fixpoint.html#204" class="Bound"
+      >la</a
+      ><a name="247"
+      > </a
+      ><a name="248" href="container.fixpoint.html#207" class="Bound"
+      >lb</a
+      ><a name="250" class="Symbol"
+      >)</a
+      ><a name="251"
+      >
+                </a
+      ><a name="268" class="Symbol"
+      >(</a
+      ><a name="269" href="container.fixpoint.html#269" class="Bound"
+      >lx</a
+      ><a name="271"
+      > </a
+      ><a name="272" class="Symbol"
+      >:</a
+      ><a name="273"
+      > </a
+      ><a name="274" href="level.html#75" class="Postulate"
+      >Level</a
+      ><a name="279" class="Symbol"
+      >)</a
+      ><a name="280"
+      > </a
+      ><a name="281" class="Symbol"
+      >:</a
+      ><a name="282"
+      > </a
+      ><a name="283" class="PrimitiveType"
+      >Set</a
+      ><a name="286"
+      > </a
+      ><a name="287" class="Symbol"
+      >(</a
+      ><a name="288" href="container.fixpoint.html#201" class="Bound"
+      >li</a
+      ><a name="290"
+      > </a
+      ><a name="291" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="292"
+      > </a
+      ><a name="293" href="container.fixpoint.html#204" class="Bound"
+      >la</a
+      ><a name="295"
+      > </a
+      ><a name="296" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="297"
+      > </a
+      ><a name="298" href="container.fixpoint.html#207" class="Bound"
+      >lb</a
+      ><a name="300"
+      > </a
+      ><a name="301" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="302"
+      > </a
+      ><a name="303" href="level.html#106" class="Primitive"
+      >lsuc</a
+      ><a name="307"
+      > </a
+      ><a name="308" href="container.fixpoint.html#269" class="Bound"
+      >lx</a
+      ><a name="310" class="Symbol"
+      >)</a
+      ><a name="311"
+      > </a
+      ><a name="312" class="Keyword"
+      >where</a
+      ><a name="317"
+      >
+  </a
+      ><a name="320" class="Keyword"
+      >constructor</a
+      ><a name="331"
+      > </a
+      ><a name="332" href="container.fixpoint.html#332" class="InductiveConstructor"
+      >fix</a
+      ><a name="335"
+      >
+
+  </a
+      ><a name="339" class="Keyword"
+      >open</a
+      ><a name="343"
+      > </a
+      ><a name="344" href="container.core.html#127" class="Module"
+      >Container</a
+      ><a name="353"
+      > </a
+      ><a name="354" href="container.fixpoint.html#228" class="Bound"
+      >c</a
+      ><a name="355"
+      >
+  </a
+      ><a name="358" class="Keyword"
+      >field</a
+      ><a name="363"
+      >
+    </a
+      ><a name="368" href="container.fixpoint.html#368" class="Field"
+      >X</a
+      ><a name="369"
+      > </a
+      ><a name="370" class="Symbol"
+      >:</a
+      ><a name="371"
+      > </a
+      ><a name="372" href="container.core.html#226" class="Function"
+      >I</a
+      ><a name="373"
+      > </a
+      ><a name="374" class="Symbol"
+      >&#8594;</a
+      ><a name="375"
+      > </a
+      ><a name="376" class="PrimitiveType"
+      >Set</a
+      ><a name="379"
+      > </a
+      ><a name="380" href="container.fixpoint.html#269" class="Bound"
+      >lx</a
+      ><a name="382"
+      >
+    </a
+      ><a name="387" href="container.fixpoint.html#387" class="Field"
+      >fixpoint</a
+      ><a name="395"
+      > </a
+      ><a name="396" class="Symbol"
+      >:</a
+      ><a name="397"
+      > </a
+      ><a name="398" class="Symbol"
+      >&#8704;</a
+      ><a name="399"
+      > </a
+      ><a name="400" href="container.fixpoint.html#400" class="Bound"
+      >i</a
+      ><a name="401"
+      > </a
+      ><a name="402" class="Symbol"
+      >&#8594;</a
+      ><a name="403"
+      > </a
+      ><a name="404" href="container.fixpoint.html#368" class="Bound"
+      >X</a
+      ><a name="405"
+      > </a
+      ><a name="406" href="container.fixpoint.html#400" class="Bound"
+      >i</a
+      ><a name="407"
+      > </a
+      ><a name="408" href="function.isomorphism.core.html#293" class="Record Operator"
+      >&#8773;</a
+      ><a name="409"
+      > </a
+      ><a name="410" href="container.core.html#375" class="Function"
+      >F</a
+      ><a name="411"
+      > </a
+      ><a name="412" href="container.fixpoint.html#368" class="Bound"
+      >X</a
+      ><a name="413"
+      > </a
+      ><a name="414" href="container.fixpoint.html#400" class="Bound"
+      >i</a
+      ><a name="415"
+      >
+
+  </a
+      ><a name="419" href="container.fixpoint.html#419" class="Function"
+      >head</a
+      ><a name="423"
+      > </a
+      ><a name="424" class="Symbol"
+      >:</a
+      ><a name="425"
+      > </a
+      ><a name="426" href="container.fixpoint.html#368" class="Function"
+      >X</a
+      ><a name="427"
+      > </a
+      ><a name="428" href="container.core.html#495" class="Function Operator"
+      >&#8605;</a
+      ><a name="429"
+      > </a
+      ><a name="430" href="container.core.html#241" class="Function"
+      >A</a
+      ><a name="431"
+      >
+  </a
+      ><a name="434" href="container.fixpoint.html#419" class="Function"
+      >head</a
+      ><a name="438"
+      > </a
+      ><a name="439" class="Symbol"
+      >{</a
+      ><a name="440" href="container.fixpoint.html#440" class="Bound"
+      >i</a
+      ><a name="441" class="Symbol"
+      >}</a
+      ><a name="442"
+      > </a
+      ><a name="443" class="Symbol"
+      >=</a
+      ><a name="444"
+      > </a
+      ><a name="445" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="450"
+      > </a
+      ><a name="451" href="function.core.html#148" class="Function Operator"
+      >&#8728;</a
+      ><a name="452"
+      > </a
+      ><a name="453" href="function.isomorphism.core.html#375" class="Function"
+      >apply</a
+      ><a name="458"
+      > </a
+      ><a name="459" class="Symbol"
+      >(</a
+      ><a name="460" href="container.fixpoint.html#387" class="Function"
+      >fixpoint</a
+      ><a name="468"
+      > </a
+      ><a name="469" href="container.fixpoint.html#440" class="Bound"
+      >i</a
+      ><a name="470" class="Symbol"
+      >)</a
+      ><a name="471"
+      >
+
+  </a
+      ><a name="475" href="container.fixpoint.html#475" class="Function"
+      >tail</a
+      ><a name="479"
+      > </a
+      ><a name="480" class="Symbol"
+      >:</a
+      ><a name="481"
+      > </a
+      ><a name="482" class="Symbol"
+      >&#8704;</a
+      ><a name="483"
+      > </a
+      ><a name="484" class="Symbol"
+      >{</a
+      ><a name="485" href="container.fixpoint.html#485" class="Bound"
+      >i</a
+      ><a name="486" class="Symbol"
+      >}(</a
+      ><a name="488" href="container.fixpoint.html#488" class="Bound"
+      >u</a
+      ><a name="489"
+      > </a
+      ><a name="490" class="Symbol"
+      >:</a
+      ><a name="491"
+      > </a
+      ><a name="492" href="container.fixpoint.html#368" class="Function"
+      >X</a
+      ><a name="493"
+      > </a
+      ><a name="494" href="container.fixpoint.html#485" class="Bound"
+      >i</a
+      ><a name="495" class="Symbol"
+      >)(</a
+      ><a name="497" href="container.fixpoint.html#497" class="Bound"
+      >b</a
+      ><a name="498"
+      > </a
+      ><a name="499" class="Symbol"
+      >:</a
+      ><a name="500"
+      > </a
+      ><a name="501" href="container.core.html#260" class="Function"
+      >B</a
+      ><a name="502"
+      > </a
+      ><a name="503" class="Symbol"
+      >(</a
+      ><a name="504" href="container.fixpoint.html#419" class="Function"
+      >head</a
+      ><a name="508"
+      > </a
+      ><a name="509" href="container.fixpoint.html#488" class="Bound"
+      >u</a
+      ><a name="510" class="Symbol"
+      >))</a
+      ><a name="512"
+      > </a
+      ><a name="513" class="Symbol"
+      >&#8594;</a
+      ><a name="514"
+      > </a
+      ><a name="515" href="container.fixpoint.html#368" class="Function"
+      >X</a
+      ><a name="516"
+      > </a
+      ><a name="517" class="Symbol"
+      >(</a
+      ><a name="518" href="container.core.html#291" class="Function"
+      >r</a
+      ><a name="519"
+      > </a
+      ><a name="520" href="container.fixpoint.html#497" class="Bound"
+      >b</a
+      ><a name="521" class="Symbol"
+      >)</a
+      ><a name="522"
+      >
+  </a
+      ><a name="525" href="container.fixpoint.html#475" class="Function"
+      >tail</a
+      ><a name="529"
+      > </a
+      ><a name="530" class="Symbol"
+      >{</a
+      ><a name="531" href="container.fixpoint.html#531" class="Bound"
+      >i</a
+      ><a name="532" class="Symbol"
+      >}</a
+      ><a name="533"
+      > </a
+      ><a name="534" class="Symbol"
+      >=</a
+      ><a name="535"
+      > </a
+      ><a name="536" href="sum.html#233" class="Function"
+      >proj&#8322;</a
+      ><a name="541"
+      > </a
+      ><a name="542" href="function.core.html#148" class="Function Operator"
+      >&#8728;</a
+      ><a name="543"
+      > </a
+      ><a name="544" href="function.isomorphism.core.html#375" class="Function"
+      >apply</a
+      ><a name="549"
+      > </a
+      ><a name="550" class="Symbol"
+      >(</a
+      ><a name="551" href="container.fixpoint.html#387" class="Function"
+      >fixpoint</a
+      ><a name="559"
+      > </a
+      ><a name="560" href="container.fixpoint.html#531" class="Bound"
+      >i</a
+      ><a name="561" class="Symbol"
+      >)</a
+      ><a name="562"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
