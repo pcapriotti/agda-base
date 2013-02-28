@@ -1,20 +1,18 @@
 {-# OPTIONS --without-K #-}
 module category where
 
-import category.class
 import category.category
+import category.class
 import category.free
-import category.groupoid
 import category.functor
-import category.trans
-import category.terminal
+import category.graph
+import category.groupoid
+import category.isomorphism
 import category.kan-extension
 import category.limit
 import category.mono
 import category.product
+import category.terminal
+import category.trans
+import category.univalence
 import category.yoneda
-
-import category.instances.set
-import category.instances.discrete
-import category.instances.unit
-import category.instances.empty
