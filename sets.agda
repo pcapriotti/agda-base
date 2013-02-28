@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module sets where
 
 open import sets.bool  public renaming (_≟_ to _≟B_)

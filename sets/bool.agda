@@ -1,4 +1,3 @@
-
 {-# OPTIONS --without-K  #-}
 
 module sets.bool where

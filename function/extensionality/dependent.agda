@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K #-}
 module function.extensionality.dependent where
 
 open import level using (_⊔_; ↑; lift)

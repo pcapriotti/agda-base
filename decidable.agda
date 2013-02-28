@@ -1,4 +1,3 @@
-
 {-# OPTIONS --without-K  #-}
 
 module decidable where
