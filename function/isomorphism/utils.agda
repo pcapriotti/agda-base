@@ -169,6 +169,14 @@ contr-⊤-iso hX = record
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
+Π-left-unit : ∀ {i}{X : Set i}
+            → (⊤ → X) ≅ X
+Π-left-unit = record
+  { to = λ f → f tt
+  ; from = λ x _ → x
+  ; iso₁ = λ _ → refl
+  ; iso₂ = λ f → refl }
+
 -- rewriting lemmas for equations on equalities
 sym≡-iso : ∀ {i}{X : Set i}(x y : X)
          → (x ≡ y)

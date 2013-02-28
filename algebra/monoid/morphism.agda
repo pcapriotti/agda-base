@@ -3,24 +3,29 @@
 module algebra.monoid.morphism where
 
 open import level
+open import equality.core
 open import algebra.monoid.core
+open import sets.unit
 import category.graph as Graph
-open import category.functor.class
+import category.functor.core as F
 
-private
-  monoid-gmorphism : ∀ {i j} → Monoid i → Monoid j → Set _
-  monoid-gmorphism M N = Graph.Morphism (graph M) (graph N)
+Morphism : ∀ {i j} → Monoid i → Monoid j → Set _
+Morphism M N = F.Functor (as-category M) (as-category N)
 
-open Monoid using (is-mon)
+Id : ∀ {i} → (M : Monoid i) → Morphism M M
+Id M = F.Id (as-category M)
 
-IsMorphism : ∀ {i j}(M : Monoid i)(N : Monoid j)
-           → monoid-gmorphism M N → Set _
-IsMorphism M N = IsFunctor (is-mon M) (is-mon N)
+open F public using (_∘_)
 
-record Morphism {i j}(M : Monoid i)(N : Monoid j) : Set (i ⊔ j) where
-  field
-    func : monoid-gmorphism M N
-    is-mor : IsMorphism M N func
+module Morphism {i j}{M : Monoid i}{N : Monoid j}
+                (f : Morphism M N) where
+  module Func = F.Functor f
 
-  open Graph.Morphism func public
-  open IsFunctor is-mor public
+  map : carrier M → carrier N
+  map = Func.map
+
+  map-id : map unit ≡ unit
+  map-id = Func.map-id tt
+
+  map-hom : ∀ x y → map (x ⋆ y) ≡ map x ⋆ map y
+  map-hom = Func.map-hom

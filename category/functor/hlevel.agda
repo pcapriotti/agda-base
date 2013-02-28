@@ -29,35 +29,35 @@ private
   Functorial : Morphism → Set _
   Functorial = IsFunctor (is-cat C) (is-cat D)
 
-  is-func-prop : (m : Morphism) → h 1 (Functorial m)
-  is-func-prop m = iso-hlevel
-    ( record
-        { to = uncurry is-functor
-        ; from = λ {(is-functor i h) → (i , h) }
-        ; iso₁ = λ _ → refl
-        ; iso₂ = λ _ → refl } )
-    ( ×-hlevel
-      ( Π-hlevel λ X → trunc D _ _ _ _ )
-      ( Π-hlevel-impl λ X
-        → Π-hlevel-impl λ Y
-        → Π-hlevel-impl λ Z
-        → Π-hlevel λ f
-        → Π-hlevel λ g
-        → trunc D _ _ _ _ ) )
+is-func-prop : (m : Morphism) → h 1 (Functorial m)
+is-func-prop m = iso-hlevel
+  ( record
+      { to = uncurry is-functor
+      ; from = λ {(is-functor i h) → (i , h) }
+      ; iso₁ = λ _ → refl
+      ; iso₂ = λ _ → refl } )
+  ( ×-hlevel
+    ( Π-hlevel λ X → trunc D _ _ _ _ )
+    ( Π-hlevel-impl λ X
+      → Π-hlevel-impl λ Y
+      → Π-hlevel-impl λ Z
+      → Π-hlevel λ f
+      → Π-hlevel λ g
+      → trunc D _ _ _ _ ) )
 
-  isom : Functor C D ≅ Σ Morphism Functorial
-  isom = record
-    { to = λ F → ( morph F , is-func F )
-    ; from = λ { (m , f) → functor m f }
-    ; iso₁ = λ _ → refl
-    ; iso₂ = λ _ → refl }
+morphism-structure-iso : Functor C D ≅ Σ Morphism Functorial
+morphism-structure-iso = record
+  { to = λ F → ( morph F , is-func F )
+  ; from = λ { (m , f) → functor m f }
+  ; iso₁ = λ _ → refl
+  ; iso₂ = λ _ → refl }
 
 func-equality-iso : {F G : Functor C D}
                   → (F ≡ G)
                   ≅ (morph F ≡ morph G)
 func-equality-iso {F} {G} = begin
     (F ≡ G)
-  ≅⟨ iso≡ isom ⟩
+  ≅⟨ iso≡ morphism-structure-iso ⟩
     ((morph F , is-func F) ≡ (morph G , is-func G))
   ≅⟨ sym≅ Σ-split-iso ⟩
     Σ (morph F ≡ morph G) (λ p →

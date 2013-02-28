@@ -15,6 +15,9 @@ private
                    ⦃ c : IsCategory G ⦄ where
     open IsCategory c public
 
+open Graph.Graph
+open Interface
+
 record IsFunctor {i j i' j'}
                  {C : Graph.Graph i j}
                  {D : Graph.Graph i' j'}
@@ -24,10 +27,8 @@ record IsFunctor {i j i' j'}
                : Set (i ⊔ j ⊔ i' ⊔ j') where
   constructor is-functor
 
-  open Graph.Graph
   open Graph.Morphism m
     renaming (apply to F)
-  open Interface
 
   field
     map-id : (X : obj C)
@@ -71,6 +72,5 @@ comp-func {cC = cC} {cD = cD} {cE = cE} F G f-func g-func = record
       ∎ }
   where
     open ≡-Reasoning
-    open Interface
     open Graph.Morphism
     open IsFunctor

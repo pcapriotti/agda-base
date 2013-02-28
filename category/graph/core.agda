@@ -14,12 +14,18 @@ record Graph i j : Set (lsuc (i ⊔ j)) where
   total : Set (i ⊔ j)
   total = Σ (obj × obj) (uncurry hom)
 
+open Graph
+
+IsMorphism : ∀ {i j i' j'}{A : Graph i j}{B : Graph i' j'}
+           → (f : obj A → obj B) → Set _
+IsMorphism {A = A}{B = B} f =
+  ∀ {x y} → hom A x y → hom B (f x) (f y)
+
 record Morphism {i j i' j'}
                 (G : Graph i j)
                 (H : Graph i' j')
               : Set (i ⊔ i' ⊔ j ⊔ j') where
   constructor morphism
-  open Graph
   field
     apply : obj G → obj H
     map : ∀ {x y} → hom G x y → hom H (apply x) (apply y)
