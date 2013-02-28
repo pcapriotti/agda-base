@@ -40,39 +40,49 @@ private
 
     cat-proj₁ : Functor (C ⊗ D) C
     cat-proj₁ = record
-      { apply = proj₁
-      ; map = proj₁
-      ; map-id = λ _ → refl
-      ; map-hom = λ _ _ → refl }
+      { morph = record
+        { apply = proj₁
+        ; map = proj₁ }
+      ; is-func = record
+        { map-id = λ _ → refl
+        ; map-hom = λ _ _ → refl } }
 
     cat-proj₂ : Functor (C ⊗ D) D
     cat-proj₂ = record
-      { apply = proj₂
-      ; map = proj₂
-      ; map-id = λ _ → refl
-      ; map-hom = λ _ _ → refl }
+      { morph = record
+        { apply = proj₂
+        ; map = proj₂ }
+      ; is-func = record
+        { map-id = λ _ → refl
+        ; map-hom = λ _ _ → refl } }
 
     ⟨_,_⟩ : ∀ {i₂ j₂} {E : Category i₂ j₂}
          → Functor E C → Functor E D
          → Functor E (C ⊗ D)
     ⟨ F , G ⟩ = record
-      { apply = λ X → apply F X , apply G X
-      ; map = λ f → map F f , map G f
-      ; map-id = λ _ → cong₂ _,_ (map-id F _) (map-id G _)
-      ; map-hom = λ f g → cong₂ _,_ (map-hom F _ _) (map-hom G _ _) }
+      { morph = record
+        { apply = λ X → apply F X , apply G X
+        ; map = λ f → map F f , map G f }
+      ; is-func = record
+        { map-id = λ _ → cong₂ _,_ (map-id F _) (map-id G _)
+        ; map-hom = λ f g → cong₂ _,_ (map-hom F _ _) (map-hom G _ _) } }
 
     cat-section₁ : obj D → Functor C (C ⊗ D)
     cat-section₁ Y = record
-      { apply = λ X → X , Y
-      ; map = λ f → f , id Y
-      ; map-id = λ _ → refl
-      ; map-hom = λ _ _ → cong₂ _,_ refl (sym (left-unit _)) }
+      { morph = record
+        { apply = λ X → X , Y
+        ; map = λ f → f , id Y }
+      ; is-func = record
+        { map-id = λ _ → refl
+        ; map-hom = λ _ _ → cong₂ _,_ refl (sym (left-unit _)) } }
 
     cat-section₂ : obj C → Functor D (C ⊗ D)
     cat-section₂ X = record
-      { apply = λ Y → X , Y
-      ; map = λ g → id X , g
-      ; map-id = λ _ → refl
-      ; map-hom = λ _ _ → cong₂ _,_ (sym (left-unit _)) refl }
+      { morph = record
+        { apply = λ Y → X , Y
+        ; map = λ g → id X , g }
+      ; is-func = record
+        { map-id = λ _ → refl
+        ; map-hom = λ _ _ → cong₂ _,_ (sym (left-unit _)) refl } }
 
 open Properties public

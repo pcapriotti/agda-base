@@ -42,11 +42,13 @@ discrete-lift : ∀ {i j k}{A : Type i 1}{C : Category j k}
               → (proj₁ A → obj C)
               → Functor (discrete-cat A) C
 discrete-lift {C = C} f = record
-  { apply = f
-  ; map = λ { {X}{.X} refl → id _ }
-  ; map-id = λ _ → refl
-  ; map-hom = λ { {X}{.X}{.X} refl refl
-                → sym (cat-left-unit _) } }
+  { morph = record
+    { apply = f
+    ; map = λ { {X}{.X} refl → id _ } }
+  ; is-func = record
+    { map-id = λ _ → refl
+    ; map-hom = λ { {X}{.X}{.X} refl refl
+                  → sym (cat-left-unit _) } } }
 
 discrete-func : ∀ {i j}{A : Type i 1}{B : Type j 1}
               → (proj₁ A → proj₁ B)

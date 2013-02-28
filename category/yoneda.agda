@@ -21,10 +21,12 @@ open Functor
 
 hom-func : obj C → Functor C (set j)
 hom-func X = record
-  { apply = λ Y → (hom X Y , trunc C X Y)
-  ; map = _⋆_
-  ; map-id = λ _ → ext λ x → left-unit x
-  ; map-hom = λ f g → ext λ x → associativity x f g }
+  { morph = record
+    { apply = λ Y → (hom X Y , trunc C X Y)
+    ; map = _⋆_ }
+  ; is-func = record
+    { map-id = λ _ → ext λ x → left-unit x
+    ; map-hom = λ f g → ext λ x → associativity x f g } }
 
 hom-map : {X X' : obj C}(f : hom X X') → hom-func X' ⇒ hom-func X
 hom-map f = record
@@ -34,13 +36,15 @@ hom-map f = record
 -- Yoneda embedding
 y : Functor (op C) (Func C (set j))
 y = record
-  { apply = hom-func
-  ; map = hom-map
-  ; map-id = λ X → nat-equality
-      ( ext' λ _ → ext right-unit)
-  ; map-hom = λ g f → nat-equality
-      ( ext' λ _ → ext λ h
-      → sym (associativity f g h) ) }
+  { morph = record
+    { apply = hom-func
+    ; map = hom-map }
+  ; is-func = record
+    { map-id = λ X → nat-equality
+        ( ext' λ _ → ext right-unit)
+    ; map-hom = λ g f → nat-equality
+        ( ext' λ _ → ext λ h
+        → sym (associativity f g h) ) } }
 
 -- Yoneda lemma
 y-iso : (X : obj C)(F : Functor C (set j))
