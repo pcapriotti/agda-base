@@ -23,7 +23,7 @@ private
 
     open _≅_ isom
     open ≡-Reasoning
-      
+
     iso'≡ : {x x' : X} → (x ≡ x') ≅ (to x ≡ to x')
     iso'≡ {x}{x'} = iso u v H K
       where

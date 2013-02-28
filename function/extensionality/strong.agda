@@ -12,7 +12,6 @@ open import function.extensionality.dependent
 open import hott.hlevel.core
 open import hott.hlevel.properties
 open import hott.weak-equivalence.core
-open import hott.weak-equivalence.conversion
 
 private
   module Dummy {i j}{X : Set i}{Y : X → Set j} where

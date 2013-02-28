@@ -6,7 +6,7 @@ open import sum using (Σ ; proj₁ ; proj₂ ; _,_)
 open import level using (_⊔_)
 open import hott.hlevel.core using (contr ; prop ; _⁻¹_)
 open import function.core using (_$_)
-open import function.isomorphism using (_≅_ ; iso)
+open import function.isomorphism.core using (_≅_ ; iso)
 
 -- a function is a weak equivalence, if the inverse images of all points are contractible
 weak-equiv : ∀ {i k} {X : Set i} {Y : Set k} (f : X → Y) → Set (i ⊔ k)

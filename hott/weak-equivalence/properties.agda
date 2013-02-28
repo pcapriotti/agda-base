@@ -13,10 +13,6 @@ open import hott.weak-equivalence.alternative
 open import hott.univalence
 open import hott.hlevel
 
-≅⇒≡ : ∀ {i}{X Y : Set i}
-     → X ≅ Y → X ≡ Y
-≅⇒≡ = ≈⇒≡ ∘ ≅⇒≈
-
 sym≈ : ∀ {i j}{X : Set i}{Y : Set j}
      → X ≈ Y → Y ≈ X
 sym≈ = ≅'⇒≈ ∘ sym≅' ∘ ≈⇒≅'
