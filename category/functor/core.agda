@@ -11,8 +11,6 @@ record Functor {i j i' j'}
                (D : Category i' j')
              : Set (i ⊔ j ⊔ i' ⊔ j') where
   constructor functor
-  open Category C using (is-cat)
-  open Category D using (is-cat)
 
   field apply : obj C → obj D
   private F = apply
@@ -62,9 +60,6 @@ _∘_ {C = C} {D} {E} F G = record
     open ≡-Reasoning
 
     open Functor
-    open Category C using (is-cat)
-    open Category D using (is-cat)
-    open Category E using (is-cat)
 infixl 5 _∘_
 
 Const : ∀ {i j i' j'}(C : Category i j){D : Category i' j'}
@@ -74,5 +69,3 @@ Const C {D} X = record
   ; map = λ _ → id X
   ; map-id = λ _ → refl
   ; map-hom = λ _ _ → sym (right-unit _) }
-  where
-    open Category D using (is-cat)

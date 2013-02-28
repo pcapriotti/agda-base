@@ -6,15 +6,11 @@ open import level
 open import sum
 open import equality.core
 open import hott.hlevel
+open import category.graph
 
-record CatCarrier i j : Set (lsuc (i ⊔ j)) where
-  field
-    obj : Set i
-    hom : obj → obj → Set j
-
-record IsCategory {i j}(carrier : CatCarrier i j) : Set (i ⊔ j) where
+record IsCategory {i j}(graph : Graph i j) : Set (i ⊔ j) where
   infixl 8 _∘_
-  open CatCarrier carrier
+  open Graph graph
   field
     id : (A : obj) → hom A A
     _∘_ : {A B C : obj} → hom B C → hom A B → hom A C

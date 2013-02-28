@@ -13,8 +13,6 @@ module category.trans.properties {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where
 
 open Functor
-open Category C using (is-cat)
-open Category D using (is-cat)
 
 nat-right-unit : {F G : Functor C D}
               → (α : Nat F G)

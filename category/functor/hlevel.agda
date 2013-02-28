@@ -18,8 +18,6 @@ open import function.isomorphism
 open import hott.hlevel
 
 open Functor
-open Category C using (is-cat)
-open Category D using (is-cat)
 
 -- a "lawless" functor
 record Mapping : Set (i ⊔ i' ⊔ j ⊔ j') where

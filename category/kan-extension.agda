@@ -12,10 +12,6 @@ open import hott.hlevel
 module category.kan-extension {i₀ j₀ i₁ j₁ i₂ j₂}
   {C : Category i₀ j₀}{C' : Category i₁ j₁}{D : Category i₂ j₂} where
 
-open Category C using (is-cat)
-open Category C' using (is-cat)
-open Category D using (is-cat)
-
 record Extension (K : Functor C C')(G : Functor C D)
                : Set (i₀ ⊔ j₀ ⊔ i₁ ⊔ i₂ ⊔ j₁ ⊔ j₂) where
   constructor extension

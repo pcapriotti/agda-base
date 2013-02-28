@@ -19,8 +19,6 @@ module category.functor.adjoint {i}{j}{i'}{j'}
   (F : Functor C D)(G : Functor D C) where
 
 open Functor
-open Category C using (is-cat)
-open Category D using (is-cat)
 
 record _⊣_ : Set (i ⊔ i' ⊔ j ⊔ j') where
   field

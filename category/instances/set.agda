@@ -18,7 +18,7 @@ open import hott.weak-equivalence
 
 set : ∀ i → Category (lsuc i) i
 set i = record
-  { carrier = record
+  { graph = record
     { obj = HSet i
     ; hom = λ A B → proj₁ A → proj₁ B }
   ; is-cat = record

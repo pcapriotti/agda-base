@@ -11,7 +11,7 @@ module category.functor.category {i}{j}{i'}{j'}
 
 Func : Category _ _
 Func = record
-  { carrier = record
+  { graph = record
     { obj = Functor C D
     ; hom = Nat }
   ; is-cat = record

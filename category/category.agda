@@ -8,14 +8,15 @@ open import function using (flip)
 open import equality.core
 open import hott.hlevel
 
+open import category.graph
 open import category.class
 
 record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
   field
-    carrier : CatCarrier i j
-    is-cat : IsCategory carrier
+    graph : Graph i j
+    is-cat : IsCategory graph
 
-  open CatCarrier carrier
+  open Graph graph
   open IsCategory is-cat
 
   field
@@ -24,13 +25,13 @@ record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
   mor : Set (i ⊔ j)
   mor = Σ (obj × obj) (uncurry hom)
 
-  open CatCarrier carrier public
+  open Graph graph public
   open IsCategory is-cat public
 
 -- opposite category
 op : ∀ {i j} → Category i j → Category i j
 op C = record
-  { carrier = record
+  { graph = record
     { obj = obj
     ; hom = flip hom }
   ; is-cat = record

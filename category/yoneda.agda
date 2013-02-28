@@ -18,7 +18,6 @@ open import category.instances.set
 module category.yoneda {i j}(C : Category i j) where
 
 open Functor
-open Category C using (is-cat)
 
 hom-func : obj C → Functor C (set j)
 hom-func X = record
