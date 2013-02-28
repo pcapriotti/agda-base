@@ -61,26 +61,26 @@ module ≅-Reasoning where
 
 private
   module Dummy {i j}{X : Set i}{Y : Set j} where
-      isInjective : (f : X → Y) → Set _
-      isInjective f = (x x' : _) → f x ≡ f x' → x ≡ x'
+      injective : (f : X → Y) → Set _
+      injective f = (x x' : _) → f x ≡ f x' → x ≡ x'
 
-      isSurjective : (f : X → Y) → Set _
-      isSurjective f = (y : Y) → Σ X λ x → f x ≡ y
+      surjective : (f : X → Y) → Set _
+      surjective f = (y : Y) → Σ X λ x → f x ≡ y
 
       open _≅_ public using ()
         renaming (to to apply ; from to invert)
 
-      iso⇒inj : (iso : X ≅ Y) → isInjective (apply iso)
+      iso⇒inj : (iso : X ≅ Y) → injective (apply iso)
       iso⇒inj f x x' q = (iso₁ x) ⁻¹ ⊚ cong from q ⊚ iso₁ x'
         where
           open _≅_ f
 
-      iso⇒surj : (iso : X ≅ Y) → isSurjective (apply iso)
+      iso⇒surj : (iso : X ≅ Y) → surjective (apply iso)
       iso⇒surj f y = from y , iso₂ y
         where
           open _≅_ f
 
-      inj+surj⇒iso : (f : X → Y) → isInjective f → isSurjective f → X ≅ Y
+      inj+surj⇒iso : (f : X → Y) → injective f → surjective f → X ≅ Y
       inj+surj⇒iso f inj-f surj-f = iso f g H K
         where
           g : Y → X
@@ -94,7 +94,7 @@ private
 open Dummy public
 
 _↣_ : (A B : Set) → Set
-A ↣ B = Σ (A → B) (λ f → isInjective f)
+A ↣ B = Σ (A → B) injective
 
 _∘i_ : {A B C : Set} → (B ↣ C) → (A ↣ B) → (A ↣ C) -- composition of injections:
 (g , p) ∘i (f , q) = g ∘ f , r
@@ -103,4 +103,4 @@ _∘i_ : {A B C : Set} → (B ↣ C) → (A ↣ B) → (A ↣ C) -- composition 
      r x x' s = q x x' (p (f x) (f x') s)
 
 _↠_ : (A B : Set) → Set
-A ↠ B = Σ (A → B)(λ f → isSurjective f)
+A ↠ B = Σ (A → B) surjective

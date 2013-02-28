@@ -24,7 +24,7 @@ we-h1 : ∀ {i j}{X : Set i}{Y : Set j}
 we-h1 f = Π-hlevel λ _ → contr-h1 _
 
 apply≈-inj : ∀ {i j}{X : Set i}{Y : Set j}
-           → isInjective (apply≈ {X = X}{Y = Y})
+           → injective (apply≈ {X = X}{Y = Y})
 apply≈-inj (f , w) (.f , w') refl =
   uncongΣ (refl , h1⇒prop (we-h1 f) w w')
 
