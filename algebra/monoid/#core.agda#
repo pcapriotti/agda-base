@@ -1,0 +1,24 @@
+{-# OPTIONS --without-K #-}
+
+module algebra.monoid.core where
+
+open import level
+open import category.graph
+open import category.class
+open import sets.unit
+
+IsMonoid : ∀ {i} → Set i → Set i
+IsMonoid {i} X = IsCategory G
+  where
+    G : Graph lzero i
+    G = record
+      { obj = ⊤
+      ; hom = λ _ _ → X }
+
+record Monoid i : Set (lsuc i) where
+  field
+    carrier : Set i
+    is-mon : IsMonoid carrier
+
+graph : ∀ i → Monoid i → Graph lzero i
+graph = 
