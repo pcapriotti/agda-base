@@ -16,7 +16,7 @@ weak-equiv {_} {_} {X} {Y} f = (y : Y) → contr $ f ⁻¹ y
 _≈_ : ∀ {i j} (X : Set i) (Y : Set j) → Set _
 X ≈ Y = Σ (X → Y) λ f → weak-equiv f
 
-apply≈ : ∀ {i} {X Y : Set i} → X ≈ Y → X → Y
+apply≈ : ∀ {i j} {X : Set i}{Y : Set j} → X ≈ Y → X → Y
 apply≈ = proj₁
 
 ≈⇒≅ : ∀ {i j} {X : Set i} {Y : Set j} → X ≈ Y → X ≅ Y
@@ -31,5 +31,5 @@ apply≈ = proj₁
     iso₂ : (y : Y) → f (g y) ≡ y
     iso₂ y = proj₂ (proj₁ (we y))
 
-invert≈ : ∀ {i} {X Y : Set i} → X ≈ Y → Y → X
+invert≈ : ∀ {i j} {X : Set i}{Y : Set j} → X ≈ Y → Y → X
 invert≈ (_ , we) y = proj₁ (proj₁ (we y))

@@ -11,6 +11,7 @@ open import function.extensionality.dependent
 open import function.isomorphism
 open import hott.hlevel.core
 open import hott.weak-equivalence.core
+open import hott.univalence
 
 private
   module Properties {i j}{X : Set i}{Y : Set j} where

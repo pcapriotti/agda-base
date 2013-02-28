@@ -93,6 +93,10 @@ co-coherence (iso f g H K) coherence y =
         H (g (f (g y)))
       ∎
 
+sym≅' : ∀ {i j}{X : Set i}{Y : Set j}
+      → X ≅' Y → Y ≅' X
+sym≅' (isom , γ) = sym≅ isom , co-coherence isom γ
+
 --- Vogt's lemma. See http://ncatlab.org/nlab/show/homotopy+equivalence
 vogt-lemma : ∀ {i j}{X : Set i}{Y : Set j} → (isom : X ≅ Y)
            → let open _≅_ isom

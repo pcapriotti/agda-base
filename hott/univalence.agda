@@ -4,8 +4,9 @@ module hott.univalence where
 open import level using (lsuc)
 open import sum using (_,_ ; proj₁)
 open import equality.core
+open import equality.calculus
 open import equality.reasoning
-open import function.core using (_$_ ; id)
+open import function.core using (_$_ ; id ; _∘_)
 open import function.isomorphism using (_≅_ ; module _≅_)
 open import hott.weak-equivalence.core
 
@@ -15,6 +16,11 @@ coerce refl = id
 
 coerce-equiv : ∀ {i} {X Y : Set i} → (p : X ≡ Y) → weak-equiv (coerce p)
 coerce-equiv refl x = (x , refl) , λ { (.x , refl) → refl }
+
+coerce-hom : ∀ {i} {X Y Z : Set i}
+           → (p : X ≡ Y)(q : Y ≡ Z)
+           → coerce (p ⊚ q) ≡ coerce q ∘ coerce p
+coerce-hom refl q = refl
 
 -- mapping from propositional equality to weak equivalence
 ≡⇒≈ : ∀ {i} {X Y : Set i} → X ≡ Y → X ≈ Y
