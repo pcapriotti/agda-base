@@ -6,11 +6,11 @@ open import level
 open import sum
 open import equality.core
 open import hott.hlevel
-open import category.graph
+import category.graph as Graph
 
-record IsCategory {i j}(graph : Graph i j) : Set (i ⊔ j) where
+record IsCategory {i j}(graph : Graph.Graph i j) : Set (i ⊔ j) where
   infixl 8 _∘_
-  open Graph graph
+  open Graph.Graph graph
   field
     id : (A : obj) → hom A A
     _∘_ : {A B C : obj} → hom B C → hom A B → hom A C

@@ -26,4 +26,4 @@ record Monoid i : Set (lsuc i) where
 open Monoid public
 
 graph : ∀ {i} → Monoid i → Graph lzero i
-graph = monoid-graph ∘ carrier
+graph M = monoid-graph (carrier M)

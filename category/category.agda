@@ -8,16 +8,15 @@ open import function using (flip)
 open import equality.core
 open import hott.hlevel
 
-open import category.graph
-  hiding (graph)
+import category.graph as Graph
 open import category.class
 
 record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
   field
-    graph : Graph i j
+    graph : Graph.Graph i j
     is-cat : IsCategory graph
 
-  open Graph graph
+  open Graph.Graph graph
   open IsCategory is-cat
 
   field
@@ -26,7 +25,7 @@ record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
   mor : Set (i ⊔ j)
   mor = Σ (obj × obj) (uncurry hom)
 
-  open Graph graph public
+  open Graph.Graph graph public
   open IsCategory is-cat public
 
 -- opposite category

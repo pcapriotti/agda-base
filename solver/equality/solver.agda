@@ -5,7 +5,7 @@ open import decidable
 open import sum
 open import function using (_∘_)
 open import level using (lsuc; _⊔_)
-open import category.graph
+open import category.graph hiding (_∘_)
 open import equality.core hiding (singleton)
 open import equality.reasoning
 open import equality.calculus
