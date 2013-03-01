@@ -5,6 +5,7 @@ module algebra.monoid.core where
 open import level
 open import function.core
 open import category.graph
+  hiding (graph)
 open import category.class
 open import sets.unit
 
