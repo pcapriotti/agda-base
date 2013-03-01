@@ -3,7 +3,7 @@ module hott.hlevel.core where
 
 open import level using (_⊔_; lsuc)
 open import sum
-open import sets.nat
+open import sets.nat.core
 open import equality.core
 open import equality.groupoid
 open import function.core using (_$_)

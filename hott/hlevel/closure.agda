@@ -12,7 +12,7 @@ open import function.extensionality
 open import function.isomorphism
 open import sets.bool
 open import sets.unit
-open import sets.nat using (ℕ; suc; _≤_)
+open import sets.nat.core using (ℕ; suc; _≤_)
 open import hott.hlevel.core
 open import hott.hlevel.sets using (⊤-contr; bool-set)
 open import hott.hlevel.properties

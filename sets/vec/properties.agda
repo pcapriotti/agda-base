@@ -5,7 +5,7 @@ open import equality.core
 open import function using (_∘_)
 open import function.extensionality
 open import function.isomorphism
-open import sets.nat using (ℕ; zero; suc)
+open import sets.nat.core using (ℕ; zero; suc)
 open import sets.fin using (Fin; zero; suc)
 open import sets.vec.core
 

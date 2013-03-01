@@ -69,7 +69,7 @@ open BoolSet public
 -- Nat is a set
 private
   module NatSet where
-    open import sets.nat
+    open import sets.nat.core
     nat-set : h 2 ℕ
     nat-set = hedberg _≟_
 open NatSet public

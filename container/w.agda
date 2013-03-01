@@ -8,7 +8,7 @@ open import function.extensionality
 open import function.isomorphism
 open import function.isomorphism.properties
 open import sets.empty
-open import sets.nat using (suc)
+open import sets.nat.core using (suc)
 open import sets.unit
 open import hott.hlevel
 open import container.core

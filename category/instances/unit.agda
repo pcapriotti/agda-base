@@ -9,7 +9,7 @@ open import category.functor
 open import category.groupoid
 open import category.instances.discrete
 open import sets.unit
-open import sets.nat
+open import sets.nat.core
 open import hott.hlevel
 open import hott.hlevel.properties
 

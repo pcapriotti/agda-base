@@ -6,7 +6,7 @@ open import sum
 open import decidable
 open import equality.core
 open import equality.calculus
-open import sets.nat
+open import sets.nat.core
 open import sets.unit
 open import function.core
 open import function.extensionality.nondep

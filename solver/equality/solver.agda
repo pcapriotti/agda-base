@@ -9,7 +9,7 @@ open import category.graph
 open import equality.core hiding (singleton)
 open import equality.reasoning
 open import equality.calculus
-open import sets.nat using (ℕ)
+open import sets.nat.core using (ℕ)
 open import sets.fin hiding (_≟_)
 open import sets.vec
 

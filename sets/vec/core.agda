@@ -2,7 +2,7 @@
 module sets.vec.core where
 
 open import function using (_∘_)
-open import sets.nat using (ℕ; zero; suc)
+open import sets.nat.core using (ℕ; zero; suc)
 open import sets.fin
 
 data Vec {i}(A : Set i) : ℕ → Set i where

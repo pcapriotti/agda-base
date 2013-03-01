@@ -4,7 +4,7 @@ module solver.equality where
 open import sum
 open import equality.core
 open import sets.fin
-open import sets.nat using (ℕ)
+open import sets.nat.core using (ℕ)
 open import sets.vec
 open import solver.equality.core
 open import solver.equality.solver

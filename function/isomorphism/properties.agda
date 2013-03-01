@@ -3,7 +3,7 @@ module function.isomorphism.properties where
 
 open import level
 open import sum
-open import sets.nat
+open import sets.nat.core
 open import equality.core
 open import equality.calculus
 open import equality.reasoning

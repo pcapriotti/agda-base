@@ -1,7 +1,7 @@
 {-# OPTIONS --without-K #-}
 module sets.vec.dependent where
 
-open import sets.nat
+open import sets.nat.core
 open import sets.fin
 
 -- syntactic sugar to create finite dependent functions

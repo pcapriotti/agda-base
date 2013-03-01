@@ -6,7 +6,7 @@ open import decidable
 open import equality.core
 open import sets.empty
 open import sets.unit public
-open import sets.nat
+open import sets.nat.core
   hiding (_≟_)
 
 data Fin : ℕ → Set where
