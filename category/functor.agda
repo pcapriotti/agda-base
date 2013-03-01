@@ -2,6 +2,7 @@
 
 module category.functor where
 
+open import category.functor.class public
 open import category.functor.core public
 open import category.functor.properties public
 open import category.functor.hlevel public
