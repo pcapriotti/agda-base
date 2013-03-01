@@ -15,9 +15,10 @@ import container
 
 import solver.equality
 
--- categories
+-- categories and algebra
 
 import category
+import algebra
 
 -- HoTT
 
