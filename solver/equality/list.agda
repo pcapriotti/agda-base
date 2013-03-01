@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 open import solver.equality.core
-module solver.equality.list {i k}{X : Set i}(W : Graph X k) where
+module solver.equality.list {i k}{X : Set i}(W : Edges X k) where
 
 open import level using (_⊔_)
 open import equality.core hiding (singleton)
@@ -8,11 +8,12 @@ open import equality.calculus
 open import equality.reasoning
 open import hott.hlevel
 
+open import category.graph
 open import category.free.list public
   renaming (List to FList)
 
-List : Graph X (i ⊔ k)
-List = FList W
+List : Edges X (i ⊔ k)
+List = FList (graph X W)
 
 module WithInvolution (inv : Involution W) where
   open Involution inv

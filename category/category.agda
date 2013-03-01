@@ -9,6 +9,7 @@ open import equality.core
 open import hott.hlevel
 
 open import category.graph
+  hiding (graph)
 open import category.class
 
 record Category (i j : Level) : Set (lsuc (i ⊔ j)) where

@@ -1,12 +1,12 @@
 {-# OPTIONS --without-K #-}
 open import solver.equality.core
-module solver.equality.word {i k}{X : Set i}(W : Graph X k) where
+module solver.equality.word {i k}{X : Set i}(W : Edges X k) where
 
 open import level using (_⊔_)
 open import equality.core
 open import equality.calculus
 
-data Word : Graph X (i ⊔ k) where
+data Word : Edges X (i ⊔ k) where
   fwd : ∀ {x y} → W x y → Word x y
   inv : ∀ {x y} → W y x → Word x y
 

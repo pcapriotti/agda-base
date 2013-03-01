@@ -22,7 +22,7 @@ private
                 (ht₂ : HOTerm (Fin k) v x y) where
     open import sets.fin
 
-    W : Graph (Fin k) _
+    W : Edges (Fin k) _
     W = fin-graph (Fin k) v
 
     env : Env W X

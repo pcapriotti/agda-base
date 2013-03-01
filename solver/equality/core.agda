@@ -15,11 +15,11 @@ open import hott.hlevel
 IEnv : ∀ {i} (X : Set i) → ∀ n → Set _
 IEnv X n = Vec X n
 
-Graph : ∀ {i} (X : Set i) → ∀ k → Set _
-Graph X k = X → X → Set k
+Edges : ∀ {i} (X : Set i) → ∀ k → Set _
+Edges X k = X → X → Set k
 
 record _⇒_ {i j k k'}{X : Set i}{X' : Set j}
-            (W : Graph X k)(U : Graph X' k')
+            (W : Edges X k)(U : Edges X' k')
           : Set (i ⊔ j ⊔ k ⊔ k') where
   field
     imap : X → X'
@@ -27,23 +27,23 @@ record _⇒_ {i j k k'}{X : Set i}{X' : Set j}
 infixr 2 _⇒_
 open _⇒_ public
 
-Env : ∀ {i j k} {X : Set i} → Graph X k → Set j → Set _
+Env : ∀ {i j k} {X : Set i} → Edges X k → Set j → Set _
 Env W X' = W ⇒ (_≡_ {A = X'})
 
-total-space : ∀ {i k}{X : Set i} → Graph X k → Set _
+total-space : ∀ {i k}{X : Set i} → Edges X k → Set _
 total-space {X = X} W = Σ (X × X) (uncurry W)
 
-lift-total : ∀ {i k}{X : Set i}(W : Graph X k)
+lift-total : ∀ {i k}{X : Set i}(W : Edges X k)
            → ∀ {x y} → W x y → total-space W
 lift-total W {x}{y} w = ((x , y) , w)
 
-record Involution {i k}{X : Set i}(W : Graph X k) : Set (i ⊔ k) where
+record Involution {i k}{X : Set i}(W : Edges X k) : Set (i ⊔ k) where
   field
     τ : ∀ {x y} → W x y → W y x
     τ-τ : ∀ {x y}(w : W x y) → τ (τ w) ≡ w
 
 record EnvInvolution {i j k}{X : Set i}{X' : Set j}
-                     (W : Graph X k) (env : Env W X')
+                     (W : Edges X k) (env : Env W X')
                    : Set (i ⊔ j ⊔ k) where
   field
     inv : Involution W
@@ -56,7 +56,7 @@ record EnvInvolution {i j k}{X : Set i}{X' : Set j}
 
   open Involution inv public
 
-record DecGraph {i k}{X : Set i}(W : Graph X k) : Set (i ⊔ k) where
+record DecGraph {i k}{X : Set i}(W : Edges X k) : Set (i ⊔ k) where
   field
     idec : (x y : X) → Dec (x ≡ y)
     gdec : ∀ {x y} → (w u : W x y) → Dec (w ≡ u)
@@ -96,7 +96,7 @@ record DecGraph {i k}{X : Set i}(W : Graph X k) : Set (i ⊔ k) where
           r : q' ≡ q
           r = proj₁ (h2 x x' q' q)
 
-dec-total : ∀ {i k}{X : Set i}{W : Graph X k}
+dec-total : ∀ {i k}{X : Set i}{W : Edges X k}
           → ((x y : X) → Dec (x ≡ y))
           → ((w w' : total-space W) → Dec (w ≡ w'))
           → DecGraph W

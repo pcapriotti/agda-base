@@ -25,7 +25,7 @@ lem-rewrite refl q r .r refl =
     sym (cong (λ α → α ⊚ q) (right-inverse r))
   ⊚ associativity (sym r) r q
 
-module WithDec {n k} (W : Graph (Fin n) k)(dec : DecGraph W) where
+module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
   open DecGraph dec
 
   module Terms where

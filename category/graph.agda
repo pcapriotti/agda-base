@@ -3,11 +3,16 @@
 module category.graph where
 
 open import level
+open import sum
 
 record Graph i j : Set (lsuc (i ⊔ j)) where
+  constructor graph
   field
     obj : Set i
     hom : obj → obj → Set j
+
+  total : Set (i ⊔ j)
+  total = Σ (obj × obj) (uncurry hom)
 
 record Morphism {i j i' j'}
                 (G : Graph i j)

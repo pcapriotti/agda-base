@@ -8,19 +8,22 @@ open import equality.calculus
 open import equality.reasoning
 open import sets.nat using (refl-≤)
 open import hott.hlevel
+open import category.graph
 
-data List {i j}{X : Set i}(W : X → X → Set j)
-        : X → X → Set (i ⊔ j) where
+open Graph
+
+data List {i j}(W : Graph i j) : obj W → obj W → Set (i ⊔ j) where
   nil : ∀ {x} → List W x x
   _∷_ : ∀ {x y z}
-      → W x y
+      → hom W x y
       → List W y z
       → List W x z
 infixr 5 _∷_
 
 private
-  module HLevel {i j}{X : Set i}{W : X → X → Set j}
-                (hX : h 3 X)(hW : h 2 (Σ (X × X) (uncurry W))) where
+  module HLevel {i j}{W : Graph i j}
+                (hX : h 3 (obj W))
+                (hW : h 2 (total W)) where
     open import decidable
     open import sum
     open import sets.empty
@@ -31,11 +34,14 @@ private
     open import container.w renaming (W to W-type)
     open import hott.hlevel.properties
 
+    X : Set i
+    X = obj W
+
     I : Set i
     I = X × X
 
     A : I → Set _
-    A (x , y) = (x ≡ y) ⊎ Σ (Σ (X × X) (uncurry W))
+    A (x , y) = (x ≡ y) ⊎ Σ (total W)
               λ { ((x' , y') , w) → (x' ≡ x) }
 
     A-hlevel : (i : I) → h 2 (A i)
@@ -80,7 +86,7 @@ private
 open HLevel public using (list-hlevel)
 
 private
-  module Properties {i j}{X : Set i}{W : X → X → Set j} where
+  module Properties {i j}{W : Graph i j} where
     _++_ : ∀ {x y z} → List W x y → List W y z → List W x z
     nil ++ ws = ws
     (u ∷ us) ++ ws = u ∷ (us ++ ws)

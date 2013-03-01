@@ -1,12 +1,12 @@
 {-# OPTIONS --without-K #-}
 open import solver.equality.core
-module solver.equality.term {i}{X : Set i}{k}(W : Graph X k) where
+module solver.equality.term {i}{X : Set i}{k}(W : Edges X k) where
 
 open import level using (_⊔_)
 open import equality.core
 open import equality.calculus
 
-data Term : Graph X (i ⊔ k) where
+data Term : Edges X (i ⊔ k) where
   null : ∀ {x} → Term x x
   var : ∀ {x y} → W x y → Term x y
   _*_ : ∀ {x y z} → Term x y → Term y z → Term x z
