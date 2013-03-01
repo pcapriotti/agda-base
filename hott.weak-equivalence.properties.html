@@ -1,0 +1,1241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >hott.weak-equivalence.properties</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="hott.weak-equivalence.properties.html#1" class="Module"
+      >hott.weak-equivalence.properties</a
+      ><a name="69"
+      > </a
+      ><a name="70" class="Keyword"
+      >where</a
+      ><a name="75"
+      >
+
+</a
+      ><a name="77" class="Keyword"
+      >open</a
+      ><a name="81"
+      > </a
+      ><a name="82" class="Keyword"
+      >import</a
+      ><a name="88"
+      > </a
+      ><a name="89" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="92"
+      >
+</a
+      ><a name="93" class="Keyword"
+      >open</a
+      ><a name="97"
+      > </a
+      ><a name="98" class="Keyword"
+      >import</a
+      ><a name="104"
+      > </a
+      ><a name="105" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="118"
+      >
+</a
+      ><a name="119" class="Keyword"
+      >open</a
+      ><a name="123"
+      > </a
+      ><a name="124" class="Keyword"
+      >import</a
+      ><a name="130"
+      > </a
+      ><a name="131" href="equality.calculus.html#1" class="Module"
+      >equality.calculus</a
+      ><a name="148"
+      >
+</a
+      ><a name="149" class="Keyword"
+      >open</a
+      ><a name="153"
+      > </a
+      ><a name="154" class="Keyword"
+      >import</a
+      ><a name="160"
+      > </a
+      ><a name="161" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="174"
+      >
+</a
+      ><a name="175" class="Keyword"
+      >open</a
+      ><a name="179"
+      > </a
+      ><a name="180" class="Keyword"
+      >import</a
+      ><a name="186"
+      > </a
+      ><a name="187" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="207"
+      >
+</a
+      ><a name="208" class="Keyword"
+      >open</a
+      ><a name="212"
+      > </a
+      ><a name="213" class="Keyword"
+      >import</a
+      ><a name="219"
+      > </a
+      ><a name="220" href="function.extensionality.html#1" class="Module"
+      >function.extensionality</a
+      ><a name="243"
+      >
+</a
+      ><a name="244" class="Keyword"
+      >open</a
+      ><a name="248"
+      > </a
+      ><a name="249" class="Keyword"
+      >import</a
+      ><a name="255"
+      > </a
+      ><a name="256" href="hott.weak-equivalence.core.html#1" class="Module"
+      >hott.weak-equivalence.core</a
+      ><a name="282"
+      >
+</a
+      ><a name="283" class="Keyword"
+      >open</a
+      ><a name="287"
+      > </a
+      ><a name="288" class="Keyword"
+      >import</a
+      ><a name="294"
+      > </a
+      ><a name="295" href="hott.weak-equivalence.alternative.html#1" class="Module"
+      >hott.weak-equivalence.alternative</a
+      ><a name="328"
+      >
+</a
+      ><a name="329" class="Keyword"
+      >open</a
+      ><a name="333"
+      > </a
+      ><a name="334" class="Keyword"
+      >import</a
+      ><a name="340"
+      > </a
+      ><a name="341" href="hott.univalence.html#1" class="Module"
+      >hott.univalence</a
+      ><a name="356"
+      >
+</a
+      ><a name="357" class="Keyword"
+      >open</a
+      ><a name="361"
+      > </a
+      ><a name="362" class="Keyword"
+      >import</a
+      ><a name="368"
+      > </a
+      ><a name="369" href="hott.hlevel.html#1" class="Module"
+      >hott.hlevel</a
+      ><a name="380"
+      >
+
+</a
+      ><a name="382" href="hott.weak-equivalence.properties.html#382" class="Function"
+      >sym&#8776;</a
+      ><a name="386"
+      > </a
+      ><a name="387" class="Symbol"
+      >:</a
+      ><a name="388"
+      > </a
+      ><a name="389" class="Symbol"
+      >&#8704;</a
+      ><a name="390"
+      > </a
+      ><a name="391" class="Symbol"
+      >{</a
+      ><a name="392" href="hott.weak-equivalence.properties.html#392" class="Bound"
+      >i</a
+      ><a name="393"
+      > </a
+      ><a name="394" href="hott.weak-equivalence.properties.html#394" class="Bound"
+      >j</a
+      ><a name="395" class="Symbol"
+      >}{</a
+      ><a name="397" href="hott.weak-equivalence.properties.html#397" class="Bound"
+      >X</a
+      ><a name="398"
+      > </a
+      ><a name="399" class="Symbol"
+      >:</a
+      ><a name="400"
+      > </a
+      ><a name="401" class="PrimitiveType"
+      >Set</a
+      ><a name="404"
+      > </a
+      ><a name="405" href="hott.weak-equivalence.properties.html#392" class="Bound"
+      >i</a
+      ><a name="406" class="Symbol"
+      >}{</a
+      ><a name="408" href="hott.weak-equivalence.properties.html#408" class="Bound"
+      >Y</a
+      ><a name="409"
+      > </a
+      ><a name="410" class="Symbol"
+      >:</a
+      ><a name="411"
+      > </a
+      ><a name="412" class="PrimitiveType"
+      >Set</a
+      ><a name="415"
+      > </a
+      ><a name="416" href="hott.weak-equivalence.properties.html#394" class="Bound"
+      >j</a
+      ><a name="417" class="Symbol"
+      >}</a
+      ><a name="418"
+      >
+     </a
+      ><a name="424" class="Symbol"
+      >&#8594;</a
+      ><a name="425"
+      > </a
+      ><a name="426" href="hott.weak-equivalence.properties.html#397" class="Bound"
+      >X</a
+      ><a name="427"
+      > </a
+      ><a name="428" href="hott.weak-equivalence.core.html#591" class="Function Operator"
+      >&#8776;</a
+      ><a name="429"
+      > </a
+      ><a name="430" href="hott.weak-equivalence.properties.html#408" class="Bound"
+      >Y</a
+      ><a name="431"
+      > </a
+      ><a name="432" class="Symbol"
+      >&#8594;</a
+      ><a name="433"
+      > </a
+      ><a name="434" href="hott.weak-equivalence.properties.html#408" class="Bound"
+      >Y</a
+      ><a name="435"
+      > </a
+      ><a name="436" href="hott.weak-equivalence.core.html#591" class="Function Operator"
+      >&#8776;</a
+      ><a name="437"
+      > </a
+      ><a name="438" href="hott.weak-equivalence.properties.html#397" class="Bound"
+      >X</a
+      ><a name="439"
+      >
+</a
+      ><a name="440" href="hott.weak-equivalence.properties.html#382" class="Function"
+      >sym&#8776;</a
+      ><a name="444"
+      > </a
+      ><a name="445" class="Symbol"
+      >=</a
+      ><a name="446"
+      > </a
+      ><a name="447" href="function.isomorphism.core.html#390" class="Function"
+      >&#8773;'&#8658;&#8776;</a
+      ><a name="451"
+      > </a
+      ><a name="452" href="function.core.html#148" class="Function Operator"
+      >&#8728;</a
+      ><a name="453"
+      > </a
+      ><a name="454" href="function.isomorphism.coherent.html#2748" class="Function"
+      >sym&#8773;'</a
+      ><a name="459"
+      > </a
+      ><a name="460" href="function.core.html#148" class="Function Operator"
+      >&#8728;</a
+      ><a name="461"
+      > </a
+      ><a name="462" href="function.isomorphism.core.html#375" class="Function"
+      >&#8776;&#8658;&#8773;'</a
+      ><a name="466"
+      >
+
+</a
+      ><a name="468" class="Comment"
+      >-- being a weak equivalence is propositional</a
+      ><a name="512"
+      >
+</a
+      ><a name="513" href="hott.weak-equivalence.properties.html#513" class="Function"
+      >we-h1</a
+      ><a name="518"
+      > </a
+      ><a name="519" class="Symbol"
+      >:</a
+      ><a name="520"
+      > </a
+      ><a name="521" class="Symbol"
+      >&#8704;</a
+      ><a name="522"
+      > </a
+      ><a name="523" class="Symbol"
+      >{</a
+      ><a name="524" href="hott.weak-equivalence.properties.html#524" class="Bound"
+      >i</a
+      ><a name="525"
+      > </a
+      ><a name="526" href="hott.weak-equivalence.properties.html#526" class="Bound"
+      >j</a
+      ><a name="527" class="Symbol"
+      >}{</a
+      ><a name="529" href="hott.weak-equivalence.properties.html#529" class="Bound"
+      >X</a
+      ><a name="530"
+      > </a
+      ><a name="531" class="Symbol"
+      >:</a
+      ><a name="532"
+      > </a
+      ><a name="533" class="PrimitiveType"
+      >Set</a
+      ><a name="536"
+      > </a
+      ><a name="537" href="hott.weak-equivalence.properties.html#524" class="Bound"
+      >i</a
+      ><a name="538" class="Symbol"
+      >}{</a
+      ><a name="540" href="hott.weak-equivalence.properties.html#540" class="Bound"
+      >Y</a
+      ><a name="541"
+      > </a
+      ><a name="542" class="Symbol"
+      >:</a
+      ><a name="543"
+      > </a
+      ><a name="544" class="PrimitiveType"
+      >Set</a
+      ><a name="547"
+      > </a
+      ><a name="548" href="hott.weak-equivalence.properties.html#526" class="Bound"
+      >j</a
+      ><a name="549" class="Symbol"
+      >}</a
+      ><a name="550"
+      >
+      </a
+      ><a name="557" class="Symbol"
+      >&#8594;</a
+      ><a name="558"
+      > </a
+      ><a name="559" class="Symbol"
+      >(</a
+      ><a name="560" href="hott.weak-equivalence.properties.html#560" class="Bound"
+      >f</a
+      ><a name="561"
+      > </a
+      ><a name="562" class="Symbol"
+      >:</a
+      ><a name="563"
+      > </a
+      ><a name="564" href="hott.weak-equivalence.properties.html#529" class="Bound"
+      >X</a
+      ><a name="565"
+      > </a
+      ><a name="566" class="Symbol"
+      >&#8594;</a
+      ><a name="567"
+      > </a
+      ><a name="568" href="hott.weak-equivalence.properties.html#540" class="Bound"
+      >Y</a
+      ><a name="569" class="Symbol"
+      >)</a
+      ><a name="570"
+      >
+      </a
+      ><a name="577" class="Symbol"
+      >&#8594;</a
+      ><a name="578"
+      > </a
+      ><a name="579" href="hott.hlevel.core.html#245" class="Function"
+      >h</a
+      ><a name="580"
+      > </a
+      ><a name="581" class="Number"
+      >1</a
+      ><a name="582"
+      > </a
+      ><a name="583" class="Symbol"
+      >(</a
+      ><a name="584" href="hott.weak-equivalence.core.html#442" class="Function"
+      >weak-equiv</a
+      ><a name="594"
+      > </a
+      ><a name="595" href="hott.weak-equivalence.properties.html#560" class="Bound"
+      >f</a
+      ><a name="596" class="Symbol"
+      >)</a
+      ><a name="597"
+      >
+</a
+      ><a name="598" href="hott.weak-equivalence.properties.html#513" class="Function"
+      >we-h1</a
+      ><a name="603"
+      > </a
+      ><a name="604" href="hott.weak-equivalence.properties.html#604" class="Bound"
+      >f</a
+      ><a name="605"
+      > </a
+      ><a name="606" class="Symbol"
+      >=</a
+      ><a name="607"
+      > </a
+      ><a name="608" href="hott.hlevel.closure.html#664" class="Function"
+      >&#928;-hlevel</a
+      ><a name="616"
+      > </a
+      ><a name="617" class="Symbol"
+      >&#955;</a
+      ><a name="618"
+      > </a
+      ><a name="619" href="hott.weak-equivalence.properties.html#619" class="Bound"
+      >_</a
+      ><a name="620"
+      > </a
+      ><a name="621" class="Symbol"
+      >&#8594;</a
+      ><a name="622"
+      > </a
+      ><a name="623" href="hott.hlevel.closure.html#2798" class="Function"
+      >contr-h1</a
+      ><a name="631"
+      > </a
+      ><a name="632" class="Symbol"
+      >_</a
+      ><a name="633"
+      >
+
+</a
+      ><a name="635" href="hott.weak-equivalence.properties.html#635" class="Function"
+      >apply&#8776;-inj</a
+      ><a name="645"
+      > </a
+      ><a name="646" class="Symbol"
+      >:</a
+      ><a name="647"
+      > </a
+      ><a name="648" class="Symbol"
+      >&#8704;</a
+      ><a name="649"
+      > </a
+      ><a name="650" class="Symbol"
+      >{</a
+      ><a name="651" href="hott.weak-equivalence.properties.html#651" class="Bound"
+      >i</a
+      ><a name="652"
+      > </a
+      ><a name="653" href="hott.weak-equivalence.properties.html#653" class="Bound"
+      >j</a
+      ><a name="654" class="Symbol"
+      >}{</a
+      ><a name="656" href="hott.weak-equivalence.properties.html#656" class="Bound"
+      >X</a
+      ><a name="657"
+      > </a
+      ><a name="658" class="Symbol"
+      >:</a
+      ><a name="659"
+      > </a
+      ><a name="660" class="PrimitiveType"
+      >Set</a
+      ><a name="663"
+      > </a
+      ><a name="664" href="hott.weak-equivalence.properties.html#651" class="Bound"
+      >i</a
+      ><a name="665" class="Symbol"
+      >}{</a
+      ><a name="667" href="hott.weak-equivalence.properties.html#667" class="Bound"
+      >Y</a
+      ><a name="668"
+      > </a
+      ><a name="669" class="Symbol"
+      >:</a
+      ><a name="670"
+      > </a
+      ><a name="671" class="PrimitiveType"
+      >Set</a
+      ><a name="674"
+      > </a
+      ><a name="675" href="hott.weak-equivalence.properties.html#653" class="Bound"
+      >j</a
+      ><a name="676" class="Symbol"
+      >}</a
+      ><a name="677"
+      >
+           </a
+      ><a name="689" class="Symbol"
+      >&#8594;</a
+      ><a name="690"
+      > </a
+      ><a name="691" href="function.isomorphism.core.html#1700" class="Function"
+      >injective</a
+      ><a name="700"
+      > </a
+      ><a name="701" class="Symbol"
+      >(</a
+      ><a name="702" href="hott.weak-equivalence.core.html#675" class="Function"
+      >apply&#8776;</a
+      ><a name="708"
+      > </a
+      ><a name="709" class="Symbol"
+      >{</a
+      ><a name="710"
+      >X </a
+      ><a name="712" class="Symbol"
+      >=</a
+      ><a name="713"
+      > </a
+      ><a name="714" href="hott.weak-equivalence.properties.html#656" class="Bound"
+      >X</a
+      ><a name="715" class="Symbol"
+      >}{</a
+      ><a name="717"
+      >Y </a
+      ><a name="719" class="Symbol"
+      >=</a
+      ><a name="720"
+      > </a
+      ><a name="721" href="hott.weak-equivalence.properties.html#667" class="Bound"
+      >Y</a
+      ><a name="722" class="Symbol"
+      >})</a
+      ><a name="724"
+      >
+</a
+      ><a name="725" href="hott.weak-equivalence.properties.html#635" class="Function"
+      >apply&#8776;-inj</a
+      ><a name="735"
+      > </a
+      ><a name="736" class="Symbol"
+      >(</a
+      ><a name="737" href="hott.weak-equivalence.properties.html#737" class="Bound"
+      >f</a
+      ><a name="738"
+      > </a
+      ><a name="739" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="740"
+      > </a
+      ><a name="741" href="hott.weak-equivalence.properties.html#741" class="Bound"
+      >w</a
+      ><a name="742" class="Symbol"
+      >)</a
+      ><a name="743"
+      > </a
+      ><a name="744" class="Symbol"
+      >(</a
+      ><a name="745" class="DottedPattern Symbol"
+      >.</a
+      ><a name="746" href="hott.weak-equivalence.properties.html#737" class="DottedPattern Bound"
+      >f</a
+      ><a name="747"
+      > </a
+      ><a name="748" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="749"
+      > </a
+      ><a name="750" href="hott.weak-equivalence.properties.html#750" class="Bound"
+      >w'</a
+      ><a name="752" class="Symbol"
+      >)</a
+      ><a name="753"
+      > </a
+      ><a name="754" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="758"
+      > </a
+      ><a name="759" class="Symbol"
+      >=</a
+      ><a name="760"
+      >
+  </a
+      ><a name="763" href="equality.calculus.html#1782" class="Function"
+      >uncong&#931;</a
+      ><a name="770"
+      > </a
+      ><a name="771" class="Symbol"
+      >(</a
+      ><a name="772" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="776"
+      > </a
+      ><a name="777" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="778"
+      > </a
+      ><a name="779" href="hott.hlevel.core.html#805" class="Function"
+      >h1&#8658;prop</a
+      ><a name="786"
+      > </a
+      ><a name="787" class="Symbol"
+      >(</a
+      ><a name="788" href="hott.weak-equivalence.properties.html#513" class="Function"
+      >we-h1</a
+      ><a name="793"
+      > </a
+      ><a name="794" href="hott.weak-equivalence.properties.html#737" class="Bound"
+      >f</a
+      ><a name="795" class="Symbol"
+      >)</a
+      ><a name="796"
+      > </a
+      ><a name="797" href="hott.weak-equivalence.properties.html#741" class="Bound"
+      >w</a
+      ><a name="798"
+      > </a
+      ><a name="799" href="hott.weak-equivalence.properties.html#750" class="Bound"
+      >w'</a
+      ><a name="801" class="Symbol"
+      >)</a
+      ><a name="802"
+      >
+
+</a
+      ><a name="804" class="Keyword"
+      >abstract</a
+      ><a name="812"
+      >
+  </a
+      ><a name="815" href="hott.weak-equivalence.properties.html#815" class="Function"
+      >univ-sym&#8776;</a
+      ><a name="824"
+      > </a
+      ><a name="825" class="Symbol"
+      >:</a
+      ><a name="826"
+      > </a
+      ><a name="827" class="Symbol"
+      >&#8704;</a
+      ><a name="828"
+      > </a
+      ><a name="829" class="Symbol"
+      >{</a
+      ><a name="830" href="hott.weak-equivalence.properties.html#830" class="Bound"
+      >i</a
+      ><a name="831" class="Symbol"
+      >}{</a
+      ><a name="833" href="hott.weak-equivalence.properties.html#833" class="Bound"
+      >X</a
+      ><a name="834"
+      > </a
+      ><a name="835" href="hott.weak-equivalence.properties.html#835" class="Bound"
+      >Y</a
+      ><a name="836"
+      > </a
+      ><a name="837" class="Symbol"
+      >:</a
+      ><a name="838"
+      > </a
+      ><a name="839" class="PrimitiveType"
+      >Set</a
+      ><a name="842"
+      > </a
+      ><a name="843" href="hott.weak-equivalence.properties.html#830" class="Bound"
+      >i</a
+      ><a name="844" class="Symbol"
+      >}</a
+      ><a name="845"
+      >
+            </a
+      ><a name="858" class="Symbol"
+      >&#8594;</a
+      ><a name="859"
+      > </a
+      ><a name="860" class="Symbol"
+      >(</a
+      ><a name="861" href="hott.weak-equivalence.properties.html#861" class="Bound"
+      >w</a
+      ><a name="862"
+      > </a
+      ><a name="863" class="Symbol"
+      >:</a
+      ><a name="864"
+      > </a
+      ><a name="865" href="hott.weak-equivalence.properties.html#833" class="Bound"
+      >X</a
+      ><a name="866"
+      > </a
+      ><a name="867" href="hott.weak-equivalence.core.html#591" class="Function Operator"
+      >&#8776;</a
+      ><a name="868"
+      > </a
+      ><a name="869" href="hott.weak-equivalence.properties.html#835" class="Bound"
+      >Y</a
+      ><a name="870" class="Symbol"
+      >)</a
+      ><a name="871"
+      >
+            </a
+      ><a name="884" class="Symbol"
+      >&#8594;</a
+      ><a name="885"
+      > </a
+      ><a name="886" href="equality.core.html#218" class="Function"
+      >sym</a
+      ><a name="889"
+      > </a
+      ><a name="890" class="Symbol"
+      >(</a
+      ><a name="891" href="function.isomorphism.core.html#390" class="Function"
+      >&#8776;&#8658;&#8801;</a
+      ><a name="894"
+      > </a
+      ><a name="895" href="hott.weak-equivalence.properties.html#861" class="Bound"
+      >w</a
+      ><a name="896" class="Symbol"
+      >)</a
+      ><a name="897"
+      >
+            </a
+      ><a name="910" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="911"
+      > </a
+      ><a name="912" href="function.isomorphism.core.html#390" class="Function"
+      >&#8776;&#8658;&#8801;</a
+      ><a name="915"
+      > </a
+      ><a name="916" class="Symbol"
+      >(</a
+      ><a name="917" href="hott.weak-equivalence.properties.html#382" class="Function"
+      >sym&#8776;</a
+      ><a name="921"
+      > </a
+      ><a name="922" href="hott.weak-equivalence.properties.html#861" class="Bound"
+      >w</a
+      ><a name="923" class="Symbol"
+      >)</a
+      ><a name="924"
+      >
+  </a
+      ><a name="927" href="hott.weak-equivalence.properties.html#815" class="Function"
+      >univ-sym&#8776;</a
+      ><a name="936"
+      > </a
+      ><a name="937" class="Symbol"
+      >{</a
+      ><a name="938" href="hott.weak-equivalence.properties.html#938" class="Bound"
+      >i</a
+      ><a name="939" class="Symbol"
+      >}{</a
+      ><a name="941" href="hott.weak-equivalence.properties.html#941" class="Bound"
+      >X</a
+      ><a name="942" class="Symbol"
+      >}{</a
+      ><a name="944" href="hott.weak-equivalence.properties.html#944" class="Bound"
+      >Y</a
+      ><a name="945" class="Symbol"
+      >}</a
+      ><a name="946"
+      > </a
+      ><a name="947" href="hott.weak-equivalence.properties.html#947" class="Bound"
+      >w</a
+      ><a name="948"
+      > </a
+      ><a name="949" class="Symbol"
+      >=</a
+      ><a name="950"
+      > </a
+      ><a name="951" href="equality.calculus.html#3817" class="Function"
+      >inverse-unique</a
+      ><a name="965"
+      > </a
+      ><a name="966" href="hott.weak-equivalence.properties.html#994" class="Function"
+      >p</a
+      ><a name="967"
+      > </a
+      ><a name="968" href="hott.weak-equivalence.properties.html#1027" class="Function"
+      >q</a
+      ><a name="969"
+      > </a
+      ><a name="970" href="hott.weak-equivalence.properties.html#1387" class="Function"
+      >lem-inv</a
+      ><a name="977"
+      >
+    </a
+      ><a name="982" class="Keyword"
+      >where</a
+      ><a name="987"
+      >
+      </a
+      ><a name="994" href="hott.weak-equivalence.properties.html#994" class="Function"
+      >p</a
+      ><a name="995"
+      > </a
+      ><a name="996" class="Symbol"
+      >:</a
+      ><a name="997"
+      > </a
+      ><a name="998" href="hott.weak-equivalence.properties.html#941" class="Bound"
+      >X</a
+      ><a name="999"
+      > </a
+      ><a name="1000" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1001"
+      > </a
+      ><a name="1002" href="hott.weak-equivalence.properties.html#944" class="Bound"
+      >Y</a
+      ><a name="1003"
+      >
+      </a
+      ><a name="1010" href="hott.weak-equivalence.properties.html#994" class="Function"
+      >p</a
+      ><a name="1011"
+      > </a
+      ><a name="1012" class="Symbol"
+      >=</a
+      ><a name="1013"
+      > </a
+      ><a name="1014" href="function.isomorphism.core.html#390" class="Function"
+      >&#8776;&#8658;&#8801;</a
+      ><a name="1017"
+      > </a
+      ><a name="1018" href="hott.weak-equivalence.properties.html#947" class="Bound"
+      >w</a
+      ><a name="1019"
+      >
+
+      </a
+      ><a name="1027" href="hott.weak-equivalence.properties.html#1027" class="Function"
+      >q</a
+      ><a name="1028"
+      > </a
+      ><a name="1029" class="Symbol"
+      >:</a
+      ><a name="1030"
+      > </a
+      ><a name="1031" href="hott.weak-equivalence.properties.html#944" class="Bound"
+      >Y</a
+      ><a name="1032"
+      > </a
+      ><a name="1033" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1034"
+      > </a
+      ><a name="1035" href="hott.weak-equivalence.properties.html#941" class="Bound"
+      >X</a
+      ><a name="1036"
+      >
+      </a
+      ><a name="1043" href="hott.weak-equivalence.properties.html#1027" class="Function"
+      >q</a
+      ><a name="1044"
+      > </a
+      ><a name="1045" class="Symbol"
+      >=</a
+      ><a name="1046"
+      > </a
+      ><a name="1047" href="function.isomorphism.core.html#390" class="Function"
+      >&#8776;&#8658;&#8801;</a
+      ><a name="1050"
+      > </a
+      ><a name="1051" class="Symbol"
+      >(</a
+      ><a name="1052" href="hott.weak-equivalence.properties.html#382" class="Function"
+      >sym&#8776;</a
+      ><a name="1056"
+      > </a
+      ><a name="1057" href="hott.weak-equivalence.properties.html#947" class="Bound"
+      >w</a
+      ><a name="1058" class="Symbol"
+      >)</a
+      ><a name="1059"
+      >
+
+      </a
+      ><a name="1067" href="hott.weak-equivalence.properties.html#1067" class="Function"
+      >p-&#946;</a
+      ><a name="1070"
+      > </a
+      ><a name="1071" class="Symbol"
+      >:</a
+      ><a name="1072"
+      > </a
+      ><a name="1073" href="hott.univalence.html#402" class="Function"
+      >coerce</a
+      ><a name="1079"
+      > </a
+      ><a name="1080" href="hott.weak-equivalence.properties.html#994" class="Function"
+      >p</a
+      ><a name="1081"
+      > </a
+      ><a name="1082" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1083"
+      > </a
+      ><a name="1084" href="hott.weak-equivalence.core.html#675" class="Function"
+      >apply&#8776;</a
+      ><a name="1090"
+      > </a
+      ><a name="1091" href="hott.weak-equivalence.properties.html#947" class="Bound"
+      >w</a
+      ><a name="1092"
+      >
+      </a
+      ><a name="1099" href="hott.weak-equivalence.properties.html#1067" class="Function"
+      >p-&#946;</a
+      ><a name="1102"
+      > </a
+      ><a name="1103" class="Symbol"
+      >=</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" href="hott.univalence.html#1275" class="Function"
+      >uni-coherence</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" href="hott.weak-equivalence.properties.html#947" class="Bound"
+      >w</a
+      ><a name="1120"
+      >
+
+      </a
+      ><a name="1128" href="hott.weak-equivalence.properties.html#1128" class="Function"
+      >q-&#946;</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" class="Symbol"
+      >:</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" href="hott.univalence.html#402" class="Function"
+      >coerce</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" href="hott.weak-equivalence.properties.html#1027" class="Function"
+      >q</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" href="hott.weak-equivalence.core.html#1055" class="Function"
+      >invert&#8776;</a
+      ><a name="1152"
+      > </a
+      ><a name="1153" href="hott.weak-equivalence.properties.html#947" class="Bound"
+      >w</a
+      ><a name="1154"
+      >
+      </a
+      ><a name="1161" href="hott.weak-equivalence.properties.html#1128" class="Function"
+      >q-&#946;</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" class="Symbol"
+      >=</a
+      ><a name="1166"
+      > </a
+      ><a name="1167" href="hott.univalence.html#1275" class="Function"
+      >uni-coherence</a
+      ><a name="1180"
+      > </a
+      ><a name="1181" class="Symbol"
+      >(</a
+      ><a name="1182" href="hott.weak-equivalence.properties.html#382" class="Function"
+      >sym&#8776;</a
+      ><a name="1186"
+      > </a
+      ><a name="1187" href="hott.weak-equivalence.properties.html#947" class="Bound"
+      >w</a
+      ><a name="1188" class="Symbol"
+      >)</a
+      ><a name="1189"
+      >
+
+      </a
+      ><a name="1197" href="hott.weak-equivalence.properties.html#1197" class="Function"
+      >lem</a
+      ><a name="1200"
+      > </a
+      ><a name="1201" class="Symbol"
+      >:</a
+      ><a name="1202"
+      > </a
+      ><a name="1203" href="hott.univalence.html#402" class="Function"
+      >coerce</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" class="Symbol"
+      >(</a
+      ><a name="1211" href="hott.weak-equivalence.properties.html#994" class="Function"
+      >p</a
+      ><a name="1212"
+      > </a
+      ><a name="1213" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1214"
+      > </a
+      ><a name="1215" href="hott.weak-equivalence.properties.html#1027" class="Function"
+      >q</a
+      ><a name="1216" class="Symbol"
+      >)</a
+      ><a name="1217"
+      > </a
+      ><a name="1218" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1219"
+      > </a
+      ><a name="1220" href="hott.univalence.html#402" class="Function"
+      >coerce</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1231"
+      >
+      </a
+      ><a name="1238" href="hott.weak-equivalence.properties.html#1197" class="Function"
+      >lem</a
+      ><a name="1241"
+      > </a
+      ><a name="1242" class="Symbol"
+      >=</a
+      ><a name="1243"
+      > </a
+      ><a name="1244" href="hott.univalence.html#599" class="Function"
+      >coerce-hom</a
+      ><a name="1254"
+      > </a
+      ><a name="1255" href="hott.weak-equivalence.properties.html#994" class="Function"
+      >p</a
+      ><a name="1256"
+      > </a
+      ><a name="1257" href="hott.weak-equivalence.properties.html#1027" class="Function"
+      >q</a
+      ><a name="1258"
+      >
+          </a
+      ><a name="1269" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1270"
+      > </a
+      ><a name="1271" class="Symbol"
+      >(</a
+      ><a name="1272" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1276"
+      > </a
+      ><a name="1277" class="Symbol"
+      >(&#955;</a
+      ><a name="1279"
+      > </a
+      ><a name="1280" href="hott.weak-equivalence.properties.html#1280" class="Bound"
+      >h</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" class="Symbol"
+      >&#8594;</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" href="hott.univalence.html#402" class="Function"
+      >coerce</a
+      ><a name="1290"
+      > </a
+      ><a name="1291" href="hott.weak-equivalence.properties.html#1027" class="Function"
+      >q</a
+      ><a name="1292"
+      > </a
+      ><a name="1293" href="function.core.html#148" class="Function Operator"
+      >&#8728;</a
+      ><a name="1294"
+      > </a
+      ><a name="1295" href="hott.weak-equivalence.properties.html#1280" class="Bound"
+      >h</a
+      ><a name="1296" class="Symbol"
+      >)</a
+      ><a name="1297"
+      > </a
+      ><a name="1298" href="hott.weak-equivalence.properties.html#1067" class="Function"
+      >p-&#946;</a
+      ><a name="1301"
+      >
+          </a
+      ><a name="1312" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1313"
+      > </a
+      ><a name="1314" href="equality.core.html#375" class="Function"
+      >cong</a
+      ><a name="1318"
+      > </a
+      ><a name="1319" class="Symbol"
+      >(&#955;</a
+      ><a name="1321"
+      > </a
+      ><a name="1322" href="hott.weak-equivalence.properties.html#1322" class="Bound"
+      >h</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" class="Symbol"
+      >&#8594;</a
+      ><a name="1325"
+      > </a
+      ><a name="1326" href="hott.weak-equivalence.properties.html#1322" class="Bound"
+      >h</a
+      ><a name="1327"
+      > </a
+      ><a name="1328" href="function.core.html#148" class="Function Operator"
+      >&#8728;</a
+      ><a name="1329"
+      > </a
+      ><a name="1330" href="hott.weak-equivalence.core.html#675" class="Function"
+      >apply&#8776;</a
+      ><a name="1336"
+      > </a
+      ><a name="1337" href="hott.weak-equivalence.properties.html#947" class="Bound"
+      >w</a
+      ><a name="1338" class="Symbol"
+      >)</a
+      ><a name="1339"
+      > </a
+      ><a name="1340" href="hott.weak-equivalence.properties.html#1128" class="Function"
+      >q-&#946;</a
+      ><a name="1343"
+      >
+          </a
+      ><a name="1354" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1355"
+      > </a
+      ><a name="1356" href="function.extensionality.nondep.html#5289" class="Function"
+      >ext</a
+      ><a name="1359"
+      > </a
+      ><a name="1360" class="Symbol"
+      >(</a
+      ><a name="1361" href="function.isomorphism.core.html#407" class="Function"
+      >_&#8773;_.iso&#8321;</a
+      ><a name="1369"
+      > </a
+      ><a name="1370" class="Symbol"
+      >(</a
+      ><a name="1371" href="hott.weak-equivalence.core.html#747" class="Function"
+      >&#8776;&#8658;&#8773;</a
+      ><a name="1374"
+      > </a
+      ><a name="1375" href="hott.weak-equivalence.properties.html#947" class="Bound"
+      >w</a
+      ><a name="1376" class="Symbol"
+      >)))</a
+      ><a name="1379"
+      >
+
+      </a
+      ><a name="1387" href="hott.weak-equivalence.properties.html#1387" class="Function"
+      >lem-inv</a
+      ><a name="1394"
+      > </a
+      ><a name="1395" class="Symbol"
+      >:</a
+      ><a name="1396"
+      > </a
+      ><a name="1397" href="hott.weak-equivalence.properties.html#994" class="Function"
+      >p</a
+      ><a name="1398"
+      > </a
+      ><a name="1399" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1400"
+      > </a
+      ><a name="1401" href="hott.weak-equivalence.properties.html#1027" class="Function"
+      >q</a
+      ><a name="1402"
+      > </a
+      ><a name="1403" href="equality.core.html#156" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1404"
+      > </a
+      ><a name="1405" href="equality.core.html#204" class="InductiveConstructor"
+      >refl</a
+      ><a name="1409"
+      >
+      </a
+      ><a name="1416" href="hott.weak-equivalence.properties.html#1387" class="Function"
+      >lem-inv</a
+      ><a name="1423"
+      > </a
+      ><a name="1424" class="Symbol"
+      >=</a
+      ><a name="1425"
+      > </a
+      ><a name="1426" href="function.isomorphism.core.html#1961" class="Function"
+      >iso&#8658;inj</a
+      ><a name="1433"
+      > </a
+      ><a name="1434" href="hott.univalence.html#1148" class="Function"
+      >uni-iso</a
+      ><a name="1441"
+      > </a
+      ><a name="1442" class="Symbol"
+      >_</a
+      ><a name="1443"
+      > </a
+      ><a name="1444" class="Symbol"
+      >_</a
+      ><a name="1445"
+      >
+                  </a
+      ><a name="1464" class="Symbol"
+      >(</a
+      ><a name="1465" href="hott.weak-equivalence.properties.html#635" class="Function"
+      >apply&#8776;-inj</a
+      ><a name="1475"
+      > </a
+      ><a name="1476" class="Symbol"
+      >_</a
+      ><a name="1477"
+      > </a
+      ><a name="1478" class="Symbol"
+      >_</a
+      ><a name="1479"
+      > </a
+      ><a name="1480" href="hott.weak-equivalence.properties.html#1197" class="Function"
+      >lem</a
+      ><a name="1483" class="Symbol"
+      >)</a
+      ><a name="1484"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
