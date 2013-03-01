@@ -1,5 +1,6 @@
 {-# OPTIONS --without-K #-}
-module category.free.list where
+
+module category.graph.paths where
 
 open import sum
 open import level using (_⊔_)
@@ -8,16 +9,16 @@ open import equality.calculus
 open import equality.reasoning
 open import sets.nat using (refl-≤)
 open import hott.hlevel
-open import category.graph
+open import category.graph.core
 
 open Graph
 
-data List {i j}(W : Graph i j) : obj W → obj W → Set (i ⊔ j) where
-  nil : ∀ {x} → List W x x
+data Paths {i j}(W : Graph i j) : obj W → obj W → Set (i ⊔ j) where
+  nil : ∀ {x} → Paths W x x
   _∷_ : ∀ {x y z}
       → hom W x y
-      → List W y z
-      → List W x z
+      → Paths W y z
+      → Paths W x z
 infixr 5 _∷_
 
 private
@@ -56,49 +57,49 @@ private
     r {x , .x} {inj₁ refl} ()
     r {.x , z} {inj₂ (((x , y) , w) , refl)} _ = y , z
 
-    List' : X → X → Set _
-    List' x y = W-type (container I A B r) (x , y)
+    Paths' : X → X → Set _
+    Paths' x y = W-type (container I A B r) (x , y)
 
-    list-iso : (x y : X) → List' x y ≅ List W x y
-    list-iso _ _ = iso f g iso₁ iso₂
+    paths-iso : (x y : X) → Paths' x y ≅ Paths W x y
+    paths-iso _ _ = iso f g iso₁ iso₂
       where
-        f : {x y : X} → List' x y → List W x y
+        f : {x y : X} → Paths' x y → Paths W x y
         f {x}{.x} (sup (inj₁ refl) _) = nil
         f {.x}{z} (sup (inj₂ (((x , y) , w) , refl)) u) = w ∷ f (u tt)
 
-        g : {x y : X} → List W x y → List' x y
+        g : {x y : X} → Paths W x y → Paths' x y
         g {x}{.x} nil = sup (inj₁ refl) (λ ())
         g {.x}{.z} (_∷_ {x}{y}{z} w ws) =
           sup (inj₂ (((x , y) , w) , refl)) (λ _ → g ws)
 
-        iso₁ : {x y : X}(ws : List' x y) → g (f ws) ≡ ws
+        iso₁ : {x y : X}(ws : Paths' x y) → g (f ws) ≡ ws
         iso₁ {x}{.x} (sup (inj₁ refl) _) = cong (sup (inj₁ refl)) (ext' λ ())
         iso₁ {.x}{z} (sup (inj₂ (((x , y) , w) , refl)) u) =
           cong (sup (inj₂ (((x , y) , w) , refl))) (ext λ { tt → iso₁ (u tt) })
 
-        iso₂ : {x y : X}(ws : List W x y) → f (g ws) ≡ ws
+        iso₂ : {x y : X}(ws : Paths W x y) → f (g ws) ≡ ws
         iso₂ {x}{.x} nil = refl
         iso₂ (w ∷ ws) = cong (_∷_ w) (iso₂ ws)
 
-    list-hlevel : (x y : X) → h 2 (List W x y)
-    list-hlevel x y = iso-hlevel (list-iso x y)
+    paths-hlevel : (x y : X) → h 2 (Paths W x y)
+    paths-hlevel x y = iso-hlevel (paths-iso x y)
       (w-hlevel (λ { (x , y) → A-hlevel (x , y) }) (x , y))
-open HLevel public using (list-hlevel)
+open HLevel public using (paths-hlevel)
 
 private
   module Properties {i j}{W : Graph i j} where
-    _++_ : ∀ {x y z} → List W x y → List W y z → List W x z
+    _++_ : ∀ {x y z} → Paths W x y → Paths W y z → Paths W x z
     nil ++ ws = ws
     (u ∷ us) ++ ws = u ∷ (us ++ ws)
     infixl 5 _++_
 
-    ++-assoc : ∀ {x y z w}(ws : List W x y)(us : List W y z)(vs : List W z w)
+    ++-assoc : ∀ {x y z w}(ws : Paths W x y)(us : Paths W y z)(vs : Paths W z w)
           → ws ++ (us ++ vs)
           ≡ ws ++ us ++ vs
     ++-assoc nil us vs = refl
     ++-assoc (w ∷ ws) us vs = cong (λ α → w ∷ α) (++-assoc ws us vs)
 
-    nil-right-unit : ∀ {x y} (ws : List W x y)
+    nil-right-unit : ∀ {x y} (ws : Paths W x y)
                       → ws ++ nil ≡ ws
     nil-right-unit nil = refl
     nil-right-unit (w ∷ ws) =

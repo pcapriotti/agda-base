@@ -9,11 +9,9 @@ open import equality.reasoning
 open import hott.hlevel
 
 open import category.graph
-open import category.free.list public
-  renaming (List to FList)
 
 List : Edges X (i ⊔ k)
-List = FList (graph X W)
+List = Paths (graph X W)
 
 module WithInvolution (inv : Involution W) where
   open Involution inv
@@ -39,7 +37,7 @@ module WithInvolution (inv : Involution W) where
 
 module WithEnv {j}{X' : Set j}(env : Env W X') where
   open ≡-Reasoning
-  
+
   eval : Env List X'
   eval = record { imap = imap env ; gmap = go }
     where

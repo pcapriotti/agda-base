@@ -8,8 +8,6 @@ open import category.graph
 open import category.category
 open import hott.hlevel
 
-open import category.free.list
-
 free-cat : ∀ {i j}(W : Graph i j)
          → h 3 (Graph.obj W)
          → h 2 (Graph.total W)
@@ -17,11 +15,11 @@ free-cat : ∀ {i j}(W : Graph i j)
 free-cat W hX hW = record
   { graph = record
     { obj = Graph.obj W
-    ; hom = List W }
+    ; hom = Paths W }
   ; is-cat = record
     { id = λ x → nil
     ; _∘_ = λ ws us → us ++ ws
     ; left-unit = nil-right-unit
     ; right-unit = λ _ → refl
     ; associativity = ++-assoc }
-  ; trunc = list-hlevel hX hW }
+  ; trunc = paths-hlevel hX hW }
