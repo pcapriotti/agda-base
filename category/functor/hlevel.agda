@@ -16,7 +16,7 @@ open import equality.core
 open import equality.calculus using (uncongΣ)
 open import function.extensionality
 open import function.isomorphism
-  using (_≅_; module _≅_; iso⇒inj)
+open import sets.unit
 open import hott.hlevel
 
 open Category using (graph; is-cat)
@@ -52,16 +52,27 @@ private
     ; iso₁ = λ _ → refl
     ; iso₂ = λ _ → refl }
 
+func-equality-iso : {F G : Functor C D}
+                  → (F ≡ G)
+                  ≅ (morph F ≡ morph G)
+func-equality-iso {F} {G} = begin
+    (F ≡ G)
+  ≅⟨ iso≡ isom ⟩
+    ((morph F , is-func F) ≡ (morph G , is-func G))
+  ≅⟨ sym≅ Σ-split-iso ⟩
+    Σ (morph F ≡ morph G) (λ p →
+      subst Functorial p (is-func F) ≡ is-func G)
+  ≅⟨ Σ-cong-iso refl≅ (λ p → contr-⊤-iso (is-func-prop _ _ _)) ⟩
+    ((morph F ≡ morph G) × ⊤)
+  ≅⟨ ×-right-unit ⟩
+    (morph F ≡ morph G)
+  ∎
+  where open ≅-Reasoning
+
 func-equality : {F G : Functor C D}
               → morph F ≡ morph G
               → F ≡ G
-func-equality {F}{G} p = iso⇒inj isom _ _ morphisms≡
-  where
-    open _≅_ isom
-
-    morphisms≡ : to F ≡ to G
-    morphisms≡ = uncongΣ
-      (p , h1⇒prop (is-func-prop (morph G)) _ _)
+func-equality {F}{G} = invert func-equality-iso
 
 func-coerce : {F G : Functor C D} → F ≡ G → F ⇒ G
 func-coerce {F}{.F} refl = Idn F
