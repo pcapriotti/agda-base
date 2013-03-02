@@ -25,7 +25,7 @@ we-h1 f = Π-hlevel λ _ → contr-h1 _
 
 apply≈-inj : ∀ {i j}{X : Set i}{Y : Set j}
            → injective (apply≈ {X = X}{Y = Y})
-apply≈-inj (f , w) (.f , w') refl =
+apply≈-inj {x = (f , w)}{.f , w'} refl =
   uncongΣ (refl , h1⇒prop (we-h1 f) w w')
 
 abstract
@@ -54,5 +54,4 @@ abstract
           ⊚ ext (_≅_.iso₁ (≈⇒≅ w)))
 
       lem-inv : p ⊚ q ≡ refl
-      lem-inv = iso⇒inj uni-iso _ _
-                  (apply≈-inj _ _ lem)
+      lem-inv = iso⇒inj uni-iso (apply≈-inj lem)

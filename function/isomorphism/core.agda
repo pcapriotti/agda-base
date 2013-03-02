@@ -62,7 +62,7 @@ module ≅-Reasoning where
 private
   module Dummy {i j}{X : Set i}{Y : Set j} where
       injective : (f : X → Y) → Set _
-      injective f = (x x' : _) → f x ≡ f x' → x ≡ x'
+      injective f = ∀ {x x'} → f x ≡ f x' → x ≡ x'
 
       surjective : (f : X → Y) → Set _
       surjective f = (y : Y) → Σ X λ x → f x ≡ y
@@ -71,7 +71,7 @@ private
         renaming (to to apply ; from to invert)
 
       iso⇒inj : (iso : X ≅ Y) → injective (apply iso)
-      iso⇒inj f x x' q = (iso₁ x) ⁻¹ ⊚ cong from q ⊚ iso₁ x'
+      iso⇒inj f {x}{x'} q = (iso₁ x) ⁻¹ ⊚ cong from q ⊚ iso₁ x'
         where
           open _≅_ f
 
@@ -87,7 +87,7 @@ private
           g y = proj₁ (surj-f y)
 
           H : (x : X) → g (f x) ≡ x
-          H x = inj-f (g (f x)) x (proj₂ (surj-f (f x)))
+          H x = inj-f (proj₂ (surj-f (f x)))
 
           K : (y : Y) → f (g y) ≡ y
           K y = proj₂ (surj-f y)
@@ -97,10 +97,7 @@ _↣_ : (A B : Set) → Set
 A ↣ B = Σ (A → B) injective
 
 _∘i_ : {A B C : Set} → (B ↣ C) → (A ↣ B) → (A ↣ C) -- composition of injections:
-(g , p) ∘i (f , q) = g ∘ f , r
-   where
-     r : (x x' : _) → g (f x) ≡ g (f x') → x ≡ x'
-     r x x' s = q x x' (p (f x) (f x') s)
+(g , p) ∘i (f , q) = g ∘ f , q ∘ p
 
 _↠_ : (A B : Set) → Set
 A ↠ B = Σ (A → B) surjective
