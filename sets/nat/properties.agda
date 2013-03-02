@@ -5,6 +5,7 @@ module sets.nat.properties where
 open import equality.core
 open import equality.calculus
 open import equality.reasoning
+open import function.isomorphism.core
 open import sets.nat.core
 
 +-left-unit : ∀ n → 0 + n ≡ n
@@ -17,6 +18,10 @@ open import sets.nat.core
 +-associativity : ∀ n m p → n + m + p ≡ n + (m + p)
 +-associativity 0 m p = refl
 +-associativity (suc n) m p = cong suc (+-associativity n m p)
+
++-left-cancel : ∀ n → injective (_+_ n)
++-left-cancel 0 p = p
++-left-cancel (suc n) p = +-left-cancel n (cong pred p)
 
 right-distr : ∀ n m p → (n + m) * p ≡ n * p + m * p
 right-distr 0 m p = refl

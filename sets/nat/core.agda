@@ -39,8 +39,8 @@ zero  ≟ zero  = yes refl
 zero  ≟ suc _ = no (λ ())
 suc _ ≟ zero  = no (λ ())
 suc a ≟ suc b with a ≟ b
-suc a ≟ suc b | yes a≡b = yes $ cong {lzero} {lzero} suc a≡b
-suc a ≟ suc b | no ¬a≡b = no $ (λ sa≡sb → ¬a≡b (cong {lzero} {lzero} pred sa≡sb))
+suc a ≟ suc b | yes a≡b = yes $ cong suc a≡b
+suc a ≟ suc b | no ¬a≡b = no $ (λ sa≡sb → ¬a≡b (cong pred sa≡sb))
 
 data _≤_ : ℕ → ℕ → Set where
   z≤n : ∀ {n} → zero ≤ n
