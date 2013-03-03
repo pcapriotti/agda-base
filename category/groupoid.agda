@@ -7,24 +7,27 @@ import category.functor as F
 open import category.functor using (Functor)
 open import equality.core using (_≡_)
 
+record IsGroupoid {i j} (C : Category i j) : Set (i ⊔ j) where
+  constructor groupoid
+  infix 9 _⁻¹
+  field
+    -- structure
+    _⁻¹ : {A B : obj C} → hom A B → hom B A
+
+    -- laws
+    left-inverse : {A B : obj C}(f : hom A B)
+                 → f ⁻¹ ∘ f ≡ id A
+
+    right-inverse : {A B : obj C}(f : hom A B)
+                  → f ∘ f ⁻¹ ≡ id B
+
 record Groupoid (i j : Level) : Set (lsuc (i ⊔ j)) where
   field
     cat : Category i j
-
-  infix 9 _⁻¹
-
-  field
-    -- structure
-    _⁻¹ : {A B : obj cat} → hom A B → hom B A
-
-    -- laws
-    left-inverse : {A B : obj cat}(f : hom A B)
-                 → f ⁻¹ ∘ f ≡ id A
-
-    right-inverse : {A B : obj cat}(f : hom A B)
-                  → f ∘ f ⁻¹ ≡ id B
+    is-grpd : IsGroupoid cat
 
   open Category cat public
+  open IsGroupoid is-grpd public
 
 open Groupoid using (cat)
 

@@ -31,9 +31,10 @@ discrete (A , h3) = record
       ; right-unit = right-unit
       ; associativity = E.associativity }
     ; trunc = h3 }
-  ; _⁻¹ = sym
-  ; left-inverse = left-inverse
-  ; right-inverse = right-inverse }
+  ; is-grpd = record
+    { _⁻¹ = sym
+    ; left-inverse = left-inverse
+    ; right-inverse = right-inverse } }
 
 discrete-cat : ∀ {i} → Type i 1 → Category i i
 discrete-cat A = cat (discrete A)
