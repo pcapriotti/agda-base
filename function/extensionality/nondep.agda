@@ -6,7 +6,7 @@ open import sum
 open import equality.core
 open import equality.calculus
 open import equality.reasoning
-open import function.core using (id; _∘_)
+open import function.core
 open import function.isomorphism.core
 open import function.isomorphism.coherent
 open import hott.hlevel.core
