@@ -33,7 +33,7 @@ module Definition {li la lb}(c : Container li la lb) where
 
   -- the terminal coalgebra
   out : M ↝ F M
-  out (inf a f) = a , ♭ ∘ f
+  out (inf a f) = a , ♭ ∘' f
 
   -- normally, the constructor can be defined in terms of out and unfold, but
   -- Agda provides it natively, together with a definitional β rule
