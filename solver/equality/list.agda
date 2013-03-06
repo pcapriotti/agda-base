@@ -11,7 +11,9 @@ open import hott.hlevel
 open import category.graph
 
 List : Edges X (i ⊔ k)
-List = Paths (graph X (record { hom = W }))
+List = Paths record
+  { obj = X
+  ; is-gph = record { hom = W } }
 
 module WithInvolution (inv : Involution W) where
   open Involution inv

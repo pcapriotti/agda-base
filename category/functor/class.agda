@@ -6,30 +6,20 @@ open import level
 open import equality.core
 open import equality.reasoning
 open import category.category
-  using (IsCategory; module IsCategory)
-import category.graph as Graph
-open Graph
-  using ()
+open import category.structure
+open import category.graph
   renaming (_∘_ to _⋆_)
 
-private
-  module Interface {i j}{G : Graph.Graph i j}
-                   ⦃ c : IsCategory G ⦄ where
-    open IsCategory c public
-
-open Interface
-open Graph.Graph
-
 record IsFunctor {i j i' j'}
-                 {C : Graph.Graph i j}
-                 {D : Graph.Graph i' j'}
-                 (cC : IsCategory C)
-                 (cD : IsCategory D)
-                 (m : Graph.Morphism C D)
+                 (C : Category i j)
+                 (D : Category i' j')
+                 (m : Morphism (graph C) (graph D))
                : Set (i ⊔ j ⊔ i' ⊔ j') where
   constructor is-functor
 
-  open Graph.Morphism m
+  open overloaded IsCategory C
+  open overloaded IsCategory D
+  open Morphism m
     renaming (apply to F)
 
   field
@@ -39,25 +29,22 @@ record IsFunctor {i j i' j'}
               (f : hom C X Y)(g : hom C Y Z)
             → map (g ∘ f) ≡ map g ∘ map f
 
-id-func : ∀ {i j}{C : Graph.Graph i j}(c : IsCategory C)
-        → IsFunctor c c (Graph.Id C)
+id-func : ∀ {i j}(C : Category i j)
+        → IsFunctor C C (Id (graph C))
 id-func _ = record
   { map-id = λ _ → refl
   ; map-hom = λ _ _ → refl }
 
 comp-func : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
-            {C : Graph.Graph i₁ j₁}
-            {D : Graph.Graph i₂ j₂}
-            {E : Graph.Graph i₃ j₃}
-            {cC : IsCategory C}
-            {cD : IsCategory D}
-            {cE : IsCategory E}
-            (F : Graph.Morphism D E)
-            (G : Graph.Morphism C D)
-          → IsFunctor cD cE F
-          → IsFunctor cC cD G
-          → IsFunctor cC cE (F ⋆ G)
-comp-func {cC = cC} {cD = cD} {cE = cE} F G f-func g-func = record
+            (C : Category i₁ j₁)
+            (D : Category i₂ j₂)
+            (E : Category i₃ j₃)
+            (F : Morphism (graph D) (graph E))
+            (G : Morphism (graph C) (graph D))
+          → IsFunctor D E F
+          → IsFunctor C D G
+          → IsFunctor C E (F ⋆ G)
+comp-func C D E F G f-func g-func = record
   { map-id = λ X → begin
         map F (map G (id _))
       ≡⟨ cong (map F) (map-id g-func X) ⟩
@@ -74,5 +61,9 @@ comp-func {cC = cC} {cD = cD} {cE = cE} F G f-func g-func = record
       ∎ }
   where
     open ≡-Reasoning
-    open Graph.Morphism
+    open Morphism
     open IsFunctor
+
+    open overloaded IsCategory C
+    open overloaded IsCategory D
+    open overloaded IsCategory E

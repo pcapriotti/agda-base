@@ -17,11 +17,10 @@ open import hott.weak-equivalence
 
 set : ∀ i → Category (lsuc i) i
 set i = record
-  { graph = record
-    { obj = HSet i
-    ; is-gph = record { hom = λ A B → proj₁ A → proj₁ B } }
+  { obj = HSet i
   ; is-cat = record
-    { id = λ A x → x
+    { is-gph = record { hom = λ A B → proj₁ A → proj₁ B }
+    ; id = λ A x → x
     ; _∘_ = λ f g x → f (g x)
     ; left-unit = λ f → refl
     ; right-unit = λ f → refl

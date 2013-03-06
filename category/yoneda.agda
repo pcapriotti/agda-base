@@ -6,9 +6,12 @@ open import equality.calculus using (_⊚_)
 open import function.isomorphism
   using (_≅_; iso)
 open import function.extensionality
+open import category.structure
+open import category.graph
 open import category.category
   renaming (_∘_ to _⋆_)
 open import category.functor
+  renaming (Compose to _∘_)
 open import category.trans
   using (_⇒_; nt)
 open import category.trans.hlevel
@@ -18,17 +21,19 @@ open import category.instances.set
 module category.yoneda {i j}(C : Category i j) where
 
 open Functor
+open Category using (trunc)
+open overloaded IsCategory C
 
 hom-func : obj C → Functor C (set j)
 hom-func X = record
   { morph = record
-    { apply = λ Y → (hom X Y , trunc C X Y)
+    { apply = λ Y → (hom C X Y , trunc C X Y)
     ; map = _⋆_ }
   ; is-func = record
     { map-id = λ _ → ext λ x → left-unit x
     ; map-hom = λ f g → ext λ x → associativity x f g } }
 
-hom-map : {X X' : obj C}(f : hom X X') → hom-func X' ⇒ hom-func X
+hom-map : {X X' : obj C}(f : hom C X X') → hom-func X' ⇒ hom-func X
 hom-map f = record
   { α = λ Y g → g ⋆ f
   ; α-nat = λ h → ext λ g → associativity f g h }

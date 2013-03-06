@@ -13,11 +13,10 @@ free-cat : ∀ {i j}(W : Graph i j)
          → h 2 (total W)
          → Category i (i ⊔ j)
 free-cat W hX hW = record
-  { graph = record
-    { obj = Graph.obj W
-    ; is-gph = record { hom = Paths W } }
+  { obj = Graph.obj W
   ; is-cat = record
-    { id = λ x → nil
+    { is-gph = record { hom = Paths W }
+    ; id = λ x → nil
     ; _∘_ = λ ws us → us ++ ws
     ; left-unit = nil-right-unit
     ; right-unit = λ _ → refl

@@ -5,6 +5,8 @@ open import sum
 open import category.category
   hiding (right-unit)
   renaming (left-unit to cat-left-unit)
+open import category.structure
+open import category.graph
 open import category.univalence
 open import category.groupoid
 open import category.functor using (Functor)
@@ -16,25 +18,21 @@ open import function.isomorphism
 open import hott.hlevel
 open import hott.weak-equivalence
 
-open Groupoid using (cat)
-
 discrete : ∀ {i} → Type i 1 → Groupoid i i
 discrete (A , h3) = record
-  { cat = record
-    { graph = record
-      { obj = A
-      ; is-gph = record { hom = _≡_ } }
-    ; is-cat = record
-      { id = λ x → refl {x = x}
+  { obj = A
+  ; is-grpd = record
+    { is-cat = record
+      { is-gph = record { hom = _≡_ }
+      ; id = λ x → refl {x = x}
       ; _∘_ = λ p q → trans q p
       ; left-unit = left-unit
       ; right-unit = right-unit
       ; associativity = E.associativity }
-    ; trunc = h3 }
-  ; is-grpd = record
-    { _⁻¹ = sym
+    ; _⁻¹ = sym
     ; left-inverse = left-inverse
-    ; right-inverse = right-inverse } }
+    ; right-inverse = right-inverse }
+  ; trunc = h3 }
 
 discrete-cat : ∀ {i} → Type i 1 → Category i i
 discrete-cat A = cat (discrete A)
@@ -50,6 +48,7 @@ discrete-lift {C = C} f = record
     { map-id = λ _ → refl
     ; map-hom = λ { {X}{.X}{.X} refl refl
                   → sym (cat-left-unit _) } } }
+  where open overloaded IsCategory C
 
 discrete-func : ∀ {i j}{A : Type i 1}{B : Type j 1}
               → (proj₁ A → proj₁ B)

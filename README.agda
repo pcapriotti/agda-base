@@ -18,7 +18,7 @@ import solver.equality
 -- categories and algebra
 
 import category
-import algebra
+-- import algebra
 
 -- HoTT
 

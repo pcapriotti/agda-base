@@ -3,6 +3,7 @@
 module category.limit.product where
 
 open import sum
+open import category.graph
 open import category.category
 open import category.functor
 open import category.instances.discrete

@@ -11,7 +11,6 @@ record IsGraph {i j} (X : Set i) : Set (lsuc (i ⊔ j)) where
     hom : X → X → Set j
 
 record Graph i j : Set (lsuc (i ⊔ j)) where
-  constructor graph
   field
     obj : Set i
     is-gph : IsGraph {i}{j} obj

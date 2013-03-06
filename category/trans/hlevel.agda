@@ -3,6 +3,7 @@
 open import sum
 open import equality.core
 open import equality.calculus
+open import category.graph
 open import category.category
 open import category.functor.core
 open import category.trans.core
@@ -14,6 +15,8 @@ open import hott.hlevel
 
 module category.trans.hlevel {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where
+
+open Category using (trunc)
 
 private
   module NatΣ (F G : Functor C D) where
@@ -38,8 +41,8 @@ natural-prop : (F G : Functor C D)
 natural-prop F G α = iso-hlevel (lem (nat-equation F G α))
   (Π-hlevel (λ m → trunc D _ _ _ _))
   where
-    lem : ∀ {i}(P : mor C → Set i)
-        → ((m : mor C) → P m) ≅ (∀ {X Y} (f : hom X Y) → P ((X , Y) , f))
+    lem : ∀ {i}(P : total C → Set i)
+        → ((m : total C) → P m) ≅ (∀ {X Y} (f : hom C X Y) → P ((X , Y) , f))
     lem P = iso (λ n f → n (_ , f))
                 (λ n m → n (proj₂ m))
                 (λ _ → refl) (λ _ → refl)

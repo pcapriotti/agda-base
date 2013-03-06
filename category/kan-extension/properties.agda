@@ -3,6 +3,7 @@
 open import category.category
   hiding (_∘_)
 open import category.functor.core
+  renaming (Compose to _∘_)
 
 module category.kan-extension.properties {i₀ j₀ i₁ j₁ i₂ j₂ i₃ j₃}
   {C : Category i₀ j₀}{C' : Category i₁ j₁}
@@ -13,14 +14,14 @@ open import category.functor.properties
 open import category.kan-extension
 open import category.trans
   using (_⇒_; _◂_)
-  renaming (_∘_ to _∘n_)
+  renaming (Compose to _∘n_)
 open import hott.hlevel
 
 kan-map : {K : Functor C C'}{G : Functor C D}(H : Functor D D')
         → Extension K G → Extension K (H ∘ G)
 kan-map {K}{G} H (extension F counit) = extension (H ∘ F) counit'
   where
-    counit' : H ∘ F ∘ K ⇒ H ∘ G
+    counit' : (H ∘ F) ∘ K ⇒ H ∘ G
     counit' = (H ◂ counit) ∘n func-coerce (func-assoc H F K)
 
 -- a functor preserves a Kan extension if it maps it to

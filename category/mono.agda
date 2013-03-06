@@ -4,17 +4,23 @@ open import category.category
 
 module category.mono {i j}(C : Category i j) where
 
+open import category.structure
+open import category.graph
+  hiding (_∘_)
 open import category.isomorphism
 open import equality.core
 open import equality.reasoning
 open import hott.hlevel
 
-monic : ∀ {x y} (f : hom x y) → Set _
-monic {x}{y} f = ∀ {z} (g h : hom z x)
+open overloaded IsCategory C
+open Category using (trunc)
+
+monic : ∀ {x y} (f : hom C x y) → Set _
+monic {x}{y} f = ∀ {z} (g h : hom C z x)
                  → f ∘ g ≡ f ∘ h
                  → g ≡ h
 
-monic-h1 : ∀ {x y}(f : hom x y)
+monic-h1 : ∀ {x y}(f : hom C x y)
            → h 1 (monic f)
 monic-h1 f = Π-hlevel-impl λ z
            → Π-hlevel λ g
@@ -37,7 +43,7 @@ iso-monic {x}{y} (c-iso f g H K) a b p = begin
   where
     open ≡-Reasoning
 
-    lem : ∀ {z} → (c : hom z x)
+    lem : ∀ {z} → (c : hom C z x)
         → g ∘ (f ∘ c) ≡ c
     lem c = begin
         g ∘ (f ∘ c)

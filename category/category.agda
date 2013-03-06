@@ -8,20 +8,24 @@ open import function using (flip)
 open import equality.core
 open import hott.hlevel
 
+open import category.structure
 import category.graph as Graph
 
-record IsCategory {i j}(graph : Graph.Graph i j) : Set (i ⊔ j) where
+record IsCategory {i j}(X : Set i) : Set (lsuc (i ⊔ j)) where
   infixl 8 _∘_
-  open Graph.Graph graph
   field
-    id : (A : obj) → hom A A
-    _∘_ : {A B C : obj} → hom B C → hom A B → hom A C
+    is-gph : Graph.IsGraph {i}{j} X
 
-    left-unit : {A B : obj}(f : hom A B)
+  open Graph.IsGraph is-gph
+  field
+    id : (A : X) → hom A A
+    _∘_ : {A B C : X} → hom B C → hom A B → hom A C
+
+    left-unit : {A B : X}(f : hom A B)
               → id B ∘ f ≡ f
-    right-unit : {A B : obj}(f : hom A B)
+    right-unit : {A B : X}(f : hom A B)
                → f ∘ id A ≡ f
-    associativity : {A B C D : obj}
+    associativity : {A B C D : X}
                     (f : hom A B)
                     (g : hom B C)
                     (h : hom C D)
@@ -29,29 +33,25 @@ record IsCategory {i j}(graph : Graph.Graph i j) : Set (i ⊔ j) where
 
 record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
   field
-    graph : Graph.Graph i j
-    is-cat : IsCategory graph
+    obj : Set i
+    is-cat : IsCategory {i}{j} obj
 
-  open Graph.Graph graph
   open IsCategory is-cat
+  open Graph.IsGraph is-gph
 
   field
     trunc : ∀ x y → h 2 (hom x y)
 
-  mor : Set (i ⊔ j)
-  mor = Σ (obj × obj) (uncurry hom)
-
-  open Graph.Graph graph public
+  open Graph.IsGraph is-gph public
   open IsCategory is-cat public
 
 -- opposite category
 op : ∀ {i j} → Category i j → Category i j
 op C = record
-  { graph = record
-    { obj = obj
-    ; is-gph = record { hom = flip hom } }
+  { obj = obj
   ; is-cat = record
-    { id = id
+    { is-gph = record { hom = flip hom }
+    ; id = id
     ; _∘_ = flip _∘_
     ; left-unit = right-unit
     ; right-unit = left-unit
@@ -62,10 +62,31 @@ op C = record
 
 -- interface
 
-open Category public using (obj; mor; trunc)
-private
-  module Interface {i j} ⦃ C : Category i j ⦄ where
-    open Category C using (is-cat)
-    open Category C public using (hom)
-    open IsCategory is-cat public
-open Interface public
+open Graph
+
+graph : ∀ {i j}
+      → ⦃ st : Structure {lsuc (i ⊔ j)} (IsCategory {i}{j}) ⦄
+      → Structure.Sort st → Graph.Graph i j
+graph ⦃ st ⦄ C = record
+  { obj = Structure.obj st C
+  ; is-gph = IsCategory.is-gph (Structure.struct st C) }
+
+cat-cat-instance : ∀ {i j} → Structure IsCategory
+cat-cat-instance {i}{j} = record
+  { Sort = Category i j
+  ; obj = Category.obj
+  ; struct = Category.is-cat }
+
+cat-gph-instance : ∀ {i j} → Structure IsGraph
+cat-gph-instance {i}{j} = record
+  { Sort = Category i j
+  ; obj = Category.obj
+  ; struct = λ C → Graph.is-gph (graph C) }
+
+module CategoryInterface {i j} ⦃ sub : IsSubtype {lsuc (i ⊔ j)}
+                                       (IsCategory {i}{j}) ⦄ where
+  open IsSubtype sub
+  open IsCategory structure public
+    hiding (is-gph)
+
+open CategoryInterface public

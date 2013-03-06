@@ -2,10 +2,12 @@
 
 open import sum
 open import equality.core
+open import category.structure
 open import category.category renaming (_∘_ to _⋆_)
 open import category.functor.core
   using (Functor; module Functor)
 open import category.trans.core
+  renaming (Compose to _∘_)
 open import category.trans.hlevel
 open import function.extensionality
 
@@ -13,6 +15,7 @@ module category.trans.properties {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where
 
 open Functor
+open overloaded IsCategory D
 
 nat-right-unit : {F G : Functor C D}
               → (α : Nat F G)
@@ -36,7 +39,7 @@ nat-assoc : {F G H K : Functor C D}
           → (α : Nat F G)
           → (β : Nat G H)
           → (γ : Nat H K)
-          → γ ∘ β ∘ α ≡ γ ∘ (β ∘ α)
+          → (γ ∘ β) ∘ α ≡ γ ∘ (β ∘ α)
 nat-assoc {F}{G}{H}{K} (nt α α-nat) (nt β β-nat) (nt γ γ-nat) =
   nat-equality (ext' trans-assoc)
   where

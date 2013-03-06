@@ -4,26 +4,30 @@ module category.product where
 open import level
 open import sum
 open import equality.core
+open import category.structure
+open import category.graph
 open import category.category
   renaming (_∘_ to _⋆_)
 open import category.functor
   using (Functor; module Functor)
+  renaming (Compose to _∘_)
 open import hott.hlevel
 
 -- product of categories
 -- for products *in* a category, see category.limit
 
+open Category using (trunc)
+
 _⊗_ : ∀ {i j i' j'}
     → Category i j → Category i' j'
     → Category (i ⊔ i') (j ⊔ j')
 C ⊗ D = record
-  { graph = record
-    { obj = obj C × obj D
-    ; is-gph = record
-      { hom = λ { (X , Y) (X' , Y')
-            → hom X X' × hom Y Y' } } }
+  { obj = obj C × obj D
   ; is-cat = record
-    { id = λ { (X , Y) → (id X , id Y) }
+    { is-gph = record
+      { hom = λ { (X , Y) (X' , Y')
+            → hom C X X' × hom D Y Y' } }
+    ; id = λ { (X , Y) → (id X , id Y) }
     ; _∘_ = λ { (f , g) (f' , g') → (f ⋆ f' , g ⋆ g') }
     ; left-unit = λ { _ →
         cong₂ _,_ (left-unit _)  (left-unit _) }
@@ -32,12 +36,17 @@ C ⊗ D = record
     ; associativity = λ { _ _ _ →
         cong₂ _,_ (associativity _ _ _) (associativity _ _ _) } }
   ; trunc = λ _ _ → ×-hlevel (trunc C _ _) (trunc D _ _) }
+  where
+    open overloaded IsCategory C
+    open overloaded IsCategory D
 
 private
   module Properties {i₀ j₀ i₁ j₁}
                     (C : Category i₀ j₀)
                     (D : Category i₁ j₁) where
     open Functor
+    open overloaded IsCategory C
+    open overloaded IsCategory D
 
     cat-proj₁ : Functor (C ⊗ D) C
     cat-proj₁ = record

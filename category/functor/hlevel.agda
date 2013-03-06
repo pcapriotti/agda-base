@@ -7,7 +7,7 @@ module category.functor.hlevel {i j i' j'}
 
 open import level
 open import sum
-import category.graph as Graph
+open import category.graph
 open import category.functor.class
 open import category.functor.core
 open import category.trans.core
@@ -19,17 +19,17 @@ open import function.isomorphism
 open import sets.unit
 open import hott.hlevel
 
-open Category using (graph; is-cat)
 open Functor
+open Category using (trunc)
 
 private
-  Morphism : Set _
-  Morphism = Graph.Morphism (graph C) (graph D)
+  GMorphism : Set _
+  GMorphism = Morphism (graph C) (graph D)
 
-  Functorial : Morphism → Set _
-  Functorial = IsFunctor (is-cat C) (is-cat D)
+  Functorial : GMorphism → Set _
+  Functorial = IsFunctor C D
 
-is-func-prop : (m : Morphism) → h 1 (Functorial m)
+is-func-prop : (m : GMorphism) → h 1 (Functorial m)
 is-func-prop m = iso-hlevel
   ( record
       { to = uncurry is-functor
@@ -45,8 +45,8 @@ is-func-prop m = iso-hlevel
       → Π-hlevel λ g
       → trunc D _ _ _ _ ) )
 
-morphism-structure-iso : Functor C D ≅ Σ Morphism Functorial
-morphism-structure-iso = record
+functor-structure-iso : Functor C D ≅ Σ GMorphism Functorial
+functor-structure-iso = record
   { to = λ F → ( morph F , is-func F )
   ; from = λ { (m , f) → functor m f }
   ; iso₁ = λ _ → refl
@@ -57,7 +57,7 @@ func-equality-iso : {F G : Functor C D}
                   ≅ (morph F ≡ morph G)
 func-equality-iso {F} {G} = begin
     (F ≡ G)
-  ≅⟨ iso≡ morphism-structure-iso ⟩
+  ≅⟨ iso≡ functor-structure-iso ⟩
     ((morph F , is-func F) ≡ (morph G , is-func G))
   ≅⟨ sym≅ Σ-split-iso ⟩
     Σ (morph F ≡ morph G) (λ p →

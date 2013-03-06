@@ -7,10 +7,13 @@ open import equality.reasoning
 open import function.isomorphism using (_≅_; module _≅_)
   renaming ( apply to apply≅
            ; invert to invert≅ )
+open import category.structure
+open import category.graph
+  hiding (_∘_; Id)
 open import category.category renaming (_∘_ to _⋆_)
 open import category.functor.core
-  using ( Functor; module Functor
-        ; Id; _∘_ )
+  using (Functor; module Functor ; Id)
+  renaming (Compose to _∘_)
 open import category.trans.core
   using (_⇒_; nt; natural)
 
@@ -22,26 +25,29 @@ open Functor
 
 record _⊣_ : Set (i ⊔ i' ⊔ j ⊔ j') where
   field
-    adj : ∀ X Y → hom (apply F X) Y ≅ hom X (apply G Y)
+    adj : ∀ X Y → hom D (apply F X) Y ≅ hom C X (apply G Y)
 
-  Φ : ∀ {X}{Y} → hom (apply F X) Y → hom X (apply G Y)
+  Φ : ∀ {X}{Y} → hom D (apply F X) Y → hom C X (apply G Y)
   Φ {X}{Y} = apply≅ (adj X Y)
 
-  Ψ : ∀ {X}{Y} → hom X (apply G Y) → hom (apply F X) Y
+  Ψ : ∀ {X}{Y} → hom C X (apply G Y) → hom D (apply F X) Y
   Ψ {X}{Y} = invert≅ (adj X Y)
+
+  open overloaded IsCategory C
+  open overloaded IsCategory D
 
   field
     adj-nat : {X X' : obj C}{Y Y' : obj D}
-              (f : hom X' X)(g : hom Y Y')
-            → (k : hom (apply F X) Y)
+              (f : hom C X' X)(g : hom D Y Y')
+            → (k : hom D (apply F X) Y)
             → Φ (g ⋆ k ⋆ map F f)
             ≡ map G g ⋆ Φ k ⋆ f
 
   open ≡-Reasoning
 
   adj-nat-op : {X X' : obj C}{Y Y' : obj D}
-               (f : hom X' X)(g : hom Y Y')
-             → (k : hom X (apply G Y))
+               (f : hom C X' X)(g : hom D Y Y')
+             → (k : hom C X (apply G Y))
              → Ψ (map G g ⋆ k ⋆ f)
              ≡ g ⋆ Ψ k ⋆ map F f
   adj-nat-op {X}{X'}{Y}{Y'} f g k = begin
@@ -59,10 +65,10 @@ record _⊣_ : Set (i ⊔ i' ⊔ j ⊔ j') where
   η : Id C ⇒ G ∘ F
   η = nt eta eta-natural
     where
-      eta : ∀ X → hom X (apply G (apply F X))
+      eta : ∀ X → hom C X (apply G (apply F X))
       eta X = Φ (id (apply F X))
 
-      lem : {X X' : obj C}(f : hom X X')
+      lem : {X X' : obj C}(f : hom C X X')
           → id _ ⋆ id _ ⋆ map F f
           ≡ map F f ⋆ id _ ⋆ map F (id _)
       lem f = cong (λ z → z ⋆ map F f) (left-unit _)
@@ -92,10 +98,10 @@ record _⊣_ : Set (i ⊔ i' ⊔ j ⊔ j') where
   ε : F ∘ G ⇒ Id D
   ε = nt eps eps-natural
     where
-      eps : ∀ Y → hom (apply F (apply G Y)) Y
+      eps : ∀ Y → hom D (apply F (apply G Y)) Y
       eps Y = Ψ (id (apply G Y))
 
-      lem : {Y Y' : obj D}(f : hom Y Y')
+      lem : {Y Y' : obj D}(f : hom D Y Y')
           → map G (id _) ⋆ id _ ⋆ map G f
           ≡ map G f ⋆ id _ ⋆ id _
       lem f = cong (λ z → z ⋆ id _ ⋆ map G f) (map-id G _)

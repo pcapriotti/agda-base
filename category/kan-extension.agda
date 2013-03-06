@@ -2,8 +2,10 @@
 
 open import level
 open import sum
+open import category.structure
 open import category.category renaming (_∘_ to _⋆_)
 open import category.functor
+  renaming (Compose to _∘_)
 open import category.trans
   using (_⇒_; nt; module Nat)
 open import equality.core
@@ -11,6 +13,8 @@ open import hott.hlevel
 
 module category.kan-extension {i₀ j₀ i₁ j₁ i₂ j₂}
   {C : Category i₀ j₀}{C' : Category i₁ j₁}{D : Category i₂ j₂} where
+
+open overloaded IsCategory D
 
 record Extension (K : Functor C C')(G : Functor C D)
                : Set (i₀ ⊔ j₀ ⊔ i₁ ⊔ i₂ ⊔ j₁ ⊔ j₂) where

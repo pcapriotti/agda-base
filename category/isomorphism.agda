@@ -3,6 +3,9 @@ open import category.category
 
 module category.isomorphism where
 
+open import category.structure
+open import category.graph
+  hiding (_∘_)
 open import hott.hlevel.properties
 open import function.isomorphism
   renaming (apply to apply≅)
@@ -14,9 +17,10 @@ open import hott.hlevel
 
 record cat-iso {i j}(C : Category i j)(x y : obj C) : Set j where
   constructor c-iso
+  open overloaded IsCategory C
   field
-    to : hom x y
-    from : hom y x
+    to : hom C x y
+    from : hom C y x
 
     iso₁ : from ∘ to ≡ id x
     iso₂ : to ∘ from ≡ id y
@@ -27,10 +31,13 @@ record cat-iso {i j}(C : Category i j)(x y : obj C) : Set j where
   ; from = id x
   ; iso₁ = left-unit _
   ; iso₂ = left-unit _ }
+  where open overloaded IsCategory C
 
 private
+  open Category using (trunc)
   module Properties {i j}{C : Category i j}(x y : obj C) where
-    inverses : hom x y × hom y x → Set _
+    open overloaded IsCategory C
+    inverses : hom C x y × hom C y x → Set _
     inverses (t , f) = f ∘ t ≡ id x
                      × t ∘ f ≡ id y
 
@@ -40,7 +47,7 @@ private
                (trunc C y y (t ∘ f) (id y))
 
     E : Set _
-    E = Σ (hom x y × hom y x) inverses
+    E = Σ (hom C x y × hom C y x) inverses
 
     e-iso : E ≅ cat-iso C x y
     e-iso = record

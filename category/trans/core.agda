@@ -2,6 +2,8 @@
 
 open import level using (_⊔_)
 open import sum
+open import category.graph hiding (Id)
+open import category.structure
 open import category.category renaming (_∘_ to _⋆_)
 open import category.functor.core using
   (Functor; module Functor)
@@ -13,16 +15,18 @@ module category.trans.core {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where
 
 open Functor using (apply; map)
+open overloaded IsCategory C
+open overloaded IsCategory D
 
 Trans : Functor C D → Functor C D → Set _
-Trans F G = ∀ X → hom (apply F X) (apply G X)
+Trans F G = (X : obj C) → hom D (apply F X) (apply G X)
 
-nat-equation : (F G : Functor C D)(α : Trans F G) → mor C → Set _
+nat-equation : (F G : Functor C D)(α : Trans F G) → total C → Set _
 nat-equation F G α ((X , Y), f) =
   α Y ⋆ map F f ≡ map G f ⋆ α X
 
 natural : (F G : Functor C D) → Trans F G → Set _
-natural F G α = ∀ {X Y} (f : hom X Y) → nat-equation F G α ((X , Y) , f)
+natural F G α = ∀ {X Y} (f : hom C X Y) → nat-equation F G α ((X , Y) , f)
 
 record Nat (F G : Functor C D) : Set (i ⊔ j ⊔ j') where
   constructor nt
@@ -39,15 +43,15 @@ Id F = nt (λ X → id (apply F X))
           ( λ f → left-unit (map F f)
                 ⊚ right-unit (map F f) ⁻¹ )
 
-_∘_ : {F G H : Functor C D} → Nat G H → Nat F G → Nat F H
-_∘_ {F}{G}{H} (nt α α-nat) (nt β β-nat) = (nt γ γ-nat)
+Compose : {F G H : Functor C D} → Nat G H → Nat F G → Nat F H
+Compose {F}{G}{H} (nt α α-nat) (nt β β-nat) = (nt γ γ-nat)
   where
     open ≡-Reasoning
 
-    γ : ∀ X → hom (apply F X) (apply H X)
+    γ : ∀ X → hom D (apply F X) (apply H X)
     γ X = α X ⋆ β X
 
-    γ-nat : ∀ {X Y} (f : hom X Y)
+    γ-nat : ∀ {X Y} (f : hom C X Y)
           → γ Y ⋆ map F f ≡ map H f ⋆ γ X
     γ-nat {X}{Y} f = begin
         γ Y ⋆ map F f
@@ -62,7 +66,6 @@ _∘_ {F}{G}{H} (nt α α-nat) (nt β β-nat) = (nt γ γ-nat)
       ≡⟨ associativity _ _ _ ⟩
         map H f ⋆ γ X
       ∎
-infixl 5 _∘_
 
 record NatEq (F G : Functor C D) : Set (i ⊔ j ⊔ j') where
   constructor nat-eq
