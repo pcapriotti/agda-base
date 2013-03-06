@@ -2,7 +2,6 @@
 module category where
 
 import category.category
-import category.class
 import category.free
 import category.functor
 import category.graph

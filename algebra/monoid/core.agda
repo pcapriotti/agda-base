@@ -5,9 +5,8 @@ module algebra.monoid.core where
 open import level
 open import category.graph.core
   hiding (graph; _∘_)
-open import category.class
 open import category.category
-  using (Category)
+  using (IsCategory; module IsCategory; Category)
 open import sets.unit
 open import hott.hlevel.core
 

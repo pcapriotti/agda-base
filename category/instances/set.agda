@@ -8,7 +8,6 @@ open import function.isomorphism
 open import function.isomorphism.coherent
 open import function.extensionality
 open import level using (lzero ; lsuc)
-open import category.class
 open import category.category
 open import category.isomorphism
 open import category.univalence

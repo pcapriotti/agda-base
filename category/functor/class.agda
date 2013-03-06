@@ -5,9 +5,11 @@ module category.functor.class where
 open import level
 open import equality.core
 open import equality.reasoning
-open import category.class
+open import category.category
+  using (IsCategory; module IsCategory)
 import category.graph as Graph
-open Graph using ()
+open Graph
+  using ()
   renaming (_∘_ to _⋆_)
 
 private
@@ -15,8 +17,8 @@ private
                    ⦃ c : IsCategory G ⦄ where
     open IsCategory c public
 
-open Graph.Graph
 open Interface
+open Graph.Graph
 
 record IsFunctor {i j i' j'}
                  {C : Graph.Graph i j}
