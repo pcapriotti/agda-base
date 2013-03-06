@@ -33,7 +33,7 @@ op : ∀ {i j} → Category i j → Category i j
 op C = record
   { graph = record
     { obj = obj
-    ; hom = flip hom }
+    ; is-gph = record { hom = flip hom } }
   ; is-cat = record
     { id = id
     ; _∘_ = flip _∘_

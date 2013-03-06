@@ -4,31 +4,63 @@ module category.graph.core where
 
 open import level
 open import sum
+open import category.structure
+
+record IsGraph {i j} (X : Set i) : Set (lsuc (i ⊔ j)) where
+  field
+    hom : X → X → Set j
 
 record Graph i j : Set (lsuc (i ⊔ j)) where
   constructor graph
   field
     obj : Set i
-    hom : obj → obj → Set j
+    is-gph : IsGraph {i}{j} obj
 
-  total : Set (i ⊔ j)
-  total = Σ (obj × obj) (uncurry hom)
+  open IsGraph is-gph public
 
-open Graph
+module GraphInterface {i j}
+                      ⦃ st : Structure {lsuc (i ⊔ j)}
+                                       (IsGraph {i}{j}) ⦄ where
+  module S = Structure st
+  obj : S.Sort → Set _
+  obj X = S.obj X
+
+  hom : (X : S.Sort) → obj X → obj X → Set _
+  hom X = IsGraph.hom (S.struct X)
+
+  total : S.Sort → Set (i ⊔ j)
+  total X = Σ (obj X × obj X) (uncurry (hom X))
+
+open GraphInterface public
+
+gph-gph-instance : ∀ {i j} → Structure IsGraph
+gph-gph-instance {i}{j} = record
+  { Sort = Graph i j
+  ; obj = Graph.obj
+  ; struct = Graph.is-gph }
+
+-- obj : ∀ {i j} → ⦃ st : Structure {lsuc (i ⊔ j)} (IsGraph {i}{j}) ⦄
+--     → Structure.Sort st → Set _
+-- obj ⦃ st ⦄ X = Structure.obj st X
 
 IsMorphism : ∀ {i j i' j'}{A : Graph i j}{B : Graph i' j'}
            → (f : obj A → obj B) → Set _
 IsMorphism {A = A}{B = B} f =
   ∀ {x y} → hom A x y → hom B (f x) (f y)
+  where
+    open overloaded IsGraph A
+    open overloaded IsGraph B
 
 record Morphism {i j i' j'}
-                (G : Graph i j)
-                (H : Graph i' j')
+                (A : Graph i j)
+                (B : Graph i' j')
               : Set (i ⊔ i' ⊔ j ⊔ j') where
   constructor morphism
+  open overloaded IsGraph A
+  open overloaded IsGraph B
   field
-    apply : obj G → obj H
-    map : ∀ {x y} → hom G x y → hom H (apply x) (apply y)
+    apply : obj A → obj B
+    map : ∀ {x y} → hom A x y → hom B (apply x) (apply y)
 
 open Morphism
 

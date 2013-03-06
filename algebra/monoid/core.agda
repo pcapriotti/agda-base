@@ -15,7 +15,7 @@ private
   monoid-graph : ∀ {i} → Set i → Graph lzero i
   monoid-graph X = record
     { obj = ⊤
-    ; hom = λ _ _ → X }
+    ; is-gph = record { hom = λ _ _ → X }  }
 
 IsMonoid : ∀ {i} → Set i → Set i
 IsMonoid X = IsCategory (monoid-graph X)

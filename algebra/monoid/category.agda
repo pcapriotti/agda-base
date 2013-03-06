@@ -15,7 +15,7 @@ mon : ∀ i → Category (lsuc i) i
 mon i = record
   { graph = record
     { obj = Monoid i
-    ; hom = Morphism }
+    ; is-gph = record { hom = Morphism } }
   ; is-cat = record
     { id = Id
     ; _∘_ = _∘_

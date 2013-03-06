@@ -19,8 +19,9 @@ _⊗_ : ∀ {i j i' j'}
 C ⊗ D = record
   { graph = record
     { obj = obj C × obj D
-    ; hom = λ { (X , Y) (X' , Y')
-            → hom X X' × hom Y Y' } }
+    ; is-gph = record
+      { hom = λ { (X , Y) (X' , Y')
+            → hom X X' × hom Y Y' } } }
   ; is-cat = record
     { id = λ { (X , Y) → (id X , id Y) }
     ; _∘_ = λ { (f , g) (f' , g') → (f ⋆ f' , g ⋆ g') }

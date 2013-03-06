@@ -13,7 +13,7 @@ Func : Category _ _
 Func = record
   { graph = record
     { obj = Functor C D
-    ; hom = Nat }
+    ; is-gph = record { hom = Nat } }
   ; is-cat = record
     { _∘_ = _∘_
     ; id = Id

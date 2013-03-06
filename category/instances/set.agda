@@ -20,7 +20,7 @@ set : ∀ i → Category (lsuc i) i
 set i = record
   { graph = record
     { obj = HSet i
-    ; hom = λ A B → proj₁ A → proj₁ B }
+    ; is-gph = record { hom = λ A B → proj₁ A → proj₁ B } }
   ; is-cat = record
     { id = λ A x → x
     ; _∘_ = λ f g x → f (g x)

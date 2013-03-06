@@ -23,7 +23,7 @@ discrete (A , h3) = record
   { cat = record
     { graph = record
       { obj = A
-      ; hom = _≡_ }
+      ; is-gph = record { hom = _≡_ } }
     ; is-cat = record
       { id = λ x → refl {x = x}
       ; _∘_ = λ p q → trans q p

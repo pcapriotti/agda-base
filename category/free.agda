@@ -5,17 +5,17 @@ open import sum
 open import level
 open import equality.core
 open import category.graph
-open import category.category
+open import category.category using (Category)
 open import hott.hlevel
 
 free-cat : ∀ {i j}(W : Graph i j)
-         → h 3 (Graph.obj W)
-         → h 2 (Graph.total W)
+         → h 3 (obj W)
+         → h 2 (total W)
          → Category i (i ⊔ j)
 free-cat W hX hW = record
   { graph = record
     { obj = Graph.obj W
-    ; hom = Paths W }
+    ; is-gph = record { hom = Paths W } }
   ; is-cat = record
     { id = λ x → nil
     ; _∘_ = λ ws us → us ++ ws

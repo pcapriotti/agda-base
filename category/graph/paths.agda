@@ -11,8 +11,6 @@ open import sets.nat.core using (refl-≤)
 open import hott.hlevel
 open import category.graph.core
 
-open Graph
-
 data Paths {i j}(W : Graph i j) : obj W → obj W → Set (i ⊔ j) where
   nil : ∀ {x} → Paths W x x
   _∷_ : ∀ {x y z}
