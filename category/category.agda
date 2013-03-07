@@ -4,7 +4,6 @@ module category.category where
 
 open import level using (Level ; lsuc ; _⊔_)
 open import sum
-open import function using (flip)
 open import equality.core
 open import hott.hlevel
 
@@ -12,7 +11,6 @@ open import category.structure
 import category.graph as Graph
 
 record IsCategory {i j}(X : Set i) : Set (lsuc (i ⊔ j)) where
-  infixl 8 _∘_
   field
     is-gph : Graph.IsGraph {i}{j} X
 
@@ -29,7 +27,8 @@ record IsCategory {i j}(X : Set i) : Set (lsuc (i ⊔ j)) where
                     (f : hom A B)
                     (g : hom B C)
                     (h : hom C D)
-                  → h ∘ g ∘ f ≡ h ∘ (g ∘ f)
+                  → (h ∘ g) ∘ f ≡ h ∘ (g ∘ f)
+
 
 record Category (i j : Level) : Set (lsuc (i ⊔ j)) where
   field
@@ -59,8 +58,32 @@ op C = record
   ; trunc = flip trunc }
   where
     open Category C
+    open import function.core
+      using (flip)
 
 -- interface
+
+module cat-interface {i j} ⦃ st : Structure {lsuc (i ⊔ j)}
+                                            (IsCategory {i}{j}) ⦄
+                           (C : Structure.Sort st) where
+  open IsCategory (Structure.struct st C)
+  open Graph.IsGraph is-gph
+
+  private X = Structure.obj st C
+  open import function.core
+    using (Composition)
+
+  category-comp : Composition _ _ _ _ _ _
+  category-comp = record
+    { U₁ = X
+    ; U₂ = X
+    ; U₃ = X
+    ; hom₁₂ = λ x y → hom x y
+    ; hom₂₃ = λ x y → hom x y
+    ; hom₁₃ = λ x y → hom x y
+    ; _∘_ = λ f g → f ∘ g }
+
+  open overloaded IsCategory C public
 
 open Graph
 
@@ -85,8 +108,9 @@ cat-gph-instance {i}{j} = record
 
 module CategoryInterface {i j} ⦃ sub : IsSubtype {lsuc (i ⊔ j)}
                                        (IsCategory {i}{j}) ⦄ where
+  open import function.core public
+    hiding (id)
   open IsSubtype sub
   open IsCategory structure public
-    hiding (is-gph)
-
+    hiding (is-gph; _∘_)
 open CategoryInterface public

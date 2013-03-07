@@ -33,8 +33,8 @@ record _⊣_ : Set (i ⊔ i' ⊔ j ⊔ j') where
   Ψ : ∀ {X}{Y} → hom C X (apply G Y) → hom D (apply F X) Y
   Ψ {X}{Y} = invert≅ (adj X Y)
 
-  open overloaded IsCategory C
-  open overloaded IsCategory D
+  open cat-interface C
+  open cat-interface D
 
   field
     adj-nat : {X X' : obj C}{Y Y' : obj D}

@@ -15,8 +15,8 @@ module category.trans.core {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where
 
 open Functor using (apply; map)
-open overloaded IsCategory C
-open overloaded IsCategory D
+open cat-interface C
+open cat-interface D
 
 Trans : Functor C D → Functor C D → Set _
 Trans F G = (X : obj C) → hom D (apply F X) (apply G X)
@@ -60,7 +60,7 @@ Compose {F}{G}{H} (nt α α-nat) (nt β β-nat) = (nt γ γ-nat)
       ≡⟨ cong (_⋆_ (α Y)) (β-nat f) ⟩
         α Y ⋆ (map G f ⋆ β X)
       ≡⟨ sym (associativity _ _ _) ⟩
-        α Y ⋆ map G f ⋆ β X
+        (α Y ⋆ map G f) ⋆ β X
       ≡⟨ cong (λ z → z ⋆ β X) (α-nat f) ⟩
         map H f ⋆ α X ⋆ β X
       ≡⟨ associativity _ _ _ ⟩

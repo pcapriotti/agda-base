@@ -22,7 +22,7 @@ module category.yoneda {i j}(C : Category i j) where
 
 open Functor
 open Category using (trunc)
-open overloaded IsCategory C
+open cat-interface C
 
 hom-func : obj C → Functor C (set j)
 hom-func X = record

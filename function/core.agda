@@ -30,7 +30,7 @@ flip f = λ y x → f x y
 
 record Composition u₁ u₂ u₃ u₁₂ u₂₃ u₁₃
         : Set (lsuc (u₁ ⊔ u₂ ⊔ u₃ ⊔ u₁₂ ⊔ u₂₃ ⊔ u₁₃)) where
-  infixr 9 _∘_
+  infixl 9 _∘_
   field
     U₁ : Set u₁
     U₂ : Set u₂

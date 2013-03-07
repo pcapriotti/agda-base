@@ -29,7 +29,7 @@ record IsGroupoid {i j} (X : Set i) : Set (lsuc (i ⊔ j)) where
                  → (f ⁻¹) ∘ f ≡ id A
 
     right-inverse : {A B : X}(f : hom A B)
-                  → f ∘ f ⁻¹ ≡ id B
+                  → f ∘ (f ⁻¹) ≡ id B
 
 record Groupoid i j : Set (lsuc (i ⊔ j)) where
   field

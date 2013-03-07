@@ -15,7 +15,7 @@ module category.trans.properties {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where
 
 open Functor
-open overloaded IsCategory D
+open cat-interface D
 
 nat-right-unit : {F G : Functor C D}
               → (α : Nat F G)

@@ -45,4 +45,4 @@ Const C {D} X = record
     { map-id = λ _ → refl
     ; map-hom = λ _ _ → sym (right-unit _) } }
   where
-    open overloaded IsCategory D
+    open cat-interface D

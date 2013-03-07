@@ -48,7 +48,7 @@ discrete-lift {C = C} f = record
     { map-id = λ _ → refl
     ; map-hom = λ { {X}{.X}{.X} refl refl
                   → sym (cat-left-unit _) } } }
-  where open overloaded IsCategory C
+  where open cat-interface C
 
 discrete-func : ∀ {i j}{A : Type i 1}{B : Type j 1}
               → (proj₁ A → proj₁ B)

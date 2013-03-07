@@ -6,7 +6,6 @@ open import level
 open import equality.core
 open import equality.reasoning
 open import category.category
-open import category.structure
 open import category.graph
   renaming (_∘_ to _⋆_)
 
@@ -17,8 +16,8 @@ record IsFunctor {i j i' j'}
                : Set (i ⊔ j ⊔ i' ⊔ j') where
   constructor is-functor
 
-  open overloaded IsCategory C
-  open overloaded IsCategory D
+  open cat-interface C
+  open cat-interface D
   open Morphism m
     renaming (apply to F)
 
@@ -64,6 +63,6 @@ comp-func C D E F G f-func g-func = record
     open Morphism
     open IsFunctor
 
-    open overloaded IsCategory C
-    open overloaded IsCategory D
-    open overloaded IsCategory E
+    open cat-interface C
+    open cat-interface D
+    open cat-interface E

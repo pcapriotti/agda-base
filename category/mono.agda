@@ -12,7 +12,7 @@ open import equality.core
 open import equality.reasoning
 open import hott.hlevel
 
-open overloaded IsCategory C
+open cat-interface C
 open Category using (trunc)
 
 monic : ∀ {x y} (f : hom C x y) → Set _
