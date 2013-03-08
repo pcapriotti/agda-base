@@ -6,6 +6,7 @@ open import sum
 open import equality.core
 open import category.structure
 open import category.graph.core
+open import category.graph.morphism
 open import function.isomorphism
 open import sets.nat
 open import hott.hlevel
