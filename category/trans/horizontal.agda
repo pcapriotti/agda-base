@@ -2,7 +2,6 @@
 
 open import category.category hiding (_∘_)
 open import category.graph
-  hiding (_∘_)
 open import category.functor
   renaming (Compose to _∘_)
 open import category.trans.core

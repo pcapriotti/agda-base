@@ -6,7 +6,6 @@ module category.mono {i j}(C : Category i j) where
 
 open import category.structure
 open import category.graph
-  hiding (_∘_)
 open import category.isomorphism
 open import equality.core
 open import equality.reasoning

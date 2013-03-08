@@ -7,7 +7,6 @@ open import equality.core
 open import equality.reasoning
 open import category.category
 open import category.graph
-  renaming (_∘_ to _⋆_)
 
 record IsFunctor {i j i' j'}
                  (C : Category i j)
@@ -42,7 +41,7 @@ comp-func : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
             (G : Morphism (graph C) (graph D))
           → IsFunctor D E F
           → IsFunctor C D G
-          → IsFunctor C E (F ⋆ G)
+          → IsFunctor C E (F ∘ G)
 comp-func C D E F G f-func g-func = record
   { map-id = λ X → begin
         map F (map G (id _))

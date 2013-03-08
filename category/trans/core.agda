@@ -2,7 +2,7 @@
 
 open import level using (_⊔_)
 open import sum
-open import category.graph hiding (Id)
+open import category.graph hiding (Id; Compose)
 open import category.structure
 open import category.category renaming (_∘_ to _⋆_)
 open import category.functor.core using

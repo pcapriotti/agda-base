@@ -9,7 +9,7 @@ open import function.isomorphism using (_≅_; module _≅_)
            ; invert to invert≅ )
 open import category.structure
 open import category.graph
-  hiding (_∘_; Id)
+  hiding (Compose; Id)
 open import category.category renaming (_∘_ to _⋆_)
 open import category.functor.core
   using (Functor; module Functor ; Id)

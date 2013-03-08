@@ -5,7 +5,6 @@ module category.isomorphism where
 
 open import category.structure
 open import category.graph
-  hiding (_∘_)
 open import hott.hlevel.properties
 open import function.isomorphism
   renaming (apply to apply≅)
