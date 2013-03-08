@@ -37,6 +37,17 @@ Compose : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
 Compose {C = C} {D} {E} (functor m₁ f₁) (functor m₂ f₂)
   = functor (m₁ ∘ m₂) (comp-func C D E m₁ m₂ f₁ f₂)
 
+functor-comp : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
+               → Composition _ _ _ _ _ _
+functor-comp {i₁}{j₁}{i₂}{j₂}{i₃}{j₃} = record
+  { U₁ = Category i₁ j₁
+  ; U₂ = Category i₂ j₂
+  ; U₃ = Category i₃ j₃
+  ; hom₁₂ = Functor
+  ; hom₂₃ = Functor
+  ; hom₁₃ = Functor
+  ; _∘_ = Compose }
+
 Const : ∀ {i j i' j'}(C : Category i j){D : Category i' j'}
       → (X : obj D) → Functor C D
 Const C {D} X = record

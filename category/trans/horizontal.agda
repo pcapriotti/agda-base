@@ -1,9 +1,8 @@
 {-# OPTIONS --without-K #-}
 
-open import category.category hiding (_∘_)
+open import category.category
 open import category.graph
 open import category.functor
-  renaming (Compose to _∘_)
 open import category.trans.core
   renaming (Compose to _∘n_)
 open import category.trans.hlevel

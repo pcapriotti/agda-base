@@ -7,10 +7,7 @@ open import equality.core
 open import category.structure
 open import category.graph
 open import category.category
-  renaming (_∘_ to _⋆_)
 open import category.functor
-  using (Functor; module Functor)
-  renaming (Compose to _∘_)
 open import hott.hlevel
 
 -- product of categories
@@ -28,7 +25,7 @@ C ⊗ D = record
       { hom = λ { (X , Y) (X' , Y')
             → hom C X X' × hom D Y Y' } }
     ; id = λ { (X , Y) → (id X , id Y) }
-    ; _∘_ = λ { (f , g) (f' , g') → (f ⋆ f' , g ⋆ g') }
+    ; _∘_ = λ { (f , g) (f' , g') → (f ∘ f' , g ∘ g') }
     ; left-unit = λ { _ →
         cong₂ _,_ (left-unit _)  (left-unit _) }
     ; right-unit = λ { _ →

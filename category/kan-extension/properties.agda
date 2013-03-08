@@ -1,9 +1,7 @@
 {-# OPTIONS --without-K #-}
 
 open import category.category
-  hiding (_∘_)
 open import category.functor.core
-  renaming (Compose to _∘_)
 
 module category.kan-extension.properties {i₀ j₀ i₁ j₁ i₂ j₂ i₃ j₃}
   {C : Category i₀ j₀}{C' : Category i₁ j₁}

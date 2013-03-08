@@ -2,8 +2,8 @@
 
 open import category.category hiding (_∘_)
 open import category.functor.core
-  renaming (Compose to _∘_)
 open import category.functor.hlevel
+open import function.core
 open import equality.core
 
 module category.functor.properties where

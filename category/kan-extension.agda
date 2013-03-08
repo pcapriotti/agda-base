@@ -3,9 +3,8 @@
 open import level
 open import sum
 open import category.structure
-open import category.category renaming (_∘_ to _⋆_)
+open import category.category
 open import category.functor
-  renaming (Compose to _∘_)
 open import category.trans
   using (_⇒_; nt; module Nat)
 open import equality.core
@@ -34,7 +33,7 @@ private
 
     ExtUniv : Extension K G → Set _
     ExtUniv (extension S (nt α _)) = Σ (S ⇒ F) λ { (nt β _) →
-      (∀ X → ε X ⋆ β (apply K X) ≡ α X) }
+      (∀ X → ε X ∘ β (apply K X) ≡ α X) }
 open Universality public
 
 record Ran (K : Functor C C')(G : Functor C D)

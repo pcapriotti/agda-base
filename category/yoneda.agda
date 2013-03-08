@@ -9,9 +9,7 @@ open import function.extensionality
 open import category.structure
 open import category.graph
 open import category.category
-  renaming (_∘_ to _⋆_)
 open import category.functor
-  renaming (Compose to _∘_)
 open import category.trans
   using (_⇒_; nt)
 open import category.trans.hlevel
@@ -28,14 +26,14 @@ hom-func : obj C → Functor C (set j)
 hom-func X = record
   { morph = record
     { apply = λ Y → (hom C X Y , trunc C X Y)
-    ; map = _⋆_ }
+    ; map = _∘_ }
   ; is-func = record
     { map-id = λ _ → ext λ x → left-unit x
     ; map-hom = λ f g → ext λ x → associativity x f g } }
 
 hom-map : {X X' : obj C}(f : hom C X X') → hom-func X' ⇒ hom-func X
 hom-map f = record
-  { α = λ Y g → g ⋆ f
+  { α = λ Y g → g ∘ f
   ; α-nat = λ h → ext λ g → associativity f g h }
 
 -- Yoneda embedding
