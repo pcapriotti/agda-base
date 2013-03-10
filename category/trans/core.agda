@@ -39,7 +39,7 @@ _⇒_ = Nat
 infixr 1 _⇒_
 
 Id : (F : Functor C D) → Nat F F
-Id F = nt (λ X → id (apply F X))
+Id F = nt (λ X → id)
           ( λ f → left-unit (map F f)
                 ⊚ right-unit (map F f) ⁻¹ )
 

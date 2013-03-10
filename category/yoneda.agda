@@ -53,7 +53,7 @@ y = record
 y-iso : (X : obj C)(F : Functor C (set j))
       → (hom-func X ⇒ F) ≅ proj₁ (apply F X)
 y-iso X F = record
-  { to = λ { (nt α _) → α X (id X) }
+  { to = λ { (nt α _) → α X id }
   ; from = λ u → record
       { α = λ Y f → map F f u
       ; α-nat = λ f
@@ -63,6 +63,6 @@ y-iso X F = record
              → nat-equality
              ( ext' λ Y
              → ext λ f
-             → ext-inv (sym (α-nat f)) (id X)
+             → ext-inv (sym (α-nat f)) id
              ⊚ cong (α Y) (right-unit f)) }
   ; iso₂ = λ u → ext-inv (map-id F X) u }

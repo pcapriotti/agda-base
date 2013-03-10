@@ -23,7 +23,7 @@ nat-right-unit : {F G : Functor C D}
 nat-right-unit {F}{G} (nt α α-nat) =
   nat-equality trans-right-unit
   where
-    trans-right-unit : (λ X → α X ⋆ id (apply F X)) ≡ α
+    trans-right-unit : (λ X → α X ⋆ id) ≡ α
     trans-right-unit = ext' λ X → right-unit (α X)
 
 nat-left-unit : {F G : Functor C D}
@@ -32,7 +32,7 @@ nat-left-unit : {F G : Functor C D}
 nat-left-unit {F}{G} (nt α α-nat) =
   nat-equality trans-left-unit
   where
-    trans-left-unit : (λ X → id (apply G X) ⋆ α X) ≡ α
+    trans-left-unit : (λ X → id  ⋆ α X) ≡ α
     trans-left-unit = ext' λ X → left-unit (α X)
 
 nat-assoc : {F G H K : Functor C D}

@@ -24,7 +24,7 @@ C ⊗ D = record
     { is-gph = record
       { hom = λ { (X , Y) (X' , Y')
             → hom C X X' × hom D Y Y' } }
-    ; id = λ { (X , Y) → (id X , id Y) }
+    ; id = λ { (X , Y) → id , id }
     ; _∘_ = λ { (f , g) (f' , g') → (f ∘ f' , g ∘ g') }
     ; left-unit = λ { _ →
         cong₂ _,_ (left-unit _)  (left-unit _) }
@@ -78,7 +78,7 @@ private
     cat-section₁ Y = record
       { morph = record
         { apply = λ X → X , Y
-        ; map = λ f → f , id Y }
+        ; map = λ f → f , id }
       ; is-func = record
         { map-id = λ _ → refl
         ; map-hom = λ _ _ → cong₂ _,_ refl (sym (left-unit _)) } }
@@ -87,7 +87,7 @@ private
     cat-section₂ X = record
       { morph = record
         { apply = λ Y → X , Y
-        ; map = λ g → id X , g }
+        ; map = λ g → id , g }
       ; is-func = record
         { map-id = λ _ → refl
         ; map-hom = λ _ _ → cong₂ _,_ (sym (left-unit _)) refl } }

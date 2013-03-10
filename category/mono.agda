@@ -49,7 +49,7 @@ iso-monic {x}{y} (c-iso f g H K) a b p = begin
       ≡⟨ sym (associativity c f g) ⟩
         g ∘ f ∘ c
       ≡⟨ cong (λ α → α ∘ c) H ⟩
-        id _ ∘ c
+        id ∘ c
       ≡⟨ left-unit c ⟩
         c
       ∎

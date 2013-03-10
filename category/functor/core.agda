@@ -53,7 +53,7 @@ Const : ∀ {i j i' j'}(C : Category i j){D : Category i' j'}
 Const C {D} X = record
   { morph = record
     { apply = λ _ → X
-    ; map = λ _ → id X }
+    ; map = λ _ → id }
   ; is-func = record
     { map-id = λ _ → refl
     ; map-hom = λ _ _ → sym (right-unit _) } }

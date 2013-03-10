@@ -71,7 +71,7 @@ module cat-interface {i j} ⦃ st : Structure {lsuc (i ⊔ j)}
 
   private X = Structure.obj st C
   open import function.core
-    using (Composition)
+    using (Composition; Identity)
 
   category-comp : Composition _ _ _ _ _ _
   category-comp = record
@@ -82,6 +82,12 @@ module cat-interface {i j} ⦃ st : Structure {lsuc (i ⊔ j)}
     ; hom₂₃ = λ x y → hom x y
     ; hom₁₃ = λ x y → hom x y
     ; _∘_ = λ f g → f ∘ g }
+
+  category-identity : Identity _ _
+  category-identity = record
+    { U = X
+    ; endo = λ x → hom x x
+    ; id = λ {x} → id x }
 
   open overloaded IsCategory C public
 
@@ -109,8 +115,7 @@ cat-gph-instance {i}{j} = record
 module CategoryInterface {i j} ⦃ sub : IsSubtype {lsuc (i ⊔ j)}
                                        (IsCategory {i}{j}) ⦄ where
   open import function.core public
-    hiding (id)
   open IsSubtype sub
   open IsCategory structure public
-    hiding (is-gph; _∘_)
+    hiding (is-gph; _∘_; id)
 open CategoryInterface public

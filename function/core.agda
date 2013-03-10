@@ -14,9 +14,6 @@ _∘'_ : ∀ {a b c}
       ((x : A) → C (g x))
 f ∘' g = λ x → f (g x)
 
-id : ∀ {a} {A : Set a} → A → A
-id x = x
-
 const : ∀ {a b} {A : Set a} {B : Set b} → A → B → A
 const x = λ _ → x
 
@@ -42,6 +39,12 @@ record Composition u₁ u₂ u₃ u₁₂ u₂₃ u₁₃
 
     _∘_ : {X₁ : U₁}{X₂ : U₂}{X₃ : U₃} → hom₂₃ X₂ X₃ → hom₁₂ X₁ X₂ → hom₁₃ X₁ X₃
 
+record Identity u e : Set (lsuc (u ⊔ e)) where
+  field
+    U : Set u
+    endo : U → Set e
+    id : {X : U} → endo X
+
 func-comp : ∀ {i j k} → Composition _ _ _ _ _ _
 func-comp {i}{j}{k} = record
   { U₁ = Set i
@@ -52,7 +55,18 @@ func-comp {i}{j}{k} = record
   ; hom₁₃ = λ X Y → X → Y
   ; _∘_ = λ f g x → f (g x) }
 
+func-id : ∀ {i} → Identity _ _
+func-id {i} = record
+  { U = Set i
+  ; endo = λ X → X → X
+  ; id = λ x → x }
+
 module ComposeInterface {u₁ u₂ u₃ u₁₂ u₂₃ u₁₃}
                         ⦃ comp : Composition u₁ u₂ u₃ u₁₂ u₂₃ u₁₃ ⦄ where
   open Composition comp public using (_∘_)
 open ComposeInterface public
+
+module IdentityInterface {i e}
+                         ⦃ identity : Identity i e ⦄ where
+  open Identity identity public using (id)
+open IdentityInterface public

@@ -43,7 +43,7 @@ discrete-lift : ∀ {i j k}{A : Type i 1}{C : Category j k}
 discrete-lift {C = C} f = record
   { morph = record
     { apply = f
-    ; map = λ { {X}{.X} refl → id _ } }
+    ; map = λ { {X}{.X} refl → id } }
   ; is-func = record
     { map-id = λ _ → refl
     ; map-hom = λ { {X}{.X}{.X} refl refl

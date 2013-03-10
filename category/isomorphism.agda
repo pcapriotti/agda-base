@@ -21,13 +21,13 @@ record cat-iso {i j}(C : Category i j)(x y : obj C) : Set j where
     to : hom C x y
     from : hom C y x
 
-    iso₁ : from ∘ to ≡ id x
-    iso₂ : to ∘ from ≡ id y
+    iso₁ : from ∘ to ≡ id
+    iso₂ : to ∘ from ≡ id
 
 ≡⇒iso : ∀ {i j}(C : Category i j){x y : obj C} → x ≡ y → cat-iso C x y
 ≡⇒iso C {x}{.x} refl = record
-  { to = id x
-  ; from = id x
+  { to = id
+  ; from = id
   ; iso₁ = left-unit _
   ; iso₂ = left-unit _ }
   where open cat-interface C
@@ -37,13 +37,13 @@ private
   module Properties {i j}{C : Category i j}(x y : obj C) where
     open cat-interface C
     inverses : hom C x y × hom C y x → Set _
-    inverses (t , f) = f ∘ t ≡ id x
-                     × t ∘ f ≡ id y
+    inverses (t , f) = f ∘ t ≡ id
+                     × t ∘ f ≡ id
 
     inverses-h1 : ∀ tf → h 1 (inverses tf)
     inverses-h1 (t , f) =
-      ×-hlevel (trunc C x x (f ∘ t) (id x))
-               (trunc C y y (t ∘ f) (id y))
+      ×-hlevel (trunc C x x (f ∘ t) id)
+               (trunc C y y (t ∘ f) id)
 
     E : Set _
     E = Σ (hom C x y × hom C y x) inverses

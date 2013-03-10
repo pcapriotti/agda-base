@@ -22,7 +22,7 @@ record IsFunctor {i j i' j'}
 
   field
     map-id : (X : obj C)
-           → map (id X) ≡ id (F X)
+           → map (id {X = X}) ≡ id {X = F X}
     map-hom : {X Y Z : obj C}
               (f : hom C X Y)(g : hom C Y Z)
             → map (g ∘ f) ≡ map g ∘ map f
@@ -44,11 +44,11 @@ comp-func : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
           → IsFunctor C E (F ∘ G)
 comp-func C D E F G f-func g-func = record
   { map-id = λ X → begin
-        map F (map G (id _))
+        map F (map G id)
       ≡⟨ cong (map F) (map-id g-func X) ⟩
-        map F (id _)
+        map F id
       ≡⟨ map-id f-func _ ⟩
-        id _
+        id
       ∎
   ; map-hom = λ f g → begin
         map F (map G (g ∘ f))
