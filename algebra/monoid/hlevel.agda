@@ -9,6 +9,7 @@ open import function.isomorphism
   hiding (apply)
 open import sets.unit
 import category.graph as Graph
+open import category.category
 open import category.functor
 open import algebra.monoid.core
 open import algebra.monoid.morphism
@@ -57,9 +58,10 @@ morph-equality = invert morph-equality-iso
 
 morph-hlevel : ∀ {i j}(M : Monoid i)(N : Monoid j)
              → h 2 (Morphism M N)
-morph-hlevel M N = iso-hlevel (sym≅ morphism-structure-iso)
+morph-hlevel M N = iso-hlevel (sym≅ Graph.morphism-structure-iso)
     ( Σ-hlevel (Graph.morph-hlevel (h! ⊤-contr)
-                  (λ _ _ → trunc N))
+                  (λ _ _ → trunc))
                (λ m → h↑
-                  ( is-func-prop {C = as-category M}
-                                 {D = as-category N} m)) )
+                  ( is-func-prop {C = cat M}
+                                 {D = cat N} m)) )
+  where open cat-interface (cat N)

@@ -4,48 +4,77 @@ module algebra.monoid.core where
 
 open import level
 open import category.graph.core
-  hiding (graph; _∘_)
 open import category.category
-  using (IsCategory; module IsCategory; Category)
+open import category.structure
 open import sets.unit
 open import hott.hlevel.core
 
 private
-  monoid-graph : ∀ {i} → Set i → Graph lzero i
-  monoid-graph X = record
-    { obj = ⊤
-    ; is-gph = record { hom = λ _ _ → X }  }
+  -- a graph on a single node
+  shift : ∀ {i} (X : Set i) → IsGraph ⊤
+  shift X = record { hom = λ _ _ → X }
 
-IsMonoid : ∀ {i} → Set i → Set i
-IsMonoid X = IsCategory (monoid-graph X)
+record MonStruct {i} (X : Set i) : Set (lsuc i) where
+  field
+    is-mon : IsCategory record
+      { obj = ⊤
+      ; is-gph = shift X }
 
 record Monoid i : Set (lsuc i) where
   field
     carrier : Set i
-    is-mon : IsMonoid carrier
-    trunc : h 2 carrier
+    mon-st : MonStruct carrier
 
-  open IsCategory is-mon
+  cat-st : CatStruct ⊤
+  cat-st = record
+    { is-gph = shift carrier
+    ; is-cat = MonStruct.is-mon mon-st }
 
-  unit : carrier
-  unit = id tt
+  as-category : Category lzero i
+  as-category = record
+    { obj = ⊤
+    ; cat-st = cat-st }
 
-  _⋆_ : carrier → carrier → carrier
-  x ⋆ y = y ∘ x
+  open cat-interface as-category
 
-  open IsCategory is-mon public
-    hiding (id ; _∘_)
+-- interface
 
-open Monoid public
-  using (carrier; is-mon; trunc)
-open Monoid ⦃ ... ⦄ public
-  hiding (carrier; is-mon; trunc)
+open import algebra.structure public
 
-graph : ∀ {i} → Monoid i → Graph lzero i
-graph M = monoid-graph (carrier M)
+mon-algst-instance : ∀ {i} → AlgStruct (Monoid i)
+mon-algst-instance {i} = record
+  { carrier = Monoid.carrier }
 
-as-category : ∀ {i} → Monoid i → Category _ i
-as-category M = record
-  { graph = graph M
-  ; is-cat = is-mon M
-  ; trunc = λ _ _ → trunc M }
+mon-mon-instance : ∀ {i} → Structure (MonStruct {i})
+mon-mon-instance {i} = record
+  { Sort = Monoid i
+  ; obj = Monoid.carrier
+  ; struct = Monoid.mon-st }
+
+mon-cat-instance : ∀ {i} → Structure CatStruct
+mon-cat-instance {i} = record
+  { Sort = Monoid i
+  ; obj = λ _ → ⊤
+  ; struct = Monoid.cat-st }
+
+module mon-interface {i}
+         ⦃ st : Structure {lsuc i} (MonStruct {i}) ⦄
+         (X : Structure.Sort st)
+       = overloaded MonStruct ⦃ st ⦄ X
+
+module MonoidInterface {i}
+          ⦃ sub : IsSubtype {lsuc i} (MonStruct {i}) ⦄ where
+  open IsSubtype sub
+  open MonStruct structure
+
+  private
+    C : Set i
+    C = Structure.obj st X
+
+  unit : C
+  unit = IsCategory.id is-mon tt
+
+  _⋆_ : C → C → C
+  x ⋆ y = IsCategory._∘_ is-mon y x
+
+open MonoidInterface public
