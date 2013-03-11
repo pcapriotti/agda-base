@@ -46,3 +46,9 @@ gmorphism-comp {i₁}{j₁}{i₂}{j₂}{i₃}{j₃} = record
   ; hom₂₃ = Morphism
   ; hom₁₃ = Morphism
   ; _∘_ = Compose }
+
+gmorphism-identity : ∀ {i j} → Identity _ _
+gmorphism-identity {i}{j} = record
+  { U = Graph i j
+  ; endo = λ A → Morphism A A
+  ; id = λ {A} → Id A}

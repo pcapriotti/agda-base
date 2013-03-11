@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 
-open import category.category renaming (_∘_ to _⋆_)
+open import category.category
 
 module category.functor.hlevel {i j i' j'}
   {C : Category i j}{D : Category i' j'} where
@@ -10,8 +10,8 @@ open import sum
 open import category.graph
 open import category.functor.class
 open import category.functor.core
+open import category.functor.category
 open import category.trans.core
-  using (_⇒_) renaming (Id to Idn)
 open import equality.core
 open import equality.calculus using (uncongΣ)
 open import function.extensionality
@@ -75,4 +75,6 @@ func-equality : {F G : Functor C D}
 func-equality {F}{G} = invert func-equality-iso
 
 func-coerce : {F G : Functor C D} → F ≡ G → F ⇒ G
-func-coerce {F}{.F} refl = Idn F
+func-coerce {F}{.F} refl = id
+  where
+    open cat-interface (Func C D)

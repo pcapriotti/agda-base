@@ -2,14 +2,13 @@
 
 module category.functor.core where
 
-open import function.core hiding (id)
-open import category.category renaming (_∘_ to _⋆_)
+open import level using (_⊔_)
+open import equality.core
+open import function.core
+open import category.category
 open import category.graph hiding (Id; Compose)
-import category.graph as Graph
 open import category.functor.class
 open import category.structure
-open import level using (_⊔_)
-open import equality.core using (_≡_ ; refl ; cong; sym)
 
 record Functor {i j i' j'}
               (C : Category i j)
@@ -25,7 +24,7 @@ record Functor {i j i' j'}
   open IsFunctor is-func public
 
 Id : ∀ {i j}(C : Category i j) → Functor C C
-Id C = functor (Graph.Id (graph C)) (id-func C)
+Id C = functor id (id-func C)
 
 Compose : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
           {C : Category i₁ j₁}

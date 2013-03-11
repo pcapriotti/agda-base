@@ -4,7 +4,7 @@ open import level using (_⊔_)
 open import sum
 open import category.graph hiding (Id; Compose)
 open import category.structure
-open import category.category renaming (_∘_ to _⋆_)
+open import category.category
 open import category.functor.core using
   (Functor; module Functor)
 open import equality.core
@@ -23,7 +23,7 @@ Trans F G = (X : obj C) → hom D (apply F X) (apply G X)
 
 nat-equation : (F G : Functor C D)(α : Trans F G) → total C → Set _
 nat-equation F G α ((X , Y), f) =
-  α Y ⋆ map F f ≡ map G f ⋆ α X
+  α Y ∘ map F f ≡ map G f ∘ α X
 
 natural : (F G : Functor C D) → Trans F G → Set _
 natural F G α = ∀ {X Y} (f : hom C X Y) → nat-equation F G α ((X , Y) , f)
@@ -49,22 +49,22 @@ Compose {F}{G}{H} (nt α α-nat) (nt β β-nat) = (nt γ γ-nat)
     open ≡-Reasoning
 
     γ : ∀ X → hom D (apply F X) (apply H X)
-    γ X = α X ⋆ β X
+    γ X = α X ∘ β X
 
     γ-nat : ∀ {X Y} (f : hom C X Y)
-          → γ Y ⋆ map F f ≡ map H f ⋆ γ X
+          → γ Y ∘ map F f ≡ map H f ∘ γ X
     γ-nat {X}{Y} f = begin
-        γ Y ⋆ map F f
+        γ Y ∘ map F f
       ≡⟨ associativity _ _ _ ⟩
-        α Y ⋆ (β Y ⋆ map F f)
-      ≡⟨ cong (_⋆_ (α Y)) (β-nat f) ⟩
-        α Y ⋆ (map G f ⋆ β X)
+        α Y ∘ (β Y ∘ map F f)
+      ≡⟨ cong (_∘_ (α Y)) (β-nat f) ⟩
+        α Y ∘ (map G f ∘ β X)
       ≡⟨ sym (associativity _ _ _) ⟩
-        (α Y ⋆ map G f) ⋆ β X
-      ≡⟨ cong (λ z → z ⋆ β X) (α-nat f) ⟩
-        map H f ⋆ α X ⋆ β X
+        (α Y ∘ map G f) ∘ β X
+      ≡⟨ cong (λ z → z ∘ β X) (α-nat f) ⟩
+        map H f ∘ α X ∘ β X
       ≡⟨ associativity _ _ _ ⟩
-        map H f ⋆ γ X
+        map H f ∘ γ X
       ∎
 
 record NatEq (F G : Functor C D) : Set (i ⊔ j ⊔ j') where
