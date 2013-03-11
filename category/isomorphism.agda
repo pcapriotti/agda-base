@@ -33,7 +33,6 @@ record cat-iso {i j}(C : Category i j)(x y : obj C) : Set j where
   where open cat-interface C
 
 private
-  open Category using (trunc)
   module Properties {i j}{C : Category i j}(x y : obj C) where
     open cat-interface C
     inverses : hom C x y × hom C y x → Set _
@@ -42,8 +41,8 @@ private
 
     inverses-h1 : ∀ tf → h 1 (inverses tf)
     inverses-h1 (t , f) =
-      ×-hlevel (trunc C x x (f ∘ t) id)
-               (trunc C y y (t ∘ f) id)
+      ×-hlevel (trunc x x (f ∘ t) id)
+               (trunc y y (t ∘ f) id)
 
     E : Set _
     E = Σ (hom C x y × hom C y x) inverses
@@ -57,9 +56,10 @@ private
 
 cat-iso-hset : ∀ {i j}{C : Category i j} (x y : obj C) → h 2 (cat-iso C x y)
 cat-iso-hset {C = C} x y = iso-hlevel e-iso
-  ( Σ-hlevel (×-hlevel (trunc C x y) (trunc C y x))
+  ( Σ-hlevel (×-hlevel (trunc x y) (trunc y x))
              (λ tf → h↑ (inverses-h1 tf)) )
   where
+    open cat-interface C
     open Properties x y
 
 cat-iso-equality : ∀ {i j}{C : Category i j}{x y : obj C}

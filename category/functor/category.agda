@@ -12,11 +12,12 @@ module category.functor.category {i}{j}{i'}{j'}
 Func : Category _ _
 Func = record
   { obj = Functor C D
-  ; is-cat = record
+  ; cat-st = record
     { is-gph = record { hom = Nat }
-    ; _∘_ = Compose
-    ; id = Id
-    ; associativity = nat-assoc
-    ; left-unit = nat-left-unit
-    ; right-unit = nat-right-unit }
-  ; trunc = nat-hset }
+    ; is-cat = record
+      { _∘_ = Compose
+      ; id = Id
+      ; associativity = nat-assoc
+      ; left-unit = nat-left-unit
+      ; right-unit = nat-right-unit
+      ; trunc = nat-hset } } }

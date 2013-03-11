@@ -12,7 +12,6 @@ open import equality.reasoning
 open import hott.hlevel
 
 open cat-interface C
-open Category using (trunc)
 
 monic : ∀ {x y} (f : hom C x y) → Set _
 monic {x}{y} f = ∀ {z} (g h : hom C z x)
@@ -25,7 +24,7 @@ monic-h1 f = Π-hlevel-impl λ z
            → Π-hlevel λ g
            → Π-hlevel λ f
            → Π-hlevel λ p
-           → trunc C _ _ _ _
+           → trunc _ _ _ _
 
 -- an isomorphism is monic
 iso-monic : ∀ {x y} (isom : cat-iso C x y)

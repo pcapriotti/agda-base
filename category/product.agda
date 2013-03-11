@@ -13,26 +13,25 @@ open import hott.hlevel
 -- product of categories
 -- for products *in* a category, see category.limit
 
-open Category using (trunc)
-
 _⊗_ : ∀ {i j i' j'}
     → Category i j → Category i' j'
     → Category (i ⊔ i') (j ⊔ j')
 C ⊗ D = record
   { obj = obj C × obj D
-  ; is-cat = record
+  ; cat-st = record
     { is-gph = record
       { hom = λ { (X , Y) (X' , Y')
             → hom C X X' × hom D Y Y' } }
-    ; id = λ { (X , Y) → id , id }
-    ; _∘_ = λ { (f , g) (f' , g') → (f ∘ f' , g ∘ g') }
-    ; left-unit = λ { _ →
-        cong₂ _,_ (left-unit _)  (left-unit _) }
-    ; right-unit = λ { _ →
-        cong₂ _,_ (right-unit _)  (right-unit _) }
-    ; associativity = λ { _ _ _ →
-        cong₂ _,_ (associativity _ _ _) (associativity _ _ _) } }
-  ; trunc = λ _ _ → ×-hlevel (trunc C _ _) (trunc D _ _) }
+    ; is-cat = record
+      { id = λ { (X , Y) → id , id }
+      ; _∘_ = λ { (f , g) (f' , g') → (f ∘ f' , g ∘ g') }
+      ; left-unit = λ { _ →
+          cong₂ _,_ (left-unit _)  (left-unit _) }
+      ; right-unit = λ { _ →
+          cong₂ _,_ (right-unit _)  (right-unit _) }
+      ; associativity = λ { _ _ _ →
+          cong₂ _,_ (associativity _ _ _) (associativity _ _ _) }
+      ; trunc = λ _ _ → ×-hlevel (trunc _ _) (trunc _ _) } } }
   where
     open cat-interface C
     open cat-interface D

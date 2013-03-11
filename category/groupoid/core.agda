@@ -5,74 +5,56 @@ module category.groupoid.core where
 open import level
 open import function.core using (_∘'_)
 open import category.structure
-open import category.graph
-  using (IsGraph; module IsGraph)
 open import category.category
-  using (Category; IsCategory; module IsCategory)
+open import category.groupoid.internal
 open import equality.core using (_≡_)
 open import hott.hlevel.core
 
-record IsGroupoid {i j} (X : Set i) : Set (lsuc (i ⊔ j)) where
-  infix 8 _⁻¹
-  field
-    is-cat : IsCategory {i}{j} X
+record GrpdStruct {i j} (X : Set i) : Set (lsuc i ⊔ lsuc j) where
+  field cat-st : CatStruct X
 
-  open IsCategory is-cat
-  open IsGraph is-gph
+  cat : Category i j
+  cat = record
+    { obj = X
+    ; cat-st = cat-st }
 
-  field
-    -- structure
-    _⁻¹ : {A B : X} → hom A B → hom B A
-
-    -- laws
-    left-inverse : {A B : X}(f : hom A B)
-                 → (f ⁻¹) ∘ f ≡ id A
-
-    right-inverse : {A B : X}(f : hom A B)
-                  → f ∘ (f ⁻¹) ≡ id B
+  field is-grpd : IsGroupoid cat
 
 record Groupoid i j : Set (lsuc (i ⊔ j)) where
   field
     obj : Set i
-    is-grpd : IsGroupoid {i}{j} obj
+    grpd-st : GrpdStruct {i}{j} obj
 
-  open IsGroupoid is-grpd
-  open IsCategory is-cat
-  open IsGraph is-gph
-
-  field
-    trunc : (A B : obj) → h 2 (hom A B)
+  open GrpdStruct grpd-st public
+  open CatStruct cat-st public
 
 -- interface
+
+open import category.graph
 
 grpd-gph-instance : ∀ {i}{j} → Structure IsGraph
 grpd-gph-instance {i}{j} = record
   { Sort = Groupoid i j
   ; obj = Groupoid.obj
-  ; struct = IsCategory.is-gph
-           ∘' IsGroupoid.is-cat
-           ∘' Groupoid.is-grpd }
+  ; struct = Groupoid.is-gph }
 
-grpd-cat-instance : ∀ {i}{j} → Structure IsCategory
+grpd-cat-instance : ∀ {i}{j} → Structure CatStruct
 grpd-cat-instance {i}{j} = record
   { Sort = Groupoid i j
   ; obj = Groupoid.obj
-  ; struct = IsGroupoid.is-cat ∘' Groupoid.is-grpd }
+  ; struct = Groupoid.cat-st }
 
-grpd-grpd-instance : ∀ {i}{j} → Structure IsGroupoid
+grpd-grpd-instance : ∀ {i}{j} → Structure GrpdStruct
 grpd-grpd-instance {i}{j} = record
   { Sort = Groupoid i j
   ; obj = Groupoid.obj
-  ; struct = Groupoid.is-grpd }
+  ; struct = Groupoid.grpd-st }
 
 cat : ∀ {i j} → Groupoid i j → Category i j
-cat G = record
-  { obj = Groupoid.obj G
-  ; is-cat = IsGroupoid.is-cat (Groupoid.is-grpd G)
-  ; trunc = Groupoid.trunc G }
+cat G = GrpdStruct.cat (Groupoid.grpd-st G)
 
 module GroupoidInterface {i}{j} ⦃ sub : IsSubtype {lsuc (i ⊔ j)}
-                                                  (IsGroupoid {i}{j}) ⦄ where
+                                                  (GrpdStruct {i}{j}) ⦄ where
   open IsSubtype sub
-  open IsGroupoid structure public
-    hiding (is-cat)
+  open GrpdStruct structure
+  open IsGroupoid is-grpd

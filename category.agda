@@ -6,6 +6,7 @@ import category.free
 import category.functor
 import category.graph
 import category.groupoid
+import category.instances
 import category.isomorphism
 import category.kan-extension
 import category.limit

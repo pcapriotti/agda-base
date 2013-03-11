@@ -20,7 +20,7 @@ open import sets.unit
 open import hott.hlevel
 
 open Functor
-open Category using (trunc)
+open cat-interface D
 
 private
   GMorphism : Set _
@@ -37,13 +37,13 @@ is-func-prop m = iso-hlevel
       ; iso₁ = λ _ → refl
       ; iso₂ = λ _ → refl } )
   ( ×-hlevel
-    ( Π-hlevel λ X → trunc D _ _ _ _ )
+    ( Π-hlevel λ X → trunc _ _ _ _ )
     ( Π-hlevel-impl λ X
       → Π-hlevel-impl λ Y
       → Π-hlevel-impl λ Z
       → Π-hlevel λ f
       → Π-hlevel λ g
-      → trunc D _ _ _ _ ) )
+      → trunc _ _ _ _ ) )
 
 functor-structure-iso : Functor C D ≅ Σ GMorphism Functorial
 functor-structure-iso = record

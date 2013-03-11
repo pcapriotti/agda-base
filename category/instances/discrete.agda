@@ -21,18 +21,20 @@ open import hott.weak-equivalence
 discrete : ∀ {i} → Type i 1 → Groupoid i i
 discrete (A , h3) = record
   { obj = A
-  ; is-grpd = record
-    { is-cat = record
+  ; grpd-st = record
+    { cat-st = record
       { is-gph = record { hom = _≡_ }
-      ; id = λ x → refl {x = x}
-      ; _∘_ = λ p q → trans q p
-      ; left-unit = left-unit
-      ; right-unit = right-unit
-      ; associativity = E.associativity }
-    ; _⁻¹ = sym
-    ; left-inverse = left-inverse
-    ; right-inverse = right-inverse }
-  ; trunc = h3 }
+      ; is-cat = record
+        { id = λ x → refl {x = x}
+        ; _∘_ = λ p q → trans q p
+        ; left-unit = left-unit
+        ; right-unit = right-unit
+        ; associativity = E.associativity
+        ; trunc = h3 } }
+    ; is-grpd = record
+      { _⁻¹ = sym
+      ; left-inverse = left-inverse
+      ; right-inverse = right-inverse } } }
 
 discrete-cat : ∀ {i} → Type i 1 → Category i i
 discrete-cat A = cat (discrete A)

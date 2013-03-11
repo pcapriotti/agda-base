@@ -19,13 +19,12 @@ open import category.instances.set
 module category.yoneda {i j}(C : Category i j) where
 
 open Functor
-open Category using (trunc)
 open cat-interface C
 
 hom-func : obj C → Functor C (set j)
 hom-func X = record
   { morph = record
-    { apply = λ Y → (hom C X Y , trunc C X Y)
+    { apply = λ Y → (hom C X Y , trunc X Y)
     ; map = _∘_ }
   ; is-func = record
     { map-id = λ _ → ext λ x → left-unit x
