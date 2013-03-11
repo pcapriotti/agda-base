@@ -13,4 +13,4 @@ empty-groupoid : Groupoid _ _
 empty-groupoid = discrete (⊥ , h! ⊥-prop)
 
 empty : Category _ _
-empty = Groupoid.cat empty-groupoid
+empty = cat empty-groupoid

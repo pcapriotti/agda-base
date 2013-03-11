@@ -11,14 +11,11 @@ open import equality.core using (_≡_)
 open import hott.hlevel.core
 
 record GrpdStruct {i j} (X : Set i) : Set (lsuc i ⊔ lsuc j) where
-  field cat-st : CatStruct X
-
-  cat : Category i j
-  cat = record
-    { obj = X
-    ; cat-st = cat-st }
-
-  field is-grpd : IsGroupoid cat
+  field
+    cat-st : CatStruct X
+    is-grpd : IsGroupoid {i}{j} record
+      { obj = X
+      ; cat-st = cat-st }
 
 record Groupoid i j : Set (lsuc (i ⊔ j)) where
   field
@@ -49,9 +46,6 @@ grpd-grpd-instance {i}{j} = record
   { Sort = Groupoid i j
   ; obj = Groupoid.obj
   ; struct = Groupoid.grpd-st }
-
-cat : ∀ {i j} → Groupoid i j → Category i j
-cat G = GrpdStruct.cat (Groupoid.grpd-st G)
 
 module GroupoidInterface {i}{j} ⦃ sub : IsSubtype {lsuc (i ⊔ j)}
                                                   (GrpdStruct {i}{j}) ⦄ where

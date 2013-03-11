@@ -2,6 +2,7 @@
 
 module category.groupoid.morphism where
 
+open import category.category
 open import category.groupoid.core
 open import category.functor.core
 

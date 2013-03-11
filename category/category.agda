@@ -97,10 +97,21 @@ module cat-interface {i j} ⦃ st : Structure {lsuc (i ⊔ j)}
 
 open Graph
 
+cat : ∀ {i j}
+    → ⦃ st : Structure {lsuc (i ⊔ j)} (CatStruct {i}{j}) ⦄
+    → Structure.Sort st
+    → Category i j
+cat ⦃ st ⦄ X = record
+  { obj = Structure.obj st X
+  ; cat-st = Structure.struct st X }
+
 graph : ∀ {i j}
-      → ⦃ st : Structure {lsuc (i ⊔ j)} (CatStruct {i}{j}) ⦄
-      → Structure.Sort st → Graph.Graph i j
-graph ⦃ st ⦄ C = CatStruct.gph (Structure.struct st C)
+      → ⦃ st : Structure {lsuc (i ⊔ j)} (IsGraph {i}{j}) ⦄
+      → Structure.Sort st
+      → Graph.Graph i j
+graph ⦃ st ⦄ X = record
+  { obj = Structure.obj st X
+  ; is-gph = Structure.struct st X }
 
 cat-cat-instance : ∀ {i j} → Structure CatStruct
 cat-cat-instance {i}{j} = record
