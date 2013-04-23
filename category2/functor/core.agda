@@ -7,6 +7,7 @@ open import equality.core
 open import function.core
 open import overloading
 open import category2.category.core
+open import category2.functor.builder
 open import category2.graph.core
 open import category2.graph.morphism
 
@@ -18,7 +19,7 @@ record IsFunctor {C : Category i j}
   open morphisms C D
 
   field
-    map-id : {x : obj C} → map F (id {X = x}) ≡ id
+    map-id : (x : obj C) → map F (id {X = x}) ≡ id
     map-hom : {x y z : obj C} (f : hom y z) (g : hom x y)
             → map F (f ∘ g) ≡ map F f ∘ map F g
 
@@ -56,6 +57,15 @@ module functors {k₁ k₂} ⦃ o₁ : Overload k₁ (Category i j) ⦄
     ; o = record
       { Source = Functor C D
       ; coerce = λ F → Bundle.parent (Bundle.parent F) } }
+
+mk-functor : ∀ {C D} → FunctorBuilder C D → Functor C D
+mk-functor b = let module B = FunctorBuilder b in record
+  { parent = mk-morphism record
+    { apply = B.apply
+    ; map = B.map }
+  ; struct = record
+    { map-id = B.map-id
+    ; map-hom = B.map-hom } }
 
 private
   module functor-methods {k} ⦃ eo : ExpOverload k (Category i j) (Category i' j') ⦄ where

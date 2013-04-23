@@ -52,8 +52,8 @@ private
         open IsMorphism (Bundle.struct f) public
     open with-arg public
 
-mk-graph-morphism : ∀ {W U} → MorphismBuilder W U → Morphism W U
-mk-graph-morphism b = let module B = MorphismBuilder b in record
+mk-morphism : ∀ {W U} → MorphismBuilder W U → Morphism W U
+mk-morphism b = let module B = MorphismBuilder b in record
   { parent = B.apply
   ; struct = record { map = B.map } }
 

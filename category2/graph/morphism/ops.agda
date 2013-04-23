@@ -9,7 +9,7 @@ open import category2.category.zero
 open import overloading.function
 
 Id : ∀ {i j} (W : Graph i j) → Morphism W W
-Id W = mk-graph-morphism record
+Id W = mk-morphism record
   { apply = id
   ; map = id }
 
@@ -26,7 +26,7 @@ Compose : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
         → Morphism U V
         → Morphism W U
         → Morphism W V
-Compose {W = W}{U = U}{V = V} f g = mk-graph-morphism record
+Compose {W = W}{U = U}{V = V} f g = mk-morphism record
   { apply = λ x → apply f (apply g x)
   ; map = λ u → map f (map g u) }
   where
