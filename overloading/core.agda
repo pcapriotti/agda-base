@@ -13,7 +13,7 @@ record Bundle {i j} {Base : Set i}
     parent : Base
     struct : Struct parent
 
-record Overload i {j} (Target : Set j) : Set (lsuc (i ⊔ j)) where
+record Overload i {j} (Target : Set j) : Set (lsuc i ⊔ j) where
   constructor overload
   field
     Source : Set i
@@ -56,7 +56,7 @@ overload-parent ⦃ o ⦄ Struct = record
   ; coerce = λ x → coerce o (Bundle.parent x) }
 
 set-is-set : ∀ {i} → Overload _ (Set i)
-set-is-set {i} = overload-self _
+set-is-set {i} = overload-self (Set i)
 
 ∣_∣ : ∀ {i j} ⦃ o : Overload i (Set j) ⦄ → Source o → Set j
 ∣_∣ ⦃ o ⦄ = coerce o

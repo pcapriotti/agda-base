@@ -48,7 +48,7 @@ private
 module as-category {i j k} ⦃ o : Overload k (Category i j) ⦄
                     (source : Source o) where
   private target = coerce o source
-  open overload default (Category₀ i j) target public
+  open as-category₀ target public
     renaming (_instance to _parent-instance)
   open overload default (Category i j) target public
 
