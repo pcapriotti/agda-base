@@ -7,6 +7,7 @@ open import equality
 open import function.extensionality
 open import function.isomorphism
 open import function.isomorphism.properties
+open import function.overloading
 open import sets.empty
 open import sets.nat.core using (suc)
 open import sets.unit

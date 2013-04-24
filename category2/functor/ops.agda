@@ -4,7 +4,8 @@ module category2.functor.ops where
 
 open import equality.core
 open import function.core
-open import overloading
+open import function.overloading
+open import overloading.core
 open import category2.graph
 open import category2.category
 open import category2.functor.core

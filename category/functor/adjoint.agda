@@ -5,8 +5,9 @@ open import equality.core
 open import equality.calculus using (_⊚_)
 open import equality.reasoning
 open import function.isomorphism using (_≅_; module _≅_)
-  renaming ( apply to apply≅
-           ; invert to invert≅ )
+  renaming ( invert to invert≅ )
+open import function.overloading
+  renaming ( apply to apply≅ )
 open import category.structure
 open import category.graph
   hiding (Compose; Id)

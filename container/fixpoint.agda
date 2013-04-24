@@ -7,6 +7,7 @@ open import level
 open import container.core
 open import function.core
 open import function.isomorphism
+open import function.overloading
 
 record Fixpoint {li la lb}
                 (c : Container li la lb)

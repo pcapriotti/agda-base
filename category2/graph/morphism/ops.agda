@@ -3,10 +3,10 @@
 module category2.graph.morphism.ops where
 
 open import function.core
+open import function.overloading
 open import category2.graph.core
 open import category2.graph.morphism.core
 open import category2.category.zero
-open import overloading.function
 
 private
   Id : ∀ {i j} (W : Graph i j) → Morphism W W

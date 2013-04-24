@@ -3,8 +3,8 @@
 module category2.graph.morphism.core {i j i' j'} where
 
 open import level
+open import function.overloading
 open import overloading.core
-open import overloading.function
 open import category2.graph.core
 open import category2.graph.morphism.builder
 

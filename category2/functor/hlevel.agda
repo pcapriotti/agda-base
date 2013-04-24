@@ -9,8 +9,8 @@ open import level
 open import sum
 open import equality.core
 open import function.core
+open import function.overloading
 open import function.isomorphism.core
-  renaming (apply to apply≅)
 open import category2.graph
 open import category2.functor.core
 open import category2.functor.ops
@@ -70,4 +70,4 @@ func-equality-iso = bundle-equality-iso Functorial is-func-prop
 func-equality : {F G : Functor C D}
               → morphism F ≡ morphism G
               → F ≡ G
-func-equality {F}{G} = apply≅ func-equality-iso
+func-equality {F}{G} = apply func-equality-iso
