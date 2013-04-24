@@ -5,7 +5,6 @@ open import level
 open import sum
 open import category.category
 open import category.functor
-  using (Functor; Const)
 open import category.groupoid
 open import category.instances.discrete
 open import sets.unit

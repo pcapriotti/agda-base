@@ -1,60 +1,59 @@
 {-# OPTIONS --without-K #-}
 
-module category.functor.core where
+module category.functor.core {i j i' j'} where
 
-open import level using (_⊔_)
+open import level
 open import equality.core
 open import function.core
-open import category.category
-open import category.graph hiding (Id; Compose)
-open import category.functor.class
-open import category.structure
+open import overloading
+open import category.category.core
+open import category.functor.builder
+open import category.graph.core
+open import category.graph.morphism
 
-record Functor {i j i' j'}
-              (C : Category i j)
-              (D : Category i' j')
-            : Set (i ⊔ j ⊔ i' ⊔ j') where
-  constructor functor
+record IsFunctor (C : Category i j)
+                 (D : Category i' j')
+                 (F : Morphism (graph C) (graph D)) : Set (i ⊔ j ⊔ j') where
+  open as-category C
+  open as-category D
 
   field
-    morph : Morphism (graph C) (graph D)
-    is-func : IsFunctor C D morph
+    map-id : (x : obj C) → map F (id {X = x}) ≡ id
+    map-hom : {x y z : obj C} (f : hom y z) (g : hom x y)
+            → map F (f ∘ g) ≡ map F f ∘ map F g
 
-  open Morphism morph public
-  open IsFunctor is-func public
+Functor : Category i j → Category i' j' → Set _
+Functor C D = Bundle (IsFunctor C D)
 
-Id : ∀ {i j}(C : Category i j) → Functor C C
-Id C = functor id (id-func C)
+private
+  module properties {C : Category i j}
+                    {D : Category i' j'} where
 
-Compose : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
-          {C : Category i₁ j₁}
-          {D : Category i₂ j₂}
-          {E : Category i₃ j₃}
-        → Functor D E
-        → Functor C D
-        → Functor C E
-Compose {C = C} {D} {E} (functor m₁ f₁) (functor m₂ f₂)
-  = functor (m₁ ∘ m₂) (comp-func C D E m₁ m₂ f₁ f₂)
+    fct-is-fun : Overload _ (obj C → obj D)
+    fct-is-fun = overload-parent (IsFunctor C D)
 
-functor-comp : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
-               → Composition _ _ _ _ _ _
-functor-comp {i₁}{j₁}{i₂}{j₂}{i₃}{j₃} = record
-  { U₁ = Category i₁ j₁
-  ; U₂ = Category i₂ j₂
-  ; U₃ = Category i₃ j₃
-  ; hom₁₂ = Functor
-  ; hom₂₃ = Functor
-  ; hom₁₃ = Functor
-  ; _∘_ = Compose }
+    fct-is-mor : Overload _ (Morphism (graph C) (graph D))
+    fct-is-mor = overload-parent (IsFunctor C D)
 
-Const : ∀ {i j i' j'}(C : Category i j){D : Category i' j'}
-      → (X : obj D) → Functor C D
-Const C {D} X = record
-  { morph = record
-    { apply = λ _ → X
-    ; map = λ _ → id }
-  ; is-func = record
-    { map-id = λ _ → refl
-    ; map-hom = λ _ _ → sym (right-unit _) } }
-  where
-    open cat-interface D
+    fct-is-fct : Overload _ (Functor C D)
+    fct-is-fct = overload-self (Functor C D)
+
+    private
+      module functor-methods {k} ⦃ o : Overload k (Functor C D) ⦄ where
+        private
+          module with-source (source : Source o) where
+            private target = coerce o source
+            open IsFunctor (Bundle.struct target) public
+        open with-source public
+
+    open functor-methods public
+
+    mk-functor : FunctorBuilder C D → Functor C D
+    mk-functor b = let module B = FunctorBuilder b in record
+      { parent = mk-morphism record
+        { apply = B.apply
+        ; map = B.map }
+      ; struct = record
+        { map-id = B.map-id
+        ; map-hom = B.map-hom } }
+open properties public

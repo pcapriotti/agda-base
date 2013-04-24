@@ -16,7 +16,8 @@ open import hott.hlevel
 module category.trans.hlevel {i}{j}{i'}{j'}
   {C : Category i j}{D : Category i' j'} where
 
-open cat-interface D
+open as-category C
+open as-category D
 
 private
   module NatΣ (F G : Functor C D) where
@@ -42,7 +43,8 @@ natural-prop F G α = iso-hlevel (lem (nat-equation F G α))
   (Π-hlevel (λ m → trunc _ _ _ _))
   where
     lem : ∀ {i}(P : total C → Set i)
-        → ((m : total C) → P m) ≅ (∀ {X Y} (f : hom C X Y) → P ((X , Y) , f))
+        → ((m : total C) → P m)
+        ≅ (∀ {X Y} (f : hom X Y) → P ((X , Y) , f))
     lem P = iso (λ n f → n (_ , f))
                 (λ n m → n (proj₂ m))
                 (λ _ → refl) (λ _ → refl)

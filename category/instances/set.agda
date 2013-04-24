@@ -1,32 +1,32 @@
 {-# OPTIONS --without-K #-}
+
 module category.instances.set where
 
+open import level
 open import sum
 open import equality.core
 open import equality.calculus
+open import function.core
 open import function.isomorphism
-open import function.isomorphism.coherent
 open import function.extensionality
-open import level using (lzero ; lsuc)
+open import function.overloading
 open import category.category
 open import category.isomorphism
 open import category.univalence
 open import hott.hlevel
-open import hott.univalence
 open import hott.weak-equivalence
+open import hott.univalence
 
 set : ∀ i → Category (lsuc i) i
-set i = record
+set i = mk-category record
   { obj = HSet i
-  ; cat-st = record
-    { is-gph = record { hom = λ A B → proj₁ A → proj₁ B }
-    ; is-cat = record
-      { id = λ A x → x
-      ; _∘_ = λ f g x → f (g x)
-      ; left-unit = λ f → refl
-      ; right-unit = λ f → refl
-      ; associativity = λ f g h → refl
-      ; trunc = λ { _ (B , h2B) → Π-hlevel (λ _ → h2B) } } } }
+  ; hom = λ A B → proj₁ A → proj₁ B
+  ; id = λ _ x → x
+  ; _∘_ = _∘_
+  ; left-id = λ _ → refl
+  ; right-id = λ _ → refl
+  ; assoc = λ _ _ _ → refl
+  ; trunc = λ { _ B → Π-hlevel λ _ → proj₂ B }  }
 
 -- isomorphism in the category of sets is the same
 -- as isomorphism of types

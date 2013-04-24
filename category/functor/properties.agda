@@ -1,23 +1,24 @@
 {-# OPTIONS --without-K #-}
 
-open import category.category hiding (_∘_)
-open import category.functor.core
-open import category.functor.hlevel
+module category.functor.properties where
+
 open import function.core
 open import equality.core
-
-module category.functor.properties where
+open import category.category
+open import category.functor.core
+open import category.functor.hlevel
+open import category.functor.ops
 
 func-left-unit : ∀ {i₀ j₀ i₁ j₁}
                  {C : Category i₀ j₀} {D : Category i₁ j₁}
                  (F : Functor C D)
-               → Id D ∘ F ≡ F
+               → id ∘ F ≡ F
 func-left-unit F = func-equality refl
 
 func-right-unit : ∀ {i₀ j₀ i₁ j₁}
                  {C : Category i₀ j₀} {D : Category i₁ j₁}
                  (F : Functor C D)
-               → F ∘ Id C ≡ F
+               → F ∘ id ≡ F
 func-right-unit F = func-equality refl
 
 func-assoc : ∀ {i₀ j₀ i₁ j₁ i₂ j₂ i₃ j₃}

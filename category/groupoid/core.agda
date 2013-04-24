@@ -3,52 +3,81 @@
 module category.groupoid.core where
 
 open import level
-open import function.core using (_∘'_)
-open import category.structure
-open import category.category
-open import category.groupoid.internal
-open import equality.core using (_≡_)
-open import hott.hlevel.core
+open import function.core
+open import equality.core
+open import overloading
+open import category.category.zero
+open import category.category.core
+open import category.graph.core
+open import category.groupoid.builder
+open import category.groupoid.zero
 
-record GrpdStruct {i j} (X : Set i) : Set (lsuc i ⊔ lsuc j) where
+record IsGroupoid i j (G : Groupoid₀ i j) : Set (i ⊔ j) where
+  open as-groupoid₀ G
+
   field
-    cat-st : CatStruct X
-    is-grpd : IsGroupoid {i}{j} record
-      { obj = X
-      ; cat-st = cat-st }
+    is-cat : IsCategory i j (cat₀ G)
+    left-inv : {x y : obj G} (f : hom x y) → inv f ∘ f ≡ id
+    right-inv : {x y : obj G} (f : hom x y) → f ∘ inv f ≡ id
 
-record Groupoid i j : Set (lsuc (i ⊔ j)) where
-  field
-    obj : Set i
-    grpd-st : GrpdStruct {i}{j} obj
+Groupoid : ∀ i j → Set _
+Groupoid i j = Bundle (IsGroupoid i j)
 
-  open GrpdStruct grpd-st public
-  open CatStruct cat-st public
+gpd-is-set : ∀ {i j} → Overload _ (Set i)
+gpd-is-set {i}{j} = overload-parent (IsGroupoid i j)
 
--- interface
+gpd-is-gph : ∀ {i j} → Overload _ (Graph i j)
+gpd-is-gph {i}{j} = overload-parent (IsGroupoid i j)
 
-open import category.graph
+gpd-is-cat₀ : ∀ {i j} → Overload _ (Category₀ i j)
+gpd-is-cat₀ {i}{j} = overload-parent (IsGroupoid i j)
 
-grpd-gph-instance : ∀ {i}{j} → Structure IsGraph
-grpd-gph-instance {i}{j} = record
-  { Sort = Groupoid i j
-  ; obj = Groupoid.obj
-  ; struct = Groupoid.is-gph }
+gpd-is-cat : ∀ {i j} → Overload _ (Category i j)
+gpd-is-cat {i}{j} = record
+  { Source = Groupoid i j
+  ; coerce = λ G → record
+    { parent = cat₀ G
+    ; struct = IsGroupoid.is-cat (Bundle.struct G) } }
 
-grpd-cat-instance : ∀ {i}{j} → Structure CatStruct
-grpd-cat-instance {i}{j} = record
-  { Sort = Groupoid i j
-  ; obj = Groupoid.obj
-  ; struct = Groupoid.cat-st }
+gpd-is-gpd₀ : ∀ {i j} → Overload _ (Groupoid₀ i j)
+gpd-is-gpd₀ {i}{j} = overload-parent (IsGroupoid i j)
 
-grpd-grpd-instance : ∀ {i}{j} → Structure GrpdStruct
-grpd-grpd-instance {i}{j} = record
-  { Sort = Groupoid i j
-  ; obj = Groupoid.obj
-  ; struct = Groupoid.grpd-st }
+gpd-is-gpd : ∀ {i j} → Overload _ (Groupoid i j)
+gpd-is-gpd {i}{j} = overload-self (Groupoid i j)
 
-module GroupoidInterface {i}{j} ⦃ sub : IsSubtype {lsuc (i ⊔ j)}
-                                                  (GrpdStruct {i}{j}) ⦄ where
-  open IsSubtype sub
-  open GrpdStruct structure
-  open IsGroupoid is-grpd
+private
+  module gpd-statics {i j k} ⦃ o : Overload k (Groupoid i j) ⦄ where
+    open Overload o public using () renaming (coerce to gpd)
+  module gpd-methods {i j k} ⦃ o : OverloadInstance k default (Groupoid i j) ⦄ where
+    open OverloadInstance o
+    open IsGroupoid (Bundle.struct target) public
+
+module as-groupoid {i j k} ⦃ o : Overload k (Groupoid i j) ⦄
+                    (source : Source o) where
+  private target = coerce o source
+
+  open as-category₀ target public
+    renaming (_instance to _parent-instance)
+  open overload default (Category i j) target public
+    renaming (_instance to _cat-instance)
+  open overload default (Groupoid i j) target public
+
+mk-groupoid : ∀ {i j} → GroupoidBuilder i j → Groupoid i j
+mk-groupoid b = let module B = GroupoidBuilder b in record
+  { parent = mk-groupoid₀ record
+    { obj = B.obj
+    ; hom = B.hom
+    ; id = B.id
+    ; _∘_ = B._∘_
+    ; inv = B.inv }
+  ; struct = record
+    { is-cat = record
+      { trunc = B.trunc
+      ; left-id = B.left-id
+      ; right-id = B.right-id
+      ; assoc = B.assoc }
+    ; left-inv = B.left-inv
+    ; right-inv = B.right-inv } }
+
+open gpd-statics public
+open gpd-methods public

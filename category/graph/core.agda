@@ -4,35 +4,55 @@ module category.graph.core where
 
 open import level
 open import sum
-open import category.structure
+open import overloading
 
-record IsGraph {i j} (X : Set i) : Set (lsuc (i ⊔ j)) where
+record IsGraph i j (X : Set i) : Set (i ⊔ lsuc j) where
   field
     hom : X → X → Set j
 
-record Graph i j : Set (lsuc (i ⊔ j)) where
+Graph : ∀ i j → Set _
+Graph i j = Bundle (IsGraph i j)
+
+gph-is-set : ∀ {i j} → Overload _ (Set i)
+gph-is-set {i}{j} = overload-parent (IsGraph i j)
+
+gph-is-gph : ∀ {i j} → Overload _ (Graph i j)
+gph-is-gph {i}{j} = overload-self (Graph i j)
+
+private
+  module graph-statics {i j k} ⦃ o : Overload k (Graph i j) ⦄ where
+    open Overload o public using () renaming (coerce to graph)
+
+    private
+      module with-source (source : Source o) where
+        private target = coerce o source
+        open IsGraph (Bundle.struct target)
+
+        open Bundle target public using ()
+          renaming (parent to obj)
+
+        total : Set _
+        total = Σ (obj × obj) λ { (x , y) → hom x y }
+    open with-source public
+
+  module graph-methods {i j k} ⦃ o : OverloadInstance k default (Graph i j) ⦄ where
+    open OverloadInstance o
+    open IsGraph (Bundle.struct target) public
+
+module as-graph {i j k} ⦃ o : Overload k (Graph i j) ⦄
+                (source : Source o) where
+  open overload default (Graph i j) source public
+
+record GraphBuilder i j : Set (lsuc (i ⊔ j)) where
   field
     obj : Set i
-    is-gph : IsGraph {i}{j} obj
+    hom : obj → obj → Set j
 
-  open IsGraph is-gph public
+mk-graph : ∀ {i j} → GraphBuilder i j → Graph i j
+mk-graph b = let open GraphBuilder b in record
+  { parent = obj
+  ; struct = record { hom = hom } }
 
-module GraphInterface {i j}
-                      ⦃ st : Structure {lsuc (i ⊔ j)}
-                                       (IsGraph {i}{j}) ⦄ where
-  module S = Structure st
-  obj : S.Sort → Set _
-  obj X = S.obj X
+open graph-statics public
+open graph-methods public
 
-  hom : (X : S.Sort) → obj X → obj X → Set _
-  hom X = IsGraph.hom (S.struct X)
-
-  total : S.Sort → Set (i ⊔ j)
-  total X = Σ (obj X × obj X) (uncurry (hom X))
-open GraphInterface public
-
-gph-gph-instance : ∀ {i j} → Structure IsGraph
-gph-gph-instance {i}{j} = record
-  { Sort = Graph i j
-  ; obj = Graph.obj
-  ; struct = Graph.is-gph }

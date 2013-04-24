@@ -11,16 +11,21 @@ open import sets.nat.core using (refl-≤)
 open import hott.hlevel
 open import category.graph.core
 
-data Paths {i j}(W : Graph i j) : obj W → obj W → Set (i ⊔ j) where
-  nil : ∀ {x} → Paths W x x
-  _∷_ : ∀ {x y z}
-      → hom W x y
-      → Paths W y z
-      → Paths W x z
-infixr 5 _∷_
+private
+  module definition {i j}(W : Graph i j) where
+    open as-graph W
+
+    data Paths : obj W → obj W → Set (i ⊔ j) where
+      nil : ∀ {x} → Paths x x
+      _∷_ : ∀ {x y z}
+          → hom x y
+          → Paths y z
+          → Paths x z
+    infixr 5 _∷_
+open definition public
 
 private
-  module HLevel {i j}{W : Graph i j}
+  module hlevel {i j}{W : Graph i j}
                 (hX : h 3 (obj W))
                 (hW : h 2 (total W)) where
     open import decidable
@@ -82,10 +87,10 @@ private
     paths-hlevel : (x y : X) → h 2 (Paths W x y)
     paths-hlevel x y = iso-hlevel (paths-iso x y)
       (w-hlevel (λ { (x , y) → A-hlevel (x , y) }) (x , y))
-open HLevel public using (paths-hlevel)
+open hlevel public using (paths-hlevel)
 
 private
-  module Properties {i j}{W : Graph i j} where
+  module properties {i j}{W : Graph i j} where
     _++_ : ∀ {x y z} → Paths W x y → Paths W y z → Paths W x z
     nil ++ ws = ws
     (u ∷ us) ++ ws = u ∷ (us ++ ws)
@@ -103,4 +108,4 @@ private
     nil-right-unit (w ∷ ws) =
       cong (λ ws → w ∷ ws)
            (nil-right-unit ws)
-open Properties public
+open properties public
