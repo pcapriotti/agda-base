@@ -47,6 +47,15 @@ private
       H-map-hom f g = cong (map F) (map-hom G f g)
                     ⊚ map-hom F (map G f) (map G g)
 
+Const : ∀ {i₁ j₁ i₂ j₂}(C : Category i₁ j₁){D : Category i₂ j₂}
+      → obj D → Functor C D
+Const C {D} X = mk-functor record
+  { apply = λ _ → X
+  ; map = λ _ → id
+  ; map-id = λ _ → refl
+  ; map-hom = λ _ _ → sym (left-id _) }
+  where open as-category D
+
 fct-identity : ∀ {i j} → Identity _ _
 fct-identity {i}{j} = record
   { U = Category i j
