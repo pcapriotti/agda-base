@@ -8,10 +8,11 @@ open import category2.graph.morphism.core
 open import category2.category.zero
 open import overloading.function
 
-Id : ∀ {i j} (W : Graph i j) → Morphism W W
-Id W = mk-morphism record
-  { apply = id
-  ; map = id }
+private
+  Id : ∀ {i j} (W : Graph i j) → Morphism W W
+  Id W = mk-morphism record
+    { apply = id
+    ; map = id }
 
 gph-mor-identity : ∀ {i j} → Identity _ _
 gph-mor-identity {i}{j} = record
@@ -19,19 +20,20 @@ gph-mor-identity {i}{j} = record
   ; endo = λ W → Morphism W W
   ; id = λ {W} → Id W }
 
-Compose : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
-        → {W : Graph i₁ j₁}
-        → {U : Graph i₂ j₂}
-        → {V : Graph i₃ j₃}
-        → Morphism U V
-        → Morphism W U
-        → Morphism W V
-Compose {W = W}{U = U}{V = V} f g = mk-morphism record
-  { apply = λ x → apply f (apply g x)
-  ; map = λ u → map f (map g u) }
-  where
-    open morphisms W U
-    open morphisms U V
+private
+  Compose : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
+          → {W : Graph i₁ j₁}
+          → {U : Graph i₂ j₂}
+          → {V : Graph i₃ j₃}
+          → Morphism U V
+          → Morphism W U
+          → Morphism W V
+  Compose {W = W}{U = U}{V = V} f g = mk-morphism record
+    { apply = λ x → apply f (apply g x)
+    ; map = λ u → map f (map g u) }
+    where
+      open morphisms W U
+      open morphisms U V
 
 gph-mor-comp : ∀ {i₁ j₁ i₂ j₂ i₃ j₃} → Composition _ _ _ _ _ _
 gph-mor-comp {i₁}{j₁}{i₂}{j₂}{i₃}{j₃} = record

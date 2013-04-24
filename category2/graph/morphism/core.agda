@@ -48,8 +48,8 @@ private
   module mor-methods {k} ⦃ eo : ExpOverload k (Graph i j) (Graph i' j') ⦄ where
     open ExpOverload eo
     private
-      module with-arg (f : Morphism X Y) where
-        open IsMorphism (Bundle.struct f) public
+      module with-arg (f : Source o) where
+        open IsMorphism (Bundle.struct (coerce o f)) public
     open with-arg public
 
 mk-morphism : ∀ {W U} → MorphismBuilder W U → Morphism W U
