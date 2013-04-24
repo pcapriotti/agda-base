@@ -14,6 +14,8 @@ open import function.isomorphism.core
 open import category2.graph
 open import category2.functor.core
 open import category2.functor.ops
+open import category2.trans.core
+open import category2.trans.ops
 open import hott.hlevel
 open import overloading
 
@@ -71,3 +73,8 @@ func-equality : {F G : Functor C D}
               → morphism F ≡ morphism G
               → F ≡ G
 func-equality {F}{G} = apply func-equality-iso
+
+func-coerce : {F G : Functor C D} → F ≡ G → F ⇒ G
+func-coerce {F}{.F} refl = id
+  where
+    open as-category₀ (Func₀ C D)
