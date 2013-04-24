@@ -13,40 +13,25 @@ record IsMorphism {W : Graph i j}
                   (f : obj W → obj U) : Set (i ⊔ j ⊔ i' ⊔ j') where
   open as-graph W
   open as-graph U
-  open functions W U
   field
     map : {x y : obj W} → hom x y → hom (apply f x) (apply f y)
 
 Morphism : (W : Graph i j) (U : Graph i' j') → Set _
 Morphism W U = Bundle (IsMorphism {W = W}{U = U})
 
-graph-exp : Exponential _ (Graph i j) (Graph i' j')
-graph-exp = exponential Morphism
+mor-is-fun : {W : Graph i j}{U : Graph i' j'}
+           → Overload _ (obj W → obj U)
+mor-is-fun {W}{U} = record
+  { Source = Morphism W U
+  ; coerce = Bundle.parent }
 
-module morphisms {k k'}
-                 ⦃ o₁ : Overload k (Graph i j) ⦄
-                 ⦃ o₂ : Overload k' (Graph i' j') ⦄
-                 (W' : Source o₁)(U' : Source o₂) where
-  W = coerce o₁ W'
-  U = coerce o₂ U'
-
-  _instance : ExpOverload _ (Graph i j) (Graph i' j')
-  _instance = record
-    { X = W
-    ; Y = U
-    ; o = overload-self (Morphism W U) }
-
-  _func-instance : ExpOverload _ (Set i) (Set i')
-  _func-instance = record
-    { X = obj W
-    ; Y = obj U
-    ; o = record
-      { Source = Morphism W U
-      ; coerce = Bundle.parent } }
+mor-is-mor : {W : Graph i j}{U : Graph i' j'}
+           → Overload _ (Morphism W U)
+mor-is-mor {W}{U} = overload-self (Morphism W U)
 
 private
-  module mor-methods {k} ⦃ eo : ExpOverload k (Graph i j) (Graph i' j') ⦄ where
-    open ExpOverload eo
+  module mor-methods {k}{W : Graph i j}{U : Graph i' j'}
+                     ⦃ o : Overload k (Morphism W U) ⦄ where
     private
       module with-arg (f : Source o) where
         open IsMorphism (Bundle.struct (coerce o f)) public

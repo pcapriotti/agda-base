@@ -93,11 +93,13 @@ private
           K y = proj₂ (surj-f y)
 open Dummy public
 
-_↣_ : (A B : Set) → Set
+_↣_ : ∀ {i j} → Set i → Set j → Set _
 A ↣ B = Σ (A → B) injective
 
-_∘i_ : {A B C : Set} → (B ↣ C) → (A ↣ B) → (A ↣ C) -- composition of injections:
+-- composition of injections:
+_∘i_ : ∀ {i j k}{A : Set i}{B : Set j}{C : Set k}
+     → (B ↣ C) → (A ↣ B) → (A ↣ C)
 (g , p) ∘i (f , q) = g ∘ f , q ∘ p
 
-_↠_ : (A B : Set) → Set
+_↠_ : ∀ {i j} → Set i → Set j → Set _
 A ↠ B = Σ (A → B) surjective

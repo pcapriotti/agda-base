@@ -31,9 +31,6 @@ private
   Compose {W = W}{U = U}{V = V} f g = mk-morphism record
     { apply = λ x → apply f (apply g x)
     ; map = λ u → map f (map g u) }
-    where
-      open morphisms W U
-      open morphisms U V
 
 gph-mor-comp : ∀ {i₁ j₁ i₂ j₂ i₃ j₃} → Composition _ _ _ _ _ _
 gph-mor-comp {i₁}{j₁}{i₂}{j₂}{i₃}{j₃} = record
