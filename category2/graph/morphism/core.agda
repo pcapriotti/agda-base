@@ -32,6 +32,8 @@ mor-is-mor {W}{U} = overload-self (Morphism W U)
 private
   module mor-methods {k}{W : Graph i j}{U : Graph i' j'}
                      ⦃ o : Overload k (Morphism W U) ⦄ where
+    open Overload o public using ()
+      renaming (coerce to morphism)
     private
       module with-arg (f : Source o) where
         open IsMorphism (Bundle.struct (coerce o f)) public

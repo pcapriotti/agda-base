@@ -6,12 +6,36 @@ open import sum
 open import equality.core
 open import overloading.core
 open import function.isomorphism
+open import hott.hlevel.core
+open import sets.unit
 
-bundle-structure-iso : ∀ {i j} {Base : Set i}
+open Bundle
+
+bundle-structure-iso : ∀ {i j}{Base : Set i}
                        (Struct : Base → Set j)
-                     → Bundle Struct ≅ Σ Base Struct
+                     → Σ Base Struct ≅ Bundle Struct
 bundle-structure-iso Struct = record
-  { to = λ { (bundle X s) → X , s }
-  ; from = λ { (X , s) → bundle X s }
+  { to = λ { (X , s) → bundle X s }
+  ; from = λ { (bundle X s) → X , s }
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
+
+bundle-equality-iso : ∀ {i j}{Base : Set i}
+                      (Struct : Base → Set j)
+                    → ((B : Base) → h 1 (Struct B))
+                    → {X Y : Bundle Struct}
+                    → (parent X ≡ parent Y)
+                    ≅ (X ≡ Y)
+bundle-equality-iso Struct hS {X}{Y} = begin
+    parent X ≡ parent Y
+  ≅⟨ sym≅ ×-right-unit ⟩
+    ((parent X ≡ parent Y) × ⊤)
+  ≅⟨ Σ-cong-iso refl≅ (λ p → sym≅ (contr-⊤-iso (hS _ _ _))) ⟩
+    ( Σ (parent X ≡ parent Y) λ p
+    → (subst Struct p (struct X) ≡ struct Y) )
+  ≅⟨ Σ-split-iso ⟩
+    (parent X , struct X) ≡ (parent Y , struct Y)
+  ≅⟨ iso≡ (bundle-structure-iso Struct) ⟩
+    X ≡ Y
+  ∎
+  where open ≅-Reasoning
