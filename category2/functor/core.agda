@@ -11,8 +11,8 @@ open import category2.functor.builder
 open import category2.graph.core
 open import category2.graph.morphism
 
-record IsFunctor {C : Category i j}
-                 {D : Category i' j'}
+record IsFunctor (C : Category i j)
+                 (D : Category i' j')
                  (F : Morphism (graph C) (graph D)) : Set (i ⊔ j ⊔ j') where
   open as-category C
   open as-category D
@@ -23,24 +23,37 @@ record IsFunctor {C : Category i j}
             → map F (f ∘ g) ≡ map F f ∘ map F g
 
 Functor : Category i j → Category i' j' → Set _
-Functor C D = Bundle (IsFunctor {C = C}{D = D})
-
-mk-functor : ∀ {C D} → FunctorBuilder C D → Functor C D
-mk-functor b = let module B = FunctorBuilder b in record
-  { parent = mk-morphism record
-    { apply = B.apply
-    ; map = B.map }
-  ; struct = record
-    { map-id = B.map-id
-    ; map-hom = B.map-hom } }
+Functor C D = Bundle (IsFunctor C D)
 
 private
-  module functor-methods {C : Category i j}{D : Category i' j'}{k}
-                         ⦃ o : Overload k (Functor C D) ⦄ where
-    private
-      module with-source (source : Source o) where
-        private target = coerce o source
-        open IsFunctor (Bundle.struct target) public
-    open with-source public
+  module properties {C : Category i j}
+                    {D : Category i' j'} where
 
-open functor-methods public
+    fct-is-fun : Overload _ (obj C → obj D)
+    fct-is-fun = overload-parent (IsFunctor C D)
+
+    fct-is-mor : Overload _ (Morphism (graph C) (graph D))
+    fct-is-mor = overload-parent (IsFunctor C D)
+
+    fct-is-fct : Overload _ (Functor C D)
+    fct-is-fct = overload-self (Functor C D)
+
+    private
+      module functor-methods {k} ⦃ o : Overload k (Functor C D) ⦄ where
+        private
+          module with-source (source : Source o) where
+            private target = coerce o source
+            open IsFunctor (Bundle.struct target) public
+        open with-source public
+
+    open functor-methods public
+
+    mk-functor : FunctorBuilder C D → Functor C D
+    mk-functor b = let module B = FunctorBuilder b in record
+      { parent = mk-morphism record
+        { apply = B.apply
+        ; map = B.map }
+      ; struct = record
+        { map-id = B.map-id
+        ; map-hom = B.map-hom } }
+open properties public
