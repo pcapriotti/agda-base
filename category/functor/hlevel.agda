@@ -55,12 +55,12 @@ functor-structure-iso : Σ GMorphism Functorial ≅ Functor C D
 functor-structure-iso = bundle-structure-iso Functorial
 
 func-equality-iso : {F G : Functor C D}
-                  → (morphism F ≡ morphism G)
+                  → (graph-morphism F ≡ graph-morphism G)
                   ≅ (F ≡ G)
 func-equality-iso = bundle-equality-iso Functorial is-func-prop
 
 func-equality : {F G : Functor C D}
-              → morphism F ≡ morphism G
+              → graph-morphism F ≡ graph-morphism G
               → F ≡ G
 func-equality {F}{G} = apply func-equality-iso
 

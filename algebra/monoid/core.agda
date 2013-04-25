@@ -41,7 +41,8 @@ private
     open IsCategory (Bundle.struct target) public
       renaming ( left-id to *-left-id
                ; right-id to *-right-id
-               ; assoc to *-assoc )
+               ; assoc to *-assoc
+               ; trunc to mtrunc )
 
 module as-monoid {i j} ⦃ o : Overload j (Monoid i) ⦄
                   (source : Source o) where

@@ -57,6 +57,8 @@ private
 
     private
       module functor-methods {k} ⦃ o : Overload k (Functor C D) ⦄ where
+        open Overload o public using ()
+          renaming (coerce to functor)
         private
           module with-source (source : Source o) where
             private target = coerce o source
