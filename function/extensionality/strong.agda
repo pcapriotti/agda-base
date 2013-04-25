@@ -37,7 +37,7 @@ private
 
         e-contr : contr E
         e-contr = retract-hlevel
-          (λ u → proj₁ ∘ u , proj₂ ∘ u)
+          (λ u → proj₁ ∘' u , proj₂ ∘' u)
           (λ {(g , h) x → g x , h x})
           (λ {(g , h) → refl})
           (Π-contr (λ x → singl-contr (f x)))

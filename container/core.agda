@@ -28,4 +28,4 @@ record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
        → {Y : I → Set ly}
        → (X ↝ Y)
        → (F X ↝ F Y)
-  imap _ g {i} (a , f) = a , g ∘ f
+  imap _ g {i} (a , f) = a , g ∘' f

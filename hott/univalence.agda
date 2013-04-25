@@ -6,7 +6,7 @@ open import sum using (_,_ ; proj₁)
 open import equality.core
 open import equality.calculus
 open import equality.reasoning
-open import function.core using (_$_ ; id ; _∘_)
+open import function.core
 open import function.isomorphism.core using (_≅_ ; module _≅_)
 open import hott.weak-equivalence.core
 

@@ -6,7 +6,7 @@ open import sets.unit
 open import sum
 open import equality.core
 open import equality.calculus
-open import function.core using (_∘_; const)
+open import function.core using (_∘'_; const)
 open import function.extensionality.core
 open import function.extensionality.nondep
 
@@ -15,7 +15,7 @@ open import hott.hlevel.properties
 
 abstract
   ext₀' : ∀ {i j} → Extensionality' i j
-  ext₀' {i} {j} {X = X} {Y = Y} {f}{g} h = cong (λ u → proj₁ ∘ u) p
+  ext₀' {i} {j} {X = X} {Y = Y} {f}{g} h = cong (λ u → proj₁ ∘' u) p
     where
       U : (x : X) → Set j
       U x = singleton (f x)

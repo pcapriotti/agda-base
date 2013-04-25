@@ -6,6 +6,7 @@ open import sum
 open import equality.core
 open import equality.calculus
 open import function.core
+open import function.overloading
 open import function.isomorphism.core
 open import function.isomorphism.coherent
 open import function.extensionality.core
@@ -105,7 +106,7 @@ open import hott.hlevel.core
             → ((x : X) → Σ (Y x) λ y → Z x y)
             ≅ (Σ ((x : X) → Y x) λ f → ((x : X) → Z x (f x)))
 ΠΣ-swap-iso = record
-  { to = λ f → (proj₁ ∘ f , proj₂ ∘ f)
+  { to = λ f → (proj₁ ∘' f , proj₂ ∘' f)
   ; from = λ { (f , g) x → (f x , g x) }
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }

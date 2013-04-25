@@ -62,7 +62,7 @@ private
 
     section₁ : ∀ {i}(u : M i)
              → extract (lift₁ u) ≡ u
-    section₁ u = unfold-η out (extract ∘ lift₁) (λ {(inf a f) → refl}) u
+    section₁ u = unfold-η out (extract ∘' lift₁) (λ {(inf a f) → refl}) u
                ⊚ unfold-id u
 
     section₂ : ∀ {i}{u v : M i}(p : u ≡M v)

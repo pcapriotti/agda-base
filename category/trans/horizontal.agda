@@ -1,18 +1,22 @@
 {-# OPTIONS --without-K #-}
 
-open import category.category hiding (_∘_)
-open import category.functor
-open import category.trans.core
-  renaming (_∘_ to _∘n_)
-open import category.trans.hlevel
 open import equality.core
 open import equality.calculus
+open import function.core
 open import function.extensionality
+open import function.overloading
+open import category.category
+open import category.graph
+open import category.functor
+open import category.trans.core
+open import category.trans.hlevel
+open import category.trans.properties
 
 module category.trans.horizontal {i₀}{j₀}{i₁}{j₁}{i₂}{j₂}
   {C : Category i₀ j₀}{D : Category i₁ j₁}{E : Category i₂ j₂} where
 
-open Functor
+open as-category E
+open as-category (Func C E)
 
 _◂_ : (H : Functor D E){F G : Functor C D}(n : F ⇒ G) → H ∘ F ⇒ H ∘ G
 _◂_ H {F}{G} (nt α α-nat) = nt Hα Hα-nat
@@ -36,11 +40,15 @@ _▸_ {F}{G} (nt α α-nat) H = nt αH αH-nat
     αH-nat f = α-nat (map H f)
 infix 5 _▸_
 
-interchange : {F G : Functor D E}(n : F ⇒ G){H K : Functor C D}(m : H ⇒ K)
-            → (G ◂ m) ∘n (n ▸ H) ≡ (n ▸ K) ∘n (F ◂ m)
-interchange (nt _ α-nat) (nt β _) =
-  sym (nat-equality (ext' λ X → α-nat (β X)))
-
 _◾_ : {F G : Functor D E}(n : F ⇒ G){H K : Functor C D}(m : H ⇒ K)
     → F ∘ H ⇒ G ∘ K
-_◾_ {F}{G} n {H}{K} m = (G ◂ m) ∘n (n ▸ H)
+_◾_ {F}{G} n {H}{K} m = (G ◂ m) ∘ (n ▸ H)
+
+_◾'_ : {F G : Functor D E}(n : F ⇒ G){H K : Functor C D}(m : H ⇒ K)
+     → F ∘ H ⇒ G ∘ K
+_◾'_ {F}{G} n {H}{K} m = (n ▸ K) ∘ (F ◂ m)
+
+interchange : {F G : Functor D E}(n : F ⇒ G){H K : Functor C D}(m : H ⇒ K)
+            → n ◾ m ≡ n ◾' m
+interchange (nt _ α-nat) (nt β _) =
+  sym (nat-equality (ext' λ X → α-nat (β X)))

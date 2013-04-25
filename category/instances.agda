@@ -2,7 +2,7 @@
 
 module category.instances where
 
-import category.instances.set
-import category.instances.discrete
-import category.instances.unit
-import category.instances.empty
+open import category.instances.set public
+open import category.instances.discrete public
+open import category.instances.unit public
+open import category.instances.empty public

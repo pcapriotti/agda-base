@@ -7,7 +7,7 @@ open import level
 open import equality.core
   using (_≡_; refl; cong)
 open import function.core
-  using (_$_; _∘_)
+  using (_$_; _∘_; func-comp)
 open import decidable
   using (Dec; yes; no)
 

@@ -11,6 +11,7 @@ open import function.extensionality.strong public
 
 open import equality.core
 open import function.isomorphism
+open import function.overloading
 
 -- extensionality for functions of implicit arguments
 impl-ext' : ∀ {i j}{X : Set i}{Y : X → Set j}

@@ -6,7 +6,7 @@ open import sum
 open import equality.core
 open import equality.calculus
 open import equality.reasoning
-open import function.core using (id; _∘_)
+open import function.core
 open import function.isomorphism.core
 open import function.isomorphism.coherent
 open import hott.hlevel.core
@@ -28,10 +28,10 @@ private
 
     -- there are obvious projections π₁ π₂ : Δ → X
     π₁ : Δ → X
-    π₁ = proj₁
+    π₁ (x , _ , _) = x
 
     π₂ : Δ → X
-    π₂ = proj₁ ∘ proj₂
+    π₂ (_ , x , _) = x
 
     -- X can be embedded into Δ via the "diagonal" function δ
     δ : X → Δ

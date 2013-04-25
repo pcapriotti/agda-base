@@ -75,7 +75,7 @@ fin-env {k = k}{X = X} v xs f = record
             → ∀ {i j} → fin-graph (Fin k) v i j → (xs ! i) ≡ (xs ! j)
     lookup' [] f (fin-element ())
     lookup' ((i , j) ∷ v) f (fin-element zero) = f zero
-    lookup' ((i , j) ∷ v) f (fin-element (suc n)) = lookup' v (f ∘ suc) (fin-element n)
+    lookup' ((i , j) ∷ v) f (fin-element (suc n)) = lookup' v (f ∘' suc) (fin-element n)
 
 HOTerm' : ∀ {i n} {X : Set i} → Edges X lzero → Vec (X × X) n → X → X → Set i
 HOTerm' W [] x y = Term W x y
@@ -87,11 +87,11 @@ HOTerm X v x y = {W : Edges X lzero} → HOTerm' W v x y
 term : ∀ {n k} {v : Vec (Fin n × Fin n) k}{x y : Fin n}
      → HOTerm (Fin n) v x y
      → Term (fin-graph (Fin n) v) x y
-term {v = v}{x}{y} t = go v x y t (var ∘ fin-element)
+term {v = v}{x}{y} t = go v x y t (var ∘' fin-element)
   where
     go : ∀ {i n}{X : Set i}{W : Edges X lzero}(v : Vec (X × X) n)(x y : X)
        → HOTerm' W v x y
        → ((i : Fin n) → Term W (proj₁ (v ! i)) (proj₂ (v ! i)))
        → Term W x y
     go [] x y t _ = t
-    go ((x' , y') ∷ v) x y f e = go v x y (f (e zero)) (e ∘ suc)
+    go ((x' , y') ∷ v) x y f e = go v x y (f (e zero)) (e ∘' suc)

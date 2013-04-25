@@ -2,7 +2,7 @@
 module sets.vec.properties where
 
 open import equality.core
-open import function using (_∘_)
+open import function.core
 open import function.extensionality
 open import function.isomorphism
 open import sets.nat.core using (ℕ; zero; suc)

@@ -3,6 +3,7 @@ module category.terminal where
 
 open import sum
 open import equality.core
+open import category.graph
 open import category.category
 open import category.functor using (Const)
 open import category.functor.adjoint
@@ -18,9 +19,10 @@ terminal : ∀ {i j} (C : Category i j) → obj C → Set _
 terminal C X = unit-func C ⊣ Const unit X
 
 private
-  module Properties {i j}{C : Category i j}
+  module properties {i j}{C : Category i j}
                     (X : obj C)(t : terminal C X) where
-    open _⊣_ _ _ t
+    open _⊣_ {D = unit} _ _ t
+    open as-category C
 
     term-univ : (Y : obj C) → contr (hom Y X)
     term-univ Y = iso-hlevel (adj Y tt) (h↑ ⊤-contr tt tt)
@@ -28,4 +30,4 @@ private
     ! : (Y : obj C) → hom Y X
     ! Y = proj₁ (term-univ Y)
 
-open Properties public
+open properties public

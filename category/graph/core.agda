@@ -4,44 +4,55 @@ module category.graph.core where
 
 open import level
 open import sum
+open import overloading
 
-record Graph i j : Set (lsuc (i ⊔ j)) where
-  constructor graph
+record IsGraph i j (X : Set i) : Set (i ⊔ lsuc j) where
+  field
+    hom : X → X → Set j
+
+Graph : ∀ i j → Set _
+Graph i j = Bundle (IsGraph i j)
+
+gph-is-set : ∀ {i j} → Overload _ (Set i)
+gph-is-set {i}{j} = overload-parent (IsGraph i j)
+
+gph-is-gph : ∀ {i j} → Overload _ (Graph i j)
+gph-is-gph {i}{j} = overload-self (Graph i j)
+
+private
+  module graph-statics {i j k} ⦃ o : Overload k (Graph i j) ⦄ where
+    open Overload o public using () renaming (coerce to graph)
+
+    private
+      module with-source (source : Source o) where
+        private target = coerce o source
+        open IsGraph (Bundle.struct target)
+
+        open Bundle target public using ()
+          renaming (parent to obj)
+
+        total : Set _
+        total = Σ (obj × obj) λ { (x , y) → hom x y }
+    open with-source public
+
+  module graph-methods {i j k} ⦃ o : OverloadInstance k default (Graph i j) ⦄ where
+    open OverloadInstance o
+    open IsGraph (Bundle.struct target) public
+
+module as-graph {i j k} ⦃ o : Overload k (Graph i j) ⦄
+                (source : Source o) where
+  open overload default (Graph i j) source public
+
+record GraphBuilder i j : Set (lsuc (i ⊔ j)) where
   field
     obj : Set i
     hom : obj → obj → Set j
 
-  total : Set (i ⊔ j)
-  total = Σ (obj × obj) (uncurry hom)
+mk-graph : ∀ {i j} → GraphBuilder i j → Graph i j
+mk-graph b = let open GraphBuilder b in record
+  { parent = obj
+  ; struct = record { hom = hom } }
 
-open Graph
+open graph-statics public
+open graph-methods public
 
-IsMorphism : ∀ {i j i' j'}{A : Graph i j}{B : Graph i' j'}
-           → (f : obj A → obj B) → Set _
-IsMorphism {A = A}{B = B} f =
-  ∀ {x y} → hom A x y → hom B (f x) (f y)
-
-record Morphism {i j i' j'}
-                (G : Graph i j)
-                (H : Graph i' j')
-              : Set (i ⊔ i' ⊔ j ⊔ j') where
-  constructor morphism
-  field
-    apply : obj G → obj H
-    map : ∀ {x y} → hom G x y → hom H (apply x) (apply y)
-
-open Morphism
-
-Id : ∀ {i j} (G : Graph i j) → Morphism G G
-Id _ = morphism (λ x → x) (λ f → f)
-
-_∘_ : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
-      {G : Graph i₁ j₁}
-      {H : Graph i₂ j₂}
-      {K : Graph i₃ j₃}
-    → Morphism H K
-    → Morphism G H
-    → Morphism G K
-F ∘ G = record
-  { apply = λ x → apply F (apply G x)
-  ; map = λ f → map F (map G f) }

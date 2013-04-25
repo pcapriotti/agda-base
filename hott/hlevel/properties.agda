@@ -88,7 +88,7 @@ abstract
   exp-contr {X = X} {Y = Y} (y , c) = (const y , c')
     where
       c' : (u : X → Y) → const y ≡ u
-      c' u = ext (c ∘ u)
+      c' u = ext λ x → c (u x)
 
   -- Π preserves contractibility
   Π-contr : ∀ {i j}{X : Set i}{Y : X → Set j}

@@ -1,7 +1,7 @@
 {-# OPTIONS --without-K #-}
 module sets.vec.core where
 
-open import function using (_∘_)
+open import function.core
 open import sets.nat.core using (ℕ; zero; suc)
 open import sets.fin
 

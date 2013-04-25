@@ -7,6 +7,7 @@ open import level
 open import container.core
 open import function.core
 open import function.isomorphism
+open import function.overloading
 
 record Fixpoint {li la lb}
                 (c : Container li la lb)
@@ -22,4 +23,4 @@ record Fixpoint {li la lb}
   head {i} = proj₁ ∘ apply (fixpoint i)
 
   tail : ∀ {i}(u : X i)(b : B (head u)) → X (r b)
-  tail {i} = proj₂ ∘ apply (fixpoint i)
+  tail {i} = proj₂ ∘' apply (fixpoint i)

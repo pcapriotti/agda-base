@@ -2,4 +2,4 @@
 
 module algebra where
 
-import algebra.monoid
+open import algebra.monoid public
