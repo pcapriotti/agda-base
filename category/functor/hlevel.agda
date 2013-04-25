@@ -29,18 +29,8 @@ private
   Functorial : GMorphism → Set _
   Functorial = IsFunctor C D
 
-MapId : GMorphism → Set _
-MapId m = (x : obj C) → map m (id {X = x}) ≡ id
-
-MapHom : GMorphism → Set _
-MapHom m = {x y z : obj C}
-         → (f : hom y z)
-         → (g : hom x y)
-         → map m (f ∘ g)
-         ≡ map m f ∘ map m g
-
 functorial-structure-iso : (m : GMorphism)
-                         → (MapId m × MapHom m)
+                         → (MapId C D m × MapHom C D m)
                          ≅ Functorial m
 functorial-structure-iso m = record
   { to = λ {(i , h) → record

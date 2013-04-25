@@ -11,6 +11,24 @@ open import category.functor.builder
 open import category.graph.core
 open import category.graph.morphism
 
+private
+  module definitions (C : Category i j)
+                     (D : Category i' j')
+                     (F : Morphism (graph C) (graph D)) where
+    open as-category C
+    open as-category D
+
+    MapId : Set _
+    MapId = (x : obj C) → map F (id {X = x}) ≡ id
+
+    MapHom : Set _
+    MapHom = {x y z : obj C}
+           → (f : hom y z)
+           → (g : hom x y)
+           → map F (f ∘ g)
+           ≡ map F f ∘ map F g
+open definitions public
+
 record IsFunctor (C : Category i j)
                  (D : Category i' j')
                  (F : Morphism (graph C) (graph D)) : Set (i ⊔ j ⊔ j') where
@@ -18,9 +36,8 @@ record IsFunctor (C : Category i j)
   open as-category D
 
   field
-    map-id : (x : obj C) → map F (id {X = x}) ≡ id
-    map-hom : {x y z : obj C} (f : hom y z) (g : hom x y)
-            → map F (f ∘ g) ≡ map F f ∘ map F g
+    map-id : MapId C D F
+    map-hom : MapHom C D F
 
 Functor : Category i j → Category i' j' → Set _
 Functor C D = Bundle (IsFunctor C D)

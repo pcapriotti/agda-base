@@ -6,6 +6,7 @@ open import level
 open import category.graph.trivial
 open import category.category.zero
 open import overloading.core
+open import sets.unit
 
 IsMonoid₀ : ∀ i (X : Set i) → Set _
 IsMonoid₀ _ X = IsCategory₀ _ _ (trivial-graph X)
@@ -31,9 +32,14 @@ private
       renaming (coerce to monoid₀)
   module monoid₀-methods {i j} ⦃ o : OverloadInstance j default (Monoid₀ i) ⦄ where
     open OverloadInstance o
-    open IsCategory₀ (Bundle.struct target) public
-      renaming ( id to unit
-               ; _∘_ to _*_ )
+    open IsCategory₀ (Bundle.struct target)
+    private X = ∣ target ∣
+
+    unit : X
+    unit = id tt
+
+    _*_ : X → X → X
+    x * y = x ∘ y
 
 module as-monoid₀ {i j} ⦃ o : Overload j (Monoid₀ i) ⦄
                   (source : Source o) where
