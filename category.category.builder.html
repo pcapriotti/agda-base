@@ -1,0 +1,920 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >category.category.builder</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="category.category.builder.html#1" class="Module"
+      >category.category.builder</a
+      ><a name="62"
+      > </a
+      ><a name="63" class="Keyword"
+      >where</a
+      ><a name="68"
+      >
+
+</a
+      ><a name="70" class="Keyword"
+      >open</a
+      ><a name="74"
+      > </a
+      ><a name="75" class="Keyword"
+      >import</a
+      ><a name="81"
+      > </a
+      ><a name="82" href="level.html#1" class="Module"
+      >level</a
+      ><a name="87"
+      >
+</a
+      ><a name="88" class="Keyword"
+      >open</a
+      ><a name="92"
+      > </a
+      ><a name="93" class="Keyword"
+      >import</a
+      ><a name="99"
+      > </a
+      ><a name="100" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="113"
+      >
+
+</a
+      ><a name="115" class="Keyword"
+      >open</a
+      ><a name="119"
+      > </a
+      ><a name="120" class="Keyword"
+      >import</a
+      ><a name="126"
+      > </a
+      ><a name="127" href="hott.hlevel.core.html#1" class="Module"
+      >hott.hlevel.core</a
+      ><a name="143"
+      >
+
+</a
+      ><a name="145" class="Keyword"
+      >record</a
+      ><a name="151"
+      > </a
+      ><a name="152" href="category.category.builder.html#152" class="Record"
+      >Category&#8320;Builder</a
+      ><a name="168"
+      > </a
+      ><a name="169" href="category.category.builder.html#169" class="Bound"
+      >i</a
+      ><a name="170"
+      > </a
+      ><a name="171" href="category.category.builder.html#171" class="Bound"
+      >j</a
+      ><a name="172"
+      > </a
+      ><a name="173" class="Symbol"
+      >:</a
+      ><a name="174"
+      > </a
+      ><a name="175" class="PrimitiveType"
+      >Set</a
+      ><a name="178"
+      > </a
+      ><a name="179" class="Symbol"
+      >(</a
+      ><a name="180" href="level.html#106" class="Primitive"
+      >lsuc</a
+      ><a name="184"
+      > </a
+      ><a name="185" class="Symbol"
+      >(</a
+      ><a name="186" href="category.category.builder.html#169" class="Bound"
+      >i</a
+      ><a name="187"
+      > </a
+      ><a name="188" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="189"
+      > </a
+      ><a name="190" href="category.category.builder.html#171" class="Bound"
+      >j</a
+      ><a name="191" class="Symbol"
+      >))</a
+      ><a name="193"
+      > </a
+      ><a name="194" class="Keyword"
+      >where</a
+      ><a name="199"
+      >
+  </a
+      ><a name="202" class="Keyword"
+      >field</a
+      ><a name="207"
+      >
+    </a
+      ><a name="212" href="category.category.builder.html#212" class="Field"
+      >obj</a
+      ><a name="215"
+      > </a
+      ><a name="216" class="Symbol"
+      >:</a
+      ><a name="217"
+      > </a
+      ><a name="218" class="PrimitiveType"
+      >Set</a
+      ><a name="221"
+      > </a
+      ><a name="222" href="category.category.builder.html#169" class="Bound"
+      >i</a
+      ><a name="223"
+      >
+    </a
+      ><a name="228" href="category.category.builder.html#228" class="Field"
+      >hom</a
+      ><a name="231"
+      > </a
+      ><a name="232" class="Symbol"
+      >:</a
+      ><a name="233"
+      > </a
+      ><a name="234" href="category.category.builder.html#212" class="Bound"
+      >obj</a
+      ><a name="237"
+      > </a
+      ><a name="238" class="Symbol"
+      >&#8594;</a
+      ><a name="239"
+      > </a
+      ><a name="240" href="category.category.builder.html#212" class="Bound"
+      >obj</a
+      ><a name="243"
+      > </a
+      ><a name="244" class="Symbol"
+      >&#8594;</a
+      ><a name="245"
+      > </a
+      ><a name="246" class="PrimitiveType"
+      >Set</a
+      ><a name="249"
+      > </a
+      ><a name="250" href="category.category.builder.html#171" class="Bound"
+      >j</a
+      ><a name="251"
+      >
+    </a
+      ><a name="256" href="category.category.builder.html#256" class="Field"
+      >id</a
+      ><a name="258"
+      > </a
+      ><a name="259" class="Symbol"
+      >:</a
+      ><a name="260"
+      > </a
+      ><a name="261" class="Symbol"
+      >(</a
+      ><a name="262" href="category.category.builder.html#262" class="Bound"
+      >x</a
+      ><a name="263"
+      > </a
+      ><a name="264" class="Symbol"
+      >:</a
+      ><a name="265"
+      > </a
+      ><a name="266" href="category.category.builder.html#212" class="Bound"
+      >obj</a
+      ><a name="269" class="Symbol"
+      >)</a
+      ><a name="270"
+      > </a
+      ><a name="271" class="Symbol"
+      >&#8594;</a
+      ><a name="272"
+      > </a
+      ><a name="273" href="category.category.builder.html#228" class="Bound"
+      >hom</a
+      ><a name="276"
+      > </a
+      ><a name="277" href="category.category.builder.html#262" class="Bound"
+      >x</a
+      ><a name="278"
+      > </a
+      ><a name="279" href="category.category.builder.html#262" class="Bound"
+      >x</a
+      ><a name="280"
+      >
+    </a
+      ><a name="285" href="category.category.builder.html#285" class="Field Operator"
+      >_&#8728;_</a
+      ><a name="288"
+      > </a
+      ><a name="289" class="Symbol"
+      >:</a
+      ><a name="290"
+      > </a
+      ><a name="291" class="Symbol"
+      >{</a
+      ><a name="292" href="category.category.builder.html#292" class="Bound"
+      >x</a
+      ><a name="293"
+      > </a
+      ><a name="294" href="category.category.builder.html#294" class="Bound"
+      >y</a
+      ><a name="295"
+      > </a
+      ><a name="296" href="category.category.builder.html#296" class="Bound"
+      >z</a
+      ><a name="297"
+      > </a
+      ><a name="298" class="Symbol"
+      >:</a
+      ><a name="299"
+      > </a
+      ><a name="300" href="category.category.builder.html#212" class="Bound"
+      >obj</a
+      ><a name="303" class="Symbol"
+      >}</a
+      ><a name="304"
+      > </a
+      ><a name="305" class="Symbol"
+      >&#8594;</a
+      ><a name="306"
+      > </a
+      ><a name="307" href="category.category.builder.html#228" class="Bound"
+      >hom</a
+      ><a name="310"
+      > </a
+      ><a name="311" href="category.category.builder.html#294" class="Bound"
+      >y</a
+      ><a name="312"
+      > </a
+      ><a name="313" href="category.category.builder.html#296" class="Bound"
+      >z</a
+      ><a name="314"
+      > </a
+      ><a name="315" class="Symbol"
+      >&#8594;</a
+      ><a name="316"
+      > </a
+      ><a name="317" href="category.category.builder.html#228" class="Bound"
+      >hom</a
+      ><a name="320"
+      > </a
+      ><a name="321" href="category.category.builder.html#292" class="Bound"
+      >x</a
+      ><a name="322"
+      > </a
+      ><a name="323" href="category.category.builder.html#294" class="Bound"
+      >y</a
+      ><a name="324"
+      > </a
+      ><a name="325" class="Symbol"
+      >&#8594;</a
+      ><a name="326"
+      > </a
+      ><a name="327" href="category.category.builder.html#228" class="Bound"
+      >hom</a
+      ><a name="330"
+      > </a
+      ><a name="331" href="category.category.builder.html#292" class="Bound"
+      >x</a
+      ><a name="332"
+      > </a
+      ><a name="333" href="category.category.builder.html#296" class="Bound"
+      >z</a
+      ><a name="334"
+      >
+
+</a
+      ><a name="336" class="Keyword"
+      >record</a
+      ><a name="342"
+      > </a
+      ><a name="343" href="category.category.builder.html#343" class="Record"
+      >CategoryBuilder</a
+      ><a name="358"
+      > </a
+      ><a name="359" href="category.category.builder.html#359" class="Bound"
+      >i</a
+      ><a name="360"
+      > </a
+      ><a name="361" href="category.category.builder.html#361" class="Bound"
+      >j</a
+      ><a name="362"
+      > </a
+      ><a name="363" class="Symbol"
+      >:</a
+      ><a name="364"
+      > </a
+      ><a name="365" class="PrimitiveType"
+      >Set</a
+      ><a name="368"
+      > </a
+      ><a name="369" class="Symbol"
+      >(</a
+      ><a name="370" href="level.html#106" class="Primitive"
+      >lsuc</a
+      ><a name="374"
+      > </a
+      ><a name="375" class="Symbol"
+      >(</a
+      ><a name="376" href="category.category.builder.html#359" class="Bound"
+      >i</a
+      ><a name="377"
+      > </a
+      ><a name="378" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="379"
+      > </a
+      ><a name="380" href="category.category.builder.html#361" class="Bound"
+      >j</a
+      ><a name="381" class="Symbol"
+      >))</a
+      ><a name="383"
+      > </a
+      ><a name="384" class="Keyword"
+      >where</a
+      ><a name="389"
+      >
+  </a
+      ><a name="392" class="Keyword"
+      >field</a
+      ><a name="397"
+      >
+    </a
+      ><a name="402" href="category.category.builder.html#402" class="Field"
+      >obj</a
+      ><a name="405"
+      > </a
+      ><a name="406" class="Symbol"
+      >:</a
+      ><a name="407"
+      > </a
+      ><a name="408" class="PrimitiveType"
+      >Set</a
+      ><a name="411"
+      > </a
+      ><a name="412" href="category.category.builder.html#359" class="Bound"
+      >i</a
+      ><a name="413"
+      >
+    </a
+      ><a name="418" href="category.category.builder.html#418" class="Field"
+      >hom</a
+      ><a name="421"
+      > </a
+      ><a name="422" class="Symbol"
+      >:</a
+      ><a name="423"
+      > </a
+      ><a name="424" href="category.category.builder.html#402" class="Bound"
+      >obj</a
+      ><a name="427"
+      > </a
+      ><a name="428" class="Symbol"
+      >&#8594;</a
+      ><a name="429"
+      > </a
+      ><a name="430" href="category.category.builder.html#402" class="Bound"
+      >obj</a
+      ><a name="433"
+      > </a
+      ><a name="434" class="Symbol"
+      >&#8594;</a
+      ><a name="435"
+      > </a
+      ><a name="436" class="PrimitiveType"
+      >Set</a
+      ><a name="439"
+      > </a
+      ><a name="440" href="category.category.builder.html#361" class="Bound"
+      >j</a
+      ><a name="441"
+      >
+    </a
+      ><a name="446" href="category.category.builder.html#446" class="Field"
+      >id</a
+      ><a name="448"
+      > </a
+      ><a name="449" class="Symbol"
+      >:</a
+      ><a name="450"
+      > </a
+      ><a name="451" class="Symbol"
+      >(</a
+      ><a name="452" href="category.category.builder.html#452" class="Bound"
+      >x</a
+      ><a name="453"
+      > </a
+      ><a name="454" class="Symbol"
+      >:</a
+      ><a name="455"
+      > </a
+      ><a name="456" href="category.category.builder.html#402" class="Bound"
+      >obj</a
+      ><a name="459" class="Symbol"
+      >)</a
+      ><a name="460"
+      > </a
+      ><a name="461" class="Symbol"
+      >&#8594;</a
+      ><a name="462"
+      > </a
+      ><a name="463" href="category.category.builder.html#418" class="Bound"
+      >hom</a
+      ><a name="466"
+      > </a
+      ><a name="467" href="category.category.builder.html#452" class="Bound"
+      >x</a
+      ><a name="468"
+      > </a
+      ><a name="469" href="category.category.builder.html#452" class="Bound"
+      >x</a
+      ><a name="470"
+      >
+    </a
+      ><a name="475" href="category.category.builder.html#475" class="Field Operator"
+      >_&#8728;_</a
+      ><a name="478"
+      > </a
+      ><a name="479" class="Symbol"
+      >:</a
+      ><a name="480"
+      > </a
+      ><a name="481" class="Symbol"
+      >{</a
+      ><a name="482" href="category.category.builder.html#482" class="Bound"
+      >x</a
+      ><a name="483"
+      > </a
+      ><a name="484" href="category.category.builder.html#484" class="Bound"
+      >y</a
+      ><a name="485"
+      > </a
+      ><a name="486" href="category.category.builder.html#486" class="Bound"
+      >z</a
+      ><a name="487"
+      > </a
+      ><a name="488" class="Symbol"
+      >:</a
+      ><a name="489"
+      > </a
+      ><a name="490" href="category.category.builder.html#402" class="Bound"
+      >obj</a
+      ><a name="493" class="Symbol"
+      >}</a
+      ><a name="494"
+      > </a
+      ><a name="495" class="Symbol"
+      >&#8594;</a
+      ><a name="496"
+      > </a
+      ><a name="497" href="category.category.builder.html#418" class="Bound"
+      >hom</a
+      ><a name="500"
+      > </a
+      ><a name="501" href="category.category.builder.html#484" class="Bound"
+      >y</a
+      ><a name="502"
+      > </a
+      ><a name="503" href="category.category.builder.html#486" class="Bound"
+      >z</a
+      ><a name="504"
+      > </a
+      ><a name="505" class="Symbol"
+      >&#8594;</a
+      ><a name="506"
+      > </a
+      ><a name="507" href="category.category.builder.html#418" class="Bound"
+      >hom</a
+      ><a name="510"
+      > </a
+      ><a name="511" href="category.category.builder.html#482" class="Bound"
+      >x</a
+      ><a name="512"
+      > </a
+      ><a name="513" href="category.category.builder.html#484" class="Bound"
+      >y</a
+      ><a name="514"
+      > </a
+      ><a name="515" class="Symbol"
+      >&#8594;</a
+      ><a name="516"
+      > </a
+      ><a name="517" href="category.category.builder.html#418" class="Bound"
+      >hom</a
+      ><a name="520"
+      > </a
+      ><a name="521" href="category.category.builder.html#482" class="Bound"
+      >x</a
+      ><a name="522"
+      > </a
+      ><a name="523" href="category.category.builder.html#486" class="Bound"
+      >z</a
+      ><a name="524"
+      >
+
+    </a
+      ><a name="530" href="category.category.builder.html#530" class="Field"
+      >left-id</a
+      ><a name="537"
+      > </a
+      ><a name="538" class="Symbol"
+      >:</a
+      ><a name="539"
+      > </a
+      ><a name="540" class="Symbol"
+      >{</a
+      ><a name="541" href="category.category.builder.html#541" class="Bound"
+      >x</a
+      ><a name="542"
+      > </a
+      ><a name="543" href="category.category.builder.html#543" class="Bound"
+      >y</a
+      ><a name="544"
+      > </a
+      ><a name="545" class="Symbol"
+      >:</a
+      ><a name="546"
+      > </a
+      ><a name="547" href="category.category.builder.html#402" class="Bound"
+      >obj</a
+      ><a name="550" class="Symbol"
+      >}</a
+      ><a name="551"
+      > </a
+      ><a name="552" class="Symbol"
+      >(</a
+      ><a name="553" href="category.category.builder.html#553" class="Bound"
+      >f</a
+      ><a name="554"
+      > </a
+      ><a name="555" class="Symbol"
+      >:</a
+      ><a name="556"
+      > </a
+      ><a name="557" href="category.category.builder.html#418" class="Bound"
+      >hom</a
+      ><a name="560"
+      > </a
+      ><a name="561" href="category.category.builder.html#541" class="Bound"
+      >x</a
+      ><a name="562"
+      > </a
+      ><a name="563" href="category.category.builder.html#543" class="Bound"
+      >y</a
+      ><a name="564" class="Symbol"
+      >)</a
+      ><a name="565"
+      > </a
+      ><a name="566" class="Symbol"
+      >&#8594;</a
+      ><a name="567"
+      > </a
+      ><a name="568" href="category.category.builder.html#446" class="Bound"
+      >id</a
+      ><a name="570"
+      > </a
+      ><a name="571" href="category.category.builder.html#543" class="Bound"
+      >y</a
+      ><a name="572"
+      > </a
+      ><a name="573" href="category.category.builder.html#475" class="Bound Operator"
+      >&#8728;</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="category.category.builder.html#553" class="Bound"
+      >f</a
+      ><a name="576"
+      > </a
+      ><a name="577" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="578"
+      > </a
+      ><a name="579" href="category.category.builder.html#553" class="Bound"
+      >f</a
+      ><a name="580"
+      >
+    </a
+      ><a name="585" href="category.category.builder.html#585" class="Field"
+      >right-id</a
+      ><a name="593"
+      > </a
+      ><a name="594" class="Symbol"
+      >:</a
+      ><a name="595"
+      > </a
+      ><a name="596" class="Symbol"
+      >{</a
+      ><a name="597" href="category.category.builder.html#597" class="Bound"
+      >x</a
+      ><a name="598"
+      > </a
+      ><a name="599" href="category.category.builder.html#599" class="Bound"
+      >y</a
+      ><a name="600"
+      > </a
+      ><a name="601" class="Symbol"
+      >:</a
+      ><a name="602"
+      > </a
+      ><a name="603" href="category.category.builder.html#402" class="Bound"
+      >obj</a
+      ><a name="606" class="Symbol"
+      >}</a
+      ><a name="607"
+      > </a
+      ><a name="608" class="Symbol"
+      >(</a
+      ><a name="609" href="category.category.builder.html#609" class="Bound"
+      >f</a
+      ><a name="610"
+      > </a
+      ><a name="611" class="Symbol"
+      >:</a
+      ><a name="612"
+      > </a
+      ><a name="613" href="category.category.builder.html#418" class="Bound"
+      >hom</a
+      ><a name="616"
+      > </a
+      ><a name="617" href="category.category.builder.html#597" class="Bound"
+      >x</a
+      ><a name="618"
+      > </a
+      ><a name="619" href="category.category.builder.html#599" class="Bound"
+      >y</a
+      ><a name="620" class="Symbol"
+      >)</a
+      ><a name="621"
+      > </a
+      ><a name="622" class="Symbol"
+      >&#8594;</a
+      ><a name="623"
+      > </a
+      ><a name="624" href="category.category.builder.html#609" class="Bound"
+      >f</a
+      ><a name="625"
+      > </a
+      ><a name="626" href="category.category.builder.html#475" class="Bound Operator"
+      >&#8728;</a
+      ><a name="627"
+      > </a
+      ><a name="628" href="category.category.builder.html#446" class="Bound"
+      >id</a
+      ><a name="630"
+      > </a
+      ><a name="631" href="category.category.builder.html#597" class="Bound"
+      >x</a
+      ><a name="632"
+      > </a
+      ><a name="633" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="634"
+      > </a
+      ><a name="635" href="category.category.builder.html#609" class="Bound"
+      >f</a
+      ><a name="636"
+      >
+    </a
+      ><a name="641" href="category.category.builder.html#641" class="Field"
+      >assoc</a
+      ><a name="646"
+      > </a
+      ><a name="647" class="Symbol"
+      >:</a
+      ><a name="648"
+      > </a
+      ><a name="649" class="Symbol"
+      >{</a
+      ><a name="650" href="category.category.builder.html#650" class="Bound"
+      >x</a
+      ><a name="651"
+      > </a
+      ><a name="652" href="category.category.builder.html#652" class="Bound"
+      >y</a
+      ><a name="653"
+      > </a
+      ><a name="654" href="category.category.builder.html#654" class="Bound"
+      >z</a
+      ><a name="655"
+      > </a
+      ><a name="656" href="category.category.builder.html#656" class="Bound"
+      >w</a
+      ><a name="657"
+      > </a
+      ><a name="658" class="Symbol"
+      >:</a
+      ><a name="659"
+      > </a
+      ><a name="660" href="category.category.builder.html#402" class="Bound"
+      >obj</a
+      ><a name="663" class="Symbol"
+      >}</a
+      ><a name="664"
+      > </a
+      ><a name="665" class="Symbol"
+      >(</a
+      ><a name="666" href="category.category.builder.html#666" class="Bound"
+      >f</a
+      ><a name="667"
+      > </a
+      ><a name="668" class="Symbol"
+      >:</a
+      ><a name="669"
+      > </a
+      ><a name="670" href="category.category.builder.html#418" class="Bound"
+      >hom</a
+      ><a name="673"
+      > </a
+      ><a name="674" href="category.category.builder.html#654" class="Bound"
+      >z</a
+      ><a name="675"
+      > </a
+      ><a name="676" href="category.category.builder.html#656" class="Bound"
+      >w</a
+      ><a name="677" class="Symbol"
+      >)(</a
+      ><a name="679" href="category.category.builder.html#679" class="Bound"
+      >g</a
+      ><a name="680"
+      > </a
+      ><a name="681" class="Symbol"
+      >:</a
+      ><a name="682"
+      > </a
+      ><a name="683" href="category.category.builder.html#418" class="Bound"
+      >hom</a
+      ><a name="686"
+      > </a
+      ><a name="687" href="category.category.builder.html#652" class="Bound"
+      >y</a
+      ><a name="688"
+      > </a
+      ><a name="689" href="category.category.builder.html#654" class="Bound"
+      >z</a
+      ><a name="690" class="Symbol"
+      >)(</a
+      ><a name="692" href="category.category.builder.html#692" class="Bound"
+      >h</a
+      ><a name="693"
+      > </a
+      ><a name="694" class="Symbol"
+      >:</a
+      ><a name="695"
+      > </a
+      ><a name="696" href="category.category.builder.html#418" class="Bound"
+      >hom</a
+      ><a name="699"
+      > </a
+      ><a name="700" href="category.category.builder.html#650" class="Bound"
+      >x</a
+      ><a name="701"
+      > </a
+      ><a name="702" href="category.category.builder.html#652" class="Bound"
+      >y</a
+      ><a name="703" class="Symbol"
+      >)</a
+      ><a name="704"
+      >
+          </a
+      ><a name="715" class="Symbol"
+      >&#8594;</a
+      ><a name="716"
+      > </a
+      ><a name="717" class="Symbol"
+      >(</a
+      ><a name="718" href="category.category.builder.html#666" class="Bound"
+      >f</a
+      ><a name="719"
+      > </a
+      ><a name="720" href="category.category.builder.html#475" class="Bound Operator"
+      >&#8728;</a
+      ><a name="721"
+      > </a
+      ><a name="722" href="category.category.builder.html#679" class="Bound"
+      >g</a
+      ><a name="723" class="Symbol"
+      >)</a
+      ><a name="724"
+      > </a
+      ><a name="725" href="category.category.builder.html#475" class="Bound Operator"
+      >&#8728;</a
+      ><a name="726"
+      > </a
+      ><a name="727" href="category.category.builder.html#692" class="Bound"
+      >h</a
+      ><a name="728"
+      > </a
+      ><a name="729" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="730"
+      > </a
+      ><a name="731" href="category.category.builder.html#666" class="Bound"
+      >f</a
+      ><a name="732"
+      > </a
+      ><a name="733" href="category.category.builder.html#475" class="Bound Operator"
+      >&#8728;</a
+      ><a name="734"
+      > </a
+      ><a name="735" class="Symbol"
+      >(</a
+      ><a name="736" href="category.category.builder.html#679" class="Bound"
+      >g</a
+      ><a name="737"
+      > </a
+      ><a name="738" href="category.category.builder.html#475" class="Bound Operator"
+      >&#8728;</a
+      ><a name="739"
+      > </a
+      ><a name="740" href="category.category.builder.html#692" class="Bound"
+      >h</a
+      ><a name="741" class="Symbol"
+      >)</a
+      ><a name="742"
+      >
+
+    </a
+      ><a name="748" href="category.category.builder.html#748" class="Field"
+      >trunc</a
+      ><a name="753"
+      > </a
+      ><a name="754" class="Symbol"
+      >:</a
+      ><a name="755"
+      > </a
+      ><a name="756" class="Symbol"
+      >(</a
+      ><a name="757" href="category.category.builder.html#757" class="Bound"
+      >x</a
+      ><a name="758"
+      > </a
+      ><a name="759" href="category.category.builder.html#759" class="Bound"
+      >y</a
+      ><a name="760"
+      > </a
+      ><a name="761" class="Symbol"
+      >:</a
+      ><a name="762"
+      > </a
+      ><a name="763" href="category.category.builder.html#402" class="Bound"
+      >obj</a
+      ><a name="766" class="Symbol"
+      >)</a
+      ><a name="767"
+      > </a
+      ><a name="768" class="Symbol"
+      >&#8594;</a
+      ><a name="769"
+      > </a
+      ><a name="770" href="hott.hlevel.core.html#245" class="Function"
+      >h</a
+      ><a name="771"
+      > </a
+      ><a name="772" class="Number"
+      >2</a
+      ><a name="773"
+      > </a
+      ><a name="774" class="Symbol"
+      >(</a
+      ><a name="775" href="category.category.builder.html#418" class="Bound"
+      >hom</a
+      ><a name="778"
+      > </a
+      ><a name="779" href="category.category.builder.html#757" class="Bound"
+      >x</a
+      ><a name="780"
+      > </a
+      ><a name="781" href="category.category.builder.html#759" class="Bound"
+      >y</a
+      ><a name="782" class="Symbol"
+      >)</a
+      ><a name="783"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

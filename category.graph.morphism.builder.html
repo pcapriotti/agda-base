@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >category.graph.morphism.builder</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="category.graph.morphism.builder.html#1" class="Module"
+      >category.graph.morphism.builder</a
+      ><a name="68"
+      > </a
+      ><a name="69" class="Keyword"
+      >where</a
+      ><a name="74"
+      >
+
+</a
+      ><a name="76" class="Keyword"
+      >open</a
+      ><a name="80"
+      > </a
+      ><a name="81" class="Keyword"
+      >import</a
+      ><a name="87"
+      > </a
+      ><a name="88" href="level.html#1" class="Module"
+      >level</a
+      ><a name="93"
+      >
+</a
+      ><a name="94" class="Keyword"
+      >open</a
+      ><a name="98"
+      > </a
+      ><a name="99" class="Keyword"
+      >import</a
+      ><a name="105"
+      > </a
+      ><a name="106" href="category.graph.core.html#1" class="Module"
+      >category.graph.core</a
+      ><a name="125"
+      >
+
+</a
+      ><a name="127" class="Keyword"
+      >record</a
+      ><a name="133"
+      > </a
+      ><a name="134" href="category.graph.morphism.builder.html#134" class="Record"
+      >MorphismBuilder</a
+      ><a name="149"
+      > </a
+      ><a name="150" class="Symbol"
+      >{</a
+      ><a name="151" href="category.graph.morphism.builder.html#151" class="Bound"
+      >i</a
+      ><a name="152"
+      > </a
+      ><a name="153" href="category.graph.morphism.builder.html#153" class="Bound"
+      >j</a
+      ><a name="154"
+      > </a
+      ><a name="155" href="category.graph.morphism.builder.html#155" class="Bound"
+      >i'</a
+      ><a name="157"
+      > </a
+      ><a name="158" href="category.graph.morphism.builder.html#158" class="Bound"
+      >j'</a
+      ><a name="160" class="Symbol"
+      >}</a
+      ><a name="161"
+      > </a
+      ><a name="162" class="Symbol"
+      >(</a
+      ><a name="163" href="category.graph.morphism.builder.html#163" class="Bound"
+      >W</a
+      ><a name="164"
+      > </a
+      ><a name="165" class="Symbol"
+      >:</a
+      ><a name="166"
+      > </a
+      ><a name="167" href="category.graph.core.html#212" class="Function"
+      >Graph</a
+      ><a name="172"
+      > </a
+      ><a name="173" href="category.graph.morphism.builder.html#151" class="Bound"
+      >i</a
+      ><a name="174"
+      > </a
+      ><a name="175" href="category.graph.morphism.builder.html#153" class="Bound"
+      >j</a
+      ><a name="176" class="Symbol"
+      >)</a
+      ><a name="177"
+      >
+                                   </a
+      ><a name="213" class="Symbol"
+      >(</a
+      ><a name="214" href="category.graph.morphism.builder.html#214" class="Bound"
+      >U</a
+      ><a name="215"
+      > </a
+      ><a name="216" class="Symbol"
+      >:</a
+      ><a name="217"
+      > </a
+      ><a name="218" href="category.graph.core.html#212" class="Function"
+      >Graph</a
+      ><a name="223"
+      > </a
+      ><a name="224" href="category.graph.morphism.builder.html#155" class="Bound"
+      >i'</a
+      ><a name="226"
+      > </a
+      ><a name="227" href="category.graph.morphism.builder.html#158" class="Bound"
+      >j'</a
+      ><a name="229" class="Symbol"
+      >)</a
+      ><a name="230"
+      >
+                                 </a
+      ><a name="264" class="Symbol"
+      >:</a
+      ><a name="265"
+      > </a
+      ><a name="266" class="PrimitiveType"
+      >Set</a
+      ><a name="269"
+      > </a
+      ><a name="270" class="Symbol"
+      >(</a
+      ><a name="271" href="category.graph.morphism.builder.html#151" class="Bound"
+      >i</a
+      ><a name="272"
+      > </a
+      ><a name="273" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="274"
+      > </a
+      ><a name="275" href="category.graph.morphism.builder.html#153" class="Bound"
+      >j</a
+      ><a name="276"
+      > </a
+      ><a name="277" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="278"
+      > </a
+      ><a name="279" href="category.graph.morphism.builder.html#155" class="Bound"
+      >i'</a
+      ><a name="281"
+      > </a
+      ><a name="282" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="283"
+      > </a
+      ><a name="284" href="category.graph.morphism.builder.html#158" class="Bound"
+      >j'</a
+      ><a name="286" class="Symbol"
+      >)</a
+      ><a name="287"
+      > </a
+      ><a name="288" class="Keyword"
+      >where</a
+      ><a name="293"
+      >
+  </a
+      ><a name="296" class="Keyword"
+      >open</a
+      ><a name="300"
+      > </a
+      ><a name="301" href="category.graph.core.html#1094" class="Module"
+      >as-graph</a
+      ><a name="309"
+      > </a
+      ><a name="310" href="category.graph.morphism.builder.html#163" class="Bound"
+      >W</a
+      ><a name="311"
+      >
+  </a
+      ><a name="314" class="Keyword"
+      >open</a
+      ><a name="318"
+      > </a
+      ><a name="319" href="category.graph.core.html#1094" class="Module"
+      >as-graph</a
+      ><a name="327"
+      > </a
+      ><a name="328" href="category.graph.morphism.builder.html#214" class="Bound"
+      >U</a
+      ><a name="329"
+      >
+  </a
+      ><a name="332" class="Keyword"
+      >field</a
+      ><a name="337"
+      >
+    </a
+      ><a name="342" href="category.graph.morphism.builder.html#342" class="Field"
+      >apply</a
+      ><a name="347"
+      > </a
+      ><a name="348" class="Symbol"
+      >:</a
+      ><a name="349"
+      > </a
+      ><a name="350" href="overloading.core.html#274" class="Function"
+      >obj</a
+      ><a name="353"
+      > </a
+      ><a name="354" href="category.graph.morphism.builder.html#163" class="Bound"
+      >W</a
+      ><a name="355"
+      > </a
+      ><a name="356" class="Symbol"
+      >&#8594;</a
+      ><a name="357"
+      > </a
+      ><a name="358" href="overloading.core.html#274" class="Function"
+      >obj</a
+      ><a name="361"
+      > </a
+      ><a name="362" href="category.graph.morphism.builder.html#214" class="Bound"
+      >U</a
+      ><a name="363"
+      >
+    </a
+      ><a name="368" href="category.graph.morphism.builder.html#368" class="Field"
+      >map</a
+      ><a name="371"
+      > </a
+      ><a name="372" class="Symbol"
+      >:</a
+      ><a name="373"
+      > </a
+      ><a name="374" class="Symbol"
+      >{</a
+      ><a name="375" href="category.graph.morphism.builder.html#375" class="Bound"
+      >x</a
+      ><a name="376"
+      > </a
+      ><a name="377" href="category.graph.morphism.builder.html#377" class="Bound"
+      >y</a
+      ><a name="378"
+      > </a
+      ><a name="379" class="Symbol"
+      >:</a
+      ><a name="380"
+      > </a
+      ><a name="381" href="overloading.core.html#274" class="Function"
+      >obj</a
+      ><a name="384"
+      > </a
+      ><a name="385" href="category.graph.morphism.builder.html#163" class="Bound"
+      >W</a
+      ><a name="386" class="Symbol"
+      >}</a
+      ><a name="387"
+      > </a
+      ><a name="388" class="Symbol"
+      >&#8594;</a
+      ><a name="389"
+      > </a
+      ><a name="390" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="393"
+      > </a
+      ><a name="394" href="category.graph.morphism.builder.html#375" class="Bound"
+      >x</a
+      ><a name="395"
+      > </a
+      ><a name="396" href="category.graph.morphism.builder.html#377" class="Bound"
+      >y</a
+      ><a name="397"
+      > </a
+      ><a name="398" class="Symbol"
+      >&#8594;</a
+      ><a name="399"
+      > </a
+      ><a name="400" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="403"
+      > </a
+      ><a name="404" class="Symbol"
+      >(</a
+      ><a name="405" href="category.graph.morphism.builder.html#342" class="Bound"
+      >apply</a
+      ><a name="410"
+      > </a
+      ><a name="411" href="category.graph.morphism.builder.html#375" class="Bound"
+      >x</a
+      ><a name="412" class="Symbol"
+      >)</a
+      ><a name="413"
+      > </a
+      ><a name="414" class="Symbol"
+      >(</a
+      ><a name="415" href="category.graph.morphism.builder.html#342" class="Bound"
+      >apply</a
+      ><a name="420"
+      > </a
+      ><a name="421" href="category.graph.morphism.builder.html#377" class="Bound"
+      >y</a
+      ><a name="422" class="Symbol"
+      >)</a
+      ><a name="423"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

@@ -1,0 +1,2946 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >sets.nat.properties</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="sets.nat.properties.html#1" class="Module"
+      >sets.nat.properties</a
+      ><a name="56"
+      > </a
+      ><a name="57" class="Keyword"
+      >where</a
+      ><a name="62"
+      >
+
+</a
+      ><a name="64" class="Keyword"
+      >open</a
+      ><a name="68"
+      > </a
+      ><a name="69" class="Keyword"
+      >import</a
+      ><a name="75"
+      > </a
+      ><a name="76" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="89"
+      >
+</a
+      ><a name="90" class="Keyword"
+      >open</a
+      ><a name="94"
+      > </a
+      ><a name="95" class="Keyword"
+      >import</a
+      ><a name="101"
+      > </a
+      ><a name="102" href="equality.calculus.html#1" class="Module"
+      >equality.calculus</a
+      ><a name="119"
+      >
+</a
+      ><a name="120" class="Keyword"
+      >open</a
+      ><a name="124"
+      > </a
+      ><a name="125" class="Keyword"
+      >import</a
+      ><a name="131"
+      > </a
+      ><a name="132" href="equality.reasoning.html#1" class="Module"
+      >equality.reasoning</a
+      ><a name="150"
+      >
+</a
+      ><a name="151" class="Keyword"
+      >open</a
+      ><a name="155"
+      > </a
+      ><a name="156" class="Keyword"
+      >import</a
+      ><a name="162"
+      > </a
+      ><a name="163" href="function.isomorphism.core.html#1" class="Module"
+      >function.isomorphism.core</a
+      ><a name="188"
+      >
+</a
+      ><a name="189" class="Keyword"
+      >open</a
+      ><a name="193"
+      > </a
+      ><a name="194" class="Keyword"
+      >import</a
+      ><a name="200"
+      > </a
+      ><a name="201" href="sets.nat.core.html#1" class="Module"
+      >sets.nat.core</a
+      ><a name="214"
+      >
+
+</a
+      ><a name="216" href="sets.nat.properties.html#216" class="Function"
+      >+-left-unit</a
+      ><a name="227"
+      > </a
+      ><a name="228" class="Symbol"
+      >:</a
+      ><a name="229"
+      > </a
+      ><a name="230" class="Symbol"
+      >&#8704;</a
+      ><a name="231"
+      > </a
+      ><a name="232" href="sets.nat.properties.html#232" class="Bound"
+      >n</a
+      ><a name="233"
+      > </a
+      ><a name="234" class="Symbol"
+      >&#8594;</a
+      ><a name="235"
+      > </a
+      ><a name="236" class="Number"
+      >0</a
+      ><a name="237"
+      > </a
+      ><a name="238" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="239"
+      > </a
+      ><a name="240" href="sets.nat.properties.html#232" class="Bound"
+      >n</a
+      ><a name="241"
+      > </a
+      ><a name="242" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="243"
+      > </a
+      ><a name="244" href="sets.nat.properties.html#232" class="Bound"
+      >n</a
+      ><a name="245"
+      >
+</a
+      ><a name="246" href="sets.nat.properties.html#216" class="Function"
+      >+-left-unit</a
+      ><a name="257"
+      > </a
+      ><a name="258" href="sets.nat.properties.html#258" class="Bound"
+      >n</a
+      ><a name="259"
+      > </a
+      ><a name="260" class="Symbol"
+      >=</a
+      ><a name="261"
+      > </a
+      ><a name="262" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="266"
+      >
+
+</a
+      ><a name="268" href="sets.nat.properties.html#268" class="Function"
+      >+-right-unit</a
+      ><a name="280"
+      > </a
+      ><a name="281" class="Symbol"
+      >:</a
+      ><a name="282"
+      > </a
+      ><a name="283" class="Symbol"
+      >&#8704;</a
+      ><a name="284"
+      > </a
+      ><a name="285" href="sets.nat.properties.html#285" class="Bound"
+      >n</a
+      ><a name="286"
+      > </a
+      ><a name="287" class="Symbol"
+      >&#8594;</a
+      ><a name="288"
+      > </a
+      ><a name="289" href="sets.nat.properties.html#285" class="Bound"
+      >n</a
+      ><a name="290"
+      > </a
+      ><a name="291" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="292"
+      > </a
+      ><a name="293" class="Number"
+      >0</a
+      ><a name="294"
+      > </a
+      ><a name="295" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="296"
+      > </a
+      ><a name="297" href="sets.nat.properties.html#285" class="Bound"
+      >n</a
+      ><a name="298"
+      >
+</a
+      ><a name="299" href="sets.nat.properties.html#268" class="Function"
+      >+-right-unit</a
+      ><a name="311"
+      > </a
+      ><a name="312" href="sets.nat.core.html#294" class="InductiveConstructor"
+      >zero</a
+      ><a name="316"
+      > </a
+      ><a name="317" class="Symbol"
+      >=</a
+      ><a name="318"
+      > </a
+      ><a name="319" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="323"
+      >
+</a
+      ><a name="324" href="sets.nat.properties.html#268" class="Function"
+      >+-right-unit</a
+      ><a name="336"
+      > </a
+      ><a name="337" class="Symbol"
+      >(</a
+      ><a name="338" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="341"
+      > </a
+      ><a name="342" href="sets.nat.properties.html#342" class="Bound"
+      >n</a
+      ><a name="343" class="Symbol"
+      >)</a
+      ><a name="344"
+      > </a
+      ><a name="345" class="Symbol"
+      >=</a
+      ><a name="346"
+      > </a
+      ><a name="347" href="equality.core.html#364" class="Function"
+      >cong</a
+      ><a name="351"
+      > </a
+      ><a name="352" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="355"
+      > </a
+      ><a name="356" class="Symbol"
+      >(</a
+      ><a name="357" href="sets.nat.properties.html#268" class="Function"
+      >+-right-unit</a
+      ><a name="369"
+      > </a
+      ><a name="370" href="sets.nat.properties.html#342" class="Bound"
+      >n</a
+      ><a name="371" class="Symbol"
+      >)</a
+      ><a name="372"
+      >
+
+</a
+      ><a name="374" href="sets.nat.properties.html#374" class="Function"
+      >+-associativity</a
+      ><a name="389"
+      > </a
+      ><a name="390" class="Symbol"
+      >:</a
+      ><a name="391"
+      > </a
+      ><a name="392" class="Symbol"
+      >&#8704;</a
+      ><a name="393"
+      > </a
+      ><a name="394" href="sets.nat.properties.html#394" class="Bound"
+      >n</a
+      ><a name="395"
+      > </a
+      ><a name="396" href="sets.nat.properties.html#396" class="Bound"
+      >m</a
+      ><a name="397"
+      > </a
+      ><a name="398" href="sets.nat.properties.html#398" class="Bound"
+      >p</a
+      ><a name="399"
+      > </a
+      ><a name="400" class="Symbol"
+      >&#8594;</a
+      ><a name="401"
+      > </a
+      ><a name="402" href="sets.nat.properties.html#394" class="Bound"
+      >n</a
+      ><a name="403"
+      > </a
+      ><a name="404" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="405"
+      > </a
+      ><a name="406" href="sets.nat.properties.html#396" class="Bound"
+      >m</a
+      ><a name="407"
+      > </a
+      ><a name="408" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="409"
+      > </a
+      ><a name="410" href="sets.nat.properties.html#398" class="Bound"
+      >p</a
+      ><a name="411"
+      > </a
+      ><a name="412" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="413"
+      > </a
+      ><a name="414" href="sets.nat.properties.html#394" class="Bound"
+      >n</a
+      ><a name="415"
+      > </a
+      ><a name="416" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="417"
+      > </a
+      ><a name="418" class="Symbol"
+      >(</a
+      ><a name="419" href="sets.nat.properties.html#396" class="Bound"
+      >m</a
+      ><a name="420"
+      > </a
+      ><a name="421" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="422"
+      > </a
+      ><a name="423" href="sets.nat.properties.html#398" class="Bound"
+      >p</a
+      ><a name="424" class="Symbol"
+      >)</a
+      ><a name="425"
+      >
+</a
+      ><a name="426" href="sets.nat.properties.html#374" class="Function"
+      >+-associativity</a
+      ><a name="441"
+      > </a
+      ><a name="442" href="sets.nat.core.html#294" class="InductiveConstructor"
+      >0</a
+      ><a name="443"
+      > </a
+      ><a name="444" href="sets.nat.properties.html#444" class="Bound"
+      >m</a
+      ><a name="445"
+      > </a
+      ><a name="446" href="sets.nat.properties.html#446" class="Bound"
+      >p</a
+      ><a name="447"
+      > </a
+      ><a name="448" class="Symbol"
+      >=</a
+      ><a name="449"
+      > </a
+      ><a name="450" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="454"
+      >
+</a
+      ><a name="455" href="sets.nat.properties.html#374" class="Function"
+      >+-associativity</a
+      ><a name="470"
+      > </a
+      ><a name="471" class="Symbol"
+      >(</a
+      ><a name="472" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="475"
+      > </a
+      ><a name="476" href="sets.nat.properties.html#476" class="Bound"
+      >n</a
+      ><a name="477" class="Symbol"
+      >)</a
+      ><a name="478"
+      > </a
+      ><a name="479" href="sets.nat.properties.html#479" class="Bound"
+      >m</a
+      ><a name="480"
+      > </a
+      ><a name="481" href="sets.nat.properties.html#481" class="Bound"
+      >p</a
+      ><a name="482"
+      > </a
+      ><a name="483" class="Symbol"
+      >=</a
+      ><a name="484"
+      > </a
+      ><a name="485" href="equality.core.html#364" class="Function"
+      >cong</a
+      ><a name="489"
+      > </a
+      ><a name="490" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="493"
+      > </a
+      ><a name="494" class="Symbol"
+      >(</a
+      ><a name="495" href="sets.nat.properties.html#374" class="Function"
+      >+-associativity</a
+      ><a name="510"
+      > </a
+      ><a name="511" href="sets.nat.properties.html#476" class="Bound"
+      >n</a
+      ><a name="512"
+      > </a
+      ><a name="513" href="sets.nat.properties.html#479" class="Bound"
+      >m</a
+      ><a name="514"
+      > </a
+      ><a name="515" href="sets.nat.properties.html#481" class="Bound"
+      >p</a
+      ><a name="516" class="Symbol"
+      >)</a
+      ><a name="517"
+      >
+
+</a
+      ><a name="519" href="sets.nat.properties.html#519" class="Function"
+      >+-left-cancel</a
+      ><a name="532"
+      > </a
+      ><a name="533" class="Symbol"
+      >:</a
+      ><a name="534"
+      > </a
+      ><a name="535" class="Symbol"
+      >&#8704;</a
+      ><a name="536"
+      > </a
+      ><a name="537" href="sets.nat.properties.html#537" class="Bound"
+      >n</a
+      ><a name="538"
+      > </a
+      ><a name="539" class="Symbol"
+      >&#8594;</a
+      ><a name="540"
+      > </a
+      ><a name="541" href="function.isomorphism.core.html#1699" class="Function"
+      >injective</a
+      ><a name="550"
+      > </a
+      ><a name="551" class="Symbol"
+      >(</a
+      ><a name="552" href="sets.nat.core.html#458" class="Function Operator"
+      >_+_</a
+      ><a name="555"
+      > </a
+      ><a name="556" href="sets.nat.properties.html#537" class="Bound"
+      >n</a
+      ><a name="557" class="Symbol"
+      >)</a
+      ><a name="558"
+      >
+</a
+      ><a name="559" href="sets.nat.properties.html#519" class="Function"
+      >+-left-cancel</a
+      ><a name="572"
+      > </a
+      ><a name="573" href="sets.nat.core.html#294" class="InductiveConstructor"
+      >0</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="sets.nat.properties.html#575" class="Bound"
+      >p</a
+      ><a name="576"
+      > </a
+      ><a name="577" class="Symbol"
+      >=</a
+      ><a name="578"
+      > </a
+      ><a name="579" href="sets.nat.properties.html#575" class="Bound"
+      >p</a
+      ><a name="580"
+      >
+</a
+      ><a name="581" href="sets.nat.properties.html#519" class="Function"
+      >+-left-cancel</a
+      ><a name="594"
+      > </a
+      ><a name="595" class="Symbol"
+      >(</a
+      ><a name="596" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="599"
+      > </a
+      ><a name="600" href="sets.nat.properties.html#600" class="Bound"
+      >n</a
+      ><a name="601" class="Symbol"
+      >)</a
+      ><a name="602"
+      > </a
+      ><a name="603" href="sets.nat.properties.html#603" class="Bound"
+      >p</a
+      ><a name="604"
+      > </a
+      ><a name="605" class="Symbol"
+      >=</a
+      ><a name="606"
+      > </a
+      ><a name="607" href="sets.nat.properties.html#519" class="Function"
+      >+-left-cancel</a
+      ><a name="620"
+      > </a
+      ><a name="621" href="sets.nat.properties.html#600" class="Bound"
+      >n</a
+      ><a name="622"
+      > </a
+      ><a name="623" class="Symbol"
+      >(</a
+      ><a name="624" href="equality.core.html#364" class="Function"
+      >cong</a
+      ><a name="628"
+      > </a
+      ><a name="629" href="sets.nat.core.html#407" class="Function"
+      >pred</a
+      ><a name="633"
+      > </a
+      ><a name="634" href="sets.nat.properties.html#603" class="Bound"
+      >p</a
+      ><a name="635" class="Symbol"
+      >)</a
+      ><a name="636"
+      >
+
+</a
+      ><a name="638" href="sets.nat.properties.html#638" class="Function"
+      >right-distr</a
+      ><a name="649"
+      > </a
+      ><a name="650" class="Symbol"
+      >:</a
+      ><a name="651"
+      > </a
+      ><a name="652" class="Symbol"
+      >&#8704;</a
+      ><a name="653"
+      > </a
+      ><a name="654" href="sets.nat.properties.html#654" class="Bound"
+      >n</a
+      ><a name="655"
+      > </a
+      ><a name="656" href="sets.nat.properties.html#656" class="Bound"
+      >m</a
+      ><a name="657"
+      > </a
+      ><a name="658" href="sets.nat.properties.html#658" class="Bound"
+      >p</a
+      ><a name="659"
+      > </a
+      ><a name="660" class="Symbol"
+      >&#8594;</a
+      ><a name="661"
+      > </a
+      ><a name="662" class="Symbol"
+      >(</a
+      ><a name="663" href="sets.nat.properties.html#654" class="Bound"
+      >n</a
+      ><a name="664"
+      > </a
+      ><a name="665" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="666"
+      > </a
+      ><a name="667" href="sets.nat.properties.html#656" class="Bound"
+      >m</a
+      ><a name="668" class="Symbol"
+      >)</a
+      ><a name="669"
+      > </a
+      ><a name="670" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="671"
+      > </a
+      ><a name="672" href="sets.nat.properties.html#658" class="Bound"
+      >p</a
+      ><a name="673"
+      > </a
+      ><a name="674" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="675"
+      > </a
+      ><a name="676" href="sets.nat.properties.html#654" class="Bound"
+      >n</a
+      ><a name="677"
+      > </a
+      ><a name="678" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="679"
+      > </a
+      ><a name="680" href="sets.nat.properties.html#658" class="Bound"
+      >p</a
+      ><a name="681"
+      > </a
+      ><a name="682" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="683"
+      > </a
+      ><a name="684" href="sets.nat.properties.html#656" class="Bound"
+      >m</a
+      ><a name="685"
+      > </a
+      ><a name="686" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="687"
+      > </a
+      ><a name="688" href="sets.nat.properties.html#658" class="Bound"
+      >p</a
+      ><a name="689"
+      >
+</a
+      ><a name="690" href="sets.nat.properties.html#638" class="Function"
+      >right-distr</a
+      ><a name="701"
+      > </a
+      ><a name="702" href="sets.nat.core.html#294" class="InductiveConstructor"
+      >0</a
+      ><a name="703"
+      > </a
+      ><a name="704" href="sets.nat.properties.html#704" class="Bound"
+      >m</a
+      ><a name="705"
+      > </a
+      ><a name="706" href="sets.nat.properties.html#706" class="Bound"
+      >p</a
+      ><a name="707"
+      > </a
+      ><a name="708" class="Symbol"
+      >=</a
+      ><a name="709"
+      > </a
+      ><a name="710" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="714"
+      >
+</a
+      ><a name="715" href="sets.nat.properties.html#638" class="Function"
+      >right-distr</a
+      ><a name="726"
+      > </a
+      ><a name="727" class="Symbol"
+      >(</a
+      ><a name="728" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="731"
+      > </a
+      ><a name="732" href="sets.nat.properties.html#732" class="Bound"
+      >n</a
+      ><a name="733" class="Symbol"
+      >)</a
+      ><a name="734"
+      > </a
+      ><a name="735" href="sets.nat.properties.html#735" class="Bound"
+      >m</a
+      ><a name="736"
+      > </a
+      ><a name="737" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="738"
+      > </a
+      ><a name="739" class="Symbol"
+      >=</a
+      ><a name="740"
+      > </a
+      ><a name="741" href="equality.reasoning.html#423" class="Function Operator"
+      >begin</a
+      ><a name="746"
+      >
+    </a
+      ><a name="751" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="752"
+      > </a
+      ><a name="753" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="754"
+      > </a
+      ><a name="755" class="Symbol"
+      >(</a
+      ><a name="756" href="sets.nat.properties.html#732" class="Bound"
+      >n</a
+      ><a name="757"
+      > </a
+      ><a name="758" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="759"
+      > </a
+      ><a name="760" href="sets.nat.properties.html#735" class="Bound"
+      >m</a
+      ><a name="761" class="Symbol"
+      >)</a
+      ><a name="762"
+      > </a
+      ><a name="763" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="764"
+      > </a
+      ><a name="765" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="766"
+      >
+  </a
+      ><a name="769" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="771"
+      > </a
+      ><a name="772" href="equality.core.html#364" class="Function"
+      >cong</a
+      ><a name="776"
+      > </a
+      ><a name="777" class="Symbol"
+      >(</a
+      ><a name="778" href="sets.nat.core.html#458" class="Function Operator"
+      >_+_</a
+      ><a name="781"
+      > </a
+      ><a name="782" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="783" class="Symbol"
+      >)</a
+      ><a name="784"
+      > </a
+      ><a name="785" class="Symbol"
+      >(</a
+      ><a name="786" href="sets.nat.properties.html#638" class="Function"
+      >right-distr</a
+      ><a name="797"
+      > </a
+      ><a name="798" href="sets.nat.properties.html#732" class="Bound"
+      >n</a
+      ><a name="799"
+      > </a
+      ><a name="800" href="sets.nat.properties.html#735" class="Bound"
+      >m</a
+      ><a name="801"
+      > </a
+      ><a name="802" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="803" class="Symbol"
+      >)</a
+      ><a name="804"
+      > </a
+      ><a name="805" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="806"
+      >
+    </a
+      ><a name="811" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="812"
+      > </a
+      ><a name="813" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="814"
+      > </a
+      ><a name="815" class="Symbol"
+      >(</a
+      ><a name="816" href="sets.nat.properties.html#732" class="Bound"
+      >n</a
+      ><a name="817"
+      > </a
+      ><a name="818" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="819"
+      > </a
+      ><a name="820" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="821"
+      > </a
+      ><a name="822" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="823"
+      > </a
+      ><a name="824" href="sets.nat.properties.html#735" class="Bound"
+      >m</a
+      ><a name="825"
+      > </a
+      ><a name="826" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="827"
+      > </a
+      ><a name="828" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="829" class="Symbol"
+      >)</a
+      ><a name="830"
+      >
+  </a
+      ><a name="833" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="835"
+      > </a
+      ><a name="836" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="839"
+      > </a
+      ><a name="840" class="Symbol"
+      >(</a
+      ><a name="841" href="sets.nat.properties.html#374" class="Function"
+      >+-associativity</a
+      ><a name="856"
+      > </a
+      ><a name="857" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="858"
+      > </a
+      ><a name="859" class="Symbol"
+      >(</a
+      ><a name="860" href="sets.nat.properties.html#732" class="Bound"
+      >n</a
+      ><a name="861"
+      > </a
+      ><a name="862" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="863"
+      > </a
+      ><a name="864" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="865" class="Symbol"
+      >)</a
+      ><a name="866"
+      > </a
+      ><a name="867" class="Symbol"
+      >(</a
+      ><a name="868" href="sets.nat.properties.html#735" class="Bound"
+      >m</a
+      ><a name="869"
+      > </a
+      ><a name="870" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="871"
+      > </a
+      ><a name="872" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="873" class="Symbol"
+      >))</a
+      ><a name="875"
+      > </a
+      ><a name="876" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="877"
+      >
+    </a
+      ><a name="882" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="883"
+      > </a
+      ><a name="884" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="885"
+      > </a
+      ><a name="886" href="sets.nat.properties.html#732" class="Bound"
+      >n</a
+      ><a name="887"
+      > </a
+      ><a name="888" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="889"
+      > </a
+      ><a name="890" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="891"
+      > </a
+      ><a name="892" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="893"
+      > </a
+      ><a name="894" href="sets.nat.properties.html#735" class="Bound"
+      >m</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="897"
+      > </a
+      ><a name="898" href="sets.nat.properties.html#737" class="Bound"
+      >p</a
+      ><a name="899"
+      >
+  </a
+      ><a name="902" href="equality.reasoning.html#594" class="Function Operator"
+      >&#8718;</a
+      ><a name="903"
+      >
+  </a
+      ><a name="906" class="Keyword"
+      >where</a
+      ><a name="911"
+      > </a
+      ><a name="912" class="Keyword"
+      >open</a
+      ><a name="916"
+      > </a
+      ><a name="917" href="equality.reasoning.html#96" class="Module"
+      >&#8801;-Reasoning</a
+      ><a name="928"
+      >
+
+</a
+      ><a name="930" href="sets.nat.properties.html#930" class="Function"
+      >*-left-unit</a
+      ><a name="941"
+      > </a
+      ><a name="942" class="Symbol"
+      >:</a
+      ><a name="943"
+      > </a
+      ><a name="944" class="Symbol"
+      >&#8704;</a
+      ><a name="945"
+      > </a
+      ><a name="946" href="sets.nat.properties.html#946" class="Bound"
+      >n</a
+      ><a name="947"
+      > </a
+      ><a name="948" class="Symbol"
+      >&#8594;</a
+      ><a name="949"
+      > </a
+      ><a name="950" class="Number"
+      >1</a
+      ><a name="951"
+      > </a
+      ><a name="952" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="953"
+      > </a
+      ><a name="954" href="sets.nat.properties.html#946" class="Bound"
+      >n</a
+      ><a name="955"
+      > </a
+      ><a name="956" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="957"
+      > </a
+      ><a name="958" href="sets.nat.properties.html#946" class="Bound"
+      >n</a
+      ><a name="959"
+      >
+</a
+      ><a name="960" href="sets.nat.properties.html#930" class="Function"
+      >*-left-unit</a
+      ><a name="971"
+      > </a
+      ><a name="972" href="sets.nat.properties.html#972" class="Bound"
+      >n</a
+      ><a name="973"
+      > </a
+      ><a name="974" class="Symbol"
+      >=</a
+      ><a name="975"
+      > </a
+      ><a name="976" href="sets.nat.properties.html#268" class="Function"
+      >+-right-unit</a
+      ><a name="988"
+      > </a
+      ><a name="989" href="sets.nat.properties.html#972" class="Bound"
+      >n</a
+      ><a name="990"
+      >
+
+</a
+      ><a name="992" href="sets.nat.properties.html#992" class="Function"
+      >*-right-unit</a
+      ><a name="1004"
+      > </a
+      ><a name="1005" class="Symbol"
+      >:</a
+      ><a name="1006"
+      > </a
+      ><a name="1007" class="Symbol"
+      >&#8704;</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" href="sets.nat.properties.html#1009" class="Bound"
+      >n</a
+      ><a name="1010"
+      > </a
+      ><a name="1011" class="Symbol"
+      >&#8594;</a
+      ><a name="1012"
+      > </a
+      ><a name="1013" href="sets.nat.properties.html#1009" class="Bound"
+      >n</a
+      ><a name="1014"
+      > </a
+      ><a name="1015" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1016"
+      > </a
+      ><a name="1017" class="Number"
+      >1</a
+      ><a name="1018"
+      > </a
+      ><a name="1019" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" href="sets.nat.properties.html#1009" class="Bound"
+      >n</a
+      ><a name="1022"
+      >
+</a
+      ><a name="1023" href="sets.nat.properties.html#992" class="Function"
+      >*-right-unit</a
+      ><a name="1035"
+      > </a
+      ><a name="1036" href="sets.nat.core.html#294" class="InductiveConstructor"
+      >zero</a
+      ><a name="1040"
+      > </a
+      ><a name="1041" class="Symbol"
+      >=</a
+      ><a name="1042"
+      > </a
+      ><a name="1043" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1047"
+      >
+</a
+      ><a name="1048" href="sets.nat.properties.html#992" class="Function"
+      >*-right-unit</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" class="Symbol"
+      >(</a
+      ><a name="1062" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1065"
+      > </a
+      ><a name="1066" href="sets.nat.properties.html#1066" class="Bound"
+      >n</a
+      ><a name="1067" class="Symbol"
+      >)</a
+      ><a name="1068"
+      > </a
+      ><a name="1069" class="Symbol"
+      >=</a
+      ><a name="1070"
+      > </a
+      ><a name="1071" href="equality.core.html#364" class="Function"
+      >cong</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1079"
+      > </a
+      ><a name="1080" class="Symbol"
+      >(</a
+      ><a name="1081" href="sets.nat.properties.html#992" class="Function"
+      >*-right-unit</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" href="sets.nat.properties.html#1066" class="Bound"
+      >n</a
+      ><a name="1095" class="Symbol"
+      >)</a
+      ><a name="1096"
+      >
+
+</a
+      ><a name="1098" href="sets.nat.properties.html#1098" class="Function"
+      >*-associativity</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" class="Symbol"
+      >:</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" class="Symbol"
+      >&#8704;</a
+      ><a name="1117"
+      > </a
+      ><a name="1118" href="sets.nat.properties.html#1118" class="Bound"
+      >n</a
+      ><a name="1119"
+      > </a
+      ><a name="1120" href="sets.nat.properties.html#1120" class="Bound"
+      >m</a
+      ><a name="1121"
+      > </a
+      ><a name="1122" href="sets.nat.properties.html#1122" class="Bound"
+      >p</a
+      ><a name="1123"
+      > </a
+      ><a name="1124" class="Symbol"
+      >&#8594;</a
+      ><a name="1125"
+      > </a
+      ><a name="1126" href="sets.nat.properties.html#1118" class="Bound"
+      >n</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" href="sets.nat.properties.html#1120" class="Bound"
+      >m</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" href="sets.nat.properties.html#1122" class="Bound"
+      >p</a
+      ><a name="1135"
+      > </a
+      ><a name="1136" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1137"
+      > </a
+      ><a name="1138" href="sets.nat.properties.html#1118" class="Bound"
+      >n</a
+      ><a name="1139"
+      > </a
+      ><a name="1140" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1141"
+      > </a
+      ><a name="1142" class="Symbol"
+      >(</a
+      ><a name="1143" href="sets.nat.properties.html#1120" class="Bound"
+      >m</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1146"
+      > </a
+      ><a name="1147" href="sets.nat.properties.html#1122" class="Bound"
+      >p</a
+      ><a name="1148" class="Symbol"
+      >)</a
+      ><a name="1149"
+      >
+</a
+      ><a name="1150" href="sets.nat.properties.html#1098" class="Function"
+      >*-associativity</a
+      ><a name="1165"
+      > </a
+      ><a name="1166" href="sets.nat.core.html#294" class="InductiveConstructor"
+      >0</a
+      ><a name="1167"
+      > </a
+      ><a name="1168" href="sets.nat.properties.html#1168" class="Bound"
+      >m</a
+      ><a name="1169"
+      > </a
+      ><a name="1170" href="sets.nat.properties.html#1170" class="Bound"
+      >p</a
+      ><a name="1171"
+      > </a
+      ><a name="1172" class="Symbol"
+      >=</a
+      ><a name="1173"
+      > </a
+      ><a name="1174" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1178"
+      >
+</a
+      ><a name="1179" href="sets.nat.properties.html#1098" class="Function"
+      >*-associativity</a
+      ><a name="1194"
+      > </a
+      ><a name="1195" class="Symbol"
+      >(</a
+      ><a name="1196" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1199"
+      > </a
+      ><a name="1200" href="sets.nat.properties.html#1200" class="Bound"
+      >n</a
+      ><a name="1201" class="Symbol"
+      >)</a
+      ><a name="1202"
+      > </a
+      ><a name="1203" href="sets.nat.properties.html#1203" class="Bound"
+      >m</a
+      ><a name="1204"
+      > </a
+      ><a name="1205" href="sets.nat.properties.html#1205" class="Bound"
+      >p</a
+      ><a name="1206"
+      > </a
+      ><a name="1207" class="Symbol"
+      >=</a
+      ><a name="1208"
+      >
+    </a
+      ><a name="1213" href="sets.nat.properties.html#638" class="Function"
+      >right-distr</a
+      ><a name="1224"
+      > </a
+      ><a name="1225" href="sets.nat.properties.html#1203" class="Bound"
+      >m</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" class="Symbol"
+      >(</a
+      ><a name="1228" href="sets.nat.properties.html#1200" class="Bound"
+      >n</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" href="sets.nat.properties.html#1203" class="Bound"
+      >m</a
+      ><a name="1233" class="Symbol"
+      >)</a
+      ><a name="1234"
+      > </a
+      ><a name="1235" href="sets.nat.properties.html#1205" class="Bound"
+      >p</a
+      ><a name="1236"
+      >
+  </a
+      ><a name="1239" href="equality.groupoid.html#147" class="Function Operator"
+      >&#8858;</a
+      ><a name="1240"
+      > </a
+      ><a name="1241" href="equality.core.html#364" class="Function"
+      >cong</a
+      ><a name="1245"
+      > </a
+      ><a name="1246" class="Symbol"
+      >(&#955;</a
+      ><a name="1248"
+      > </a
+      ><a name="1249" href="sets.nat.properties.html#1249" class="Bound"
+      >z</a
+      ><a name="1250"
+      > </a
+      ><a name="1251" class="Symbol"
+      >&#8594;</a
+      ><a name="1252"
+      > </a
+      ><a name="1253" class="Symbol"
+      >(</a
+      ><a name="1254" href="sets.nat.properties.html#1203" class="Bound"
+      >m</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1257"
+      > </a
+      ><a name="1258" href="sets.nat.properties.html#1205" class="Bound"
+      >p</a
+      ><a name="1259" class="Symbol"
+      >)</a
+      ><a name="1260"
+      > </a
+      ><a name="1261" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1262"
+      > </a
+      ><a name="1263" href="sets.nat.properties.html#1249" class="Bound"
+      >z</a
+      ><a name="1264" class="Symbol"
+      >)</a
+      ><a name="1265"
+      >
+         </a
+      ><a name="1275" class="Symbol"
+      >(</a
+      ><a name="1276" href="sets.nat.properties.html#1098" class="Function"
+      >*-associativity</a
+      ><a name="1291"
+      > </a
+      ><a name="1292" href="sets.nat.properties.html#1200" class="Bound"
+      >n</a
+      ><a name="1293"
+      > </a
+      ><a name="1294" href="sets.nat.properties.html#1203" class="Bound"
+      >m</a
+      ><a name="1295"
+      > </a
+      ><a name="1296" href="sets.nat.properties.html#1205" class="Bound"
+      >p</a
+      ><a name="1297" class="Symbol"
+      >)</a
+      ><a name="1298"
+      >
+
+</a
+      ><a name="1300" href="sets.nat.properties.html#1300" class="Function"
+      >+-commutativity</a
+      ><a name="1315"
+      > </a
+      ><a name="1316" class="Symbol"
+      >:</a
+      ><a name="1317"
+      > </a
+      ><a name="1318" class="Symbol"
+      >&#8704;</a
+      ><a name="1319"
+      > </a
+      ><a name="1320" href="sets.nat.properties.html#1320" class="Bound"
+      >n</a
+      ><a name="1321"
+      > </a
+      ><a name="1322" href="sets.nat.properties.html#1322" class="Bound"
+      >m</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" class="Symbol"
+      >&#8594;</a
+      ><a name="1325"
+      > </a
+      ><a name="1326" href="sets.nat.properties.html#1320" class="Bound"
+      >n</a
+      ><a name="1327"
+      > </a
+      ><a name="1328" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1329"
+      > </a
+      ><a name="1330" href="sets.nat.properties.html#1322" class="Bound"
+      >m</a
+      ><a name="1331"
+      > </a
+      ><a name="1332" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1333"
+      > </a
+      ><a name="1334" href="sets.nat.properties.html#1322" class="Bound"
+      >m</a
+      ><a name="1335"
+      > </a
+      ><a name="1336" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1337"
+      > </a
+      ><a name="1338" href="sets.nat.properties.html#1320" class="Bound"
+      >n</a
+      ><a name="1339"
+      >
+</a
+      ><a name="1340" href="sets.nat.properties.html#1300" class="Function"
+      >+-commutativity</a
+      ><a name="1355"
+      > </a
+      ><a name="1356" href="sets.nat.core.html#294" class="InductiveConstructor"
+      >0</a
+      ><a name="1357"
+      > </a
+      ><a name="1358" href="sets.nat.properties.html#1358" class="Bound"
+      >m</a
+      ><a name="1359"
+      > </a
+      ><a name="1360" class="Symbol"
+      >=</a
+      ><a name="1361"
+      > </a
+      ><a name="1362" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1365"
+      > </a
+      ><a name="1366" class="Symbol"
+      >(</a
+      ><a name="1367" href="sets.nat.properties.html#268" class="Function"
+      >+-right-unit</a
+      ><a name="1379"
+      > </a
+      ><a name="1380" href="sets.nat.properties.html#1358" class="Bound"
+      >m</a
+      ><a name="1381" class="Symbol"
+      >)</a
+      ><a name="1382"
+      >
+</a
+      ><a name="1383" href="sets.nat.properties.html#1300" class="Function"
+      >+-commutativity</a
+      ><a name="1398"
+      > </a
+      ><a name="1399" class="Symbol"
+      >(</a
+      ><a name="1400" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" href="sets.nat.properties.html#1404" class="Bound"
+      >n</a
+      ><a name="1405" class="Symbol"
+      >)</a
+      ><a name="1406"
+      > </a
+      ><a name="1407" href="sets.nat.properties.html#1407" class="Bound"
+      >m</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" class="Symbol"
+      >=</a
+      ><a name="1410"
+      > </a
+      ><a name="1411" href="equality.reasoning.html#423" class="Function Operator"
+      >begin</a
+      ><a name="1416"
+      >
+    </a
+      ><a name="1421" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1424"
+      > </a
+      ><a name="1425" class="Symbol"
+      >(</a
+      ><a name="1426" href="sets.nat.properties.html#1404" class="Bound"
+      >n</a
+      ><a name="1427"
+      > </a
+      ><a name="1428" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1429"
+      > </a
+      ><a name="1430" href="sets.nat.properties.html#1407" class="Bound"
+      >m</a
+      ><a name="1431" class="Symbol"
+      >)</a
+      ><a name="1432"
+      >
+  </a
+      ><a name="1435" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1437"
+      > </a
+      ><a name="1438" href="equality.core.html#364" class="Function"
+      >cong</a
+      ><a name="1442"
+      > </a
+      ><a name="1443" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1446"
+      > </a
+      ><a name="1447" class="Symbol"
+      >(</a
+      ><a name="1448" href="sets.nat.properties.html#1300" class="Function"
+      >+-commutativity</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" href="sets.nat.properties.html#1404" class="Bound"
+      >n</a
+      ><a name="1465"
+      > </a
+      ><a name="1466" href="sets.nat.properties.html#1407" class="Bound"
+      >m</a
+      ><a name="1467" class="Symbol"
+      >)</a
+      ><a name="1468"
+      > </a
+      ><a name="1469" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1470"
+      >
+    </a
+      ><a name="1475" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1478"
+      > </a
+      ><a name="1479" class="Symbol"
+      >(</a
+      ><a name="1480" href="sets.nat.properties.html#1407" class="Bound"
+      >m</a
+      ><a name="1481"
+      > </a
+      ><a name="1482" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1483"
+      > </a
+      ><a name="1484" href="sets.nat.properties.html#1404" class="Bound"
+      >n</a
+      ><a name="1485" class="Symbol"
+      >)</a
+      ><a name="1486"
+      >
+  </a
+      ><a name="1489" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1491"
+      > </a
+      ><a name="1492" href="sets.nat.properties.html#1553" class="Function"
+      >lem</a
+      ><a name="1495"
+      > </a
+      ><a name="1496" href="sets.nat.properties.html#1407" class="Bound"
+      >m</a
+      ><a name="1497"
+      > </a
+      ><a name="1498" href="sets.nat.properties.html#1404" class="Bound"
+      >n</a
+      ><a name="1499"
+      > </a
+      ><a name="1500" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1501"
+      >
+    </a
+      ><a name="1506" href="sets.nat.properties.html#1407" class="Bound"
+      >m</a
+      ><a name="1507"
+      > </a
+      ><a name="1508" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1509"
+      > </a
+      ><a name="1510" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1513"
+      > </a
+      ><a name="1514" href="sets.nat.properties.html#1404" class="Bound"
+      >n</a
+      ><a name="1515"
+      >
+  </a
+      ><a name="1518" href="equality.reasoning.html#594" class="Function Operator"
+      >&#8718;</a
+      ><a name="1519"
+      >
+  </a
+      ><a name="1522" class="Keyword"
+      >where</a
+      ><a name="1527"
+      >
+    </a
+      ><a name="1532" class="Keyword"
+      >open</a
+      ><a name="1536"
+      > </a
+      ><a name="1537" href="equality.reasoning.html#96" class="Module"
+      >&#8801;-Reasoning</a
+      ><a name="1548"
+      >
+    </a
+      ><a name="1553" href="sets.nat.properties.html#1553" class="Function"
+      >lem</a
+      ><a name="1556"
+      > </a
+      ><a name="1557" class="Symbol"
+      >:</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" class="Symbol"
+      >&#8704;</a
+      ><a name="1560"
+      > </a
+      ><a name="1561" href="sets.nat.properties.html#1561" class="Bound"
+      >n</a
+      ><a name="1562"
+      > </a
+      ><a name="1563" href="sets.nat.properties.html#1563" class="Bound"
+      >m</a
+      ><a name="1564"
+      > </a
+      ><a name="1565" class="Symbol"
+      >&#8594;</a
+      ><a name="1566"
+      > </a
+      ><a name="1567" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1570"
+      > </a
+      ><a name="1571" href="sets.nat.properties.html#1561" class="Bound"
+      >n</a
+      ><a name="1572"
+      > </a
+      ><a name="1573" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1574"
+      > </a
+      ><a name="1575" href="sets.nat.properties.html#1563" class="Bound"
+      >m</a
+      ><a name="1576"
+      > </a
+      ><a name="1577" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1578"
+      > </a
+      ><a name="1579" href="sets.nat.properties.html#1561" class="Bound"
+      >n</a
+      ><a name="1580"
+      > </a
+      ><a name="1581" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1582"
+      > </a
+      ><a name="1583" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" href="sets.nat.properties.html#1563" class="Bound"
+      >m</a
+      ><a name="1588"
+      >
+    </a
+      ><a name="1593" href="sets.nat.properties.html#1553" class="Function"
+      >lem</a
+      ><a name="1596"
+      > </a
+      ><a name="1597" href="sets.nat.core.html#294" class="InductiveConstructor"
+      >0</a
+      ><a name="1598"
+      > </a
+      ><a name="1599" href="sets.nat.properties.html#1599" class="Bound"
+      >m</a
+      ><a name="1600"
+      > </a
+      ><a name="1601" class="Symbol"
+      >=</a
+      ><a name="1602"
+      > </a
+      ><a name="1603" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1607"
+      >
+    </a
+      ><a name="1612" href="sets.nat.properties.html#1553" class="Function"
+      >lem</a
+      ><a name="1615"
+      > </a
+      ><a name="1616" class="Symbol"
+      >(</a
+      ><a name="1617" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1620"
+      > </a
+      ><a name="1621" href="sets.nat.properties.html#1621" class="Bound"
+      >n</a
+      ><a name="1622" class="Symbol"
+      >)</a
+      ><a name="1623"
+      > </a
+      ><a name="1624" href="sets.nat.properties.html#1624" class="Bound"
+      >m</a
+      ><a name="1625"
+      > </a
+      ><a name="1626" class="Symbol"
+      >=</a
+      ><a name="1627"
+      > </a
+      ><a name="1628" href="equality.core.html#364" class="Function"
+      >cong</a
+      ><a name="1632"
+      > </a
+      ><a name="1633" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1636"
+      > </a
+      ><a name="1637" class="Symbol"
+      >(</a
+      ><a name="1638" href="sets.nat.properties.html#1553" class="Function"
+      >lem</a
+      ><a name="1641"
+      > </a
+      ><a name="1642" href="sets.nat.properties.html#1621" class="Bound"
+      >n</a
+      ><a name="1643"
+      > </a
+      ><a name="1644" href="sets.nat.properties.html#1624" class="Bound"
+      >m</a
+      ><a name="1645" class="Symbol"
+      >)</a
+      ><a name="1646"
+      >
+
+</a
+      ><a name="1648" href="sets.nat.properties.html#1648" class="Function"
+      >left-distr</a
+      ><a name="1658"
+      > </a
+      ><a name="1659" class="Symbol"
+      >:</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" class="Symbol"
+      >&#8704;</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" href="sets.nat.properties.html#1663" class="Bound"
+      >n</a
+      ><a name="1664"
+      > </a
+      ><a name="1665" href="sets.nat.properties.html#1665" class="Bound"
+      >m</a
+      ><a name="1666"
+      > </a
+      ><a name="1667" href="sets.nat.properties.html#1667" class="Bound"
+      >p</a
+      ><a name="1668"
+      > </a
+      ><a name="1669" class="Symbol"
+      >&#8594;</a
+      ><a name="1670"
+      > </a
+      ><a name="1671" href="sets.nat.properties.html#1663" class="Bound"
+      >n</a
+      ><a name="1672"
+      > </a
+      ><a name="1673" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1674"
+      > </a
+      ><a name="1675" class="Symbol"
+      >(</a
+      ><a name="1676" href="sets.nat.properties.html#1665" class="Bound"
+      >m</a
+      ><a name="1677"
+      > </a
+      ><a name="1678" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1679"
+      > </a
+      ><a name="1680" href="sets.nat.properties.html#1667" class="Bound"
+      >p</a
+      ><a name="1681" class="Symbol"
+      >)</a
+      ><a name="1682"
+      > </a
+      ><a name="1683" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1684"
+      > </a
+      ><a name="1685" href="sets.nat.properties.html#1663" class="Bound"
+      >n</a
+      ><a name="1686"
+      > </a
+      ><a name="1687" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" href="sets.nat.properties.html#1665" class="Bound"
+      >m</a
+      ><a name="1690"
+      > </a
+      ><a name="1691" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1692"
+      > </a
+      ><a name="1693" href="sets.nat.properties.html#1663" class="Bound"
+      >n</a
+      ><a name="1694"
+      > </a
+      ><a name="1695" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1696"
+      > </a
+      ><a name="1697" href="sets.nat.properties.html#1667" class="Bound"
+      >p</a
+      ><a name="1698"
+      >
+</a
+      ><a name="1699" href="sets.nat.properties.html#1648" class="Function"
+      >left-distr</a
+      ><a name="1709"
+      > </a
+      ><a name="1710" href="sets.nat.core.html#294" class="InductiveConstructor"
+      >0</a
+      ><a name="1711"
+      > </a
+      ><a name="1712" href="sets.nat.properties.html#1712" class="Bound"
+      >m</a
+      ><a name="1713"
+      > </a
+      ><a name="1714" href="sets.nat.properties.html#1714" class="Bound"
+      >p</a
+      ><a name="1715"
+      > </a
+      ><a name="1716" class="Symbol"
+      >=</a
+      ><a name="1717"
+      > </a
+      ><a name="1718" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1722"
+      >
+</a
+      ><a name="1723" href="sets.nat.properties.html#1648" class="Function"
+      >left-distr</a
+      ><a name="1733"
+      > </a
+      ><a name="1734" class="Symbol"
+      >(</a
+      ><a name="1735" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="1738"
+      > </a
+      ><a name="1739" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="1740" class="Symbol"
+      >)</a
+      ><a name="1741"
+      > </a
+      ><a name="1742" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1743"
+      > </a
+      ><a name="1744" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="1745"
+      > </a
+      ><a name="1746" class="Symbol"
+      >=</a
+      ><a name="1747"
+      > </a
+      ><a name="1748" href="equality.reasoning.html#423" class="Function Operator"
+      >begin</a
+      ><a name="1753"
+      >
+    </a
+      ><a name="1758" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1759"
+      > </a
+      ><a name="1760" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1761"
+      > </a
+      ><a name="1762" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="1763"
+      > </a
+      ><a name="1764" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="1767"
+      > </a
+      ><a name="1768" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1769"
+      > </a
+      ><a name="1770" class="Symbol"
+      >(</a
+      ><a name="1771" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1772"
+      > </a
+      ><a name="1773" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1774"
+      > </a
+      ><a name="1775" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="1776" class="Symbol"
+      >)</a
+      ><a name="1777"
+      >
+  </a
+      ><a name="1780" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1782"
+      > </a
+      ><a name="1783" href="sets.nat.properties.html#374" class="Function"
+      >+-associativity</a
+      ><a name="1798"
+      > </a
+      ><a name="1799" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1800"
+      > </a
+      ><a name="1801" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="1802"
+      > </a
+      ><a name="1803" class="Symbol"
+      >_</a
+      ><a name="1804"
+      > </a
+      ><a name="1805" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1806"
+      >
+    </a
+      ><a name="1811" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1812"
+      > </a
+      ><a name="1813" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1814"
+      > </a
+      ><a name="1815" class="Symbol"
+      >(</a
+      ><a name="1816" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="1817"
+      > </a
+      ><a name="1818" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1819"
+      > </a
+      ><a name="1820" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="1821"
+      > </a
+      ><a name="1822" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1823"
+      > </a
+      ><a name="1824" class="Symbol"
+      >(</a
+      ><a name="1825" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1826"
+      > </a
+      ><a name="1827" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1828"
+      > </a
+      ><a name="1829" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="1830" class="Symbol"
+      >))</a
+      ><a name="1832"
+      >
+  </a
+      ><a name="1835" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1837"
+      > </a
+      ><a name="1838" href="equality.core.html#364" class="Function"
+      >cong</a
+      ><a name="1842"
+      > </a
+      ><a name="1843" class="Symbol"
+      >(&#955;</a
+      ><a name="1845"
+      > </a
+      ><a name="1846" href="sets.nat.properties.html#1846" class="Bound"
+      >z</a
+      ><a name="1847"
+      > </a
+      ><a name="1848" class="Symbol"
+      >&#8594;</a
+      ><a name="1849"
+      > </a
+      ><a name="1850" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1851"
+      > </a
+      ><a name="1852" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1853"
+      > </a
+      ><a name="1854" class="Symbol"
+      >(</a
+      ><a name="1855" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="1856"
+      > </a
+      ><a name="1857" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1858"
+      > </a
+      ><a name="1859" href="sets.nat.properties.html#1846" class="Bound"
+      >z</a
+      ><a name="1860" class="Symbol"
+      >))</a
+      ><a name="1862"
+      >
+          </a
+      ><a name="1873" class="Symbol"
+      >(</a
+      ><a name="1874" href="sets.nat.properties.html#1648" class="Function"
+      >left-distr</a
+      ><a name="1884"
+      > </a
+      ><a name="1885" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="1886"
+      > </a
+      ><a name="1887" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1888"
+      > </a
+      ><a name="1889" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="1890" class="Symbol"
+      >)</a
+      ><a name="1891"
+      > </a
+      ><a name="1892" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1893"
+      >
+    </a
+      ><a name="1898" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1899"
+      > </a
+      ><a name="1900" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1901"
+      > </a
+      ><a name="1902" class="Symbol"
+      >(</a
+      ><a name="1903" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="1904"
+      > </a
+      ><a name="1905" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1906"
+      > </a
+      ><a name="1907" class="Symbol"
+      >(</a
+      ><a name="1908" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="1909"
+      > </a
+      ><a name="1910" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1911"
+      > </a
+      ><a name="1912" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1913"
+      > </a
+      ><a name="1914" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1915"
+      > </a
+      ><a name="1916" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="1917"
+      > </a
+      ><a name="1918" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1919"
+      > </a
+      ><a name="1920" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="1921" class="Symbol"
+      >))</a
+      ><a name="1923"
+      >
+  </a
+      ><a name="1926" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1928"
+      > </a
+      ><a name="1929" href="equality.core.html#364" class="Function"
+      >cong</a
+      ><a name="1933"
+      > </a
+      ><a name="1934" class="Symbol"
+      >(</a
+      ><a name="1935" href="sets.nat.core.html#458" class="Function Operator"
+      >_+_</a
+      ><a name="1938"
+      > </a
+      ><a name="1939" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1940" class="Symbol"
+      >)</a
+      ><a name="1941"
+      >
+          </a
+      ><a name="1952" class="Symbol"
+      >(</a
+      ><a name="1953" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1956"
+      > </a
+      ><a name="1957" class="Symbol"
+      >(</a
+      ><a name="1958" href="sets.nat.properties.html#374" class="Function"
+      >+-associativity</a
+      ><a name="1973"
+      > </a
+      ><a name="1974" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="1975"
+      > </a
+      ><a name="1976" class="Symbol"
+      >(</a
+      ><a name="1977" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="1978"
+      > </a
+      ><a name="1979" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="1980"
+      > </a
+      ><a name="1981" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1982" class="Symbol"
+      >)</a
+      ><a name="1983"
+      > </a
+      ><a name="1984" class="Symbol"
+      >_))</a
+      ><a name="1987"
+      > </a
+      ><a name="1988" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1989"
+      >
+    </a
+      ><a name="1994" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="1995"
+      > </a
+      ><a name="1996" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" class="Symbol"
+      >(</a
+      ><a name="1999" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="2000"
+      > </a
+      ><a name="2001" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2002"
+      > </a
+      ><a name="2003" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="2004"
+      > </a
+      ><a name="2005" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2006"
+      > </a
+      ><a name="2007" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2008"
+      > </a
+      ><a name="2009" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2010"
+      > </a
+      ><a name="2011" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="2012"
+      > </a
+      ><a name="2013" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2014"
+      > </a
+      ><a name="2015" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="2016" class="Symbol"
+      >)</a
+      ><a name="2017"
+      >
+  </a
+      ><a name="2020" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="2022"
+      > </a
+      ><a name="2023" href="equality.core.html#364" class="Function"
+      >cong</a
+      ><a name="2027"
+      > </a
+      ><a name="2028" class="Symbol"
+      >(&#955;</a
+      ><a name="2030"
+      > </a
+      ><a name="2031" href="sets.nat.properties.html#2031" class="Bound"
+      >z</a
+      ><a name="2032"
+      > </a
+      ><a name="2033" class="Symbol"
+      >&#8594;</a
+      ><a name="2034"
+      > </a
+      ><a name="2035" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2036"
+      > </a
+      ><a name="2037" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2038"
+      > </a
+      ><a name="2039" class="Symbol"
+      >(</a
+      ><a name="2040" href="sets.nat.properties.html#2031" class="Bound"
+      >z</a
+      ><a name="2041"
+      > </a
+      ><a name="2042" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2043"
+      > </a
+      ><a name="2044" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="2045"
+      > </a
+      ><a name="2046" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2047"
+      > </a
+      ><a name="2048" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="2049" class="Symbol"
+      >))</a
+      ><a name="2051"
+      >
+          </a
+      ><a name="2062" class="Symbol"
+      >(</a
+      ><a name="2063" href="sets.nat.properties.html#1300" class="Function"
+      >+-commutativity</a
+      ><a name="2078"
+      > </a
+      ><a name="2079" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="2080"
+      > </a
+      ><a name="2081" class="Symbol"
+      >(</a
+      ><a name="2082" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="2083"
+      > </a
+      ><a name="2084" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2085"
+      > </a
+      ><a name="2086" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2087" class="Symbol"
+      >))</a
+      ><a name="2089"
+      > </a
+      ><a name="2090" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="2091"
+      >
+    </a
+      ><a name="2096" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2097"
+      > </a
+      ><a name="2098" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2099"
+      > </a
+      ><a name="2100" class="Symbol"
+      >(</a
+      ><a name="2101" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="2102"
+      > </a
+      ><a name="2103" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2104"
+      > </a
+      ><a name="2105" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2106"
+      > </a
+      ><a name="2107" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2108"
+      > </a
+      ><a name="2109" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="2110"
+      > </a
+      ><a name="2111" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2112"
+      > </a
+      ><a name="2113" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="2114"
+      > </a
+      ><a name="2115" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2116"
+      > </a
+      ><a name="2117" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="2118" class="Symbol"
+      >)</a
+      ><a name="2119"
+      >
+  </a
+      ><a name="2122" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="2124"
+      > </a
+      ><a name="2125" href="equality.core.html#364" class="Function"
+      >cong</a
+      ><a name="2129"
+      > </a
+      ><a name="2130" class="Symbol"
+      >(</a
+      ><a name="2131" href="sets.nat.core.html#458" class="Function Operator"
+      >_+_</a
+      ><a name="2134"
+      > </a
+      ><a name="2135" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2136" class="Symbol"
+      >)</a
+      ><a name="2137"
+      > </a
+      ><a name="2138" class="Symbol"
+      >(</a
+      ><a name="2139" href="sets.nat.properties.html#374" class="Function"
+      >+-associativity</a
+      ><a name="2154"
+      > </a
+      ><a name="2155" class="Symbol"
+      >(</a
+      ><a name="2156" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="2157"
+      > </a
+      ><a name="2158" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2159"
+      > </a
+      ><a name="2160" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2161" class="Symbol"
+      >)</a
+      ><a name="2162"
+      > </a
+      ><a name="2163" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="2164"
+      > </a
+      ><a name="2165" class="Symbol"
+      >_)</a
+      ><a name="2167"
+      > </a
+      ><a name="2168" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="2169"
+      >
+    </a
+      ><a name="2174" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2175"
+      > </a
+      ><a name="2176" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2177"
+      > </a
+      ><a name="2178" class="Symbol"
+      >(</a
+      ><a name="2179" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="2180"
+      > </a
+      ><a name="2181" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2182"
+      > </a
+      ><a name="2183" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2184"
+      > </a
+      ><a name="2185" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2186"
+      > </a
+      ><a name="2187" class="Symbol"
+      >(</a
+      ><a name="2188" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="2189"
+      > </a
+      ><a name="2190" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2191"
+      > </a
+      ><a name="2192" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="2193"
+      > </a
+      ><a name="2194" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2195"
+      > </a
+      ><a name="2196" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="2197" class="Symbol"
+      >))</a
+      ><a name="2199"
+      >
+  </a
+      ><a name="2202" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="2204"
+      > </a
+      ><a name="2205" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="2208"
+      > </a
+      ><a name="2209" class="Symbol"
+      >(</a
+      ><a name="2210" href="sets.nat.properties.html#374" class="Function"
+      >+-associativity</a
+      ><a name="2225"
+      > </a
+      ><a name="2226" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2227"
+      > </a
+      ><a name="2228" class="Symbol"
+      >(</a
+      ><a name="2229" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="2230"
+      > </a
+      ><a name="2231" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2232"
+      > </a
+      ><a name="2233" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2234" class="Symbol"
+      >)</a
+      ><a name="2235"
+      > </a
+      ><a name="2236" class="Symbol"
+      >_)</a
+      ><a name="2238"
+      > </a
+      ><a name="2239" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="2240"
+      >
+    </a
+      ><a name="2245" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2246"
+      > </a
+      ><a name="2247" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2248"
+      > </a
+      ><a name="2249" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="2250"
+      > </a
+      ><a name="2251" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2252"
+      > </a
+      ><a name="2253" href="sets.nat.properties.html#1742" class="Bound"
+      >m</a
+      ><a name="2254"
+      > </a
+      ><a name="2255" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2256"
+      > </a
+      ><a name="2257" class="Symbol"
+      >(</a
+      ><a name="2258" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="2259"
+      > </a
+      ><a name="2260" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2261"
+      > </a
+      ><a name="2262" href="sets.nat.properties.html#1739" class="Bound"
+      >n</a
+      ><a name="2263"
+      > </a
+      ><a name="2264" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2265"
+      > </a
+      ><a name="2266" href="sets.nat.properties.html#1744" class="Bound"
+      >p</a
+      ><a name="2267" class="Symbol"
+      >)</a
+      ><a name="2268"
+      >
+  </a
+      ><a name="2271" href="equality.reasoning.html#594" class="Function Operator"
+      >&#8718;</a
+      ><a name="2272"
+      >
+  </a
+      ><a name="2275" class="Keyword"
+      >where</a
+      ><a name="2280"
+      > </a
+      ><a name="2281" class="Keyword"
+      >open</a
+      ><a name="2285"
+      > </a
+      ><a name="2286" href="equality.reasoning.html#96" class="Module"
+      >&#8801;-Reasoning</a
+      ><a name="2297"
+      >
+
+</a
+      ><a name="2299" href="sets.nat.properties.html#2299" class="Function"
+      >left-zero</a
+      ><a name="2308"
+      > </a
+      ><a name="2309" class="Symbol"
+      >:</a
+      ><a name="2310"
+      > </a
+      ><a name="2311" class="Symbol"
+      >&#8704;</a
+      ><a name="2312"
+      > </a
+      ><a name="2313" href="sets.nat.properties.html#2313" class="Bound"
+      >n</a
+      ><a name="2314"
+      > </a
+      ><a name="2315" class="Symbol"
+      >&#8594;</a
+      ><a name="2316"
+      > </a
+      ><a name="2317" class="Number"
+      >0</a
+      ><a name="2318"
+      > </a
+      ><a name="2319" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2320"
+      > </a
+      ><a name="2321" href="sets.nat.properties.html#2313" class="Bound"
+      >n</a
+      ><a name="2322"
+      > </a
+      ><a name="2323" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2324"
+      > </a
+      ><a name="2325" class="Number"
+      >0</a
+      ><a name="2326"
+      >
+</a
+      ><a name="2327" href="sets.nat.properties.html#2299" class="Function"
+      >left-zero</a
+      ><a name="2336"
+      > </a
+      ><a name="2337" href="sets.nat.properties.html#2337" class="Bound"
+      >n</a
+      ><a name="2338"
+      > </a
+      ><a name="2339" class="Symbol"
+      >=</a
+      ><a name="2340"
+      > </a
+      ><a name="2341" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2345"
+      >
+
+</a
+      ><a name="2347" href="sets.nat.properties.html#2347" class="Function"
+      >right-zero</a
+      ><a name="2357"
+      > </a
+      ><a name="2358" class="Symbol"
+      >:</a
+      ><a name="2359"
+      > </a
+      ><a name="2360" class="Symbol"
+      >&#8704;</a
+      ><a name="2361"
+      > </a
+      ><a name="2362" href="sets.nat.properties.html#2362" class="Bound"
+      >n</a
+      ><a name="2363"
+      > </a
+      ><a name="2364" class="Symbol"
+      >&#8594;</a
+      ><a name="2365"
+      > </a
+      ><a name="2366" href="sets.nat.properties.html#2362" class="Bound"
+      >n</a
+      ><a name="2367"
+      > </a
+      ><a name="2368" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2369"
+      > </a
+      ><a name="2370" class="Number"
+      >0</a
+      ><a name="2371"
+      > </a
+      ><a name="2372" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2373"
+      > </a
+      ><a name="2374" class="Number"
+      >0</a
+      ><a name="2375"
+      >
+</a
+      ><a name="2376" href="sets.nat.properties.html#2347" class="Function"
+      >right-zero</a
+      ><a name="2386"
+      > </a
+      ><a name="2387" href="sets.nat.core.html#294" class="InductiveConstructor"
+      >0</a
+      ><a name="2388"
+      > </a
+      ><a name="2389" class="Symbol"
+      >=</a
+      ><a name="2390"
+      > </a
+      ><a name="2391" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2395"
+      >
+</a
+      ><a name="2396" href="sets.nat.properties.html#2347" class="Function"
+      >right-zero</a
+      ><a name="2406"
+      > </a
+      ><a name="2407" class="Symbol"
+      >(</a
+      ><a name="2408" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="2411"
+      > </a
+      ><a name="2412" href="sets.nat.properties.html#2412" class="Bound"
+      >n</a
+      ><a name="2413" class="Symbol"
+      >)</a
+      ><a name="2414"
+      > </a
+      ><a name="2415" class="Symbol"
+      >=</a
+      ><a name="2416"
+      > </a
+      ><a name="2417" href="sets.nat.properties.html#2347" class="Function"
+      >right-zero</a
+      ><a name="2427"
+      > </a
+      ><a name="2428" href="sets.nat.properties.html#2412" class="Bound"
+      >n</a
+      ><a name="2429"
+      >
+
+</a
+      ><a name="2431" href="sets.nat.properties.html#2431" class="Function"
+      >*-commutativity</a
+      ><a name="2446"
+      > </a
+      ><a name="2447" class="Symbol"
+      >:</a
+      ><a name="2448"
+      > </a
+      ><a name="2449" class="Symbol"
+      >&#8704;</a
+      ><a name="2450"
+      > </a
+      ><a name="2451" href="sets.nat.properties.html#2451" class="Bound"
+      >n</a
+      ><a name="2452"
+      > </a
+      ><a name="2453" href="sets.nat.properties.html#2453" class="Bound"
+      >m</a
+      ><a name="2454"
+      > </a
+      ><a name="2455" class="Symbol"
+      >&#8594;</a
+      ><a name="2456"
+      > </a
+      ><a name="2457" href="sets.nat.properties.html#2451" class="Bound"
+      >n</a
+      ><a name="2458"
+      > </a
+      ><a name="2459" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2460"
+      > </a
+      ><a name="2461" href="sets.nat.properties.html#2453" class="Bound"
+      >m</a
+      ><a name="2462"
+      > </a
+      ><a name="2463" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2464"
+      > </a
+      ><a name="2465" href="sets.nat.properties.html#2453" class="Bound"
+      >m</a
+      ><a name="2466"
+      > </a
+      ><a name="2467" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2468"
+      > </a
+      ><a name="2469" href="sets.nat.properties.html#2451" class="Bound"
+      >n</a
+      ><a name="2470"
+      >
+</a
+      ><a name="2471" href="sets.nat.properties.html#2431" class="Function"
+      >*-commutativity</a
+      ><a name="2486"
+      > </a
+      ><a name="2487" href="sets.nat.core.html#294" class="InductiveConstructor"
+      >0</a
+      ><a name="2488"
+      > </a
+      ><a name="2489" href="sets.nat.properties.html#2489" class="Bound"
+      >m</a
+      ><a name="2490"
+      > </a
+      ><a name="2491" class="Symbol"
+      >=</a
+      ><a name="2492"
+      > </a
+      ><a name="2493" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="2496"
+      > </a
+      ><a name="2497" class="Symbol"
+      >(</a
+      ><a name="2498" href="sets.nat.properties.html#2347" class="Function"
+      >right-zero</a
+      ><a name="2508"
+      > </a
+      ><a name="2509" href="sets.nat.properties.html#2489" class="Bound"
+      >m</a
+      ><a name="2510" class="Symbol"
+      >)</a
+      ><a name="2511"
+      >
+</a
+      ><a name="2512" href="sets.nat.properties.html#2431" class="Function"
+      >*-commutativity</a
+      ><a name="2527"
+      > </a
+      ><a name="2528" class="Symbol"
+      >(</a
+      ><a name="2529" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="2532"
+      > </a
+      ><a name="2533" href="sets.nat.properties.html#2533" class="Bound"
+      >n</a
+      ><a name="2534" class="Symbol"
+      >)</a
+      ><a name="2535"
+      > </a
+      ><a name="2536" href="sets.nat.properties.html#2536" class="Bound"
+      >m</a
+      ><a name="2537"
+      > </a
+      ><a name="2538" class="Symbol"
+      >=</a
+      ><a name="2539"
+      > </a
+      ><a name="2540" href="equality.reasoning.html#423" class="Function Operator"
+      >begin</a
+      ><a name="2545"
+      >
+    </a
+      ><a name="2550" href="sets.nat.properties.html#2536" class="Bound"
+      >m</a
+      ><a name="2551"
+      > </a
+      ><a name="2552" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2553"
+      > </a
+      ><a name="2554" href="sets.nat.properties.html#2533" class="Bound"
+      >n</a
+      ><a name="2555"
+      > </a
+      ><a name="2556" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2557"
+      > </a
+      ><a name="2558" href="sets.nat.properties.html#2536" class="Bound"
+      >m</a
+      ><a name="2559"
+      >
+  </a
+      ><a name="2562" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="2564"
+      > </a
+      ><a name="2565" href="equality.core.html#469" class="Function"
+      >cong&#8322;</a
+      ><a name="2570"
+      > </a
+      ><a name="2571" href="sets.nat.core.html#458" class="Function Operator"
+      >_+_</a
+      ><a name="2574"
+      > </a
+      ><a name="2575" class="Symbol"
+      >(</a
+      ><a name="2576" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="2579"
+      > </a
+      ><a name="2580" class="Symbol"
+      >(</a
+      ><a name="2581" href="sets.nat.properties.html#992" class="Function"
+      >*-right-unit</a
+      ><a name="2593"
+      > </a
+      ><a name="2594" href="sets.nat.properties.html#2536" class="Bound"
+      >m</a
+      ><a name="2595" class="Symbol"
+      >))</a
+      ><a name="2597"
+      >
+               </a
+      ><a name="2613" class="Symbol"
+      >(</a
+      ><a name="2614" href="sets.nat.properties.html#2431" class="Function"
+      >*-commutativity</a
+      ><a name="2629"
+      > </a
+      ><a name="2630" href="sets.nat.properties.html#2533" class="Bound"
+      >n</a
+      ><a name="2631"
+      > </a
+      ><a name="2632" href="sets.nat.properties.html#2536" class="Bound"
+      >m</a
+      ><a name="2633" class="Symbol"
+      >)</a
+      ><a name="2634"
+      > </a
+      ><a name="2635" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="2636"
+      >
+    </a
+      ><a name="2641" href="sets.nat.properties.html#2536" class="Bound"
+      >m</a
+      ><a name="2642"
+      > </a
+      ><a name="2643" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2644"
+      > </a
+      ><a name="2645" class="Number"
+      >1</a
+      ><a name="2646"
+      > </a
+      ><a name="2647" href="sets.nat.core.html#458" class="Function Operator"
+      >+</a
+      ><a name="2648"
+      > </a
+      ><a name="2649" href="sets.nat.properties.html#2536" class="Bound"
+      >m</a
+      ><a name="2650"
+      > </a
+      ><a name="2651" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2652"
+      > </a
+      ><a name="2653" href="sets.nat.properties.html#2533" class="Bound"
+      >n</a
+      ><a name="2654"
+      >
+  </a
+      ><a name="2657" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="2659"
+      > </a
+      ><a name="2660" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="2663"
+      > </a
+      ><a name="2664" class="Symbol"
+      >(</a
+      ><a name="2665" href="sets.nat.properties.html#1648" class="Function"
+      >left-distr</a
+      ><a name="2675"
+      > </a
+      ><a name="2676" href="sets.nat.properties.html#2536" class="Bound"
+      >m</a
+      ><a name="2677"
+      > </a
+      ><a name="2678" class="Number"
+      >1</a
+      ><a name="2679"
+      > </a
+      ><a name="2680" href="sets.nat.properties.html#2533" class="Bound"
+      >n</a
+      ><a name="2681" class="Symbol"
+      >)</a
+      ><a name="2682"
+      > </a
+      ><a name="2683" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="2684"
+      >
+    </a
+      ><a name="2689" href="sets.nat.properties.html#2536" class="Bound"
+      >m</a
+      ><a name="2690"
+      > </a
+      ><a name="2691" href="sets.nat.core.html#513" class="Function Operator"
+      >*</a
+      ><a name="2692"
+      > </a
+      ><a name="2693" href="sets.nat.core.html#305" class="InductiveConstructor"
+      >suc</a
+      ><a name="2696"
+      > </a
+      ><a name="2697" href="sets.nat.properties.html#2533" class="Bound"
+      >n</a
+      ><a name="2698"
+      >
+  </a
+      ><a name="2701" href="equality.reasoning.html#594" class="Function Operator"
+      >&#8718;</a
+      ><a name="2702"
+      >
+  </a
+      ><a name="2705" class="Keyword"
+      >where</a
+      ><a name="2710"
+      > </a
+      ><a name="2711" class="Keyword"
+      >open</a
+      ><a name="2715"
+      > </a
+      ><a name="2716" href="equality.reasoning.html#96" class="Module"
+      >&#8801;-Reasoning</a
+      ><a name="2727"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

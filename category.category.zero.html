@@ -1,0 +1,1834 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >category.category.zero</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="category.category.zero.html#1" class="Module"
+      >category.category.zero</a
+      ><a name="59"
+      > </a
+      ><a name="60" class="Keyword"
+      >where</a
+      ><a name="65"
+      >
+
+</a
+      ><a name="67" class="Keyword"
+      >open</a
+      ><a name="71"
+      > </a
+      ><a name="72" class="Keyword"
+      >import</a
+      ><a name="78"
+      > </a
+      ><a name="79" href="level.html#1" class="Module"
+      >level</a
+      ><a name="84"
+      >
+
+</a
+      ><a name="86" class="Keyword"
+      >open</a
+      ><a name="90"
+      > </a
+      ><a name="91" class="Keyword"
+      >import</a
+      ><a name="97"
+      > </a
+      ><a name="98" href="overloading.html#1" class="Module"
+      >overloading</a
+      ><a name="109"
+      >
+
+</a
+      ><a name="111" class="Keyword"
+      >open</a
+      ><a name="115"
+      > </a
+      ><a name="116" class="Keyword"
+      >import</a
+      ><a name="122"
+      > </a
+      ><a name="123" href="category.graph.core.html#1" class="Module"
+      >category.graph.core</a
+      ><a name="142"
+      >
+</a
+      ><a name="143" class="Keyword"
+      >open</a
+      ><a name="147"
+      > </a
+      ><a name="148" class="Keyword"
+      >import</a
+      ><a name="154"
+      > </a
+      ><a name="155" href="category.category.builder.html#1" class="Module"
+      >category.category.builder</a
+      ><a name="180"
+      >
+
+</a
+      ><a name="182" class="Keyword"
+      >record</a
+      ><a name="188"
+      > </a
+      ><a name="189" href="category.category.zero.html#189" class="Record"
+      >IsCategory&#8320;</a
+      ><a name="200"
+      > </a
+      ><a name="201" href="category.category.zero.html#201" class="Bound"
+      >i</a
+      ><a name="202"
+      > </a
+      ><a name="203" href="category.category.zero.html#203" class="Bound"
+      >j</a
+      ><a name="204"
+      > </a
+      ><a name="205" class="Symbol"
+      >(</a
+      ><a name="206" href="category.category.zero.html#206" class="Bound"
+      >W</a
+      ><a name="207"
+      > </a
+      ><a name="208" class="Symbol"
+      >:</a
+      ><a name="209"
+      > </a
+      ><a name="210" href="category.graph.core.html#212" class="Function"
+      >Graph</a
+      ><a name="215"
+      > </a
+      ><a name="216" href="category.category.zero.html#201" class="Bound"
+      >i</a
+      ><a name="217"
+      > </a
+      ><a name="218" href="category.category.zero.html#203" class="Bound"
+      >j</a
+      ><a name="219" class="Symbol"
+      >)</a
+      ><a name="220"
+      > </a
+      ><a name="221" class="Symbol"
+      >:</a
+      ><a name="222"
+      > </a
+      ><a name="223" class="PrimitiveType"
+      >Set</a
+      ><a name="226"
+      > </a
+      ><a name="227" class="Symbol"
+      >(</a
+      ><a name="228" href="category.category.zero.html#201" class="Bound"
+      >i</a
+      ><a name="229"
+      > </a
+      ><a name="230" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="231"
+      > </a
+      ><a name="232" href="category.category.zero.html#203" class="Bound"
+      >j</a
+      ><a name="233" class="Symbol"
+      >)</a
+      ><a name="234"
+      > </a
+      ><a name="235" class="Keyword"
+      >where</a
+      ><a name="240"
+      >
+  </a
+      ><a name="243" class="Keyword"
+      >open</a
+      ><a name="247"
+      > </a
+      ><a name="248" href="category.graph.core.html#1094" class="Module"
+      >as-graph</a
+      ><a name="256"
+      > </a
+      ><a name="257" href="category.category.zero.html#206" class="Bound"
+      >W</a
+      ><a name="258"
+      >
+
+  </a
+      ><a name="262" class="Keyword"
+      >field</a
+      ><a name="267"
+      >
+    </a
+      ><a name="272" href="category.category.zero.html#272" class="Field"
+      >id</a
+      ><a name="274"
+      > </a
+      ><a name="275" class="Symbol"
+      >:</a
+      ><a name="276"
+      > </a
+      ><a name="277" class="Symbol"
+      >(</a
+      ><a name="278" href="category.category.zero.html#278" class="Bound"
+      >x</a
+      ><a name="279"
+      > </a
+      ><a name="280" class="Symbol"
+      >:</a
+      ><a name="281"
+      > </a
+      ><a name="282" href="overloading.core.html#274" class="Function"
+      >obj</a
+      ><a name="285"
+      > </a
+      ><a name="286" href="category.category.zero.html#206" class="Bound"
+      >W</a
+      ><a name="287" class="Symbol"
+      >)</a
+      ><a name="288"
+      > </a
+      ><a name="289" class="Symbol"
+      >&#8594;</a
+      ><a name="290"
+      > </a
+      ><a name="291" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="294"
+      > </a
+      ><a name="295" href="category.category.zero.html#278" class="Bound"
+      >x</a
+      ><a name="296"
+      > </a
+      ><a name="297" href="category.category.zero.html#278" class="Bound"
+      >x</a
+      ><a name="298"
+      >
+    </a
+      ><a name="303" href="category.category.zero.html#303" class="Field Operator"
+      >_&#8728;_</a
+      ><a name="306"
+      > </a
+      ><a name="307" class="Symbol"
+      >:</a
+      ><a name="308"
+      > </a
+      ><a name="309" class="Symbol"
+      >{</a
+      ><a name="310" href="category.category.zero.html#310" class="Bound"
+      >x</a
+      ><a name="311"
+      > </a
+      ><a name="312" href="category.category.zero.html#312" class="Bound"
+      >y</a
+      ><a name="313"
+      > </a
+      ><a name="314" href="category.category.zero.html#314" class="Bound"
+      >z</a
+      ><a name="315"
+      > </a
+      ><a name="316" class="Symbol"
+      >:</a
+      ><a name="317"
+      > </a
+      ><a name="318" href="overloading.core.html#274" class="Function"
+      >obj</a
+      ><a name="321"
+      > </a
+      ><a name="322" href="category.category.zero.html#206" class="Bound"
+      >W</a
+      ><a name="323" class="Symbol"
+      >}</a
+      ><a name="324"
+      > </a
+      ><a name="325" class="Symbol"
+      >&#8594;</a
+      ><a name="326"
+      > </a
+      ><a name="327" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="330"
+      > </a
+      ><a name="331" href="category.category.zero.html#312" class="Bound"
+      >y</a
+      ><a name="332"
+      > </a
+      ><a name="333" href="category.category.zero.html#314" class="Bound"
+      >z</a
+      ><a name="334"
+      > </a
+      ><a name="335" class="Symbol"
+      >&#8594;</a
+      ><a name="336"
+      > </a
+      ><a name="337" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="340"
+      > </a
+      ><a name="341" href="category.category.zero.html#310" class="Bound"
+      >x</a
+      ><a name="342"
+      > </a
+      ><a name="343" href="category.category.zero.html#312" class="Bound"
+      >y</a
+      ><a name="344"
+      > </a
+      ><a name="345" class="Symbol"
+      >&#8594;</a
+      ><a name="346"
+      > </a
+      ><a name="347" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="350"
+      > </a
+      ><a name="351" href="category.category.zero.html#310" class="Bound"
+      >x</a
+      ><a name="352"
+      > </a
+      ><a name="353" href="category.category.zero.html#314" class="Bound"
+      >z</a
+      ><a name="354"
+      >
+
+</a
+      ><a name="356" href="category.category.zero.html#356" class="Function"
+      >Category&#8320;</a
+      ><a name="365"
+      > </a
+      ><a name="366" class="Symbol"
+      >:</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="Symbol"
+      >&#8704;</a
+      ><a name="369"
+      > </a
+      ><a name="370" href="category.category.zero.html#370" class="Bound"
+      >i</a
+      ><a name="371"
+      > </a
+      ><a name="372" href="category.category.zero.html#372" class="Bound"
+      >j</a
+      ><a name="373"
+      > </a
+      ><a name="374" class="Symbol"
+      >&#8594;</a
+      ><a name="375"
+      > </a
+      ><a name="376" class="PrimitiveType"
+      >Set</a
+      ><a name="379"
+      > </a
+      ><a name="380" class="Symbol"
+      >_</a
+      ><a name="381"
+      >
+</a
+      ><a name="382" href="category.category.zero.html#356" class="Function"
+      >Category&#8320;</a
+      ><a name="391"
+      > </a
+      ><a name="392" href="category.category.zero.html#392" class="Bound"
+      >i</a
+      ><a name="393"
+      > </a
+      ><a name="394" href="category.category.zero.html#394" class="Bound"
+      >j</a
+      ><a name="395"
+      > </a
+      ><a name="396" class="Symbol"
+      >=</a
+      ><a name="397"
+      > </a
+      ><a name="398" href="overloading.core.html#142" class="Record"
+      >Bundle</a
+      ><a name="404"
+      > </a
+      ><a name="405" class="Symbol"
+      >(</a
+      ><a name="406" href="category.category.zero.html#189" class="Record"
+      >IsCategory&#8320;</a
+      ><a name="417"
+      > </a
+      ><a name="418" href="category.category.zero.html#392" class="Bound"
+      >i</a
+      ><a name="419"
+      > </a
+      ><a name="420" href="category.category.zero.html#394" class="Bound"
+      >j</a
+      ><a name="421" class="Symbol"
+      >)</a
+      ><a name="422"
+      >
+
+</a
+      ><a name="424" href="category.category.zero.html#424" class="Function"
+      >cat&#8320;-is-set</a
+      ><a name="435"
+      > </a
+      ><a name="436" class="Symbol"
+      >:</a
+      ><a name="437"
+      > </a
+      ><a name="438" class="Symbol"
+      >&#8704;</a
+      ><a name="439"
+      > </a
+      ><a name="440" class="Symbol"
+      >{</a
+      ><a name="441" href="category.category.zero.html#441" class="Bound"
+      >i</a
+      ><a name="442"
+      > </a
+      ><a name="443" href="category.category.zero.html#443" class="Bound"
+      >j</a
+      ><a name="444" class="Symbol"
+      >}</a
+      ><a name="445"
+      > </a
+      ><a name="446" class="Symbol"
+      >&#8594;</a
+      ><a name="447"
+      > </a
+      ><a name="448" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="456"
+      > </a
+      ><a name="457" class="Symbol"
+      >_</a
+      ><a name="458"
+      > </a
+      ><a name="459" class="Symbol"
+      >(</a
+      ><a name="460" class="PrimitiveType"
+      >Set</a
+      ><a name="463"
+      > </a
+      ><a name="464" href="category.category.zero.html#441" class="Bound"
+      >i</a
+      ><a name="465" class="Symbol"
+      >)</a
+      ><a name="466"
+      >
+</a
+      ><a name="467" href="category.category.zero.html#424" class="Function"
+      >cat&#8320;-is-set</a
+      ><a name="478"
+      > </a
+      ><a name="479" class="Symbol"
+      >{</a
+      ><a name="480" href="category.category.zero.html#480" class="Bound"
+      >i</a
+      ><a name="481" class="Symbol"
+      >}{</a
+      ><a name="483" href="category.category.zero.html#483" class="Bound"
+      >j</a
+      ><a name="484" class="Symbol"
+      >}</a
+      ><a name="485"
+      > </a
+      ><a name="486" class="Symbol"
+      >=</a
+      ><a name="487"
+      > </a
+      ><a name="488" href="overloading.core.html#1102" class="Function"
+      >overload-parent</a
+      ><a name="503"
+      > </a
+      ><a name="504" class="Symbol"
+      >(</a
+      ><a name="505" href="category.category.zero.html#189" class="Record"
+      >IsCategory&#8320;</a
+      ><a name="516"
+      > </a
+      ><a name="517" href="category.category.zero.html#480" class="Bound"
+      >i</a
+      ><a name="518"
+      > </a
+      ><a name="519" href="category.category.zero.html#483" class="Bound"
+      >j</a
+      ><a name="520" class="Symbol"
+      >)</a
+      ><a name="521"
+      >
+
+</a
+      ><a name="523" href="category.category.zero.html#523" class="Function"
+      >cat&#8320;-is-gph</a
+      ><a name="534"
+      > </a
+      ><a name="535" class="Symbol"
+      >:</a
+      ><a name="536"
+      > </a
+      ><a name="537" class="Symbol"
+      >&#8704;</a
+      ><a name="538"
+      > </a
+      ><a name="539" class="Symbol"
+      >{</a
+      ><a name="540" href="category.category.zero.html#540" class="Bound"
+      >i</a
+      ><a name="541"
+      > </a
+      ><a name="542" href="category.category.zero.html#542" class="Bound"
+      >j</a
+      ><a name="543" class="Symbol"
+      >}</a
+      ><a name="544"
+      > </a
+      ><a name="545" class="Symbol"
+      >&#8594;</a
+      ><a name="546"
+      > </a
+      ><a name="547" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="555"
+      > </a
+      ><a name="556" class="Symbol"
+      >_</a
+      ><a name="557"
+      > </a
+      ><a name="558" class="Symbol"
+      >(</a
+      ><a name="559" href="category.graph.core.html#212" class="Function"
+      >Graph</a
+      ><a name="564"
+      > </a
+      ><a name="565" href="category.category.zero.html#540" class="Bound"
+      >i</a
+      ><a name="566"
+      > </a
+      ><a name="567" href="category.category.zero.html#542" class="Bound"
+      >j</a
+      ><a name="568" class="Symbol"
+      >)</a
+      ><a name="569"
+      >
+</a
+      ><a name="570" href="category.category.zero.html#523" class="Function"
+      >cat&#8320;-is-gph</a
+      ><a name="581"
+      > </a
+      ><a name="582" class="Symbol"
+      >{</a
+      ><a name="583" href="category.category.zero.html#583" class="Bound"
+      >i</a
+      ><a name="584" class="Symbol"
+      >}{</a
+      ><a name="586" href="category.category.zero.html#586" class="Bound"
+      >j</a
+      ><a name="587" class="Symbol"
+      >}</a
+      ><a name="588"
+      > </a
+      ><a name="589" class="Symbol"
+      >=</a
+      ><a name="590"
+      > </a
+      ><a name="591" href="overloading.core.html#1102" class="Function"
+      >overload-parent</a
+      ><a name="606"
+      > </a
+      ><a name="607" class="Symbol"
+      >(</a
+      ><a name="608" href="category.category.zero.html#189" class="Record"
+      >IsCategory&#8320;</a
+      ><a name="619"
+      > </a
+      ><a name="620" href="category.category.zero.html#583" class="Bound"
+      >i</a
+      ><a name="621"
+      > </a
+      ><a name="622" href="category.category.zero.html#586" class="Bound"
+      >j</a
+      ><a name="623" class="Symbol"
+      >)</a
+      ><a name="624"
+      >
+
+</a
+      ><a name="626" href="category.category.zero.html#626" class="Function"
+      >cat&#8320;-is-cat&#8320;</a
+      ><a name="638"
+      > </a
+      ><a name="639" class="Symbol"
+      >:</a
+      ><a name="640"
+      > </a
+      ><a name="641" class="Symbol"
+      >&#8704;</a
+      ><a name="642"
+      > </a
+      ><a name="643" class="Symbol"
+      >{</a
+      ><a name="644" href="category.category.zero.html#644" class="Bound"
+      >i</a
+      ><a name="645"
+      > </a
+      ><a name="646" href="category.category.zero.html#646" class="Bound"
+      >j</a
+      ><a name="647" class="Symbol"
+      >}</a
+      ><a name="648"
+      > </a
+      ><a name="649" class="Symbol"
+      >&#8594;</a
+      ><a name="650"
+      > </a
+      ><a name="651" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="659"
+      > </a
+      ><a name="660" class="Symbol"
+      >_</a
+      ><a name="661"
+      > </a
+      ><a name="662" class="Symbol"
+      >(</a
+      ><a name="663" href="category.category.zero.html#356" class="Function"
+      >Category&#8320;</a
+      ><a name="672"
+      > </a
+      ><a name="673" href="category.category.zero.html#644" class="Bound"
+      >i</a
+      ><a name="674"
+      > </a
+      ><a name="675" href="category.category.zero.html#646" class="Bound"
+      >j</a
+      ><a name="676" class="Symbol"
+      >)</a
+      ><a name="677"
+      >
+</a
+      ><a name="678" href="category.category.zero.html#626" class="Function"
+      >cat&#8320;-is-cat&#8320;</a
+      ><a name="690"
+      > </a
+      ><a name="691" class="Symbol"
+      >{</a
+      ><a name="692" href="category.category.zero.html#692" class="Bound"
+      >i</a
+      ><a name="693" class="Symbol"
+      >}{</a
+      ><a name="695" href="category.category.zero.html#695" class="Bound"
+      >j</a
+      ><a name="696" class="Symbol"
+      >}</a
+      ><a name="697"
+      > </a
+      ><a name="698" class="Symbol"
+      >=</a
+      ><a name="699"
+      > </a
+      ><a name="700" href="overloading.core.html#985" class="Function"
+      >overload-self</a
+      ><a name="713"
+      > </a
+      ><a name="714" class="Symbol"
+      >(</a
+      ><a name="715" href="category.category.zero.html#356" class="Function"
+      >Category&#8320;</a
+      ><a name="724"
+      > </a
+      ><a name="725" href="category.category.zero.html#692" class="Bound"
+      >i</a
+      ><a name="726"
+      > </a
+      ><a name="727" href="category.category.zero.html#695" class="Bound"
+      >j</a
+      ><a name="728" class="Symbol"
+      >)</a
+      ><a name="729"
+      >
+
+</a
+      ><a name="731" class="Keyword"
+      >private</a
+      ><a name="738"
+      >
+  </a
+      ><a name="741" class="Keyword"
+      >module</a
+      ><a name="747"
+      > </a
+      ><a name="748" href="category.category.zero.html#748" class="Module"
+      >cat&#8320;-statics</a
+      ><a name="760"
+      > </a
+      ><a name="761" class="Symbol"
+      >{</a
+      ><a name="762" href="category.category.zero.html#762" class="Bound"
+      >i</a
+      ><a name="763"
+      > </a
+      ><a name="764" href="category.category.zero.html#764" class="Bound"
+      >j</a
+      ><a name="765"
+      > </a
+      ><a name="766" href="category.category.zero.html#766" class="Bound"
+      >k</a
+      ><a name="767" class="Symbol"
+      >}</a
+      ><a name="768"
+      > </a
+      ><a name="769" class="Symbol"
+      >&#10627;</a
+      ><a name="770"
+      > </a
+      ><a name="771" href="category.category.zero.html#771" class="Bound"
+      >o</a
+      ><a name="772"
+      > </a
+      ><a name="773" class="Symbol"
+      >:</a
+      ><a name="774"
+      > </a
+      ><a name="775" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="783"
+      > </a
+      ><a name="784" href="category.category.zero.html#766" class="Bound"
+      >k</a
+      ><a name="785"
+      > </a
+      ><a name="786" class="Symbol"
+      >(</a
+      ><a name="787" href="category.category.zero.html#356" class="Function"
+      >Category&#8320;</a
+      ><a name="796"
+      > </a
+      ><a name="797" href="category.category.zero.html#762" class="Bound"
+      >i</a
+      ><a name="798"
+      > </a
+      ><a name="799" href="category.category.zero.html#764" class="Bound"
+      >j</a
+      ><a name="800" class="Symbol"
+      >)</a
+      ><a name="801"
+      > </a
+      ><a name="802" class="Symbol"
+      >&#10628;</a
+      ><a name="803"
+      > </a
+      ><a name="804" class="Keyword"
+      >where</a
+      ><a name="809"
+      >
+    </a
+      ><a name="814" class="Keyword"
+      >open</a
+      ><a name="818"
+      > </a
+      ><a name="819" href="overloading.core.html#323" class="Module"
+      >Overload</a
+      ><a name="827"
+      > </a
+      ><a name="828" href="category.category.zero.html#771" class="Bound"
+      >o</a
+      ><a name="829"
+      > </a
+      ><a name="830" class="Keyword"
+      >public</a
+      ><a name="836"
+      > </a
+      ><a name="837" class="Keyword"
+      >using</a
+      ><a name="842"
+      > </a
+      ><a name="843" class="Symbol"
+      >()</a
+      ><a name="845"
+      > </a
+      ><a name="846" class="Keyword"
+      >renaming</a
+      ><a name="854"
+      > </a
+      ><a name="855" class="Symbol"
+      >(</a
+      ><a name="856"
+      >coerce </a
+      ><a name="863" class="Symbol"
+      >to</a
+      ><a name="865"
+      > cat&#8320;</a
+      ><a name="870" class="Symbol"
+      >)</a
+      ><a name="871"
+      >
+  </a
+      ><a name="874" class="Keyword"
+      >module</a
+      ><a name="880"
+      > </a
+      ><a name="881" href="category.category.zero.html#881" class="Module"
+      >cat&#8320;-methods</a
+      ><a name="893"
+      > </a
+      ><a name="894" class="Symbol"
+      >{</a
+      ><a name="895" href="category.category.zero.html#895" class="Bound"
+      >i</a
+      ><a name="896"
+      > </a
+      ><a name="897" href="category.category.zero.html#897" class="Bound"
+      >j</a
+      ><a name="898"
+      > </a
+      ><a name="899" href="category.category.zero.html#899" class="Bound"
+      >k</a
+      ><a name="900" class="Symbol"
+      >}</a
+      ><a name="901"
+      > </a
+      ><a name="902" class="Symbol"
+      >&#10627;</a
+      ><a name="903"
+      > </a
+      ><a name="904" href="category.category.zero.html#904" class="Bound"
+      >o</a
+      ><a name="905"
+      > </a
+      ><a name="906" class="Symbol"
+      >:</a
+      ><a name="907"
+      > </a
+      ><a name="908" href="overloading.core.html#489" class="Record"
+      >OverloadInstance</a
+      ><a name="924"
+      > </a
+      ><a name="925" href="category.category.zero.html#899" class="Bound"
+      >k</a
+      ><a name="926"
+      > </a
+      ><a name="927" href="overloading.core.html#86" class="Record"
+      >default</a
+      ><a name="934"
+      > </a
+      ><a name="935" class="Symbol"
+      >(</a
+      ><a name="936" href="category.category.zero.html#356" class="Function"
+      >Category&#8320;</a
+      ><a name="945"
+      > </a
+      ><a name="946" href="category.category.zero.html#895" class="Bound"
+      >i</a
+      ><a name="947"
+      > </a
+      ><a name="948" href="category.category.zero.html#897" class="Bound"
+      >j</a
+      ><a name="949" class="Symbol"
+      >)</a
+      ><a name="950"
+      > </a
+      ><a name="951" class="Symbol"
+      >&#10628;</a
+      ><a name="952"
+      > </a
+      ><a name="953" class="Keyword"
+      >where</a
+      ><a name="958"
+      >
+    </a
+      ><a name="963" class="Keyword"
+      >open</a
+      ><a name="967"
+      > </a
+      ><a name="968" href="overloading.core.html#489" class="Module"
+      >OverloadInstance</a
+      ><a name="984"
+      > </a
+      ><a name="985" href="category.category.zero.html#904" class="Bound"
+      >o</a
+      ><a name="986"
+      >
+    </a
+      ><a name="991" class="Keyword"
+      >open</a
+      ><a name="995"
+      > </a
+      ><a name="996" href="category.graph.core.html#1094" class="Module"
+      >as-graph</a
+      ><a name="1004"
+      > </a
+      ><a name="1005" href="overloading.core.html#678" class="Function"
+      >target</a
+      ><a name="1011"
+      >
+    </a
+      ><a name="1016" class="Keyword"
+      >open</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" href="category.category.zero.html#189" class="Module"
+      >IsCategory&#8320;</a
+      ><a name="1032"
+      > </a
+      ><a name="1033" class="Symbol"
+      >(</a
+      ><a name="1034" href="overloading.core.html#292" class="Function"
+      >Bundle.struct</a
+      ><a name="1047"
+      > </a
+      ><a name="1048" href="overloading.core.html#678" class="Function"
+      >target</a
+      ><a name="1054" class="Symbol"
+      >)</a
+      ><a name="1055"
+      > </a
+      ><a name="1056" class="Keyword"
+      >public</a
+      ><a name="1062"
+      >
+      </a
+      ><a name="1069" class="Keyword"
+      >hiding</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" class="Symbol"
+      >(</a
+      ><a name="1077"
+      >_&#8728;_</a
+      ><a name="1080" class="Symbol"
+      >;</a
+      ><a name="1081"
+      > id</a
+      ><a name="1084" class="Symbol"
+      >)</a
+      ><a name="1085"
+      >
+
+</a
+      ><a name="1087" class="Keyword"
+      >module</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" href="category.category.zero.html#1094" class="Module"
+      >as-category&#8320;</a
+      ><a name="1106"
+      > </a
+      ><a name="1107" class="Symbol"
+      >{</a
+      ><a name="1108" href="category.category.zero.html#1108" class="Bound"
+      >i</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" href="category.category.zero.html#1110" class="Bound"
+      >j</a
+      ><a name="1111"
+      > </a
+      ><a name="1112" href="category.category.zero.html#1112" class="Bound"
+      >k</a
+      ><a name="1113" class="Symbol"
+      >}</a
+      ><a name="1114"
+      > </a
+      ><a name="1115" class="Symbol"
+      >&#10627;</a
+      ><a name="1116"
+      > </a
+      ><a name="1117" href="category.category.zero.html#1117" class="Bound"
+      >o</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" class="Symbol"
+      >:</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" href="category.category.zero.html#1112" class="Bound"
+      >k</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" class="Symbol"
+      >(</a
+      ><a name="1133" href="category.category.zero.html#356" class="Function"
+      >Category&#8320;</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" href="category.category.zero.html#1108" class="Bound"
+      >i</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" href="category.category.zero.html#1110" class="Bound"
+      >j</a
+      ><a name="1146" class="Symbol"
+      >)</a
+      ><a name="1147"
+      > </a
+      ><a name="1148" class="Symbol"
+      >&#10628;</a
+      ><a name="1149"
+      >
+                    </a
+      ><a name="1170" class="Symbol"
+      >(</a
+      ><a name="1171" href="category.category.zero.html#1171" class="Bound"
+      >source</a
+      ><a name="1177"
+      > </a
+      ><a name="1178" class="Symbol"
+      >:</a
+      ><a name="1179"
+      > </a
+      ><a name="1180" href="overloading.core.html#415" class="Function"
+      >Source</a
+      ><a name="1186"
+      > </a
+      ><a name="1187" href="category.category.zero.html#1117" class="Bound"
+      >o</a
+      ><a name="1188" class="Symbol"
+      >)</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" class="Keyword"
+      >where</a
+      ><a name="1195"
+      >
+  </a
+      ><a name="1198" class="Keyword"
+      >open</a
+      ><a name="1202"
+      > </a
+      ><a name="1203" class="Keyword"
+      >import</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="1223"
+      >
+  </a
+      ><a name="1226" class="Keyword"
+      >private</a
+      ><a name="1233"
+      > </a
+      ><a name="1234" href="category.category.zero.html#1234" class="Function"
+      >target</a
+      ><a name="1240"
+      > </a
+      ><a name="1241" class="Symbol"
+      >=</a
+      ><a name="1242"
+      > </a
+      ><a name="1243" href="overloading.core.html#434" class="Function"
+      >coerce</a
+      ><a name="1249"
+      > </a
+      ><a name="1250" href="category.category.zero.html#1117" class="Bound"
+      >o</a
+      ><a name="1251"
+      > </a
+      ><a name="1252" href="category.category.zero.html#1171" class="Bound"
+      >source</a
+      ><a name="1258"
+      >
+
+  </a
+      ><a name="1262" class="Keyword"
+      >open</a
+      ><a name="1266"
+      > </a
+      ><a name="1267" href="overloading.core.html#729" class="Module"
+      >overload</a
+      ><a name="1275"
+      > </a
+      ><a name="1276" href="overloading.core.html#86" class="Record"
+      >default</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" class="Symbol"
+      >(</a
+      ><a name="1285" href="category.graph.core.html#212" class="Function"
+      >Graph</a
+      ><a name="1290"
+      > </a
+      ><a name="1291" href="category.category.zero.html#1108" class="Bound"
+      >i</a
+      ><a name="1292"
+      > </a
+      ><a name="1293" href="category.category.zero.html#1110" class="Bound"
+      >j</a
+      ><a name="1294" class="Symbol"
+      >)</a
+      ><a name="1295"
+      > </a
+      ><a name="1296" href="category.category.zero.html#1234" class="Function"
+      >target</a
+      ><a name="1302"
+      > </a
+      ><a name="1303" class="Keyword"
+      >public</a
+      ><a name="1309"
+      >
+    </a
+      ><a name="1314" class="Keyword"
+      >renaming</a
+      ><a name="1322"
+      > </a
+      ><a name="1323" class="Symbol"
+      >(</a
+      ><a name="1324"
+      >_instance </a
+      ><a name="1334" class="Symbol"
+      >to</a
+      ><a name="1336"
+      > _parent-instance</a
+      ><a name="1353" class="Symbol"
+      >)</a
+      ><a name="1354"
+      >
+  </a
+      ><a name="1357" class="Keyword"
+      >open</a
+      ><a name="1361"
+      > </a
+      ><a name="1362" href="overloading.core.html#729" class="Module"
+      >overload</a
+      ><a name="1370"
+      > </a
+      ><a name="1371" href="overloading.core.html#86" class="Record"
+      >default</a
+      ><a name="1378"
+      > </a
+      ><a name="1379" class="Symbol"
+      >(</a
+      ><a name="1380" href="category.category.zero.html#356" class="Function"
+      >Category&#8320;</a
+      ><a name="1389"
+      > </a
+      ><a name="1390" href="category.category.zero.html#1108" class="Bound"
+      >i</a
+      ><a name="1391"
+      > </a
+      ><a name="1392" href="category.category.zero.html#1110" class="Bound"
+      >j</a
+      ><a name="1393" class="Symbol"
+      >)</a
+      ><a name="1394"
+      > </a
+      ><a name="1395" href="category.category.zero.html#1234" class="Function"
+      >target</a
+      ><a name="1401"
+      > </a
+      ><a name="1402" class="Keyword"
+      >public</a
+      ><a name="1408"
+      >
+
+  </a
+      ><a name="1412" href="category.category.zero.html#1412" class="Function"
+      >cat-comp</a
+      ><a name="1420"
+      > </a
+      ><a name="1421" class="Symbol"
+      >:</a
+      ><a name="1422"
+      > </a
+      ><a name="1423" href="function.core.html#652" class="Record"
+      >Composition</a
+      ><a name="1434"
+      > </a
+      ><a name="1435" class="Symbol"
+      >_</a
+      ><a name="1436"
+      > </a
+      ><a name="1437" class="Symbol"
+      >_</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" class="Symbol"
+      >_</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" class="Symbol"
+      >_</a
+      ><a name="1442"
+      > </a
+      ><a name="1443" class="Symbol"
+      >_</a
+      ><a name="1444"
+      > </a
+      ><a name="1445" class="Symbol"
+      >_</a
+      ><a name="1446"
+      >
+  </a
+      ><a name="1449" href="category.category.zero.html#1412" class="Function"
+      >cat-comp</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" class="Symbol"
+      >=</a
+      ><a name="1459"
+      > </a
+      ><a name="1460" class="Keyword"
+      >record</a
+      ><a name="1466"
+      >
+    </a
+      ><a name="1471" class="Symbol"
+      >{</a
+      ><a name="1472"
+      > </a
+      ><a name="1473" class="Field"
+      >U&#8321;</a
+      ><a name="1475"
+      > </a
+      ><a name="1476" class="Symbol"
+      >=</a
+      ><a name="1477"
+      > </a
+      ><a name="1478" href="overloading.core.html#274" class="Function"
+      >obj</a
+      ><a name="1481"
+      > </a
+      ><a name="1482" href="category.category.zero.html#1234" class="Function"
+      >target</a
+      ><a name="1488"
+      >
+    </a
+      ><a name="1493" class="Symbol"
+      >;</a
+      ><a name="1494"
+      > </a
+      ><a name="1495" class="Field"
+      >U&#8322;</a
+      ><a name="1497"
+      > </a
+      ><a name="1498" class="Symbol"
+      >=</a
+      ><a name="1499"
+      > </a
+      ><a name="1500" href="overloading.core.html#274" class="Function"
+      >obj</a
+      ><a name="1503"
+      > </a
+      ><a name="1504" href="category.category.zero.html#1234" class="Function"
+      >target</a
+      ><a name="1510"
+      >
+    </a
+      ><a name="1515" class="Symbol"
+      >;</a
+      ><a name="1516"
+      > </a
+      ><a name="1517" class="Field"
+      >U&#8323;</a
+      ><a name="1519"
+      > </a
+      ><a name="1520" class="Symbol"
+      >=</a
+      ><a name="1521"
+      > </a
+      ><a name="1522" href="overloading.core.html#274" class="Function"
+      >obj</a
+      ><a name="1525"
+      > </a
+      ><a name="1526" href="category.category.zero.html#1234" class="Function"
+      >target</a
+      ><a name="1532"
+      >
+    </a
+      ><a name="1537" class="Symbol"
+      >;</a
+      ><a name="1538"
+      > </a
+      ><a name="1539" class="Field"
+      >hom&#8321;&#8322;</a
+      ><a name="1544"
+      > </a
+      ><a name="1545" class="Symbol"
+      >=</a
+      ><a name="1546"
+      > </a
+      ><a name="1547" class="Symbol"
+      >&#955;</a
+      ><a name="1548"
+      > </a
+      ><a name="1549" href="category.category.zero.html#1549" class="Bound"
+      >x</a
+      ><a name="1550"
+      > </a
+      ><a name="1551" href="category.category.zero.html#1551" class="Bound"
+      >y</a
+      ><a name="1552"
+      > </a
+      ><a name="1553" class="Symbol"
+      >&#8594;</a
+      ><a name="1554"
+      > </a
+      ><a name="1555" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" href="category.category.zero.html#1549" class="Bound"
+      >x</a
+      ><a name="1560"
+      > </a
+      ><a name="1561" href="category.category.zero.html#1551" class="Bound"
+      >y</a
+      ><a name="1562"
+      >
+    </a
+      ><a name="1567" class="Symbol"
+      >;</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" class="Field"
+      >hom&#8322;&#8323;</a
+      ><a name="1574"
+      > </a
+      ><a name="1575" class="Symbol"
+      >=</a
+      ><a name="1576"
+      > </a
+      ><a name="1577" class="Symbol"
+      >&#955;</a
+      ><a name="1578"
+      > </a
+      ><a name="1579" href="category.category.zero.html#1579" class="Bound"
+      >x</a
+      ><a name="1580"
+      > </a
+      ><a name="1581" href="category.category.zero.html#1581" class="Bound"
+      >y</a
+      ><a name="1582"
+      > </a
+      ><a name="1583" class="Symbol"
+      >&#8594;</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="1588"
+      > </a
+      ><a name="1589" href="category.category.zero.html#1579" class="Bound"
+      >x</a
+      ><a name="1590"
+      > </a
+      ><a name="1591" href="category.category.zero.html#1581" class="Bound"
+      >y</a
+      ><a name="1592"
+      >
+    </a
+      ><a name="1597" class="Symbol"
+      >;</a
+      ><a name="1598"
+      > </a
+      ><a name="1599" class="Field"
+      >hom&#8321;&#8323;</a
+      ><a name="1604"
+      > </a
+      ><a name="1605" class="Symbol"
+      >=</a
+      ><a name="1606"
+      > </a
+      ><a name="1607" class="Symbol"
+      >&#955;</a
+      ><a name="1608"
+      > </a
+      ><a name="1609" href="category.category.zero.html#1609" class="Bound"
+      >x</a
+      ><a name="1610"
+      > </a
+      ><a name="1611" href="category.category.zero.html#1611" class="Bound"
+      >y</a
+      ><a name="1612"
+      > </a
+      ><a name="1613" class="Symbol"
+      >&#8594;</a
+      ><a name="1614"
+      > </a
+      ><a name="1615" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="1618"
+      > </a
+      ><a name="1619" href="category.category.zero.html#1609" class="Bound"
+      >x</a
+      ><a name="1620"
+      > </a
+      ><a name="1621" href="category.category.zero.html#1611" class="Bound"
+      >y</a
+      ><a name="1622"
+      >
+    </a
+      ><a name="1627" class="Symbol"
+      >;</a
+      ><a name="1628"
+      > </a
+      ><a name="1629" class="Field Operator"
+      >_&#8728;_</a
+      ><a name="1632"
+      > </a
+      ><a name="1633" class="Symbol"
+      >=</a
+      ><a name="1634"
+      > </a
+      ><a name="1635" class="Symbol"
+      >&#955;</a
+      ><a name="1636"
+      > </a
+      ><a name="1637" href="category.category.zero.html#1637" class="Bound"
+      >f</a
+      ><a name="1638"
+      > </a
+      ><a name="1639" href="category.category.zero.html#1639" class="Bound"
+      >g</a
+      ><a name="1640"
+      > </a
+      ><a name="1641" class="Symbol"
+      >&#8594;</a
+      ><a name="1642"
+      > </a
+      ><a name="1643" href="category.category.zero.html#303" class="Function Operator"
+      >IsCategory&#8320;._&#8728;_</a
+      ><a name="1658"
+      > </a
+      ><a name="1659" class="Symbol"
+      >(</a
+      ><a name="1660" href="overloading.core.html#292" class="Function"
+      >Bundle.struct</a
+      ><a name="1673"
+      > </a
+      ><a name="1674" href="category.category.zero.html#1234" class="Function"
+      >target</a
+      ><a name="1680" class="Symbol"
+      >)</a
+      ><a name="1681"
+      > </a
+      ><a name="1682" href="category.category.zero.html#1637" class="Bound"
+      >f</a
+      ><a name="1683"
+      > </a
+      ><a name="1684" href="category.category.zero.html#1639" class="Bound"
+      >g</a
+      ><a name="1685"
+      > </a
+      ><a name="1686" class="Symbol"
+      >}</a
+      ><a name="1687"
+      >
+
+  </a
+      ><a name="1691" href="category.category.zero.html#1691" class="Function"
+      >cat-identity</a
+      ><a name="1703"
+      > </a
+      ><a name="1704" class="Symbol"
+      >:</a
+      ><a name="1705"
+      > </a
+      ><a name="1706" href="function.core.html#996" class="Record"
+      >Identity</a
+      ><a name="1714"
+      > </a
+      ><a name="1715" class="Symbol"
+      >_</a
+      ><a name="1716"
+      > </a
+      ><a name="1717" class="Symbol"
+      >_</a
+      ><a name="1718"
+      >
+  </a
+      ><a name="1721" href="category.category.zero.html#1691" class="Function"
+      >cat-identity</a
+      ><a name="1733"
+      > </a
+      ><a name="1734" class="Symbol"
+      >=</a
+      ><a name="1735"
+      > </a
+      ><a name="1736" class="Keyword"
+      >record</a
+      ><a name="1742"
+      >
+    </a
+      ><a name="1747" class="Symbol"
+      >{</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" class="Field"
+      >U</a
+      ><a name="1750"
+      > </a
+      ><a name="1751" class="Symbol"
+      >=</a
+      ><a name="1752"
+      > </a
+      ><a name="1753" href="overloading.core.html#274" class="Function"
+      >obj</a
+      ><a name="1756"
+      > </a
+      ><a name="1757" href="category.category.zero.html#1234" class="Function"
+      >target</a
+      ><a name="1763"
+      >
+    </a
+      ><a name="1768" class="Symbol"
+      >;</a
+      ><a name="1769"
+      > </a
+      ><a name="1770" class="Field"
+      >endo</a
+      ><a name="1774"
+      > </a
+      ><a name="1775" class="Symbol"
+      >=</a
+      ><a name="1776"
+      > </a
+      ><a name="1777" class="Symbol"
+      >&#955;</a
+      ><a name="1778"
+      > </a
+      ><a name="1779" href="category.category.zero.html#1779" class="Bound"
+      >x</a
+      ><a name="1780"
+      > </a
+      ><a name="1781" class="Symbol"
+      >&#8594;</a
+      ><a name="1782"
+      > </a
+      ><a name="1783" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="1786"
+      > </a
+      ><a name="1787" href="category.category.zero.html#1779" class="Bound"
+      >x</a
+      ><a name="1788"
+      > </a
+      ><a name="1789" href="category.category.zero.html#1779" class="Bound"
+      >x</a
+      ><a name="1790"
+      >
+    </a
+      ><a name="1795" class="Symbol"
+      >;</a
+      ><a name="1796"
+      > </a
+      ><a name="1797" class="Field"
+      >id</a
+      ><a name="1799"
+      > </a
+      ><a name="1800" class="Symbol"
+      >=</a
+      ><a name="1801"
+      > </a
+      ><a name="1802" class="Symbol"
+      >&#955;</a
+      ><a name="1803"
+      > </a
+      ><a name="1804" class="Symbol"
+      >{</a
+      ><a name="1805" href="category.category.zero.html#1805" class="Bound"
+      >x</a
+      ><a name="1806" class="Symbol"
+      >}</a
+      ><a name="1807"
+      > </a
+      ><a name="1808" class="Symbol"
+      >&#8594;</a
+      ><a name="1809"
+      > </a
+      ><a name="1810" href="category.category.zero.html#272" class="Function"
+      >IsCategory&#8320;.id</a
+      ><a name="1824"
+      > </a
+      ><a name="1825" class="Symbol"
+      >(</a
+      ><a name="1826" href="overloading.core.html#292" class="Function"
+      >Bundle.struct</a
+      ><a name="1839"
+      > </a
+      ><a name="1840" href="category.category.zero.html#1234" class="Function"
+      >target</a
+      ><a name="1846" class="Symbol"
+      >)</a
+      ><a name="1847"
+      > </a
+      ><a name="1848" href="category.category.zero.html#1805" class="Bound"
+      >x</a
+      ><a name="1849"
+      > </a
+      ><a name="1850" class="Symbol"
+      >}</a
+      ><a name="1851"
+      >
+
+</a
+      ><a name="1853" href="category.category.zero.html#1853" class="Function"
+      >mk-category&#8320;</a
+      ><a name="1865"
+      > </a
+      ><a name="1866" class="Symbol"
+      >:</a
+      ><a name="1867"
+      > </a
+      ><a name="1868" class="Symbol"
+      >&#8704;</a
+      ><a name="1869"
+      > </a
+      ><a name="1870" class="Symbol"
+      >{</a
+      ><a name="1871" href="category.category.zero.html#1871" class="Bound"
+      >i</a
+      ><a name="1872"
+      > </a
+      ><a name="1873" href="category.category.zero.html#1873" class="Bound"
+      >j</a
+      ><a name="1874" class="Symbol"
+      >}</a
+      ><a name="1875"
+      > </a
+      ><a name="1876" class="Symbol"
+      >&#8594;</a
+      ><a name="1877"
+      > </a
+      ><a name="1878" href="category.category.builder.html#152" class="Record"
+      >Category&#8320;Builder</a
+      ><a name="1894"
+      > </a
+      ><a name="1895" href="category.category.zero.html#1871" class="Bound"
+      >i</a
+      ><a name="1896"
+      > </a
+      ><a name="1897" href="category.category.zero.html#1873" class="Bound"
+      >j</a
+      ><a name="1898"
+      > </a
+      ><a name="1899" class="Symbol"
+      >&#8594;</a
+      ><a name="1900"
+      > </a
+      ><a name="1901" href="category.category.zero.html#356" class="Function"
+      >Category&#8320;</a
+      ><a name="1910"
+      > </a
+      ><a name="1911" href="category.category.zero.html#1871" class="Bound"
+      >i</a
+      ><a name="1912"
+      > </a
+      ><a name="1913" href="category.category.zero.html#1873" class="Bound"
+      >j</a
+      ><a name="1914"
+      >
+</a
+      ><a name="1915" href="category.category.zero.html#1853" class="Function"
+      >mk-category&#8320;</a
+      ><a name="1927"
+      > </a
+      ><a name="1928" href="category.category.zero.html#1928" class="Bound"
+      >b</a
+      ><a name="1929"
+      > </a
+      ><a name="1930" class="Symbol"
+      >=</a
+      ><a name="1931"
+      > </a
+      ><a name="1932" class="Keyword"
+      >let</a
+      ><a name="1935"
+      > </a
+      ><a name="1936" class="Keyword"
+      >module</a
+      ><a name="1942"
+      > </a
+      ><a name="1943" href="category.category.zero.html#1943" class="Module"
+      >B</a
+      ><a name="1944"
+      > </a
+      ><a name="1945" class="Symbol"
+      >=</a
+      ><a name="1946"
+      > </a
+      ><a name="1947" href="category.category.builder.html#152" class="Module"
+      >Category&#8320;Builder</a
+      ><a name="1963"
+      > </a
+      ><a name="1964" href="category.category.zero.html#1928" class="Bound"
+      >b</a
+      ><a name="1965"
+      > </a
+      ><a name="1966" class="Keyword"
+      >in</a
+      ><a name="1968"
+      > </a
+      ><a name="1969" class="Keyword"
+      >record</a
+      ><a name="1975"
+      >
+  </a
+      ><a name="1978" class="Symbol"
+      >{</a
+      ><a name="1979"
+      > </a
+      ><a name="1980" class="Field"
+      >parent</a
+      ><a name="1986"
+      > </a
+      ><a name="1987" class="Symbol"
+      >=</a
+      ><a name="1988"
+      > </a
+      ><a name="1989" href="category.graph.core.html#1339" class="Function"
+      >mk-graph</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" class="Keyword"
+      >record</a
+      ><a name="2004"
+      >
+    </a
+      ><a name="2009" class="Symbol"
+      >{</a
+      ><a name="2010"
+      > </a
+      ><a name="2011" class="Field"
+      >obj</a
+      ><a name="2014"
+      > </a
+      ><a name="2015" class="Symbol"
+      >=</a
+      ><a name="2016"
+      > </a
+      ><a name="2017" href="category.category.builder.html#212" class="Function"
+      >B.obj</a
+      ><a name="2022"
+      >
+    </a
+      ><a name="2027" class="Symbol"
+      >;</a
+      ><a name="2028"
+      > </a
+      ><a name="2029" class="Field"
+      >hom</a
+      ><a name="2032"
+      > </a
+      ><a name="2033" class="Symbol"
+      >=</a
+      ><a name="2034"
+      > </a
+      ><a name="2035" href="category.category.builder.html#228" class="Function"
+      >B.hom</a
+      ><a name="2040"
+      > </a
+      ><a name="2041" class="Symbol"
+      >}</a
+      ><a name="2042"
+      >
+  </a
+      ><a name="2045" class="Symbol"
+      >;</a
+      ><a name="2046"
+      > </a
+      ><a name="2047" class="Field"
+      >struct</a
+      ><a name="2053"
+      > </a
+      ><a name="2054" class="Symbol"
+      >=</a
+      ><a name="2055"
+      > </a
+      ><a name="2056" class="Keyword"
+      >record</a
+      ><a name="2062"
+      >
+    </a
+      ><a name="2067" class="Symbol"
+      >{</a
+      ><a name="2068"
+      > </a
+      ><a name="2069" class="Field"
+      >id</a
+      ><a name="2071"
+      > </a
+      ><a name="2072" class="Symbol"
+      >=</a
+      ><a name="2073"
+      > </a
+      ><a name="2074" href="category.category.builder.html#256" class="Function"
+      >B.id</a
+      ><a name="2078"
+      >
+    </a
+      ><a name="2083" class="Symbol"
+      >;</a
+      ><a name="2084"
+      > </a
+      ><a name="2085" class="Field Operator"
+      >_&#8728;_</a
+      ><a name="2088"
+      > </a
+      ><a name="2089" class="Symbol"
+      >=</a
+      ><a name="2090"
+      > </a
+      ><a name="2091" href="category.category.builder.html#285" class="Function Operator"
+      >B._&#8728;_</a
+      ><a name="2096"
+      > </a
+      ><a name="2097" class="Symbol"
+      >}</a
+      ><a name="2098"
+      > </a
+      ><a name="2099" class="Symbol"
+      >}</a
+      ><a name="2100"
+      >
+
+</a
+      ><a name="2102" class="Keyword"
+      >open</a
+      ><a name="2106"
+      > </a
+      ><a name="2107" href="category.category.zero.html#748" class="Module"
+      >cat&#8320;-statics</a
+      ><a name="2119"
+      > </a
+      ><a name="2120" class="Keyword"
+      >public</a
+      ><a name="2126"
+      >
+</a
+      ><a name="2127" class="Keyword"
+      >open</a
+      ><a name="2131"
+      > </a
+      ><a name="2132" href="category.category.zero.html#881" class="Module"
+      >cat&#8320;-methods</a
+      ><a name="2144"
+      > </a
+      ><a name="2145" class="Keyword"
+      >public</a
+      ><a name="2151"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

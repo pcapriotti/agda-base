@@ -1,0 +1,2042 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >category.groupoid.core</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="category.groupoid.core.html#1" class="Module"
+      >category.groupoid.core</a
+      ><a name="59"
+      > </a
+      ><a name="60" class="Keyword"
+      >where</a
+      ><a name="65"
+      >
+
+</a
+      ><a name="67" class="Keyword"
+      >open</a
+      ><a name="71"
+      > </a
+      ><a name="72" class="Keyword"
+      >import</a
+      ><a name="78"
+      > </a
+      ><a name="79" href="level.html#1" class="Module"
+      >level</a
+      ><a name="84"
+      >
+</a
+      ><a name="85" class="Keyword"
+      >open</a
+      ><a name="89"
+      > </a
+      ><a name="90" class="Keyword"
+      >import</a
+      ><a name="96"
+      > </a
+      ><a name="97" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="110"
+      >
+</a
+      ><a name="111" class="Keyword"
+      >open</a
+      ><a name="115"
+      > </a
+      ><a name="116" class="Keyword"
+      >import</a
+      ><a name="122"
+      > </a
+      ><a name="123" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="136"
+      >
+</a
+      ><a name="137" class="Keyword"
+      >open</a
+      ><a name="141"
+      > </a
+      ><a name="142" class="Keyword"
+      >import</a
+      ><a name="148"
+      > </a
+      ><a name="149" href="overloading.html#1" class="Module"
+      >overloading</a
+      ><a name="160"
+      >
+</a
+      ><a name="161" class="Keyword"
+      >open</a
+      ><a name="165"
+      > </a
+      ><a name="166" class="Keyword"
+      >import</a
+      ><a name="172"
+      > </a
+      ><a name="173" href="category.category.zero.html#1" class="Module"
+      >category.category.zero</a
+      ><a name="195"
+      >
+</a
+      ><a name="196" class="Keyword"
+      >open</a
+      ><a name="200"
+      > </a
+      ><a name="201" class="Keyword"
+      >import</a
+      ><a name="207"
+      > </a
+      ><a name="208" href="category.category.core.html#1" class="Module"
+      >category.category.core</a
+      ><a name="230"
+      >
+</a
+      ><a name="231" class="Keyword"
+      >open</a
+      ><a name="235"
+      > </a
+      ><a name="236" class="Keyword"
+      >import</a
+      ><a name="242"
+      > </a
+      ><a name="243" href="category.graph.core.html#1" class="Module"
+      >category.graph.core</a
+      ><a name="262"
+      >
+</a
+      ><a name="263" class="Keyword"
+      >open</a
+      ><a name="267"
+      > </a
+      ><a name="268" class="Keyword"
+      >import</a
+      ><a name="274"
+      > </a
+      ><a name="275" href="category.groupoid.builder.html#1" class="Module"
+      >category.groupoid.builder</a
+      ><a name="300"
+      >
+</a
+      ><a name="301" class="Keyword"
+      >open</a
+      ><a name="305"
+      > </a
+      ><a name="306" class="Keyword"
+      >import</a
+      ><a name="312"
+      > </a
+      ><a name="313" href="category.groupoid.zero.html#1" class="Module"
+      >category.groupoid.zero</a
+      ><a name="335"
+      >
+
+</a
+      ><a name="337" class="Keyword"
+      >record</a
+      ><a name="343"
+      > </a
+      ><a name="344" href="category.groupoid.core.html#344" class="Record"
+      >IsGroupoid</a
+      ><a name="354"
+      > </a
+      ><a name="355" href="category.groupoid.core.html#355" class="Bound"
+      >i</a
+      ><a name="356"
+      > </a
+      ><a name="357" href="category.groupoid.core.html#357" class="Bound"
+      >j</a
+      ><a name="358"
+      > </a
+      ><a name="359" class="Symbol"
+      >(</a
+      ><a name="360" href="category.groupoid.core.html#360" class="Bound"
+      >G</a
+      ><a name="361"
+      > </a
+      ><a name="362" class="Symbol"
+      >:</a
+      ><a name="363"
+      > </a
+      ><a name="364" href="category.groupoid.zero.html#355" class="Function"
+      >Groupoid&#8320;</a
+      ><a name="373"
+      > </a
+      ><a name="374" href="category.groupoid.core.html#355" class="Bound"
+      >i</a
+      ><a name="375"
+      > </a
+      ><a name="376" href="category.groupoid.core.html#357" class="Bound"
+      >j</a
+      ><a name="377" class="Symbol"
+      >)</a
+      ><a name="378"
+      > </a
+      ><a name="379" class="Symbol"
+      >:</a
+      ><a name="380"
+      > </a
+      ><a name="381" class="PrimitiveType"
+      >Set</a
+      ><a name="384"
+      > </a
+      ><a name="385" class="Symbol"
+      >(</a
+      ><a name="386" href="category.groupoid.core.html#355" class="Bound"
+      >i</a
+      ><a name="387"
+      > </a
+      ><a name="388" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="389"
+      > </a
+      ><a name="390" href="category.groupoid.core.html#357" class="Bound"
+      >j</a
+      ><a name="391" class="Symbol"
+      >)</a
+      ><a name="392"
+      > </a
+      ><a name="393" class="Keyword"
+      >where</a
+      ><a name="398"
+      >
+  </a
+      ><a name="401" class="Keyword"
+      >open</a
+      ><a name="405"
+      > </a
+      ><a name="406" href="category.groupoid.zero.html#1154" class="Module"
+      >as-groupoid&#8320;</a
+      ><a name="418"
+      > </a
+      ><a name="419" href="category.groupoid.core.html#360" class="Bound"
+      >G</a
+      ><a name="420"
+      >
+
+  </a
+      ><a name="424" class="Keyword"
+      >field</a
+      ><a name="429"
+      >
+    </a
+      ><a name="434" href="category.groupoid.core.html#434" class="Field"
+      >is-cat</a
+      ><a name="440"
+      > </a
+      ><a name="441" class="Symbol"
+      >:</a
+      ><a name="442"
+      > </a
+      ><a name="443" href="category.category.core.html#305" class="Record"
+      >IsCategory</a
+      ><a name="453"
+      > </a
+      ><a name="454" href="category.groupoid.core.html#355" class="Bound"
+      >i</a
+      ><a name="455"
+      > </a
+      ><a name="456" href="category.groupoid.core.html#357" class="Bound"
+      >j</a
+      ><a name="457"
+      > </a
+      ><a name="458" class="Symbol"
+      >(</a
+      ><a name="459" href="overloading.core.html#434" class="Function"
+      >cat&#8320;</a
+      ><a name="463"
+      > </a
+      ><a name="464" href="category.groupoid.core.html#360" class="Bound"
+      >G</a
+      ><a name="465" class="Symbol"
+      >)</a
+      ><a name="466"
+      >
+    </a
+      ><a name="471" href="category.groupoid.core.html#471" class="Field"
+      >left-inv</a
+      ><a name="479"
+      > </a
+      ><a name="480" class="Symbol"
+      >:</a
+      ><a name="481"
+      > </a
+      ><a name="482" class="Symbol"
+      >{</a
+      ><a name="483" href="category.groupoid.core.html#483" class="Bound"
+      >x</a
+      ><a name="484"
+      > </a
+      ><a name="485" href="category.groupoid.core.html#485" class="Bound"
+      >y</a
+      ><a name="486"
+      > </a
+      ><a name="487" class="Symbol"
+      >:</a
+      ><a name="488"
+      > </a
+      ><a name="489" href="overloading.core.html#274" class="Function"
+      >obj</a
+      ><a name="492"
+      > </a
+      ><a name="493" href="category.groupoid.core.html#360" class="Bound"
+      >G</a
+      ><a name="494" class="Symbol"
+      >}</a
+      ><a name="495"
+      > </a
+      ><a name="496" class="Symbol"
+      >(</a
+      ><a name="497" href="category.groupoid.core.html#497" class="Bound"
+      >f</a
+      ><a name="498"
+      > </a
+      ><a name="499" class="Symbol"
+      >:</a
+      ><a name="500"
+      > </a
+      ><a name="501" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="504"
+      > </a
+      ><a name="505" href="category.groupoid.core.html#483" class="Bound"
+      >x</a
+      ><a name="506"
+      > </a
+      ><a name="507" href="category.groupoid.core.html#485" class="Bound"
+      >y</a
+      ><a name="508" class="Symbol"
+      >)</a
+      ><a name="509"
+      > </a
+      ><a name="510" class="Symbol"
+      >&#8594;</a
+      ><a name="511"
+      > </a
+      ><a name="512" href="category.groupoid.zero.html#314" class="Function"
+      >inv</a
+      ><a name="515"
+      > </a
+      ><a name="516" href="category.groupoid.core.html#497" class="Bound"
+      >f</a
+      ><a name="517"
+      > </a
+      ><a name="518" href="function.core.html#912" class="Function Operator"
+      >&#8728;</a
+      ><a name="519"
+      > </a
+      ><a name="520" href="category.groupoid.core.html#497" class="Bound"
+      >f</a
+      ><a name="521"
+      > </a
+      ><a name="522" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="523"
+      > </a
+      ><a name="524" href="function.core.html#1083" class="Function"
+      >id</a
+      ><a name="526"
+      >
+    </a
+      ><a name="531" href="category.groupoid.core.html#531" class="Field"
+      >right-inv</a
+      ><a name="540"
+      > </a
+      ><a name="541" class="Symbol"
+      >:</a
+      ><a name="542"
+      > </a
+      ><a name="543" class="Symbol"
+      >{</a
+      ><a name="544" href="category.groupoid.core.html#544" class="Bound"
+      >x</a
+      ><a name="545"
+      > </a
+      ><a name="546" href="category.groupoid.core.html#546" class="Bound"
+      >y</a
+      ><a name="547"
+      > </a
+      ><a name="548" class="Symbol"
+      >:</a
+      ><a name="549"
+      > </a
+      ><a name="550" href="overloading.core.html#274" class="Function"
+      >obj</a
+      ><a name="553"
+      > </a
+      ><a name="554" href="category.groupoid.core.html#360" class="Bound"
+      >G</a
+      ><a name="555" class="Symbol"
+      >}</a
+      ><a name="556"
+      > </a
+      ><a name="557" class="Symbol"
+      >(</a
+      ><a name="558" href="category.groupoid.core.html#558" class="Bound"
+      >f</a
+      ><a name="559"
+      > </a
+      ><a name="560" class="Symbol"
+      >:</a
+      ><a name="561"
+      > </a
+      ><a name="562" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="565"
+      > </a
+      ><a name="566" href="category.groupoid.core.html#544" class="Bound"
+      >x</a
+      ><a name="567"
+      > </a
+      ><a name="568" href="category.groupoid.core.html#546" class="Bound"
+      >y</a
+      ><a name="569" class="Symbol"
+      >)</a
+      ><a name="570"
+      > </a
+      ><a name="571" class="Symbol"
+      >&#8594;</a
+      ><a name="572"
+      > </a
+      ><a name="573" href="category.groupoid.core.html#558" class="Bound"
+      >f</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="function.core.html#912" class="Function Operator"
+      >&#8728;</a
+      ><a name="576"
+      > </a
+      ><a name="577" href="category.groupoid.zero.html#314" class="Function"
+      >inv</a
+      ><a name="580"
+      > </a
+      ><a name="581" href="category.groupoid.core.html#558" class="Bound"
+      >f</a
+      ><a name="582"
+      > </a
+      ><a name="583" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="584"
+      > </a
+      ><a name="585" href="function.core.html#1083" class="Function"
+      >id</a
+      ><a name="587"
+      >
+
+</a
+      ><a name="589" href="category.groupoid.core.html#589" class="Function"
+      >Groupoid</a
+      ><a name="597"
+      > </a
+      ><a name="598" class="Symbol"
+      >:</a
+      ><a name="599"
+      > </a
+      ><a name="600" class="Symbol"
+      >&#8704;</a
+      ><a name="601"
+      > </a
+      ><a name="602" href="category.groupoid.core.html#602" class="Bound"
+      >i</a
+      ><a name="603"
+      > </a
+      ><a name="604" href="category.groupoid.core.html#604" class="Bound"
+      >j</a
+      ><a name="605"
+      > </a
+      ><a name="606" class="Symbol"
+      >&#8594;</a
+      ><a name="607"
+      > </a
+      ><a name="608" class="PrimitiveType"
+      >Set</a
+      ><a name="611"
+      > </a
+      ><a name="612" class="Symbol"
+      >_</a
+      ><a name="613"
+      >
+</a
+      ><a name="614" href="category.groupoid.core.html#589" class="Function"
+      >Groupoid</a
+      ><a name="622"
+      > </a
+      ><a name="623" href="category.groupoid.core.html#623" class="Bound"
+      >i</a
+      ><a name="624"
+      > </a
+      ><a name="625" href="category.groupoid.core.html#625" class="Bound"
+      >j</a
+      ><a name="626"
+      > </a
+      ><a name="627" class="Symbol"
+      >=</a
+      ><a name="628"
+      > </a
+      ><a name="629" href="overloading.core.html#142" class="Record"
+      >Bundle</a
+      ><a name="635"
+      > </a
+      ><a name="636" class="Symbol"
+      >(</a
+      ><a name="637" href="category.groupoid.core.html#344" class="Record"
+      >IsGroupoid</a
+      ><a name="647"
+      > </a
+      ><a name="648" href="category.groupoid.core.html#623" class="Bound"
+      >i</a
+      ><a name="649"
+      > </a
+      ><a name="650" href="category.groupoid.core.html#625" class="Bound"
+      >j</a
+      ><a name="651" class="Symbol"
+      >)</a
+      ><a name="652"
+      >
+
+</a
+      ><a name="654" href="category.groupoid.core.html#654" class="Function"
+      >gpd-is-set</a
+      ><a name="664"
+      > </a
+      ><a name="665" class="Symbol"
+      >:</a
+      ><a name="666"
+      > </a
+      ><a name="667" class="Symbol"
+      >&#8704;</a
+      ><a name="668"
+      > </a
+      ><a name="669" class="Symbol"
+      >{</a
+      ><a name="670" href="category.groupoid.core.html#670" class="Bound"
+      >i</a
+      ><a name="671"
+      > </a
+      ><a name="672" href="category.groupoid.core.html#672" class="Bound"
+      >j</a
+      ><a name="673" class="Symbol"
+      >}</a
+      ><a name="674"
+      > </a
+      ><a name="675" class="Symbol"
+      >&#8594;</a
+      ><a name="676"
+      > </a
+      ><a name="677" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="685"
+      > </a
+      ><a name="686" class="Symbol"
+      >_</a
+      ><a name="687"
+      > </a
+      ><a name="688" class="Symbol"
+      >(</a
+      ><a name="689" class="PrimitiveType"
+      >Set</a
+      ><a name="692"
+      > </a
+      ><a name="693" href="category.groupoid.core.html#670" class="Bound"
+      >i</a
+      ><a name="694" class="Symbol"
+      >)</a
+      ><a name="695"
+      >
+</a
+      ><a name="696" href="category.groupoid.core.html#654" class="Function"
+      >gpd-is-set</a
+      ><a name="706"
+      > </a
+      ><a name="707" class="Symbol"
+      >{</a
+      ><a name="708" href="category.groupoid.core.html#708" class="Bound"
+      >i</a
+      ><a name="709" class="Symbol"
+      >}{</a
+      ><a name="711" href="category.groupoid.core.html#711" class="Bound"
+      >j</a
+      ><a name="712" class="Symbol"
+      >}</a
+      ><a name="713"
+      > </a
+      ><a name="714" class="Symbol"
+      >=</a
+      ><a name="715"
+      > </a
+      ><a name="716" href="overloading.core.html#1102" class="Function"
+      >overload-parent</a
+      ><a name="731"
+      > </a
+      ><a name="732" class="Symbol"
+      >(</a
+      ><a name="733" href="category.groupoid.core.html#344" class="Record"
+      >IsGroupoid</a
+      ><a name="743"
+      > </a
+      ><a name="744" href="category.groupoid.core.html#708" class="Bound"
+      >i</a
+      ><a name="745"
+      > </a
+      ><a name="746" href="category.groupoid.core.html#711" class="Bound"
+      >j</a
+      ><a name="747" class="Symbol"
+      >)</a
+      ><a name="748"
+      >
+
+</a
+      ><a name="750" href="category.groupoid.core.html#750" class="Function"
+      >gpd-is-gph</a
+      ><a name="760"
+      > </a
+      ><a name="761" class="Symbol"
+      >:</a
+      ><a name="762"
+      > </a
+      ><a name="763" class="Symbol"
+      >&#8704;</a
+      ><a name="764"
+      > </a
+      ><a name="765" class="Symbol"
+      >{</a
+      ><a name="766" href="category.groupoid.core.html#766" class="Bound"
+      >i</a
+      ><a name="767"
+      > </a
+      ><a name="768" href="category.groupoid.core.html#768" class="Bound"
+      >j</a
+      ><a name="769" class="Symbol"
+      >}</a
+      ><a name="770"
+      > </a
+      ><a name="771" class="Symbol"
+      >&#8594;</a
+      ><a name="772"
+      > </a
+      ><a name="773" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="781"
+      > </a
+      ><a name="782" class="Symbol"
+      >_</a
+      ><a name="783"
+      > </a
+      ><a name="784" class="Symbol"
+      >(</a
+      ><a name="785" href="category.graph.core.html#212" class="Function"
+      >Graph</a
+      ><a name="790"
+      > </a
+      ><a name="791" href="category.groupoid.core.html#766" class="Bound"
+      >i</a
+      ><a name="792"
+      > </a
+      ><a name="793" href="category.groupoid.core.html#768" class="Bound"
+      >j</a
+      ><a name="794" class="Symbol"
+      >)</a
+      ><a name="795"
+      >
+</a
+      ><a name="796" href="category.groupoid.core.html#750" class="Function"
+      >gpd-is-gph</a
+      ><a name="806"
+      > </a
+      ><a name="807" class="Symbol"
+      >{</a
+      ><a name="808" href="category.groupoid.core.html#808" class="Bound"
+      >i</a
+      ><a name="809" class="Symbol"
+      >}{</a
+      ><a name="811" href="category.groupoid.core.html#811" class="Bound"
+      >j</a
+      ><a name="812" class="Symbol"
+      >}</a
+      ><a name="813"
+      > </a
+      ><a name="814" class="Symbol"
+      >=</a
+      ><a name="815"
+      > </a
+      ><a name="816" href="overloading.core.html#1102" class="Function"
+      >overload-parent</a
+      ><a name="831"
+      > </a
+      ><a name="832" class="Symbol"
+      >(</a
+      ><a name="833" href="category.groupoid.core.html#344" class="Record"
+      >IsGroupoid</a
+      ><a name="843"
+      > </a
+      ><a name="844" href="category.groupoid.core.html#808" class="Bound"
+      >i</a
+      ><a name="845"
+      > </a
+      ><a name="846" href="category.groupoid.core.html#811" class="Bound"
+      >j</a
+      ><a name="847" class="Symbol"
+      >)</a
+      ><a name="848"
+      >
+
+</a
+      ><a name="850" href="category.groupoid.core.html#850" class="Function"
+      >gpd-is-cat&#8320;</a
+      ><a name="861"
+      > </a
+      ><a name="862" class="Symbol"
+      >:</a
+      ><a name="863"
+      > </a
+      ><a name="864" class="Symbol"
+      >&#8704;</a
+      ><a name="865"
+      > </a
+      ><a name="866" class="Symbol"
+      >{</a
+      ><a name="867" href="category.groupoid.core.html#867" class="Bound"
+      >i</a
+      ><a name="868"
+      > </a
+      ><a name="869" href="category.groupoid.core.html#869" class="Bound"
+      >j</a
+      ><a name="870" class="Symbol"
+      >}</a
+      ><a name="871"
+      > </a
+      ><a name="872" class="Symbol"
+      >&#8594;</a
+      ><a name="873"
+      > </a
+      ><a name="874" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="882"
+      > </a
+      ><a name="883" class="Symbol"
+      >_</a
+      ><a name="884"
+      > </a
+      ><a name="885" class="Symbol"
+      >(</a
+      ><a name="886" href="category.category.zero.html#356" class="Function"
+      >Category&#8320;</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="category.groupoid.core.html#867" class="Bound"
+      >i</a
+      ><a name="897"
+      > </a
+      ><a name="898" href="category.groupoid.core.html#869" class="Bound"
+      >j</a
+      ><a name="899" class="Symbol"
+      >)</a
+      ><a name="900"
+      >
+</a
+      ><a name="901" href="category.groupoid.core.html#850" class="Function"
+      >gpd-is-cat&#8320;</a
+      ><a name="912"
+      > </a
+      ><a name="913" class="Symbol"
+      >{</a
+      ><a name="914" href="category.groupoid.core.html#914" class="Bound"
+      >i</a
+      ><a name="915" class="Symbol"
+      >}{</a
+      ><a name="917" href="category.groupoid.core.html#917" class="Bound"
+      >j</a
+      ><a name="918" class="Symbol"
+      >}</a
+      ><a name="919"
+      > </a
+      ><a name="920" class="Symbol"
+      >=</a
+      ><a name="921"
+      > </a
+      ><a name="922" href="overloading.core.html#1102" class="Function"
+      >overload-parent</a
+      ><a name="937"
+      > </a
+      ><a name="938" class="Symbol"
+      >(</a
+      ><a name="939" href="category.groupoid.core.html#344" class="Record"
+      >IsGroupoid</a
+      ><a name="949"
+      > </a
+      ><a name="950" href="category.groupoid.core.html#914" class="Bound"
+      >i</a
+      ><a name="951"
+      > </a
+      ><a name="952" href="category.groupoid.core.html#917" class="Bound"
+      >j</a
+      ><a name="953" class="Symbol"
+      >)</a
+      ><a name="954"
+      >
+
+</a
+      ><a name="956" href="category.groupoid.core.html#956" class="Function"
+      >gpd-is-cat</a
+      ><a name="966"
+      > </a
+      ><a name="967" class="Symbol"
+      >:</a
+      ><a name="968"
+      > </a
+      ><a name="969" class="Symbol"
+      >&#8704;</a
+      ><a name="970"
+      > </a
+      ><a name="971" class="Symbol"
+      >{</a
+      ><a name="972" href="category.groupoid.core.html#972" class="Bound"
+      >i</a
+      ><a name="973"
+      > </a
+      ><a name="974" href="category.groupoid.core.html#974" class="Bound"
+      >j</a
+      ><a name="975" class="Symbol"
+      >}</a
+      ><a name="976"
+      > </a
+      ><a name="977" class="Symbol"
+      >&#8594;</a
+      ><a name="978"
+      > </a
+      ><a name="979" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="987"
+      > </a
+      ><a name="988" class="Symbol"
+      >_</a
+      ><a name="989"
+      > </a
+      ><a name="990" class="Symbol"
+      >(</a
+      ><a name="991" href="category.category.core.html#653" class="Function"
+      >Category</a
+      ><a name="999"
+      > </a
+      ><a name="1000" href="category.groupoid.core.html#972" class="Bound"
+      >i</a
+      ><a name="1001"
+      > </a
+      ><a name="1002" href="category.groupoid.core.html#974" class="Bound"
+      >j</a
+      ><a name="1003" class="Symbol"
+      >)</a
+      ><a name="1004"
+      >
+</a
+      ><a name="1005" href="category.groupoid.core.html#956" class="Function"
+      >gpd-is-cat</a
+      ><a name="1015"
+      > </a
+      ><a name="1016" class="Symbol"
+      >{</a
+      ><a name="1017" href="category.groupoid.core.html#1017" class="Bound"
+      >i</a
+      ><a name="1018" class="Symbol"
+      >}{</a
+      ><a name="1020" href="category.groupoid.core.html#1020" class="Bound"
+      >j</a
+      ><a name="1021" class="Symbol"
+      >}</a
+      ><a name="1022"
+      > </a
+      ><a name="1023" class="Symbol"
+      >=</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" class="Keyword"
+      >record</a
+      ><a name="1031"
+      >
+  </a
+      ><a name="1034" class="Symbol"
+      >{</a
+      ><a name="1035"
+      > </a
+      ><a name="1036" class="Field"
+      >Source</a
+      ><a name="1042"
+      > </a
+      ><a name="1043" class="Symbol"
+      >=</a
+      ><a name="1044"
+      > </a
+      ><a name="1045" href="category.groupoid.core.html#589" class="Function"
+      >Groupoid</a
+      ><a name="1053"
+      > </a
+      ><a name="1054" href="category.groupoid.core.html#1017" class="Bound"
+      >i</a
+      ><a name="1055"
+      > </a
+      ><a name="1056" href="category.groupoid.core.html#1020" class="Bound"
+      >j</a
+      ><a name="1057"
+      >
+  </a
+      ><a name="1060" class="Symbol"
+      >;</a
+      ><a name="1061"
+      > </a
+      ><a name="1062" class="Field"
+      >coerce</a
+      ><a name="1068"
+      > </a
+      ><a name="1069" class="Symbol"
+      >=</a
+      ><a name="1070"
+      > </a
+      ><a name="1071" class="Symbol"
+      >&#955;</a
+      ><a name="1072"
+      > </a
+      ><a name="1073" href="category.groupoid.core.html#1073" class="Bound"
+      >G</a
+      ><a name="1074"
+      > </a
+      ><a name="1075" class="Symbol"
+      >&#8594;</a
+      ><a name="1076"
+      > </a
+      ><a name="1077" class="Keyword"
+      >record</a
+      ><a name="1083"
+      >
+    </a
+      ><a name="1088" class="Symbol"
+      >{</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" class="Field"
+      >parent</a
+      ><a name="1096"
+      > </a
+      ><a name="1097" class="Symbol"
+      >=</a
+      ><a name="1098"
+      > </a
+      ><a name="1099" href="overloading.core.html#434" class="Function"
+      >cat&#8320;</a
+      ><a name="1103"
+      > </a
+      ><a name="1104" href="category.groupoid.core.html#1073" class="Bound"
+      >G</a
+      ><a name="1105"
+      >
+    </a
+      ><a name="1110" class="Symbol"
+      >;</a
+      ><a name="1111"
+      > </a
+      ><a name="1112" class="Field"
+      >struct</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" class="Symbol"
+      >=</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" href="category.groupoid.core.html#434" class="Function"
+      >IsGroupoid.is-cat</a
+      ><a name="1138"
+      > </a
+      ><a name="1139" class="Symbol"
+      >(</a
+      ><a name="1140" href="overloading.core.html#292" class="Function"
+      >Bundle.struct</a
+      ><a name="1153"
+      > </a
+      ><a name="1154" href="category.groupoid.core.html#1073" class="Bound"
+      >G</a
+      ><a name="1155" class="Symbol"
+      >)</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" class="Symbol"
+      >}</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" class="Symbol"
+      >}</a
+      ><a name="1160"
+      >
+
+</a
+      ><a name="1162" href="category.groupoid.core.html#1162" class="Function"
+      >gpd-is-gpd&#8320;</a
+      ><a name="1173"
+      > </a
+      ><a name="1174" class="Symbol"
+      >:</a
+      ><a name="1175"
+      > </a
+      ><a name="1176" class="Symbol"
+      >&#8704;</a
+      ><a name="1177"
+      > </a
+      ><a name="1178" class="Symbol"
+      >{</a
+      ><a name="1179" href="category.groupoid.core.html#1179" class="Bound"
+      >i</a
+      ><a name="1180"
+      > </a
+      ><a name="1181" href="category.groupoid.core.html#1181" class="Bound"
+      >j</a
+      ><a name="1182" class="Symbol"
+      >}</a
+      ><a name="1183"
+      > </a
+      ><a name="1184" class="Symbol"
+      >&#8594;</a
+      ><a name="1185"
+      > </a
+      ><a name="1186" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="1194"
+      > </a
+      ><a name="1195" class="Symbol"
+      >_</a
+      ><a name="1196"
+      > </a
+      ><a name="1197" class="Symbol"
+      >(</a
+      ><a name="1198" href="category.groupoid.zero.html#355" class="Function"
+      >Groupoid&#8320;</a
+      ><a name="1207"
+      > </a
+      ><a name="1208" href="category.groupoid.core.html#1179" class="Bound"
+      >i</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" href="category.groupoid.core.html#1181" class="Bound"
+      >j</a
+      ><a name="1211" class="Symbol"
+      >)</a
+      ><a name="1212"
+      >
+</a
+      ><a name="1213" href="category.groupoid.core.html#1162" class="Function"
+      >gpd-is-gpd&#8320;</a
+      ><a name="1224"
+      > </a
+      ><a name="1225" class="Symbol"
+      >{</a
+      ><a name="1226" href="category.groupoid.core.html#1226" class="Bound"
+      >i</a
+      ><a name="1227" class="Symbol"
+      >}{</a
+      ><a name="1229" href="category.groupoid.core.html#1229" class="Bound"
+      >j</a
+      ><a name="1230" class="Symbol"
+      >}</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" class="Symbol"
+      >=</a
+      ><a name="1233"
+      > </a
+      ><a name="1234" href="overloading.core.html#1102" class="Function"
+      >overload-parent</a
+      ><a name="1249"
+      > </a
+      ><a name="1250" class="Symbol"
+      >(</a
+      ><a name="1251" href="category.groupoid.core.html#344" class="Record"
+      >IsGroupoid</a
+      ><a name="1261"
+      > </a
+      ><a name="1262" href="category.groupoid.core.html#1226" class="Bound"
+      >i</a
+      ><a name="1263"
+      > </a
+      ><a name="1264" href="category.groupoid.core.html#1229" class="Bound"
+      >j</a
+      ><a name="1265" class="Symbol"
+      >)</a
+      ><a name="1266"
+      >
+
+</a
+      ><a name="1268" href="category.groupoid.core.html#1268" class="Function"
+      >gpd-is-gpd</a
+      ><a name="1278"
+      > </a
+      ><a name="1279" class="Symbol"
+      >:</a
+      ><a name="1280"
+      > </a
+      ><a name="1281" class="Symbol"
+      >&#8704;</a
+      ><a name="1282"
+      > </a
+      ><a name="1283" class="Symbol"
+      >{</a
+      ><a name="1284" href="category.groupoid.core.html#1284" class="Bound"
+      >i</a
+      ><a name="1285"
+      > </a
+      ><a name="1286" href="category.groupoid.core.html#1286" class="Bound"
+      >j</a
+      ><a name="1287" class="Symbol"
+      >}</a
+      ><a name="1288"
+      > </a
+      ><a name="1289" class="Symbol"
+      >&#8594;</a
+      ><a name="1290"
+      > </a
+      ><a name="1291" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="1299"
+      > </a
+      ><a name="1300" class="Symbol"
+      >_</a
+      ><a name="1301"
+      > </a
+      ><a name="1302" class="Symbol"
+      >(</a
+      ><a name="1303" href="category.groupoid.core.html#589" class="Function"
+      >Groupoid</a
+      ><a name="1311"
+      > </a
+      ><a name="1312" href="category.groupoid.core.html#1284" class="Bound"
+      >i</a
+      ><a name="1313"
+      > </a
+      ><a name="1314" href="category.groupoid.core.html#1286" class="Bound"
+      >j</a
+      ><a name="1315" class="Symbol"
+      >)</a
+      ><a name="1316"
+      >
+</a
+      ><a name="1317" href="category.groupoid.core.html#1268" class="Function"
+      >gpd-is-gpd</a
+      ><a name="1327"
+      > </a
+      ><a name="1328" class="Symbol"
+      >{</a
+      ><a name="1329" href="category.groupoid.core.html#1329" class="Bound"
+      >i</a
+      ><a name="1330" class="Symbol"
+      >}{</a
+      ><a name="1332" href="category.groupoid.core.html#1332" class="Bound"
+      >j</a
+      ><a name="1333" class="Symbol"
+      >}</a
+      ><a name="1334"
+      > </a
+      ><a name="1335" class="Symbol"
+      >=</a
+      ><a name="1336"
+      > </a
+      ><a name="1337" href="overloading.core.html#985" class="Function"
+      >overload-self</a
+      ><a name="1350"
+      > </a
+      ><a name="1351" class="Symbol"
+      >(</a
+      ><a name="1352" href="category.groupoid.core.html#589" class="Function"
+      >Groupoid</a
+      ><a name="1360"
+      > </a
+      ><a name="1361" href="category.groupoid.core.html#1329" class="Bound"
+      >i</a
+      ><a name="1362"
+      > </a
+      ><a name="1363" href="category.groupoid.core.html#1332" class="Bound"
+      >j</a
+      ><a name="1364" class="Symbol"
+      >)</a
+      ><a name="1365"
+      >
+
+</a
+      ><a name="1367" class="Keyword"
+      >private</a
+      ><a name="1374"
+      >
+  </a
+      ><a name="1377" class="Keyword"
+      >module</a
+      ><a name="1383"
+      > </a
+      ><a name="1384" href="category.groupoid.core.html#1384" class="Module"
+      >gpd-statics</a
+      ><a name="1395"
+      > </a
+      ><a name="1396" class="Symbol"
+      >{</a
+      ><a name="1397" href="category.groupoid.core.html#1397" class="Bound"
+      >i</a
+      ><a name="1398"
+      > </a
+      ><a name="1399" href="category.groupoid.core.html#1399" class="Bound"
+      >j</a
+      ><a name="1400"
+      > </a
+      ><a name="1401" href="category.groupoid.core.html#1401" class="Bound"
+      >k</a
+      ><a name="1402" class="Symbol"
+      >}</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" class="Symbol"
+      >&#10627;</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" href="category.groupoid.core.html#1406" class="Bound"
+      >o</a
+      ><a name="1407"
+      > </a
+      ><a name="1408" class="Symbol"
+      >:</a
+      ><a name="1409"
+      > </a
+      ><a name="1410" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="1418"
+      > </a
+      ><a name="1419" href="category.groupoid.core.html#1401" class="Bound"
+      >k</a
+      ><a name="1420"
+      > </a
+      ><a name="1421" class="Symbol"
+      >(</a
+      ><a name="1422" href="category.groupoid.core.html#589" class="Function"
+      >Groupoid</a
+      ><a name="1430"
+      > </a
+      ><a name="1431" href="category.groupoid.core.html#1397" class="Bound"
+      >i</a
+      ><a name="1432"
+      > </a
+      ><a name="1433" href="category.groupoid.core.html#1399" class="Bound"
+      >j</a
+      ><a name="1434" class="Symbol"
+      >)</a
+      ><a name="1435"
+      > </a
+      ><a name="1436" class="Symbol"
+      >&#10628;</a
+      ><a name="1437"
+      > </a
+      ><a name="1438" class="Keyword"
+      >where</a
+      ><a name="1443"
+      >
+    </a
+      ><a name="1448" class="Keyword"
+      >open</a
+      ><a name="1452"
+      > </a
+      ><a name="1453" href="overloading.core.html#323" class="Module"
+      >Overload</a
+      ><a name="1461"
+      > </a
+      ><a name="1462" href="category.groupoid.core.html#1406" class="Bound"
+      >o</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" class="Keyword"
+      >public</a
+      ><a name="1470"
+      > </a
+      ><a name="1471" class="Keyword"
+      >using</a
+      ><a name="1476"
+      > </a
+      ><a name="1477" class="Symbol"
+      >()</a
+      ><a name="1479"
+      > </a
+      ><a name="1480" class="Keyword"
+      >renaming</a
+      ><a name="1488"
+      > </a
+      ><a name="1489" class="Symbol"
+      >(</a
+      ><a name="1490"
+      >coerce </a
+      ><a name="1497" class="Symbol"
+      >to</a
+      ><a name="1499"
+      > gpd</a
+      ><a name="1503" class="Symbol"
+      >)</a
+      ><a name="1504"
+      >
+  </a
+      ><a name="1507" class="Keyword"
+      >module</a
+      ><a name="1513"
+      > </a
+      ><a name="1514" href="category.groupoid.core.html#1514" class="Module"
+      >gpd-methods</a
+      ><a name="1525"
+      > </a
+      ><a name="1526" class="Symbol"
+      >{</a
+      ><a name="1527" href="category.groupoid.core.html#1527" class="Bound"
+      >i</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" href="category.groupoid.core.html#1529" class="Bound"
+      >j</a
+      ><a name="1530"
+      > </a
+      ><a name="1531" href="category.groupoid.core.html#1531" class="Bound"
+      >k</a
+      ><a name="1532" class="Symbol"
+      >}</a
+      ><a name="1533"
+      > </a
+      ><a name="1534" class="Symbol"
+      >&#10627;</a
+      ><a name="1535"
+      > </a
+      ><a name="1536" href="category.groupoid.core.html#1536" class="Bound"
+      >o</a
+      ><a name="1537"
+      > </a
+      ><a name="1538" class="Symbol"
+      >:</a
+      ><a name="1539"
+      > </a
+      ><a name="1540" href="overloading.core.html#489" class="Record"
+      >OverloadInstance</a
+      ><a name="1556"
+      > </a
+      ><a name="1557" href="category.groupoid.core.html#1531" class="Bound"
+      >k</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" href="overloading.core.html#86" class="Record"
+      >default</a
+      ><a name="1566"
+      > </a
+      ><a name="1567" class="Symbol"
+      >(</a
+      ><a name="1568" href="category.groupoid.core.html#589" class="Function"
+      >Groupoid</a
+      ><a name="1576"
+      > </a
+      ><a name="1577" href="category.groupoid.core.html#1527" class="Bound"
+      >i</a
+      ><a name="1578"
+      > </a
+      ><a name="1579" href="category.groupoid.core.html#1529" class="Bound"
+      >j</a
+      ><a name="1580" class="Symbol"
+      >)</a
+      ><a name="1581"
+      > </a
+      ><a name="1582" class="Symbol"
+      >&#10628;</a
+      ><a name="1583"
+      > </a
+      ><a name="1584" class="Keyword"
+      >where</a
+      ><a name="1589"
+      >
+    </a
+      ><a name="1594" class="Keyword"
+      >open</a
+      ><a name="1598"
+      > </a
+      ><a name="1599" href="overloading.core.html#489" class="Module"
+      >OverloadInstance</a
+      ><a name="1615"
+      > </a
+      ><a name="1616" href="category.groupoid.core.html#1536" class="Bound"
+      >o</a
+      ><a name="1617"
+      >
+    </a
+      ><a name="1622" class="Keyword"
+      >open</a
+      ><a name="1626"
+      > </a
+      ><a name="1627" href="category.groupoid.core.html#344" class="Module"
+      >IsGroupoid</a
+      ><a name="1637"
+      > </a
+      ><a name="1638" class="Symbol"
+      >(</a
+      ><a name="1639" href="overloading.core.html#292" class="Function"
+      >Bundle.struct</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" href="overloading.core.html#678" class="Function"
+      >target</a
+      ><a name="1659" class="Symbol"
+      >)</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" class="Keyword"
+      >public</a
+      ><a name="1667"
+      >
+
+</a
+      ><a name="1669" class="Keyword"
+      >module</a
+      ><a name="1675"
+      > </a
+      ><a name="1676" href="category.groupoid.core.html#1676" class="Module"
+      >as-groupoid</a
+      ><a name="1687"
+      > </a
+      ><a name="1688" class="Symbol"
+      >{</a
+      ><a name="1689" href="category.groupoid.core.html#1689" class="Bound"
+      >i</a
+      ><a name="1690"
+      > </a
+      ><a name="1691" href="category.groupoid.core.html#1691" class="Bound"
+      >j</a
+      ><a name="1692"
+      > </a
+      ><a name="1693" href="category.groupoid.core.html#1693" class="Bound"
+      >k</a
+      ><a name="1694" class="Symbol"
+      >}</a
+      ><a name="1695"
+      > </a
+      ><a name="1696" class="Symbol"
+      >&#10627;</a
+      ><a name="1697"
+      > </a
+      ><a name="1698" href="category.groupoid.core.html#1698" class="Bound"
+      >o</a
+      ><a name="1699"
+      > </a
+      ><a name="1700" class="Symbol"
+      >:</a
+      ><a name="1701"
+      > </a
+      ><a name="1702" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="1710"
+      > </a
+      ><a name="1711" href="category.groupoid.core.html#1693" class="Bound"
+      >k</a
+      ><a name="1712"
+      > </a
+      ><a name="1713" class="Symbol"
+      >(</a
+      ><a name="1714" href="category.groupoid.core.html#589" class="Function"
+      >Groupoid</a
+      ><a name="1722"
+      > </a
+      ><a name="1723" href="category.groupoid.core.html#1689" class="Bound"
+      >i</a
+      ><a name="1724"
+      > </a
+      ><a name="1725" href="category.groupoid.core.html#1691" class="Bound"
+      >j</a
+      ><a name="1726" class="Symbol"
+      >)</a
+      ><a name="1727"
+      > </a
+      ><a name="1728" class="Symbol"
+      >&#10628;</a
+      ><a name="1729"
+      >
+                    </a
+      ><a name="1750" class="Symbol"
+      >(</a
+      ><a name="1751" href="category.groupoid.core.html#1751" class="Bound"
+      >source</a
+      ><a name="1757"
+      > </a
+      ><a name="1758" class="Symbol"
+      >:</a
+      ><a name="1759"
+      > </a
+      ><a name="1760" href="overloading.core.html#415" class="Function"
+      >Source</a
+      ><a name="1766"
+      > </a
+      ><a name="1767" href="category.groupoid.core.html#1698" class="Bound"
+      >o</a
+      ><a name="1768" class="Symbol"
+      >)</a
+      ><a name="1769"
+      > </a
+      ><a name="1770" class="Keyword"
+      >where</a
+      ><a name="1775"
+      >
+  </a
+      ><a name="1778" class="Keyword"
+      >private</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" href="category.groupoid.core.html#1786" class="Function"
+      >target</a
+      ><a name="1792"
+      > </a
+      ><a name="1793" class="Symbol"
+      >=</a
+      ><a name="1794"
+      > </a
+      ><a name="1795" href="overloading.core.html#434" class="Function"
+      >coerce</a
+      ><a name="1801"
+      > </a
+      ><a name="1802" href="category.groupoid.core.html#1698" class="Bound"
+      >o</a
+      ><a name="1803"
+      > </a
+      ><a name="1804" href="category.groupoid.core.html#1751" class="Bound"
+      >source</a
+      ><a name="1810"
+      >
+
+  </a
+      ><a name="1814" class="Keyword"
+      >open</a
+      ><a name="1818"
+      > </a
+      ><a name="1819" href="category.category.zero.html#1094" class="Module"
+      >as-category&#8320;</a
+      ><a name="1831"
+      > </a
+      ><a name="1832" href="category.groupoid.core.html#1786" class="Function"
+      >target</a
+      ><a name="1838"
+      > </a
+      ><a name="1839" class="Keyword"
+      >public</a
+      ><a name="1845"
+      >
+    </a
+      ><a name="1850" class="Keyword"
+      >renaming</a
+      ><a name="1858"
+      > </a
+      ><a name="1859" class="Symbol"
+      >(</a
+      ><a name="1860"
+      >_instance </a
+      ><a name="1870" class="Symbol"
+      >to</a
+      ><a name="1872"
+      > _parent-instance</a
+      ><a name="1889" class="Symbol"
+      >)</a
+      ><a name="1890"
+      >
+  </a
+      ><a name="1893" class="Keyword"
+      >open</a
+      ><a name="1897"
+      > </a
+      ><a name="1898" href="overloading.core.html#729" class="Module"
+      >overload</a
+      ><a name="1906"
+      > </a
+      ><a name="1907" href="overloading.core.html#86" class="Record"
+      >default</a
+      ><a name="1914"
+      > </a
+      ><a name="1915" class="Symbol"
+      >(</a
+      ><a name="1916" href="category.category.core.html#653" class="Function"
+      >Category</a
+      ><a name="1924"
+      > </a
+      ><a name="1925" href="category.groupoid.core.html#1689" class="Bound"
+      >i</a
+      ><a name="1926"
+      > </a
+      ><a name="1927" href="category.groupoid.core.html#1691" class="Bound"
+      >j</a
+      ><a name="1928" class="Symbol"
+      >)</a
+      ><a name="1929"
+      > </a
+      ><a name="1930" href="category.groupoid.core.html#1786" class="Function"
+      >target</a
+      ><a name="1936"
+      > </a
+      ><a name="1937" class="Keyword"
+      >public</a
+      ><a name="1943"
+      >
+    </a
+      ><a name="1948" class="Keyword"
+      >renaming</a
+      ><a name="1956"
+      > </a
+      ><a name="1957" class="Symbol"
+      >(</a
+      ><a name="1958"
+      >_instance </a
+      ><a name="1968" class="Symbol"
+      >to</a
+      ><a name="1970"
+      > _cat-instance</a
+      ><a name="1984" class="Symbol"
+      >)</a
+      ><a name="1985"
+      >
+  </a
+      ><a name="1988" class="Keyword"
+      >open</a
+      ><a name="1992"
+      > </a
+      ><a name="1993" href="overloading.core.html#729" class="Module"
+      >overload</a
+      ><a name="2001"
+      > </a
+      ><a name="2002" href="overloading.core.html#86" class="Record"
+      >default</a
+      ><a name="2009"
+      > </a
+      ><a name="2010" class="Symbol"
+      >(</a
+      ><a name="2011" href="category.groupoid.core.html#589" class="Function"
+      >Groupoid</a
+      ><a name="2019"
+      > </a
+      ><a name="2020" href="category.groupoid.core.html#1689" class="Bound"
+      >i</a
+      ><a name="2021"
+      > </a
+      ><a name="2022" href="category.groupoid.core.html#1691" class="Bound"
+      >j</a
+      ><a name="2023" class="Symbol"
+      >)</a
+      ><a name="2024"
+      > </a
+      ><a name="2025" href="category.groupoid.core.html#1786" class="Function"
+      >target</a
+      ><a name="2031"
+      > </a
+      ><a name="2032" class="Keyword"
+      >public</a
+      ><a name="2038"
+      >
+
+</a
+      ><a name="2040" href="category.groupoid.core.html#2040" class="Function"
+      >mk-groupoid</a
+      ><a name="2051"
+      > </a
+      ><a name="2052" class="Symbol"
+      >:</a
+      ><a name="2053"
+      > </a
+      ><a name="2054" class="Symbol"
+      >&#8704;</a
+      ><a name="2055"
+      > </a
+      ><a name="2056" class="Symbol"
+      >{</a
+      ><a name="2057" href="category.groupoid.core.html#2057" class="Bound"
+      >i</a
+      ><a name="2058"
+      > </a
+      ><a name="2059" href="category.groupoid.core.html#2059" class="Bound"
+      >j</a
+      ><a name="2060" class="Symbol"
+      >}</a
+      ><a name="2061"
+      > </a
+      ><a name="2062" class="Symbol"
+      >&#8594;</a
+      ><a name="2063"
+      > </a
+      ><a name="2064" href="category.groupoid.builder.html#385" class="Record"
+      >GroupoidBuilder</a
+      ><a name="2079"
+      > </a
+      ><a name="2080" href="category.groupoid.core.html#2057" class="Bound"
+      >i</a
+      ><a name="2081"
+      > </a
+      ><a name="2082" href="category.groupoid.core.html#2059" class="Bound"
+      >j</a
+      ><a name="2083"
+      > </a
+      ><a name="2084" class="Symbol"
+      >&#8594;</a
+      ><a name="2085"
+      > </a
+      ><a name="2086" href="category.groupoid.core.html#589" class="Function"
+      >Groupoid</a
+      ><a name="2094"
+      > </a
+      ><a name="2095" href="category.groupoid.core.html#2057" class="Bound"
+      >i</a
+      ><a name="2096"
+      > </a
+      ><a name="2097" href="category.groupoid.core.html#2059" class="Bound"
+      >j</a
+      ><a name="2098"
+      >
+</a
+      ><a name="2099" href="category.groupoid.core.html#2040" class="Function"
+      >mk-groupoid</a
+      ><a name="2110"
+      > </a
+      ><a name="2111" href="category.groupoid.core.html#2111" class="Bound"
+      >b</a
+      ><a name="2112"
+      > </a
+      ><a name="2113" class="Symbol"
+      >=</a
+      ><a name="2114"
+      > </a
+      ><a name="2115" class="Keyword"
+      >let</a
+      ><a name="2118"
+      > </a
+      ><a name="2119" class="Keyword"
+      >module</a
+      ><a name="2125"
+      > </a
+      ><a name="2126" href="category.groupoid.core.html#2126" class="Module"
+      >B</a
+      ><a name="2127"
+      > </a
+      ><a name="2128" class="Symbol"
+      >=</a
+      ><a name="2129"
+      > </a
+      ><a name="2130" href="category.groupoid.builder.html#385" class="Module"
+      >GroupoidBuilder</a
+      ><a name="2145"
+      > </a
+      ><a name="2146" href="category.groupoid.core.html#2111" class="Bound"
+      >b</a
+      ><a name="2147"
+      > </a
+      ><a name="2148" class="Keyword"
+      >in</a
+      ><a name="2150"
+      > </a
+      ><a name="2151" class="Keyword"
+      >record</a
+      ><a name="2157"
+      >
+  </a
+      ><a name="2160" class="Symbol"
+      >{</a
+      ><a name="2161"
+      > </a
+      ><a name="2162" class="Field"
+      >parent</a
+      ><a name="2168"
+      > </a
+      ><a name="2169" class="Symbol"
+      >=</a
+      ><a name="2170"
+      > </a
+      ><a name="2171" href="category.groupoid.zero.html#1426" class="Function"
+      >mk-groupoid&#8320;</a
+      ><a name="2183"
+      > </a
+      ><a name="2184" class="Keyword"
+      >record</a
+      ><a name="2190"
+      >
+    </a
+      ><a name="2195" class="Symbol"
+      >{</a
+      ><a name="2196"
+      > </a
+      ><a name="2197" class="Field"
+      >obj</a
+      ><a name="2200"
+      > </a
+      ><a name="2201" class="Symbol"
+      >=</a
+      ><a name="2202"
+      > </a
+      ><a name="2203" href="category.groupoid.builder.html#444" class="Function"
+      >B.obj</a
+      ><a name="2208"
+      >
+    </a
+      ><a name="2213" class="Symbol"
+      >;</a
+      ><a name="2214"
+      > </a
+      ><a name="2215" class="Field"
+      >hom</a
+      ><a name="2218"
+      > </a
+      ><a name="2219" class="Symbol"
+      >=</a
+      ><a name="2220"
+      > </a
+      ><a name="2221" href="category.groupoid.builder.html#460" class="Function"
+      >B.hom</a
+      ><a name="2226"
+      >
+    </a
+      ><a name="2231" class="Symbol"
+      >;</a
+      ><a name="2232"
+      > </a
+      ><a name="2233" class="Field"
+      >id</a
+      ><a name="2235"
+      > </a
+      ><a name="2236" class="Symbol"
+      >=</a
+      ><a name="2237"
+      > </a
+      ><a name="2238" href="category.groupoid.builder.html#488" class="Function"
+      >B.id</a
+      ><a name="2242"
+      >
+    </a
+      ><a name="2247" class="Symbol"
+      >;</a
+      ><a name="2248"
+      > </a
+      ><a name="2249" class="Field Operator"
+      >_&#8728;_</a
+      ><a name="2252"
+      > </a
+      ><a name="2253" class="Symbol"
+      >=</a
+      ><a name="2254"
+      > </a
+      ><a name="2255" href="category.groupoid.builder.html#517" class="Function Operator"
+      >B._&#8728;_</a
+      ><a name="2260"
+      >
+    </a
+      ><a name="2265" class="Symbol"
+      >;</a
+      ><a name="2266"
+      > </a
+      ><a name="2267" class="Field"
+      >inv</a
+      ><a name="2270"
+      > </a
+      ><a name="2271" class="Symbol"
+      >=</a
+      ><a name="2272"
+      > </a
+      ><a name="2273" href="category.groupoid.builder.html#571" class="Function"
+      >B.inv</a
+      ><a name="2278"
+      > </a
+      ><a name="2279" class="Symbol"
+      >}</a
+      ><a name="2280"
+      >
+  </a
+      ><a name="2283" class="Symbol"
+      >;</a
+      ><a name="2284"
+      > </a
+      ><a name="2285" class="Field"
+      >struct</a
+      ><a name="2291"
+      > </a
+      ><a name="2292" class="Symbol"
+      >=</a
+      ><a name="2293"
+      > </a
+      ><a name="2294" class="Keyword"
+      >record</a
+      ><a name="2300"
+      >
+    </a
+      ><a name="2305" class="Symbol"
+      >{</a
+      ><a name="2306"
+      > </a
+      ><a name="2307" class="Field"
+      >is-cat</a
+      ><a name="2313"
+      > </a
+      ><a name="2314" class="Symbol"
+      >=</a
+      ><a name="2315"
+      > </a
+      ><a name="2316" class="Keyword"
+      >record</a
+      ><a name="2322"
+      >
+      </a
+      ><a name="2329" class="Symbol"
+      >{</a
+      ><a name="2330"
+      > </a
+      ><a name="2331" class="Field"
+      >trunc</a
+      ><a name="2336"
+      > </a
+      ><a name="2337" class="Symbol"
+      >=</a
+      ><a name="2338"
+      > </a
+      ><a name="2339" href="category.groupoid.builder.html#614" class="Function"
+      >B.trunc</a
+      ><a name="2346"
+      >
+      </a
+      ><a name="2353" class="Symbol"
+      >;</a
+      ><a name="2354"
+      > </a
+      ><a name="2355" class="Field"
+      >left-id</a
+      ><a name="2362"
+      > </a
+      ><a name="2363" class="Symbol"
+      >=</a
+      ><a name="2364"
+      > </a
+      ><a name="2365" href="category.groupoid.builder.html#655" class="Function"
+      >B.left-id</a
+      ><a name="2374"
+      >
+      </a
+      ><a name="2381" class="Symbol"
+      >;</a
+      ><a name="2382"
+      > </a
+      ><a name="2383" class="Field"
+      >right-id</a
+      ><a name="2391"
+      > </a
+      ><a name="2392" class="Symbol"
+      >=</a
+      ><a name="2393"
+      > </a
+      ><a name="2394" href="category.groupoid.builder.html#710" class="Function"
+      >B.right-id</a
+      ><a name="2404"
+      >
+      </a
+      ><a name="2411" class="Symbol"
+      >;</a
+      ><a name="2412"
+      > </a
+      ><a name="2413" class="Field"
+      >assoc</a
+      ><a name="2418"
+      > </a
+      ><a name="2419" class="Symbol"
+      >=</a
+      ><a name="2420"
+      > </a
+      ><a name="2421" href="category.groupoid.builder.html#766" class="Function"
+      >B.assoc</a
+      ><a name="2428"
+      > </a
+      ><a name="2429" class="Symbol"
+      >}</a
+      ><a name="2430"
+      >
+    </a
+      ><a name="2435" class="Symbol"
+      >;</a
+      ><a name="2436"
+      > </a
+      ><a name="2437" class="Field"
+      >left-inv</a
+      ><a name="2445"
+      > </a
+      ><a name="2446" class="Symbol"
+      >=</a
+      ><a name="2447"
+      > </a
+      ><a name="2448" href="category.groupoid.builder.html#873" class="Function"
+      >B.left-inv</a
+      ><a name="2458"
+      >
+    </a
+      ><a name="2463" class="Symbol"
+      >;</a
+      ><a name="2464"
+      > </a
+      ><a name="2465" class="Field"
+      >right-inv</a
+      ><a name="2474"
+      > </a
+      ><a name="2475" class="Symbol"
+      >=</a
+      ><a name="2476"
+      > </a
+      ><a name="2477" href="category.groupoid.builder.html#933" class="Function"
+      >B.right-inv</a
+      ><a name="2488"
+      > </a
+      ><a name="2489" class="Symbol"
+      >}</a
+      ><a name="2490"
+      > </a
+      ><a name="2491" class="Symbol"
+      >}</a
+      ><a name="2492"
+      >
+
+</a
+      ><a name="2494" class="Keyword"
+      >open</a
+      ><a name="2498"
+      > </a
+      ><a name="2499" href="category.groupoid.core.html#1384" class="Module"
+      >gpd-statics</a
+      ><a name="2510"
+      > </a
+      ><a name="2511" class="Keyword"
+      >public</a
+      ><a name="2517"
+      >
+</a
+      ><a name="2518" class="Keyword"
+      >open</a
+      ><a name="2522"
+      > </a
+      ><a name="2523" href="category.groupoid.core.html#1514" class="Module"
+      >gpd-methods</a
+      ><a name="2534"
+      > </a
+      ><a name="2535" class="Keyword"
+      >public</a
+      ><a name="2541"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

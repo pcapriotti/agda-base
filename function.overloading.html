@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >function.overloading</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="function.overloading.html#1" class="Module"
+      >function.overloading</a
+      ><a name="57"
+      > </a
+      ><a name="58" class="Symbol"
+      >{</a
+      ><a name="59" href="function.overloading.html#59" class="Bound"
+      >i</a
+      ><a name="60"
+      > </a
+      ><a name="61" href="function.overloading.html#61" class="Bound"
+      >j</a
+      ><a name="62" class="Symbol"
+      >}{</a
+      ><a name="64" href="function.overloading.html#64" class="Bound"
+      >X</a
+      ><a name="65"
+      > </a
+      ><a name="66" class="Symbol"
+      >:</a
+      ><a name="67"
+      > </a
+      ><a name="68" class="PrimitiveType"
+      >Set</a
+      ><a name="71"
+      > </a
+      ><a name="72" href="function.overloading.html#59" class="Bound"
+      >i</a
+      ><a name="73" class="Symbol"
+      >}{</a
+      ><a name="75" href="function.overloading.html#75" class="Bound"
+      >Y</a
+      ><a name="76"
+      > </a
+      ><a name="77" class="Symbol"
+      >:</a
+      ><a name="78"
+      > </a
+      ><a name="79" class="PrimitiveType"
+      >Set</a
+      ><a name="82"
+      > </a
+      ><a name="83" href="function.overloading.html#61" class="Bound"
+      >j</a
+      ><a name="84" class="Symbol"
+      >}</a
+      ><a name="85"
+      > </a
+      ><a name="86" class="Keyword"
+      >where</a
+      ><a name="91"
+      >
+
+</a
+      ><a name="93" class="Keyword"
+      >open</a
+      ><a name="97"
+      > </a
+      ><a name="98" class="Keyword"
+      >import</a
+      ><a name="104"
+      > </a
+      ><a name="105" href="level.html#1" class="Module"
+      >level</a
+      ><a name="110"
+      >
+</a
+      ><a name="111" class="Keyword"
+      >open</a
+      ><a name="115"
+      > </a
+      ><a name="116" class="Keyword"
+      >import</a
+      ><a name="122"
+      > </a
+      ><a name="123" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="126"
+      >
+</a
+      ><a name="127" class="Keyword"
+      >open</a
+      ><a name="131"
+      > </a
+      ><a name="132" class="Keyword"
+      >import</a
+      ><a name="138"
+      > </a
+      ><a name="139" href="overloading.core.html#1" class="Module"
+      >overloading.core</a
+      ><a name="155"
+      >
+
+</a
+      ><a name="157" href="function.overloading.html#157" class="Function"
+      >fun-is-fun</a
+      ><a name="167"
+      > </a
+      ><a name="168" class="Symbol"
+      >:</a
+      ><a name="169"
+      > </a
+      ><a name="170" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="178"
+      > </a
+      ><a name="179" class="Symbol"
+      >_</a
+      ><a name="180"
+      > </a
+      ><a name="181" class="Symbol"
+      >(</a
+      ><a name="182" href="function.overloading.html#64" class="Bound"
+      >X</a
+      ><a name="183"
+      > </a
+      ><a name="184" class="Symbol"
+      >&#8594;</a
+      ><a name="185"
+      > </a
+      ><a name="186" href="function.overloading.html#75" class="Bound"
+      >Y</a
+      ><a name="187" class="Symbol"
+      >)</a
+      ><a name="188"
+      >
+</a
+      ><a name="189" href="function.overloading.html#157" class="Function"
+      >fun-is-fun</a
+      ><a name="199"
+      > </a
+      ><a name="200" class="Symbol"
+      >=</a
+      ><a name="201"
+      > </a
+      ><a name="202" href="overloading.core.html#985" class="Function"
+      >overload-self</a
+      ><a name="215"
+      > </a
+      ><a name="216" class="Symbol"
+      >_</a
+      ><a name="217"
+      >
+
+</a
+      ><a name="219" class="Keyword"
+      >private</a
+      ><a name="226"
+      >
+  </a
+      ><a name="229" class="Keyword"
+      >module</a
+      ><a name="235"
+      > </a
+      ><a name="236" href="function.overloading.html#236" class="Module"
+      >fun-methods</a
+      ><a name="247"
+      > </a
+      ><a name="248" class="Symbol"
+      >{</a
+      ><a name="249" href="function.overloading.html#249" class="Bound"
+      >k</a
+      ><a name="250" class="Symbol"
+      >}</a
+      ><a name="251"
+      > </a
+      ><a name="252" class="Symbol"
+      >&#10627;</a
+      ><a name="253"
+      > </a
+      ><a name="254" href="function.overloading.html#254" class="Bound"
+      >o</a
+      ><a name="255"
+      > </a
+      ><a name="256" class="Symbol"
+      >:</a
+      ><a name="257"
+      > </a
+      ><a name="258" href="overloading.core.html#323" class="Record"
+      >Overload</a
+      ><a name="266"
+      > </a
+      ><a name="267" href="function.overloading.html#249" class="Bound"
+      >k</a
+      ><a name="268"
+      > </a
+      ><a name="269" class="Symbol"
+      >(</a
+      ><a name="270" href="function.overloading.html#64" class="Bound"
+      >X</a
+      ><a name="271"
+      > </a
+      ><a name="272" class="Symbol"
+      >&#8594;</a
+      ><a name="273"
+      > </a
+      ><a name="274" href="function.overloading.html#75" class="Bound"
+      >Y</a
+      ><a name="275" class="Symbol"
+      >)</a
+      ><a name="276"
+      > </a
+      ><a name="277" class="Symbol"
+      >&#10628;</a
+      ><a name="278"
+      > </a
+      ><a name="279" class="Keyword"
+      >where</a
+      ><a name="284"
+      >
+    </a
+      ><a name="289" class="Keyword"
+      >open</a
+      ><a name="293"
+      > </a
+      ><a name="294" href="overloading.core.html#323" class="Module"
+      >Overload</a
+      ><a name="302"
+      > </a
+      ><a name="303" href="function.overloading.html#254" class="Bound"
+      >o</a
+      ><a name="304"
+      > </a
+      ><a name="305" class="Keyword"
+      >public</a
+      ><a name="311"
+      > </a
+      ><a name="312" class="Keyword"
+      >using</a
+      ><a name="317"
+      > </a
+      ><a name="318" class="Symbol"
+      >()</a
+      ><a name="320"
+      >
+      </a
+      ><a name="327" class="Keyword"
+      >renaming</a
+      ><a name="335"
+      > </a
+      ><a name="336" class="Symbol"
+      >(</a
+      ><a name="337"
+      >coerce </a
+      ><a name="344" class="Symbol"
+      >to</a
+      ><a name="346"
+      > apply</a
+      ><a name="352" class="Symbol"
+      >)</a
+      ><a name="353"
+      >
+</a
+      ><a name="354" class="Keyword"
+      >open</a
+      ><a name="358"
+      > </a
+      ><a name="359" href="function.overloading.html#236" class="Module"
+      >fun-methods</a
+      ><a name="370"
+      > </a
+      ><a name="371" class="Keyword"
+      >public</a
+      ><a name="377"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

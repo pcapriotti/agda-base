@@ -1,0 +1,368 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >algebra.monoid.morphism.builder</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="algebra.monoid.morphism.builder.html#1" class="Module"
+      >algebra.monoid.morphism.builder</a
+      ><a name="68"
+      > </a
+      ><a name="69" class="Keyword"
+      >where</a
+      ><a name="74"
+      >
+
+</a
+      ><a name="76" class="Keyword"
+      >open</a
+      ><a name="80"
+      > </a
+      ><a name="81" class="Keyword"
+      >import</a
+      ><a name="87"
+      > </a
+      ><a name="88" href="level.html#1" class="Module"
+      >level</a
+      ><a name="93"
+      >
+</a
+      ><a name="94" class="Keyword"
+      >open</a
+      ><a name="98"
+      > </a
+      ><a name="99" class="Keyword"
+      >import</a
+      ><a name="105"
+      > </a
+      ><a name="106" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="119"
+      >
+</a
+      ><a name="120" class="Keyword"
+      >open</a
+      ><a name="124"
+      > </a
+      ><a name="125" class="Keyword"
+      >import</a
+      ><a name="131"
+      > </a
+      ><a name="132" href="algebra.monoid.core.html#1" class="Module"
+      >algebra.monoid.core</a
+      ><a name="151"
+      >
+</a
+      ><a name="152" class="Keyword"
+      >open</a
+      ><a name="156"
+      > </a
+      ><a name="157" class="Keyword"
+      >import</a
+      ><a name="163"
+      > </a
+      ><a name="164" href="algebra.monoid.zero.html#1" class="Module"
+      >algebra.monoid.zero</a
+      ><a name="183"
+      >
+</a
+      ><a name="184" class="Keyword"
+      >open</a
+      ><a name="188"
+      > </a
+      ><a name="189" class="Keyword"
+      >import</a
+      ><a name="195"
+      > </a
+      ><a name="196" href="overloading.core.html#1" class="Module"
+      >overloading.core</a
+      ><a name="212"
+      >
+
+</a
+      ><a name="214" class="Keyword"
+      >record</a
+      ><a name="220"
+      > </a
+      ><a name="221" href="algebra.monoid.morphism.builder.html#221" class="Record"
+      >MorphismBuilder</a
+      ><a name="236"
+      > </a
+      ><a name="237" class="Symbol"
+      >{</a
+      ><a name="238" href="algebra.monoid.morphism.builder.html#238" class="Bound"
+      >i</a
+      ><a name="239"
+      > </a
+      ><a name="240" href="algebra.monoid.morphism.builder.html#240" class="Bound"
+      >j</a
+      ><a name="241" class="Symbol"
+      >}(</a
+      ><a name="243" href="algebra.monoid.morphism.builder.html#243" class="Bound"
+      >M</a
+      ><a name="244"
+      > </a
+      ><a name="245" class="Symbol"
+      >:</a
+      ><a name="246"
+      > </a
+      ><a name="247" href="algebra.monoid.core.html#328" class="Function"
+      >Monoid</a
+      ><a name="253"
+      > </a
+      ><a name="254" href="algebra.monoid.morphism.builder.html#238" class="Bound"
+      >i</a
+      ><a name="255" class="Symbol"
+      >)(</a
+      ><a name="257" href="algebra.monoid.morphism.builder.html#257" class="Bound"
+      >N</a
+      ><a name="258"
+      > </a
+      ><a name="259" class="Symbol"
+      >:</a
+      ><a name="260"
+      > </a
+      ><a name="261" href="algebra.monoid.core.html#328" class="Function"
+      >Monoid</a
+      ><a name="267"
+      > </a
+      ><a name="268" href="algebra.monoid.morphism.builder.html#240" class="Bound"
+      >j</a
+      ><a name="269" class="Symbol"
+      >)</a
+      ><a name="270"
+      > </a
+      ><a name="271" class="Symbol"
+      >:</a
+      ><a name="272"
+      > </a
+      ><a name="273" class="PrimitiveType"
+      >Set</a
+      ><a name="276"
+      > </a
+      ><a name="277" class="Symbol"
+      >(</a
+      ><a name="278" href="algebra.monoid.morphism.builder.html#238" class="Bound"
+      >i</a
+      ><a name="279"
+      > </a
+      ><a name="280" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="281"
+      > </a
+      ><a name="282" href="algebra.monoid.morphism.builder.html#240" class="Bound"
+      >j</a
+      ><a name="283" class="Symbol"
+      >)</a
+      ><a name="284"
+      > </a
+      ><a name="285" class="Keyword"
+      >where</a
+      ><a name="290"
+      >
+  </a
+      ><a name="293" class="Keyword"
+      >open</a
+      ><a name="297"
+      > </a
+      ><a name="298" href="algebra.monoid.zero.html#1136" class="Module"
+      >as-monoid&#8320;</a
+      ><a name="308"
+      > </a
+      ><a name="309" href="algebra.monoid.morphism.builder.html#243" class="Bound"
+      >M</a
+      ><a name="310"
+      >
+  </a
+      ><a name="313" class="Keyword"
+      >open</a
+      ><a name="317"
+      > </a
+      ><a name="318" href="algebra.monoid.zero.html#1136" class="Module"
+      >as-monoid&#8320;</a
+      ><a name="328"
+      > </a
+      ><a name="329" href="algebra.monoid.morphism.builder.html#257" class="Bound"
+      >N</a
+      ><a name="330"
+      >
+  </a
+      ><a name="333" class="Keyword"
+      >field</a
+      ><a name="338"
+      >
+    </a
+      ><a name="343" href="algebra.monoid.morphism.builder.html#343" class="Field"
+      >apply</a
+      ><a name="348"
+      > </a
+      ><a name="349" class="Symbol"
+      >:</a
+      ><a name="350"
+      > </a
+      ><a name="351" href="overloading.core.html#1425" class="Function Operator"
+      >&#8739;</a
+      ><a name="352"
+      > </a
+      ><a name="353" href="algebra.monoid.morphism.builder.html#243" class="Bound"
+      >M</a
+      ><a name="354"
+      > </a
+      ><a name="355" href="overloading.core.html#1425" class="Function Operator"
+      >&#8739;</a
+      ><a name="356"
+      > </a
+      ><a name="357" class="Symbol"
+      >&#8594;</a
+      ><a name="358"
+      > </a
+      ><a name="359" href="overloading.core.html#1425" class="Function Operator"
+      >&#8739;</a
+      ><a name="360"
+      > </a
+      ><a name="361" href="algebra.monoid.morphism.builder.html#257" class="Bound"
+      >N</a
+      ><a name="362"
+      > </a
+      ><a name="363" href="overloading.core.html#1425" class="Function Operator"
+      >&#8739;</a
+      ><a name="364"
+      >
+    </a
+      ><a name="369" href="algebra.monoid.morphism.builder.html#369" class="Field"
+      >map-id</a
+      ><a name="375"
+      > </a
+      ><a name="376" class="Symbol"
+      >:</a
+      ><a name="377"
+      > </a
+      ><a name="378" href="algebra.monoid.morphism.builder.html#343" class="Bound"
+      >apply</a
+      ><a name="383"
+      > </a
+      ><a name="384" href="algebra.monoid.zero.html#1063" class="Function"
+      >unit</a
+      ><a name="388"
+      > </a
+      ><a name="389" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="390"
+      > </a
+      ><a name="391" href="algebra.monoid.zero.html#1063" class="Function"
+      >unit</a
+      ><a name="395"
+      >
+    </a
+      ><a name="400" href="algebra.monoid.morphism.builder.html#400" class="Field"
+      >map-hom</a
+      ><a name="407"
+      > </a
+      ><a name="408" class="Symbol"
+      >:</a
+      ><a name="409"
+      > </a
+      ><a name="410" class="Symbol"
+      >(</a
+      ><a name="411" href="algebra.monoid.morphism.builder.html#411" class="Bound"
+      >x</a
+      ><a name="412"
+      > </a
+      ><a name="413" href="algebra.monoid.morphism.builder.html#413" class="Bound"
+      >y</a
+      ><a name="414"
+      > </a
+      ><a name="415" class="Symbol"
+      >:</a
+      ><a name="416"
+      > </a
+      ><a name="417" href="overloading.core.html#1425" class="Function Operator"
+      >&#8739;</a
+      ><a name="418"
+      > </a
+      ><a name="419" href="algebra.monoid.morphism.builder.html#243" class="Bound"
+      >M</a
+      ><a name="420"
+      > </a
+      ><a name="421" href="overloading.core.html#1425" class="Function Operator"
+      >&#8739;</a
+      ><a name="422" class="Symbol"
+      >)</a
+      ><a name="423"
+      > </a
+      ><a name="424" class="Symbol"
+      >&#8594;</a
+      ><a name="425"
+      > </a
+      ><a name="426" href="algebra.monoid.morphism.builder.html#343" class="Bound"
+      >apply</a
+      ><a name="431"
+      > </a
+      ><a name="432" class="Symbol"
+      >(</a
+      ><a name="433" href="algebra.monoid.morphism.builder.html#411" class="Bound"
+      >x</a
+      ><a name="434"
+      > </a
+      ><a name="435" href="algebra.monoid.zero.html#1094" class="Function Operator"
+      >*</a
+      ><a name="436"
+      > </a
+      ><a name="437" href="algebra.monoid.morphism.builder.html#413" class="Bound"
+      >y</a
+      ><a name="438" class="Symbol"
+      >)</a
+      ><a name="439"
+      > </a
+      ><a name="440" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="441"
+      > </a
+      ><a name="442" href="algebra.monoid.morphism.builder.html#343" class="Bound"
+      >apply</a
+      ><a name="447"
+      > </a
+      ><a name="448" href="algebra.monoid.morphism.builder.html#411" class="Bound"
+      >x</a
+      ><a name="449"
+      > </a
+      ><a name="450" href="algebra.monoid.zero.html#1094" class="Function Operator"
+      >*</a
+      ><a name="451"
+      > </a
+      ><a name="452" href="algebra.monoid.morphism.builder.html#343" class="Bound"
+      >apply</a
+      ><a name="457"
+      > </a
+      ><a name="458" href="algebra.monoid.morphism.builder.html#413" class="Bound"
+      >y</a
+      ><a name="459"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
