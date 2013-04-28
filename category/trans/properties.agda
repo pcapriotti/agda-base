@@ -3,7 +3,6 @@
 open import sum
 open import equality.core
 open import function.core
-open import category.structure
 open import category.category
 open import category.functor.core
 open import category.trans.core

@@ -9,7 +9,6 @@ open import level
 open import sum
 open import function.core
 open import function.overloading
-open import category.structure
 open import category.functor
 open import category.trans
 open import equality.core

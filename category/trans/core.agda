@@ -5,7 +5,6 @@ open import sum
 open import function.core
 open import function.overloading
 open import category.graph
-open import category.structure
 open import category.category
 open import category.functor.core
 open import equality.core

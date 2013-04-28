@@ -21,7 +21,7 @@ terminal C X = unit-func C ⊣ Const unit X
 private
   module properties {i j}{C : Category i j}
                     (X : obj C)(t : terminal C X) where
-    open _⊣_ {D = unit} _ _ t
+    open _⊣_ {D = unit} t
     open as-category C
 
     term-univ : (Y : obj C) → contr (hom Y X)

@@ -4,7 +4,6 @@ open import category.category
 
 module category.mono {i j}(C : Category i j) where
 
-open import category.structure
 open import category.graph
 open import category.isomorphism
 open import function.core
