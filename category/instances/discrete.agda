@@ -9,7 +9,7 @@ open import category.groupoid
 open import category.functor
 open import category.isomorphism
 open import equality.core
-import equality.properties as E
+import equality.groupoid as E
 open import equality.calculus
 open import function.core
 open import function.isomorphism
@@ -35,7 +35,7 @@ discrete (X , hX) = mk-groupoid record
   ; trunc = hX
   ; left-id = left-unit
   ; right-id = right-unit
-  ; assoc = λ p q r → E.associativity r q p
+  ; assoc = λ p q r → sym (E.associativity r q p)
   ; left-inv = left-inverse
   ; right-inv = right-inverse }
 
