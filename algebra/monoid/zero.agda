@@ -6,6 +6,7 @@ open import level
 open import category.graph.trivial
 open import category.category.zero
 open import overloading.core
+open import overloading.bundle
 open import sets.unit
 
 IsMonoid₀ : ∀ i (X : Set i) → Set _

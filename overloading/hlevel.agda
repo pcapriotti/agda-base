@@ -4,7 +4,7 @@ module overloading.hlevel where
 
 open import sum
 open import equality.core
-open import overloading.core
+open import overloading.bundle
 open import function.isomorphism
 open import hott.hlevel.core
 open import sets.unit

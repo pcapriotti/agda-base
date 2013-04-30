@@ -4,6 +4,7 @@ module category.graph.morphism.core {i j i' j'} where
 
 open import level
 open import function.overloading
+open import overloading.bundle
 open import overloading.core
 open import category.graph.core
 open import category.graph.morphism.builder

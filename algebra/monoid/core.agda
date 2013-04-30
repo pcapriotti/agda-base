@@ -8,6 +8,7 @@ open import category.graph.trivial
 open import category.category.zero
 open import category.category.core
 open import overloading.core
+open import overloading.bundle
 
 IsMonoid : ∀ i (M : Monoid₀ i) → Set _
 IsMonoid _ M = IsCategory _ _ (cat₀ M)

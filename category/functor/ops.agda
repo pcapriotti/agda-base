@@ -5,10 +5,10 @@ module category.functor.ops where
 open import equality.core
 open import function.core
 open import function.overloading
-open import overloading.core
 open import category.graph
 open import category.category
 open import category.functor.core
+open import overloading.bundle
 
 private
   Id : ∀ {i j} (C : Category i j) → Functor C C

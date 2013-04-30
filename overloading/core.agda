@@ -2,16 +2,7 @@
 module overloading.core where
 
 open import level
-
-record default : Set where
-record additive : Set where
-
-record Bundle {i j} {Base : Set i}
-                    (Struct : Base → Set j) : Set (lsuc (i ⊔ j)) where
-  constructor bundle
-  field
-    parent : Base
-    struct : Struct parent
+open import overloading.bundle
 
 record Overload i {j} (Target : Set j) : Set (lsuc i ⊔ j) where
   constructor overload
@@ -60,3 +51,7 @@ set-is-set {i} = overload-self (Set i)
 
 ∣_∣ : ∀ {i j} ⦃ o : Overload i (Set j) ⦄ → Source o → Set j
 ∣_∣ ⦃ o ⦄ = coerce o
+
+-- overloading styles
+record default : Set where
+record additive : Set where
