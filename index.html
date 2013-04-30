@@ -37,163 +37,258 @@
 
 </a
       ><a name="50" class="Comment"
-      >-- Preliminaries</a
-      ><a name="66"
-      >
-
-</a
-      ><a name="68" class="Keyword"
-      >import</a
-      ><a name="74"
-      > </a
-      ><a name="75" href="sum.html#1" class="Module"
-      >sum</a
-      ><a name="78"
-      >
-</a
-      ><a name="79" class="Keyword"
-      >import</a
-      ><a name="85"
-      > </a
-      ><a name="86" href="equality.html#1" class="Module"
-      >equality</a
-      ><a name="94"
-      >
-</a
-      ><a name="95" class="Keyword"
-      >import</a
-      ><a name="101"
-      > </a
-      ><a name="102" href="sets.html#1" class="Module"
-      >sets</a
-      ><a name="106"
-      >
-</a
-      ><a name="107" class="Keyword"
-      >import</a
-      ><a name="113"
-      > </a
-      ><a name="114" href="decidable.html#1" class="Module"
-      >decidable</a
+      >-- This is a self-contained repository of basic results and utilities for</a
       ><a name="123"
       >
 </a
-      ><a name="124" class="Keyword"
+      ><a name="124" class="Comment"
+      >-- Homotopy Type Theory.</a
+      ><a name="148"
+      >
+</a
+      ><a name="149" class="Comment"
+      >--</a
+      ><a name="151"
+      >
+</a
+      ><a name="152" class="Comment"
+      >-- Modules are structured in a hierarchy, where all top-level modules are</a
+      ><a name="225"
+      >
+</a
+      ><a name="226" class="Comment"
+      >-- imported in this file, and each module only imports and re-exports all</a
+      ><a name="299"
+      >
+</a
+      ><a name="300" class="Comment"
+      >-- sub-modules. The most basic definitions for a submodule collection are</a
+      ><a name="373"
+      >
+</a
+      ><a name="374" class="Comment"
+      >-- defined in the `core` submodule.</a
+      ><a name="409"
+      >
+</a
+      ><a name="410" class="Comment"
+      >--</a
+      ><a name="412"
+      >
+</a
+      ><a name="413" class="Comment"
+      >-- For example, in the case of equality, the module called `equality` is</a
+      ><a name="485"
+      >
+</a
+      ><a name="486" class="Comment"
+      >-- composed of a number of submodules: `core` (containing the basic</a
+      ><a name="553"
+      >
+</a
+      ><a name="554" class="Comment"
+      >-- definitions), `groupoid` (groupoid laws), `calculus` (for calculations</a
+      ><a name="627"
+      >
+</a
+      ><a name="628" class="Comment"
+      >-- involving equality proofs) and `reasoning` (for equational reasoning).</a
+      ><a name="701"
+      >
+
+</a
+      ><a name="703" class="Comment"
+      >-- &#931; types and related utilities</a
+      ><a name="735"
+      >
+</a
+      ><a name="736" class="Keyword"
       >import</a
-      ><a name="130"
+      ><a name="742"
       > </a
-      ><a name="131" href="function.html#1" class="Module"
+      ><a name="743" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="746"
+      >
+
+</a
+      ><a name="748" class="Comment"
+      >-- Propositional equality</a
+      ><a name="773"
+      >
+</a
+      ><a name="774" class="Keyword"
+      >import</a
+      ><a name="780"
+      > </a
+      ><a name="781" href="equality.html#1" class="Module"
+      >equality</a
+      ><a name="789"
+      >
+
+</a
+      ><a name="791" class="Comment"
+      >-- Basic types</a
+      ><a name="805"
+      >
+</a
+      ><a name="806" class="Keyword"
+      >import</a
+      ><a name="812"
+      > </a
+      ><a name="813" href="sets.html#1" class="Module"
+      >sets</a
+      ><a name="817"
+      >
+
+</a
+      ><a name="819" class="Comment"
+      >-- Decidable predicates</a
+      ><a name="842"
+      >
+</a
+      ><a name="843" class="Keyword"
+      >import</a
+      ><a name="849"
+      > </a
+      ><a name="850" href="decidable.html#1" class="Module"
+      >decidable</a
+      ><a name="859"
+      >
+
+</a
+      ><a name="861" class="Comment"
+      >-- Functions, isomorphisms and properties thereof</a
+      ><a name="910"
+      >
+</a
+      ><a name="911" class="Keyword"
+      >import</a
+      ><a name="917"
+      > </a
+      ><a name="918" href="function.html#1" class="Module"
       >function</a
-      ><a name="139"
+      ><a name="926"
+      >
+
+</a
+      ><a name="928" class="Comment"
+      >-- Overloading system</a
+      ><a name="949"
       >
 </a
-      ><a name="140" class="Keyword"
+      ><a name="950" class="Keyword"
       >import</a
-      ><a name="146"
+      ><a name="956"
       > </a
-      ><a name="147" href="level.html#1" class="Module"
+      ><a name="957" href="overloading.html#1" class="Module"
+      >overloading</a
+      ><a name="968"
+      >
+
+</a
+      ><a name="970" class="Comment"
+      >-- Universe levels</a
+      ><a name="988"
+      >
+</a
+      ><a name="989" class="Keyword"
+      >import</a
+      ><a name="995"
+      > </a
+      ><a name="996" href="level.html#1" class="Module"
       >level</a
-      ><a name="152"
+      ><a name="1001"
+      >
+
+</a
+      ><a name="1003" class="Comment"
+      >-- Container functors, W and M types</a
+      ><a name="1039"
       >
 </a
-      ><a name="153" class="Keyword"
+      ><a name="1040" class="Keyword"
       >import</a
-      ><a name="159"
+      ><a name="1046"
       > </a
-      ><a name="160" href="container.html#1" class="Module"
+      ><a name="1047" href="container.html#1" class="Module"
       >container</a
-      ><a name="169"
+      ><a name="1056"
       >
 
 </a
-      ><a name="171" class="Comment"
-      >-- solvers</a
-      ><a name="181"
+      ><a name="1058" class="Comment"
+      >-- Solvers: automate certain kinds of proofs</a
+      ><a name="1102"
       >
-
 </a
-      ><a name="183" class="Keyword"
+      ><a name="1103" class="Keyword"
       >import</a
-      ><a name="189"
+      ><a name="1109"
       > </a
-      ><a name="190" href="solver.equality.html#1" class="Module"
-      >solver.equality</a
-      ><a name="205"
+      ><a name="1110" href="solver.html#1" class="Module"
+      >solver</a
+      ><a name="1116"
       >
 
 </a
-      ><a name="207" class="Comment"
-      >-- categories and algebra</a
-      ><a name="232"
+      ><a name="1118" class="Comment"
+      >-- Category theory</a
+      ><a name="1136"
       >
-
 </a
-      ><a name="234" class="Keyword"
+      ><a name="1137" class="Keyword"
       >import</a
-      ><a name="240"
+      ><a name="1143"
       > </a
-      ><a name="241" href="category.html#1" class="Module"
+      ><a name="1144" href="category.html#1" class="Module"
       >category</a
-      ><a name="249"
+      ><a name="1152"
+      >
+
+</a
+      ><a name="1154" class="Comment"
+      >-- Basic algebra</a
+      ><a name="1170"
       >
 </a
-      ><a name="250" class="Keyword"
+      ><a name="1171" class="Keyword"
       >import</a
-      ><a name="256"
+      ><a name="1177"
       > </a
-      ><a name="257" href="algebra.html#1" class="Module"
+      ><a name="1178" href="algebra.html#1" class="Module"
       >algebra</a
-      ><a name="264"
+      ><a name="1185"
       >
 
 </a
-      ><a name="266" class="Comment"
-      >-- HoTT</a
-      ><a name="273"
+      ><a name="1187" class="Comment"
+      >-- Homotopy type theory infrastructure and results</a
+      ><a name="1237"
+      >
+</a
+      ><a name="1238" class="Keyword"
+      >import</a
+      ><a name="1244"
+      > </a
+      ><a name="1245" href="hott.html#1" class="Module"
+      >hott</a
+      ><a name="1249"
       >
 
 </a
-      ><a name="275" class="Keyword"
-      >import</a
-      ><a name="281"
-      > </a
-      ><a name="282" href="hott.hlevel.html#1" class="Module"
-      >hott.hlevel</a
-      ><a name="293"
+      ><a name="1251" class="Comment"
+      >-- Higher Inductive Types</a
+      ><a name="1276"
       >
 </a
-      ><a name="294" class="Keyword"
+      ><a name="1277" class="Keyword"
       >import</a
-      ><a name="300"
+      ><a name="1283"
       > </a
-      ><a name="301" href="hott.weak-equivalence.html#1" class="Module"
-      >hott.weak-equivalence</a
-      ><a name="322"
-      >
-</a
-      ><a name="323" class="Keyword"
-      >import</a
-      ><a name="329"
-      > </a
-      ><a name="330" href="hott.univalence.html#1" class="Module"
-      >hott.univalence</a
-      ><a name="345"
-      >
-
-</a
-      ><a name="347" class="Comment"
-      >-- higher inductive types</a
-      ><a name="372"
-      >
-
-</a
-      ><a name="374" class="Keyword"
-      >import</a
-      ><a name="380"
-      > </a
-      ><a name="381" href="higher.circle.html#1" class="Module"
-      >higher.circle</a
-      ><a name="394"
+      ><a name="1284" href="higher.html#1" class="Module"
+      >higher</a
+      ><a name="1290"
       >
 </a
       ></pre
