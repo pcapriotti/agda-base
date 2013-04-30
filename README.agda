@@ -29,6 +29,9 @@ import decidable
 -- Functions, isomorphisms and properties thereof
 import function
 
+-- Overloading system
+import overloading
+
 -- Universe levels
 import level
 
