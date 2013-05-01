@@ -82,29 +82,27 @@ A ↠ B = Σ (A → B) surjective
 
 private
   module properties {i j}{X : Set i}{Y : Set j} where
-    iso-is-fun : Overload _ (X → Y)
+    iso-is-fun : Coercion (X ≅ Y) (X → Y)
     iso-is-fun = record
-      { Source = X ≅ Y
-      ; coerce = _≅_.to }
+      { coerce = _≅_.to }
 
-    iso-is-iso : Overload _ (X ≅ Y)
-    iso-is-iso = overload-self (X ≅ Y)
+    iso-is-iso : Coercion (X ≅ Y) (X ≅ Y)
+    iso-is-iso = coerce-self _
 
-    inj-is-fun : Overload _ (X → Y)
+    inj-is-fun : Coercion (X ↣ Y) (X → Y)
     inj-is-fun = record
-      { Source = X ↣ Y
-      ; coerce = proj₁ }
+      { coerce = proj₁ }
 
-    srj-is-fun : Overload _ (X → Y)
+    srj-is-fun : Coercion (X ↠ Y) (X → Y)
     srj-is-fun = record
-      { Source = X ↠ Y
-      ; coerce = proj₁ }
+      { coerce = proj₁ }
 
     private
-      module iso-methods {k} ⦃ o : Overload k (X ≅ Y) ⦄ where
+      module iso-methods {k}{Source : Set k}
+                         ⦃ c : Coercion Source (X ≅ Y) ⦄ where
         private
-          module with-source (source : Source o) where
-            private target = coerce o source
+          module with-source (source : Source) where
+            private target = coerce c source
             open _≅_ target public using ()
               renaming (from to invert)
         open with-source public

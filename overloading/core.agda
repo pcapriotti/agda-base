@@ -4,54 +4,36 @@ module overloading.core where
 open import level
 open import overloading.bundle
 
-record Overload i {j} (Target : Set j) : Set (lsuc i ⊔ j) where
-  constructor overload
+record Coercion {i}{j}(Source : Set i)(Target : Set j) : Set (i ⊔ j) where
+  constructor coercion
   field
-    Source : Set i
     coerce : Source → Target
+open Coercion public
 
-open Overload public
+data Style : Set where default : Style
 
-record OverloadInstance i {j}
-                        (style : Set)
-                        (Target : Set j) : Set (lsuc (i ⊔ j)) where
-  field o : Overload i Target
+record Styled {i}(style : Style)(X : Set i) : Set i where
+  field value : X
 
-  field source : Source o
+styled : ∀ {i}{X : Set i} → (s : Style) → X → Styled s X
+styled s x = record { value = x }
 
-  target : Target
-  target = coerce o source
+coerce-self : ∀ {i} (X : Set i) → Coercion X X
+coerce-self {i} _ = record
+  { coerce = λ x → x }
 
-module overload {i j}
-                (style : Set)
-                (Target : Set j)
-                ⦃ o : Overload i Target ⦄
-                (X : Source o) where
-  _instance : OverloadInstance i style Target
-  _instance = record
-    { o = o
-    ; source = X }
+coerce-parent : ∀ {i j k}
+                {X : Set i}
+                {Y : Set j}
+              → ⦃ c : Coercion X Y ⦄
+              → {Struct : X → Set k}
+              → Coercion (Bundle Struct) Y
+coerce-parent ⦃ c ⦄ = record
+  { coerce = λ x → coerce c (Bundle.parent x) }
 
-overload-self : ∀ {i} (X : Set i) → Overload _ X
-overload-self {i} X = record
-  { Source = X
-  ; coerce = λ x → x }
+set-is-set : ∀ {i} → Coercion (Set i) (Set i)
+set-is-set {i} = coerce-self _
 
-overload-parent : ∀ {i j k}
-       → {X : Set j}
-       → ⦃ o : Overload i X ⦄
-       → (Source o → Set k)
-       → Overload _ X
-overload-parent ⦃ o ⦄ Struct = record
-  { Source = Bundle Struct
-  ; coerce = λ x → coerce o (Bundle.parent x) }
-
-set-is-set : ∀ {i} → Overload _ (Set i)
-set-is-set {i} = overload-self (Set i)
-
-∣_∣ : ∀ {i j} ⦃ o : Overload i (Set j) ⦄ → Source o → Set j
-∣_∣ ⦃ o ⦄ = coerce o
-
--- overloading styles
-record default : Set where
-record additive : Set where
+∣_∣ : ∀ {i j}{Source : Set i} ⦃ o : Coercion Source (Set j) ⦄
+    → Source → Set j
+∣_∣ ⦃ c ⦄ = coerce c

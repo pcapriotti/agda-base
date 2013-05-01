@@ -42,18 +42,16 @@ private
                     {N : Monoid j} where
     open Morphism
 
-    mmor-is-fun : Overload _ (∣ M ∣ → ∣ N ∣)
+    mmor-is-fun : Coercion (Morphism M N) (∣ M ∣ → ∣ N ∣)
     mmor-is-fun = record
-      { Source = Morphism M N
-      ; coerce = λ F → G.map (as-functor F) }
+      { coerce = λ F → G.map (as-functor F) }
 
-    mmor-is-fct : Overload _ (Functor (cat M) (cat N))
+    mmor-is-fct : Coercion (Morphism M N) (Functor (cat M) (cat N))
     mmor-is-fct = record
-      { Source = Morphism M N
-      ; coerce = as-functor }
+      { coerce = as-functor }
 
-    mmor-is-mmor : Overload _ (Morphism M N)
-    mmor-is-mmor = overload-self (Morphism M N)
+    mmor-is-mmor : Coercion (Morphism M N) (Morphism M N)
+    mmor-is-mmor = coerce-self _
 open properties public
 
 mk-morphism : ∀ {i j}{M : Monoid i}{N : Monoid j}

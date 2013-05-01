@@ -13,19 +13,20 @@ record IsGraph i j (X : Set i) : Set (i ⊔ lsuc j) where
 Graph : ∀ i j → Set _
 Graph i j = Bundle (IsGraph i j)
 
-gph-is-set : ∀ {i j} → Overload _ (Set i)
-gph-is-set {i}{j} = overload-parent (IsGraph i j)
+gph-is-set : ∀ {i j} → Coercion (Graph i j) (Set i)
+gph-is-set {i}{j} = coerce-parent
 
-gph-is-gph : ∀ {i j} → Overload _ (Graph i j)
-gph-is-gph {i}{j} = overload-self (Graph i j)
+gph-is-gph : ∀ {i j} → Coercion (Graph i j) (Graph i j)
+gph-is-gph {i}{j} = coerce-self _
 
 private
-  module graph-statics {i j k} ⦃ o : Overload k (Graph i j) ⦄ where
-    open Overload o public using () renaming (coerce to graph)
+  module graph-statics {i j k}{Source : Set k}
+                       ⦃ c : Coercion Source (Graph i j) ⦄ where
+    open Coercion c public using () renaming (coerce to graph)
 
     private
-      module with-source (source : Source o) where
-        private target = coerce o source
+      module with-source (source : Source) where
+        private target = coerce c source
         open IsGraph (Bundle.struct target)
 
         open Bundle target public using ()
@@ -34,14 +35,16 @@ private
         total : Set _
         total = Σ (obj × obj) λ { (x , y) → hom x y }
     open with-source public
+  module graph-methods {i j}{X : Set i}
+                       ⦃ s : Styled default (IsGraph i j X) ⦄ where
+    open Styled s
+    open IsGraph value public
 
-  module graph-methods {i j k} ⦃ o : OverloadInstance k default (Graph i j) ⦄ where
-    open OverloadInstance o
-    open IsGraph (Bundle.struct target) public
-
-module as-graph {i j k} ⦃ o : Overload k (Graph i j) ⦄
-                (source : Source o) where
-  open overload default (Graph i j) source public
+module as-graph {i j k} {Source : Set k}
+                ⦃ c : Coercion Source (Graph i j) ⦄
+                (source : Source) where
+  private target = coerce c source
+  _graph-instance = styled default (Bundle.struct target)
 
 record GraphBuilder i j : Set (lsuc (i ⊔ j)) where
   field
@@ -56,3 +59,8 @@ mk-graph b = let open GraphBuilder b in record
 open graph-statics public
 open graph-methods public
 
+module example {i}{j} (W : Graph i j)(U : Graph i j) where
+  open as-graph W
+
+  test : obj W → Set j
+  test x = hom x x

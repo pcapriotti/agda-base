@@ -46,26 +46,28 @@ private
   module properties {C : Category i j}
                     {D : Category i' j'} where
 
-    fct-is-fun : Overload _ (obj C → obj D)
-    fct-is-fun = overload-parent (IsFunctor C D)
+    fct-is-fun : Coercion (Functor C D) (obj C → obj D)
+    fct-is-fun = coerce-parent
 
-    fct-is-mor : Overload _ (Morphism (graph C) (graph D))
-    fct-is-mor = overload-parent (IsFunctor C D)
+    fct-is-mor : Coercion (Functor C D) (Morphism (graph C) (graph D))
+    fct-is-mor = coerce-parent
 
-    fct-is-fct : Overload _ (Functor C D)
-    fct-is-fct = overload-self (Functor C D)
+    fct-is-fct : Coercion (Functor C D) (Functor C D)
+    fct-is-fct = coerce-self _
 
     private
-      module functor-methods {k} ⦃ o : Overload k (Functor C D) ⦄ where
-        open Overload o public using ()
+      module functor-methods {k}{Source : Set k}
+                             ⦃ c : Coercion Source (Functor C D) ⦄ where
+        open Coercion c public using ()
           renaming (coerce to functor)
-        private
-          module with-source (source : Source o) where
-            private target = coerce o source
-            open IsFunctor (Bundle.struct target) public
-        open with-source public
+      module functor-explicits {k}{Source : Set k}
+                               ⦃ c : Coercion Source (Functor C D) ⦄
+                               (source : Source) where
+        private target = coerce c source
+        open IsFunctor (Bundle.struct target) public
 
     open functor-methods public
+    open functor-explicits public
 
     mk-functor : FunctorBuilder C D → Functor C D
     mk-functor b = let module B = FunctorBuilder b in record

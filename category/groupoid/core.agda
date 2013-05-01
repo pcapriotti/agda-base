@@ -23,44 +23,43 @@ record IsGroupoid i j (G : Groupoid₀ i j) : Set (i ⊔ j) where
 Groupoid : ∀ i j → Set _
 Groupoid i j = Bundle (IsGroupoid i j)
 
-gpd-is-set : ∀ {i j} → Overload _ (Set i)
-gpd-is-set {i}{j} = overload-parent (IsGroupoid i j)
+gpd-is-set : ∀ {i j} → Coercion (Groupoid i j) (Set i)
+gpd-is-set {i}{j} = coerce-parent
 
-gpd-is-gph : ∀ {i j} → Overload _ (Graph i j)
-gpd-is-gph {i}{j} = overload-parent (IsGroupoid i j)
+gpd-is-gph : ∀ {i j} → Coercion (Groupoid i j) (Graph i j)
+gpd-is-gph {i}{j} = coerce-parent
 
-gpd-is-cat₀ : ∀ {i j} → Overload _ (Category₀ i j)
-gpd-is-cat₀ {i}{j} = overload-parent (IsGroupoid i j)
+gpd-is-cat₀ : ∀ {i j} → Coercion (Groupoid i j) (Category₀ i j)
+gpd-is-cat₀ {i}{j} = coerce-parent
 
-gpd-is-cat : ∀ {i j} → Overload _ (Category i j)
+gpd-is-cat : ∀ {i j} → Coercion (Groupoid i j) (Category i j)
 gpd-is-cat {i}{j} = record
-  { Source = Groupoid i j
-  ; coerce = λ G → record
+  { coerce = λ G → record
     { parent = cat₀ G
     ; struct = IsGroupoid.is-cat (Bundle.struct G) } }
 
-gpd-is-gpd₀ : ∀ {i j} → Overload _ (Groupoid₀ i j)
-gpd-is-gpd₀ {i}{j} = overload-parent (IsGroupoid i j)
+gpd-is-gpd₀ : ∀ {i j} → Coercion (Groupoid i j) (Groupoid₀ i j)
+gpd-is-gpd₀ {i}{j} = coerce-parent
 
-gpd-is-gpd : ∀ {i j} → Overload _ (Groupoid i j)
-gpd-is-gpd {i}{j} = overload-self (Groupoid i j)
+gpd-is-gpd : ∀ {i j} → Coercion (Groupoid i j) (Groupoid i j)
+gpd-is-gpd {i}{j} = coerce-self _
 
 private
-  module gpd-statics {i j k} ⦃ o : Overload k (Groupoid i j) ⦄ where
-    open Overload o public using () renaming (coerce to gpd)
-  module gpd-methods {i j k} ⦃ o : OverloadInstance k default (Groupoid i j) ⦄ where
-    open OverloadInstance o
-    open IsGroupoid (Bundle.struct target) public
+  module gpd-statics {i j k}{Source : Set k}
+                     ⦃ c : Coercion Source (Groupoid i j) ⦄ where
+    open Coercion c public using () renaming (coerce to gpd)
+  module gpd-methods {i j}{G : Groupoid₀ i j}
+                     ⦃ s : Styled default (IsGroupoid i j G) ⦄ where
+    open Styled s
+    open IsGroupoid value public
 
-module as-groupoid {i j k} ⦃ o : Overload k (Groupoid i j) ⦄
-                    (source : Source o) where
-  private target = coerce o source
-
+module as-groupoid {i j k}{Source : Set k}
+                   ⦃ c : Coercion Source (Groupoid i j) ⦄
+                   (source : Source) where
+  private target = coerce c source
   open as-category₀ target public
-    renaming (_instance to _parent-instance)
-  open overload default (Category i j) target public
-    renaming (_instance to _cat-instance)
-  open overload default (Groupoid i j) target public
+  _cat-instance = styled default (cat target)
+  _gpd-instance = styled default (Bundle.struct target)
 
 mk-groupoid : ∀ {i j} → GroupoidBuilder i j → Groupoid i j
 mk-groupoid b = let module B = GroupoidBuilder b in record

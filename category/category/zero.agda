@@ -19,32 +19,33 @@ record IsCategory₀ i j (W : Graph i j) : Set (i ⊔ j) where
 Category₀ : ∀ i j → Set _
 Category₀ i j = Bundle (IsCategory₀ i j)
 
-cat₀-is-set : ∀ {i j} → Overload _ (Set i)
-cat₀-is-set {i}{j} = overload-parent (IsCategory₀ i j)
+cat₀-is-set : ∀ {i j} → Coercion (Category₀ i j) (Set i)
+cat₀-is-set {i}{j} = coerce-parent
 
-cat₀-is-gph : ∀ {i j} → Overload _ (Graph i j)
-cat₀-is-gph {i}{j} = overload-parent (IsCategory₀ i j)
+cat₀-is-gph : ∀ {i j} → Coercion (Category₀ i j) (Graph i j)
+cat₀-is-gph {i}{j} = coerce-parent
 
-cat₀-is-cat₀ : ∀ {i j} → Overload _ (Category₀ i j)
-cat₀-is-cat₀ {i}{j} = overload-self (Category₀ i j)
+cat₀-is-cat₀ : ∀ {i j} → Coercion (Category₀ i j) (Category₀ i j)
+cat₀-is-cat₀ {i}{j} = coerce-self _
 
 private
-  module cat₀-statics {i j k} ⦃ o : Overload k (Category₀ i j) ⦄ where
-    open Overload o public using () renaming (coerce to cat₀)
-  module cat₀-methods {i j k} ⦃ o : OverloadInstance k default (Category₀ i j) ⦄ where
-    open OverloadInstance o
-    open as-graph target
-    open IsCategory₀ (Bundle.struct target) public
+  module cat₀-statics {i j k}{Source : Set k}
+                      ⦃ c : Coercion Source (Category₀ i j) ⦄ where
+    open Coercion c public using () renaming (coerce to cat₀)
+  module cat₀-methods {i j}{W : Graph i j}
+                      ⦃ s : Styled default (IsCategory₀ i j W) ⦄ where
+    open Styled s
+    open IsCategory₀ value public
       hiding (_∘_; id)
 
-module as-category₀ {i j k} ⦃ o : Overload k (Category₀ i j) ⦄
-                    (source : Source o) where
+module as-category₀ {i j k} {Source : Set k}
+                    ⦃ o : Coercion Source (Category₀ i j) ⦄
+                    (source : Source) where
   open import function.core
   private target = coerce o source
 
-  open overload default (Graph i j) target public
-    renaming (_instance to _parent-instance)
-  open overload default (Category₀ i j) target public
+  open as-graph target public
+  _cat₀-instance = styled default (Bundle.struct target)
 
   cat-comp : Composition _ _ _ _ _ _
   cat-comp = record

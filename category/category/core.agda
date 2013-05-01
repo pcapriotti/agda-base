@@ -26,31 +26,33 @@ record IsCategory i j (C : Category₀ i j) : Set (i ⊔ j) where
 Category : ∀ i j → Set _
 Category i j = Bundle (IsCategory i j)
 
-cat-is-set : ∀ {i j} → Overload _ (Set i)
-cat-is-set {i}{j} = overload-parent (IsCategory i j)
+cat-is-set : ∀ {i j} → Coercion (Category i j) (Set i)
+cat-is-set {i}{j} = coerce-parent
 
-cat-is-gph : ∀ {i j} → Overload _ (Graph i j)
-cat-is-gph {i}{j} = overload-parent (IsCategory i j)
+cat-is-gph : ∀ {i j} → Coercion (Category i j) (Graph i j)
+cat-is-gph {i}{j} = coerce-parent
 
-cat-is-cat₀ : ∀ {i j} → Overload _ (Category₀ i j)
-cat-is-cat₀ {i}{j} = overload-parent (IsCategory i j)
+cat-is-cat₀ : ∀ {i j} → Coercion (Category i j) (Category₀ i j)
+cat-is-cat₀ {i}{j} = coerce-parent
 
-cat-is-cat : ∀ {i j} → Overload _ (Category i j)
-cat-is-cat {i}{j} = overload-self (Category i j)
+cat-is-cat : ∀ {i j} → Coercion (Category i j) (Category i j)
+cat-is-cat {i}{j} = coerce-self _
 
 private
-  module cat-statics {i j k} ⦃ o : Overload k (Category i j) ⦄ where
-    open Overload o public using () renaming (coerce to cat)
-  module cat-methods {i j k} ⦃ o : OverloadInstance k default (Category i j) ⦄ where
-    open OverloadInstance o
-    open IsCategory (Bundle.struct target) public
+  module cat-statics {i j k}{Source : Set k}
+                     ⦃ c : Coercion Source (Category i j) ⦄ where
+    open Coercion c public using () renaming (coerce to cat)
+  module cat-methods {i j}{C : Category₀ i j}
+                     ⦃ s : Styled default (IsCategory i j C) ⦄ where
+    open Styled s
+    open IsCategory value public
 
-module as-category {i j k} ⦃ o : Overload k (Category i j) ⦄
-                    (source : Source o) where
-  private target = coerce o source
+module as-category {i j k}{Source : Set k}
+                   ⦃ c : Coercion Source (Category i j) ⦄
+                   (source : Source) where
+  private target = coerce c source
   open as-category₀ target public
-    renaming (_instance to _parent-instance)
-  open overload default (Category i j) target public
+  _cat-instance = styled default (Bundle.struct target)
 
 mk-category : ∀ {i j} → CategoryBuilder i j → Category i j
 mk-category b = let module B = CategoryBuilder b in record

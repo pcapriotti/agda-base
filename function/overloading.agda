@@ -6,11 +6,12 @@ open import level
 open import sum
 open import overloading.core
 
-fun-is-fun : Overload _ (X → Y)
-fun-is-fun = overload-self _
+fun-is-fun : Coercion (X → Y) (X → Y)
+fun-is-fun = coerce-self _
 
 private
-  module fun-methods {k} ⦃ o : Overload k (X → Y) ⦄ where
-    open Overload o public using ()
+  module fun-methods {k}{Source : Set k}
+                     ⦃ c : Coercion Source (X → Y) ⦄ where
+    open Coercion c public using ()
       renaming (coerce to apply)
 open fun-methods public
