@@ -15,6 +15,20 @@ data _~_ {i}{j}(X : Set i)(Y : Set j) : Set (i ⊔ j) where
           → ((x : X)(y : Y) → ∞ ((f x ≡ y) ~ (x ≡ g y)))
           → (X ~ Y)
 
+apply~ : ∀ {i j}{X : Set i}{Y : Set j} → X ~ Y → X → Y
+apply~ (~-intro f _ _) = f
+
+invert~ : ∀ {i j}{X : Set i}{Y : Set j} → X ~ Y → Y → X
+invert~ (~-intro _ g _) = g
+
+~⇒≅ : ∀ {i j}{X : Set i}{Y : Set j}
+    → X ~ Y → X ≅ Y
+~⇒≅ {X = X}{Y = Y}(~-intro f g φ) = record
+  { to = f
+  ; from = g
+  ; iso₁ = λ x → sym (apply~ (♭ (φ x (f x))) refl)
+  ; iso₂ = λ y → invert~ (♭ (φ (g y) y)) refl }
+
 ≅⇒~ : ∀ {i j}{X : Set i}{Y : Set j}
     → X ≅ Y → X ~ Y
 ≅⇒~ {X = X}{Y = Y} isom with ≅⇒≅' isom
