@@ -110,11 +110,12 @@ module overloading.core where
 -- paths in the full DAG, since the existence of a coercion is enough for static
 -- methods to propagate.
 --
--- The principal subgraph is used for inheritance instance methods.  Namely, the
--- `as-target` record enables all instance methods for the ancestors of `Target`
--- in the principal subgraph.  This is accomplished by simply re-exporting the
--- `as-target` module for the immediate parent of `Target`. Extra edges coming
--- out of `Target` can optionally be added as well for convenience.
+-- The principal subgraph is used for inheritance of instance methods.  Namely,
+-- the `as-target` record enables all instance methods for the ancestors of
+-- `Target` in the principal subgraph.  This is accomplished by simply
+-- re-exporting the `as-target` module for the immediate parent of
+-- `Target`. Extra edges coming out of `Target` can optionally be added as well
+-- for convenience.
 
 open import level
 open import overloading.bundle
