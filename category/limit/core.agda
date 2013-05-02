@@ -13,11 +13,11 @@ module category.limit.core {i}{j}{i'}{j'}
   {C : Category i j}{J : Category i' j'} where
 
 Cone : Functor J C → Set _
-Cone D = Extension (unit-func J) D
+Cone D = Extension {C' = unit} (unit-func J) D
 
 record Lim (D : Functor J C)
   : Set (i' ⊔ j' ⊔ lsuc (lsuc (i ⊔ j))) where
-  field ran : Ran (unit-func J) D
+  field ran : Ran {C' = unit} (unit-func J) D
 
   open Ran ran public
     renaming ( counit to cone
