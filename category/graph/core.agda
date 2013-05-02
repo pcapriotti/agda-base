@@ -58,9 +58,3 @@ mk-graph b = let open GraphBuilder b in record
 
 open graph-statics public
 open graph-methods public
-
-module example {i}{j} (W : Graph i j)(U : Graph i j) where
-  open as-graph W
-
-  test : obj W → Set j
-  test x = hom x x
