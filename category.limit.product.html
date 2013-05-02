@@ -1,0 +1,478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >category.limit.product</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="category.limit.product.html#1" class="Module"
+      >category.limit.product</a
+      ><a name="59"
+      > </a
+      ><a name="60" class="Keyword"
+      >where</a
+      ><a name="65"
+      >
+
+</a
+      ><a name="67" class="Keyword"
+      >open</a
+      ><a name="71"
+      > </a
+      ><a name="72" class="Keyword"
+      >import</a
+      ><a name="78"
+      > </a
+      ><a name="79" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="82"
+      >
+</a
+      ><a name="83" class="Keyword"
+      >open</a
+      ><a name="87"
+      > </a
+      ><a name="88" class="Keyword"
+      >import</a
+      ><a name="94"
+      > </a
+      ><a name="95" href="category.graph.html#1" class="Module"
+      >category.graph</a
+      ><a name="109"
+      >
+</a
+      ><a name="110" class="Keyword"
+      >open</a
+      ><a name="114"
+      > </a
+      ><a name="115" class="Keyword"
+      >import</a
+      ><a name="121"
+      > </a
+      ><a name="122" href="category.category.html#1" class="Module"
+      >category.category</a
+      ><a name="139"
+      >
+</a
+      ><a name="140" class="Keyword"
+      >open</a
+      ><a name="144"
+      > </a
+      ><a name="145" class="Keyword"
+      >import</a
+      ><a name="151"
+      > </a
+      ><a name="152" href="category.functor.html#1" class="Module"
+      >category.functor</a
+      ><a name="168"
+      >
+</a
+      ><a name="169" class="Keyword"
+      >open</a
+      ><a name="173"
+      > </a
+      ><a name="174" class="Keyword"
+      >import</a
+      ><a name="180"
+      > </a
+      ><a name="181" href="category.instances.discrete.html#1" class="Module"
+      >category.instances.discrete</a
+      ><a name="208"
+      >
+</a
+      ><a name="209" class="Keyword"
+      >open</a
+      ><a name="213"
+      > </a
+      ><a name="214" class="Keyword"
+      >import</a
+      ><a name="220"
+      > </a
+      ><a name="221" href="category.limit.core.html#1" class="Module"
+      >category.limit.core</a
+      ><a name="240"
+      >
+</a
+      ><a name="241" class="Keyword"
+      >open</a
+      ><a name="245"
+      > </a
+      ><a name="246" class="Keyword"
+      >import</a
+      ><a name="252"
+      > </a
+      ><a name="253" href="sets.fin.html#1" class="Module"
+      >sets.fin</a
+      ><a name="261"
+      >
+</a
+      ><a name="262" class="Keyword"
+      >open</a
+      ><a name="266"
+      > </a
+      ><a name="267" class="Keyword"
+      >import</a
+      ><a name="273"
+      > </a
+      ><a name="274" href="sets.unit.html#1" class="Module"
+      >sets.unit</a
+      ><a name="283"
+      >
+</a
+      ><a name="284" class="Keyword"
+      >open</a
+      ><a name="288"
+      > </a
+      ><a name="289" class="Keyword"
+      >import</a
+      ><a name="295"
+      > </a
+      ><a name="296" href="sets.vec.html#1" class="Module"
+      >sets.vec</a
+      ><a name="304"
+      >
+</a
+      ><a name="305" class="Keyword"
+      >open</a
+      ><a name="309"
+      > </a
+      ><a name="310" class="Keyword"
+      >import</a
+      ><a name="316"
+      > </a
+      ><a name="317" href="hott.hlevel.html#1" class="Module"
+      >hott.hlevel</a
+      ><a name="328"
+      >
+
+</a
+      ><a name="330" href="category.limit.product.html#330" class="Function"
+      >product-graph</a
+      ><a name="343"
+      > </a
+      ><a name="344" class="Symbol"
+      >:</a
+      ><a name="345"
+      > </a
+      ><a name="346" href="category.category.core.html#653" class="Function"
+      >Category</a
+      ><a name="354"
+      > </a
+      ><a name="355" class="Symbol"
+      >_</a
+      ><a name="356"
+      > </a
+      ><a name="357" class="Symbol"
+      >_</a
+      ><a name="358"
+      >
+</a
+      ><a name="359" href="category.limit.product.html#330" class="Function"
+      >product-graph</a
+      ><a name="372"
+      > </a
+      ><a name="373" class="Symbol"
+      >=</a
+      ><a name="374"
+      > </a
+      ><a name="375" href="category.instances.discrete.html#1006" class="Function"
+      >discrete-cat</a
+      ><a name="387"
+      > </a
+      ><a name="388" class="Symbol"
+      >(</a
+      ><a name="389" href="sets.fin.html#201" class="Datatype"
+      >Fin</a
+      ><a name="392"
+      > </a
+      ><a name="393" class="Number"
+      >2</a
+      ><a name="394"
+      > </a
+      ><a name="395" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="396"
+      > </a
+      ><a name="397" href="hott.hlevel.properties.html#649" class="Function"
+      >h!</a
+      ><a name="399"
+      > </a
+      ><a name="400" class="Symbol"
+      >(</a
+      ><a name="401" href="hott.hlevel.sets.html#1804" class="Function"
+      >fin-set</a
+      ><a name="408"
+      > </a
+      ><a name="409" class="Number"
+      >2</a
+      ><a name="410" class="Symbol"
+      >))</a
+      ><a name="412"
+      >
+
+</a
+      ><a name="414" class="Keyword"
+      >private</a
+      ><a name="421"
+      >
+  </a
+      ><a name="424" class="Keyword"
+      >module</a
+      ><a name="430"
+      > </a
+      ><a name="431" href="category.limit.product.html#431" class="Module"
+      >Definition</a
+      ><a name="441"
+      > </a
+      ><a name="442" class="Symbol"
+      >{</a
+      ><a name="443" href="category.limit.product.html#443" class="Bound"
+      >i</a
+      ><a name="444"
+      > </a
+      ><a name="445" href="category.limit.product.html#445" class="Bound"
+      >j</a
+      ><a name="446" class="Symbol"
+      >}{</a
+      ><a name="448" href="category.limit.product.html#448" class="Bound"
+      >C</a
+      ><a name="449"
+      > </a
+      ><a name="450" class="Symbol"
+      >:</a
+      ><a name="451"
+      > </a
+      ><a name="452" href="category.category.core.html#653" class="Function"
+      >Category</a
+      ><a name="460"
+      > </a
+      ><a name="461" href="category.limit.product.html#443" class="Bound"
+      >i</a
+      ><a name="462"
+      > </a
+      ><a name="463" href="category.limit.product.html#445" class="Bound"
+      >j</a
+      ><a name="464" class="Symbol"
+      >}</a
+      ><a name="465"
+      > </a
+      ><a name="466" class="Keyword"
+      >where</a
+      ><a name="471"
+      >
+    </a
+      ><a name="476" href="category.limit.product.html#476" class="Function"
+      >product-diagram</a
+      ><a name="491"
+      > </a
+      ><a name="492" class="Symbol"
+      >:</a
+      ><a name="493"
+      > </a
+      ><a name="494" href="overloading.bundle.html#220" class="Function"
+      >obj</a
+      ><a name="497"
+      > </a
+      ><a name="498" href="category.limit.product.html#448" class="Bound"
+      >C</a
+      ><a name="499"
+      > </a
+      ><a name="500" class="Symbol"
+      >&#8594;</a
+      ><a name="501"
+      > </a
+      ><a name="502" href="overloading.bundle.html#220" class="Function"
+      >obj</a
+      ><a name="505"
+      > </a
+      ><a name="506" href="category.limit.product.html#448" class="Bound"
+      >C</a
+      ><a name="507"
+      > </a
+      ><a name="508" class="Symbol"
+      >&#8594;</a
+      ><a name="509"
+      > </a
+      ><a name="510" href="category.functor.core.html#1021" class="Function"
+      >Functor</a
+      ><a name="517"
+      > </a
+      ><a name="518" href="category.limit.product.html#330" class="Function"
+      >product-graph</a
+      ><a name="531"
+      > </a
+      ><a name="532" href="category.limit.product.html#448" class="Bound"
+      >C</a
+      ><a name="533"
+      >
+    </a
+      ><a name="538" href="category.limit.product.html#476" class="Function"
+      >product-diagram</a
+      ><a name="553"
+      > </a
+      ><a name="554" href="category.limit.product.html#554" class="Bound"
+      >X</a
+      ><a name="555"
+      > </a
+      ><a name="556" href="category.limit.product.html#556" class="Bound"
+      >Y</a
+      ><a name="557"
+      > </a
+      ><a name="558" class="Symbol"
+      >=</a
+      ><a name="559"
+      > </a
+      ><a name="560" href="category.instances.discrete.html#1088" class="Function"
+      >discrete-lift</a
+      ><a name="573"
+      > </a
+      ><a name="574" class="Symbol"
+      >(</a
+      ><a name="575" href="sets.vec.core.html#416" class="Function"
+      >lookup</a
+      ><a name="581"
+      > </a
+      ><a name="582" class="Symbol"
+      >(</a
+      ><a name="583" href="category.limit.product.html#554" class="Bound"
+      >X</a
+      ><a name="584"
+      > </a
+      ><a name="585" href="sets.vec.core.html#211" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="586"
+      > </a
+      ><a name="587" href="category.limit.product.html#556" class="Bound"
+      >Y</a
+      ><a name="588"
+      > </a
+      ><a name="589" href="sets.vec.core.html#211" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="590"
+      > </a
+      ><a name="591" href="sets.vec.core.html#196" class="InductiveConstructor"
+      >[]</a
+      ><a name="593" class="Symbol"
+      >))</a
+      ><a name="595"
+      >
+
+    </a
+      ><a name="601" href="category.limit.product.html#601" class="Function"
+      >Product</a
+      ><a name="608"
+      > </a
+      ><a name="609" class="Symbol"
+      >:</a
+      ><a name="610"
+      > </a
+      ><a name="611" href="overloading.bundle.html#220" class="Function"
+      >obj</a
+      ><a name="614"
+      > </a
+      ><a name="615" href="category.limit.product.html#448" class="Bound"
+      >C</a
+      ><a name="616"
+      > </a
+      ><a name="617" class="Symbol"
+      >&#8594;</a
+      ><a name="618"
+      > </a
+      ><a name="619" href="overloading.bundle.html#220" class="Function"
+      >obj</a
+      ><a name="622"
+      > </a
+      ><a name="623" href="category.limit.product.html#448" class="Bound"
+      >C</a
+      ><a name="624"
+      > </a
+      ><a name="625" class="Symbol"
+      >&#8594;</a
+      ><a name="626"
+      > </a
+      ><a name="627" class="PrimitiveType"
+      >Set</a
+      ><a name="630"
+      > </a
+      ><a name="631" class="Symbol"
+      >_</a
+      ><a name="632"
+      >
+    </a
+      ><a name="637" href="category.limit.product.html#601" class="Function"
+      >Product</a
+      ><a name="644"
+      > </a
+      ><a name="645" href="category.limit.product.html#645" class="Bound"
+      >A</a
+      ><a name="646"
+      > </a
+      ><a name="647" href="category.limit.product.html#647" class="Bound"
+      >B</a
+      ><a name="648"
+      > </a
+      ><a name="649" class="Symbol"
+      >=</a
+      ><a name="650"
+      > </a
+      ><a name="651" href="category.limit.core.html#421" class="Record"
+      >Lim</a
+      ><a name="654"
+      > </a
+      ><a name="655" class="Symbol"
+      >(</a
+      ><a name="656" href="category.limit.product.html#476" class="Function"
+      >product-diagram</a
+      ><a name="671"
+      > </a
+      ><a name="672" href="category.limit.product.html#645" class="Bound"
+      >A</a
+      ><a name="673"
+      > </a
+      ><a name="674" href="category.limit.product.html#647" class="Bound"
+      >B</a
+      ><a name="675" class="Symbol"
+      >)</a
+      ><a name="676"
+      >
+
+</a
+      ><a name="678" class="Keyword"
+      >open</a
+      ><a name="682"
+      > </a
+      ><a name="683" href="category.limit.product.html#431" class="Module"
+      >Definition</a
+      ><a name="693"
+      > </a
+      ><a name="694" class="Keyword"
+      >public</a
+      ><a name="700"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

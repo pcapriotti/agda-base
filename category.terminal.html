@@ -1,0 +1,650 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >category.terminal</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="category.terminal.html#1" class="Module"
+      >category.terminal</a
+      ><a name="53"
+      > </a
+      ><a name="54" class="Keyword"
+      >where</a
+      ><a name="59"
+      >
+
+</a
+      ><a name="61" class="Keyword"
+      >open</a
+      ><a name="65"
+      > </a
+      ><a name="66" class="Keyword"
+      >import</a
+      ><a name="72"
+      > </a
+      ><a name="73" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="76"
+      >
+</a
+      ><a name="77" class="Keyword"
+      >open</a
+      ><a name="81"
+      > </a
+      ><a name="82" class="Keyword"
+      >import</a
+      ><a name="88"
+      > </a
+      ><a name="89" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="102"
+      >
+</a
+      ><a name="103" class="Keyword"
+      >open</a
+      ><a name="107"
+      > </a
+      ><a name="108" class="Keyword"
+      >import</a
+      ><a name="114"
+      > </a
+      ><a name="115" href="category.graph.html#1" class="Module"
+      >category.graph</a
+      ><a name="129"
+      >
+</a
+      ><a name="130" class="Keyword"
+      >open</a
+      ><a name="134"
+      > </a
+      ><a name="135" class="Keyword"
+      >import</a
+      ><a name="141"
+      > </a
+      ><a name="142" href="category.category.html#1" class="Module"
+      >category.category</a
+      ><a name="159"
+      >
+</a
+      ><a name="160" class="Keyword"
+      >open</a
+      ><a name="164"
+      > </a
+      ><a name="165" class="Keyword"
+      >import</a
+      ><a name="171"
+      > </a
+      ><a name="172" href="category.functor.html#1" class="Module"
+      >category.functor</a
+      ><a name="188"
+      > </a
+      ><a name="189" class="Keyword"
+      >using</a
+      ><a name="194"
+      > </a
+      ><a name="195" class="Symbol"
+      >(</a
+      ><a name="196"
+      >Const</a
+      ><a name="201" class="Symbol"
+      >)</a
+      ><a name="202"
+      >
+</a
+      ><a name="203" class="Keyword"
+      >open</a
+      ><a name="207"
+      > </a
+      ><a name="208" class="Keyword"
+      >import</a
+      ><a name="214"
+      > </a
+      ><a name="215" href="category.functor.adjoint.html#1" class="Module"
+      >category.functor.adjoint</a
+      ><a name="239"
+      >
+</a
+      ><a name="240" class="Keyword"
+      >open</a
+      ><a name="244"
+      > </a
+      ><a name="245" class="Keyword"
+      >import</a
+      ><a name="251"
+      > </a
+      ><a name="252" href="category.instances.unit.html#1" class="Module"
+      >category.instances.unit</a
+      ><a name="275"
+      >
+</a
+      ><a name="276" class="Keyword"
+      >open</a
+      ><a name="280"
+      > </a
+      ><a name="281" class="Keyword"
+      >import</a
+      ><a name="287"
+      > </a
+      ><a name="288" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="308"
+      >
+</a
+      ><a name="309" class="Keyword"
+      >open</a
+      ><a name="313"
+      > </a
+      ><a name="314" class="Keyword"
+      >import</a
+      ><a name="320"
+      > </a
+      ><a name="321" href="sets.unit.html#1" class="Module"
+      >sets.unit</a
+      ><a name="330"
+      >
+</a
+      ><a name="331" class="Keyword"
+      >open</a
+      ><a name="335"
+      > </a
+      ><a name="336" class="Keyword"
+      >import</a
+      ><a name="342"
+      > </a
+      ><a name="343" href="hott.hlevel.html#1" class="Module"
+      >hott.hlevel</a
+      ><a name="354"
+      >
+</a
+      ><a name="355" class="Keyword"
+      >open</a
+      ><a name="359"
+      > </a
+      ><a name="360" class="Keyword"
+      >import</a
+      ><a name="366"
+      > </a
+      ><a name="367" href="hott.hlevel.properties.html#1" class="Module"
+      >hott.hlevel.properties</a
+      ><a name="389"
+      >
+
+</a
+      ><a name="391" class="Comment"
+      >-- X is a terminal object if the functor X : unit &#8594; C</a
+      ><a name="444"
+      >
+</a
+      ><a name="445" class="Comment"
+      >-- is a right adjoint of the unique functor C &#8594; unit</a
+      ><a name="497"
+      >
+</a
+      ><a name="498" href="category.terminal.html#498" class="Function"
+      >terminal</a
+      ><a name="506"
+      > </a
+      ><a name="507" class="Symbol"
+      >:</a
+      ><a name="508"
+      > </a
+      ><a name="509" class="Symbol"
+      >&#8704;</a
+      ><a name="510"
+      > </a
+      ><a name="511" class="Symbol"
+      >{</a
+      ><a name="512" href="category.terminal.html#512" class="Bound"
+      >i</a
+      ><a name="513"
+      > </a
+      ><a name="514" href="category.terminal.html#514" class="Bound"
+      >j</a
+      ><a name="515" class="Symbol"
+      >}</a
+      ><a name="516"
+      > </a
+      ><a name="517" class="Symbol"
+      >(</a
+      ><a name="518" href="category.terminal.html#518" class="Bound"
+      >C</a
+      ><a name="519"
+      > </a
+      ><a name="520" class="Symbol"
+      >:</a
+      ><a name="521"
+      > </a
+      ><a name="522" href="category.category.core.html#653" class="Function"
+      >Category</a
+      ><a name="530"
+      > </a
+      ><a name="531" href="category.terminal.html#512" class="Bound"
+      >i</a
+      ><a name="532"
+      > </a
+      ><a name="533" href="category.terminal.html#514" class="Bound"
+      >j</a
+      ><a name="534" class="Symbol"
+      >)</a
+      ><a name="535"
+      > </a
+      ><a name="536" class="Symbol"
+      >&#8594;</a
+      ><a name="537"
+      > </a
+      ><a name="538" href="overloading.bundle.html#220" class="Function"
+      >obj</a
+      ><a name="541"
+      > </a
+      ><a name="542" href="category.terminal.html#518" class="Bound"
+      >C</a
+      ><a name="543"
+      > </a
+      ><a name="544" class="Symbol"
+      >&#8594;</a
+      ><a name="545"
+      > </a
+      ><a name="546" class="PrimitiveType"
+      >Set</a
+      ><a name="549"
+      > </a
+      ><a name="550" class="Symbol"
+      >_</a
+      ><a name="551"
+      >
+</a
+      ><a name="552" href="category.terminal.html#498" class="Function"
+      >terminal</a
+      ><a name="560"
+      > </a
+      ><a name="561" href="category.terminal.html#561" class="Bound"
+      >C</a
+      ><a name="562"
+      > </a
+      ><a name="563" href="category.terminal.html#563" class="Bound"
+      >X</a
+      ><a name="564"
+      > </a
+      ><a name="565" class="Symbol"
+      >=</a
+      ><a name="566"
+      > </a
+      ><a name="567" href="category.instances.unit.html#456" class="Function"
+      >unit-func</a
+      ><a name="576"
+      > </a
+      ><a name="577" href="category.terminal.html#561" class="Bound"
+      >C</a
+      ><a name="578"
+      > </a
+      ><a name="579" href="category.functor.adjoint.core.html#371" class="Record Operator"
+      >&#8867;</a
+      ><a name="580"
+      > </a
+      ><a name="581" href="category.functor.ops.html#1329" class="Function"
+      >Const</a
+      ><a name="586"
+      > </a
+      ><a name="587" href="category.instances.unit.html#410" class="Function"
+      >unit</a
+      ><a name="591"
+      > </a
+      ><a name="592" href="category.terminal.html#563" class="Bound"
+      >X</a
+      ><a name="593"
+      >
+
+</a
+      ><a name="595" class="Keyword"
+      >private</a
+      ><a name="602"
+      >
+  </a
+      ><a name="605" class="Keyword"
+      >module</a
+      ><a name="611"
+      > </a
+      ><a name="612" href="category.terminal.html#612" class="Module"
+      >properties</a
+      ><a name="622"
+      > </a
+      ><a name="623" class="Symbol"
+      >{</a
+      ><a name="624" href="category.terminal.html#624" class="Bound"
+      >i</a
+      ><a name="625"
+      > </a
+      ><a name="626" href="category.terminal.html#626" class="Bound"
+      >j</a
+      ><a name="627" class="Symbol"
+      >}{</a
+      ><a name="629" href="category.terminal.html#629" class="Bound"
+      >C</a
+      ><a name="630"
+      > </a
+      ><a name="631" class="Symbol"
+      >:</a
+      ><a name="632"
+      > </a
+      ><a name="633" href="category.category.core.html#653" class="Function"
+      >Category</a
+      ><a name="641"
+      > </a
+      ><a name="642" href="category.terminal.html#624" class="Bound"
+      >i</a
+      ><a name="643"
+      > </a
+      ><a name="644" href="category.terminal.html#626" class="Bound"
+      >j</a
+      ><a name="645" class="Symbol"
+      >}</a
+      ><a name="646"
+      >
+                    </a
+      ><a name="667" class="Symbol"
+      >(</a
+      ><a name="668" href="category.terminal.html#668" class="Bound"
+      >X</a
+      ><a name="669"
+      > </a
+      ><a name="670" class="Symbol"
+      >:</a
+      ><a name="671"
+      > </a
+      ><a name="672" href="overloading.bundle.html#220" class="Function"
+      >obj</a
+      ><a name="675"
+      > </a
+      ><a name="676" href="category.terminal.html#629" class="Bound"
+      >C</a
+      ><a name="677" class="Symbol"
+      >)(</a
+      ><a name="679" href="category.terminal.html#679" class="Bound"
+      >t</a
+      ><a name="680"
+      > </a
+      ><a name="681" class="Symbol"
+      >:</a
+      ><a name="682"
+      > </a
+      ><a name="683" href="category.terminal.html#498" class="Function"
+      >terminal</a
+      ><a name="691"
+      > </a
+      ><a name="692" href="category.terminal.html#629" class="Bound"
+      >C</a
+      ><a name="693"
+      > </a
+      ><a name="694" href="category.terminal.html#668" class="Bound"
+      >X</a
+      ><a name="695" class="Symbol"
+      >)</a
+      ><a name="696"
+      > </a
+      ><a name="697" class="Keyword"
+      >where</a
+      ><a name="702"
+      >
+    </a
+      ><a name="707" class="Keyword"
+      >open</a
+      ><a name="711"
+      > </a
+      ><a name="712" href="category.functor.adjoint.core.html#371" class="Module Operator"
+      >_&#8867;_</a
+      ><a name="715"
+      > </a
+      ><a name="716" class="Symbol"
+      >{</a
+      ><a name="717"
+      >D </a
+      ><a name="719" class="Symbol"
+      >=</a
+      ><a name="720"
+      > </a
+      ><a name="721" href="category.instances.unit.html#410" class="Function"
+      >unit</a
+      ><a name="725" class="Symbol"
+      >}</a
+      ><a name="726"
+      > </a
+      ><a name="727" href="category.terminal.html#679" class="Bound"
+      >t</a
+      ><a name="728"
+      >
+    </a
+      ><a name="733" class="Keyword"
+      >open</a
+      ><a name="737"
+      > </a
+      ><a name="738" href="category.category.core.html#1453" class="Module"
+      >as-category</a
+      ><a name="749"
+      > </a
+      ><a name="750" href="category.terminal.html#629" class="Bound"
+      >C</a
+      ><a name="751"
+      >
+
+    </a
+      ><a name="757" href="category.terminal.html#757" class="Function"
+      >term-univ</a
+      ><a name="766"
+      > </a
+      ><a name="767" class="Symbol"
+      >:</a
+      ><a name="768"
+      > </a
+      ><a name="769" class="Symbol"
+      >(</a
+      ><a name="770" href="category.terminal.html#770" class="Bound"
+      >Y</a
+      ><a name="771"
+      > </a
+      ><a name="772" class="Symbol"
+      >:</a
+      ><a name="773"
+      > </a
+      ><a name="774" href="overloading.bundle.html#220" class="Function"
+      >obj</a
+      ><a name="777"
+      > </a
+      ><a name="778" href="category.terminal.html#629" class="Bound"
+      >C</a
+      ><a name="779" class="Symbol"
+      >)</a
+      ><a name="780"
+      > </a
+      ><a name="781" class="Symbol"
+      >&#8594;</a
+      ><a name="782"
+      > </a
+      ><a name="783" href="hott.hlevel.core.html#451" class="Function"
+      >contr</a
+      ><a name="788"
+      > </a
+      ><a name="789" class="Symbol"
+      >(</a
+      ><a name="790" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="793"
+      > </a
+      ><a name="794" href="category.terminal.html#770" class="Bound"
+      >Y</a
+      ><a name="795"
+      > </a
+      ><a name="796" href="category.terminal.html#668" class="Bound"
+      >X</a
+      ><a name="797" class="Symbol"
+      >)</a
+      ><a name="798"
+      >
+    </a
+      ><a name="803" href="category.terminal.html#757" class="Function"
+      >term-univ</a
+      ><a name="812"
+      > </a
+      ><a name="813" href="category.terminal.html#813" class="Bound"
+      >Y</a
+      ><a name="814"
+      > </a
+      ><a name="815" class="Symbol"
+      >=</a
+      ><a name="816"
+      > </a
+      ><a name="817" href="hott.hlevel.properties.html#1529" class="Function"
+      >iso-hlevel</a
+      ><a name="827"
+      > </a
+      ><a name="828" class="Symbol"
+      >(</a
+      ><a name="829" href="category.functor.adjoint.core.html#580" class="Function"
+      >adj</a
+      ><a name="832"
+      > </a
+      ><a name="833" href="category.terminal.html#813" class="Bound"
+      >Y</a
+      ><a name="834"
+      > </a
+      ><a name="835" href="sets.unit.html#90" class="InductiveConstructor"
+      >tt</a
+      ><a name="837" class="Symbol"
+      >)</a
+      ><a name="838"
+      > </a
+      ><a name="839" class="Symbol"
+      >(</a
+      ><a name="840" href="hott.hlevel.core.html#1297" class="Function"
+      >h&#8593;</a
+      ><a name="842"
+      > </a
+      ><a name="843" href="hott.hlevel.sets.html#307" class="Function"
+      >&#8868;-contr</a
+      ><a name="850"
+      > </a
+      ><a name="851" href="sets.unit.html#90" class="InductiveConstructor"
+      >tt</a
+      ><a name="853"
+      > </a
+      ><a name="854" href="sets.unit.html#90" class="InductiveConstructor"
+      >tt</a
+      ><a name="856" class="Symbol"
+      >)</a
+      ><a name="857"
+      >
+
+    </a
+      ><a name="863" href="category.terminal.html#863" class="Function"
+      >!</a
+      ><a name="864"
+      > </a
+      ><a name="865" class="Symbol"
+      >:</a
+      ><a name="866"
+      > </a
+      ><a name="867" class="Symbol"
+      >(</a
+      ><a name="868" href="category.terminal.html#868" class="Bound"
+      >Y</a
+      ><a name="869"
+      > </a
+      ><a name="870" class="Symbol"
+      >:</a
+      ><a name="871"
+      > </a
+      ><a name="872" href="overloading.bundle.html#220" class="Function"
+      >obj</a
+      ><a name="875"
+      > </a
+      ><a name="876" href="category.terminal.html#629" class="Bound"
+      >C</a
+      ><a name="877" class="Symbol"
+      >)</a
+      ><a name="878"
+      > </a
+      ><a name="879" class="Symbol"
+      >&#8594;</a
+      ><a name="880"
+      > </a
+      ><a name="881" href="category.graph.core.html#191" class="Function"
+      >hom</a
+      ><a name="884"
+      > </a
+      ><a name="885" href="category.terminal.html#868" class="Bound"
+      >Y</a
+      ><a name="886"
+      > </a
+      ><a name="887" href="category.terminal.html#668" class="Bound"
+      >X</a
+      ><a name="888"
+      >
+    </a
+      ><a name="893" href="category.terminal.html#863" class="Function"
+      >!</a
+      ><a name="894"
+      > </a
+      ><a name="895" href="category.terminal.html#895" class="Bound"
+      >Y</a
+      ><a name="896"
+      > </a
+      ><a name="897" class="Symbol"
+      >=</a
+      ><a name="898"
+      > </a
+      ><a name="899" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="904"
+      > </a
+      ><a name="905" class="Symbol"
+      >(</a
+      ><a name="906" href="category.terminal.html#757" class="Function"
+      >term-univ</a
+      ><a name="915"
+      > </a
+      ><a name="916" href="category.terminal.html#895" class="Bound"
+      >Y</a
+      ><a name="917" class="Symbol"
+      >)</a
+      ><a name="918"
+      >
+
+</a
+      ><a name="920" class="Keyword"
+      >open</a
+      ><a name="924"
+      > </a
+      ><a name="925" href="category.terminal.html#612" class="Module"
+      >properties</a
+      ><a name="935"
+      > </a
+      ><a name="936" class="Keyword"
+      >public</a
+      ><a name="942"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

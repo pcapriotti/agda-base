@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >category.limit.properties</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="category.limit.properties.html#1" class="Module"
+      >category.limit.properties</a
+      ><a name="62"
+      > </a
+      ><a name="63" class="Keyword"
+      >where</a
+      ><a name="68"
+      >
+
+</a
+      ><a name="70" class="Keyword"
+      >open</a
+      ><a name="74"
+      > </a
+      ><a name="75" class="Keyword"
+      >import</a
+      ><a name="81"
+      > </a
+      ><a name="82" href="category.category.html#1" class="Module"
+      >category.category</a
+      ><a name="99"
+      >
+</a
+      ><a name="100" class="Keyword"
+      >open</a
+      ><a name="104"
+      > </a
+      ><a name="105" class="Keyword"
+      >import</a
+      ><a name="111"
+      > </a
+      ><a name="112" href="category.functor.html#1" class="Module"
+      >category.functor</a
+      ><a name="128"
+      >
+</a
+      ><a name="129" class="Keyword"
+      >open</a
+      ><a name="133"
+      > </a
+      ><a name="134" class="Keyword"
+      >import</a
+      ><a name="140"
+      > </a
+      ><a name="141" href="category.limit.core.html#1" class="Module"
+      >category.limit.core</a
+      ><a name="160"
+      >
+</a
+      ><a name="161" class="Keyword"
+      >open</a
+      ><a name="165"
+      > </a
+      ><a name="166" class="Keyword"
+      >import</a
+      ><a name="172"
+      > </a
+      ><a name="173" href="category.kan-extension.html#1" class="Module"
+      >category.kan-extension</a
+      ><a name="195"
+      >
+</a
+      ><a name="196" class="Keyword"
+      >open</a
+      ><a name="200"
+      > </a
+      ><a name="201" class="Keyword"
+      >import</a
+      ><a name="207"
+      > </a
+      ><a name="208" href="category.kan-extension.properties.html#1" class="Module"
+      >category.kan-extension.properties</a
+      ><a name="241"
+      >
+</a
+      ><a name="242" class="Keyword"
+      >open</a
+      ><a name="246"
+      > </a
+      ><a name="247" class="Keyword"
+      >import</a
+      ><a name="253"
+      > </a
+      ><a name="254" href="category.instances.unit.html#1" class="Module"
+      >category.instances.unit</a
+      ><a name="277"
+      >
+
+</a
+      ><a name="279" class="Comment"
+      >-- a functor preserves a limit if it preserves</a
+      ><a name="325"
+      >
+</a
+      ><a name="326" class="Comment"
+      >-- the corresponding Kan extension</a
+      ><a name="360"
+      >
+</a
+      ><a name="361" href="category.limit.properties.html#361" class="Function"
+      >preserves-lim</a
+      ><a name="374"
+      > </a
+      ><a name="375" class="Symbol"
+      >:</a
+      ><a name="376"
+      > </a
+      ><a name="377" class="Symbol"
+      >&#8704;</a
+      ><a name="378"
+      > </a
+      ><a name="379" class="Symbol"
+      >{</a
+      ><a name="380" href="category.limit.properties.html#380" class="Bound"
+      >i&#8320;</a
+      ><a name="382"
+      > </a
+      ><a name="383" href="category.limit.properties.html#383" class="Bound"
+      >j&#8320;</a
+      ><a name="385"
+      > </a
+      ><a name="386" href="category.limit.properties.html#386" class="Bound"
+      >i&#8321;</a
+      ><a name="388"
+      > </a
+      ><a name="389" href="category.limit.properties.html#389" class="Bound"
+      >j&#8321;</a
+      ><a name="391"
+      > </a
+      ><a name="392" href="category.limit.properties.html#392" class="Bound"
+      >i&#8322;</a
+      ><a name="394"
+      > </a
+      ><a name="395" href="category.limit.properties.html#395" class="Bound"
+      >j&#8322;</a
+      ><a name="397" class="Symbol"
+      >}</a
+      ><a name="398"
+      >
+                </a
+      ><a name="415" class="Symbol"
+      >{</a
+      ><a name="416" href="category.limit.properties.html#416" class="Bound"
+      >J</a
+      ><a name="417"
+      > </a
+      ><a name="418" class="Symbol"
+      >:</a
+      ><a name="419"
+      > </a
+      ><a name="420" href="category.category.core.html#653" class="Function"
+      >Category</a
+      ><a name="428"
+      > </a
+      ><a name="429" href="category.limit.properties.html#380" class="Bound"
+      >i&#8320;</a
+      ><a name="431"
+      > </a
+      ><a name="432" href="category.limit.properties.html#383" class="Bound"
+      >j&#8320;</a
+      ><a name="434" class="Symbol"
+      >}</a
+      ><a name="435"
+      >
+                </a
+      ><a name="452" class="Symbol"
+      >{</a
+      ><a name="453" href="category.limit.properties.html#453" class="Bound"
+      >C</a
+      ><a name="454"
+      > </a
+      ><a name="455" class="Symbol"
+      >:</a
+      ><a name="456"
+      > </a
+      ><a name="457" href="category.category.core.html#653" class="Function"
+      >Category</a
+      ><a name="465"
+      > </a
+      ><a name="466" href="category.limit.properties.html#386" class="Bound"
+      >i&#8321;</a
+      ><a name="468"
+      > </a
+      ><a name="469" href="category.limit.properties.html#389" class="Bound"
+      >j&#8321;</a
+      ><a name="471" class="Symbol"
+      >}</a
+      ><a name="472"
+      >
+                </a
+      ><a name="489" class="Symbol"
+      >{</a
+      ><a name="490" href="category.limit.properties.html#490" class="Bound"
+      >D</a
+      ><a name="491"
+      > </a
+      ><a name="492" class="Symbol"
+      >:</a
+      ><a name="493"
+      > </a
+      ><a name="494" href="category.category.core.html#653" class="Function"
+      >Category</a
+      ><a name="502"
+      > </a
+      ><a name="503" href="category.limit.properties.html#392" class="Bound"
+      >i&#8322;</a
+      ><a name="505"
+      > </a
+      ><a name="506" href="category.limit.properties.html#395" class="Bound"
+      >j&#8322;</a
+      ><a name="508" class="Symbol"
+      >}</a
+      ><a name="509"
+      >
+                </a
+      ><a name="526" class="Symbol"
+      >{</a
+      ><a name="527" href="category.limit.properties.html#527" class="Bound"
+      >K</a
+      ><a name="528"
+      > </a
+      ><a name="529" class="Symbol"
+      >:</a
+      ><a name="530"
+      > </a
+      ><a name="531" href="category.functor.core.html#1021" class="Function"
+      >Functor</a
+      ><a name="538"
+      > </a
+      ><a name="539" href="category.limit.properties.html#416" class="Bound"
+      >J</a
+      ><a name="540"
+      > </a
+      ><a name="541" href="category.limit.properties.html#453" class="Bound"
+      >C</a
+      ><a name="542" class="Symbol"
+      >}</a
+      ><a name="543"
+      >
+              </a
+      ><a name="558" class="Symbol"
+      >&#8594;</a
+      ><a name="559"
+      > </a
+      ><a name="560" href="category.functor.core.html#1021" class="Function"
+      >Functor</a
+      ><a name="567"
+      > </a
+      ><a name="568" href="category.limit.properties.html#453" class="Bound"
+      >C</a
+      ><a name="569"
+      > </a
+      ><a name="570" href="category.limit.properties.html#490" class="Bound"
+      >D</a
+      ><a name="571"
+      > </a
+      ><a name="572" class="Symbol"
+      >&#8594;</a
+      ><a name="573"
+      > </a
+      ><a name="574" href="category.limit.core.html#421" class="Record"
+      >Lim</a
+      ><a name="577"
+      > </a
+      ><a name="578" href="category.limit.properties.html#527" class="Bound"
+      >K</a
+      ><a name="579"
+      > </a
+      ><a name="580" class="Symbol"
+      >&#8594;</a
+      ><a name="581"
+      > </a
+      ><a name="582" class="PrimitiveType"
+      >Set</a
+      ><a name="585"
+      > </a
+      ><a name="586" class="Symbol"
+      >_</a
+      ><a name="587"
+      >
+</a
+      ><a name="588" href="category.limit.properties.html#361" class="Function"
+      >preserves-lim</a
+      ><a name="601"
+      > </a
+      ><a name="602" class="Symbol"
+      >{</a
+      ><a name="603"
+      >J </a
+      ><a name="605" class="Symbol"
+      >=</a
+      ><a name="606"
+      > </a
+      ><a name="607" href="category.limit.properties.html#607" class="Bound"
+      >J</a
+      ><a name="608" class="Symbol"
+      >}{</a
+      ><a name="610" href="category.limit.properties.html#610" class="Bound"
+      >C</a
+      ><a name="611" class="Symbol"
+      >}{</a
+      ><a name="613" href="category.limit.properties.html#613" class="Bound"
+      >D</a
+      ><a name="614" class="Symbol"
+      >}{</a
+      ><a name="616" href="category.limit.properties.html#616" class="Bound"
+      >K</a
+      ><a name="617" class="Symbol"
+      >}</a
+      ><a name="618"
+      > </a
+      ><a name="619" href="category.limit.properties.html#619" class="Bound"
+      >F</a
+      ><a name="620"
+      > </a
+      ><a name="621" href="category.limit.properties.html#621" class="Bound"
+      >lim</a
+      ><a name="624"
+      > </a
+      ><a name="625" class="Symbol"
+      >=</a
+      ><a name="626"
+      > </a
+      ><a name="627" href="category.kan-extension.properties.html#896" class="Function"
+      >preserves-kan</a
+      ><a name="640"
+      > </a
+      ><a name="641" href="category.limit.properties.html#619" class="Bound"
+      >F</a
+      ><a name="642"
+      > </a
+      ><a name="643" class="Symbol"
+      >(</a
+      ><a name="644" href="category.limit.core.html#497" class="Function"
+      >ran</a
+      ><a name="647" class="Symbol"
+      >)</a
+      ><a name="648"
+      >
+  </a
+      ><a name="651" class="Keyword"
+      >where</a
+      ><a name="656"
+      > </a
+      ><a name="657" class="Keyword"
+      >open</a
+      ><a name="661"
+      > </a
+      ><a name="662" href="category.limit.core.html#421" class="Module"
+      >Lim</a
+      ><a name="665"
+      > </a
+      ><a name="666" href="category.limit.properties.html#621" class="Bound"
+      >lim</a
+      ><a name="669"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
