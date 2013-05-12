@@ -7,6 +7,8 @@ open import equality.calculus
 open import equality.reasoning
 open import function.core
 open import function.isomorphism.core
+open import function.overloading
+open import overloading.core
 
 coherent : ∀ {i j} {X : Set i}{Y : Set j} → X ≅ Y → Set _
 coherent f = ∀ x → cong to (iso₁ x) ≡ iso₂ (to x)
@@ -24,6 +26,17 @@ coherent' f = ∀ y → cong from (iso₂ y) ≡ iso₁ (from y)
 -- coherent isomorphisms
 _≅'_ : ∀ {i j} → (X : Set i)(Y : Set j) → Set _
 X ≅' Y = Σ (X ≅ Y) coherent
+
+iso'-is-fun : ∀ {i j}{X : Set i}{Y : Set j}
+            → Coercion (X ≅' Y) (X → Y)
+iso'-is-fun = record
+  { coerce = λ isom → apply (proj₁ isom) }
+
+
+iso'-is-iso : ∀ {i j}{X : Set i}{Y : Set j}
+            → Coercion (X ≅' Y) (X ≅ Y)
+iso'-is-iso = record
+  { coerce = proj₁ }
 
 -- technical lemma: substiting a fixpoint proof into itself is like
 -- applying the function
@@ -194,7 +207,11 @@ vogt-lemma {X = X}{Y = Y} isom = K' , γ
       ∎
 
 ≅⇒≅' : ∀ {i j} {X : Set i}{Y : Set j} → X ≅ Y → X ≅' Y
-≅⇒≅' isom = iso to from iso₁ (proj₁ v) , proj₂ v
+≅⇒≅' {X = X}{Y = Y} isom = iso to from iso₁ (proj₁ v) , proj₂ v
   where
     open _≅_ isom
-    v = vogt-lemma isom
+    open import sum
+    abstract
+      v : Σ ((y : Y) → to (from y) ≡ y) λ iso₂'
+        → coherent (iso to from iso₁ iso₂')
+      v = vogt-lemma isom

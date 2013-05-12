@@ -31,11 +31,18 @@ sym≅ (iso f g H K) = iso g f K H
 
 trans≅ : ∀ {i j k}{X : Set i}{Y : Set j}{Z : Set k}
        → X ≅ Y → Y ≅ Z → X ≅ Z
-trans≅ (iso f g H K) (iso f' g' H' K') = record
+trans≅ {X = X}{Z = Z} (iso f g H K) (iso f' g' H' K') = record
   { to = f' ∘ f
   ; from = g ∘ g'
-  ; iso₁ = λ x → cong g (H' (f x)) ⊚ H x
-  ; iso₂ = λ y → cong f' (K (g' y)) ⊚ K' y }
+  ; iso₁ = iso₁
+  ; iso₂ = iso₂ }
+  where
+    abstract
+      iso₁ : (x : X) → g (g' (f' (f x))) ≡ x
+      iso₁ x = cong g (H' (f x)) ⊚ H x
+
+      iso₂ : (z : Z) → f' (f (g (g' z))) ≡ z
+      iso₂ y = cong f' (K (g' y)) ⊚ K' y
 
 module ≅-Reasoning where
   infix  4 _IsRelatedTo_
