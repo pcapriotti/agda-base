@@ -13,22 +13,22 @@ open import hott.weak-equivalence
 open import hott.univalence
 open import function.isomorphism using (iso)
 
-postulate
-  S¹ : Set
+data S¹ : Set where
   base : S¹
-  loop : base ≡ base
+
+postulate loop : base ≡ base
 
 private
   module Eliminators' {i}(B : S¹ → Set i)
                       (m : B base)
                       (l : subst B loop m ≡ m) where
+    elim' : (x : S¹) → B x
+    elim' base = m
 
-    postulate
-      elim' : (x : S¹) → B x
-      β-base' : elim' base ≡ m
-      β-loop' : cong (subst B loop) (sym β-base')
-              ⊚ cong' elim' loop
-              ⊚ β-base' ≡ l
+    β-base' : elim' base ≡ m
+    β-base' = refl
+
+    postulate β-loop' : cong' elim' loop ≡ l
 
 private
   module Eliminators {i} {B : Set i}
@@ -39,52 +39,9 @@ private
     elim = elim'
 
     β-base : elim base ≡ m
-    β-base = β-base'
+    β-base = refl
 
-    β-loop : sym β-base
-           ⊚ cong elim loop
-           ⊚ β-base ≡ l
-    β-loop = begin
-        sym β-base ⊚ cong elim loop ⊚ β-base
-      ≡⟨ lem β-base β-base loop ⟩
-        sym (subst-const loop m) ⊚
-        cong (subst (λ _ → B) loop) (sym β-base) ⊚
-        cong' elim' loop ⊚ β-base
-      ≡⟨ associativity (sym (subst-const loop m) ⊚ _) _ _ ⟩
-        sym (subst-const loop m) ⊚
-        cong (subst (λ _ → B) loop) (sym β-base) ⊚
-        (cong' elim' loop ⊚ β-base)
-      ≡⟨ associativity (sym (subst-const loop m)) _ _ ⟩
-        sym (subst-const loop m) ⊚
-        (cong (subst (λ _ → B) loop) (sym β-base) ⊚
-        (cong' elim' loop ⊚ β-base))
-      ≡⟨ cong (λ z → sym (subst-const loop m) ⊚ z)
-          (sym (associativity
-            (cong (subst (λ _ → B) loop) (sym β-base)) _ _)) ⟩
-        sym (subst-const loop m) ⊚
-        (cong (subst (λ _ → B) loop) (sym β-base) ⊚
-         cong' elim' loop ⊚ β-base)
-      ≡⟨ cong (λ z → sym (subst-const loop m) ⊚ z) β-loop' ⟩
-        sym (subst-const loop m) ⊚ (subst-const loop m ⊚ l)
-      ≡⟨ sym (associativity (sym (subst-const loop m))
-                            (subst-const loop m) l) ⟩
-        sym (subst-const loop m) ⊚ subst-const loop m ⊚ l
-      ≡⟨ cong (λ z → z ⊚ l)
-              (right-inverse (subst-const loop m)) ⟩
-        l
-      ∎
-      where
-        open ≡-Reasoning
-        lem : {x y : S¹}
-              (p₁ : elim x ≡ m)
-              (p₂ : elim y ≡ m)
-              (p : x ≡ y)
-            → sym p₁ ⊚ cong elim p ⊚ p₂
-            ≡ sym (subst-const p m)
-            ⊚ cong (subst (λ _ → B) p) (sym p₁)
-            ⊚ cong' elim' p ⊚ p₂
-        lem p₁ p₂ refl =
-          cong (λ z → z ⊚ refl ⊚ p₂) (sym (cong-id (sym p₁)))
+    postulate β-loop : cong elim loop ≡ l
 
 open Eliminators public
 open Eliminators' public
@@ -138,11 +95,8 @@ non-simply-connected loop-trivial = inv-non-trivial inv-trivial
     f : S¹ → Set
     f = elim Bool inv
 
-    β₁ : f base ≡ Bool
-    β₁ = β-base Bool inv 
-
     f' : base ≡ base → Bool ≡ Bool
-    f' p = sym β₁ ⊚ cong f p ⊚ β₁
+    f' p = cong f p
 
     β₂ : f' loop ≡ inv
     β₂ = β-loop Bool inv
@@ -153,13 +107,6 @@ non-simply-connected loop-trivial = inv-non-trivial inv-trivial
       ≡⟨ sym β₂ ⟩
         f' loop
       ≡⟨ cong f' loop-trivial ⟩
-        f' refl
-      ≡⟨ refl ⟩
-        sym β₁ ⊚ refl ⊚ β₁
-      ≡⟨ cong (λ z → z ⊚ β₁)
-              (left-unit (sym β₁)) ⟩
-        sym β₁ ⊚ β₁
-      ≡⟨ right-inverse β₁ ⟩
         refl
       ∎
       where
