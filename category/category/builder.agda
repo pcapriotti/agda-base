@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 
 module category.category.builder where
 
@@ -7,17 +7,17 @@ open import equality.core
 
 open import hott.hlevel.core
 
-record Category₀Builder i j : Set (lsuc (i ⊔ j)) where
+record Category₀Builder : Set where
   field
-    obj : Set i
-    hom : obj → obj → Set j
+    obj : Set
+    hom : obj → obj → Set
     id : (x : obj) → hom x x
     _∘_ : {x y z : obj} → hom y z → hom x y → hom x z
 
-record CategoryBuilder i j : Set (lsuc (i ⊔ j)) where
+record CategoryBuilder : Set where
   field
-    obj : Set i
-    hom : obj → obj → Set j
+    obj : Set
+    hom : obj → obj → Set
     id : (x : obj) → hom x x
     _∘_ : {x y z : obj} → hom y z → hom x y → hom x z
 

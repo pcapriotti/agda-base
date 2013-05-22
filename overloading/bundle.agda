@@ -1,10 +1,10 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 module overloading.bundle where
 
 open import level
 
-record Bundle {i j} {Base : Set i}
-                    (Struct : Base → Set j) : Set (lsuc (i ⊔ j)) where
+record Bundle {Base : Set}
+              (Struct : Base → Set) : Set where
   constructor bundle
   field
     parent : Base

@@ -1,27 +1,28 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 
-module category.functor.core {i j i' j'} where
+module category.functor.core where
 
 open import level
 open import equality.core
 open import function.core
-open import overloading
+open import overloading.core
+open import overloading.bundle
 open import category.category.core
 open import category.functor.builder
 open import category.graph.core
-open import category.graph.morphism
+open import category.graph.morphism.core
 
 private
-  module definitions (C : Category i j)
-                     (D : Category i' j')
+  module definitions (C : Category)
+                     (D : Category)
                      (F : Morphism (graph C) (graph D)) where
     open as-category C
     open as-category D
 
-    MapId : Set _
+    MapId : Set
     MapId = (x : obj C) → map F (id {X = x}) ≡ id
 
-    MapHom : Set _
+    MapHom : Set
     MapHom = {x y z : obj C}
            → (f : hom y z)
            → (g : hom x y)
@@ -29,9 +30,9 @@ private
            ≡ map F f ∘ map F g
 open definitions public
 
-record IsFunctor (C : Category i j)
-                 (D : Category i' j')
-                 (F : Morphism (graph C) (graph D)) : Set (i ⊔ j ⊔ j') where
+record IsFunctor (C : Category)
+                 (D : Category)
+                 (F : Morphism (graph C) (graph D)) : Set where
   open as-category C
   open as-category D
 
@@ -39,12 +40,12 @@ record IsFunctor (C : Category i j)
     map-id : MapId C D F
     map-hom : MapHom C D F
 
-Functor : Category i j → Category i' j' → Set _
+Functor : Category → Category → Set
 Functor C D = Bundle (IsFunctor C D)
 
 private
-  module properties {C : Category i j}
-                    {D : Category i' j'} where
+  module properties {C : Category}
+                    {D : Category} where
 
     fct-is-fun : Coercion (Functor C D) (obj C → obj D)
     fct-is-fun = coerce-parent
@@ -56,11 +57,11 @@ private
     fct-is-fct = coerce-self _
 
     private
-      module functor-methods {k}{Source : Set k}
+      module functor-methods {Source : Set}
                              ⦃ c : Coercion Source (Functor C D) ⦄ where
         open Coercion c public using ()
           renaming (coerce to functor)
-      module functor-explicits {k}{Source : Set k}
+      module functor-explicits {Source : Set}
                                ⦃ c : Coercion Source (Functor C D) ⦄
                                (source : Source) where
         private target = coerce c source

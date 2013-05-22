@@ -1,27 +1,28 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 
 module category.graph.core where
 
 open import level
 open import sum
-open import overloading
+open import overloading.core
+open import overloading.bundle
 
-record IsGraph i j (X : Set i) : Set (i ⊔ lsuc j) where
+record IsGraph (X : Set) : Set where
   field
-    hom : X → X → Set j
+    hom : X → X → Set
 
-Graph : ∀ i j → Set _
-Graph i j = Bundle (IsGraph i j)
+Graph : Set
+Graph = Bundle IsGraph
 
-gph-is-set : ∀ {i j} → Coercion (Graph i j) (Set i)
-gph-is-set {i}{j} = coerce-parent
+gph-is-set : Coercion Graph Set
+gph-is-set = coerce-parent
 
-gph-is-gph : ∀ {i j} → Coercion (Graph i j) (Graph i j)
-gph-is-gph {i}{j} = coerce-self _
+gph-is-gph : Coercion Graph Graph
+gph-is-gph = coerce-self _
 
 private
-  module graph-statics {i j k}{Source : Set k}
-                       ⦃ c : Coercion Source (Graph i j) ⦄ where
+  module graph-statics {Source : Set}
+                       ⦃ c : Coercion Source (Graph) ⦄ where
     open Coercion c public using () renaming (coerce to graph)
 
     private
@@ -32,26 +33,26 @@ private
         open Bundle target public using ()
           renaming (parent to obj)
 
-        total : Set _
+        total : Set
         total = Σ (obj × obj) λ { (x , y) → hom x y }
     open with-source public
-  module graph-methods {i j}{X : Set i}
-                       ⦃ s : Styled default (IsGraph i j X) ⦄ where
+  module graph-methods {X : Set}
+                       ⦃ s : Styled default (IsGraph X) ⦄ where
     open Styled s
     open IsGraph value public
 
-module as-graph {i j k} {Source : Set k}
-                ⦃ c : Coercion Source (Graph i j) ⦄
+module as-graph {Source : Set}
+                ⦃ c : Coercion Source (Graph) ⦄
                 (source : Source) where
   private target = coerce c source
   _graph-instance = styled default (Bundle.struct target)
 
-record GraphBuilder i j : Set (lsuc (i ⊔ j)) where
+record GraphBuilder : Set where
   field
-    obj : Set i
-    hom : obj → obj → Set j
+    obj : Set
+    hom : obj → obj → Set
 
-mk-graph : ∀ {i j} → GraphBuilder i j → Graph i j
+mk-graph : GraphBuilder → Graph
 mk-graph b = let open GraphBuilder b in record
   { parent = obj
   ; struct = record { hom = hom } }

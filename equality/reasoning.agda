@@ -3,7 +3,7 @@ module equality.reasoning where
 
 open import equality.core
 
-module ≡-Reasoning {i} {X : Set i} where
+module ≡-Reasoning {X : Set} where
   infix  4 _IsRelatedTo_
   infix  2 _∎
   infixr 2 _≡⟨_⟩_
@@ -12,7 +12,7 @@ module ≡-Reasoning {i} {X : Set i} where
   -- This seemingly unnecessary type is used to make it possible to
   -- infer arguments even if the underlying equality evaluates.
 
-  data _IsRelatedTo_ (x y : X) : Set i where
+  data _IsRelatedTo_ (x y : X) : Set where
     relTo : x ≡ y → x IsRelatedTo y
 
   begin_ : ∀ {x y} → x IsRelatedTo y → x ≡ y

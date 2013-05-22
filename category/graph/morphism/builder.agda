@@ -1,13 +1,11 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 
 module category.graph.morphism.builder where
 
 open import level
 open import category.graph.core
 
-record MorphismBuilder {i j i' j'} (W : Graph i j)
-                                   (U : Graph i' j')
-                                 : Set (i ⊔ j ⊔ i' ⊔ j') where
+record MorphismBuilder (W U : Graph) : Set where
   open as-graph W
   open as-graph U
   field

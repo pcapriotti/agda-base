@@ -1,28 +1,25 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 
 module category.functor.ops where
 
 open import equality.core
 open import function.core
 open import function.overloading
-open import category.graph
-open import category.category
+open import category.graph.core
+open import category.graph.morphism.core
+open import category.graph.morphism.ops
+open import category.category.core
+open import category.category.zero
 open import category.functor.core
 open import overloading.bundle
 
 private
-  Id : ∀ {i j} (C : Category i j) → Functor C C
+  Id : (C : Category) → Functor C C
   Id C = bundle id record
     { map-id = λ _ → refl
     ; map-hom = λ _ _ → refl }
 
-  Compose : ∀ {i₁ j₁ i₂ j₂ i₃ j₃}
-            {C : Category i₁ j₁}
-            {D : Category i₂ j₂}
-            {E : Category i₃ j₃}
-          → Functor D E
-          → Functor C D
-          → Functor C E
+  Compose : {C D E : Category} → Functor D E → Functor C D → Functor C E
   Compose {C = C}{D}{E} F G = bundle H record
     { map-id = H-map-id
     ; map-hom = H-map-hom }
@@ -47,8 +44,7 @@ private
       H-map-hom f g = cong (map F) (map-hom G f g)
                     ⊚ map-hom F (map G f) (map G g)
 
-Const : ∀ {i₁ j₁ i₂ j₂}(C : Category i₁ j₁){D : Category i₂ j₂}
-      → obj D → Functor C D
+Const : (C : Category){D : Category} → obj D → Functor C D
 Const C {D} X = mk-functor record
   { apply = λ _ → X
   ; map = λ _ → id
@@ -56,25 +52,25 @@ Const C {D} X = mk-functor record
   ; map-hom = λ _ _ → sym (left-id _) }
   where open as-category D
 
-fct-identity : ∀ {i j} → Identity _ _
-fct-identity {i}{j} = record
-  { U = Category i j
+fct-identity : Identity
+fct-identity = record
+  { U = Category
   ; endo = λ C → Functor C C
   ; id = λ {W} → Id W }
 
-fct-comp : ∀ {i₁ j₁ i₂ j₂ i₃ j₃} → Composition _ _ _ _ _ _
-fct-comp {i₁}{j₁}{i₂}{j₂}{i₃}{j₃} = record
-  { U₁ = Category i₁ j₁
-  ; U₂ = Category i₂ j₂
-  ; U₃ = Category i₃ j₃
+fct-comp : Composition
+fct-comp = record
+  { U₁ = Category
+  ; U₂ = Category
+  ; U₃ = Category
   ; hom₁₂ = Functor
   ; hom₂₃ = Functor
   ; hom₁₃ = Functor
   ; _∘_ = Compose }
 
-cat-cat₀ : ∀ {i j} → Category₀ _ _
-cat-cat₀ {i}{j} = mk-category₀ record
-  { obj = Category i j
+cat-cat₀ : Category₀
+cat-cat₀ = mk-category₀ record
+  { obj = Category
   ; hom = Functor
   ; id = Id
   ; _∘_ = Compose }

@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 module overloading.core where
 
 -- ## Coercions
@@ -120,7 +120,7 @@ module overloading.core where
 open import level
 open import overloading.bundle
 
-record Coercion {i}{j}(Source : Set i)(Target : Set j) : Set (i ⊔ j) where
+record Coercion (Source : Set)(Target : Set) : Set where
   constructor coercion
   field
     coerce : Source → Target
@@ -128,31 +128,29 @@ open Coercion public
 
 data Style : Set where default : Style
 
-record Styled {i}(style : Style)(X : Set i) : Set i where
+record Styled (style : Style)(X : Set) : Set where
   field value : X
 
-styled : ∀ {i}{X : Set i} → (s : Style) → X → Styled s X
+styled : {X : Set} → (s : Style) → X → Styled s X
 styled s x = record { value = x }
 
 -- Trivial coercion: any type can be coerced into itself.
-coerce-self : ∀ {i} (X : Set i) → Coercion X X
-coerce-self {i} _ = record
+coerce-self : (X : Set) → Coercion X X
+coerce-self _ = record
   { coerce = λ x → x }
 
 -- Transport a coercion to a `Bundle` subtype.  See `overloading.bundle` for
 -- more details on bundles.
-coerce-parent : ∀ {i j k}
-                {X : Set i}
-                {Y : Set j}
+coerce-parent : {X Y : Set}
               → ⦃ c : Coercion X Y ⦄
-              → {Struct : X → Set k}
+              → {Struct : X → Set}
               → Coercion (Bundle Struct) Y
 coerce-parent ⦃ c ⦄ = record
   { coerce = λ x → coerce c (Bundle.parent x) }
 
-set-is-set : ∀ {i} → Coercion (Set i) (Set i)
-set-is-set {i} = coerce-self _
+set-is-set : Coercion Set Set
+set-is-set = coerce-self _
 
-∣_∣ : ∀ {i j}{Source : Set i} ⦃ o : Coercion Source (Set j) ⦄
-    → Source → Set j
+∣_∣ : ∀ {Source : Set} ⦃ o : Coercion Source (Set) ⦄
+    → Source → Set
 ∣_∣ ⦃ c ⦄ = coerce c
