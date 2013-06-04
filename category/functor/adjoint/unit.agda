@@ -1,18 +1,17 @@
+{-# OPTIONS --without-K --type-in-type #-}
+
 open import category.category.core
 open import category.functor.core
 open import category.functor.adjoint.core
 
 module category.functor.adjoint.unit
-  {i}{j}{i'}{j'}
-  {C : Category i j}{D : Category i' j'}
-  (F : Functor C D)(G : Functor D C)
+  {C D : Category}(F : Functor C D)(G : Functor D C)
   (adjunction : F ⊣ G) where
 
 open import equality.core
 open import equality.calculus
 open import equality.reasoning
 open import function.core
-open import function.isomorphism
 open import function.overloading
 open import category.graph.core
 open import category.graph.morphism.core

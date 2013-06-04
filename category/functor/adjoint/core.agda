@@ -1,23 +1,22 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 
-open import category.category
+open import category.category.core
 open import category.functor.core
 
 module category.functor.adjoint.core where
 
-open import level
 open import equality.core
 open import equality.calculus
 open import equality.reasoning
 open import function.core
-open import function.isomorphism
+open import function.isomorphism.core
 open import function.overloading
-open import category.graph
+open import category.graph.core
+open import category.graph.morphism.core
 
-record _⊣_ {i}{j}{i'}{j'}
-           {C : Category i j}{D : Category i' j'}
+record _⊣_ {C D : Category}
            (F : Functor C D)(G : Functor D C)
-         : Set (i ⊔ j ⊔ i' ⊔ j') where
+         : Set where
   open as-category C
   open as-category D
 
