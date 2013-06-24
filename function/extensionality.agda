@@ -14,7 +14,7 @@ open import function.isomorphism
 open import function.overloading
 
 -- extensionality for functions of implicit arguments
-impl-ext' : ∀ {i j}{X : Set i}{Y : X → Set j}
+impl-ext' : {X : Set}{Y : X → Set}
           → {f g : {x : X} → Y x}
           → ((x : X) → f {x} ≡ g {x})
           → (λ {x} → f {x}) ≡ g

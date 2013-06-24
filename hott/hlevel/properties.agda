@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 module hott.hlevel.properties where
 
 open import level
@@ -16,7 +16,7 @@ open import hott.hlevel.core
 open import hott.hlevel.sets
 open import hott.univalence
 
-h-≤ : ∀ {i n m}{X : Set i}
+h-≤ : ∀ {n m}{X : Set}
     → n ≤ m → h n X → h m X
 h-≤ {m = 0} z≤n hX = hX
 h-≤ {m = suc m} z≤n hX = λ x y
@@ -24,14 +24,14 @@ h-≤ {m = suc m} z≤n hX = λ x y
 h-≤ (s≤s p) hX = λ x y
   → h-≤ p (hX x y)
 
-h! : ∀ {i n m}{X : Set i}
+h! : ∀ {n m}{X : Set}
    → {p : True (n ≤? m)}
    → h n X → h m X
 h! {p = p} = h-≤ (witness p)
 
 abstract
   -- retractions preserve hlevels
-  retract-hlevel : ∀ {i j n} {X : Set i}{Y : Set j}
+  retract-hlevel : ∀ {n} {X Y : Set}
                  → (f : X → Y)(g : Y → X)
                  → ((y : Y) → f (g y) ≡ y)
                  → h n X → h n Y
@@ -52,18 +52,12 @@ abstract
       r' {y}{.y} refl = cong (λ α → α ⊚ r y) (left-unit (sym (r y)))
                       ⊚ right-inverse (r y)
 
-  iso-hlevel : ∀ {i j n}{X : Set i}{Y : Set j}
+  iso-hlevel : ∀ {n}{X Y : Set}
              → X ≅ Y → h n X → h n Y
   iso-hlevel (iso f g H K) = retract-hlevel f g K
 
-  -- lifting preserves h-levels
-  ↑-hlevel : ∀ {i n} j {X : Set i}
-          → h n X
-          → h n (↑ j X)
-  ↑-hlevel j {X} = iso-hlevel (lift-iso j X)
-
   -- any two contractible types are equal
-  contr-contr : ∀ {i} {X Y : Set i} → contr X → contr Y → X ≡ Y
+  contr-contr : {X Y : Set} → contr X → contr Y → X ≡ Y
   contr-contr {X = X}{Y = Y} (x , cx) (y , cy) = ≈⇒≡ (f , we)
     where
       f : X → Y
@@ -83,7 +77,7 @@ abstract
       we y' = (x , K y') , lem y'
 
   -- exponentials preserve contractibility (given extensionality)
-  exp-contr : ∀ {i j}{X : Set i}{Y : Set j}
+  exp-contr : {X : Set}{Y : Set}
             → contr Y → contr (X → Y)
   exp-contr {X = X} {Y = Y} (y , c) = (const y , c')
     where
@@ -91,23 +85,17 @@ abstract
       c' u = ext λ x → c (u x)
 
   -- Π preserves contractibility
-  Π-contr : ∀ {i j}{X : Set i}{Y : X → Set j}
+  Π-contr : {X : Set}{Y : X → Set}
           → ((x : X) → contr (Y x))
           → contr ((x : X) → Y x)
-  Π-contr {i}{j}{X} {Y} f =
+  Π-contr {X} {Y} f =
     subst (λ z → contr ((x : X) → z x)) trivial≡Y trivial-contr
     where
-      Z : Set j
-      Z = ↑ j ⊤
-
-      Z-contr : contr Z
-      Z-contr = ↑-hlevel j ⊤-contr
-
-      trivial : X → Set j
-      trivial _ = Z
+      trivial : X → Set
+      trivial _ = ⊤
 
       trivial≡Y : trivial ≡ Y
-      trivial≡Y = ext (λ x → contr-contr Z-contr (f x))
+      trivial≡Y = ext (λ x → contr-contr ⊤-contr (f x))
 
       trivial-contr : contr ((x : X) → trivial x)
-      trivial-contr = exp-contr Z-contr
+      trivial-contr = exp-contr ⊤-contr

@@ -11,8 +11,8 @@ open import sets.unit
 
 open Bundle
 
-bundle-structure-iso : ∀ {i j}{Base : Set i}
-                       (Struct : Base → Set j)
+bundle-structure-iso : {Base : Set}
+                       (Struct : Base → Set)
                      → Σ Base Struct ≅ Bundle Struct
 bundle-structure-iso Struct = record
   { to = λ { (X , s) → bundle X s }
@@ -20,8 +20,8 @@ bundle-structure-iso Struct = record
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
-bundle-equality-iso : ∀ {i j}{Base : Set i}
-                      (Struct : Base → Set j)
+bundle-equality-iso : {Base : Set}
+                      (Struct : Base → Set)
                     → ((B : Base) → h 1 (Struct B))
                     → {X Y : Bundle Struct}
                     → (parent X ≡ parent Y)

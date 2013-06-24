@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 module function.extensionality.strong where
 
 open import level
@@ -14,8 +14,8 @@ open import hott.hlevel.properties
 open import hott.weak-equivalence.core
 
 private
-  module Dummy {i j}{X : Set i}{Y : X → Set j} where
-    _~_ : (f g : (x : X) → Y x) → Set (i ⊔ j)
+  module Dummy {X : Set}{Y : X → Set} where
+    _~_ : (f g : (x : X) → Y x) → Set
     f ~ g = ∀ x → f x ≡ g x
     infix 5 _~_
 
@@ -32,7 +32,7 @@ private
                        (e-contr' (g , h))
                        strong-id
       where
-        E : Set (i ⊔ j)
+        E : Set
         E = Σ ((x : X) → Y x) λ g → f ~ g
 
         e-contr : contr E

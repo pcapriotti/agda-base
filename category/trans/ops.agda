@@ -2,9 +2,7 @@
 
 open import category.category.core
 
-module category.trans.ops {i₁ j₁ i₂ j₂}
-                           (C : Category i₁ j₁)
-                           (D : Category i₂ j₂) where
+module category.trans.ops (C D : Category) where
 
 open import function.core
 open import function.overloading
@@ -48,7 +46,7 @@ private
         ∎
 
 -- functor category
-Func₀ : Category₀ _ _
+Func₀ : Category₀
 Func₀ = mk-category₀ record
   { obj = Functor C D
   ; hom = Nat

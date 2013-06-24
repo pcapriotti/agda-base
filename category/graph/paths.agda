@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 
 module category.graph.paths where
 
@@ -12,10 +12,10 @@ open import hott.hlevel
 open import category.graph.core
 
 private
-  module definition {i j}(W : Graph i j) where
+  module definition (W : Graph) where
     open as-graph W
 
-    data Paths : obj W → obj W → Set (i ⊔ j) where
+    data Paths : obj W → obj W → Set where
       nil : ∀ {x} → Paths x x
       _∷_ : ∀ {x y z}
           → hom x y
@@ -25,7 +25,7 @@ private
 open definition public
 
 private
-  module hlevel {i j}{W : Graph i j}
+  module hlevel {W : Graph}
                 (hX : h 3 (obj W))
                 (hW : h 2 (total W)) where
     open import decidable
@@ -38,13 +38,13 @@ private
     open import container.w renaming (W to W-type)
     open import hott.hlevel.properties
 
-    X : Set i
+    X : Set
     X = obj W
 
-    I : Set i
+    I : Set
     I = X × X
 
-    A : I → Set _
+    A : I → Set
     A (x , y) = (x ≡ y) ⊎ Σ (total W)
               λ { ((x' , y') , w) → (x' ≡ x) }
 
@@ -52,7 +52,7 @@ private
     A-hlevel (x , y) = ⊎-hlevel refl-≤ (hX x y)
       (Σ-hlevel hW (λ { ((x' , _) , _) → hX x' x }))
 
-    B : {i : I} → A i → Set _
+    B : {i : I} → A i → Set
     B {x , .x} (inj₁ refl) = ⊥
     B {.x , z} (inj₂ (((x , y) , w) , refl)) = ⊤
 
@@ -60,7 +60,7 @@ private
     r {x , .x} {inj₁ refl} ()
     r {.x , z} {inj₂ (((x , y) , w) , refl)} _ = y , z
 
-    Paths' : X → X → Set _
+    Paths' : X → X → Set
     Paths' x y = W-type (container I A B r) (x , y)
 
     paths-iso : (x y : X) → Paths' x y ≅ Paths W x y
@@ -90,7 +90,7 @@ private
 open hlevel public using (paths-hlevel)
 
 private
-  module properties {i j}{W : Graph i j} where
+  module properties {W : Graph} where
     _++_ : ∀ {x y z} → Paths W x y → Paths W y z → Paths W x z
     nil ++ ws = ws
     (u ∷ us) ++ ws = u ∷ (us ++ ws)

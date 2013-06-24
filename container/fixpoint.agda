@@ -9,14 +9,12 @@ open import function.core
 open import function.isomorphism
 open import function.overloading
 
-record Fixpoint {li la lb}
-                (c : Container li la lb)
-                (lx : Level) : Set (li ⊔ la ⊔ lb ⊔ lsuc lx) where
+record Fixpoint (c : Container) : Set₁ where
   constructor fix
 
   open Container c
   field
-    X : I → Set lx
+    X : I → Set
     fixpoint : ∀ i → X i ≅ F X i
 
   head : X ↝ A

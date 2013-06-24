@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 module function.isomorphism.properties where
 
 open import level
@@ -13,7 +13,7 @@ open import function.isomorphism.coherent
 open import hott.hlevel.core
 
 private
-  module Dummy {i j}{X : Set i}{Y : Set j}
+  module Dummy {X Y : Set}
                (isom' : X ≅' Y) where
     private
       isom : X ≅ Y
@@ -65,20 +65,16 @@ private
             q
           ∎
           where
-            lem : ∀ {i}{X : Set i} {x y z : X}
+            lem : {X : Set} {x y z : X}
                 → (p : x ≡ y)
                 → (q : z ≡ y)
                 → p ⊚ q ⁻¹ ⊚ q ≡ p
             lem refl q = right-inverse q
 open Dummy public
 
-iso≡ : ∀ {i j}{X : Set i}{Y : Set j}
+iso≡ : {X Y : Set}
      → (isom : X ≅ Y)
      → {x x' : X}
      → (x ≡ x')
      ≅ (apply isom x ≡ apply isom x')
 iso≡ isom = iso'≡ (≅⇒≅' isom)
-
--- lifting is an isomorphism
-lift-iso : ∀ {i} j (X : Set i) → X ≅ ↑ j X
-lift-iso j X = iso lift lower (λ _ → refl) (λ _ → refl)

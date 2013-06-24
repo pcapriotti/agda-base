@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 module function.isomorphism.coherent where
 
 open import sum
@@ -10,7 +10,7 @@ open import function.isomorphism.core
 open import function.overloading
 open import overloading.core
 
-coherent : ∀ {i j} {X : Set i}{Y : Set j} → X ≅ Y → Set _
+coherent : {X Y : Set} → X ≅ Y → Set
 coherent f = ∀ x → cong to (iso₁ x) ≡ iso₂ (to x)
   -- this definition says that the two possible proofs that
   --     to (from (to x)) ≡ to x
@@ -18,34 +18,32 @@ coherent f = ∀ x → cong to (iso₁ x) ≡ iso₂ (to x)
   where
     open _≅_ f
 
-coherent' : ∀ {i j} {X : Set i}{Y : Set j} → X ≅ Y → Set _
+coherent' : {X Y : Set} → X ≅ Y → Set
 coherent' f = ∀ y → cong from (iso₂ y) ≡ iso₁ (from y)
   where
     open _≅_ f
 
 -- coherent isomorphisms
-_≅'_ : ∀ {i j} → (X : Set i)(Y : Set j) → Set _
+_≅'_ : (X Y : Set) → Set
 X ≅' Y = Σ (X ≅ Y) coherent
 
-iso'-is-fun : ∀ {i j}{X : Set i}{Y : Set j}
-            → Coercion (X ≅' Y) (X → Y)
+iso'-is-fun : {X Y : Set} → Coercion (X ≅' Y) (X → Y)
 iso'-is-fun = record
   { coerce = λ isom → apply (proj₁ isom) }
 
 
-iso'-is-iso : ∀ {i j}{X : Set i}{Y : Set j}
-            → Coercion (X ≅' Y) (X ≅ Y)
+iso'-is-iso : {X Y : Set} → Coercion (X ≅' Y) (X ≅ Y)
 iso'-is-iso = record
   { coerce = proj₁ }
 
 -- technical lemma: substiting a fixpoint proof into itself is like
 -- applying the function
-lem-subst-fixpoint : ∀ {i}{X : Set i}
+lem-subst-fixpoint : {X : Set}
                      (f : X → X)(x : X)
                      (p : f x ≡ x)
                    → subst (λ x → f x ≡ x) (sym p) p
                    ≡ cong f p
-lem-subst-fixpoint {i}{X} f x p = begin
+lem-subst-fixpoint {X} f x p = begin
     subst (λ x → f x ≡ x) (p ⁻¹) p
   ≡⟨ lem (f x) (sym p) ⟩ 
     cong f (sym (sym p)) ⊚ p ⊚ sym p
@@ -66,7 +64,7 @@ lem-subst-fixpoint {i}{X} f x p = begin
         ≡ cong f (sym q) ⊚ p ⊚ q
     lem .x refl = sym (left-unit p)
 
-lem-whiskering : ∀ {i} {X : Set i}
+lem-whiskering : {X : Set}
                  (f : X → X) (H : (x : X) → f x ≡ x)
                  (x : X) → cong f (H x) ≡ H (f x)
 lem-whiskering f H x = begin
@@ -79,13 +77,13 @@ lem-whiskering f H x = begin
   where
     open ≡-Reasoning
 
-lem-homotopy-nat : ∀ {i j}{X : Set i}{Y : Set j}
+lem-homotopy-nat : {X Y : Set}
                    {x x' : X}{f g : X → Y}
                    (H : (x : X) → f x ≡ g x) (p : x ≡ x')
                  → H x ⊚ cong g p ≡ cong f p ⊚ H x'
 lem-homotopy-nat H refl = left-unit _
 
-co-coherence : ∀ {i j}{X : Set i}{Y : Set j}
+co-coherence : {X Y : Set}
                (isom : X ≅ Y)
              → coherent isom
              → coherent' isom
@@ -106,12 +104,12 @@ co-coherence (iso f g H K) coherence y =
         H (g (f (g y)))
       ∎
 
-sym≅' : ∀ {i j}{X : Set i}{Y : Set j}
+sym≅' : {X Y : Set}
       → X ≅' Y → Y ≅' X
 sym≅' (isom , γ) = sym≅ isom , co-coherence isom γ
 
 --- Vogt's lemma. See http://ncatlab.org/nlab/show/homotopy+equivalence
-vogt-lemma : ∀ {i j}{X : Set i}{Y : Set j} → (isom : X ≅ Y)
+vogt-lemma : {X Y : Set} → (isom : X ≅ Y)
            → let open _≅_ isom
               in Σ ((y : Y) → to (from y) ≡ y) λ iso' →
                  coherent (iso to from iso₁ iso')
@@ -206,7 +204,7 @@ vogt-lemma {X = X}{Y = Y} isom = K' , γ
         cong f (H x)
       ∎
 
-≅⇒≅' : ∀ {i j} {X : Set i}{Y : Set j} → X ≅ Y → X ≅' Y
+≅⇒≅' : {X Y : Set} → X ≅ Y → X ≅' Y
 ≅⇒≅' {X = X}{Y = Y} isom = iso to from iso₁ (proj₁ v) , proj₂ v
   where
     open _≅_ isom

@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 open import function.extensionality.core
 
 module hott.weak-equivalence.alternative where
@@ -16,33 +16,32 @@ open import hott.weak-equivalence.core
 open import hott.univalence
 
 private
-  module Properties {i j}{X : Set i}{Y : Set j} where
+  module Properties {X Y : Set} where
     open ≅-Reasoning
 
     private
-      A : (f : X → Y)(g : Y → X) → Set _
+      A : (f : X → Y)(g : Y → X) → Set
       A f g = (x : X) → g (f x) ≡ x
 
-      B : (f : X → Y)(g : Y → X) → Set _
+      B : (f : X → Y)(g : Y → X) → Set
       B f g = (y : Y) → f (g y) ≡ y
 
-      GB : (f : X → Y) → Set _
+      GB : (f : X → Y) → Set
       GB f = Σ (Y → X) (B f)
 
-      Φ : (f : X → Y)(g : Y → X) → Set _
+      Φ : (f : X → Y)(g : Y → X) → Set
       Φ f g = (y : Y)(x : X) → f x ≡ y → g y ≡ x
 
-      Ψ : (f : X → Y)(g : Y → X)(β : B f g)(φ : Φ f g) → Set _
+      Ψ : (f : X → Y)(g : Y → X)(β : B f g)(φ : Φ f g) → Set
       Ψ f g β φ = (y : Y)(x : X)(p : f x ≡ y) → cong f (φ y x p) ⊚ p ≡ β y
 
-      W : Set _
+      W : Set
       W = Σ (X → Y) λ f
         → Σ (GB f) λ { (g , β)
         → Σ (Φ f g) (Ψ f g β) }
 
       -- isomorphism inside Π
-      Π-iso : ∀ {i j j'} {X : Set i}
-              {Y : X → Set j}{Y' : X → Set j'}
+      Π-iso : {X : Set}{Y Y' : X → Set}
             → ((x : X) → Y x ≅ Y' x)
             → ((x : X) → Y x)
             ≅ ((x : X) → Y' x)
@@ -50,7 +49,7 @@ private
 
       -- flipped transitivity of isomorphism
       -- makes some proofs easier to read
-      _⋆_ : ∀ {i j k}{X : Set i}{Y : Set j}{Z : Set k}
+      _⋆_ : {X Y Z : Set}
           → Y ≅ Z → X ≅ Y → X ≅ Z
       isom ⋆ isom' = trans≅ isom' isom
 
@@ -130,14 +129,14 @@ private
         X ≅' Y
       ∎
       where
-        Ψ' : (f : X → Y)(g : Y → X)(K : B f g)(H : A f g) → Set _
+        Ψ' : (f : X → Y)(g : Y → X)(K : B f g)(H : A f g) → Set
         Ψ' f g K H = ((y : Y)(x : X)(p : f x ≡ y)
                    → cong f (sym (cong g p) ⊚ H x) ⊚ p ≡ K y)
 
         φ≅H : (f : X → Y)(g : Y → X) → Φ f g ≅ A f g
         φ≅H f g = record
           { to = λ φ x → φ (f x) x refl
-          ; from = λ H y x p → sym (cong g p) ⊚ H x 
+          ; from = λ H y x p → sym (cong g p) ⊚ H x
           ; iso₁ = λ φ → ext' λ y → ext' λ x → ext' λ p → lem φ y x p
           ; iso₂ = λ H → refl }
           where

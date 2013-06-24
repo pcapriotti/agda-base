@@ -10,9 +10,7 @@ open import function.extensionality
 open import container.core
 open import container.fixpoint
 
-module Equality {li la lb lx}
-                (c : Container li la lb)
-                (fp : Fixpoint c lx) where
+module Equality (c : Container)(fp : Fixpoint c) where
   open Container c
   open Fixpoint fp
 
@@ -29,19 +27,19 @@ module Equality {li la lb lx}
   substX-β f f' refl = sym≅ strong-ext-iso
 
   -- structural equality for container fixpoints
-  I-≡ : Set (li ⊔ lx)
+  I-≡ : Set
   I-≡ = Σ I λ i → X i × X i
 
-  A-≡ : I-≡ → Set la
+  A-≡ : I-≡ → Set
   A-≡ (_ , u , v) = head u ≡ head v
 
-  B-≡ : {j : I-≡} → A-≡ j → Set lb
+  B-≡ : {j : I-≡} → A-≡ j → Set
   B-≡ {_ , u , _} _ = B (head u)
 
   r-≡ : {j : I-≡}{p : A-≡ j} → B-≡ p → I-≡
   r-≡ {i , u , v}{p} b = r b , tail u b , substX p b (tail v (subst B p b))
 
-  equality : Container _ _ _
+  equality : Container
   equality = record
     { I = I-≡
     ; A = A-≡

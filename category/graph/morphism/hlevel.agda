@@ -8,9 +8,7 @@ open import category.graph.core
 open import category.graph.morphism.core
 open import overloading
 
-morphism-structure-iso : ∀ {i₁ j₁ i₂ j₂}
-                         {W : Graph i₁ j₁}
-                         {U : Graph i₂ j₂}
+morphism-structure-iso : {W U : Graph}
                        → ( Σ (∣ W ∣ → ∣ U ∣) λ f
                          → IsMorphism {W = W}{U = U} f )
                        ≅ Morphism W U

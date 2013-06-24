@@ -2,8 +2,7 @@
 
 open import category.category
 
-module category.functor.hlevel {i j i' j'}
-  {C : Category i j}{D : Category i' j'} where
+module category.functor.hlevel {C D : Category} where
 
 open import level
 open import sum

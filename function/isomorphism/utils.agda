@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 
 module function.isomorphism.utils where
 
@@ -13,7 +13,7 @@ open import function.extensionality.core
 open import sets.unit
 open import hott.hlevel.core
 
-Σ-split-iso : ∀ {i j}{X : Set i}{Y : X → Set j}
+Σ-split-iso : {X : Set}{Y : X → Set}
             → {a a' : X}{b : Y a}{b' : Y a'}
             → (Σ (a ≡ a') λ q → subst Y q b ≡ b')
             ≅ ((a , b) ≡ (a' , b'))
@@ -29,8 +29,9 @@ open import hott.hlevel.core
           (λ {(a , b) → refl })
           (a , b) (a' , b')
 
-Σ-cong-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
-             {Y : X → Set j}{Y' : X' → Set j'}
+Σ-cong-iso : {X X' : Set}
+             {Y : X → Set}
+             {Y' : X' → Set}
            → (isom : X ≅ X')
            → ((x' : X') → Y (invert isom x') ≅ Y' x')
            → Σ X Y ≅ Σ X' Y'
@@ -58,7 +59,7 @@ open import hott.hlevel.core
           ⊚ (subst-hom Y (sym (H (g x))) (cong g (K x)) y
           ⊚ cong (λ p → subst Y p y) (lem x) ) ) } }
 
-    Σ-iso' : ∀ {i j j'}{X : Set i}{Y : X → Set j}{Y' : X → Set j'}
+    Σ-iso' : {X : Set}{Y : X → Set}{Y' : X → Set}
            → ((x : X) → Y x ≅ Y' x)
            → Σ X Y ≅ Σ X Y'
     Σ-iso' isom = record
@@ -67,9 +68,9 @@ open import hott.hlevel.core
       ; iso₁ = λ { (x , y) → uncongΣ (refl , _≅_.iso₁ (isom x) y) }
       ; iso₂ = λ { (x , y') → uncongΣ (refl , _≅_.iso₂ (isom x) y') } }
 
-Π-cong-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
-             {Y : X → Set j}{Y' : X' → Set j'}
-           → (ext' : ∀ {i j} → Extensionality' i j)
+Π-cong-iso : {X X' : Set}
+             {Y : X → Set}{Y' : X' → Set}
+           → (ext' : Extensionality')
            → (isom : X ≅ X')
            → ((x' : X') → Y (invert isom x') ≅ Y' x')
            → ((x : X) → Y x)
@@ -90,8 +91,7 @@ open import hott.hlevel.core
             ⊚ cong' h' (K x') }
       where γ' = co-coherence (iso f g H K) γ
 
-    Π-iso' : ∀ {i j j'}{X : Set i}
-             {Y : X → Set j}{Y' : X → Set j'}
+    Π-iso' : {X : Set}{Y Y' : X → Set}
            → ((x : X) → Y x ≅ Y' x)
            → ((x : X) → Y x)
            ≅ ((x : X) → Y' x)
@@ -101,8 +101,8 @@ open import hott.hlevel.core
       ; iso₁ = λ h → ext' λ x → _≅_.iso₁ (isom x) _
       ; iso₂ = λ h' → ext' λ x → _≅_.iso₂ (isom x) _ }
 
-ΠΣ-swap-iso : ∀ {i j k}{X : Set i}{Y : X → Set j}
-            → {Z : (x : X) → Y x → Set k}
+ΠΣ-swap-iso : {X : Set}{Y : X → Set}
+            → {Z : (x : X) → Y x → Set}
             → ((x : X) → Σ (Y x) λ y → Z x y)
             ≅ (Σ ((x : X) → Y x) λ f → ((x : X) → Z x (f x)))
 ΠΣ-swap-iso = record
@@ -111,8 +111,8 @@ open import hott.hlevel.core
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
-curry-iso : ∀ {i j k}{X : Set i}{Y : X → Set j}
-            (Z : (x : X) → Y x → Set k)
+curry-iso : {X : Set}{Y : X → Set}
+            (Z : (x : X) → Y x → Set)
           → ((xy : Σ X Y) → Z (proj₁ xy) (proj₂ xy))
           ≅ ((x : X) → (y : Y x) → Z x y)
 curry-iso _ = record
@@ -121,7 +121,7 @@ curry-iso _ = record
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
-impl-iso : ∀ {i j}{X : Set i}{Y : X → Set j}
+impl-iso : {X : Set}{Y : X → Set}
          → ((x : X) → Y x) ≅ ({x : X} → Y x)
 impl-iso = record
   { to = λ f → f _
@@ -129,9 +129,8 @@ impl-iso = record
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
-Σ-assoc-iso : ∀ {i j k}
-              {X : Set i}{Y : X → Set j}
-              {Z : (x : X) → Y x → Set k}
+Σ-assoc-iso : {X : Set}{Y : X → Set}
+              {Z : (x : X) → Y x → Set}
             → Σ (Σ X Y) (λ {(x , y) → Z x y})
             ≅ Σ X λ x → Σ (Y x) (Z x)
 Σ-assoc-iso = record
@@ -140,21 +139,21 @@ impl-iso = record
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
-×-left-unit : ∀ {i}{X : Set i} → (⊤ × X) ≅ X
+×-left-unit : {X : Set} → (⊤ × X) ≅ X
 ×-left-unit = record
   { to = λ {(tt , x) → x }
   ; from = λ x → tt , x
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
-×-right-unit : ∀ {i}{X : Set i} → (X × ⊤) ≅ X
+×-right-unit : {X : Set} → (X × ⊤) ≅ X
 ×-right-unit = record
   { to = λ {(x , tt) → x }
   ; from = λ x → x , tt
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
-contr-⊤-iso : ∀ {i}{X : Set i}
+contr-⊤-iso : {X : Set}
             → contr X → X ≅ ⊤
 contr-⊤-iso hX = record
   { to = λ x → tt
@@ -162,7 +161,7 @@ contr-⊤-iso hX = record
   ; iso₁ = λ x → proj₂ hX x
   ; iso₂ = λ { tt → refl } }
 
-×-comm : ∀ {i j}{X : Set i}{Y : Set j}
+×-comm : {X : Set}{Y : Set}
        → (X × Y) ≅ (Y × X)
 ×-comm = record
   { to = λ {(x , y) → (y , x)}
@@ -170,7 +169,7 @@ contr-⊤-iso hX = record
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
-Π-left-unit : ∀ {i}{X : Set i}
+Π-left-unit : {X : Set}
             → (⊤ → X) ≅ X
 Π-left-unit = record
   { to = λ f → f tt
@@ -179,12 +178,12 @@ contr-⊤-iso hX = record
   ; iso₂ = λ f → refl }
 
 -- rewriting lemmas for equations on equalities
-sym≡-iso : ∀ {i}{X : Set i}(x y : X)
+sym≡-iso : {X : Set}(x y : X)
          → (x ≡ y)
          ≅ (y ≡ x)
 sym≡-iso _ _ = iso sym sym double-inverse double-inverse
 
-move-≡-iso : ∀ {i}{X : Set i}{x y z : X}
+move-≡-iso : {X : Set}{x y z : X}
            → (p : x ≡ y)(q : y ≡ z)(r : x ≡ z)
            → (p ⊚ q ≡ r)
            ≅ (sym p ⊚ r ≡ q)

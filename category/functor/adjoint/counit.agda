@@ -1,10 +1,11 @@
+{-# OPTIONS --without-K --type-in-type #-}
+
 open import category.category.core
 open import category.functor.core
 open import category.functor.adjoint.core
 
 module category.functor.adjoint.counit
-  {i}{j}{i'}{j'}
-  {C : Category i j}{D : Category i' j'}
+  {C D : Category}
   (F : Functor C D)(G : Functor D C)
   (adjunction : F ⊣ G) where
 

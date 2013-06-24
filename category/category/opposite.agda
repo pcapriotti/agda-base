@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 
 module category.category.opposite where
 
@@ -7,7 +7,7 @@ open import equality.core
 open import category.graph.core
 open import category.category.core
 
-op : ∀ {i j} → Category i j → Category i j
+op : Category → Category
 op C = mk-category record
   { obj = obj C
   ; hom = λ x y → hom y x

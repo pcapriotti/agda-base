@@ -6,16 +6,16 @@ open import level
 open import sum
 open import function.core
 
-record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
+record Container : Set₁ where
   constructor container
   field
-    I : Set li
-    A : I → Set la
-    B : {i : I} → A i → Set lb
+    I : Set
+    A : I → Set
+    B : {i : I} → A i → Set
     r : {i : I}{a : A i} → B a → I
 
   -- functor associated to this indexed container
-  F : ∀ {lx} → (I → Set lx) → I → Set _
+  F : (I → Set) → I → Set
   F X i = Σ (A i) λ a → (b : B a) → X (r b)
 
   -- homsets in the slice category
@@ -23,9 +23,8 @@ record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
   X ↝ Y = {i : I} → X i → Y i
 
   -- morphism map for the functor F
-  imap : ∀ {lx ly}
-       → (X : I → Set lx)
-       → {Y : I → Set ly}
+  imap : (X : I → Set)
+       → {Y : I → Set}
        → (X ↝ Y)
        → (F X ↝ F Y)
   imap _ g {i} (a , f) = a , g ∘' f

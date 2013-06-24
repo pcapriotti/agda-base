@@ -17,18 +17,18 @@ open import container.fixpoint
 open import container.equality
 
 private
-  module Definition {li la lb} (c : Container li la lb) where
+  module Definition (c : Container) where
     open Container c
 
     -- definition of indexed W-types using a type family
-    data W (i : I) : Set (la ⊔ lb) where
+    data W (i : I) : Set where
       sup : (a : A i) → ((b : B a) → W (r b)) → W i
 
     -- initial F-algebra
     inW : F W ↝ W
     inW (a , f) = sup a f
 
-    module Elim {lx} {X : I → Set lx}
+    module Elim {X : I → Set}
                 (α : F X ↝ X) where
       -- catamorphisms
       fold : W ↝ X
@@ -73,7 +73,7 @@ private
         K (a , f) = refl
 
 private
-  module Properties {li la lb}{c : Container li la lb} where
+  module Properties {c : Container} where
     open Container c
     open Definition c
 
@@ -86,9 +86,8 @@ private
       renaming ( W to W-≡
                ; fixpoint to fixpoint-≡ )
 
-    F-≡ : ∀ {lx}
-        → (∀ {i} → W i → W i → Set lx)
-        → (∀ {i} → W i → W i → Set _)
+    F-≡ : (∀ {i} → W i → W i → Set)
+        → ∀ {i} → W i → W i → Set
     F-≡ X  u v = F-≡' (λ {(i , u , v) → X {i} u v}) (_ , u , v)
 
     _≡W_ : ∀ {i} → W i → W i → Set _

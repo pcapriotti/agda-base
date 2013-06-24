@@ -13,18 +13,17 @@ open import sets.unit
 open import overloading
 open import hott.hlevel
 
-trivial-graph : ∀ {i}(X : Set i) → Graph lzero i
+trivial-graph : (X : Set) → Graph
 trivial-graph X = mk-graph record
   { obj = ⊤
   ; hom = λ _ _ → X }
 
-trivial-morphism : ∀ {i j}{X : Set i}{Y : Set j}
-                 → (f : X → Y)
+trivial-morphism : {X Y : Set} → (f : X → Y)
                  → Morphism (trivial-graph X) (trivial-graph Y)
 trivial-morphism f = mk-morphism record
   { apply = id ; map = f }
 
-trivial-morphism-equality : ∀ {i j}{X : Set i}{Y : Set j}
+trivial-morphism-equality : {X Y : Set}
                             {f g : X → Y}
                           → (trivial-morphism f ≡ trivial-morphism g)
                           ≅ (f ≡ g)

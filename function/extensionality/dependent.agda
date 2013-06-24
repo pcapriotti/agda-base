@@ -14,10 +14,10 @@ open import hott.hlevel.core
 open import hott.hlevel.properties
 
 abstract
-  ext₀' : ∀ {i j} → Extensionality' i j
-  ext₀' {i} {j} {X = X} {Y = Y} {f}{g} h = cong (λ u → proj₁ ∘' u) p
+  ext₀' : Extensionality'
+  ext₀' {X = X} {Y = Y} {f}{g} h = cong (λ u → proj₁ ∘' u) p
     where
-      U : (x : X) → Set j
+      U : (x : X) → Set
       U x = singleton (f x)
 
       U-contr : contr ((x : X) → U x)
@@ -33,10 +33,10 @@ abstract
       p = contr⇒prop U-contr f* g*
 
 abstract
-  ext' : ∀ {i j} → Extensionality' i j
+  ext' : Extensionality'
   ext' h = ext₀' h ⊚ ext₀' (λ _ → refl) ⁻¹
 
-  ext-id' : ∀ {i j}{X : Set i}{Y : X → Set j}
+  ext-id' : {X : Set}{Y : X → Set}
           → (f : (x : X) → Y x)
           → ext' {f = f} {f} (λ _ → refl) ≡ refl
   ext-id' f = left-inverse (ext₀' (λ _ → refl))

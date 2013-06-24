@@ -23,7 +23,7 @@ open import hott.hlevel.core
 ⊥-prop x _ = ⊥-elim x
 
 -- Hedberg's theorem
-hedberg : ∀ {i} {A : Set i}
+hedberg : {A : Set}
         → ((x y : A) → Dec (x ≡ y))
         → h 2 A
 hedberg {A = A} dec x y = prop⇒h1 ≡-prop
@@ -45,7 +45,7 @@ hedberg {A = A} dec x y = prop⇒h1 ≡-prop
     canonical-inv : {x y : A}(p : x ≡ y)
                   → canonical p ⊚ sym (canonical refl) ≡ p
     canonical-inv refl = left-inverse (canonical refl)
-  
+
     ≡-prop : {x y : A}(p q : x ≡ y) → p ≡ q
     ≡-prop p q = begin
         p

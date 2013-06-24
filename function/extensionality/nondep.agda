@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 
 module function.extensionality.nondep where
 
@@ -17,11 +17,11 @@ open import function.extensionality.core
 private
   -- we begin with some preliminaries on path spaces
   -- let's fix a set X
-  module Paths {i} (X : Set i) where
+  module Paths (X : Set) where
     -- Δ is the path space of X, i.e.
     -- the type of triples (x, x', p)
     -- where p : x ≡ x'
-    Δ : Set _
+    Δ : Set
     Δ = Σ X λ x₁
       → Σ X λ x₂
       → x₁ ≡ x₂
@@ -55,19 +55,19 @@ private
   -- now we use univalence to show that a weak equivalence between X and
   -- Y lifts to a weak equivalence between the exponentials (A → X) and
   -- (A → Y) for any type A
-  module Lift {i} j (A : Set i) where
+  module Lift (A : Set) where
     -- lift a function to the exponentials
-    lift : {X Y : Set j}
+    lift : {X Y : Set}
          → (X → Y) → (A → X) → (A → Y)
     lift f g a = f (g a)
 
     -- lift an equality of types to an equality of exponentials
-    lift≡ : {X Y : Set j}
+    lift≡ : {X Y : Set}
             → X ≡ Y → (A → X) ≡ (A → Y)
     lift≡ refl = refl
 
     -- coerce commutes with lifting
-    lift-coherence : {X Y : Set j}(p : X ≡ Y)
+    lift-coherence : {X Y : Set}(p : X ≡ Y)
                    → coerce (lift≡ p)
                    ≡ lift (coerce p)
     lift-coherence refl = refl
@@ -76,13 +76,13 @@ private
     -- Note that we really need univalence here, as it's not possible to
     -- prove that lift gives an isomorphism, unless we already have
     -- extensionality.
-    lift≈ : {X Y : Set j}
+    lift≈ : {X Y : Set}
           → X ≈ Y
           → (A → X) ≈ (A → Y)
     lift≈ = ≡⇒≈ ∘ lift≡ ∘ ≈⇒≡
 
     -- lift≈ acts like lift
-    lift≈-coherence : {X Y : Set j}
+    lift≈-coherence : {X Y : Set}
                     → (f : X ≈ Y)
                     → apply≈ (lift≈ f) ≡ lift (apply≈ f)
     lift≈-coherence f = begin
@@ -97,7 +97,7 @@ private
       where open ≡-Reasoning
 
     -- lift≈ respects inverses
-    lift≈-inverse : {X Y : Set j}
+    lift≈-inverse : {X Y : Set}
                   → (f : X ≈ Y)
                   → (g : Y → X)
                   → g ∘ apply≈ f ≡ id
@@ -124,12 +124,12 @@ private
 -- Now, to prove extensionality, we take a pair of extensionally equal
 -- functions, and we want to prove that they are propositionally equal
 abstract
-  ext₀ : ∀ {i j} → Extensionality i j
-  ext₀ {i}{j} {X} {Y} {f} {g} h = main
+  ext₀ : Extensionality
+  ext₀ {X} {Y} {f} {g} h = main
     where
       -- Let Y' be the path space of Y
       open Paths Y renaming (Δ to Y')
-      open Lift j X
+      open Lift X
 
       -- Since Y and Y' are equivalent, we can lift the equivalence
       -- to the exponentials, and get an isomorphism.
@@ -181,12 +181,12 @@ abstract
           k x = (f x , (g x , h x))
 
 abstract
-  ext : ∀ {i j} → Extensionality i j
+  ext : Extensionality
   ext h = ext₀ h
         ⊚ ext₀ (λ _ → refl) ⁻¹
 
   -- computation rule for extensionality
-  ext-id : ∀ {i j}{X : Set i}{Y : Set j}
+  ext-id : {X : Set}{Y : Set}
          → (f : X → Y)
          → ext {f = f} {f} (λ _ → refl) ≡ refl
   ext-id f = left-inverse (ext₀ (λ x → refl))
