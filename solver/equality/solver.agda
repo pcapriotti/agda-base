@@ -1,5 +1,5 @@
-{-# OPTIONS --without-K #-}
-module solver.equality.solver {i}(X : Set i) where
+{-# OPTIONS --type-in-type --without-K #-}
+module solver.equality.solver (X : Set) where
 
 open import decidable
 open import sum
@@ -26,7 +26,7 @@ lem-rewrite refl q r .r refl =
     sym (cong (λ α → α ⊚ q) (right-inverse r))
   ⊚ associativity (sym r) r q
 
-module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
+module WithDec {n} (W : Edges (Fin n))(dec : DecGraph W) where
   open DecGraph dec
 
   module Terms where

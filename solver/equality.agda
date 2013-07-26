@@ -13,7 +13,7 @@ open import solver.equality.term public
   hiding (module WithEnv)
 
 private
-  module Solver {ll} {X : Set ll}{k n : ℕ}
+  module Solver {X : Set}{k n : ℕ}
                 (xs : Vec X k){x y : Fin k}
                 (v : Vec (Fin k × Fin k) n)
                 (f : (i : Fin n) → xs ! proj₁ (v ! i)
@@ -22,7 +22,7 @@ private
                 (ht₂ : HOTerm (Fin k) v x y) where
     open import sets.fin
 
-    W : Edges (Fin k) _
+    W : Edges (Fin k)
     W = fin-graph (Fin k) v
 
     env : Env W X

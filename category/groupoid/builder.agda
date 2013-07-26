@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 
 module category.groupoid.builder where
 
@@ -7,18 +7,18 @@ open import equality.core
 
 open import hott.hlevel.core
 
-record Groupoid₀Builder i j : Set (lsuc (i ⊔ j)) where
+record Groupoid₀Builder : Set where
   field
-    obj : Set i
-    hom : obj → obj → Set j
+    obj : Set
+    hom : obj → obj → Set
     id : (x : obj) → hom x x
     _∘_ : {x y z : obj} → hom y z → hom x y → hom x z
     inv : {x y : obj} → hom x y → hom y x
 
-record GroupoidBuilder i j : Set (lsuc (i ⊔ j)) where
+record GroupoidBuilder : Set where
   field
-    obj : Set i
-    hom : obj → obj → Set j
+    obj : Set
+    hom : obj → obj → Set
     id : (x : obj) → hom x x
     _∘_ : {x y z : obj} → hom y z → hom x y → hom x z
     inv : {x y : obj} → hom x y → hom y x

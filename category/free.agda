@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 module category.free where
 
 open import sum
@@ -8,10 +8,10 @@ open import category.graph
 open import category.category
 open import hott.hlevel
 
-free-cat : ∀ {i j}(W : Graph i j)
+free-cat : (W : Graph)
          → h 3 (obj W)
          → h 2 (total W)
-         → Category _ _
+         → Category
 free-cat W hX hW = mk-category record
   { obj = obj W
   ; hom = Paths W

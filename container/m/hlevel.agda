@@ -1,8 +1,7 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 
 module container.m.hlevel where
 
-open import level
 open import sum
 open import equality.core
 open import equality.calculus
@@ -17,14 +16,13 @@ open import container.m.core
 
 private
   -- Given a container with A i ≡ ⊤
-  module M-⊤ {li lb} (la : Level)
-             (I : Set li)
-             (B : I → Set lb)
+  module M-⊤ (I : Set)
+             (B : I → Set)
              (r : {i : I} → B i → I) where
-    c : Container li la lb
+    c : Container
     c = record
       { I = I
-      ; A = λ _ → ↑ la ⊤
+      ; A = λ _ → ⊤
       ; B = λ {i} _ → B i
       ; r = r }
 
@@ -32,14 +30,14 @@ private
 
     -- prove that ⊤ is a terminal coalgebra
     module T where
-      M : I → Set lzero
+      M : I → Set
       M _ = ⊤
 
       out : M ↝ F M
-      out tt = lift tt , λ _ → tt
+      out tt = tt , λ _ → tt
 
-      module Elim {lx}{X : I → Set lx}
-                    (α : X ↝ F X) where
+      module Elim {X : I → Set}
+                  (α : X ↝ F X) where
         unfold : X ↝ M
         unfold _ = tt
 
@@ -75,30 +73,29 @@ private
     m-contr : ∀ i → contr (M.M i)
     m-contr i = iso-hlevel (m-t-iso i) ⊤-contr
 
-  module Properties {li la lb}
-                    {c : Container li la lb}
+  module Properties {c : Container}
                     (hA : ∀ i → contr (Container.A c i)) where
     abstract
       -- if A is trivial, then the container is equal to the one in M-⊤
-      lem-container : ∀ {li la lb}(c : Container li la lb)
-                    → let open Container c in (p : (λ _ → ↑ la ⊤) ≡ A)
-                    → let B₀ = (λ i → B (coerce (ext-inv p i) (lift tt)))
-                          module M₀ = M-⊤ la I B₀ r
+      lem-container : (c : Container)
+                    → let open Container c in (p : (λ _ → ⊤) ≡ A)
+                    → let B₀ = (λ i → B (coerce (ext-inv p i) tt))
+                          module M₀ = M-⊤ I B₀ r
                       in M₀.c ≡ c
-      lem-container {la = la} (container I .(λ _ → ↑ la ⊤) B r) refl = refl
+      lem-container (container I .(λ _ → ⊤) B r) refl = refl
 
       -- the above equality is the identity on I
-      lem-container-I : ∀ {li la lb}(c : Container li la lb)
-                      → let open Container c in (p : (λ _ → ↑ la ⊤) ≡ A)
-                      → let B₀ = (λ i → B (coerce (ext-inv p i) (lift tt)))
-                            module M₀ = M-⊤ la I B₀ r
+      lem-container-I : (c : Container)
+                      → let open Container c in (p : (λ _ → ⊤) ≡ A)
+                      → let B₀ = (λ i → B (coerce (ext-inv p i) tt))
+                            module M₀ = M-⊤ I B₀ r
                             q : M₀.c ≡ c
                             q = lem-container c p
                         in ∀ i → subst Container.I q i ≡ i
-      lem-container-I {la = la} (container I .(λ _ → ↑ la ⊤) B r) refl i = refl
+      lem-container-I (container I .(λ _ → ⊤) B r) refl i = refl
 
       -- given equal containers, the corresponding M-types are equal
-      apply-M : ∀ {li la lb} {c c' : Container li la lb}
+      apply-M : {c c' : Container}
               → (p : c ≡ c')
               → (i : Container.I c)
               → Definition.M c i ≡ Definition.M c' (subst Container.I p i)
@@ -106,13 +103,13 @@ private
 
     open Definition c
 
-    A-eq : (λ _ → ↑ la ⊤) ≡ A
-    A-eq = ext λ i → contr-contr (↑-hlevel la ⊤-contr) (hA i)
+    A-eq : (λ _ → ⊤) ≡ A
+    A-eq = ext λ i → contr-contr ⊤-contr (hA i)
 
-    B₀ : I → Set lb
-    B₀ i = B (coerce (ext-inv A-eq i) (lift tt))
+    B₀ : I → Set
+    B₀ i = B (coerce (ext-inv A-eq i) tt)
 
-    module M₀ = M-⊤ la I B₀ r
+    module M₀ = M-⊤ I B₀ r
 
     c-iso : M₀.c ≡ c
     c-iso = lem-container c A-eq

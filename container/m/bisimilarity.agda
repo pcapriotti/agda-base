@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 
 module container.m.bisimilarity where
 
@@ -16,10 +16,10 @@ open import container.m.hlevel
 open import hott.hlevel.core
 
 private
-  module Bisimilarity {li la lb}(c : Container li la lb) where
+  module Bisimilarity (c : Container) where
     open Definition c
 
-    fp : Fixpoint c _
+    fp : Fixpoint c
     fp = fix M fixpoint
 
     open Fixpoint fp
@@ -27,14 +27,14 @@ private
     open Equality c fp
     module S = Definition equality
 
-    _≡M_ : ∀ {i}(u v : M i) → Set _
+    _≡M_ : ∀ {i}(u v : M i) → Set
     u ≡M v = S.M (_ , u , v)
 
     reflM : ∀ {i}{u : M i} → u ≡M u
     reflM = S.inf refl (λ b → ♯ reflM)
 
     module Singl where
-      c-singl : Container (li ⊔ la ⊔ lb) la lb
+      c-singl : Container
       c-singl = record
         { I = Σ I M
         ; A = λ {(i , u) → singleton (head u)}
@@ -43,7 +43,7 @@ private
 
       open Definition c-singl public
 
-    Singl-M : ∀ {i} (u : M i) → Set _
+    Singl-M : ∀ {i} (u : M i) → Set
     Singl-M {i} u = Singl.M (i , u)
 
     Singl-A-contr : ∀ i → contr (Singl.A i)
@@ -69,7 +69,7 @@ private
              → extract (lift₂ p) ≡ v
     section₂ {i}{u}{v} p = lem₂ p ⊚ sym (lem₁ p)
       where
-        Eq : (i : I) → Set _
+        Eq : (i : I) → Set
         Eq i = Σ (M i × M i) (uncurry _≡M_)
 
         α : Eq ↝ F Eq

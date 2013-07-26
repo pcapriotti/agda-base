@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 
 module category.groupoid.core where
 
@@ -12,56 +12,56 @@ open import category.graph.core
 open import category.groupoid.builder
 open import category.groupoid.zero
 
-record IsGroupoid i j (G : Groupoid₀ i j) : Set (i ⊔ j) where
+record IsGroupoid (G : Groupoid₀) : Set where
   open as-groupoid₀ G
 
   field
-    is-cat : IsCategory i j (cat₀ G)
+    is-cat : IsCategory (cat₀ G)
     left-inv : {x y : obj G} (f : hom x y) → inv f ∘ f ≡ id
     right-inv : {x y : obj G} (f : hom x y) → f ∘ inv f ≡ id
 
-Groupoid : ∀ i j → Set _
-Groupoid i j = Bundle (IsGroupoid i j)
+Groupoid : Set
+Groupoid = Bundle IsGroupoid
 
-gpd-is-set : ∀ {i j} → Coercion (Groupoid i j) (Set i)
-gpd-is-set {i}{j} = coerce-parent
+gpd-is-set : Coercion Groupoid Set
+gpd-is-set = coerce-parent
 
-gpd-is-gph : ∀ {i j} → Coercion (Groupoid i j) (Graph i j)
-gpd-is-gph {i}{j} = coerce-parent
+gpd-is-gph : Coercion Groupoid Graph
+gpd-is-gph = coerce-parent
 
-gpd-is-cat₀ : ∀ {i j} → Coercion (Groupoid i j) (Category₀ i j)
-gpd-is-cat₀ {i}{j} = coerce-parent
+gpd-is-cat₀ : Coercion Groupoid Category₀
+gpd-is-cat₀ = coerce-parent
 
-gpd-is-cat : ∀ {i j} → Coercion (Groupoid i j) (Category i j)
-gpd-is-cat {i}{j} = record
+gpd-is-cat : Coercion Groupoid Category
+gpd-is-cat = record
   { coerce = λ G → record
     { parent = cat₀ G
     ; struct = IsGroupoid.is-cat (Bundle.struct G) } }
 
-gpd-is-gpd₀ : ∀ {i j} → Coercion (Groupoid i j) (Groupoid₀ i j)
-gpd-is-gpd₀ {i}{j} = coerce-parent
+gpd-is-gpd₀ : Coercion Groupoid Groupoid₀
+gpd-is-gpd₀ = coerce-parent
 
-gpd-is-gpd : ∀ {i j} → Coercion (Groupoid i j) (Groupoid i j)
-gpd-is-gpd {i}{j} = coerce-self _
+gpd-is-gpd : Coercion Groupoid Groupoid
+gpd-is-gpd = coerce-self _
 
 private
-  module gpd-statics {i j k}{Source : Set k}
-                     ⦃ c : Coercion Source (Groupoid i j) ⦄ where
+  module gpd-statics {Source : Set}
+                     ⦃ c : Coercion Source Groupoid ⦄ where
     open Coercion c public using () renaming (coerce to gpd)
-  module gpd-methods {i j}{G : Groupoid₀ i j}
-                     ⦃ s : Styled default (IsGroupoid i j G) ⦄ where
+  module gpd-methods {G : Groupoid₀}
+                     ⦃ s : Styled default (IsGroupoid G) ⦄ where
     open Styled s
     open IsGroupoid value public
 
-module as-groupoid {i j k}{Source : Set k}
-                   ⦃ c : Coercion Source (Groupoid i j) ⦄
+module as-groupoid {Source : Set}
+                   ⦃ c : Coercion Source Groupoid ⦄
                    (source : Source) where
   private target = coerce c source
   open as-category₀ target public
   _cat-instance = styled default (cat target)
   _gpd-instance = styled default (Bundle.struct target)
 
-mk-groupoid : ∀ {i j} → GroupoidBuilder i j → Groupoid i j
+mk-groupoid : GroupoidBuilder → Groupoid
 mk-groupoid b = let module B = GroupoidBuilder b in record
   { parent = mk-groupoid₀ record
     { obj = B.obj

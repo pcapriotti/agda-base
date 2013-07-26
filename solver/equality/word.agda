@@ -1,12 +1,12 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 open import solver.equality.core
-module solver.equality.word {i k}{X : Set i}(W : Edges X k) where
+module solver.equality.word {X : Set}(W : Edges X) where
 
 open import level using (_⊔_)
 open import equality.core
 open import equality.calculus
 
-data Word : Edges X (i ⊔ k) where
+data Word : Edges X where
   fwd : ∀ {x y} → W x y → Word x y
   inv : ∀ {x y} → W y x → Word x y
 
@@ -24,7 +24,7 @@ word-inv = record
   { τ = wreverse
   ; τ-τ = wreverse-wreverse }
 
-module WithEnv {j}{X' : Set j}(env : Env W X') where
+module WithEnv {X' : Set}(env : Env W X') where
   eval : Env Word X'
   eval = record
     { imap = imap env

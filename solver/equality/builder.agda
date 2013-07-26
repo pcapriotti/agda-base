@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 module solver.equality.builder where
 
 open import level using (lzero; lsuc; _⊔_)
@@ -15,7 +15,7 @@ open import solver.equality.core
 open import solver.equality.term
 
 private
-  transport-dec : ∀ {i j}{X : Set i}{Y : Set j}
+  transport-dec : {X Y : Set}
                 → X ≅ Y
                 → ((x x' : X) → Dec (x ≡ x'))
                 → ((y y' : Y) → Dec (y ≡ y'))
@@ -28,14 +28,14 @@ private
       ... | yes p = yes (sym (iso₂ y) ⊚ cong to p ⊚ iso₂ y')
       ... | no f = no (λ p → f (cong from p))
 
-  module FinEdges {i}(X : Set i) where
+  module FinEdges (X : Set) where
     source : ∀ {n} → Vec (X × X) n → Fin n → X
     source v i = proj₁ (v ! i)
 
     target : ∀ {n} → Vec (X × X) n → Fin n → X
     target v i = proj₂ (v ! i)
-    
-    data fin-graph {n} (v : Vec (X × X) n) : Edges X lzero where
+
+    data fin-graph {n} (v : Vec (X × X) n) : Edges X where
       fin-element : (i : Fin n) → fin-graph v (source v i) (target v i)
 
     total-space-finite : ∀ {n}(v : Vec (X × X) n)
@@ -55,7 +55,7 @@ private
 
         K : (e : E) → f (g e) ≡ e
         K ((.(source v i) , .(target v i)) , fin-element i) = refl
-        
+
     fin-graph-dec : ∀ {n} (v : Vec (X × X) n)
                   → ((x y : X) → Dec (x ≡ y))
                   → DecGraph (fin-graph v)
@@ -63,7 +63,7 @@ private
 
 open FinEdges public
 
-fin-env : ∀ {i k n}{X : Set i}(v : Vec (Fin k × Fin k) n)(xs : Vec X k)
+fin-env : ∀ {k n}{X : Set}(v : Vec (Fin k × Fin k) n)(xs : Vec X k)
         → ((i : Fin n) → xs ! proj₁ (v ! i) ≡ xs ! proj₂ (v ! i))
         → Env (fin-graph (Fin k) v) X
 fin-env {k = k}{X = X} v xs f = record
@@ -77,19 +77,19 @@ fin-env {k = k}{X = X} v xs f = record
     lookup' ((i , j) ∷ v) f (fin-element zero) = f zero
     lookup' ((i , j) ∷ v) f (fin-element (suc n)) = lookup' v (f ∘' suc) (fin-element n)
 
-HOTerm' : ∀ {i n} {X : Set i} → Edges X lzero → Vec (X × X) n → X → X → Set i
+HOTerm' : ∀ {n} {X : Set} → Edges X → Vec (X × X) n → X → X → Set
 HOTerm' W [] x y = Term W x y
 HOTerm' W ((x' , y') ∷ v) x y = Term W x' y' → HOTerm' W v x y
 
-HOTerm : ∀ {i n} → (X : Set i) → Vec (X × X) n → X → X → Set (lsuc lzero ⊔ i)
-HOTerm X v x y = {W : Edges X lzero} → HOTerm' W v x y
+HOTerm : ∀ {n} → (X : Set) → Vec (X × X) n → X → X → Set
+HOTerm X v x y = {W : Edges X} → HOTerm' W v x y
 
 term : ∀ {n k} {v : Vec (Fin n × Fin n) k}{x y : Fin n}
      → HOTerm (Fin n) v x y
      → Term (fin-graph (Fin n) v) x y
 term {v = v}{x}{y} t = go v x y t (var ∘' fin-element)
   where
-    go : ∀ {i n}{X : Set i}{W : Edges X lzero}(v : Vec (X × X) n)(x y : X)
+    go : ∀ {n}{X : Set}{W : Edges X}(v : Vec (X × X) n)(x y : X)
        → HOTerm' W v x y
        → ((i : Fin n) → Term W (proj₁ (v ! i)) (proj₂ (v ! i)))
        → Term W x y

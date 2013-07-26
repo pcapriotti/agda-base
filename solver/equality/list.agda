@@ -1,6 +1,6 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 open import solver.equality.core
-module solver.equality.list {i k}{X : Set i}(W : Edges X k) where
+module solver.equality.list {X : Set}(W : Edges X) where
 
 open import level using (_⊔_)
 open import equality.core hiding (singleton)
@@ -10,7 +10,7 @@ open import hott.hlevel
 
 open import category.graph
 
-List : Edges X (i ⊔ k)
+List : Edges X
 List = Paths (mk-graph record
   { obj = X
   ; hom = W } )
@@ -37,7 +37,7 @@ module WithInvolution (inv : Involution W) where
       reverse++ (reverse ws) (τ w ∷ nil)
     ⊚ cong₂ _∷_ (τ-τ w) (reverse-reverse ws)
 
-module WithEnv {j}{X' : Set j}(env : Env W X') where
+module WithEnv {X' : Set}(env : Env W X') where
   open ≡-Reasoning
 
   eval : Env List X'
@@ -61,7 +61,7 @@ module WithEnv {j}{X' : Set j}(env : Env W X') where
       gmap env w ⊚ gmap eval ws ⊚ gmap eval us
     ∎
 
-module WithEnvInvolution {j}{X' : Set j}(env : Env W X') (env-inv : EnvInvolution W env) where
+module WithEnvInvolution {X' : Set}(env : Env W X') (env-inv : EnvInvolution W env) where
   open EnvInvolution env-inv
   open WithEnv env
   open WithInvolution inv

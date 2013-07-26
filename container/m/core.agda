@@ -24,11 +24,11 @@ postulate
 {-# BUILTIN SHARP    ♯_ #-}
 {-# BUILTIN FLAT     ♭  #-}
 
-module Definition {li la lb}(c : Container li la lb) where
+module Definition (c : Container) where
   open Container c public
 
   -- definition of indexed M-types using native Agda coinduction
-  data M (i : I) : Set (la ⊔ lb) where
+  data M (i : I) : Set where
     inf : (a : A i) → ((b : B a) → ∞ (M (r b))) → M i
 
   -- the terminal coalgebra
@@ -43,7 +43,7 @@ module Definition {li la lb}(c : Container li la lb) where
   inM'-β : {i : I}(x : F M i) → out (inM' x) ≡ x
   inM'-β x = refl
 
-  module Elim {lx}{X : I → Set lx}
+  module Elim {X : I → Set}
               (α : X ↝ F X) where
     -- anamorphisms
     unfold : X ↝ M
