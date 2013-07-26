@@ -2,7 +2,7 @@
 
 open import category.category
 
-module category.mono {i j}(C : Category i j) where
+module category.mono (C : Category) where
 
 open import category.graph
 open import category.isomorphism

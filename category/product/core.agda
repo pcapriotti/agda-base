@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 
 module category.product.core where
 
@@ -12,9 +12,7 @@ open import hott.hlevel
 
 -- product of categories
 -- for products *in* a category, see category.limit
-_⊗_ : ∀ {i j i' j'}
-    → Category i j → Category i' j'
-    → Category (i ⊔ i') (j ⊔ j')
+_⊗_ : Category → Category → Category
 C ⊗ D = mk-category record
   { obj = obj C × obj D
   ; hom = λ { (X , Y) (X' , Y')

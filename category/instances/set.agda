@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 
 module category.instances.set where
 
@@ -17,9 +17,9 @@ open import hott.hlevel
 open import hott.weak-equivalence
 open import hott.univalence
 
-set : ∀ i → Category (lsuc i) i
-set i = mk-category record
-  { obj = HSet i
+set : Category
+set = mk-category record
+  { obj = HSet
   ; hom = λ A B → proj₁ A → proj₁ B
   ; id = λ _ x → x
   ; _∘_ = _∘_
@@ -30,9 +30,9 @@ set i = mk-category record
 
 -- isomorphism in the category of sets is the same
 -- as isomorphism of types
-cat-iso-h2 : ∀ {i}{A B : HSet i}
+cat-iso-h2 : {A B : HSet}
            → (proj₁ A ≅ proj₁ B)
-           ≅ cat-iso (set i) A B
+           ≅ cat-iso set A B
 cat-iso-h2 = record
   { to = λ { (iso f g H K) → (c-iso f g (ext' H) (ext' K)) }
   ; from = λ { (c-iso f g H K) → (iso f g (ext-inv H) (ext-inv K)) }
@@ -44,35 +44,34 @@ cat-iso-h2 = record
   ; iso₂ = λ _ → cat-iso-equality refl refl }
 
 -- equality of HSets is the same as equality of the underlying types
-hset-equality : ∀ {i}{A B : HSet i}
-              → (A ≡ B)
+hset-equality : {A B : HSet} → (A ≡ B)
               ≅ (proj₁ A ≡ proj₁ B)
-hset-equality {i}{A = A}{B = B} = record
+hset-equality {A = A}{B = B} = record
   { to = cong proj₁
   ; from = λ p → uncongΣ (p , proj₁ (hn-h1 2 _ _ _))
   ; iso₁ = iso₁ A B
   ; iso₂ = λ p → lem p _ }
   where
-    iso₁ : (A B : HSet i)(p : A ≡ B)
+    iso₁ : (A B : HSet)(p : A ≡ B)
          → uncongΣ (cong proj₁ p , proj₁ (hn-h1 2 _ _ _)) ≡ p
     iso₁ (A , hA) .(A , hA) refl =
       cong (λ q → uncongΣ (refl , q))
            (proj₁ (h↑ (hn-h1 2 A) hA hA _ refl))
 
-    lem : ∀ {i j}{A : Set i}{B : A → Set j}
+    lem : {A : Set}{B : A → Set}
           {x x' : A}{y : B x}{y' : B x'}
           (p : x ≡ x')(q : subst B p y ≡ y')
         → cong proj₁ (uncongΣ {B = B} (p , q)) ≡ p
     lem refl refl = refl
 
 -- isomorphisms between hsets are automatically coherent
-iso-coherence-h2 : ∀ {i}{A B : HSet i}
+iso-coherence-h2 : {A B : HSet}
                  → (proj₁ A ≅' proj₁ B)
                  ≅ (proj₁ A ≅ proj₁ B)
 iso-coherence-h2 {A = A , hA}{B = B , hB} =
   lem-contr (λ _ → Π-hlevel λ x → hB _ _ _ _)
   where
-    lem-contr : ∀ {i j}{A : Set i}{B : A → Set j}
+    lem-contr : {A : Set}{B : A → Set}
               → ((x : A) → contr (B x))
               → Σ A B ≅ A
     lem-contr cB = record
@@ -81,9 +80,9 @@ iso-coherence-h2 {A = A , hA}{B = B , hB} =
       ; iso₁ = λ { (a , b) → uncongΣ (refl , proj₂ (cB a) b) }
       ; iso₂ = λ _ → refl }
 
-set-univ : ∀ {i} → univalent (set i)
-set-univ {i} = λ A B →
-  lem (≡⇒iso (set i) {A}{B})
+set-univ : univalent set
+set-univ = λ A B →
+  lem (≡⇒iso set {A}{B})
       (lem-iso A B)
       (ext (lem-iso-comp A B))
   where
@@ -91,7 +90,7 @@ set-univ {i} = λ A B →
 
     -- the function corresponding to an isomorphism is a weak
     -- equivalence
-    lem : ∀ {i j}{X : Set i}{Y : Set j}
+    lem : {X Y : Set}
           (f : X → Y)(isom : X ≅ Y)
         → (apply isom ≡ f)
         → weak-equiv f
@@ -99,7 +98,7 @@ set-univ {i} = λ A B →
       proj₂ (≅⇒≈ isom)
 
     -- equality in the category of sets is the same as isomorphism
-    lem-iso : (A B : HSet i) → (A ≡ B) ≅ cat-iso (set i) A B
+    lem-iso : (A B : HSet) → (A ≡ B) ≅ cat-iso set A B
     lem-iso (A , hA) (B , hB) = begin
         (A , hA) ≡ (B , hB)
       ≅⟨ hset-equality ⟩
@@ -112,13 +111,13 @@ set-univ {i} = λ A B →
                           {B = B , hB}⟩
         A ≅ B
       ≅⟨ cat-iso-h2 ⟩
-        cat-iso (set i) (A , hA) (B , hB)
+        cat-iso set (A , hA) (B , hB)
       ∎
 
     -- the above isomorphism is given by ≡⇒iso
-    lem-iso-comp : (A B : HSet i)(p : A ≡ B)
+    lem-iso-comp : (A B : HSet)(p : A ≡ B)
                  → apply (lem-iso A B) p
-                 ≡ ≡⇒iso (set i) p
+                 ≡ ≡⇒iso set p
     lem-iso-comp A .A refl =
       cong₂ (c-iso (λ x → x) (λ x → x))
             (ext-id' _) (ext-id' _)

@@ -2,8 +2,7 @@
 
 open import category.category
 
-module category.kan-extension.core {i₀ j₀ i₁ j₁ i₂ j₂}
-  {C : Category i₀ j₀}{C' : Category i₁ j₁}{D : Category i₂ j₂} where
+module category.kan-extension.core {C C' D : Category} where
 
 open import level
 open import sum
@@ -16,8 +15,7 @@ open import hott.hlevel
 
 open as-category D
 
-record Extension (K : Functor C C')(G : Functor C D)
-  : Set (i₀ ⊔ j₀ ⊔ lsuc (lsuc (i₁ ⊔ j₁ ⊔ i₂ ⊔ j₂))) where
+record Extension (K : Functor C C')(G : Functor C D) : Set where
   constructor extension
   field
     F : Functor C' D
@@ -36,8 +34,7 @@ private
       (∀ X → ε X ∘ β (apply K X) ≡ α X) }
 open Universality public
 
-record Ran (K : Functor C C')(G : Functor C D)
-  : Set (i₀ ⊔ j₀ ⊔ lsuc (lsuc (i₁ ⊔ j₁ ⊔ i₂ ⊔ j₂))) where
+record Ran (K : Functor C C')(G : Functor C D) : Set where
   field
     ext : Extension K G
     ext-univ : (ext' : Extension K G) → contr (ExtUniv ext ext')

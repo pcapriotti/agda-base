@@ -12,8 +12,7 @@ open import category.trans.core
 open import category.trans.hlevel
 open import category.trans.properties
 
-module category.trans.horizontal {i₀}{j₀}{i₁}{j₁}{i₂}{j₂}
-  {C : Category i₀ j₀}{D : Category i₁ j₁}{E : Category i₂ j₂} where
+module category.trans.horizontal {C D E : Category} where
 
 open as-category E
 open as-category (Func C E)

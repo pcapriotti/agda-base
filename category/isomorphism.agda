@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 
 module category.isomorphism where
 
@@ -13,7 +13,7 @@ open import equality.core
 open import equality.calculus using (uncongΣ)
 open import hott.hlevel
 
-record cat-iso {i j}(C : Category i j)(x y : obj C) : Set j where
+record cat-iso (C : Category)(x y : obj C) : Set where
   constructor c-iso
   open as-category C
   field
@@ -23,7 +23,7 @@ record cat-iso {i j}(C : Category i j)(x y : obj C) : Set j where
     iso₁ : from ∘ to ≡ id
     iso₂ : to ∘ from ≡ id
 
-≡⇒iso : ∀ {i j}(C : Category i j){x y : obj C} → x ≡ y → cat-iso C x y
+≡⇒iso : (C : Category){x y : obj C} → x ≡ y → cat-iso C x y
 ≡⇒iso C {x}{.x} refl = record
   { to = id
   ; from = id
@@ -32,9 +32,9 @@ record cat-iso {i j}(C : Category i j)(x y : obj C) : Set j where
   where open as-category C
 
 private
-  module properties {i j}{C : Category i j}(x y : obj C) where
+  module properties {C : Category}(x y : obj C) where
     open as-category C
-    inverses : hom x y × hom y x → Set _
+    inverses : hom x y × hom y x → Set
     inverses (t , f) = f ∘ t ≡ id
                      × t ∘ f ≡ id
 
@@ -43,7 +43,7 @@ private
       ×-hlevel (trunc x x (f ∘ t) id)
                (trunc y y (t ∘ f) id)
 
-    E : Set _
+    E : Set
     E = Σ (hom x y × hom y x) inverses
 
     e-iso : E ≅ cat-iso C x y
@@ -53,7 +53,7 @@ private
       ; iso₁ = λ _ → refl
       ; iso₂ = λ _ → refl }
 
-cat-iso-hset : ∀ {i j}{C : Category i j} (x y : obj C) → h 2 (cat-iso C x y)
+cat-iso-hset : {C : Category} (x y : obj C) → h 2 (cat-iso C x y)
 cat-iso-hset {C = C} x y = iso-hlevel e-iso
   ( Σ-hlevel (×-hlevel (trunc x y) (trunc y x))
              (λ tf → h↑ (inverses-h1 tf)) )
@@ -61,7 +61,7 @@ cat-iso-hset {C = C} x y = iso-hlevel e-iso
     open as-category C
     open properties x y
 
-cat-iso-equality : ∀ {i j}{C : Category i j}{x y : obj C}
+cat-iso-equality : {C : Category}{x y : obj C}
                    {p q : cat-iso C x y}
                  → (cat-iso.to p ≡ cat-iso.to q)
                  → (cat-iso.from p ≡ cat-iso.from q)

@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 module category.terminal where
 
 open import sum
@@ -15,11 +15,11 @@ open import hott.hlevel.properties
 
 -- X is a terminal object if the functor X : unit → C
 -- is a right adjoint of the unique functor C → unit
-terminal : ∀ {i j} (C : Category i j) → obj C → Set _
+terminal : (C : Category) → obj C → Set
 terminal C X = unit-func C ⊣ Const unit X
 
 private
-  module properties {i j}{C : Category i j}
+  module properties {C : Category}
                     (X : obj C)(t : terminal C X) where
     open _⊣_ {D = unit} t
     open as-category C

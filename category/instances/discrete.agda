@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 module category.instances.discrete where
 
 open import sum
@@ -17,7 +17,7 @@ open import hott.hlevel
 open import hott.weak-equivalence
 open import overloading.core
 
-discrete₀ : ∀ {i} → Set i → Groupoid₀ i i
+discrete₀ : Set → Groupoid₀
 discrete₀ X = mk-groupoid₀ record
   { obj = X
   ; hom = _≡_
@@ -25,7 +25,7 @@ discrete₀ X = mk-groupoid₀ record
   ; _∘_ = λ p q → q ⊚ p
   ; inv = sym }
 
-discrete : ∀ {i} → Type i 1 → Groupoid i i
+discrete : Type 1 → Groupoid
 discrete (X , hX) = mk-groupoid record
   { obj = X
   ; hom = _≡_
@@ -39,10 +39,10 @@ discrete (X , hX) = mk-groupoid record
   ; left-inv = left-inverse
   ; right-inv = right-inverse }
 
-discrete-cat : ∀ {i} → Type i 1 → Category i i
+discrete-cat : Type 1 → Category
 discrete-cat A = cat (discrete A)
 
-discrete-lift : ∀ {i j k}{A : Type i 1}{C : Category j k}
+discrete-lift : {A : Type 1}{C : Category}
               → (proj₁ A → obj C)
               → Functor (discrete-cat A) C
 discrete-lift {A = A}{C = C} f = mk-functor record
@@ -62,12 +62,12 @@ discrete-lift {A = A}{C = C} f = mk-functor record
               ≡ d-map q ∘ d-map p
     d-map-hom refl refl = sym (left-id _)
 
-discrete-func : ∀ {i j}{A : Type i 1}{B : Type j 1}
+discrete-func : {A B : Type 1}
               → (proj₁ A → proj₁ B)
               → Functor (discrete-cat A) (discrete-cat B)
 discrete-func f = discrete-lift f
 
-discrete-univ : ∀ {i} (A : Type i 1) → univalent (discrete-cat A)
+discrete-univ : (A : Type 1) → univalent (discrete-cat A)
 discrete-univ A x y = proj₂ (≅⇒≈ lem-iso)
   where
     C = discrete-cat A

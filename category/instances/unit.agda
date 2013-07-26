@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 module category.instances.unit where
 
 open import level
@@ -12,11 +12,11 @@ open import sets.nat.core
 open import hott.hlevel
 open import hott.hlevel.properties
 
-unit-groupoid : Groupoid _ _
+unit-groupoid : Groupoid
 unit-groupoid = discrete (⊤ , h! ⊤-contr)
 
-unit : Category _ _
+unit : Category
 unit = cat unit-groupoid
 
-unit-func : ∀ {i j}(C : Category i j) → Functor C unit
+unit-func : (C : Category) → Functor C unit
 unit-func C = Const C tt

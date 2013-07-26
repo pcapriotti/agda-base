@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 
 module hott.weak-equivalence.properties where
 
@@ -13,27 +13,23 @@ open import hott.weak-equivalence.alternative
 open import hott.univalence
 open import hott.hlevel
 
-sym≈ : ∀ {i j}{X : Set i}{Y : Set j}
-     → X ≈ Y → Y ≈ X
+sym≈ : {X Y : Set} → X ≈ Y → Y ≈ X
 sym≈ = ≅'⇒≈ ∘ sym≅' ∘ ≈⇒≅'
 
 -- being a weak equivalence is propositional
-we-h1 : ∀ {i j}{X : Set i}{Y : Set j}
-      → (f : X → Y)
-      → h 1 (weak-equiv f)
+we-h1 : {X Y : Set} → (f : X → Y) → h 1 (weak-equiv f)
 we-h1 f = Π-hlevel λ _ → contr-h1 _
 
-apply≈-inj : ∀ {i j}{X : Set i}{Y : Set j}
-           → injective (apply≈ {X = X}{Y = Y})
+apply≈-inj : {X Y : Set} → injective (apply≈ {X = X}{Y = Y})
 apply≈-inj {x = (f , w)}{.f , w'} refl =
   uncongΣ (refl , h1⇒prop (we-h1 f) w w')
 
 abstract
-  univ-sym≈ : ∀ {i}{X Y : Set i}
+  univ-sym≈ : {X Y : Set}
             → (w : X ≈ Y)
             → sym (≈⇒≡ w)
             ≡ ≈⇒≡ (sym≈ w)
-  univ-sym≈ {i}{X}{Y} w = inverse-unique p q lem-inv
+  univ-sym≈ {X}{Y} w = inverse-unique p q lem-inv
     where
       p : X ≡ Y
       p = ≈⇒≡ w

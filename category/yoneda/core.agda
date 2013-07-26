@@ -1,8 +1,8 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 
 open import category.category.core
 
-module category.yoneda.core {i j}(C : Category i j) where
+module category.yoneda.core (C : Category) where
 
 open import sum
 open import function.core
@@ -14,8 +14,8 @@ open import category.trans.core
 
 open as-category C
 
-hom-func : obj C → Functor C (set j)
-hom-func X = mk-functor {D = set j} record
+hom-func : obj C → Functor C set
+hom-func X = mk-functor {D = set} record
   { apply = λ Y → (hom X Y , trunc X Y)
   ; map = _∘_
   ; map-id = λ _ → ext left-id

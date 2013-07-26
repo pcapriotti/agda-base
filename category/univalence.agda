@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 module category.univalence where
 
 open import sum
@@ -10,14 +10,14 @@ open import category.isomorphism
 open import hott.weak-equivalence
 open import hott.hlevel
 
-univalent : ∀ {i j} → Category i j → Set _
+univalent : Category → Set
 univalent C = (x y : obj C) → weak-equiv (≡⇒iso C {x}{y})
 
-univalent-h1 : ∀ {i j}(C : Category i j) → h 1 (univalent C)
+univalent-h1 : (C : Category) → h 1 (univalent C)
 univalent-h1 C = Π-hlevel λ x → Π-hlevel λ y → weak-equiv-h1 _
 
 private
-  module properties {i j}{C : Category i j}(univ : univalent C) where
+  module properties {C : Category}(univ : univalent C) where
     iso≅eq : (x y : obj C) → (x ≡ y) ≅ cat-iso C x y
     iso≅eq x y = ≈⇒≅ (≡⇒iso C , univ x y)
 

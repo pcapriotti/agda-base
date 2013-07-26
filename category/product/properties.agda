@@ -1,10 +1,8 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 
 open import category.category
 
-module category.product.properties {i₁ j₁ i₂ j₂}
-                                    {C : Category i₁ j₁}
-                                    {D : Category i₂ j₂} where
+module category.product.properties {C D : Category} where
 open import sum
 open import equality.core
 open import function.core
@@ -30,7 +28,7 @@ cat-proj₂ = mk-functor {C = C ⊗ D}{D = D} record
   ; map-id = λ _ → refl
   ; map-hom = λ _ _ → refl }
 
-⟨_,_⟩ : ∀ {i₂ j₂} {E : Category i₂ j₂}
+⟨_,_⟩ : {E : Category}
      → Functor E C → Functor E D
      → Functor E (C ⊗ D)
 ⟨_,_⟩ {E = E} F G = mk-functor {C = E}{D = C ⊗ D} record

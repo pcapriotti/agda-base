@@ -3,9 +3,7 @@
 open import category.category
 open import category.functor.core
 
-module category.kan-extension.properties {i₀ j₀ i₁ j₁ i₂ j₂ i₃ j₃}
-  {C : Category i₀ j₀}{C' : Category i₁ j₁}
-  {D : Category i₂ j₂}{D' : Category i₃ j₃} where
+module category.kan-extension.properties {C C' D D' : Category} where
 
 open import function.core
 open import category.functor.hlevel

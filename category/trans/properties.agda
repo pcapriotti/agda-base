@@ -1,5 +1,4 @@
 {-# OPTIONS --without-K #-}
-
 open import sum
 open import equality.core
 open import function.core
@@ -10,8 +9,7 @@ open import category.trans.ops
 open import category.trans.hlevel
 open import function.extensionality
 
-module category.trans.properties {i}{j}{i'}{j'}
-  (C : Category i j)(D : Category i' j') where
+module category.trans.properties (C D : Category) where
 
 open as-category D
 open as-category₀ (Func₀ C D)
@@ -46,7 +44,7 @@ private
       trans-assoc : ∀ X → γ X ∘ β X ∘ α X ≡ γ X ∘ (β X ∘ α X)
       trans-assoc X = assoc _ _ _
 
-Func : Category _ _
+Func : Category
 Func = mk-category record
   { obj = Functor C D
   ; hom = Nat

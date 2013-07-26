@@ -1,8 +1,8 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 
 open import category.category.core
 
-module category.yoneda.lemma {i j}(C : Category i j) where
+module category.yoneda.lemma (C : Category) where
 
 open import sum
 open import equality.core
@@ -21,7 +21,7 @@ open import category.yoneda.core C
 open as-category C
 
 -- Yoneda lemma
-y-iso : (X : obj C)(F : Functor C (set j))
+y-iso : (X : obj C)(F : Functor C set)
       → (hom-func X ⇒ F) ≅ proj₁ (apply F X)
 y-iso X F = iso f g H K
   where

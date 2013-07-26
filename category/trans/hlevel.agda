@@ -1,5 +1,4 @@
-{-# OPTIONS --without-K #-}
-
+{-# OPTIONS --type-in-type --without-K #-}
 open import sum
 open import equality.core
 open import equality.calculus
@@ -13,15 +12,14 @@ open import function.isomorphism using (_≅_; iso)
 open import function.isomorphism.properties
 open import hott.hlevel
 
-module category.trans.hlevel {i}{j}{i'}{j'}
-  {C : Category i j}{D : Category i' j'} where
+module category.trans.hlevel {C D : Category} where
 
 open as-category C
 open as-category D
 
 private
   module NatΣ (F G : Functor C D) where
-    Nat' : Set _
+    Nat' : Set
     Nat' = Σ (Trans F G) (natural F G)
 
     unnat-Σ : Nat' → Nat F G
@@ -42,7 +40,7 @@ natural-prop : (F G : Functor C D)
 natural-prop F G α = iso-hlevel (lem (nat-equation F G α))
   (Π-hlevel (λ m → trunc _ _ _ _))
   where
-    lem : ∀ {i}(P : total C → Set i)
+    lem : (P : total C → Set)
         → ((m : total C) → P m)
         ≅ (∀ {X Y} (f : hom X Y) → P ((X , Y) , f))
     lem P = iso (λ n f → n (_ , f))

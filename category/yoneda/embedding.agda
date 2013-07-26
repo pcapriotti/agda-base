@@ -2,7 +2,7 @@
 
 open import category.category.core
 
-module category.yoneda.embedding {i j}(C : Category i j) where
+module category.yoneda.embedding (C : Category) where
 
 open import sum
 open import equality.core
@@ -22,8 +22,8 @@ open import category.yoneda.core
 open as-category C
 
 -- Yoneda embedding
-y : Functor (op C) (Func C (set j))
-y = mk-functor {C = op C}{D = Func C (set j)} record
+y : Functor (op C) (Func C set)
+y = mk-functor {C = op C}{D = Func C set} record
   { apply = hom-func C
   ; map = hom-map C
   ; map-id = λ X → nat-equality

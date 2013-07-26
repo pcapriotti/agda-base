@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --type-in-type --without-K #-}
 module category.instances.empty where
 
 open import sum
@@ -10,13 +10,13 @@ open import sets.empty
 open import sets.unit
 open import hott.hlevel
 
-empty-groupoid : Groupoid _ _
+empty-groupoid : Groupoid
 empty-groupoid = discrete (⊥ , h! ⊥-prop)
 
-empty : Category _ _
+empty : Category
 empty = cat empty-groupoid
 
-empty-func : ∀ {i j}(C : Category i j) → Functor empty C
+empty-func : (C : Category) → Functor empty C
 empty-func C = mk-functor record
   { apply = ⊥-elim
   ; map = λ {x} _ → ⊥-elim x
