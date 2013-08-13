@@ -9,7 +9,7 @@ open import function.isomorphism
 open import function.extensionality.core
 open import function.extensionality.proof
 open import hott.hlevel.core
-open import hott.hlevel.properties
+open import hott.hlevel.closure.core
 open import hott.weak-equivalence.core
 
 private

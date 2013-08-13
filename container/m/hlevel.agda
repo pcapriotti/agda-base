@@ -107,7 +107,7 @@ private
     open Definition c
 
     A-eq : (λ _ → ↑ la ⊤) ≡ A
-    A-eq = ext λ i → contr-contr (↑-hlevel la ⊤-contr) (hA i)
+    A-eq = ext λ i → unique-contr (↑-hlevel la ⊤-contr) (hA i)
 
     B₀ : I → Set lb
     B₀ i = B (coerce (ext-inv A-eq i) (lift tt))

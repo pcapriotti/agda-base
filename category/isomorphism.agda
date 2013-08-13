@@ -4,7 +4,6 @@ module category.isomorphism where
 
 open import category.category
 open import category.graph
-open import hott.hlevel.properties
 open import function.core
 open import function.isomorphism
 open import function.overloading

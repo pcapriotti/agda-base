@@ -36,7 +36,7 @@ private
     open import function.isomorphism
     open import container.core using (container)
     open import container.w renaming (W to W-type)
-    open import hott.hlevel.properties
+    open import hott.hlevel.closure.core
 
     X : Set i
     X = obj W

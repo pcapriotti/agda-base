@@ -1,6 +1,7 @@
 {-# OPTIONS --without-K #-}
 module hott.hlevel.sets where
 
+open import level
 open import decidable
 open import sum
 open import equality.core
@@ -12,11 +13,11 @@ open import sets.unit
 open import hott.hlevel.core
 
 -- ⊤ is contractible
-⊤-contr : h 0 ⊤
-⊤-contr = tt , c
-  where
-    c : (x : ⊤) → tt ≡ x
-    c tt = refl
+⊤-contr : contr ⊤
+⊤-contr = tt , λ { tt → refl }
+
+⊤-contr' : ∀ {i} → contr (↑ i ⊤)
+⊤-contr' {i} = lift tt , λ { (lift tt) → refl }
 
 -- ⊥ is propositional
 ⊥-prop : h 1 ⊥

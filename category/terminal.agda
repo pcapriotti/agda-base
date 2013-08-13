@@ -11,7 +11,6 @@ open import category.instances.unit
 open import function.isomorphism
 open import sets.unit
 open import hott.hlevel
-open import hott.hlevel.properties
 
 -- X is a terminal object if the functor X : unit → C
 -- is a right adjoint of the unique functor C → unit
