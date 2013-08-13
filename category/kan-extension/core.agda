@@ -40,6 +40,6 @@ record Ran (K : Functor C C')(G : Functor C D)
   : Set (i₀ ⊔ j₀ ⊔ lsuc (lsuc (i₁ ⊔ j₁ ⊔ i₂ ⊔ j₂))) where
   field
     ext : Extension K G
-    ext-univ : (ext' : Extension K G) → contr (ExtUniv ext ext')
+    ext-univ : (ext : Extension K G) → contr (ExtUniv ext ext)
 
   open Extension ext public

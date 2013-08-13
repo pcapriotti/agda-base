@@ -76,7 +76,7 @@ private
           sup (inj₂ (((x , y) , w) , refl)) (λ _ → g ws)
 
         iso₁ : {x y : X}(ws : Paths' x y) → g (f ws) ≡ ws
-        iso₁ {x}{.x} (sup (inj₁ refl) _) = cong (sup (inj₁ refl)) (ext' λ ())
+        iso₁ {x}{.x} (sup (inj₁ refl) _) = cong (sup (inj₁ refl)) (ext λ ())
         iso₁ {.x}{z} (sup (inj₂ (((x , y) , w) , refl)) u) =
           cong (sup (inj₂ (((x , y) , w) , refl))) (ext λ { tt → iso₁ (u tt) })
 

@@ -51,4 +51,4 @@ _◾'_ {F}{G} n {H}{K} m = (n ▸ K) ∘ (F ◂ m)
 interchange : {F G : Functor D E}(n : F ⇒ G){H K : Functor C D}(m : H ⇒ K)
             → n ◾ m ≡ n ◾' m
 interchange (nt _ α-nat) (nt β _) =
-  sym (nat-equality (ext' λ X → α-nat (β X)))
+  sym (nat-equality (ext λ X → α-nat (β X)))

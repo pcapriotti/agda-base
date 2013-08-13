@@ -27,7 +27,7 @@ y = mk-functor {C = op C}{D = Func C (set j)} record
   { apply = hom-func C
   ; map = hom-map C
   ; map-id = λ X → nat-equality
-      ( ext' λ _ → ext right-id)
+      ( ext λ _ → ext right-id)
   ; map-hom = λ f g → nat-equality
-      ( ext' λ Y → ext' λ h
+      ( ext λ Y → ext λ h
       → sym (assoc _ _ _) ) }

@@ -7,7 +7,7 @@ open import sum
 open import equality.core
 open import equality.calculus
 open import function.core
-open import function.extensionality.dependent
+open import function.extensionality.proof
 open import function.isomorphism.core
 open import function.isomorphism.coherent
 open import function.isomorphism.utils
@@ -46,7 +46,7 @@ private
             → ((x : X) → Y x ≅ Y' x)
             → ((x : X) → Y x)
             ≅ ((x : X) → Y' x)
-      Π-iso = Π-cong-iso ext' refl≅
+      Π-iso = Π-cong-iso ext refl≅
 
       -- flipped transitivity of isomorphism
       -- makes some proofs easier to read
@@ -138,7 +138,7 @@ private
         φ≅H f g = record
           { to = λ φ x → φ (f x) x refl
           ; from = λ H y x p → sym (cong g p) ⊚ H x 
-          ; iso₁ = λ φ → ext' λ y → ext' λ x → ext' λ p → lem φ y x p
+          ; iso₁ = λ φ → ext λ y → ext λ x → ext λ p → lem φ y x p
           ; iso₂ = λ H → refl }
           where
             lem : (φ : (y : Y)(x : X) → f x ≡ y → g y ≡ x)
@@ -151,8 +151,8 @@ private
         ψ≅γ f g H K = record
           { to = to
           ; from = from
-          ; iso₁ = λ ψ → ext' λ y → ext' λ x → ext' λ p → lem₁ ψ y x p
-          ; iso₂ = λ γ → ext' λ x → lem₂ γ x }
+          ; iso₁ = λ ψ → ext λ y → ext λ x → ext λ p → lem₁ ψ y x p
+          ; iso₂ = λ γ → ext λ x → lem₂ γ x }
           where
             to : Ψ' f g K H → coherent (iso f g H K)
             to ψ x = sym (left-unit _) ⊚ ψ (f x) x refl

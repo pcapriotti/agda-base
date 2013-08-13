@@ -48,7 +48,7 @@ private
           lem : α (a , (λ b → h (f b)))
               ≡ α (a , (λ b → fold (f b)))
           lem = cong (λ z → α (a , z))
-                     (ext' λ b → fold-η h p (f b))
+                     (ext λ b → fold-η h p (f b))
     open Elim public
 
     head : ∀ {i} → W i → A i
@@ -111,7 +111,7 @@ private
         (sup a f ≡ sup a' f')
       ≅⟨ fixpoint-W ⟩
         (Σ (a ≡ a') λ p → ∀ b → f b ≡ substX p b (f' (subst B p b)))
-      ≅⟨ Σ-cong-iso refl≅ (λ a → Π-cong-iso ext' refl≅ λ b → str-iso) ⟩
+      ≅⟨ Σ-cong-iso refl≅ (λ a → Π-cong-iso ext refl≅ λ b → str-iso) ⟩
         (Σ (a ≡ a') λ p → ∀ b → f b ≡W substX p b (f' (subst B p b)))
       ≅⟨ sym≅ (fixpoint-≡ _) ⟩
         (sup a f ≡W sup a' f')
