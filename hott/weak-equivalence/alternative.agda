@@ -46,7 +46,7 @@ private
             → ((x : X) → Y x ≅ Y' x)
             → ((x : X) → Y x)
             ≅ ((x : X) → Y' x)
-      Π-iso = Π-cong-iso ext refl≅
+      Π-iso = Π-cong-iso refl≅
 
       -- flipped transitivity of isomorphism
       -- makes some proofs easier to read

@@ -111,7 +111,7 @@ private
         (sup a f ≡ sup a' f')
       ≅⟨ fixpoint-W ⟩
         (Σ (a ≡ a') λ p → ∀ b → f b ≡ substX p b (f' (subst B p b)))
-      ≅⟨ Σ-cong-iso refl≅ (λ a → Π-cong-iso ext refl≅ λ b → str-iso) ⟩
+      ≅⟨ Σ-cong-iso refl≅ (λ a → Π-cong-iso refl≅ λ b → str-iso) ⟩
         (Σ (a ≡ a') λ p → ∀ b → f b ≡W substX p b (f' (subst B p b)))
       ≅⟨ sym≅ (fixpoint-≡ _) ⟩
         (sup a f ≡W sup a' f')

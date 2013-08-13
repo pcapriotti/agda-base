@@ -9,7 +9,7 @@ open import function.core
 open import function.overloading
 open import function.isomorphism.core
 open import function.isomorphism.coherent
-open import function.extensionality.core
+open import function.extensionality.proof
 open import sets.unit
 open import hott.hlevel.core
 
@@ -69,12 +69,11 @@ open import hott.hlevel.core
 
 Π-cong-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
              {Y : X → Set j}{Y' : X' → Set j'}
-           → (ext : ∀ {i j} → Extensionality' i j)
            → (isom : X ≅ X')
            → ((x' : X') → Y (invert isom x') ≅ Y' x')
            → ((x : X) → Y x)
            ≅ ((x' : X') → Y' x')
-Π-cong-iso {X = X}{X'}{Y}{Y'} ext isom isom' =
+Π-cong-iso {X = X}{X'}{Y}{Y'} isom isom' =
   trans≅ (Π-iso (≅⇒≅' isom)) (Π-iso' isom')
   where
     Π-iso : (isom : X ≅' X')
