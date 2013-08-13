@@ -121,4 +121,4 @@ set-univ {i} = λ A B →
                  ≡ ≡⇒iso (set i) p
     lem-iso-comp A .A refl =
       cong₂ (c-iso (λ x → x) (λ x → x))
-            (ext-id' _) (ext-id' _)
+            (ext-id _) (ext-id _)

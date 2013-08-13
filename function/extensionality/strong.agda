@@ -7,8 +7,7 @@ open import function.core
 open import equality.core
 open import function.isomorphism
 open import function.extensionality.core
-open import function.extensionality.nondep
-open import function.extensionality.dependent
+open import function.extensionality.proof
 open import hott.hlevel.core
 open import hott.hlevel.properties
 open import hott.weak-equivalence.core
@@ -23,12 +22,12 @@ private
     R f x = refl
 
     iso₁ : {f g : (x : X) → Y x} (p : f ≡ g)
-         → ext' (ext-inv p) ≡ p
-    iso₁ {f} refl = ext-id' f
+         → ext (ext-inv p) ≡ p
+    iso₁ {f} refl = ext-id f
 
     iso₂ : (f g : (x : X) → Y x) (h : f ~ g)
-         → ext-inv (ext' h) ≡ h
-    iso₂ f g h = subst (λ {(g , h) → ext-inv (ext' h) ≡ h})
+         → ext-inv (ext h) ≡ h
+    iso₂ f g h = subst (λ {(g , h) → ext-inv (ext h) ≡ h})
                        (e-contr' (g , h))
                        strong-id
       where
@@ -45,12 +44,12 @@ private
         e-contr' : (u : E) → (f , R f) ≡ u
         e-contr' u = contr⇒prop e-contr (f , R f) u
 
-        strong-id : ext-inv (ext' (R f)) ≡ R f
-        strong-id = cong ext-inv (ext-id' f)
+        strong-id : ext-inv (ext (R f)) ≡ R f
+        strong-id = cong ext-inv (ext-id f)
 
     strong-ext-iso : {f g : (x : X) → Y x}
                    → (f ~ g) ≅ (f ≡ g)
-    strong-ext-iso {f}{g} = iso ext' ext-inv (iso₂ f g) iso₁
+    strong-ext-iso {f}{g} = iso ext ext-inv (iso₂ f g) iso₁
 
     strong-ext : {f g : (x : X) → Y x} → (f ~ g) ≡ (f ≡ g)
     strong-ext = ≅⇒≡ strong-ext-iso

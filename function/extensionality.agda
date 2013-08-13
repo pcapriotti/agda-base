@@ -2,16 +2,15 @@
 module function.extensionality where
 
 open import function.extensionality.core public
-open import function.extensionality.nondep public
-  using (ext; ext-id)
-open import function.extensionality.dependent public
-  using (ext'; ext-id')
+open import function.extensionality.proof public
 open import function.extensionality.strong public
   using (strong-ext; strong-ext-iso)
 
 open import equality.core
 open import function.isomorphism
 open import function.overloading
+
+ext' = ext
 
 -- extensionality for functions of implicit arguments
 impl-ext' : ∀ {i j}{X : Set i}{Y : X → Set j}
