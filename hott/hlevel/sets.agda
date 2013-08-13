@@ -52,7 +52,7 @@ hedberg {A = A} dec x y = prop⇒h1 ≡-prop
         p
       ≡⟨ sym (canonical-inv p) ⟩
         canonical p ⊚ sym (canonical refl)
-      ≡⟨ cong (λ z → z ⊚ sym (canonical refl))
+      ≡⟨ ap (λ z → z ⊚ sym (canonical refl))
               (canonical-const p q) ⟩
         canonical q ⊚ sym (canonical refl)
       ≡⟨ canonical-inv q ⟩

@@ -27,10 +27,10 @@ adj-nat-op : {X X' : obj C}{Y Y' : obj D}
            ≡ g ∘ Ψ k ∘ map F f
 adj-nat-op {X}{X'}{Y}{Y'} f g k = begin
     Ψ (map G g ∘ k ∘ f)
-  ≡⟨ cong (λ k → Ψ (map G g ∘ k ∘ f))
+  ≡⟨ ap (λ k → Ψ (map G g ∘ k ∘ f))
             (sym (_≅_.iso₂ (adj X Y) k)) ⟩
     Ψ (map G g ∘ Φ (Ψ k) ∘ f)
-  ≡⟨ cong Ψ (sym (adj-nat f g (Ψ k))) ⟩
+  ≡⟨ ap Ψ (sym (adj-nat f g (Ψ k))) ⟩
     Ψ (Φ (g ∘ Ψ k ∘ map F f))
   ≡⟨ _≅_.iso₁ (adj X' Y') _ ⟩
     g ∘ Ψ k ∘ map F f

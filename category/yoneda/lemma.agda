@@ -38,7 +38,7 @@ y-iso X F = iso f g H K
       ( funext λ Y
       → funext λ f
       → funext-inv (sym (α-nat f)) id
-      ⊚ cong (α Y) (right-id f))
+      ⊚ ap (α Y) (right-id f))
 
     K : (u : proj₁ (apply F X)) → f (g u) ≡ u
     K u = funext-inv (map-id F X) u

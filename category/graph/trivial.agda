@@ -36,7 +36,7 @@ trivial-morphism-equality {X = X}{Y = Y}{f = f}{g = g} = begin
     ( Σ (id ≡ id) λ p
     → subst IsMorphism p (invert is-mor-iso f)
     ≡ invert is-mor-iso g )
-  ≅⟨ Σ-cong-iso lem (λ _ → refl≅) ⟩
+  ≅⟨ Σ-ap-iso lem (λ _ → refl≅) ⟩
     (⊤ × (invert is-mor-iso f ≡ invert is-mor-iso g))
   ≅⟨ ×-left-unit ⟩
     invert is-mor-iso f ≡ invert is-mor-iso g

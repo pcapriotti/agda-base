@@ -84,7 +84,7 @@ module Definition {li la lb}(c : Container li la lb) where
   inM-η x = unfold-η out (inM ∘ out) (λ _ → refl) x ⊚ unfold-id x
 
   inM-β : ∀ {i} (x : F M i) → out (inM x) ≡ x
-  inM-β {i} x = cong u (impl-funext (λ i → funext inM-η))
+  inM-β {i} x = ap u (impl-funext (λ i → funext inM-η))
     where
       u : (M ↝ M) → F M i
       u h = imap M h {i} x

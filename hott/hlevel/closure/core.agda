@@ -22,8 +22,8 @@ open import sets.unit
   = (x₀ , proj₁ (hY x₀)) , λ { (x , y) → c x y }
     where
       c : (x : X)(y : Y x) → (x₀ , proj₁ (hY x₀)) ≡ (x , y)
-      c x y = cong (λ x → (x , proj₁ (hY x))) (cx x)
-            ⊚ cong (_,_ x) (proj₂ (hY x) y)
+      c x y = ap (λ x → (x , proj₁ (hY x))) (cx x)
+            ⊚ ap (_,_ x) (proj₂ (hY x) y)
 
 ×-contr : ∀ {i j}{X : Set i}{Y : Set j}
         → contr X → contr Y
@@ -64,18 +64,18 @@ abstract
   retract-hlevel {n = 0}{X}{Y} f g r (x , c) = (f x , c')
     where
       c' : (y : Y) → f x ≡ y
-      c' y = cong f (c (g y)) ⊚ r y
+      c' y = ap f (c (g y)) ⊚ r y
   retract-hlevel {n = suc n}{X}{Y} f g r hX = λ y y'
     → retract-hlevel f' g' r' (hX (g y) (g y'))
     where
       f' : {y y' : Y} → g y ≡ g y' → y ≡ y'
-      f' {y}{y'} p = sym (r y) ⊚ cong f p ⊚ r y'
+      f' {y}{y'} p = sym (r y) ⊚ ap f p ⊚ r y'
 
       g' : {y y' : Y} → y ≡ y' → g y ≡ g y'
-      g' = cong g
+      g' = ap g
 
       r' : {y y' : Y}(p : y ≡ y') → f' (g' p) ≡ p
-      r' {y}{.y} refl = cong (λ α → α ⊚ r y) (left-unit (sym (r y)))
+      r' {y}{.y} refl = ap (λ α → α ⊚ r y) (left-unit (sym (r y)))
                       ⊚ right-inverse (r y)
 
   iso-hlevel : ∀ {i j n}{X : Set i}{Y : Set j}

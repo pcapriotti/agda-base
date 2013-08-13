@@ -107,15 +107,15 @@ dec-total {X = X} {W = W} idec tdec = record { idec = idec ; gdec = dec' }
     ... | yes p = yes (subst (λ q₀ → subst (uncurry W) q₀ w ≡ w') q₀-trivial q₁)
       where
         q₀ : (x , y) ≡ (x , y)
-        q₀ = proj₁ (congΣ p)
+        q₀ = proj₁ (apΣ p)
 
         q₁ : subst (uncurry W) q₀ w ≡ w'
-        q₁ = proj₂ (congΣ p)
+        q₁ = proj₂ (apΣ p)
 
         dec₂ : (p p' : X × X) → Dec (p ≡ p')
         dec₂ (x , y) (x' , y') with idec x x' | idec y y'
-        ... | no f | _ = no (λ q → f (cong proj₁ q))
-        ... | yes _ | no f = no (λ q → f (cong proj₂ q))
+        ... | no f | _ = no (λ q → f (ap proj₁ q))
+        ... | yes _ | no f = no (λ q → f (ap proj₂ q))
         dec₂ (x , y) (.x , .y) | yes refl | yes refl = yes refl
 
         h2 : h 2 (X × X)

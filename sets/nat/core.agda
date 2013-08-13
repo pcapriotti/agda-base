@@ -5,7 +5,7 @@ module sets.nat.core where
 open import level
   using (lzero)
 open import equality.core
-  using (_≡_; refl; cong)
+  using (_≡_; refl; ap)
 open import function.core
   using (_$_; _∘_; func-comp)
 open import decidable
@@ -39,15 +39,15 @@ zero  ≟ zero  = yes refl
 zero  ≟ suc _ = no (λ ())
 suc _ ≟ zero  = no (λ ())
 suc a ≟ suc b with a ≟ b
-suc a ≟ suc b | yes a≡b = yes $ cong suc a≡b
-suc a ≟ suc b | no ¬a≡b = no $ (λ sa≡sb → ¬a≡b (cong pred sa≡sb))
+suc a ≟ suc b | yes a≡b = yes $ ap suc a≡b
+suc a ≟ suc b | no ¬a≡b = no $ (λ sa≡sb → ¬a≡b (ap pred sa≡sb))
 
 data _≤_ : ℕ → ℕ → Set where
   z≤n : ∀ {n} → zero ≤ n
   s≤s : ∀ {m n} (p : m ≤ n) → suc m ≤ suc n
 
-cong-pred-≤ : ∀ {n m} → suc n ≤ suc m → n ≤ m
-cong-pred-≤ (s≤s p) = p
+ap-pred-≤ : ∀ {n m} → suc n ≤ suc m → n ≤ m
+ap-pred-≤ (s≤s p) = p
 
 refl-≤ : {n : ℕ} → n ≤ n
 refl-≤ {0} = z≤n
@@ -58,4 +58,4 @@ _≤?_ : (n m : ℕ) → Dec (n ≤ m)
 suc _ ≤? 0 = no (λ ())
 suc n ≤? suc m with n ≤? m
 ... | yes p = yes (s≤s p)
-... | no f = no (f ∘ cong-pred-≤)
+... | no f = no (f ∘ ap-pred-≤)

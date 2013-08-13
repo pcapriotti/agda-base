@@ -6,15 +6,15 @@ open import equality.core
 open import equality.groupoid public
 open import function.core
 
-cong' : ∀ {i j} {X : Set i}{Y : X → Set j}
+ap' : ∀ {i j} {X : Set i}{Y : X → Set j}
         {x x' : X}(f : (x : X) → Y x)(p : x ≡ x')
       → subst Y p (f x) ≡ f x'
-cong' _ refl = refl
+ap' _ refl = refl
 
 subst-naturality : ∀ {i i' j} {X : Set i} {Y : Set i'}
                    {x x' : X} (P : Y → Set j)
                    (f : X → Y)(p : x ≡ x')(u : P (f x))
-                 → subst (P ∘ f) p u ≡ subst P (cong f p) u
+                 → subst (P ∘ f) p u ≡ subst P (ap f p) u
 subst-naturality _ _ refl _ = refl
 
 subst-hom : ∀ {i j}{X : Set i}(P : X → Set j){x y z : X}
@@ -39,78 +39,78 @@ subst-const : ∀ {i j} {A : Set i}{X : Set j}
             → subst (λ _ → X) p x ≡ x
 subst-const refl x = refl
 
-subst-const-cong : ∀ {i j} {A : Set i}{X : Set j}
+subst-const-ap : ∀ {i j} {A : Set i}{X : Set j}
                  → {a a' : A}(f : A → X)(p : a ≡ a')
-                 → cong' f p ≡ subst-const p (f a) ⊚ cong f p
-subst-const-cong f refl = refl
+                 → ap' f p ≡ subst-const p (f a) ⊚ ap f p
+subst-const-ap f refl = refl
 
-congΣ : ∀ {i j}{A : Set i}{B : A → Set j}
+apΣ : ∀ {i j}{A : Set i}{B : A → Set j}
         {x x' : Σ A B}
      → (p : x ≡ x')
      → Σ (proj₁ x ≡ proj₁ x') λ q
      → subst B q (proj₂ x) ≡ proj₂ x'
-congΣ {B = B} p =
+apΣ {B = B} p =
   J (λ x x' p → Σ (proj₁ x ≡ proj₁ x') λ q
               → subst B q (proj₂ x) ≡ proj₂ x')
     (λ x → refl , refl)
     _ _ p
 
-uncongΣ : ∀ {i j}{A : Set i}{B : A → Set j}
+unapΣ : ∀ {i j}{A : Set i}{B : A → Set j}
           {a a' : A}{b : B a}{b' : B a'}
         → (Σ (a ≡ a') λ q → subst B q b ≡ b')
         → (a , b) ≡ (a' , b')
-uncongΣ (refl , refl) = refl
+unapΣ (refl , refl) = refl
 
-congΣ-proj : ∀ {i j}{A : Set i}{B : A → Set j}
+apΣ-proj : ∀ {i j}{A : Set i}{B : A → Set j}
              {a a' : A}{b : B a}{b' : B a'}
              (p : (a , b) ≡ (a' , b'))
-           → proj₁ (congΣ p)
-           ≡ cong proj₁ p
-congΣ-proj =
-  J (λ _ _ p → proj₁ (congΣ p) ≡ cong proj₁ p)
+           → proj₁ (apΣ p)
+           ≡ ap proj₁ p
+apΣ-proj =
+  J (λ _ _ p → proj₁ (apΣ p) ≡ ap proj₁ p)
     (λ x → refl) _ _
 
-congΣ-sym : ∀ {i j}{A : Set i}{B : A → Set j}
+apΣ-sym : ∀ {i j}{A : Set i}{B : A → Set j}
             {a a' : A}{b : B a}{b' : B a'}
             (p : (a , b) ≡ (a' , b'))
-          → proj₁ (congΣ (sym p))
-          ≡ sym (proj₁ (congΣ p))
-congΣ-sym =
-  J (λ _ _ p → proj₁ (congΣ (sym p))
-             ≡ sym (proj₁ (congΣ p)))
+          → proj₁ (apΣ (sym p))
+          ≡ sym (proj₁ (apΣ p))
+apΣ-sym =
+  J (λ _ _ p → proj₁ (apΣ (sym p))
+             ≡ sym (proj₁ (apΣ p)))
     (λ x → refl) _ _
 
-subst-cong : ∀ {i j}{A : Set i}{B : Set j}{a a' : A}
+subst-ap : ∀ {i j}{A : Set i}{B : Set j}{a a' : A}
            → (f : A → B)
            → (p : a ≡ a')
-           → cong f (sym p)
+           → ap f (sym p)
            ≡ subst (λ x → f x ≡ f a) p refl
-subst-cong f refl = refl
+subst-ap f refl = refl
 
-cong-map-id : ∀ {i j}{X : Set i}{Y : Set j}{x : X}
+ap-map-id : ∀ {i j}{X : Set i}{Y : Set j}{x : X}
             → (f : X → Y)
-            → cong f (refl {x = x}) ≡ refl {x = f x}
-cong-map-id f = refl
+            → ap f (refl {x = x}) ≡ refl {x = f x}
+ap-map-id f = refl
 
-cong-map-hom : ∀ {i j}{X : Set i}{Y : Set j}{x y z : X}
+ap-map-hom : ∀ {i j}{X : Set i}{Y : Set j}{x y z : X}
              → (f : X → Y)(p : x ≡ y)(q : y ≡ z)
-             → cong f (p ⊚ q) ≡ cong f p ⊚ cong f q
-cong-map-hom f refl _ = refl
+             → ap f (p ⊚ q) ≡ ap f p ⊚ ap f q
+ap-map-hom f refl _ = refl
 
-cong-id : ∀ {l} {A : Set l}{x y : A}(p : x ≡ y)
-        → cong id p ≡ p
-cong-id refl = refl
+ap-id : ∀ {l} {A : Set l}{x y : A}(p : x ≡ y)
+        → ap id p ≡ p
+ap-id refl = refl
 
-cong-hom : ∀ {l m n} {A : Set l}{B : Set m}{C : Set n}
+ap-hom : ∀ {l m n} {A : Set l}{B : Set m}{C : Set n}
            {x y : A}(f : A → B)(g : B → C)(p : x ≡ y)
-         → cong g (cong f p) ≡ cong (g ∘ f) p
-cong-hom f g refl = refl
+         → ap g (ap f p) ≡ ap (g ∘ f) p
+ap-hom f g refl = refl
 
-cong-inv : ∀ {i j} {X : Set i} {Y : Set j}
+ap-inv : ∀ {i j} {X : Set i} {Y : Set j}
          → {x x' : X}
          → (f : X → Y)(p : x ≡ x')
-         → cong f (sym p) ≡ sym (cong f p)
-cong-inv f refl = refl
+         → ap f (sym p) ≡ sym (ap f p)
+ap-inv f refl = refl
 
 double-inverse : ∀ {i} {X : Set i} {x y : X}
                (p : x ≡ y) → sym (sym p) ≡ p

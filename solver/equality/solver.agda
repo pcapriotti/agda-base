@@ -23,7 +23,7 @@ lem-rewrite : {x y y' z : X}
             → (r ≡ r')
             → p ⊚ q ≡ (p ⊚ r ⁻¹) ⊚ (r' ⊚ q)
 lem-rewrite refl q r .r refl =
-    sym (cong (λ α → α ⊚ q) (right-inverse r))
+    sym (ap (λ α → α ⊚ q) (right-inverse r))
   ⊚ associativity (sym r) r q
 
 module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
@@ -81,18 +81,18 @@ module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
         evalL (reverse ws ++ us')
       ≡⟨ eval++ (reverse ws) us' ⟩
         evalL (reverse ws) ⊚ evalL us'
-      ≡⟨ cong (λ α → α ⊚ evalL us') (reverse-inv ws) ⟩
+      ≡⟨ ap (λ α → α ⊚ evalL us') (reverse-inv ws) ⟩
         evalL ws ⁻¹ ⊚ evalL us'
       ≡⟨ lem-rewrite (evalL ws ⁻¹) (evalL us')
                      (evalW (fwd w)) (evalW (fwd u'))
-                     (cong (gmap env) (sym p)) ⟩
+                     (ap (gmap env) (sym p)) ⟩
         (evalL ws ⁻¹ ⊚ evalW (fwd w) ⁻¹) ⊚ (evalW (fwd u') ⊚ evalL us')
-      ≡⟨ cong (λ α → (evalL ws ⁻¹ ⊚ evalW (fwd w) ⁻¹) ⊚ α) (lem q u us) ⟩
+      ≡⟨ ap (λ α → (evalL ws ⁻¹ ⊚ evalW (fwd w) ⁻¹) ⊚ α) (lem q u us) ⟩
         (evalL ws ⁻¹ ⊚ evalW (fwd w) ⁻¹) ⊚ (evalW (fwd u) ⊚ evalL us)
-      ≡⟨ cong (λ α → α ⊚ (evalW (fwd u) ⊚ evalL us))
+      ≡⟨ ap (λ α → α ⊚ (evalW (fwd u) ⊚ evalL us))
               (sym (inverse-comp (evalW (fwd w)) (evalL ws))) ⟩
         (evalW (fwd w) ⊚ evalL ws) ⁻¹ ⊚ (evalW (fwd u) ⊚ evalL us)
-      ≡⟨ cong (λ α → α ⊚ evalL (fwd u ∷ us))
+      ≡⟨ ap (λ α → α ⊚ evalL (fwd u ∷ us))
               (sym (reverse-inv (fwd w ∷ ws))) ⟩
         evalL (reverse (fwd w ∷ ws)) ⊚ evalL (fwd u ∷ us)
       ≡⟨ sym (eval++ (reverse (fwd w ∷ ws)) (fwd u ∷ us)) ⟩
@@ -116,19 +116,19 @@ module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
         evalL (reverse ws ++ us')
       ≡⟨ eval++ (reverse ws) us' ⟩
         evalL (reverse ws) ⊚ evalL us'
-      ≡⟨ cong (λ α → α ⊚ evalL us') (reverse-inv ws) ⟩
+      ≡⟨ ap (λ α → α ⊚ evalL us') (reverse-inv ws) ⟩
         evalL ws ⁻¹ ⊚ evalL us'
       ≡⟨ lem-rewrite (evalL ws ⁻¹) (evalL us')
                       (evalW (inv w)) (evalW (inv u'))
-                      (cong (sym ∘ gmap env) (sym p)) ⟩
+                      (ap (sym ∘ gmap env) (sym p)) ⟩
         (evalL ws ⁻¹ ⊚ evalW (inv w) ⁻¹) ⊚ (evalW (inv u') ⊚ evalL us')
-      ≡⟨ cong (λ α → (evalL ws ⁻¹ ⊚ evalW (inv w) ⁻¹) ⊚ α)
+      ≡⟨ ap (λ α → (evalL ws ⁻¹ ⊚ evalW (inv w) ⁻¹) ⊚ α)
               (lem q u us) ⟩
         (evalL ws ⁻¹ ⊚ evalW (inv w) ⁻¹) ⊚ (evalW (inv u) ⊚ evalL us)
-      ≡⟨ cong (λ α → α ⊚ (evalW (inv u) ⊚ evalL us))
+      ≡⟨ ap (λ α → α ⊚ (evalW (inv u) ⊚ evalL us))
               (sym (inverse-comp (evalW (inv w)) (evalL ws))) ⟩
         (evalW (inv w) ⊚ evalL ws) ⁻¹ ⊚ (evalW (inv u) ⊚ evalL us)
-      ≡⟨ cong (λ α → α ⊚ evalL (inv u ∷ us))
+      ≡⟨ ap (λ α → α ⊚ evalL (inv u ∷ us))
               (sym (reverse-inv (inv w ∷ ws))) ⟩
         evalL (reverse (inv w ∷ ws)) ⊚ evalL (inv u ∷ us)
       ≡⟨ sym (eval++ (reverse (inv w ∷ ws)) (inv u ∷ us)) ⟩
@@ -156,14 +156,14 @@ module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
     linearize-correct (var w) = left-unit (gmap env w)
     linearize-correct (t₁ * t₂) = 
         fuse-correct (reverse (linearize t₁)) (linearize t₂)
-      ⊚ (cong (λ α → evalL (α ++ linearize t₂))
+      ⊚ (ap (λ α → evalL (α ++ linearize t₂))
               (reverse-reverse (linearize t₁))
       ⊚ (eval++ (linearize t₁) (linearize t₂)
-      ⊚ cong₂ _⊚_ (linearize-correct t₁) (linearize-correct t₂)))
+      ⊚ ap₂ _⊚_ (linearize-correct t₁) (linearize-correct t₂)))
       
     linearize-correct (inv t) =
       reverse-inv (linearize t) ⊚
-      cong sym (linearize-correct t)
+      ap sym (linearize-correct t)
 
     run-solver : ∀ {x y} (t₁ t₂ : Term x y)
                → linearize t₁ ≡ linearize t₂
@@ -172,7 +172,7 @@ module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
         evalT t₁
       ≡⟨ sym (linearize-correct t₁) ⟩
         evalL (linearize t₁)
-      ≡⟨ cong evalL p ⟩
+      ≡⟨ ap evalL p ⟩
         evalL (linearize t₂)
       ≡⟨ linearize-correct t₂ ⟩
         evalT t₂

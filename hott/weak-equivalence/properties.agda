@@ -26,7 +26,7 @@ we-h1 f = Π-hlevel λ _ → contr-h1 _
 apply≈-inj : ∀ {i j}{X : Set i}{Y : Set j}
            → injective (apply≈ {X = X}{Y = Y})
 apply≈-inj {x = (f , w)}{.f , w'} refl =
-  uncongΣ (refl , h1⇒prop (we-h1 f) w w')
+  unapΣ (refl , h1⇒prop (we-h1 f) w w')
 
 abstract
   univ-sym≈ : ∀ {i}{X Y : Set i}
@@ -49,8 +49,8 @@ abstract
 
       lem : coerce (p ⊚ q) ≡ coerce refl
       lem = coerce-hom p q
-          ⊚ (cong (λ h → coerce q ∘ h) p-β
-          ⊚ cong (λ h → h ∘ apply≈ w) q-β
+          ⊚ (ap (λ h → coerce q ∘ h) p-β
+          ⊚ ap (λ h → h ∘ apply≈ w) q-β
           ⊚ funext (_≅_.iso₁ (≈⇒≅ w)))
 
       lem-inv : p ⊚ q ≡ refl

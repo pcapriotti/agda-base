@@ -45,7 +45,7 @@ private
         e-contr' u = contr⇒prop e-contr (f , R f) u
 
         strong-id : funext-inv (funext (R f)) ≡ R f
-        strong-id = cong funext-inv (funext-id f)
+        strong-id = ap funext-inv (funext-id f)
 
     strong-funext-iso : {f g : (x : X) → Y x}
                    → (f ~ g) ≅ (f ≡ g)

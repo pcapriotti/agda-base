@@ -46,7 +46,7 @@ private
         coerce (≈⇒≡ f)
       ≡⟨ refl ⟩
         proj₁ (≡⇒≈ (≈⇒≡ f))
-      ≡⟨ cong proj₁ (iso₂ f) ⟩
+      ≡⟨ ap proj₁ (iso₂ f) ⟩
         proj₁ f
       ∎
       where

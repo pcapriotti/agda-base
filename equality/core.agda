@@ -18,15 +18,15 @@ trans : ∀ {i} {A : Set i} {x y z : A}
       → x ≡ y → y ≡ z → x ≡ z
 trans refl p = p
 
-cong : ∀ {i j}{A : Set i}{B : Set j}{x y : A}
+ap : ∀ {i j}{A : Set i}{B : Set j}{x y : A}
      → (f : A → B) → x ≡ y → f x ≡ f y
-cong f refl = refl
+ap f refl = refl
 
-cong₂ : ∀ {i j k}{A : Set i}{B : Set j}{C : Set k}
+ap₂ : ∀ {i j k}{A : Set i}{B : Set j}{C : Set k}
         {x x' : A}{y y' : B}
       → (f : A → B → C)
       → x ≡ x' → y ≡ y' → f x y ≡ f x' y'
-cong₂ f refl refl = refl
+ap₂ f refl refl = refl
 
 subst : ∀ {i j} {A : Set i}{x y : A}
       → (B : A → Set j) → x ≡ y

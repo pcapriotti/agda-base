@@ -33,7 +33,7 @@ private
       Φ f g = (y : Y)(x : X) → f x ≡ y → g y ≡ x
 
       Ψ : (f : X → Y)(g : Y → X)(β : B f g)(φ : Φ f g) → Set _
-      Ψ f g β φ = (y : Y)(x : X)(p : f x ≡ y) → cong f (φ y x p) ⊚ p ≡ β y
+      Ψ f g β φ = (y : Y)(x : X)(p : f x ≡ y) → ap f (φ y x p) ⊚ p ≡ β y
 
       W : Set _
       W = Σ (X → Y) λ f
@@ -46,7 +46,7 @@ private
             → ((x : X) → Y x ≅ Y' x)
             → ((x : X) → Y x)
             ≅ ((x : X) → Y' x)
-      Π-iso = Π-cong-iso refl≅
+      Π-iso = Π-ap-iso refl≅
 
       -- flipped transitivity of isomorphism
       -- makes some proofs easier to read
@@ -72,7 +72,7 @@ private
          ( Σ (Φ f g) λ φ
          → (y : Y)(x : X)(p : f x ≡ y)
                 → subst (λ x → f x ≡ y) (φ y x p) (β y) ≡ p )
-        ≅⟨ (Σ-cong-iso refl≅ λ φ
+        ≅⟨ (Σ-ap-iso refl≅ λ φ
          → Π-iso λ y → Π-iso λ x → Π-iso λ p
          → lem f g β φ y x p) ⟩
           Σ (Φ f g) (Ψ f g β)
@@ -82,29 +82,29 @@ private
                 (φ : (y : Y)(x : X) → f x ≡ y → g y ≡ x)
               → (y : Y)(x : X)(p : f x ≡ y)
               → (subst (λ x → f x ≡ y) (φ y x p) (β y) ≡ p)
-              ≅ (cong f (φ y x p) ⊚ p ≡ β y)
+              ≅ (ap f (φ y x p) ⊚ p ≡ β y)
           lem f g β φ y x p = begin
               subst (λ x → f x ≡ y) (φ y x p) (β y) ≡ p
-            ≡⟨ cong (λ z → z ≡ p)
+            ≡⟨ ap (λ z → z ≡ p)
                     ( subst-naturality (λ x → x ≡ y) f (φ y x p) (β y)
-                    ⊚ subst-eq (cong f (φ y x p)) (β y) ) ⟩
-              sym (cong f (φ y x p)) ⊚ β y ≡ p
-            ≅⟨ sym≅ (move-≡-iso (cong f (φ y x p)) p (β y)) ⟩
-              cong f (φ y x p) ⊚ p ≡ β y
+                    ⊚ subst-eq (ap f (φ y x p)) (β y) ) ⟩
+              sym (ap f (φ y x p)) ⊚ β y ≡ p
+            ≅⟨ sym≅ (move-≡-iso (ap f (φ y x p)) p (β y)) ⟩
+              ap f (φ y x p) ⊚ p ≡ β y
             ∎
 
       -- weak equivalence ≅ (f , g , β , φ , ψ)
       weak-equiv-split : (X ≈ Y) ≅ W
       weak-equiv-split =
-        Σ-cong-iso refl≅ (λ f → begin
+        Σ-ap-iso refl≅ (λ f → begin
             weak-equiv f
           ≅⟨ ΠΣ-swap-iso ⟩
             Σ ((y : Y) → f ⁻¹ y) (λ { gβ
             → (y : Y)(x : f ⁻¹ y) → gβ y ≡ x })
-          ≅⟨ Σ-cong-iso ΠΣ-swap-iso (λ _ → refl≅) ⟩
+          ≅⟨ Σ-ap-iso ΠΣ-swap-iso (λ _ → refl≅) ⟩
             ( Σ (GB f) λ { (g , β)
             → (y : Y)(x : f ⁻¹ y) → (g y , β y) ≡ x } )
-          ≅⟨ Σ-cong-iso refl≅ (λ { (g , β) → contr-split f g β }) ⟩
+          ≅⟨ Σ-ap-iso refl≅ (λ { (g , β) → contr-split f g β }) ⟩
             ( Σ (GB f) λ { (g , β)
             → Σ (Φ f g) (Ψ f g β) } )
           ∎ )
@@ -115,9 +115,9 @@ private
         X ≈ Y
       ≅⟨ weak-equiv-split ⟩
         W
-      ≅⟨ Σ-cong-iso refl≅ (λ f
-         → Σ-cong-iso refl≅ λ { (g , K)
-         → Σ-cong-iso {Y = Ψ f g K}
+      ≅⟨ Σ-ap-iso refl≅ (λ f
+         → Σ-ap-iso refl≅ λ { (g , K)
+         → Σ-ap-iso {Y = Ψ f g K}
                        (φ≅H f g)
                        (λ H → ψ≅γ f g H K) }) ⟩
         ( Σ (X → Y) λ f
@@ -132,18 +132,18 @@ private
       where
         Ψ' : (f : X → Y)(g : Y → X)(K : B f g)(H : A f g) → Set _
         Ψ' f g K H = ((y : Y)(x : X)(p : f x ≡ y)
-                   → cong f (sym (cong g p) ⊚ H x) ⊚ p ≡ K y)
+                   → ap f (sym (ap g p) ⊚ H x) ⊚ p ≡ K y)
 
         φ≅H : (f : X → Y)(g : Y → X) → Φ f g ≅ A f g
         φ≅H f g = record
           { to = λ φ x → φ (f x) x refl
-          ; from = λ H y x p → sym (cong g p) ⊚ H x 
+          ; from = λ H y x p → sym (ap g p) ⊚ H x 
           ; iso₁ = λ φ → funext λ y → funext λ x → funext λ p → lem φ y x p
           ; iso₂ = λ H → refl }
           where
             lem : (φ : (y : Y)(x : X) → f x ≡ y → g y ≡ x)
                 → (y : Y)(x : X)(p : f x ≡ y)
-                → sym (cong g p) ⊚ φ (f x) x refl ≡ φ y x p
+                → sym (ap g p) ⊚ φ (f x) x refl ≡ φ y x p
             lem φ .(f x) x refl = refl
 
         ψ≅γ : (f : X → Y)(g : Y → X)(H : A f g)(K : B f g)
@@ -167,7 +167,7 @@ private
                             (r : u ≡ z)
                          → q ⊚ (sym q ⊚ r) ≡ r)
                 (λ u z r → refl) _ _
-                (left-unit (cong f (H x))) _
+                (left-unit (ap f (H x))) _
                 (φ (f x) x refl)
 
             lem₂ : (γ : coherent (iso f g H K))(x : X)
@@ -177,7 +177,7 @@ private
                          → (r : v ≡ z)
                          → sym q ⊚ (q ⊚ r) ≡ r)
                 (λ u z r → refl) _ _
-                (left-unit (cong f (H x))) _
+                (left-unit (ap f (H x))) _
                 (γ x)
 
     open _≅_ ≈⇔≅' public using ()

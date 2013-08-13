@@ -33,7 +33,7 @@ iso-monic {x}{y} (c-iso f g H K) a b p = begin
     a
   ≡⟨ sym (lem a) ⟩
     g ∘ (f ∘ a)
-  ≡⟨ cong (λ c → g ∘ c) p ⟩
+  ≡⟨ ap (λ c → g ∘ c) p ⟩
     g ∘ (f ∘ b)
   ≡⟨ lem b ⟩
     b
@@ -47,7 +47,7 @@ iso-monic {x}{y} (c-iso f g H K) a b p = begin
         g ∘ (f ∘ c)
       ≡⟨ sym (assoc g f c) ⟩
         g ∘ f ∘ c
-      ≡⟨ cong (λ α → α ∘ c) H ⟩
+      ≡⟨ ap (λ α → α ∘ c) H ⟩
         id ∘ c
       ≡⟨ left-id c ⟩
         c

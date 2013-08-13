@@ -30,7 +30,7 @@ bundle-equality-iso Struct hS {X}{Y} = begin
     parent X ≡ parent Y
   ≅⟨ sym≅ ×-right-unit ⟩
     ((parent X ≡ parent Y) × ⊤)
-  ≅⟨ Σ-cong-iso refl≅ (λ p → sym≅ (contr-⊤-iso (hS _ _ _))) ⟩
+  ≅⟨ Σ-ap-iso refl≅ (λ p → sym≅ (contr-⊤-iso (hS _ _ _))) ⟩
     ( Σ (parent X ≡ parent Y) λ p
     → (subst Struct p (struct X) ≡ struct Y) )
   ≅⟨ Σ-split-iso ⟩

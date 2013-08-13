@@ -1,7 +1,7 @@
 {-# OPTIONS --without-K #-}
 module hott.weak-equivalence.core where
 
-open import equality.core using (_≡_ ; refl ; cong)
+open import equality.core using (_≡_ ; refl ; ap)
 open import sum using (Σ ; proj₁ ; proj₂ ; _,_)
 open import level using (_⊔_)
 open import hott.hlevel.core using (contr ; prop ; _⁻¹_)
@@ -26,7 +26,7 @@ apply≈ = proj₁
     g y = proj₁ (proj₁ (we y))
 
     iso₁ : (x : X) → g (f x) ≡ x
-    iso₁ x = cong proj₁ (proj₂ (we (f x)) (x , refl))
+    iso₁ x = ap proj₁ (proj₂ (we (f x)) (x , refl))
 
     iso₂ : (y : Y) → f (g y) ≡ y
     iso₂ y = proj₂ (proj₁ (we y))

@@ -27,7 +27,7 @@ module WithInvolution (inv : Involution W) where
             ≡ reverse us ++ reverse ws
   reverse++ nil us = sym (nil-right-unit (reverse us))
   reverse++ (w ∷ ws) us =
-      cong (λ α → α ++ (τ w ∷ nil)) (reverse++ ws us)
+      ap (λ α → α ++ (τ w ∷ nil)) (reverse++ ws us)
     ⊚ sym (++-assoc (reverse us) (reverse ws) (τ w ∷ nil))
 
   reverse-reverse : ∀ {x y} (ws : List x y)
@@ -35,7 +35,7 @@ module WithInvolution (inv : Involution W) where
   reverse-reverse nil = refl
   reverse-reverse (w ∷ ws) =
       reverse++ (reverse ws) (τ w ∷ nil)
-    ⊚ cong₂ _∷_ (τ-τ w) (reverse-reverse ws)
+    ⊚ ap₂ _∷_ (τ-τ w) (reverse-reverse ws)
 
 module WithEnv {j}{X' : Set j}(env : Env W X') where
   open ≡-Reasoning
@@ -55,7 +55,7 @@ module WithEnv {j}{X' : Set j}(env : Env W X') where
   eval++ nil us = refl
   eval++ (w ∷ ws) us = begin
       gmap env w ⊚ gmap eval (ws ++ us)
-    ≡⟨ cong (λ α → gmap env w ⊚ α) (eval++ ws us) ⟩
+    ≡⟨ ap (λ α → gmap env w ⊚ α) (eval++ ws us) ⟩
       gmap env w ⊚ (gmap eval ws ⊚ gmap eval us)
     ≡⟨ sym (associativity (gmap env w) (gmap eval ws) (gmap eval us)) ⟩
       gmap env w ⊚ gmap eval ws ⊚ gmap eval us
@@ -74,7 +74,7 @@ module WithEnvInvolution {j}{X' : Set j}(env : Env W X') (env-inv : EnvInvolutio
       gmap eval (reverse ws ++ (τ w ∷ nil))
     ≡⟨ eval++ (reverse ws) (τ w ∷ nil) ⟩
       gmap eval (reverse ws) ⊚ gmap eval (τ w ∷ nil)
-    ≡⟨ cong₂ _⊚_ (reverse-inv ws)
+    ≡⟨ ap₂ _⊚_ (reverse-inv ws)
                 (singleton (τ w) ⊚ τ-correct w) ⟩
       gmap eval ws ⁻¹ ⊚ gmap env w ⁻¹
     ≡⟨ sym (inverse-comp (gmap env w) (gmap eval ws)) ⟩

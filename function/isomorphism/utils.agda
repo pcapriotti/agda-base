@@ -17,24 +17,24 @@ open import hott.hlevel.core
             → {a a' : X}{b : Y a}{b' : Y a'}
             → (Σ (a ≡ a') λ q → subst Y q b ≡ b')
             ≅ ((a , b) ≡ (a' , b'))
-Σ-split-iso {Y = Y}{a}{a'}{b}{b'} = iso uncongΣ congΣ H K
+Σ-split-iso {Y = Y}{a}{a'}{b}{b'} = iso unapΣ apΣ H K
   where
     H : ∀ {a a'}{b : Y a}{b' : Y a'}
       → (p : Σ (a ≡ a') λ q → subst Y q b ≡ b')
-      → congΣ (uncongΣ {a = a}{a' = a'}{b = b}{b' = b'} p) ≡ p
+      → apΣ (unapΣ {a = a}{a' = a'}{b = b}{b' = b'} p) ≡ p
     H (refl , refl) = refl
 
-    K : (p : (a , b) ≡ (a' , b')) → uncongΣ (congΣ p) ≡ p
-    K = J (λ u v p → uncongΣ (congΣ p) ≡ p)
+    K : (p : (a , b) ≡ (a' , b')) → unapΣ (apΣ p) ≡ p
+    K = J (λ u v p → unapΣ (apΣ p) ≡ p)
           (λ {(a , b) → refl })
           (a , b) (a' , b')
 
-Σ-cong-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
+Σ-ap-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
              {Y : X → Set j}{Y' : X' → Set j'}
            → (isom : X ≅ X')
            → ((x' : X') → Y (invert isom x') ≅ Y' x')
            → Σ X Y ≅ Σ X' Y'
-Σ-cong-iso {X = X}{X'}{Y}{Y'} isom isom' = trans≅ Σ-iso (Σ-iso' isom')
+Σ-ap-iso {X = X}{X'}{Y}{Y'} isom isom' = trans≅ Σ-iso (Σ-iso' isom')
   where
     isom-c = ≅⇒≅' isom
     γ = proj₂ isom-c
@@ -42,21 +42,21 @@ open import hott.hlevel.core
       renaming ( to to f ; from to g
                ; iso₁ to H; iso₂ to K )
 
-    lem : (x : X') → sym (H (g x)) ⊚ cong g (K x) ≡ refl
-    lem x = cong (λ z → sym (H (g x)) ⊚ z) (co-coherence _ γ x)
+    lem : (x : X') → sym (H (g x)) ⊚ ap g (K x) ≡ refl
+    lem x = ap (λ z → sym (H (g x)) ⊚ z) (co-coherence _ γ x)
           ⊚ right-inverse (H (g x))
 
     Σ-iso : Σ X Y ≅ Σ X' (Y ∘ g)
     Σ-iso = record
       { to = λ { (x , y) → (f x , subst Y (sym (H x)) y) }
       ; from = λ { (x , y) → (g x , y) }
-      ; iso₁ = λ { (x , y) → uncongΣ (H x ,
+      ; iso₁ = λ { (x , y) → unapΣ (H x ,
             subst-hom Y (sym (H x)) (H x) y
-          ⊚ cong (λ p → subst Y p y) (right-inverse (H x)) ) }
-      ; iso₂ = λ { (x , y) → uncongΣ (K x ,
+          ⊚ ap (λ p → subst Y p y) (right-inverse (H x)) ) }
+      ; iso₂ = λ { (x , y) → unapΣ (K x ,
             subst-naturality Y g (K x) _
-          ⊚ (subst-hom Y (sym (H (g x))) (cong g (K x)) y
-          ⊚ cong (λ p → subst Y p y) (lem x) ) ) } }
+          ⊚ (subst-hom Y (sym (H (g x))) (ap g (K x)) y
+          ⊚ ap (λ p → subst Y p y) (lem x) ) ) } }
 
     Σ-iso' : ∀ {i j j'}{X : Set i}{Y : X → Set j}{Y' : X → Set j'}
            → ((x : X) → Y x ≅ Y' x)
@@ -64,16 +64,16 @@ open import hott.hlevel.core
     Σ-iso' isom = record
       { to = λ { (x , y) → (x , apply (isom x) y) }
       ; from = λ { (x , y') → (x , invert (isom x) y') }
-      ; iso₁ = λ { (x , y) → uncongΣ (refl , _≅_.iso₁ (isom x) y) }
-      ; iso₂ = λ { (x , y') → uncongΣ (refl , _≅_.iso₂ (isom x) y') } }
+      ; iso₁ = λ { (x , y) → unapΣ (refl , _≅_.iso₁ (isom x) y) }
+      ; iso₂ = λ { (x , y') → unapΣ (refl , _≅_.iso₂ (isom x) y') } }
 
-Π-cong-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
+Π-ap-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
              {Y : X → Set j}{Y' : X' → Set j'}
            → (isom : X ≅ X')
            → ((x' : X') → Y (invert isom x') ≅ Y' x')
            → ((x : X) → Y x)
            ≅ ((x' : X') → Y' x')
-Π-cong-iso {X = X}{X'}{Y}{Y'} isom isom' =
+Π-ap-iso {X = X}{X'}{Y}{Y'} isom isom' =
   trans≅ (Π-iso (≅⇒≅' isom)) (Π-iso' isom')
   where
     Π-iso : (isom : X ≅' X')
@@ -82,11 +82,11 @@ open import hott.hlevel.core
     Π-iso (iso f g H K , γ) = record
       { to = λ h x' → h (g x')
       ; from = λ h' x → subst Y (H x) (h' (f x))
-      ; iso₁ = λ h → funext λ x → cong' h (H x)
+      ; iso₁ = λ h → funext λ x → ap' h (H x)
       ; iso₂ = λ h' → funext λ x' →
-              cong (λ p → subst Y p _) (sym (γ' x'))
+              ap (λ p → subst Y p _) (sym (γ' x'))
             ⊚ sym (subst-naturality Y g (K x') _)
-            ⊚ cong' h' (K x') }
+            ⊚ ap' h' (K x') }
       where γ' = co-coherence (iso f g H K) γ
 
     Π-iso' : ∀ {i j j'}{X : Set i}

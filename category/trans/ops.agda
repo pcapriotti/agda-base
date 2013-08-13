@@ -37,11 +37,11 @@ private
           γ Y ∘ map F f
         ≡⟨ assoc _ _ _ ⟩
           α Y ∘ (β Y ∘ map F f)
-        ≡⟨ cong (_∘_ (α Y)) (β-nat f) ⟩
+        ≡⟨ ap (_∘_ (α Y)) (β-nat f) ⟩
           α Y ∘ (map G f ∘ β X)
         ≡⟨ sym (assoc _ _ _) ⟩
           (α Y ∘ map G f) ∘ β X
-        ≡⟨ cong (λ z → z ∘ β X) (α-nat f) ⟩
+        ≡⟨ ap (λ z → z ∘ β X) (α-nat f) ⟩
           map H f ∘ α X ∘ β X
         ≡⟨ assoc _ _ _ ⟩
           map H f ∘ γ X

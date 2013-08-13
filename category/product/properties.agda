@@ -36,19 +36,19 @@ cat-proj₂ = mk-functor {C = C ⊗ D}{D = D} record
 ⟨_,_⟩ {E = E} F G = mk-functor {C = E}{D = C ⊗ D} record
   { apply = λ X → apply F X , apply G X
   ; map = λ f → map F f , map G f
-  ; map-id = λ _ → cong₂ _,_ (map-id F _) (map-id G _)
-  ; map-hom = λ f g → cong₂ _,_ (map-hom F _ _) (map-hom G _ _) }
+  ; map-id = λ _ → ap₂ _,_ (map-id F _) (map-id G _)
+  ; map-hom = λ f g → ap₂ _,_ (map-hom F _ _) (map-hom G _ _) }
 
 cat-section₁ : obj D → Functor C (C ⊗ D)
 cat-section₁ Y = mk-functor {C = C}{D = C ⊗ D} record
   { apply = λ X → X , Y
   ; map = λ f → f , id
   ; map-id = λ _ → refl
-  ; map-hom = λ _ _ → cong₂ _,_ refl (sym (left-id _)) }
+  ; map-hom = λ _ _ → ap₂ _,_ refl (sym (left-id _)) }
 
 cat-section₂ : obj C → Functor D (C ⊗ D)
 cat-section₂ X = mk-functor {C = D}{D = C ⊗ D} record
   { apply = λ Y → X , Y
   ; map = λ g → id , g
   ; map-id = λ _ → refl
-  ; map-hom = λ _ _ → cong₂ _,_ (sym (left-id _)) refl }
+  ; map-hom = λ _ _ → ap₂ _,_ (sym (left-id _)) refl }

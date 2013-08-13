@@ -36,7 +36,7 @@ _≟_ zero zero = yes refl
 _≟_ zero (suc i) = no (disj i)
 _≟_ (suc i) zero = no (λ p → disj i (sym p))
 _≟_ {suc n} (suc i) (suc j) with i ≟ j
-... | yes p = yes (cong suc p)
+... | yes p = yes (ap suc p)
 ... | no a = no (λ p → a (suc-inj i j p))
 
 last-fin : {n : ℕ} → Fin (suc n)

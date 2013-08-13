@@ -26,13 +26,13 @@ module Weak where
   →-contr {A = A}{B = B} hB = subst contr p contr-exp-⊤
     where
       p : (A → top) ≡ (A → B)
-      p = cong (λ X → A → X) (unique-contr ⊤-contr' hB)
+      p = ap (λ X → A → X) (unique-contr ⊤-contr' hB)
 
   funext : ∀ {i j}{A : Set i}{B : Set j}
       → (f : A → B)(b : B)(h : (x : A) → b ≡ f x)
       → (λ _ → b) ≡ f
   funext f b h =
-    cong (λ u x → proj₁ (u x))
+    ap (λ u x → proj₁ (u x))
          (contr⇒prop (→-contr (singl-contr b))
                       (λ _ → (b , refl))
                       (λ x → f x , h x))
@@ -47,11 +47,11 @@ abstract
       p₀ = Weak.funext B top (λ x → unique-contr ⊤-contr' (hB x))
 
       p : (A → top {j}) ≡ ((x : A) → B x)
-      p = cong (λ Z → (x : A) → Z x) p₀
+      p = ap (λ Z → (x : A) → Z x) p₀
 
   private
     funext₀ : ∀ {i j} → Extensionality' i j
-    funext₀ {i}{j}{X = X}{Y = Y}{f = f}{g = g} h = cong (λ u x → proj₁ (u x)) lem
+    funext₀ {i}{j}{X = X}{Y = Y}{f = f}{g = g} h = ap (λ u x → proj₁ (u x)) lem
       where
         C : X → Set j
         C x = Σ (Y x) λ y → f x ≡ y

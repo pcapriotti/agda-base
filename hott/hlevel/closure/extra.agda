@@ -37,8 +37,8 @@ abstract
     (x₀ , proj₁ (hy x₀)) , λ { (x , y) → c x y }
     where
       c : (x : X)(y : Y x) → (x₀ , proj₁ (hy x₀)) ≡ (x , y)
-      c x y = cong (λ x → (x , proj₁ (hy x))) (cx x)
-            ⊚ cong (_,_ x) (proj₂ (hy x) y)
+      c x y = ap (λ x → (x , proj₁ (hy x))) (cx x)
+            ⊚ ap (_,_ x) (proj₂ (hy x) y)
   Σ-hlevel {n = suc n} hx hy = λ a b → iso-hlevel Σ-split-iso
     (Σ-hlevel (hx _ _) (λ p → hy (proj₁ b) _ _))
 
@@ -88,7 +88,7 @@ abstract
   -- being contractible is a proposition
   contr-h1 : ∀ {i}(X : Set i) → h 1 (contr X)
   contr-h1 X = prop⇒h1 λ { (x₀ , c₀) (x₁ , c₁) →
-      uncongΣ (c₀ x₁ , contr⇒prop (lem (x₀ , c₀) x₁) _ _) }
+      unapΣ (c₀ x₁ , contr⇒prop (lem (x₀ , c₀) x₁) _ _) }
     where
       lem : ∀ {i}{A : Set i} → contr A → (x : A) → contr ((x' : A) → x ≡ x')
       lem c x = Π-hlevel (λ x' → h↑ c x x')

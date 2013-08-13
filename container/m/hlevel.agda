@@ -121,7 +121,7 @@ private
     c-iso-I i = lem-container-I c A-eq i
 
     m-iso : ∀ i → M₀.M.M i ≡ M i
-    m-iso i = apply-M c-iso i ⊚ cong M (c-iso-I i)
+    m-iso i = apply-M c-iso i ⊚ ap M (c-iso-I i)
 
     m-contr : ∀ i → contr (M i)
     m-contr i = subst contr (m-iso i) (M₀.m-contr i)

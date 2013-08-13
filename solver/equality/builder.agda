@@ -25,8 +25,8 @@ private
 
       dec' : (y y' : Y) → Dec (y ≡ y')
       dec' y y' with dec (from y) (from y')
-      ... | yes p = yes (sym (iso₂ y) ⊚ cong to p ⊚ iso₂ y')
-      ... | no f = no (λ p → f (cong from p))
+      ... | yes p = yes (sym (iso₂ y) ⊚ ap to p ⊚ iso₂ y')
+      ... | no f = no (λ p → f (ap from p))
 
   module FinEdges {i}(X : Set i) where
     source : ∀ {n} → Vec (X × X) n → Fin n → X

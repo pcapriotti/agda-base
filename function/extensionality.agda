@@ -15,4 +15,4 @@ impl-funext : ∀ {i j}{X : Set i}{Y : X → Set j}
           → {f g : {x : X} → Y x}
           → ((x : X) → f {x} ≡ g {x})
           → (λ {x} → f {x}) ≡ g
-impl-funext h = cong (apply impl-iso) (funext h)
+impl-funext h = ap (apply impl-iso) (funext h)

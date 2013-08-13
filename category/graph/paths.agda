@@ -76,13 +76,13 @@ private
           sup (inj₂ (((x , y) , w) , refl)) (λ _ → g ws)
 
         iso₁ : {x y : X}(ws : Paths' x y) → g (f ws) ≡ ws
-        iso₁ {x}{.x} (sup (inj₁ refl) _) = cong (sup (inj₁ refl)) (funext λ ())
+        iso₁ {x}{.x} (sup (inj₁ refl) _) = ap (sup (inj₁ refl)) (funext λ ())
         iso₁ {.x}{z} (sup (inj₂ (((x , y) , w) , refl)) u) =
-          cong (sup (inj₂ (((x , y) , w) , refl))) (funext λ { tt → iso₁ (u tt) })
+          ap (sup (inj₂ (((x , y) , w) , refl))) (funext λ { tt → iso₁ (u tt) })
 
         iso₂ : {x y : X}(ws : Paths W x y) → f (g ws) ≡ ws
         iso₂ {x}{.x} nil = refl
-        iso₂ (w ∷ ws) = cong (_∷_ w) (iso₂ ws)
+        iso₂ (w ∷ ws) = ap (_∷_ w) (iso₂ ws)
 
     paths-hlevel : (x y : X) → h 2 (Paths W x y)
     paths-hlevel x y = iso-hlevel (paths-iso x y)
@@ -100,12 +100,12 @@ private
           → ws ++ (us ++ vs)
           ≡ ws ++ us ++ vs
     ++-assoc nil us vs = refl
-    ++-assoc (w ∷ ws) us vs = cong (λ α → w ∷ α) (++-assoc ws us vs)
+    ++-assoc (w ∷ ws) us vs = ap (λ α → w ∷ α) (++-assoc ws us vs)
 
     nil-right-unit : ∀ {x y} (ws : Paths W x y)
                       → ws ++ nil ≡ ws
     nil-right-unit nil = refl
     nil-right-unit (w ∷ ws) =
-      cong (λ ws → w ∷ ws)
+      ap (λ ws → w ∷ ws)
            (nil-right-unit ws)
 open properties public

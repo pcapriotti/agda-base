@@ -33,8 +33,8 @@ adj-ε = nt eps eps-natural
     lem : {Y Y' : obj D}(f : hom Y Y')
         → map G (id) ∘ id ∘ map G f
         ≡ map G f ∘ id ∘ id
-    lem f = cong (λ z → z ∘ id ∘ map G f) (map-id G _)
-          ⊚ cong (λ z → z ∘ map G f) (left-id _)
+    lem f = ap (λ z → z ∘ id ∘ map G f) (map-id G _)
+          ⊚ ap (λ z → z ∘ map G f) (left-id _)
           ⊚ left-id _
           ⊚ sym (right-id _)
           ⊚ sym (right-id _)
@@ -42,16 +42,16 @@ adj-ε = nt eps eps-natural
     eps-natural : natural (F ∘ G) id eps
     eps-natural {Y} {Y'} f = begin
         eps Y' ∘ map F (map G f)
-      ≡⟨ sym (cong (λ z → z ∘ map F (map G f))
+      ≡⟨ sym (ap (λ z → z ∘ map F (map G f))
                     (left-id _)) ⟩
         id ∘ eps Y' ∘ map F (map G f)
       ≡⟨ sym (adj-nat-op adjunction (map G f) id id) ⟩
         Ψ (map G (id) ∘ id ∘ map G f)
-      ≡⟨ cong Ψ (lem f) ⟩
+      ≡⟨ ap Ψ (lem f) ⟩
         Ψ (map G f ∘ id ∘ id)
       ≡⟨ adj-nat-op adjunction id f id ⟩
         f ∘ eps Y ∘ map F (id)
-      ≡⟨ cong (λ z → f ∘ eps Y ∘ z) (map-id F _)
+      ≡⟨ ap (λ z → f ∘ eps Y ∘ z) (map-id F _)
         ⊚ right-id _ ⟩
         f ∘ eps Y
       ∎

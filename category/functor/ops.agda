@@ -37,14 +37,14 @@ private
       H = Bundle.parent F ∘ Bundle.parent G
 
       H-map-id : (x : obj C) → map H (id {X = x}) ≡ id
-      H-map-id x = cong (map F) (map-id G x) ⊚ map-id F (apply G x)
+      H-map-id x = ap (map F) (map-id G x) ⊚ map-id F (apply G x)
 
       H-map-hom : {x y z : obj C}
                   (f : hom y z)
                   (g : hom x y)
                 → map H (f ∘ g)
                 ≡ map H f ∘ map H g
-      H-map-hom f g = cong (map F) (map-hom G f g)
+      H-map-hom f g = ap (map F) (map-hom G f g)
                     ⊚ map-hom F (map G f) (map G g)
 
 Const : ∀ {i₁ j₁ i₂ j₂}(C : Category i₁ j₁){D : Category i₂ j₂}

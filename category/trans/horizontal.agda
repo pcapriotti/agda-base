@@ -26,7 +26,7 @@ _◂_ H {F}{G} (nt α α-nat) = nt Hα Hα-nat
 
     Hα-nat : natural (H ∘ F) (H ∘ G) Hα
     Hα-nat f = sym (map-hom H _ _)
-             ⊚ cong (map H) (α-nat f)
+             ⊚ ap (map H) (α-nat f)
              ⊚ map-hom H _ _
 infix 5 _◂_
 

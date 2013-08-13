@@ -95,7 +95,7 @@ private
           u
         ≡⟨ sym (section₁ u) ⟩
           funextract (lift₁ u)
-        ≡⟨ cong funextract (contr⇒prop (m-contr Singl-A-contr (i , u)) _ _) ⟩
+        ≡⟨ ap funextract (contr⇒prop (m-contr Singl-A-contr (i , u)) _ _) ⟩
           funextract (lift₂ p)
         ≡⟨ section₂ p ⟩
           v

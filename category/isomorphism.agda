@@ -9,7 +9,7 @@ open import function.isomorphism
 open import function.overloading
 open import sum
 open import equality.core
-open import equality.calculus using (uncongΣ)
+open import equality.calculus using (unapΣ)
 open import hott.hlevel
 
 record cat-iso {i j}(C : Category i j)(x y : obj C) : Set j where
@@ -65,8 +65,8 @@ cat-iso-equality : ∀ {i j}{C : Category i j}{x y : obj C}
                  → (cat-iso.to p ≡ cat-iso.to q)
                  → (cat-iso.from p ≡ cat-iso.from q)
                  → p ≡ q
-cat-iso-equality {C = C}{x}{y}{p}{q} t f = cong (apply e-iso)
-  (uncongΣ (cong₂ _,_ t f , h1⇒prop (inverses-h1 _) _ _))
+cat-iso-equality {C = C}{x}{y}{p}{q} t f = ap (apply e-iso)
+  (unapΣ (ap₂ _,_ t f , h1⇒prop (inverses-h1 _) _ _))
   where open properties x y
 
 open properties public

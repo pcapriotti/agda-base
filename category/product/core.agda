@@ -22,9 +22,9 @@ C ⊗ D = mk-category record
   ; id = λ _ → id , id
   ; _∘_ = λ { (f , f') (g , g') → (f ∘ g , f' ∘ g') }
   ; trunc = λ _ _ → ×-hlevel (trunc _ _) (trunc _ _)
-  ; left-id = λ _ → cong₂ _,_ (left-id _) (left-id _)
-  ; right-id = λ _ → cong₂ _,_ (right-id _) (right-id _)
-  ; assoc = λ _ _ _ → cong₂ _,_ (assoc _ _ _) (assoc _ _ _) }
+  ; left-id = λ _ → ap₂ _,_ (left-id _) (left-id _)
+  ; right-id = λ _ → ap₂ _,_ (right-id _) (right-id _)
+  ; assoc = λ _ _ _ → ap₂ _,_ (assoc _ _ _) (assoc _ _ _) }
   where
     open as-category C
     open as-category D

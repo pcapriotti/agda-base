@@ -22,7 +22,7 @@ module DepElim (B : I → Set)
     elim : (t : I) → B t
     β-zero : elim zero ≡ x
     β-one : elim one ≡ y
-    β-path : cong (subst B path) (sym β-zero)
+    β-path : ap (subst B path) (sym β-zero)
            ⊚ lem-naturality elim path
            ⊚ β-one
            ≡ p
@@ -36,4 +36,4 @@ module Elim {X : Set}
     elim' : I → X
     β-zero' : elim zero ≡ x
     β-one' : elim one ≡ y
-    β-path' : sym (β-zero') ⊚ cong elim path ⊚ β-one' ≡ p
+    β-path' : sym (β-zero') ⊚ ap elim path ⊚ β-one' ≡ p

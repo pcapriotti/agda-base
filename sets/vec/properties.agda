@@ -13,7 +13,7 @@ tabulate-lookup : ∀ {i}{A : Set i}{n : ℕ}
                 → (xs : Vec A n)
                 → tabulate (lookup xs) ≡ xs
 tabulate-lookup [] = refl
-tabulate-lookup (x ∷ xs) = cong (_∷_ x) (tabulate-lookup xs)
+tabulate-lookup (x ∷ xs) = ap (_∷_ x) (tabulate-lookup xs)
 
 lookup-tabulate-funext : ∀ {i}{A : Set i}{n : ℕ}
                     → (f : Fin n → A)(i : Fin n)
