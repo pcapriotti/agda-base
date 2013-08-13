@@ -49,9 +49,9 @@ private
     Singl-A-contr : ∀ i → contr (Singl.A i)
     Singl-A-contr (i , u) = singl-contr (head u)
 
-    extract : ∀ {i}{u : M i} → Singl-M u → M i
-    extract {u = inf .a h} (inf (a , refl) f) =
-      inf a (λ b → ♯ extract (♭ (f b)))
+    funextract : ∀ {i}{u : M i} → Singl-M u → M i
+    funextract {u = inf .a h} (inf (a , refl) f) =
+      inf a (λ b → ♯ funextract (♭ (f b)))
 
     lift₁ : ∀ {i} (u : M i) → Singl-M u
     lift₁ (inf a f) = Singl.inf (a , refl) (λ b → ♯ lift₁ (♭ (f b)))
@@ -61,12 +61,12 @@ private
       Singl.inf (a' , p) λ b → ♯ lift₂ (♭ (h b))
 
     section₁ : ∀ {i}(u : M i)
-             → extract (lift₁ u) ≡ u
-    section₁ u = unfold-η out (extract ∘' lift₁) (λ {(inf a f) → refl}) u
+             → funextract (lift₁ u) ≡ u
+    section₁ u = unfold-η out (funextract ∘' lift₁) (λ {(inf a f) → refl}) u
                ⊚ unfold-id u
 
     section₂ : ∀ {i}{u v : M i}(p : u ≡M v)
-             → extract (lift₂ p) ≡ v
+             → funextract (lift₂ p) ≡ v
     section₂ {i}{u}{v} p = lem₂ p ⊚ sym (lem₁ p)
       where
         Eq : (i : I) → Set _
@@ -84,28 +84,28 @@ private
                                       (λ {((inf a f , inf .a f') , inf refl h) → refl })
                                       ((u , v) , p)
 
-        lem₂ : ∀ {i}{u v : M i}(p : u ≡M v) → extract (lift₂ p) ≡ f p
-        lem₂ {i}{u}{v} p = unfold-η α (λ {(_ , p) → extract (lift₂ p)  })
+        lem₂ : ∀ {i}{u v : M i}(p : u ≡M v) → funextract (lift₂ p) ≡ f p
+        lem₂ {i}{u}{v} p = unfold-η α (λ {(_ , p) → funextract (lift₂ p)  })
                                       (λ {((inf a f , inf .a f') , inf refl h) → refl })
                                       ((u , v) , p)
 
     abstract
-      m-ext₀ : ∀ {i}{u v : M i} → u ≡M v → u ≡ v
-      m-ext₀ {i}{u}{v} p = begin
+      mext₀ : ∀ {i}{u v : M i} → u ≡M v → u ≡ v
+      mext₀ {i}{u}{v} p = begin
           u
         ≡⟨ sym (section₁ u) ⟩
-          extract (lift₁ u)
-        ≡⟨ cong extract (contr⇒prop (m-contr Singl-A-contr (i , u)) _ _) ⟩
-          extract (lift₂ p)
+          funextract (lift₁ u)
+        ≡⟨ cong funextract (contr⇒prop (m-contr Singl-A-contr (i , u)) _ _) ⟩
+          funextract (lift₂ p)
         ≡⟨ section₂ p ⟩
           v
         ∎
         where open ≡-Reasoning
 
-    m-ext : ∀ {i}{u v : M i} → u ≡M v → u ≡ v
-    m-ext p = m-ext₀ p ⊚ sym (m-ext₀ reflM)
+    mext : ∀ {i}{u v : M i} → u ≡M v → u ≡ v
+    mext p = mext₀ p ⊚ sym (mext₀ reflM)
 
-    m-ext-id : ∀ {i}{u : M i} → m-ext (reflM {u = u}) ≡ refl
-    m-ext-id = left-inverse (m-ext₀ reflM)
+    mext-id : ∀ {i}{u : M i} → mext (reflM {u = u}) ≡ refl
+    mext-id = left-inverse (mext₀ reflM)
 
-open Bisimilarity public using (_≡M_; m-ext; m-ext-id)
+open Bisimilarity public using (_≡M_; mext; mext-id)

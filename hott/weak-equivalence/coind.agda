@@ -181,7 +181,7 @@ private
              → (eq : X ~ Y)
              → unfold≅' (u eq)
              ≡ D.imap D.M u (D.out eq)
-  u-morphism {i}{X}{Y} eq = uncongΣ (refl , ext λ {(x , y) → lem₂ x y})
+  u-morphism {i}{X}{Y} eq = uncongΣ (refl , funext λ {(x , y) → lem₂ x y})
     where
       f : X → Y
       f = apply~ eq
@@ -202,7 +202,7 @@ private
 
       lem₂ : (x : X)(y : Y) → proj₂ (unfold≅' (u eq)) (x , y)
                             ≡ u (D.tail eq (x , y))
-      lem₂ x y = ≅'-equality (ext (lem x y))
+      lem₂ x y = ≅'-equality (funext (lem x y))
 
   v : ∀ {i}{X Y : Set i} → X ≅' Y → X ~ Y
   v = D.unfold unfold≅'

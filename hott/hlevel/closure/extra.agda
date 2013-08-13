@@ -27,7 +27,7 @@ abstract
            → h n ((x : X) → Y x)
   Π-hlevel {n = 0} c = Π-contr c
   Π-hlevel {n = suc n} {X = X}{Y} hn = λ f g →
-    subst (h n) strong-ext (Π-hlevel (λ x → hn x (f x) (g x)))
+    subst (h n) strong-funext (Π-hlevel (λ x → hn x (f x) (g x)))
 
   -- Σ preserves h-levels
   Σ-hlevel : ∀ {i j n} {X : Set i}{Y : X → Set j}

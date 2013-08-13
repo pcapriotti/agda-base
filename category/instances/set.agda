@@ -34,13 +34,13 @@ cat-iso-h2 : ∀ {i}{A B : HSet i}
            → (proj₁ A ≅ proj₁ B)
            ≅ cat-iso (set i) A B
 cat-iso-h2 = record
-  { to = λ { (iso f g H K) → (c-iso f g (ext H) (ext K)) }
-  ; from = λ { (c-iso f g H K) → (iso f g (ext-inv H) (ext-inv K)) }
+  { to = λ { (iso f g H K) → (c-iso f g (funext H) (funext K)) }
+  ; from = λ { (c-iso f g H K) → (iso f g (funext-inv H) (funext-inv K)) }
   ; iso₁ = λ { (iso f g H K)
              → cong (λ { ((f , g) , (H , K)) → iso f g H K })
                        (uncongΣ (refl , cong₂ _,_
-                        (ext λ x → ext-inv (_≅_.iso₁ strong-ext-iso H) x)
-                        (ext λ x → ext-inv (_≅_.iso₁ strong-ext-iso K) x))) }
+                        (funext λ x → funext-inv (_≅_.iso₁ strong-funext-iso H) x)
+                        (funext λ x → funext-inv (_≅_.iso₁ strong-funext-iso K) x))) }
   ; iso₂ = λ _ → cat-iso-equality refl refl }
 
 -- equality of HSets is the same as equality of the underlying types
@@ -85,7 +85,7 @@ set-univ : ∀ {i} → univalent (set i)
 set-univ {i} = λ A B →
   lem (≡⇒iso (set i) {A}{B})
       (lem-iso A B)
-      (ext (lem-iso-comp A B))
+      (funext (lem-iso-comp A B))
   where
     open ≅-Reasoning
 
@@ -121,4 +121,4 @@ set-univ {i} = λ A B →
                  ≡ ≡⇒iso (set i) p
     lem-iso-comp A .A refl =
       cong₂ (c-iso (λ x → x) (λ x → x))
-            (ext-id _) (ext-id _)
+            (funext-id _) (funext-id _)

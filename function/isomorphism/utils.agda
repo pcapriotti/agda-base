@@ -82,8 +82,8 @@ open import hott.hlevel.core
     Π-iso (iso f g H K , γ) = record
       { to = λ h x' → h (g x')
       ; from = λ h' x → subst Y (H x) (h' (f x))
-      ; iso₁ = λ h → ext λ x → cong' h (H x)
-      ; iso₂ = λ h' → ext λ x' →
+      ; iso₁ = λ h → funext λ x → cong' h (H x)
+      ; iso₂ = λ h' → funext λ x' →
               cong (λ p → subst Y p _) (sym (γ' x'))
             ⊚ sym (subst-naturality Y g (K x') _)
             ⊚ cong' h' (K x') }
@@ -97,8 +97,8 @@ open import hott.hlevel.core
     Π-iso' isom = record
       { to = λ h x → apply (isom x) (h x)
       ; from = λ h' x → invert (isom x) (h' x)
-      ; iso₁ = λ h → ext λ x → _≅_.iso₁ (isom x) _
-      ; iso₂ = λ h' → ext λ x → _≅_.iso₂ (isom x) _ }
+      ; iso₁ = λ h → funext λ x → _≅_.iso₁ (isom x) _
+      ; iso₂ = λ h' → funext λ x → _≅_.iso₂ (isom x) _ }
 
 ΠΣ-swap-iso : ∀ {i j k}{X : Set i}{Y : X → Set j}
             → {Z : (x : X) → Y x → Set k}

@@ -28,10 +28,10 @@ module Weak where
       p : (A → top) ≡ (A → B)
       p = cong (λ X → A → X) (unique-contr ⊤-contr' hB)
 
-  ext : ∀ {i j}{A : Set i}{B : Set j}
+  funext : ∀ {i j}{A : Set i}{B : Set j}
       → (f : A → B)(b : B)(h : (x : A) → b ≡ f x)
       → (λ _ → b) ≡ f
-  ext f b h =
+  funext f b h =
     cong (λ u x → proj₁ (u x))
          (contr⇒prop (→-contr (singl-contr b))
                       (λ _ → (b , refl))
@@ -44,14 +44,14 @@ abstract
   Π-contr {i}{j}{A}{B} hB = subst contr p contr-exp-⊤
     where
       p₀ : (λ _ → top) ≡ B
-      p₀ = Weak.ext B top (λ x → unique-contr ⊤-contr' (hB x))
+      p₀ = Weak.funext B top (λ x → unique-contr ⊤-contr' (hB x))
 
       p : (A → top {j}) ≡ ((x : A) → B x)
       p = cong (λ Z → (x : A) → Z x) p₀
 
   private
-    ext₀ : ∀ {i j} → Extensionality' i j
-    ext₀ {i}{j}{X = X}{Y = Y}{f = f}{g = g} h = cong (λ u x → proj₁ (u x)) lem
+    funext₀ : ∀ {i j} → Extensionality' i j
+    funext₀ {i}{j}{X = X}{Y = Y}{f = f}{g = g} h = cong (λ u x → proj₁ (u x)) lem
       where
         C : X → Set j
         C x = Σ (Y x) λ y → f x ≡ y
@@ -64,10 +64,10 @@ abstract
         lem = contr⇒prop (Π-contr (λ x → singl-contr (f x))) f' g'
 
 abstract
-  ext : ∀ {i j} → Extensionality' i j
-  ext h = ext₀ h ⊚ sym (ext₀ (λ _ → refl))
+  funext : ∀ {i j} → Extensionality' i j
+  funext h = funext₀ h ⊚ sym (funext₀ (λ _ → refl))
 
-  ext-id : ∀ {i j}{X : Set i}{Y : X → Set j}
+  funext-id : ∀ {i j}{X : Set i}{Y : X → Set j}
          → (f : (x : X) → Y x)
-         → ext (λ x → refl {x = f x}) ≡ refl
-  ext-id _ = left-inverse (ext₀ (λ _ → refl))
+         → funext (λ x → refl {x = f x}) ≡ refl
+  funext-id _ = left-inverse (funext₀ (λ _ → refl))

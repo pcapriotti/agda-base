@@ -48,7 +48,7 @@ private
           lem : α (a , (λ b → h (f b)))
               ≡ α (a , (λ b → fold (f b)))
           lem = cong (λ z → α (a , z))
-                     (ext λ b → fold-η h p (f b))
+                     (funext λ b → fold-η h p (f b))
     open Elim public
 
     head : ∀ {i} → W i → A i

@@ -21,8 +21,8 @@ StrongExt i j = {X : Set i}{Y : X → Set j}
               → {f g : (x : X) → Y x}
               → (∀ x → f x ≡ g x) ≡ (f ≡ g)
 
-ext-inv : ∀ {i j}{X : Set i}{Y : X → Set j}
+funext-inv : ∀ {i j}{X : Set i}{Y : X → Set j}
         → {f g : (x : X) → Y x}
         → f ≡ g
         → (x : X) → f x ≡ g x
-ext-inv refl x = refl
+funext-inv refl x = refl

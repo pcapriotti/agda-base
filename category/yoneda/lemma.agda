@@ -31,14 +31,14 @@ y-iso X F = iso f g H K
     g : proj₁ (apply F X) → (hom-func X ⇒ F)
     g u = record
       { α = λ Y f → map F f u
-      ; α-nat = λ h → ext λ f → ext-inv (map-hom F h f) u }
+      ; α-nat = λ h → funext λ f → funext-inv (map-hom F h f) u }
 
     H : (α : hom-func X ⇒ F) → g (f α) ≡ α
     H (nt α α-nat) = nat-equality
-      ( ext λ Y
-      → ext λ f
-      → ext-inv (sym (α-nat f)) id
+      ( funext λ Y
+      → funext λ f
+      → funext-inv (sym (α-nat f)) id
       ⊚ cong (α Y) (right-id f))
 
     K : (u : proj₁ (apply F X)) → f (g u) ≡ u
-    K u = ext-inv (map-id F X) u
+    K u = funext-inv (map-id F X) u

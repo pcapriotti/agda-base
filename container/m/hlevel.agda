@@ -82,7 +82,7 @@ private
       -- if A is trivial, then the container is equal to the one in M-⊤
       lem-container : ∀ {li la lb}(c : Container li la lb)
                     → let open Container c in (p : (λ _ → ↑ la ⊤) ≡ A)
-                    → let B₀ = (λ i → B (coerce (ext-inv p i) (lift tt)))
+                    → let B₀ = (λ i → B (coerce (funext-inv p i) (lift tt)))
                           module M₀ = M-⊤ la I B₀ r
                       in M₀.c ≡ c
       lem-container {la = la} (container I .(λ _ → ↑ la ⊤) B r) refl = refl
@@ -90,7 +90,7 @@ private
       -- the above equality is the identity on I
       lem-container-I : ∀ {li la lb}(c : Container li la lb)
                       → let open Container c in (p : (λ _ → ↑ la ⊤) ≡ A)
-                      → let B₀ = (λ i → B (coerce (ext-inv p i) (lift tt)))
+                      → let B₀ = (λ i → B (coerce (funext-inv p i) (lift tt)))
                             module M₀ = M-⊤ la I B₀ r
                             q : M₀.c ≡ c
                             q = lem-container c p
@@ -107,10 +107,10 @@ private
     open Definition c
 
     A-eq : (λ _ → ↑ la ⊤) ≡ A
-    A-eq = ext λ i → unique-contr (↑-hlevel la ⊤-contr) (hA i)
+    A-eq = funext λ i → unique-contr (↑-hlevel la ⊤-contr) (hA i)
 
     B₀ : I → Set lb
-    B₀ i = B (coerce (ext-inv A-eq i) (lift tt))
+    B₀ i = B (coerce (funext-inv A-eq i) (lift tt))
 
     module M₀ = M-⊤ la I B₀ r
 

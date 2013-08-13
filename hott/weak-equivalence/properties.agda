@@ -51,7 +51,7 @@ abstract
       lem = coerce-hom p q
           ⊚ (cong (λ h → coerce q ∘ h) p-β
           ⊚ cong (λ h → h ∘ apply≈ w) q-β
-          ⊚ ext (_≅_.iso₁ (≈⇒≅ w)))
+          ⊚ funext (_≅_.iso₁ (≈⇒≅ w)))
 
       lem-inv : p ⊚ q ≡ refl
       lem-inv = iso⇒inj uni-iso (apply≈-inj lem)

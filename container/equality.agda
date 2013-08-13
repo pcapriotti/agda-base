@@ -26,7 +26,7 @@ module Equality {li la lb lx}
              (p : a ≡ a')
            → (subst (λ a → (b : B a) → X (r b)) p f ≡ f')
            ≅ ((b : B a) → f b ≡ substX p b (f' (subst B p b)))
-  substX-β f f' refl = sym≅ strong-ext-iso
+  substX-β f f' refl = sym≅ strong-funext-iso
 
   -- structural equality for container fixpoints
   I-≡ : Set (li ⊔ lx)
