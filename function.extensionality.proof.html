@@ -1,0 +1,2094 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >function.extensionality.proof</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="function.extensionality.proof.html#1" class="Module"
+      >function.extensionality.proof</a
+      ><a name="65"
+      > </a
+      ><a name="66" class="Keyword"
+      >where</a
+      ><a name="71"
+      >
+
+</a
+      ><a name="73" class="Keyword"
+      >open</a
+      ><a name="77"
+      > </a
+      ><a name="78" class="Keyword"
+      >import</a
+      ><a name="84"
+      > </a
+      ><a name="85" href="level.html#1" class="Module"
+      >level</a
+      ><a name="90"
+      >
+</a
+      ><a name="91" class="Keyword"
+      >open</a
+      ><a name="95"
+      > </a
+      ><a name="96" class="Keyword"
+      >import</a
+      ><a name="102"
+      > </a
+      ><a name="103" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="106"
+      >
+</a
+      ><a name="107" class="Keyword"
+      >open</a
+      ><a name="111"
+      > </a
+      ><a name="112" class="Keyword"
+      >import</a
+      ><a name="118"
+      > </a
+      ><a name="119" href="equality.html#1" class="Module"
+      >equality</a
+      ><a name="127"
+      >
+</a
+      ><a name="128" class="Keyword"
+      >open</a
+      ><a name="132"
+      > </a
+      ><a name="133" class="Keyword"
+      >import</a
+      ><a name="139"
+      > </a
+      ><a name="140" href="function.extensionality.core.html#1" class="Module"
+      >function.extensionality.core</a
+      ><a name="168"
+      >
+</a
+      ><a name="169" class="Keyword"
+      >open</a
+      ><a name="173"
+      > </a
+      ><a name="174" class="Keyword"
+      >import</a
+      ><a name="180"
+      > </a
+      ><a name="181" href="hott.univalence.html#1" class="Module"
+      >hott.univalence</a
+      ><a name="196"
+      >
+</a
+      ><a name="197" class="Keyword"
+      >open</a
+      ><a name="201"
+      > </a
+      ><a name="202" class="Keyword"
+      >import</a
+      ><a name="208"
+      > </a
+      ><a name="209" href="hott.hlevel.core.html#1" class="Module"
+      >hott.hlevel.core</a
+      ><a name="225"
+      >
+</a
+      ><a name="226" class="Keyword"
+      >open</a
+      ><a name="230"
+      > </a
+      ><a name="231" class="Keyword"
+      >import</a
+      ><a name="237"
+      > </a
+      ><a name="238" href="hott.hlevel.sets.html#1" class="Module"
+      >hott.hlevel.sets</a
+      ><a name="254"
+      >
+</a
+      ><a name="255" class="Keyword"
+      >open</a
+      ><a name="259"
+      > </a
+      ><a name="260" class="Keyword"
+      >import</a
+      ><a name="266"
+      > </a
+      ><a name="267" href="hott.hlevel.closure.core.html#1" class="Module"
+      >hott.hlevel.closure.core</a
+      ><a name="291"
+      >
+</a
+      ><a name="292" class="Keyword"
+      >open</a
+      ><a name="296"
+      > </a
+      ><a name="297" class="Keyword"
+      >import</a
+      ><a name="303"
+      > </a
+      ><a name="304" href="hott.weak-equivalence.core.html#1" class="Module"
+      >hott.weak-equivalence.core</a
+      ><a name="330"
+      >
+</a
+      ><a name="331" class="Keyword"
+      >open</a
+      ><a name="335"
+      > </a
+      ><a name="336" class="Keyword"
+      >import</a
+      ><a name="342"
+      > </a
+      ><a name="343" href="sets.unit.html#1" class="Module"
+      >sets.unit</a
+      ><a name="352"
+      >
+
+</a
+      ><a name="354" href="function.extensionality.proof.html#354" class="Function"
+      >top</a
+      ><a name="357"
+      > </a
+      ><a name="358" class="Symbol"
+      >:</a
+      ><a name="359"
+      > </a
+      ><a name="360" class="Symbol"
+      >&#8704;</a
+      ><a name="361"
+      > </a
+      ><a name="362" class="Symbol"
+      >{</a
+      ><a name="363" href="function.extensionality.proof.html#363" class="Bound"
+      >i</a
+      ><a name="364" class="Symbol"
+      >}</a
+      ><a name="365"
+      > </a
+      ><a name="366" class="Symbol"
+      >&#8594;</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="PrimitiveType"
+      >Set</a
+      ><a name="371"
+      > </a
+      ><a name="372" href="function.extensionality.proof.html#363" class="Bound"
+      >i</a
+      ><a name="373"
+      >
+</a
+      ><a name="374" href="function.extensionality.proof.html#354" class="Function"
+      >top</a
+      ><a name="377"
+      > </a
+      ><a name="378" class="Symbol"
+      >=</a
+      ><a name="379"
+      > </a
+      ><a name="380" href="level.html#299" class="Record"
+      >&#8593;</a
+      ><a name="381"
+      > </a
+      ><a name="382" class="Symbol"
+      >_</a
+      ><a name="383"
+      > </a
+      ><a name="384" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="385"
+      >
+
+</a
+      ><a name="387" class="Comment"
+      >-- this uses definitional &#951; for &#8868;</a
+      ><a name="420"
+      >
+</a
+      ><a name="421" href="function.extensionality.proof.html#421" class="Function"
+      >contr-exp-&#8868;</a
+      ><a name="432"
+      > </a
+      ><a name="433" class="Symbol"
+      >:</a
+      ><a name="434"
+      > </a
+      ><a name="435" class="Symbol"
+      >&#8704;</a
+      ><a name="436"
+      > </a
+      ><a name="437" class="Symbol"
+      >{</a
+      ><a name="438" href="function.extensionality.proof.html#438" class="Bound"
+      >i</a
+      ><a name="439"
+      > </a
+      ><a name="440" href="function.extensionality.proof.html#440" class="Bound"
+      >j</a
+      ><a name="441" class="Symbol"
+      >}{</a
+      ><a name="443" href="function.extensionality.proof.html#443" class="Bound"
+      >A</a
+      ><a name="444"
+      > </a
+      ><a name="445" class="Symbol"
+      >:</a
+      ><a name="446"
+      > </a
+      ><a name="447" class="PrimitiveType"
+      >Set</a
+      ><a name="450"
+      > </a
+      ><a name="451" href="function.extensionality.proof.html#438" class="Bound"
+      >i</a
+      ><a name="452" class="Symbol"
+      >}</a
+      ><a name="453"
+      > </a
+      ><a name="454" class="Symbol"
+      >&#8594;</a
+      ><a name="455"
+      > </a
+      ><a name="456" href="hott.hlevel.core.html#451" class="Function"
+      >contr</a
+      ><a name="461"
+      > </a
+      ><a name="462" class="Symbol"
+      >(</a
+      ><a name="463" href="function.extensionality.proof.html#443" class="Bound"
+      >A</a
+      ><a name="464"
+      > </a
+      ><a name="465" class="Symbol"
+      >&#8594;</a
+      ><a name="466"
+      > </a
+      ><a name="467" href="function.extensionality.proof.html#354" class="Function"
+      >top</a
+      ><a name="470"
+      > </a
+      ><a name="471" class="Symbol"
+      >{</a
+      ><a name="472" href="function.extensionality.proof.html#440" class="Bound"
+      >j</a
+      ><a name="473" class="Symbol"
+      >})</a
+      ><a name="475"
+      >
+</a
+      ><a name="476" href="function.extensionality.proof.html#421" class="Function"
+      >contr-exp-&#8868;</a
+      ><a name="487"
+      > </a
+      ><a name="488" class="Symbol"
+      >=</a
+      ><a name="489"
+      > </a
+      ><a name="490" class="Symbol"
+      >(&#955;</a
+      ><a name="492"
+      > </a
+      ><a name="493" href="function.extensionality.proof.html#493" class="Bound"
+      >_</a
+      ><a name="494"
+      > </a
+      ><a name="495" class="Symbol"
+      >&#8594;</a
+      ><a name="496"
+      > </a
+      ><a name="497" href="level.html#353" class="InductiveConstructor"
+      >lift</a
+      ><a name="501"
+      > </a
+      ><a name="502" href="sets.unit.html#90" class="InductiveConstructor"
+      >tt</a
+      ><a name="504" class="Symbol"
+      >)</a
+      ><a name="505"
+      > </a
+      ><a name="506" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="507"
+      > </a
+      ><a name="508" class="Symbol"
+      >(&#955;</a
+      ><a name="510"
+      > </a
+      ><a name="511" href="function.extensionality.proof.html#511" class="Bound"
+      >f</a
+      ><a name="512"
+      > </a
+      ><a name="513" class="Symbol"
+      >&#8594;</a
+      ><a name="514"
+      > </a
+      ><a name="515" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="519" class="Symbol"
+      >)</a
+      ><a name="520"
+      >
+
+</a
+      ><a name="522" class="Keyword"
+      >module</a
+      ><a name="528"
+      > </a
+      ><a name="529" href="function.extensionality.proof.html#529" class="Module"
+      >Weak</a
+      ><a name="533"
+      > </a
+      ><a name="534" class="Keyword"
+      >where</a
+      ><a name="539"
+      >
+  </a
+      ><a name="542" href="function.extensionality.proof.html#542" class="Function"
+      >&#8594;-contr</a
+      ><a name="549"
+      > </a
+      ><a name="550" class="Symbol"
+      >:</a
+      ><a name="551"
+      > </a
+      ><a name="552" class="Symbol"
+      >&#8704;</a
+      ><a name="553"
+      > </a
+      ><a name="554" class="Symbol"
+      >{</a
+      ><a name="555" href="function.extensionality.proof.html#555" class="Bound"
+      >i</a
+      ><a name="556"
+      > </a
+      ><a name="557" href="function.extensionality.proof.html#557" class="Bound"
+      >j</a
+      ><a name="558" class="Symbol"
+      >}{</a
+      ><a name="560" href="function.extensionality.proof.html#560" class="Bound"
+      >A</a
+      ><a name="561"
+      > </a
+      ><a name="562" class="Symbol"
+      >:</a
+      ><a name="563"
+      > </a
+      ><a name="564" class="PrimitiveType"
+      >Set</a
+      ><a name="567"
+      > </a
+      ><a name="568" href="function.extensionality.proof.html#555" class="Bound"
+      >i</a
+      ><a name="569" class="Symbol"
+      >}{</a
+      ><a name="571" href="function.extensionality.proof.html#571" class="Bound"
+      >B</a
+      ><a name="572"
+      > </a
+      ><a name="573" class="Symbol"
+      >:</a
+      ><a name="574"
+      > </a
+      ><a name="575" class="PrimitiveType"
+      >Set</a
+      ><a name="578"
+      > </a
+      ><a name="579" href="function.extensionality.proof.html#557" class="Bound"
+      >j</a
+      ><a name="580" class="Symbol"
+      >}</a
+      ><a name="581"
+      >
+          </a
+      ><a name="592" class="Symbol"
+      >&#8594;</a
+      ><a name="593"
+      > </a
+      ><a name="594" href="hott.hlevel.core.html#451" class="Function"
+      >contr</a
+      ><a name="599"
+      > </a
+      ><a name="600" href="function.extensionality.proof.html#571" class="Bound"
+      >B</a
+      ><a name="601"
+      >
+          </a
+      ><a name="612" class="Symbol"
+      >&#8594;</a
+      ><a name="613"
+      > </a
+      ><a name="614" href="hott.hlevel.core.html#451" class="Function"
+      >contr</a
+      ><a name="619"
+      > </a
+      ><a name="620" class="Symbol"
+      >(</a
+      ><a name="621" href="function.extensionality.proof.html#560" class="Bound"
+      >A</a
+      ><a name="622"
+      > </a
+      ><a name="623" class="Symbol"
+      >&#8594;</a
+      ><a name="624"
+      > </a
+      ><a name="625" href="function.extensionality.proof.html#571" class="Bound"
+      >B</a
+      ><a name="626" class="Symbol"
+      >)</a
+      ><a name="627"
+      >
+  </a
+      ><a name="630" href="function.extensionality.proof.html#542" class="Function"
+      >&#8594;-contr</a
+      ><a name="637"
+      > </a
+      ><a name="638" class="Symbol"
+      >{</a
+      ><a name="639"
+      >A </a
+      ><a name="641" class="Symbol"
+      >=</a
+      ><a name="642"
+      > </a
+      ><a name="643" href="function.extensionality.proof.html#643" class="Bound"
+      >A</a
+      ><a name="644" class="Symbol"
+      >}{</a
+      ><a name="646"
+      >B </a
+      ><a name="648" class="Symbol"
+      >=</a
+      ><a name="649"
+      > </a
+      ><a name="650" href="function.extensionality.proof.html#650" class="Bound"
+      >B</a
+      ><a name="651" class="Symbol"
+      >}</a
+      ><a name="652"
+      > </a
+      ><a name="653" href="function.extensionality.proof.html#653" class="Bound"
+      >hB</a
+      ><a name="655"
+      > </a
+      ><a name="656" class="Symbol"
+      >=</a
+      ><a name="657"
+      > </a
+      ><a name="658" href="equality.core.html#633" class="Function"
+      >subst</a
+      ><a name="663"
+      > </a
+      ><a name="664" href="hott.hlevel.core.html#451" class="Function"
+      >contr</a
+      ><a name="669"
+      > </a
+      ><a name="670" href="function.extensionality.proof.html#700" class="Function"
+      >p</a
+      ><a name="671"
+      > </a
+      ><a name="672" href="function.extensionality.proof.html#421" class="Function"
+      >contr-exp-&#8868;</a
+      ><a name="683"
+      >
+    </a
+      ><a name="688" class="Keyword"
+      >where</a
+      ><a name="693"
+      >
+      </a
+      ><a name="700" href="function.extensionality.proof.html#700" class="Function"
+      >p</a
+      ><a name="701"
+      > </a
+      ><a name="702" class="Symbol"
+      >:</a
+      ><a name="703"
+      > </a
+      ><a name="704" class="Symbol"
+      >(</a
+      ><a name="705" href="function.extensionality.proof.html#643" class="Bound"
+      >A</a
+      ><a name="706"
+      > </a
+      ><a name="707" class="Symbol"
+      >&#8594;</a
+      ><a name="708"
+      > </a
+      ><a name="709" href="function.extensionality.proof.html#354" class="Function"
+      >top</a
+      ><a name="712" class="Symbol"
+      >)</a
+      ><a name="713"
+      > </a
+      ><a name="714" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="715"
+      > </a
+      ><a name="716" class="Symbol"
+      >(</a
+      ><a name="717" href="function.extensionality.proof.html#643" class="Bound"
+      >A</a
+      ><a name="718"
+      > </a
+      ><a name="719" class="Symbol"
+      >&#8594;</a
+      ><a name="720"
+      > </a
+      ><a name="721" href="function.extensionality.proof.html#650" class="Bound"
+      >B</a
+      ><a name="722" class="Symbol"
+      >)</a
+      ><a name="723"
+      >
+      </a
+      ><a name="730" href="function.extensionality.proof.html#700" class="Function"
+      >p</a
+      ><a name="731"
+      > </a
+      ><a name="732" class="Symbol"
+      >=</a
+      ><a name="733"
+      > </a
+      ><a name="734" href="equality.core.html#364" class="Function"
+      >ap</a
+      ><a name="736"
+      > </a
+      ><a name="737" class="Symbol"
+      >(&#955;</a
+      ><a name="739"
+      > </a
+      ><a name="740" href="function.extensionality.proof.html#740" class="Bound"
+      >X</a
+      ><a name="741"
+      > </a
+      ><a name="742" class="Symbol"
+      >&#8594;</a
+      ><a name="743"
+      > </a
+      ><a name="744" href="function.extensionality.proof.html#643" class="Bound"
+      >A</a
+      ><a name="745"
+      > </a
+      ><a name="746" class="Symbol"
+      >&#8594;</a
+      ><a name="747"
+      > </a
+      ><a name="748" href="function.extensionality.proof.html#740" class="Bound"
+      >X</a
+      ><a name="749" class="Symbol"
+      >)</a
+      ><a name="750"
+      > </a
+      ><a name="751" class="Symbol"
+      >(</a
+      ><a name="752" href="hott.hlevel.closure.core.html#894" class="Function"
+      >unique-contr</a
+      ><a name="764"
+      > </a
+      ><a name="765" href="hott.hlevel.sets.html#375" class="Function"
+      >&#8868;-contr'</a
+      ><a name="773"
+      > </a
+      ><a name="774" href="function.extensionality.proof.html#653" class="Bound"
+      >hB</a
+      ><a name="776" class="Symbol"
+      >)</a
+      ><a name="777"
+      >
+
+  </a
+      ><a name="781" href="function.extensionality.proof.html#781" class="Function"
+      >funext</a
+      ><a name="787"
+      > </a
+      ><a name="788" class="Symbol"
+      >:</a
+      ><a name="789"
+      > </a
+      ><a name="790" class="Symbol"
+      >&#8704;</a
+      ><a name="791"
+      > </a
+      ><a name="792" class="Symbol"
+      >{</a
+      ><a name="793" href="function.extensionality.proof.html#793" class="Bound"
+      >i</a
+      ><a name="794"
+      > </a
+      ><a name="795" href="function.extensionality.proof.html#795" class="Bound"
+      >j</a
+      ><a name="796" class="Symbol"
+      >}{</a
+      ><a name="798" href="function.extensionality.proof.html#798" class="Bound"
+      >A</a
+      ><a name="799"
+      > </a
+      ><a name="800" class="Symbol"
+      >:</a
+      ><a name="801"
+      > </a
+      ><a name="802" class="PrimitiveType"
+      >Set</a
+      ><a name="805"
+      > </a
+      ><a name="806" href="function.extensionality.proof.html#793" class="Bound"
+      >i</a
+      ><a name="807" class="Symbol"
+      >}{</a
+      ><a name="809" href="function.extensionality.proof.html#809" class="Bound"
+      >B</a
+      ><a name="810"
+      > </a
+      ><a name="811" class="Symbol"
+      >:</a
+      ><a name="812"
+      > </a
+      ><a name="813" class="PrimitiveType"
+      >Set</a
+      ><a name="816"
+      > </a
+      ><a name="817" href="function.extensionality.proof.html#795" class="Bound"
+      >j</a
+      ><a name="818" class="Symbol"
+      >}</a
+      ><a name="819"
+      >
+      </a
+      ><a name="826" class="Symbol"
+      >&#8594;</a
+      ><a name="827"
+      > </a
+      ><a name="828" class="Symbol"
+      >(</a
+      ><a name="829" href="function.extensionality.proof.html#829" class="Bound"
+      >f</a
+      ><a name="830"
+      > </a
+      ><a name="831" class="Symbol"
+      >:</a
+      ><a name="832"
+      > </a
+      ><a name="833" href="function.extensionality.proof.html#798" class="Bound"
+      >A</a
+      ><a name="834"
+      > </a
+      ><a name="835" class="Symbol"
+      >&#8594;</a
+      ><a name="836"
+      > </a
+      ><a name="837" href="function.extensionality.proof.html#809" class="Bound"
+      >B</a
+      ><a name="838" class="Symbol"
+      >)(</a
+      ><a name="840" href="function.extensionality.proof.html#840" class="Bound"
+      >b</a
+      ><a name="841"
+      > </a
+      ><a name="842" class="Symbol"
+      >:</a
+      ><a name="843"
+      > </a
+      ><a name="844" href="function.extensionality.proof.html#809" class="Bound"
+      >B</a
+      ><a name="845" class="Symbol"
+      >)(</a
+      ><a name="847" href="function.extensionality.proof.html#847" class="Bound"
+      >h</a
+      ><a name="848"
+      > </a
+      ><a name="849" class="Symbol"
+      >:</a
+      ><a name="850"
+      > </a
+      ><a name="851" class="Symbol"
+      >(</a
+      ><a name="852" href="function.extensionality.proof.html#852" class="Bound"
+      >x</a
+      ><a name="853"
+      > </a
+      ><a name="854" class="Symbol"
+      >:</a
+      ><a name="855"
+      > </a
+      ><a name="856" href="function.extensionality.proof.html#798" class="Bound"
+      >A</a
+      ><a name="857" class="Symbol"
+      >)</a
+      ><a name="858"
+      > </a
+      ><a name="859" class="Symbol"
+      >&#8594;</a
+      ><a name="860"
+      > </a
+      ><a name="861" href="function.extensionality.proof.html#840" class="Bound"
+      >b</a
+      ><a name="862"
+      > </a
+      ><a name="863" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="864"
+      > </a
+      ><a name="865" href="function.extensionality.proof.html#829" class="Bound"
+      >f</a
+      ><a name="866"
+      > </a
+      ><a name="867" href="function.extensionality.proof.html#852" class="Bound"
+      >x</a
+      ><a name="868" class="Symbol"
+      >)</a
+      ><a name="869"
+      >
+      </a
+      ><a name="876" class="Symbol"
+      >&#8594;</a
+      ><a name="877"
+      > </a
+      ><a name="878" class="Symbol"
+      >(&#955;</a
+      ><a name="880"
+      > </a
+      ><a name="881" href="function.extensionality.proof.html#881" class="Bound"
+      >_</a
+      ><a name="882"
+      > </a
+      ><a name="883" class="Symbol"
+      >&#8594;</a
+      ><a name="884"
+      > </a
+      ><a name="885" href="function.extensionality.proof.html#840" class="Bound"
+      >b</a
+      ><a name="886" class="Symbol"
+      >)</a
+      ><a name="887"
+      > </a
+      ><a name="888" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="889"
+      > </a
+      ><a name="890" href="function.extensionality.proof.html#829" class="Bound"
+      >f</a
+      ><a name="891"
+      >
+  </a
+      ><a name="894" href="function.extensionality.proof.html#781" class="Function"
+      >funext</a
+      ><a name="900"
+      > </a
+      ><a name="901" href="function.extensionality.proof.html#901" class="Bound"
+      >f</a
+      ><a name="902"
+      > </a
+      ><a name="903" href="function.extensionality.proof.html#903" class="Bound"
+      >b</a
+      ><a name="904"
+      > </a
+      ><a name="905" href="function.extensionality.proof.html#905" class="Bound"
+      >h</a
+      ><a name="906"
+      > </a
+      ><a name="907" class="Symbol"
+      >=</a
+      ><a name="908"
+      >
+    </a
+      ><a name="913" href="equality.core.html#364" class="Function"
+      >ap</a
+      ><a name="915"
+      > </a
+      ><a name="916" class="Symbol"
+      >(&#955;</a
+      ><a name="918"
+      > </a
+      ><a name="919" href="function.extensionality.proof.html#919" class="Bound"
+      >u</a
+      ><a name="920"
+      > </a
+      ><a name="921" href="function.extensionality.proof.html#921" class="Bound"
+      >x</a
+      ><a name="922"
+      > </a
+      ><a name="923" class="Symbol"
+      >&#8594;</a
+      ><a name="924"
+      > </a
+      ><a name="925" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="930"
+      > </a
+      ><a name="931" class="Symbol"
+      >(</a
+      ><a name="932" href="function.extensionality.proof.html#919" class="Bound"
+      >u</a
+      ><a name="933"
+      > </a
+      ><a name="934" href="function.extensionality.proof.html#921" class="Bound"
+      >x</a
+      ><a name="935" class="Symbol"
+      >))</a
+      ><a name="937"
+      >
+         </a
+      ><a name="947" class="Symbol"
+      >(</a
+      ><a name="948" href="hott.hlevel.core.html#1164" class="Function"
+      >contr&#8658;prop</a
+      ><a name="958"
+      > </a
+      ><a name="959" class="Symbol"
+      >(</a
+      ><a name="960" href="function.extensionality.proof.html#542" class="Function"
+      >&#8594;-contr</a
+      ><a name="967"
+      > </a
+      ><a name="968" class="Symbol"
+      >(</a
+      ><a name="969" href="hott.hlevel.core.html#1873" class="Function"
+      >singl-contr</a
+      ><a name="980"
+      > </a
+      ><a name="981" href="function.extensionality.proof.html#903" class="Bound"
+      >b</a
+      ><a name="982" class="Symbol"
+      >))</a
+      ><a name="984"
+      >
+                      </a
+      ><a name="1007" class="Symbol"
+      >(&#955;</a
+      ><a name="1009"
+      > </a
+      ><a name="1010" href="function.extensionality.proof.html#1010" class="Bound"
+      >_</a
+      ><a name="1011"
+      > </a
+      ><a name="1012" class="Symbol"
+      >&#8594;</a
+      ><a name="1013"
+      > </a
+      ><a name="1014" class="Symbol"
+      >(</a
+      ><a name="1015" href="function.extensionality.proof.html#903" class="Bound"
+      >b</a
+      ><a name="1016"
+      > </a
+      ><a name="1017" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1018"
+      > </a
+      ><a name="1019" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1023" class="Symbol"
+      >))</a
+      ><a name="1025"
+      >
+                      </a
+      ><a name="1048" class="Symbol"
+      >(&#955;</a
+      ><a name="1050"
+      > </a
+      ><a name="1051" href="function.extensionality.proof.html#1051" class="Bound"
+      >x</a
+      ><a name="1052"
+      > </a
+      ><a name="1053" class="Symbol"
+      >&#8594;</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" href="function.extensionality.proof.html#901" class="Bound"
+      >f</a
+      ><a name="1056"
+      > </a
+      ><a name="1057" href="function.extensionality.proof.html#1051" class="Bound"
+      >x</a
+      ><a name="1058"
+      > </a
+      ><a name="1059" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" href="function.extensionality.proof.html#905" class="Bound"
+      >h</a
+      ><a name="1062"
+      > </a
+      ><a name="1063" href="function.extensionality.proof.html#1051" class="Bound"
+      >x</a
+      ><a name="1064" class="Symbol"
+      >))</a
+      ><a name="1066"
+      >
+
+</a
+      ><a name="1068" class="Keyword"
+      >abstract</a
+      ><a name="1076"
+      >
+  </a
+      ><a name="1079" href="function.extensionality.proof.html#1079" class="Function"
+      >&#928;-contr</a
+      ><a name="1086"
+      > </a
+      ><a name="1087" class="Symbol"
+      >:</a
+      ><a name="1088"
+      > </a
+      ><a name="1089" class="Symbol"
+      >&#8704;</a
+      ><a name="1090"
+      > </a
+      ><a name="1091" class="Symbol"
+      >{</a
+      ><a name="1092" href="function.extensionality.proof.html#1092" class="Bound"
+      >i</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" href="function.extensionality.proof.html#1094" class="Bound"
+      >j</a
+      ><a name="1095" class="Symbol"
+      >}{</a
+      ><a name="1097" href="function.extensionality.proof.html#1097" class="Bound"
+      >A</a
+      ><a name="1098"
+      > </a
+      ><a name="1099" class="Symbol"
+      >:</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" class="PrimitiveType"
+      >Set</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" href="function.extensionality.proof.html#1092" class="Bound"
+      >i</a
+      ><a name="1106" class="Symbol"
+      >}{</a
+      ><a name="1108" href="function.extensionality.proof.html#1108" class="Bound"
+      >B</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" class="Symbol"
+      >:</a
+      ><a name="1111"
+      > </a
+      ><a name="1112" href="function.extensionality.proof.html#1097" class="Bound"
+      >A</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" class="Symbol"
+      >&#8594;</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" class="PrimitiveType"
+      >Set</a
+      ><a name="1119"
+      > </a
+      ><a name="1120" href="function.extensionality.proof.html#1094" class="Bound"
+      >j</a
+      ><a name="1121" class="Symbol"
+      >}</a
+      ><a name="1122"
+      >
+          </a
+      ><a name="1133" class="Symbol"
+      >&#8594;</a
+      ><a name="1134"
+      > </a
+      ><a name="1135" class="Symbol"
+      >((</a
+      ><a name="1137" href="function.extensionality.proof.html#1137" class="Bound"
+      >x</a
+      ><a name="1138"
+      > </a
+      ><a name="1139" class="Symbol"
+      >:</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" href="function.extensionality.proof.html#1097" class="Bound"
+      >A</a
+      ><a name="1142" class="Symbol"
+      >)</a
+      ><a name="1143"
+      > </a
+      ><a name="1144" class="Symbol"
+      >&#8594;</a
+      ><a name="1145"
+      > </a
+      ><a name="1146" href="hott.hlevel.core.html#451" class="Function"
+      >contr</a
+      ><a name="1151"
+      > </a
+      ><a name="1152" class="Symbol"
+      >(</a
+      ><a name="1153" href="function.extensionality.proof.html#1108" class="Bound"
+      >B</a
+      ><a name="1154"
+      > </a
+      ><a name="1155" href="function.extensionality.proof.html#1137" class="Bound"
+      >x</a
+      ><a name="1156" class="Symbol"
+      >))</a
+      ><a name="1158"
+      >
+          </a
+      ><a name="1169" class="Symbol"
+      >&#8594;</a
+      ><a name="1170"
+      > </a
+      ><a name="1171" href="hott.hlevel.core.html#451" class="Function"
+      >contr</a
+      ><a name="1176"
+      > </a
+      ><a name="1177" class="Symbol"
+      >((</a
+      ><a name="1179" href="function.extensionality.proof.html#1179" class="Bound"
+      >x</a
+      ><a name="1180"
+      > </a
+      ><a name="1181" class="Symbol"
+      >:</a
+      ><a name="1182"
+      > </a
+      ><a name="1183" href="function.extensionality.proof.html#1097" class="Bound"
+      >A</a
+      ><a name="1184" class="Symbol"
+      >)</a
+      ><a name="1185"
+      > </a
+      ><a name="1186" class="Symbol"
+      >&#8594;</a
+      ><a name="1187"
+      > </a
+      ><a name="1188" href="function.extensionality.proof.html#1108" class="Bound"
+      >B</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" href="function.extensionality.proof.html#1179" class="Bound"
+      >x</a
+      ><a name="1191" class="Symbol"
+      >)</a
+      ><a name="1192"
+      >
+  </a
+      ><a name="1195" href="function.extensionality.proof.html#1079" class="Function"
+      >&#928;-contr</a
+      ><a name="1202"
+      > </a
+      ><a name="1203" class="Symbol"
+      >{</a
+      ><a name="1204" href="function.extensionality.proof.html#1204" class="Bound"
+      >i</a
+      ><a name="1205" class="Symbol"
+      >}{</a
+      ><a name="1207" href="function.extensionality.proof.html#1207" class="Bound"
+      >j</a
+      ><a name="1208" class="Symbol"
+      >}{</a
+      ><a name="1210" href="function.extensionality.proof.html#1210" class="Bound"
+      >A</a
+      ><a name="1211" class="Symbol"
+      >}{</a
+      ><a name="1213" href="function.extensionality.proof.html#1213" class="Bound"
+      >B</a
+      ><a name="1214" class="Symbol"
+      >}</a
+      ><a name="1215"
+      > </a
+      ><a name="1216" href="function.extensionality.proof.html#1216" class="Bound"
+      >hB</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" class="Symbol"
+      >=</a
+      ><a name="1220"
+      > </a
+      ><a name="1221" href="equality.core.html#633" class="Function"
+      >subst</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" href="hott.hlevel.core.html#451" class="Function"
+      >contr</a
+      ><a name="1232"
+      > </a
+      ><a name="1233" href="function.extensionality.proof.html#1357" class="Function"
+      >p</a
+      ><a name="1234"
+      > </a
+      ><a name="1235" href="function.extensionality.proof.html#421" class="Function"
+      >contr-exp-&#8868;</a
+      ><a name="1246"
+      >
+    </a
+      ><a name="1251" class="Keyword"
+      >where</a
+      ><a name="1256"
+      >
+      </a
+      ><a name="1263" href="function.extensionality.proof.html#1263" class="Function"
+      >p&#8320;</a
+      ><a name="1265"
+      > </a
+      ><a name="1266" class="Symbol"
+      >:</a
+      ><a name="1267"
+      > </a
+      ><a name="1268" class="Symbol"
+      >(&#955;</a
+      ><a name="1270"
+      > </a
+      ><a name="1271" href="function.extensionality.proof.html#1271" class="Bound"
+      >_</a
+      ><a name="1272"
+      > </a
+      ><a name="1273" class="Symbol"
+      >&#8594;</a
+      ><a name="1274"
+      > </a
+      ><a name="1275" href="function.extensionality.proof.html#354" class="Function"
+      >top</a
+      ><a name="1278" class="Symbol"
+      >)</a
+      ><a name="1279"
+      > </a
+      ><a name="1280" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="function.extensionality.proof.html#1213" class="Bound"
+      >B</a
+      ><a name="1283"
+      >
+      </a
+      ><a name="1290" href="function.extensionality.proof.html#1263" class="Function"
+      >p&#8320;</a
+      ><a name="1292"
+      > </a
+      ><a name="1293" class="Symbol"
+      >=</a
+      ><a name="1294"
+      > </a
+      ><a name="1295" href="function.extensionality.proof.html#781" class="Function"
+      >Weak.funext</a
+      ><a name="1306"
+      > </a
+      ><a name="1307" href="function.extensionality.proof.html#1213" class="Bound"
+      >B</a
+      ><a name="1308"
+      > </a
+      ><a name="1309" href="function.extensionality.proof.html#354" class="Function"
+      >top</a
+      ><a name="1312"
+      > </a
+      ><a name="1313" class="Symbol"
+      >(&#955;</a
+      ><a name="1315"
+      > </a
+      ><a name="1316" href="function.extensionality.proof.html#1316" class="Bound"
+      >x</a
+      ><a name="1317"
+      > </a
+      ><a name="1318" class="Symbol"
+      >&#8594;</a
+      ><a name="1319"
+      > </a
+      ><a name="1320" href="hott.hlevel.closure.core.html#894" class="Function"
+      >unique-contr</a
+      ><a name="1332"
+      > </a
+      ><a name="1333" href="hott.hlevel.sets.html#375" class="Function"
+      >&#8868;-contr'</a
+      ><a name="1341"
+      > </a
+      ><a name="1342" class="Symbol"
+      >(</a
+      ><a name="1343" href="function.extensionality.proof.html#1216" class="Bound"
+      >hB</a
+      ><a name="1345"
+      > </a
+      ><a name="1346" href="function.extensionality.proof.html#1316" class="Bound"
+      >x</a
+      ><a name="1347" class="Symbol"
+      >))</a
+      ><a name="1349"
+      >
+
+      </a
+      ><a name="1357" href="function.extensionality.proof.html#1357" class="Function"
+      >p</a
+      ><a name="1358"
+      > </a
+      ><a name="1359" class="Symbol"
+      >:</a
+      ><a name="1360"
+      > </a
+      ><a name="1361" class="Symbol"
+      >(</a
+      ><a name="1362" href="function.extensionality.proof.html#1210" class="Bound"
+      >A</a
+      ><a name="1363"
+      > </a
+      ><a name="1364" class="Symbol"
+      >&#8594;</a
+      ><a name="1365"
+      > </a
+      ><a name="1366" href="function.extensionality.proof.html#354" class="Function"
+      >top</a
+      ><a name="1369"
+      > </a
+      ><a name="1370" class="Symbol"
+      >{</a
+      ><a name="1371" href="function.extensionality.proof.html#1207" class="Bound"
+      >j</a
+      ><a name="1372" class="Symbol"
+      >})</a
+      ><a name="1374"
+      > </a
+      ><a name="1375" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1376"
+      > </a
+      ><a name="1377" class="Symbol"
+      >((</a
+      ><a name="1379" href="function.extensionality.proof.html#1379" class="Bound"
+      >x</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" class="Symbol"
+      >:</a
+      ><a name="1382"
+      > </a
+      ><a name="1383" href="function.extensionality.proof.html#1210" class="Bound"
+      >A</a
+      ><a name="1384" class="Symbol"
+      >)</a
+      ><a name="1385"
+      > </a
+      ><a name="1386" class="Symbol"
+      >&#8594;</a
+      ><a name="1387"
+      > </a
+      ><a name="1388" href="function.extensionality.proof.html#1213" class="Bound"
+      >B</a
+      ><a name="1389"
+      > </a
+      ><a name="1390" href="function.extensionality.proof.html#1379" class="Bound"
+      >x</a
+      ><a name="1391" class="Symbol"
+      >)</a
+      ><a name="1392"
+      >
+      </a
+      ><a name="1399" href="function.extensionality.proof.html#1357" class="Function"
+      >p</a
+      ><a name="1400"
+      > </a
+      ><a name="1401" class="Symbol"
+      >=</a
+      ><a name="1402"
+      > </a
+      ><a name="1403" href="equality.core.html#364" class="Function"
+      >ap</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" class="Symbol"
+      >(&#955;</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" href="function.extensionality.proof.html#1409" class="Bound"
+      >Z</a
+      ><a name="1410"
+      > </a
+      ><a name="1411" class="Symbol"
+      >&#8594;</a
+      ><a name="1412"
+      > </a
+      ><a name="1413" class="Symbol"
+      >(</a
+      ><a name="1414" href="function.extensionality.proof.html#1414" class="Bound"
+      >x</a
+      ><a name="1415"
+      > </a
+      ><a name="1416" class="Symbol"
+      >:</a
+      ><a name="1417"
+      > </a
+      ><a name="1418" href="function.extensionality.proof.html#1210" class="Bound"
+      >A</a
+      ><a name="1419" class="Symbol"
+      >)</a
+      ><a name="1420"
+      > </a
+      ><a name="1421" class="Symbol"
+      >&#8594;</a
+      ><a name="1422"
+      > </a
+      ><a name="1423" href="function.extensionality.proof.html#1409" class="Bound"
+      >Z</a
+      ><a name="1424"
+      > </a
+      ><a name="1425" href="function.extensionality.proof.html#1414" class="Bound"
+      >x</a
+      ><a name="1426" class="Symbol"
+      >)</a
+      ><a name="1427"
+      > </a
+      ><a name="1428" href="function.extensionality.proof.html#1263" class="Function"
+      >p&#8320;</a
+      ><a name="1430"
+      >
+
+  </a
+      ><a name="1434" class="Keyword"
+      >private</a
+      ><a name="1441"
+      >
+    </a
+      ><a name="1446" href="function.extensionality.proof.html#1446" class="Function"
+      >funext&#8320;</a
+      ><a name="1453"
+      > </a
+      ><a name="1454" class="Symbol"
+      >:</a
+      ><a name="1455"
+      > </a
+      ><a name="1456" class="Symbol"
+      >&#8704;</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" class="Symbol"
+      >{</a
+      ><a name="1459" href="function.extensionality.proof.html#1459" class="Bound"
+      >i</a
+      ><a name="1460"
+      > </a
+      ><a name="1461" href="function.extensionality.proof.html#1461" class="Bound"
+      >j</a
+      ><a name="1462" class="Symbol"
+      >}</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" class="Symbol"
+      >&#8594;</a
+      ><a name="1465"
+      > </a
+      ><a name="1466" href="function.extensionality.core.html#329" class="Function"
+      >Extensionality'</a
+      ><a name="1481"
+      > </a
+      ><a name="1482" href="function.extensionality.proof.html#1459" class="Bound"
+      >i</a
+      ><a name="1483"
+      > </a
+      ><a name="1484" href="function.extensionality.proof.html#1461" class="Bound"
+      >j</a
+      ><a name="1485"
+      >
+    </a
+      ><a name="1490" href="function.extensionality.proof.html#1446" class="Function"
+      >funext&#8320;</a
+      ><a name="1497"
+      > </a
+      ><a name="1498" class="Symbol"
+      >{</a
+      ><a name="1499" href="function.extensionality.proof.html#1499" class="Bound"
+      >i</a
+      ><a name="1500" class="Symbol"
+      >}{</a
+      ><a name="1502" href="function.extensionality.proof.html#1502" class="Bound"
+      >j</a
+      ><a name="1503" class="Symbol"
+      >}{</a
+      ><a name="1505"
+      >X </a
+      ><a name="1507" class="Symbol"
+      >=</a
+      ><a name="1508"
+      > </a
+      ><a name="1509" href="function.extensionality.proof.html#1509" class="Bound"
+      >X</a
+      ><a name="1510" class="Symbol"
+      >}{</a
+      ><a name="1512"
+      >Y </a
+      ><a name="1514" class="Symbol"
+      >=</a
+      ><a name="1515"
+      > </a
+      ><a name="1516" href="function.extensionality.proof.html#1516" class="Bound"
+      >Y</a
+      ><a name="1517" class="Symbol"
+      >}{</a
+      ><a name="1519"
+      >f </a
+      ><a name="1521" class="Symbol"
+      >=</a
+      ><a name="1522"
+      > </a
+      ><a name="1523" href="function.extensionality.proof.html#1523" class="Bound"
+      >f</a
+      ><a name="1524" class="Symbol"
+      >}{</a
+      ><a name="1526"
+      >g </a
+      ><a name="1528" class="Symbol"
+      >=</a
+      ><a name="1529"
+      > </a
+      ><a name="1530" href="function.extensionality.proof.html#1530" class="Bound"
+      >g</a
+      ><a name="1531" class="Symbol"
+      >}</a
+      ><a name="1532"
+      > </a
+      ><a name="1533" href="function.extensionality.proof.html#1533" class="Bound"
+      >h</a
+      ><a name="1534"
+      > </a
+      ><a name="1535" class="Symbol"
+      >=</a
+      ><a name="1536"
+      > </a
+      ><a name="1537" href="equality.core.html#364" class="Function"
+      >ap</a
+      ><a name="1539"
+      > </a
+      ><a name="1540" class="Symbol"
+      >(&#955;</a
+      ><a name="1542"
+      > </a
+      ><a name="1543" href="function.extensionality.proof.html#1543" class="Bound"
+      >u</a
+      ><a name="1544"
+      > </a
+      ><a name="1545" href="function.extensionality.proof.html#1545" class="Bound"
+      >x</a
+      ><a name="1546"
+      > </a
+      ><a name="1547" class="Symbol"
+      >&#8594;</a
+      ><a name="1548"
+      > </a
+      ><a name="1549" href="sum.html#219" class="Function"
+      >proj&#8321;</a
+      ><a name="1554"
+      > </a
+      ><a name="1555" class="Symbol"
+      >(</a
+      ><a name="1556" href="function.extensionality.proof.html#1543" class="Bound"
+      >u</a
+      ><a name="1557"
+      > </a
+      ><a name="1558" href="function.extensionality.proof.html#1545" class="Bound"
+      >x</a
+      ><a name="1559" class="Symbol"
+      >))</a
+      ><a name="1561"
+      > </a
+      ><a name="1562" href="function.extensionality.proof.html#1731" class="Function"
+      >lem</a
+      ><a name="1565"
+      >
+      </a
+      ><a name="1572" class="Keyword"
+      >where</a
+      ><a name="1577"
+      >
+        </a
+      ><a name="1586" href="function.extensionality.proof.html#1586" class="Function"
+      >C</a
+      ><a name="1587"
+      > </a
+      ><a name="1588" class="Symbol"
+      >:</a
+      ><a name="1589"
+      > </a
+      ><a name="1590" href="function.extensionality.proof.html#1509" class="Bound"
+      >X</a
+      ><a name="1591"
+      > </a
+      ><a name="1592" class="Symbol"
+      >&#8594;</a
+      ><a name="1593"
+      > </a
+      ><a name="1594" class="PrimitiveType"
+      >Set</a
+      ><a name="1597"
+      > </a
+      ><a name="1598" href="function.extensionality.proof.html#1502" class="Bound"
+      >j</a
+      ><a name="1599"
+      >
+        </a
+      ><a name="1608" href="function.extensionality.proof.html#1586" class="Function"
+      >C</a
+      ><a name="1609"
+      > </a
+      ><a name="1610" href="function.extensionality.proof.html#1610" class="Bound"
+      >x</a
+      ><a name="1611"
+      > </a
+      ><a name="1612" class="Symbol"
+      >=</a
+      ><a name="1613"
+      > </a
+      ><a name="1614" href="sum.html#133" class="Record"
+      >&#931;</a
+      ><a name="1615"
+      > </a
+      ><a name="1616" class="Symbol"
+      >(</a
+      ><a name="1617" href="function.extensionality.proof.html#1516" class="Bound"
+      >Y</a
+      ><a name="1618"
+      > </a
+      ><a name="1619" href="function.extensionality.proof.html#1610" class="Bound"
+      >x</a
+      ><a name="1620" class="Symbol"
+      >)</a
+      ><a name="1621"
+      > </a
+      ><a name="1622" class="Symbol"
+      >&#955;</a
+      ><a name="1623"
+      > </a
+      ><a name="1624" href="function.extensionality.proof.html#1624" class="Bound"
+      >y</a
+      ><a name="1625"
+      > </a
+      ><a name="1626" class="Symbol"
+      >&#8594;</a
+      ><a name="1627"
+      > </a
+      ><a name="1628" href="function.extensionality.proof.html#1523" class="Bound"
+      >f</a
+      ><a name="1629"
+      > </a
+      ><a name="1630" href="function.extensionality.proof.html#1610" class="Bound"
+      >x</a
+      ><a name="1631"
+      > </a
+      ><a name="1632" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1633"
+      > </a
+      ><a name="1634" href="function.extensionality.proof.html#1624" class="Bound"
+      >y</a
+      ><a name="1635"
+      >
+
+        </a
+      ><a name="1645" href="function.extensionality.proof.html#1645" class="Function"
+      >f'</a
+      ><a name="1647"
+      > </a
+      ><a name="1648" href="function.extensionality.proof.html#1648" class="Function"
+      >g'</a
+      ><a name="1650"
+      > </a
+      ><a name="1651" class="Symbol"
+      >:</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" class="Symbol"
+      >(</a
+      ><a name="1654" href="function.extensionality.proof.html#1654" class="Bound"
+      >x</a
+      ><a name="1655"
+      > </a
+      ><a name="1656" class="Symbol"
+      >:</a
+      ><a name="1657"
+      > </a
+      ><a name="1658" href="function.extensionality.proof.html#1509" class="Bound"
+      >X</a
+      ><a name="1659" class="Symbol"
+      >)</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" class="Symbol"
+      >&#8594;</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" href="function.extensionality.proof.html#1586" class="Function"
+      >C</a
+      ><a name="1664"
+      > </a
+      ><a name="1665" href="function.extensionality.proof.html#1654" class="Bound"
+      >x</a
+      ><a name="1666"
+      >
+        </a
+      ><a name="1675" href="function.extensionality.proof.html#1645" class="Function"
+      >f'</a
+      ><a name="1677"
+      > </a
+      ><a name="1678" href="function.extensionality.proof.html#1678" class="Bound"
+      >x</a
+      ><a name="1679"
+      > </a
+      ><a name="1680" class="Symbol"
+      >=</a
+      ><a name="1681"
+      > </a
+      ><a name="1682" class="Symbol"
+      >(</a
+      ><a name="1683" href="function.extensionality.proof.html#1523" class="Bound"
+      >f</a
+      ><a name="1684"
+      > </a
+      ><a name="1685" href="function.extensionality.proof.html#1678" class="Bound"
+      >x</a
+      ><a name="1686"
+      > </a
+      ><a name="1687" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1693" class="Symbol"
+      >)</a
+      ><a name="1694"
+      >
+        </a
+      ><a name="1703" href="function.extensionality.proof.html#1648" class="Function"
+      >g'</a
+      ><a name="1705"
+      > </a
+      ><a name="1706" href="function.extensionality.proof.html#1706" class="Bound"
+      >x</a
+      ><a name="1707"
+      > </a
+      ><a name="1708" class="Symbol"
+      >=</a
+      ><a name="1709"
+      > </a
+      ><a name="1710" class="Symbol"
+      >(</a
+      ><a name="1711" href="function.extensionality.proof.html#1530" class="Bound"
+      >g</a
+      ><a name="1712"
+      > </a
+      ><a name="1713" href="function.extensionality.proof.html#1706" class="Bound"
+      >x</a
+      ><a name="1714"
+      > </a
+      ><a name="1715" href="sum.html#203" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1716"
+      > </a
+      ><a name="1717" href="function.extensionality.proof.html#1533" class="Bound"
+      >h</a
+      ><a name="1718"
+      > </a
+      ><a name="1719" href="function.extensionality.proof.html#1706" class="Bound"
+      >x</a
+      ><a name="1720" class="Symbol"
+      >)</a
+      ><a name="1721"
+      >
+
+        </a
+      ><a name="1731" href="function.extensionality.proof.html#1731" class="Function"
+      >lem</a
+      ><a name="1734"
+      > </a
+      ><a name="1735" class="Symbol"
+      >:</a
+      ><a name="1736"
+      > </a
+      ><a name="1737" href="function.extensionality.proof.html#1645" class="Function"
+      >f'</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1741"
+      > </a
+      ><a name="1742" href="function.extensionality.proof.html#1648" class="Function"
+      >g'</a
+      ><a name="1744"
+      >
+        </a
+      ><a name="1753" href="function.extensionality.proof.html#1731" class="Function"
+      >lem</a
+      ><a name="1756"
+      > </a
+      ><a name="1757" class="Symbol"
+      >=</a
+      ><a name="1758"
+      > </a
+      ><a name="1759" href="hott.hlevel.core.html#1164" class="Function"
+      >contr&#8658;prop</a
+      ><a name="1769"
+      > </a
+      ><a name="1770" class="Symbol"
+      >(</a
+      ><a name="1771" href="function.extensionality.proof.html#1079" class="Function"
+      >&#928;-contr</a
+      ><a name="1778"
+      > </a
+      ><a name="1779" class="Symbol"
+      >(&#955;</a
+      ><a name="1781"
+      > </a
+      ><a name="1782" href="function.extensionality.proof.html#1782" class="Bound"
+      >x</a
+      ><a name="1783"
+      > </a
+      ><a name="1784" class="Symbol"
+      >&#8594;</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" href="hott.hlevel.core.html#1873" class="Function"
+      >singl-contr</a
+      ><a name="1797"
+      > </a
+      ><a name="1798" class="Symbol"
+      >(</a
+      ><a name="1799" href="function.extensionality.proof.html#1523" class="Bound"
+      >f</a
+      ><a name="1800"
+      > </a
+      ><a name="1801" href="function.extensionality.proof.html#1782" class="Bound"
+      >x</a
+      ><a name="1802" class="Symbol"
+      >)))</a
+      ><a name="1805"
+      > </a
+      ><a name="1806" href="function.extensionality.proof.html#1645" class="Function"
+      >f'</a
+      ><a name="1808"
+      > </a
+      ><a name="1809" href="function.extensionality.proof.html#1648" class="Function"
+      >g'</a
+      ><a name="1811"
+      >
+
+</a
+      ><a name="1813" class="Keyword"
+      >abstract</a
+      ><a name="1821"
+      >
+  </a
+      ><a name="1824" href="function.extensionality.proof.html#1824" class="Function"
+      >funext</a
+      ><a name="1830"
+      > </a
+      ><a name="1831" class="Symbol"
+      >:</a
+      ><a name="1832"
+      > </a
+      ><a name="1833" class="Symbol"
+      >&#8704;</a
+      ><a name="1834"
+      > </a
+      ><a name="1835" class="Symbol"
+      >{</a
+      ><a name="1836" href="function.extensionality.proof.html#1836" class="Bound"
+      >i</a
+      ><a name="1837"
+      > </a
+      ><a name="1838" href="function.extensionality.proof.html#1838" class="Bound"
+      >j</a
+      ><a name="1839" class="Symbol"
+      >}</a
+      ><a name="1840"
+      > </a
+      ><a name="1841" class="Symbol"
+      >&#8594;</a
+      ><a name="1842"
+      > </a
+      ><a name="1843" href="function.extensionality.core.html#329" class="Function"
+      >Extensionality'</a
+      ><a name="1858"
+      > </a
+      ><a name="1859" href="function.extensionality.proof.html#1836" class="Bound"
+      >i</a
+      ><a name="1860"
+      > </a
+      ><a name="1861" href="function.extensionality.proof.html#1838" class="Bound"
+      >j</a
+      ><a name="1862"
+      >
+  </a
+      ><a name="1865" href="function.extensionality.proof.html#1824" class="Function"
+      >funext</a
+      ><a name="1871"
+      > </a
+      ><a name="1872" href="function.extensionality.proof.html#1872" class="Bound"
+      >h</a
+      ><a name="1873"
+      > </a
+      ><a name="1874" class="Symbol"
+      >=</a
+      ><a name="1875"
+      > </a
+      ><a name="1876" href="function.extensionality.proof.html#1446" class="Function"
+      >funext&#8320;</a
+      ><a name="1883"
+      > </a
+      ><a name="1884" href="function.extensionality.proof.html#1872" class="Bound"
+      >h</a
+      ><a name="1885"
+      > </a
+      ><a name="1886" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="1887"
+      > </a
+      ><a name="1888" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1891"
+      > </a
+      ><a name="1892" class="Symbol"
+      >(</a
+      ><a name="1893" href="function.extensionality.proof.html#1446" class="Function"
+      >funext&#8320;</a
+      ><a name="1900"
+      > </a
+      ><a name="1901" class="Symbol"
+      >(&#955;</a
+      ><a name="1903"
+      > </a
+      ><a name="1904" href="function.extensionality.proof.html#1904" class="Bound"
+      >_</a
+      ><a name="1905"
+      > </a
+      ><a name="1906" class="Symbol"
+      >&#8594;</a
+      ><a name="1907"
+      > </a
+      ><a name="1908" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1912" class="Symbol"
+      >))</a
+      ><a name="1914"
+      >
+
+  </a
+      ><a name="1918" href="function.extensionality.proof.html#1918" class="Function"
+      >funext-id</a
+      ><a name="1927"
+      > </a
+      ><a name="1928" class="Symbol"
+      >:</a
+      ><a name="1929"
+      > </a
+      ><a name="1930" class="Symbol"
+      >&#8704;</a
+      ><a name="1931"
+      > </a
+      ><a name="1932" class="Symbol"
+      >{</a
+      ><a name="1933" href="function.extensionality.proof.html#1933" class="Bound"
+      >i</a
+      ><a name="1934"
+      > </a
+      ><a name="1935" href="function.extensionality.proof.html#1935" class="Bound"
+      >j</a
+      ><a name="1936" class="Symbol"
+      >}{</a
+      ><a name="1938" href="function.extensionality.proof.html#1938" class="Bound"
+      >X</a
+      ><a name="1939"
+      > </a
+      ><a name="1940" class="Symbol"
+      >:</a
+      ><a name="1941"
+      > </a
+      ><a name="1942" class="PrimitiveType"
+      >Set</a
+      ><a name="1945"
+      > </a
+      ><a name="1946" href="function.extensionality.proof.html#1933" class="Bound"
+      >i</a
+      ><a name="1947" class="Symbol"
+      >}{</a
+      ><a name="1949" href="function.extensionality.proof.html#1949" class="Bound"
+      >Y</a
+      ><a name="1950"
+      > </a
+      ><a name="1951" class="Symbol"
+      >:</a
+      ><a name="1952"
+      > </a
+      ><a name="1953" href="function.extensionality.proof.html#1938" class="Bound"
+      >X</a
+      ><a name="1954"
+      > </a
+      ><a name="1955" class="Symbol"
+      >&#8594;</a
+      ><a name="1956"
+      > </a
+      ><a name="1957" class="PrimitiveType"
+      >Set</a
+      ><a name="1960"
+      > </a
+      ><a name="1961" href="function.extensionality.proof.html#1935" class="Bound"
+      >j</a
+      ><a name="1962" class="Symbol"
+      >}</a
+      ><a name="1963"
+      >
+         </a
+      ><a name="1973" class="Symbol"
+      >&#8594;</a
+      ><a name="1974"
+      > </a
+      ><a name="1975" class="Symbol"
+      >(</a
+      ><a name="1976" href="function.extensionality.proof.html#1976" class="Bound"
+      >f</a
+      ><a name="1977"
+      > </a
+      ><a name="1978" class="Symbol"
+      >:</a
+      ><a name="1979"
+      > </a
+      ><a name="1980" class="Symbol"
+      >(</a
+      ><a name="1981" href="function.extensionality.proof.html#1981" class="Bound"
+      >x</a
+      ><a name="1982"
+      > </a
+      ><a name="1983" class="Symbol"
+      >:</a
+      ><a name="1984"
+      > </a
+      ><a name="1985" href="function.extensionality.proof.html#1938" class="Bound"
+      >X</a
+      ><a name="1986" class="Symbol"
+      >)</a
+      ><a name="1987"
+      > </a
+      ><a name="1988" class="Symbol"
+      >&#8594;</a
+      ><a name="1989"
+      > </a
+      ><a name="1990" href="function.extensionality.proof.html#1949" class="Bound"
+      >Y</a
+      ><a name="1991"
+      > </a
+      ><a name="1992" href="function.extensionality.proof.html#1981" class="Bound"
+      >x</a
+      ><a name="1993" class="Symbol"
+      >)</a
+      ><a name="1994"
+      >
+         </a
+      ><a name="2004" class="Symbol"
+      >&#8594;</a
+      ><a name="2005"
+      > </a
+      ><a name="2006" href="function.extensionality.proof.html#1824" class="Function"
+      >funext</a
+      ><a name="2012"
+      > </a
+      ><a name="2013" class="Symbol"
+      >(&#955;</a
+      ><a name="2015"
+      > </a
+      ><a name="2016" href="function.extensionality.proof.html#2016" class="Bound"
+      >x</a
+      ><a name="2017"
+      > </a
+      ><a name="2018" class="Symbol"
+      >&#8594;</a
+      ><a name="2019"
+      > </a
+      ><a name="2020" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2024"
+      > </a
+      ><a name="2025" class="Symbol"
+      >{</a
+      ><a name="2026"
+      >x </a
+      ><a name="2028" class="Symbol"
+      >=</a
+      ><a name="2029"
+      > </a
+      ><a name="2030" href="function.extensionality.proof.html#1976" class="Bound"
+      >f</a
+      ><a name="2031"
+      > </a
+      ><a name="2032" href="function.extensionality.proof.html#2016" class="Bound"
+      >x</a
+      ><a name="2033" class="Symbol"
+      >})</a
+      ><a name="2035"
+      > </a
+      ><a name="2036" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2037"
+      > </a
+      ><a name="2038" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2042"
+      >
+  </a
+      ><a name="2045" href="function.extensionality.proof.html#1918" class="Function"
+      >funext-id</a
+      ><a name="2054"
+      > </a
+      ><a name="2055" class="Symbol"
+      >_</a
+      ><a name="2056"
+      > </a
+      ><a name="2057" class="Symbol"
+      >=</a
+      ><a name="2058"
+      > </a
+      ><a name="2059" href="equality.groupoid.html#626" class="Function"
+      >left-inverse</a
+      ><a name="2071"
+      > </a
+      ><a name="2072" class="Symbol"
+      >(</a
+      ><a name="2073" href="function.extensionality.proof.html#1446" class="Function"
+      >funext&#8320;</a
+      ><a name="2080"
+      > </a
+      ><a name="2081" class="Symbol"
+      >(&#955;</a
+      ><a name="2083"
+      > </a
+      ><a name="2084" href="function.extensionality.proof.html#2084" class="Bound"
+      >_</a
+      ><a name="2085"
+      > </a
+      ><a name="2086" class="Symbol"
+      >&#8594;</a
+      ><a name="2087"
+      > </a
+      ><a name="2088" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2092" class="Symbol"
+      >))</a
+      ><a name="2094"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

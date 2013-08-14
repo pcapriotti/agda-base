@@ -582,996 +582,1001 @@
       >
 </a
       ><a name="5651" class="Comment"
-      >-- The principal subgraph is used for inheritance instance methods.  Namely, the</a
-      ><a name="5731"
+      >-- The principal subgraph is used for inheritance of instance methods.  Namely,</a
+      ><a name="5730"
       >
 </a
-      ><a name="5732" class="Comment"
-      >-- `as-target` record enables all instance methods for the ancestors of `Target`</a
-      ><a name="5812"
+      ><a name="5731" class="Comment"
+      >-- the `as-target` record enables all instance methods for the ancestors of</a
+      ><a name="5806"
       >
 </a
-      ><a name="5813" class="Comment"
-      >-- in the principal subgraph.  This is accomplished by simply re-exporting the</a
-      ><a name="5891"
+      ><a name="5807" class="Comment"
+      >-- `Target` in the principal subgraph.  This is accomplished by simply</a
+      ><a name="5877"
       >
 </a
-      ><a name="5892" class="Comment"
-      >-- `as-target` module for the immediate parent of `Target`. Extra edges coming</a
-      ><a name="5970"
+      ><a name="5878" class="Comment"
+      >-- re-exporting the `as-target` module for the immediate parent of</a
+      ><a name="5944"
       >
 </a
-      ><a name="5971" class="Comment"
-      >-- out of `Target` can optionally be added as well for convenience.</a
-      ><a name="6038"
+      ><a name="5945" class="Comment"
+      >-- `Target`. Extra edges coming out of `Target` can optionally be added as well</a
+      ><a name="6024"
       >
-
 </a
-      ><a name="6040" class="Keyword"
-      >open</a
+      ><a name="6025" class="Comment"
+      >-- for convenience.</a
       ><a name="6044"
-      > </a
-      ><a name="6045" class="Keyword"
-      >import</a
-      ><a name="6051"
-      > </a
-      ><a name="6052" href="level.html#1" class="Module"
-      >level</a
-      ><a name="6057"
-      >
-</a
-      ><a name="6058" class="Keyword"
-      >open</a
-      ><a name="6062"
-      > </a
-      ><a name="6063" class="Keyword"
-      >import</a
-      ><a name="6069"
-      > </a
-      ><a name="6070" href="overloading.bundle.html#1" class="Module"
-      >overloading.bundle</a
-      ><a name="6088"
       >
 
 </a
-      ><a name="6090" class="Keyword"
+      ><a name="6046" class="Keyword"
+      >open</a
+      ><a name="6050"
+      > </a
+      ><a name="6051" class="Keyword"
+      >import</a
+      ><a name="6057"
+      > </a
+      ><a name="6058" href="level.html#1" class="Module"
+      >level</a
+      ><a name="6063"
+      >
+</a
+      ><a name="6064" class="Keyword"
+      >open</a
+      ><a name="6068"
+      > </a
+      ><a name="6069" class="Keyword"
+      >import</a
+      ><a name="6075"
+      > </a
+      ><a name="6076" href="overloading.bundle.html#1" class="Module"
+      >overloading.bundle</a
+      ><a name="6094"
+      >
+
+</a
+      ><a name="6096" class="Keyword"
       >record</a
-      ><a name="6096"
+      ><a name="6102"
       > </a
-      ><a name="6097" href="overloading.core.html#6097" class="Record"
+      ><a name="6103" href="overloading.core.html#6103" class="Record"
       >Coercion</a
-      ><a name="6105"
+      ><a name="6111"
       > </a
-      ><a name="6106" class="Symbol"
+      ><a name="6112" class="Symbol"
       >{</a
-      ><a name="6107" href="overloading.core.html#6107" class="Bound"
-      >i</a
-      ><a name="6108" class="Symbol"
-      >}{</a
-      ><a name="6110" href="overloading.core.html#6110" class="Bound"
-      >j</a
-      ><a name="6111" class="Symbol"
-      >}(</a
       ><a name="6113" href="overloading.core.html#6113" class="Bound"
+      >i</a
+      ><a name="6114" class="Symbol"
+      >}{</a
+      ><a name="6116" href="overloading.core.html#6116" class="Bound"
+      >j</a
+      ><a name="6117" class="Symbol"
+      >}(</a
+      ><a name="6119" href="overloading.core.html#6119" class="Bound"
       >Source</a
-      ><a name="6119"
-      > </a
-      ><a name="6120" class="Symbol"
-      >:</a
-      ><a name="6121"
-      > </a
-      ><a name="6122" class="PrimitiveType"
-      >Set</a
       ><a name="6125"
       > </a
-      ><a name="6126" href="overloading.core.html#6107" class="Bound"
-      >i</a
-      ><a name="6127" class="Symbol"
-      >)(</a
-      ><a name="6129" href="overloading.core.html#6129" class="Bound"
-      >Target</a
-      ><a name="6135"
-      > </a
-      ><a name="6136" class="Symbol"
+      ><a name="6126" class="Symbol"
       >:</a
-      ><a name="6137"
+      ><a name="6127"
       > </a
-      ><a name="6138" class="PrimitiveType"
+      ><a name="6128" class="PrimitiveType"
       >Set</a
+      ><a name="6131"
+      > </a
+      ><a name="6132" href="overloading.core.html#6113" class="Bound"
+      >i</a
+      ><a name="6133" class="Symbol"
+      >)(</a
+      ><a name="6135" href="overloading.core.html#6135" class="Bound"
+      >Target</a
       ><a name="6141"
       > </a
-      ><a name="6142" href="overloading.core.html#6110" class="Bound"
-      >j</a
-      ><a name="6143" class="Symbol"
-      >)</a
-      ><a name="6144"
-      > </a
-      ><a name="6145" class="Symbol"
+      ><a name="6142" class="Symbol"
       >:</a
-      ><a name="6146"
+      ><a name="6143"
       > </a
-      ><a name="6147" class="PrimitiveType"
+      ><a name="6144" class="PrimitiveType"
       >Set</a
+      ><a name="6147"
+      > </a
+      ><a name="6148" href="overloading.core.html#6116" class="Bound"
+      >j</a
+      ><a name="6149" class="Symbol"
+      >)</a
       ><a name="6150"
       > </a
       ><a name="6151" class="Symbol"
-      >(</a
-      ><a name="6152" href="overloading.core.html#6107" class="Bound"
-      >i</a
-      ><a name="6153"
+      >:</a
+      ><a name="6152"
       > </a
-      ><a name="6154" href="level.html#131" class="Primitive Operator"
-      >&#8852;</a
-      ><a name="6155"
+      ><a name="6153" class="PrimitiveType"
+      >Set</a
+      ><a name="6156"
       > </a
-      ><a name="6156" href="overloading.core.html#6110" class="Bound"
-      >j</a
       ><a name="6157" class="Symbol"
+      >(</a
+      ><a name="6158" href="overloading.core.html#6113" class="Bound"
+      >i</a
+      ><a name="6159"
+      > </a
+      ><a name="6160" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="6161"
+      > </a
+      ><a name="6162" href="overloading.core.html#6116" class="Bound"
+      >j</a
+      ><a name="6163" class="Symbol"
       >)</a
-      ><a name="6158"
-      > </a
-      ><a name="6159" class="Keyword"
-      >where</a
       ><a name="6164"
-      >
-  </a
-      ><a name="6167" class="Keyword"
-      >constructor</a
-      ><a name="6178"
       > </a
-      ><a name="6179" href="overloading.core.html#6179" class="InductiveConstructor"
-      >coercion</a
-      ><a name="6187"
+      ><a name="6165" class="Keyword"
+      >where</a
+      ><a name="6170"
       >
   </a
-      ><a name="6190" class="Keyword"
+      ><a name="6173" class="Keyword"
+      >constructor</a
+      ><a name="6184"
+      > </a
+      ><a name="6185" href="overloading.core.html#6185" class="InductiveConstructor"
+      >coercion</a
+      ><a name="6193"
+      >
+  </a
+      ><a name="6196" class="Keyword"
       >field</a
-      ><a name="6195"
+      ><a name="6201"
       >
     </a
-      ><a name="6200" href="overloading.core.html#6200" class="Field"
+      ><a name="6206" href="overloading.core.html#6206" class="Field"
       >coerce</a
-      ><a name="6206"
+      ><a name="6212"
       > </a
-      ><a name="6207" class="Symbol"
+      ><a name="6213" class="Symbol"
       >:</a
-      ><a name="6208"
+      ><a name="6214"
       > </a
-      ><a name="6209" href="overloading.core.html#6113" class="Bound"
+      ><a name="6215" href="overloading.core.html#6119" class="Bound"
       >Source</a
-      ><a name="6215"
+      ><a name="6221"
       > </a
-      ><a name="6216" class="Symbol"
+      ><a name="6222" class="Symbol"
       >&#8594;</a
-      ><a name="6217"
+      ><a name="6223"
       > </a
-      ><a name="6218" href="overloading.core.html#6129" class="Bound"
+      ><a name="6224" href="overloading.core.html#6135" class="Bound"
       >Target</a
-      ><a name="6224"
+      ><a name="6230"
       >
 </a
-      ><a name="6225" class="Keyword"
+      ><a name="6231" class="Keyword"
       >open</a
-      ><a name="6229"
+      ><a name="6235"
       > </a
-      ><a name="6230" href="overloading.core.html#6097" class="Module"
+      ><a name="6236" href="overloading.core.html#6103" class="Module"
       >Coercion</a
-      ><a name="6238"
+      ><a name="6244"
       > </a
-      ><a name="6239" class="Keyword"
+      ><a name="6245" class="Keyword"
       >public</a
-      ><a name="6245"
+      ><a name="6251"
       >
 
 </a
-      ><a name="6247" class="Keyword"
+      ><a name="6253" class="Keyword"
       >data</a
-      ><a name="6251"
-      > </a
-      ><a name="6252" href="overloading.core.html#6252" class="Datatype"
-      >Style</a
       ><a name="6257"
       > </a
-      ><a name="6258" class="Symbol"
-      >:</a
-      ><a name="6259"
-      > </a
-      ><a name="6260" class="PrimitiveType"
-      >Set</a
+      ><a name="6258" href="overloading.core.html#6258" class="Datatype"
+      >Style</a
       ><a name="6263"
       > </a
-      ><a name="6264" class="Keyword"
-      >where</a
+      ><a name="6264" class="Symbol"
+      >:</a
+      ><a name="6265"
+      > </a
+      ><a name="6266" class="PrimitiveType"
+      >Set</a
       ><a name="6269"
       > </a
-      ><a name="6270" href="overloading.core.html#6270" class="InductiveConstructor"
+      ><a name="6270" class="Keyword"
+      >where</a
+      ><a name="6275"
+      > </a
+      ><a name="6276" href="overloading.core.html#6276" class="InductiveConstructor"
       >default</a
-      ><a name="6277"
+      ><a name="6283"
       > </a
-      ><a name="6278" class="Symbol"
+      ><a name="6284" class="Symbol"
       >:</a
-      ><a name="6279"
-      > </a
-      ><a name="6280" href="overloading.core.html#6252" class="Datatype"
-      >Style</a
       ><a name="6285"
+      > </a
+      ><a name="6286" href="overloading.core.html#6258" class="Datatype"
+      >Style</a
+      ><a name="6291"
       >
 
 </a
-      ><a name="6287" class="Keyword"
+      ><a name="6293" class="Keyword"
       >record</a
-      ><a name="6293"
+      ><a name="6299"
       > </a
-      ><a name="6294" href="overloading.core.html#6294" class="Record"
+      ><a name="6300" href="overloading.core.html#6300" class="Record"
       >Styled</a
-      ><a name="6300"
+      ><a name="6306"
       > </a
-      ><a name="6301" class="Symbol"
+      ><a name="6307" class="Symbol"
       >{</a
-      ><a name="6302" href="overloading.core.html#6302" class="Bound"
+      ><a name="6308" href="overloading.core.html#6308" class="Bound"
       >i</a
-      ><a name="6303" class="Symbol"
+      ><a name="6309" class="Symbol"
       >}(</a
-      ><a name="6305" href="overloading.core.html#6305" class="Bound"
+      ><a name="6311" href="overloading.core.html#6311" class="Bound"
       >style</a
-      ><a name="6310"
+      ><a name="6316"
       > </a
-      ><a name="6311" class="Symbol"
+      ><a name="6317" class="Symbol"
       >:</a
-      ><a name="6312"
+      ><a name="6318"
       > </a
-      ><a name="6313" href="overloading.core.html#6252" class="Datatype"
+      ><a name="6319" href="overloading.core.html#6258" class="Datatype"
       >Style</a
-      ><a name="6318" class="Symbol"
+      ><a name="6324" class="Symbol"
       >)(</a
-      ><a name="6320" href="overloading.core.html#6320" class="Bound"
+      ><a name="6326" href="overloading.core.html#6326" class="Bound"
       >X</a
-      ><a name="6321"
-      > </a
-      ><a name="6322" class="Symbol"
-      >:</a
-      ><a name="6323"
-      > </a
-      ><a name="6324" class="PrimitiveType"
-      >Set</a
       ><a name="6327"
       > </a
-      ><a name="6328" href="overloading.core.html#6302" class="Bound"
-      >i</a
-      ><a name="6329" class="Symbol"
-      >)</a
-      ><a name="6330"
-      > </a
-      ><a name="6331" class="Symbol"
+      ><a name="6328" class="Symbol"
       >:</a
-      ><a name="6332"
+      ><a name="6329"
       > </a
-      ><a name="6333" class="PrimitiveType"
+      ><a name="6330" class="PrimitiveType"
       >Set</a
+      ><a name="6333"
+      > </a
+      ><a name="6334" href="overloading.core.html#6308" class="Bound"
+      >i</a
+      ><a name="6335" class="Symbol"
+      >)</a
       ><a name="6336"
       > </a
-      ><a name="6337" href="overloading.core.html#6302" class="Bound"
-      >i</a
+      ><a name="6337" class="Symbol"
+      >:</a
       ><a name="6338"
       > </a
-      ><a name="6339" class="Keyword"
-      >where</a
+      ><a name="6339" class="PrimitiveType"
+      >Set</a
+      ><a name="6342"
+      > </a
+      ><a name="6343" href="overloading.core.html#6308" class="Bound"
+      >i</a
       ><a name="6344"
+      > </a
+      ><a name="6345" class="Keyword"
+      >where</a
+      ><a name="6350"
       >
   </a
-      ><a name="6347" class="Keyword"
+      ><a name="6353" class="Keyword"
       >field</a
-      ><a name="6352"
-      > </a
-      ><a name="6353" href="overloading.core.html#6353" class="Field"
-      >value</a
       ><a name="6358"
       > </a
-      ><a name="6359" class="Symbol"
-      >:</a
-      ><a name="6360"
+      ><a name="6359" href="overloading.core.html#6359" class="Field"
+      >value</a
+      ><a name="6364"
       > </a
-      ><a name="6361" href="overloading.core.html#6320" class="Bound"
+      ><a name="6365" class="Symbol"
+      >:</a
+      ><a name="6366"
+      > </a
+      ><a name="6367" href="overloading.core.html#6326" class="Bound"
       >X</a
-      ><a name="6362"
+      ><a name="6368"
       >
 
 </a
-      ><a name="6364" href="overloading.core.html#6364" class="Function"
+      ><a name="6370" href="overloading.core.html#6370" class="Function"
       >styled</a
-      ><a name="6370"
+      ><a name="6376"
       > </a
-      ><a name="6371" class="Symbol"
-      >:</a
-      ><a name="6372"
-      > </a
-      ><a name="6373" class="Symbol"
-      >&#8704;</a
-      ><a name="6374"
-      > </a
-      ><a name="6375" class="Symbol"
-      >{</a
-      ><a name="6376" href="overloading.core.html#6376" class="Bound"
-      >i</a
       ><a name="6377" class="Symbol"
-      >}{</a
-      ><a name="6379" href="overloading.core.html#6379" class="Bound"
-      >X</a
+      >:</a
+      ><a name="6378"
+      > </a
+      ><a name="6379" class="Symbol"
+      >&#8704;</a
       ><a name="6380"
       > </a
       ><a name="6381" class="Symbol"
-      >:</a
-      ><a name="6382"
-      > </a
-      ><a name="6383" class="PrimitiveType"
-      >Set</a
+      >{</a
+      ><a name="6382" href="overloading.core.html#6382" class="Bound"
+      >i</a
+      ><a name="6383" class="Symbol"
+      >}{</a
+      ><a name="6385" href="overloading.core.html#6385" class="Bound"
+      >X</a
       ><a name="6386"
       > </a
-      ><a name="6387" href="overloading.core.html#6376" class="Bound"
-      >i</a
-      ><a name="6388" class="Symbol"
-      >}</a
-      ><a name="6389"
-      > </a
-      ><a name="6390" class="Symbol"
-      >&#8594;</a
-      ><a name="6391"
-      > </a
-      ><a name="6392" class="Symbol"
-      >(</a
-      ><a name="6393" href="overloading.core.html#6393" class="Bound"
-      >s</a
-      ><a name="6394"
-      > </a
-      ><a name="6395" class="Symbol"
+      ><a name="6387" class="Symbol"
       >:</a
-      ><a name="6396"
+      ><a name="6388"
       > </a
-      ><a name="6397" href="overloading.core.html#6252" class="Datatype"
+      ><a name="6389" class="PrimitiveType"
+      >Set</a
+      ><a name="6392"
+      > </a
+      ><a name="6393" href="overloading.core.html#6382" class="Bound"
+      >i</a
+      ><a name="6394" class="Symbol"
+      >}</a
+      ><a name="6395"
+      > </a
+      ><a name="6396" class="Symbol"
+      >&#8594;</a
+      ><a name="6397"
+      > </a
+      ><a name="6398" class="Symbol"
+      >(</a
+      ><a name="6399" href="overloading.core.html#6399" class="Bound"
+      >s</a
+      ><a name="6400"
+      > </a
+      ><a name="6401" class="Symbol"
+      >:</a
+      ><a name="6402"
+      > </a
+      ><a name="6403" href="overloading.core.html#6258" class="Datatype"
       >Style</a
-      ><a name="6402" class="Symbol"
-      >)</a
-      ><a name="6403"
-      > </a
-      ><a name="6404" class="Symbol"
-      >&#8594;</a
-      ><a name="6405"
-      > </a
-      ><a name="6406" href="overloading.core.html#6379" class="Bound"
-      >X</a
-      ><a name="6407"
-      > </a
       ><a name="6408" class="Symbol"
-      >&#8594;</a
+      >)</a
       ><a name="6409"
       > </a
-      ><a name="6410" href="overloading.core.html#6294" class="Record"
-      >Styled</a
-      ><a name="6416"
+      ><a name="6410" class="Symbol"
+      >&#8594;</a
+      ><a name="6411"
       > </a
-      ><a name="6417" href="overloading.core.html#6393" class="Bound"
-      >s</a
-      ><a name="6418"
-      > </a
-      ><a name="6419" href="overloading.core.html#6379" class="Bound"
+      ><a name="6412" href="overloading.core.html#6385" class="Bound"
       >X</a
-      ><a name="6420"
+      ><a name="6413"
+      > </a
+      ><a name="6414" class="Symbol"
+      >&#8594;</a
+      ><a name="6415"
+      > </a
+      ><a name="6416" href="overloading.core.html#6300" class="Record"
+      >Styled</a
+      ><a name="6422"
+      > </a
+      ><a name="6423" href="overloading.core.html#6399" class="Bound"
+      >s</a
+      ><a name="6424"
+      > </a
+      ><a name="6425" href="overloading.core.html#6385" class="Bound"
+      >X</a
+      ><a name="6426"
       >
 </a
-      ><a name="6421" href="overloading.core.html#6364" class="Function"
+      ><a name="6427" href="overloading.core.html#6370" class="Function"
       >styled</a
-      ><a name="6427"
-      > </a
-      ><a name="6428" href="overloading.core.html#6428" class="Bound"
-      >s</a
-      ><a name="6429"
-      > </a
-      ><a name="6430" href="overloading.core.html#6430" class="Bound"
-      >x</a
-      ><a name="6431"
-      > </a
-      ><a name="6432" class="Symbol"
-      >=</a
       ><a name="6433"
       > </a
-      ><a name="6434" class="Keyword"
+      ><a name="6434" href="overloading.core.html#6434" class="Bound"
+      >s</a
+      ><a name="6435"
+      > </a
+      ><a name="6436" href="overloading.core.html#6436" class="Bound"
+      >x</a
+      ><a name="6437"
+      > </a
+      ><a name="6438" class="Symbol"
+      >=</a
+      ><a name="6439"
+      > </a
+      ><a name="6440" class="Keyword"
       >record</a
-      ><a name="6440"
+      ><a name="6446"
       > </a
-      ><a name="6441" class="Symbol"
+      ><a name="6447" class="Symbol"
       >{</a
-      ><a name="6442"
-      > </a
-      ><a name="6443" class="Field"
-      >value</a
       ><a name="6448"
       > </a
-      ><a name="6449" class="Symbol"
-      >=</a
-      ><a name="6450"
-      > </a
-      ><a name="6451" href="overloading.core.html#6430" class="Bound"
-      >x</a
-      ><a name="6452"
-      > </a
-      ><a name="6453" class="Symbol"
-      >}</a
+      ><a name="6449" class="Field"
+      >value</a
       ><a name="6454"
+      > </a
+      ><a name="6455" class="Symbol"
+      >=</a
+      ><a name="6456"
+      > </a
+      ><a name="6457" href="overloading.core.html#6436" class="Bound"
+      >x</a
+      ><a name="6458"
+      > </a
+      ><a name="6459" class="Symbol"
+      >}</a
+      ><a name="6460"
       >
 
 </a
-      ><a name="6456" class="Comment"
+      ><a name="6462" class="Comment"
       >-- Trivial coercion: any type can be coerced into itself.</a
-      ><a name="6513"
+      ><a name="6519"
       >
 </a
-      ><a name="6514" href="overloading.core.html#6514" class="Function"
+      ><a name="6520" href="overloading.core.html#6520" class="Function"
       >coerce-self</a
-      ><a name="6525"
+      ><a name="6531"
       > </a
-      ><a name="6526" class="Symbol"
-      >:</a
-      ><a name="6527"
-      > </a
-      ><a name="6528" class="Symbol"
-      >&#8704;</a
-      ><a name="6529"
-      > </a
-      ><a name="6530" class="Symbol"
-      >{</a
-      ><a name="6531" href="overloading.core.html#6531" class="Bound"
-      >i</a
       ><a name="6532" class="Symbol"
-      >}</a
+      >:</a
       ><a name="6533"
       > </a
       ><a name="6534" class="Symbol"
+      >&#8704;</a
+      ><a name="6535"
+      > </a
+      ><a name="6536" class="Symbol"
+      >{</a
+      ><a name="6537" href="overloading.core.html#6537" class="Bound"
+      >i</a
+      ><a name="6538" class="Symbol"
+      >}</a
+      ><a name="6539"
+      > </a
+      ><a name="6540" class="Symbol"
       >(</a
-      ><a name="6535" href="overloading.core.html#6535" class="Bound"
+      ><a name="6541" href="overloading.core.html#6541" class="Bound"
       >X</a
-      ><a name="6536"
-      > </a
-      ><a name="6537" class="Symbol"
-      >:</a
-      ><a name="6538"
-      > </a
-      ><a name="6539" class="PrimitiveType"
-      >Set</a
       ><a name="6542"
       > </a
-      ><a name="6543" href="overloading.core.html#6531" class="Bound"
+      ><a name="6543" class="Symbol"
+      >:</a
+      ><a name="6544"
+      > </a
+      ><a name="6545" class="PrimitiveType"
+      >Set</a
+      ><a name="6548"
+      > </a
+      ><a name="6549" href="overloading.core.html#6537" class="Bound"
       >i</a
-      ><a name="6544" class="Symbol"
+      ><a name="6550" class="Symbol"
       >)</a
-      ><a name="6545"
+      ><a name="6551"
       > </a
-      ><a name="6546" class="Symbol"
+      ><a name="6552" class="Symbol"
       >&#8594;</a
-      ><a name="6547"
+      ><a name="6553"
       > </a
-      ><a name="6548" href="overloading.core.html#6097" class="Record"
+      ><a name="6554" href="overloading.core.html#6103" class="Record"
       >Coercion</a
-      ><a name="6556"
+      ><a name="6562"
       > </a
-      ><a name="6557" href="overloading.core.html#6535" class="Bound"
+      ><a name="6563" href="overloading.core.html#6541" class="Bound"
       >X</a
-      ><a name="6558"
+      ><a name="6564"
       > </a
-      ><a name="6559" href="overloading.core.html#6535" class="Bound"
+      ><a name="6565" href="overloading.core.html#6541" class="Bound"
       >X</a
-      ><a name="6560"
+      ><a name="6566"
       >
 </a
-      ><a name="6561" href="overloading.core.html#6514" class="Function"
+      ><a name="6567" href="overloading.core.html#6520" class="Function"
       >coerce-self</a
-      ><a name="6572"
-      > </a
-      ><a name="6573" class="Symbol"
-      >{</a
-      ><a name="6574" href="overloading.core.html#6574" class="Bound"
-      >i</a
-      ><a name="6575" class="Symbol"
-      >}</a
-      ><a name="6576"
-      > </a
-      ><a name="6577" class="Symbol"
-      >_</a
       ><a name="6578"
       > </a
       ><a name="6579" class="Symbol"
-      >=</a
-      ><a name="6580"
+      >{</a
+      ><a name="6580" href="overloading.core.html#6580" class="Bound"
+      >i</a
+      ><a name="6581" class="Symbol"
+      >}</a
+      ><a name="6582"
       > </a
-      ><a name="6581" class="Keyword"
+      ><a name="6583" class="Symbol"
+      >_</a
+      ><a name="6584"
+      > </a
+      ><a name="6585" class="Symbol"
+      >=</a
+      ><a name="6586"
+      > </a
+      ><a name="6587" class="Keyword"
       >record</a
-      ><a name="6587"
+      ><a name="6593"
       >
   </a
-      ><a name="6590" class="Symbol"
+      ><a name="6596" class="Symbol"
       >{</a
-      ><a name="6591"
+      ><a name="6597"
       > </a
-      ><a name="6592" class="Field"
+      ><a name="6598" class="Field"
       >coerce</a
-      ><a name="6598"
-      > </a
-      ><a name="6599" class="Symbol"
-      >=</a
-      ><a name="6600"
-      > </a
-      ><a name="6601" class="Symbol"
-      >&#955;</a
-      ><a name="6602"
-      > </a
-      ><a name="6603" href="overloading.core.html#6603" class="Bound"
-      >x</a
       ><a name="6604"
       > </a
       ><a name="6605" class="Symbol"
-      >&#8594;</a
+      >=</a
       ><a name="6606"
       > </a
-      ><a name="6607" href="overloading.core.html#6603" class="Bound"
-      >x</a
+      ><a name="6607" class="Symbol"
+      >&#955;</a
       ><a name="6608"
       > </a
-      ><a name="6609" class="Symbol"
-      >}</a
+      ><a name="6609" href="overloading.core.html#6609" class="Bound"
+      >x</a
       ><a name="6610"
+      > </a
+      ><a name="6611" class="Symbol"
+      >&#8594;</a
+      ><a name="6612"
+      > </a
+      ><a name="6613" href="overloading.core.html#6609" class="Bound"
+      >x</a
+      ><a name="6614"
+      > </a
+      ><a name="6615" class="Symbol"
+      >}</a
+      ><a name="6616"
       >
 
 </a
-      ><a name="6612" class="Comment"
+      ><a name="6618" class="Comment"
       >-- Transport a coercion to a `Bundle` subtype.  See `overloading.bundle` for</a
-      ><a name="6688"
+      ><a name="6694"
       >
 </a
-      ><a name="6689" class="Comment"
+      ><a name="6695" class="Comment"
       >-- more details on bundles.</a
-      ><a name="6716"
+      ><a name="6722"
       >
 </a
-      ><a name="6717" href="overloading.core.html#6717" class="Function"
+      ><a name="6723" href="overloading.core.html#6723" class="Function"
       >coerce-parent</a
-      ><a name="6730"
+      ><a name="6736"
       > </a
-      ><a name="6731" class="Symbol"
+      ><a name="6737" class="Symbol"
       >:</a
-      ><a name="6732"
+      ><a name="6738"
       > </a
-      ><a name="6733" class="Symbol"
+      ><a name="6739" class="Symbol"
       >&#8704;</a
-      ><a name="6734"
+      ><a name="6740"
       > </a
-      ><a name="6735" class="Symbol"
-      >{</a
-      ><a name="6736" href="overloading.core.html#6736" class="Bound"
-      >i</a
-      ><a name="6737"
-      > </a
-      ><a name="6738" href="overloading.core.html#6738" class="Bound"
-      >j</a
-      ><a name="6739"
-      > </a
-      ><a name="6740" href="overloading.core.html#6740" class="Bound"
-      >k</a
       ><a name="6741" class="Symbol"
+      >{</a
+      ><a name="6742" href="overloading.core.html#6742" class="Bound"
+      >i</a
+      ><a name="6743"
+      > </a
+      ><a name="6744" href="overloading.core.html#6744" class="Bound"
+      >j</a
+      ><a name="6745"
+      > </a
+      ><a name="6746" href="overloading.core.html#6746" class="Bound"
+      >k</a
+      ><a name="6747" class="Symbol"
       >}</a
-      ><a name="6742"
+      ><a name="6748"
       >
                 </a
-      ><a name="6759" class="Symbol"
+      ><a name="6765" class="Symbol"
       >{</a
-      ><a name="6760" href="overloading.core.html#6760" class="Bound"
+      ><a name="6766" href="overloading.core.html#6766" class="Bound"
       >X</a
-      ><a name="6761"
-      > </a
-      ><a name="6762" class="Symbol"
-      >:</a
-      ><a name="6763"
-      > </a
-      ><a name="6764" class="PrimitiveType"
-      >Set</a
       ><a name="6767"
       > </a
-      ><a name="6768" href="overloading.core.html#6736" class="Bound"
+      ><a name="6768" class="Symbol"
+      >:</a
+      ><a name="6769"
+      > </a
+      ><a name="6770" class="PrimitiveType"
+      >Set</a
+      ><a name="6773"
+      > </a
+      ><a name="6774" href="overloading.core.html#6742" class="Bound"
       >i</a
-      ><a name="6769" class="Symbol"
+      ><a name="6775" class="Symbol"
       >}</a
-      ><a name="6770"
+      ><a name="6776"
       >
                 </a
-      ><a name="6787" class="Symbol"
+      ><a name="6793" class="Symbol"
       >{</a
-      ><a name="6788" href="overloading.core.html#6788" class="Bound"
+      ><a name="6794" href="overloading.core.html#6794" class="Bound"
       >Y</a
-      ><a name="6789"
-      > </a
-      ><a name="6790" class="Symbol"
-      >:</a
-      ><a name="6791"
-      > </a
-      ><a name="6792" class="PrimitiveType"
-      >Set</a
       ><a name="6795"
       > </a
-      ><a name="6796" href="overloading.core.html#6738" class="Bound"
+      ><a name="6796" class="Symbol"
+      >:</a
+      ><a name="6797"
+      > </a
+      ><a name="6798" class="PrimitiveType"
+      >Set</a
+      ><a name="6801"
+      > </a
+      ><a name="6802" href="overloading.core.html#6744" class="Bound"
       >j</a
-      ><a name="6797" class="Symbol"
+      ><a name="6803" class="Symbol"
       >}</a
-      ><a name="6798"
+      ><a name="6804"
       >
               </a
-      ><a name="6813" class="Symbol"
-      >&#8594;</a
-      ><a name="6814"
-      > </a
-      ><a name="6815" class="Symbol"
-      >&#10627;</a
-      ><a name="6816"
-      > </a
-      ><a name="6817" href="overloading.core.html#6817" class="Bound"
-      >c</a
-      ><a name="6818"
-      > </a
       ><a name="6819" class="Symbol"
-      >:</a
+      >&#8594;</a
       ><a name="6820"
       > </a
-      ><a name="6821" href="overloading.core.html#6097" class="Record"
+      ><a name="6821" class="Symbol"
+      >&#10627;</a
+      ><a name="6822"
+      > </a
+      ><a name="6823" href="overloading.core.html#6823" class="Bound"
+      >c</a
+      ><a name="6824"
+      > </a
+      ><a name="6825" class="Symbol"
+      >:</a
+      ><a name="6826"
+      > </a
+      ><a name="6827" href="overloading.core.html#6103" class="Record"
       >Coercion</a
-      ><a name="6829"
-      > </a
-      ><a name="6830" href="overloading.core.html#6760" class="Bound"
-      >X</a
-      ><a name="6831"
-      > </a
-      ><a name="6832" href="overloading.core.html#6788" class="Bound"
-      >Y</a
-      ><a name="6833"
-      > </a
-      ><a name="6834" class="Symbol"
-      >&#10628;</a
       ><a name="6835"
+      > </a
+      ><a name="6836" href="overloading.core.html#6766" class="Bound"
+      >X</a
+      ><a name="6837"
+      > </a
+      ><a name="6838" href="overloading.core.html#6794" class="Bound"
+      >Y</a
+      ><a name="6839"
+      > </a
+      ><a name="6840" class="Symbol"
+      >&#10628;</a
+      ><a name="6841"
       >
               </a
-      ><a name="6850" class="Symbol"
+      ><a name="6856" class="Symbol"
       >&#8594;</a
-      ><a name="6851"
+      ><a name="6857"
       > </a
-      ><a name="6852" class="Symbol"
+      ><a name="6858" class="Symbol"
       >{</a
-      ><a name="6853" href="overloading.core.html#6853" class="Bound"
+      ><a name="6859" href="overloading.core.html#6859" class="Bound"
       >Struct</a
-      ><a name="6859"
-      > </a
-      ><a name="6860" class="Symbol"
-      >:</a
-      ><a name="6861"
-      > </a
-      ><a name="6862" href="overloading.core.html#6760" class="Bound"
-      >X</a
-      ><a name="6863"
-      > </a
-      ><a name="6864" class="Symbol"
-      >&#8594;</a
       ><a name="6865"
       > </a
-      ><a name="6866" class="PrimitiveType"
-      >Set</a
+      ><a name="6866" class="Symbol"
+      >:</a
+      ><a name="6867"
+      > </a
+      ><a name="6868" href="overloading.core.html#6766" class="Bound"
+      >X</a
       ><a name="6869"
       > </a
-      ><a name="6870" href="overloading.core.html#6740" class="Bound"
+      ><a name="6870" class="Symbol"
+      >&#8594;</a
+      ><a name="6871"
+      > </a
+      ><a name="6872" class="PrimitiveType"
+      >Set</a
+      ><a name="6875"
+      > </a
+      ><a name="6876" href="overloading.core.html#6746" class="Bound"
       >k</a
-      ><a name="6871" class="Symbol"
+      ><a name="6877" class="Symbol"
       >}</a
-      ><a name="6872"
+      ><a name="6878"
       >
               </a
-      ><a name="6887" class="Symbol"
+      ><a name="6893" class="Symbol"
       >&#8594;</a
-      ><a name="6888"
+      ><a name="6894"
       > </a
-      ><a name="6889" href="overloading.core.html#6097" class="Record"
+      ><a name="6895" href="overloading.core.html#6103" class="Record"
       >Coercion</a
-      ><a name="6897"
+      ><a name="6903"
       > </a
-      ><a name="6898" class="Symbol"
+      ><a name="6904" class="Symbol"
       >(</a
-      ><a name="6899" href="overloading.bundle.html#88" class="Record"
+      ><a name="6905" href="overloading.bundle.html#88" class="Record"
       >Bundle</a
-      ><a name="6905"
+      ><a name="6911"
       > </a
-      ><a name="6906" href="overloading.core.html#6853" class="Bound"
+      ><a name="6912" href="overloading.core.html#6859" class="Bound"
       >Struct</a
-      ><a name="6912" class="Symbol"
+      ><a name="6918" class="Symbol"
       >)</a
-      ><a name="6913"
+      ><a name="6919"
       > </a
-      ><a name="6914" href="overloading.core.html#6788" class="Bound"
+      ><a name="6920" href="overloading.core.html#6794" class="Bound"
       >Y</a
-      ><a name="6915"
+      ><a name="6921"
       >
 </a
-      ><a name="6916" href="overloading.core.html#6717" class="Function"
+      ><a name="6922" href="overloading.core.html#6723" class="Function"
       >coerce-parent</a
-      ><a name="6929"
-      > </a
-      ><a name="6930" class="Symbol"
-      >&#10627;</a
-      ><a name="6931"
-      > </a
-      ><a name="6932" href="overloading.core.html#6932" class="Bound"
-      >c</a
-      ><a name="6933"
-      > </a
-      ><a name="6934" class="Symbol"
-      >&#10628;</a
       ><a name="6935"
       > </a
       ><a name="6936" class="Symbol"
-      >=</a
+      >&#10627;</a
       ><a name="6937"
       > </a
-      ><a name="6938" class="Keyword"
+      ><a name="6938" href="overloading.core.html#6938" class="Bound"
+      >c</a
+      ><a name="6939"
+      > </a
+      ><a name="6940" class="Symbol"
+      >&#10628;</a
+      ><a name="6941"
+      > </a
+      ><a name="6942" class="Symbol"
+      >=</a
+      ><a name="6943"
+      > </a
+      ><a name="6944" class="Keyword"
       >record</a
-      ><a name="6944"
+      ><a name="6950"
       >
   </a
-      ><a name="6947" class="Symbol"
+      ><a name="6953" class="Symbol"
       >{</a
-      ><a name="6948"
+      ><a name="6954"
       > </a
-      ><a name="6949" class="Field"
+      ><a name="6955" class="Field"
       >coerce</a
-      ><a name="6955"
-      > </a
-      ><a name="6956" class="Symbol"
-      >=</a
-      ><a name="6957"
-      > </a
-      ><a name="6958" class="Symbol"
-      >&#955;</a
-      ><a name="6959"
-      > </a
-      ><a name="6960" href="overloading.core.html#6960" class="Bound"
-      >x</a
       ><a name="6961"
       > </a
       ><a name="6962" class="Symbol"
-      >&#8594;</a
+      >=</a
       ><a name="6963"
       > </a
-      ><a name="6964" href="overloading.core.html#6200" class="Function"
-      >coerce</a
-      ><a name="6970"
+      ><a name="6964" class="Symbol"
+      >&#955;</a
+      ><a name="6965"
       > </a
-      ><a name="6971" href="overloading.core.html#6932" class="Bound"
-      >c</a
-      ><a name="6972"
-      > </a
-      ><a name="6973" class="Symbol"
-      >(</a
-      ><a name="6974" href="overloading.bundle.html#220" class="Function"
-      >Bundle.parent</a
-      ><a name="6987"
-      > </a
-      ><a name="6988" href="overloading.core.html#6960" class="Bound"
+      ><a name="6966" href="overloading.core.html#6966" class="Bound"
       >x</a
-      ><a name="6989" class="Symbol"
-      >)</a
-      ><a name="6990"
+      ><a name="6967"
       > </a
-      ><a name="6991" class="Symbol"
+      ><a name="6968" class="Symbol"
+      >&#8594;</a
+      ><a name="6969"
+      > </a
+      ><a name="6970" href="overloading.core.html#6206" class="Function"
+      >coerce</a
+      ><a name="6976"
+      > </a
+      ><a name="6977" href="overloading.core.html#6938" class="Bound"
+      >c</a
+      ><a name="6978"
+      > </a
+      ><a name="6979" class="Symbol"
+      >(</a
+      ><a name="6980" href="overloading.bundle.html#220" class="Function"
+      >Bundle.parent</a
+      ><a name="6993"
+      > </a
+      ><a name="6994" href="overloading.core.html#6966" class="Bound"
+      >x</a
+      ><a name="6995" class="Symbol"
+      >)</a
+      ><a name="6996"
+      > </a
+      ><a name="6997" class="Symbol"
       >}</a
-      ><a name="6992"
+      ><a name="6998"
       >
 
 </a
-      ><a name="6994" href="overloading.core.html#6994" class="Function"
+      ><a name="7000" href="overloading.core.html#7000" class="Function"
       >set-is-set</a
-      ><a name="7004"
+      ><a name="7010"
       > </a
-      ><a name="7005" class="Symbol"
-      >:</a
-      ><a name="7006"
-      > </a
-      ><a name="7007" class="Symbol"
-      >&#8704;</a
-      ><a name="7008"
-      > </a
-      ><a name="7009" class="Symbol"
-      >{</a
-      ><a name="7010" href="overloading.core.html#7010" class="Bound"
-      >i</a
       ><a name="7011" class="Symbol"
-      >}</a
+      >:</a
       ><a name="7012"
       > </a
       ><a name="7013" class="Symbol"
-      >&#8594;</a
+      >&#8704;</a
       ><a name="7014"
       > </a
-      ><a name="7015" href="overloading.core.html#6097" class="Record"
+      ><a name="7015" class="Symbol"
+      >{</a
+      ><a name="7016" href="overloading.core.html#7016" class="Bound"
+      >i</a
+      ><a name="7017" class="Symbol"
+      >}</a
+      ><a name="7018"
+      > </a
+      ><a name="7019" class="Symbol"
+      >&#8594;</a
+      ><a name="7020"
+      > </a
+      ><a name="7021" href="overloading.core.html#6103" class="Record"
       >Coercion</a
-      ><a name="7023"
+      ><a name="7029"
       > </a
-      ><a name="7024" class="Symbol"
-      >(</a
-      ><a name="7025" class="PrimitiveType"
-      >Set</a
-      ><a name="7028"
-      > </a
-      ><a name="7029" href="overloading.core.html#7010" class="Bound"
-      >i</a
       ><a name="7030" class="Symbol"
-      >)</a
-      ><a name="7031"
-      > </a
-      ><a name="7032" class="Symbol"
       >(</a
-      ><a name="7033" class="PrimitiveType"
+      ><a name="7031" class="PrimitiveType"
       >Set</a
-      ><a name="7036"
+      ><a name="7034"
       > </a
-      ><a name="7037" href="overloading.core.html#7010" class="Bound"
+      ><a name="7035" href="overloading.core.html#7016" class="Bound"
       >i</a
-      ><a name="7038" class="Symbol"
+      ><a name="7036" class="Symbol"
       >)</a
-      ><a name="7039"
+      ><a name="7037"
+      > </a
+      ><a name="7038" class="Symbol"
+      >(</a
+      ><a name="7039" class="PrimitiveType"
+      >Set</a
+      ><a name="7042"
+      > </a
+      ><a name="7043" href="overloading.core.html#7016" class="Bound"
+      >i</a
+      ><a name="7044" class="Symbol"
+      >)</a
+      ><a name="7045"
       >
 </a
-      ><a name="7040" href="overloading.core.html#6994" class="Function"
+      ><a name="7046" href="overloading.core.html#7000" class="Function"
       >set-is-set</a
-      ><a name="7050"
-      > </a
-      ><a name="7051" class="Symbol"
-      >{</a
-      ><a name="7052" href="overloading.core.html#7052" class="Bound"
-      >i</a
-      ><a name="7053" class="Symbol"
-      >}</a
-      ><a name="7054"
-      > </a
-      ><a name="7055" class="Symbol"
-      >=</a
       ><a name="7056"
       > </a
-      ><a name="7057" href="overloading.core.html#6514" class="Function"
-      >coerce-self</a
-      ><a name="7068"
+      ><a name="7057" class="Symbol"
+      >{</a
+      ><a name="7058" href="overloading.core.html#7058" class="Bound"
+      >i</a
+      ><a name="7059" class="Symbol"
+      >}</a
+      ><a name="7060"
       > </a
-      ><a name="7069" class="Symbol"
+      ><a name="7061" class="Symbol"
+      >=</a
+      ><a name="7062"
+      > </a
+      ><a name="7063" href="overloading.core.html#6520" class="Function"
+      >coerce-self</a
+      ><a name="7074"
+      > </a
+      ><a name="7075" class="Symbol"
       >_</a
-      ><a name="7070"
+      ><a name="7076"
       >
 
 </a
-      ><a name="7072" href="overloading.core.html#7072" class="Function Operator"
+      ><a name="7078" href="overloading.core.html#7078" class="Function Operator"
       >&#8739;_&#8739;</a
-      ><a name="7075"
+      ><a name="7081"
       > </a
-      ><a name="7076" class="Symbol"
+      ><a name="7082" class="Symbol"
       >:</a
-      ><a name="7077"
+      ><a name="7083"
       > </a
-      ><a name="7078" class="Symbol"
-      >&#8704;</a
-      ><a name="7079"
-      > </a
-      ><a name="7080" class="Symbol"
-      >{</a
-      ><a name="7081" href="overloading.core.html#7081" class="Bound"
-      >i</a
-      ><a name="7082"
-      > </a
-      ><a name="7083" href="overloading.core.html#7083" class="Bound"
-      >j</a
       ><a name="7084" class="Symbol"
+      >&#8704;</a
+      ><a name="7085"
+      > </a
+      ><a name="7086" class="Symbol"
+      >{</a
+      ><a name="7087" href="overloading.core.html#7087" class="Bound"
+      >i</a
+      ><a name="7088"
+      > </a
+      ><a name="7089" href="overloading.core.html#7089" class="Bound"
+      >j</a
+      ><a name="7090" class="Symbol"
       >}{</a
-      ><a name="7086" href="overloading.core.html#7086" class="Bound"
+      ><a name="7092" href="overloading.core.html#7092" class="Bound"
       >Source</a
-      ><a name="7092"
-      > </a
-      ><a name="7093" class="Symbol"
-      >:</a
-      ><a name="7094"
-      > </a
-      ><a name="7095" class="PrimitiveType"
-      >Set</a
       ><a name="7098"
       > </a
-      ><a name="7099" href="overloading.core.html#7081" class="Bound"
-      >i</a
-      ><a name="7100" class="Symbol"
-      >}</a
-      ><a name="7101"
-      > </a
-      ><a name="7102" class="Symbol"
-      >&#10627;</a
-      ><a name="7103"
-      > </a
-      ><a name="7104" href="overloading.core.html#7104" class="Bound"
-      >o</a
-      ><a name="7105"
-      > </a
-      ><a name="7106" class="Symbol"
+      ><a name="7099" class="Symbol"
       >:</a
+      ><a name="7100"
+      > </a
+      ><a name="7101" class="PrimitiveType"
+      >Set</a
+      ><a name="7104"
+      > </a
+      ><a name="7105" href="overloading.core.html#7087" class="Bound"
+      >i</a
+      ><a name="7106" class="Symbol"
+      >}</a
       ><a name="7107"
       > </a
-      ><a name="7108" href="overloading.core.html#6097" class="Record"
+      ><a name="7108" class="Symbol"
+      >&#10627;</a
+      ><a name="7109"
+      > </a
+      ><a name="7110" href="overloading.core.html#7110" class="Bound"
+      >o</a
+      ><a name="7111"
+      > </a
+      ><a name="7112" class="Symbol"
+      >:</a
+      ><a name="7113"
+      > </a
+      ><a name="7114" href="overloading.core.html#6103" class="Record"
       >Coercion</a
-      ><a name="7116"
+      ><a name="7122"
       > </a
-      ><a name="7117" href="overloading.core.html#7086" class="Bound"
+      ><a name="7123" href="overloading.core.html#7092" class="Bound"
       >Source</a
-      ><a name="7123"
+      ><a name="7129"
       > </a
-      ><a name="7124" class="Symbol"
-      >(</a
-      ><a name="7125" class="PrimitiveType"
-      >Set</a
-      ><a name="7128"
-      > </a
-      ><a name="7129" href="overloading.core.html#7083" class="Bound"
-      >j</a
       ><a name="7130" class="Symbol"
-      >)</a
-      ><a name="7131"
+      >(</a
+      ><a name="7131" class="PrimitiveType"
+      >Set</a
+      ><a name="7134"
       > </a
-      ><a name="7132" class="Symbol"
+      ><a name="7135" href="overloading.core.html#7089" class="Bound"
+      >j</a
+      ><a name="7136" class="Symbol"
+      >)</a
+      ><a name="7137"
+      > </a
+      ><a name="7138" class="Symbol"
       >&#10628;</a
-      ><a name="7133"
+      ><a name="7139"
       >
     </a
-      ><a name="7138" class="Symbol"
+      ><a name="7144" class="Symbol"
       >&#8594;</a
-      ><a name="7139"
+      ><a name="7145"
       > </a
-      ><a name="7140" href="overloading.core.html#7086" class="Bound"
+      ><a name="7146" href="overloading.core.html#7092" class="Bound"
       >Source</a
-      ><a name="7146"
-      > </a
-      ><a name="7147" class="Symbol"
-      >&#8594;</a
-      ><a name="7148"
-      > </a
-      ><a name="7149" class="PrimitiveType"
-      >Set</a
       ><a name="7152"
       > </a
-      ><a name="7153" href="overloading.core.html#7083" class="Bound"
-      >j</a
+      ><a name="7153" class="Symbol"
+      >&#8594;</a
       ><a name="7154"
-      >
-</a
-      ><a name="7155" href="overloading.core.html#7072" class="Function Operator"
-      >&#8739;_&#8739;</a
+      > </a
+      ><a name="7155" class="PrimitiveType"
+      >Set</a
       ><a name="7158"
       > </a
-      ><a name="7159" class="Symbol"
-      >&#10627;</a
+      ><a name="7159" href="overloading.core.html#7089" class="Bound"
+      >j</a
       ><a name="7160"
-      > </a
-      ><a name="7161" href="overloading.core.html#7161" class="Bound"
-      >c</a
-      ><a name="7162"
-      > </a
-      ><a name="7163" class="Symbol"
-      >&#10628;</a
+      >
+</a
+      ><a name="7161" href="overloading.core.html#7078" class="Function Operator"
+      >&#8739;_&#8739;</a
       ><a name="7164"
       > </a
       ><a name="7165" class="Symbol"
-      >=</a
+      >&#10627;</a
       ><a name="7166"
       > </a
-      ><a name="7167" href="overloading.core.html#6200" class="Function"
-      >coerce</a
-      ><a name="7173"
-      > </a
-      ><a name="7174" href="overloading.core.html#7161" class="Bound"
+      ><a name="7167" href="overloading.core.html#7167" class="Bound"
       >c</a
-      ><a name="7175"
+      ><a name="7168"
+      > </a
+      ><a name="7169" class="Symbol"
+      >&#10628;</a
+      ><a name="7170"
+      > </a
+      ><a name="7171" class="Symbol"
+      >=</a
+      ><a name="7172"
+      > </a
+      ><a name="7173" href="overloading.core.html#6206" class="Function"
+      >coerce</a
+      ><a name="7179"
+      > </a
+      ><a name="7180" href="overloading.core.html#7167" class="Bound"
+      >c</a
+      ><a name="7181"
       >
 </a
       ></pre
