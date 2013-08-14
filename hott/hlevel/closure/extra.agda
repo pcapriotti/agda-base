@@ -38,7 +38,7 @@ abstract
     where
       c : (x : X)(y : Y x) → (x₀ , proj₁ (hy x₀)) ≡ (x , y)
       c x y = ap (λ x → (x , proj₁ (hy x))) (cx x)
-            ⊚ ap (_,_ x) (proj₂ (hy x) y)
+            · ap (_,_ x) (proj₂ (hy x) y)
   Σ-hlevel {n = suc n} hx hy = λ a b → iso-hlevel Σ-split-iso
     (Σ-hlevel (hx _ _) (λ p → hy (proj₁ b) _ _))
 

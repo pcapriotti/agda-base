@@ -34,17 +34,17 @@ adj-η = nt eta eta-natural
         → id ∘ id ∘ map F f
         ≡ map F f ∘ id ∘ map F (id)
     lem f = ap (λ z → z ∘ map F f) (left-id _)
-          ⊚ left-id _
-          ⊚ sym (right-id _)
-          ⊚ sym (right-id _)
-          ⊚ ap (λ z → map F f ∘ id ∘ z)
+          · left-id _
+          · sym (right-id _)
+          · sym (right-id _)
+          · ap (λ z → map F f ∘ id ∘ z)
                   (sym (map-id F _))
 
     eta-natural : natural id (G ∘ F) eta
     eta-natural {X} {Y} f = begin
         eta Y ∘ f
       ≡⟨ ap (λ z → z ∘ f) (sym (left-id _))
-        ⊚ ap (λ z → z ∘ eta Y ∘ f) (sym (map-id G _)) ⟩
+        · ap (λ z → z ∘ eta Y ∘ f) (sym (map-id G _)) ⟩
         map G (id) ∘ eta Y ∘ f
       ≡⟨ sym (adj-nat f (id) (id)) ⟩
         Φ (id ∘ id ∘ map F f)

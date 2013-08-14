@@ -32,17 +32,17 @@ private
         u = ap to
 
         v : ∀ {x x'} → to x ≡ to x' → x ≡ x'
-        v {x}{x'} q = iso₁ x ⁻¹ ⊚ ap from q ⊚ iso₁ x'
+        v {x}{x'} q = iso₁ x ⁻¹ · ap from q · iso₁ x'
 
         H : ∀ {x x'} (p : x ≡ x') → v (u p) ≡ p
         H {x}{.x} refl =
-            ap (λ α → α ⊚ (iso₁ x)) (left-unit (sym (iso₁ x)))
-          ⊚ right-inverse (iso₁ x)
+            ap (λ α → α · (iso₁ x)) (left-unit (sym (iso₁ x)))
+          · right-inverse (iso₁ x)
 
         K' : ∀ {x y}(q : to x ≡ y)
-          → ap to (iso₁ x ⁻¹ ⊚ ap from q) ≡ q ⊚ iso₂ y ⁻¹
+          → ap to (iso₁ x ⁻¹ · ap from q) ≡ q · iso₂ y ⁻¹
         K' {x} refl = begin
-            ap to (iso₁ x ⁻¹ ⊚ refl)
+            ap to (iso₁ x ⁻¹ · refl)
           ≡⟨ ap (ap to) (left-unit (iso₁ x ⁻¹)) ⟩
             ap to (iso₁ x ⁻¹)
           ≡⟨ ap-inv to (iso₁ x) ⟩
@@ -50,17 +50,17 @@ private
           ≡⟨ ap _⁻¹ (γ x) ⟩
             iso₂ (to x) ⁻¹
           ≡⟨ refl ⟩
-            refl ⊚ iso₂ (to x) ⁻¹
+            refl · iso₂ (to x) ⁻¹
           ∎
 
         K : (q : to x ≡ to x')
-          → ap to (iso₁ x ⁻¹ ⊚ ap from q ⊚ iso₁ x') ≡ q
+          → ap to (iso₁ x ⁻¹ · ap from q · iso₁ x') ≡ q
         K q = begin
-            ap to (iso₁ x ⁻¹ ⊚ ap from q ⊚ iso₁ x')
-          ≡⟨ ap-map-hom to (iso₁ x ⁻¹ ⊚ ap from q) (iso₁ x') ⟩
-            ap to (iso₁ x ⁻¹ ⊚ ap from q) ⊚ ap to (iso₁ x')
-          ≡⟨ ap₂ _⊚_ (K' q) (γ x') ⟩
-            q ⊚ iso₂ (to x') ⁻¹ ⊚ iso₂ (to x')
+            ap to (iso₁ x ⁻¹ · ap from q · iso₁ x')
+          ≡⟨ ap-map-hom to (iso₁ x ⁻¹ · ap from q) (iso₁ x') ⟩
+            ap to (iso₁ x ⁻¹ · ap from q) · ap to (iso₁ x')
+          ≡⟨ ap₂ _·_ (K' q) (γ x') ⟩
+            q · iso₂ (to x') ⁻¹ · iso₂ (to x')
           ≡⟨ lem q _ ⟩
             q
           ∎
@@ -68,7 +68,7 @@ private
             lem : ∀ {i}{X : Set i} {x y z : X}
                 → (p : x ≡ y)
                 → (q : z ≡ y)
-                → p ⊚ q ⁻¹ ⊚ q ≡ p
+                → p · q ⁻¹ · q ≡ p
             lem refl q = right-inverse q
 open Dummy public
 

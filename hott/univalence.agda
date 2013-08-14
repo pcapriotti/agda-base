@@ -19,7 +19,7 @@ coerce-equiv refl x = (x , refl) , λ { (.x , refl) → refl }
 
 coerce-hom : ∀ {i} {X Y Z : Set i}
            → (p : X ≡ Y)(q : Y ≡ Z)
-           → coerce (p ⊚ q) ≡ coerce q ∘ coerce p
+           → coerce (p · q) ≡ coerce q ∘ coerce p
 coerce-hom refl q = refl
 
 -- mapping from propositional equality to weak equivalence

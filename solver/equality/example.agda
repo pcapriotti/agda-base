@@ -13,8 +13,8 @@ example : {X : Set}{x y z w : X}
         → (p : x ≡ y)
         → (q : y ≡ z)
         → (r : z ≡ w)
-        → p ⊚ q ⊚ r ⊚ sym r ⊚ sym q ⊚ sym p
-        ≡ p ⊚ sym p
+        → p · q · r · sym r · sym q · sym p
+        ≡ p · sym p
 example {X}{x}{y}{z}{w} p q r = solve
   -- points
   (x ∷ y ∷ z ∷ w ∷ [])

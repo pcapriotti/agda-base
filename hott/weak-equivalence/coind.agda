@@ -107,42 +107,42 @@ unfold≅' {X = X}{Y = Y} (iso f g α β , δ) =
     δ' = co-coherence (iso f g α β) δ
 
     iso₁ : {x : X}{y : Y}(p : f x ≡ y)
-         → ap f (sym (α x) ⊚ ap g p) ⊚ β y ≡ p
+         → ap f (sym (α x) · ap g p) · β y ≡ p
     iso₁ {x} .{f x} refl = begin
-        ap f (sym (α x) ⊚ refl) ⊚ β (f x)
-      ≡⟨ ap (λ z → ap f z ⊚ β (f x)) (left-unit (sym (α x)))  ⟩
-        ap f (sym (α x)) ⊚ β (f x)
-      ≡⟨ ap (λ z → z ⊚ β (f x)) (ap-inv f (α x)) ⟩
-        sym (ap f (α x)) ⊚ β (f x)
-      ≡⟨ ap (λ z → sym z ⊚ β (f x)) (δ x) ⟩
-        sym (β (f x)) ⊚ β (f x)
+        ap f (sym (α x) · refl) · β (f x)
+      ≡⟨ ap (λ z → ap f z · β (f x)) (left-unit (sym (α x)))  ⟩
+        ap f (sym (α x)) · β (f x)
+      ≡⟨ ap (λ z → z · β (f x)) (ap-inv f (α x)) ⟩
+        sym (ap f (α x)) · β (f x)
+      ≡⟨ ap (λ z → sym z · β (f x)) (δ x) ⟩
+        sym (β (f x)) · β (f x)
       ≡⟨ right-inverse (β (f x)) ⟩
         refl
       ∎
 
     iso₂' : {x : X}{y : Y}(q : g y ≡ x)
-         → sym (α x) ⊚ ap g (ap f (sym q) ⊚ β y) ≡ sym q
+         → sym (α x) · ap g (ap f (sym q) · β y) ≡ sym q
     iso₂' .{g y}{y} refl = begin
-        sym (α (g y)) ⊚ ap g (refl ⊚ β y)
-      ≡⟨ ap (λ z → sym (α (g y)) ⊚ ap g z) (right-unit (β y)) ⟩
-        sym (α (g y)) ⊚ ap g (β y)
-      ≡⟨ ap (λ z → sym (α (g y)) ⊚ z) (δ' y) ⟩
-        sym (α (g y)) ⊚ α (g y)
+        sym (α (g y)) · ap g (refl · β y)
+      ≡⟨ ap (λ z → sym (α (g y)) · ap g z) (right-unit (β y)) ⟩
+        sym (α (g y)) · ap g (β y)
+      ≡⟨ ap (λ z → sym (α (g y)) · z) (δ' y) ⟩
+        sym (α (g y)) · α (g y)
       ≡⟨ right-inverse (α (g y)) ⟩
         refl
       ∎
 
     iso₂ : {x : X}{y : Y}(q : x ≡ g y)
-         → sym (α x) ⊚ ap g (ap f q ⊚ β y) ≡ q
+         → sym (α x) · ap g (ap f q · β y) ≡ q
     iso₂ {x}{y} q =
-      subst (λ z → sym (α x) ⊚ ap g (ap f z ⊚ β y) ≡ z)
+      subst (λ z → sym (α x) · ap g (ap f z · β y) ≡ z)
             (double-inverse q)
             (iso₂' (sym q))
 
     φ : (x : X)(y : Y) → (f x ≡ y) ≅ (x ≡ g y)
     φ x y = record
-      { to = λ p → sym (α x) ⊚ ap g p
-      ; from = λ q → ap f q ⊚ β y
+      { to = λ p → sym (α x) · ap g p
+      ; from = λ q → ap f q · β y
       ; iso₁ = iso₁
       ; iso₂ = iso₂ }
 
@@ -198,7 +198,7 @@ private
 
       lem : (x : X)(y : Y)(p : f x ≡ y)
            → apply≅' (σ x y) p ≡ apply≅' (τ x y) p
-      lem x .(f x) refl = left-unit _ ⊚ double-inverse _
+      lem x .(f x) refl = left-unit _ · double-inverse _
 
       lem₂ : (x : X)(y : Y) → proj₂ (unfold≅' (u eq)) (x , y)
                             ≡ u (D.tail eq (x , y))
@@ -214,7 +214,7 @@ private
   vu-morphism {X = X}{Y = Y} eq = ap (D.imap Iso' v) (u-morphism eq)
 
   vu-id : ∀ {i}{X Y : Set i} (eq : X ~ Y) → v (u eq) ≡ eq
-  vu-id eq = D.unfold-η D.out (v ∘ u) vu-morphism eq ⊚ D.unfold-id eq
+  vu-id eq = D.unfold-η D.out (v ∘ u) vu-morphism eq · D.unfold-id eq
 
   uv-id : ∀ {i}{X Y : Set i} (i : X ≅' Y) → u (v i) ≡ i
   uv-id {X = X}{Y = Y} i = ≅'-equality refl

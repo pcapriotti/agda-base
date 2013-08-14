@@ -35,14 +35,14 @@ prop⇒h1 : ∀ {i} {X : Set i} → prop X → h 1 X
 prop⇒h1 {X = X} f x y = p₀ x y , lem x y
   where
     p₀ : (x y : X) → x ≡ y
-    p₀ x y = f x y ⊚ (f y y)⁻¹
+    p₀ x y = f x y · (f y y)⁻¹
 
     lem : (x y : X)(p : x ≡ y) → p₀ x y ≡ p
     lem x .x refl = left-inverse (f x x)
 
 -- a contractible set is propositional
 contr⇒prop : ∀ {i} {X : Set i} → contr X → prop X
-contr⇒prop (x , p) = λ x' x'' → sym (p x') ⊚ p x''
+contr⇒prop (x , p) = λ x' x'' → sym (p x') · p x''
 
 -- h-levels are upwards closed
 h↑ : ∀ {i n}{X : Set i} → h n X → h (suc n) X

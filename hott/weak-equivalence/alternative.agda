@@ -33,7 +33,7 @@ private
       Φ f g = (y : Y)(x : X) → f x ≡ y → g y ≡ x
 
       Ψ : (f : X → Y)(g : Y → X)(β : B f g)(φ : Φ f g) → Set _
-      Ψ f g β φ = (y : Y)(x : X)(p : f x ≡ y) → ap f (φ y x p) ⊚ p ≡ β y
+      Ψ f g β φ = (y : Y)(x : X)(p : f x ≡ y) → ap f (φ y x p) · p ≡ β y
 
       W : Set _
       W = Σ (X → Y) λ f
@@ -82,15 +82,15 @@ private
                 (φ : (y : Y)(x : X) → f x ≡ y → g y ≡ x)
               → (y : Y)(x : X)(p : f x ≡ y)
               → (subst (λ x → f x ≡ y) (φ y x p) (β y) ≡ p)
-              ≅ (ap f (φ y x p) ⊚ p ≡ β y)
+              ≅ (ap f (φ y x p) · p ≡ β y)
           lem f g β φ y x p = begin
               subst (λ x → f x ≡ y) (φ y x p) (β y) ≡ p
             ≡⟨ ap (λ z → z ≡ p)
                     ( subst-naturality (λ x → x ≡ y) f (φ y x p) (β y)
-                    ⊚ subst-eq (ap f (φ y x p)) (β y) ) ⟩
-              sym (ap f (φ y x p)) ⊚ β y ≡ p
+                    · subst-eq (ap f (φ y x p)) (β y) ) ⟩
+              sym (ap f (φ y x p)) · β y ≡ p
             ≅⟨ sym≅ (move-≡-iso (ap f (φ y x p)) p (β y)) ⟩
-              ap f (φ y x p) ⊚ p ≡ β y
+              ap f (φ y x p) · p ≡ β y
             ∎
 
       -- weak equivalence ≅ (f , g , β , φ , ψ)
@@ -132,18 +132,18 @@ private
       where
         Ψ' : (f : X → Y)(g : Y → X)(K : B f g)(H : A f g) → Set _
         Ψ' f g K H = ((y : Y)(x : X)(p : f x ≡ y)
-                   → ap f (sym (ap g p) ⊚ H x) ⊚ p ≡ K y)
+                   → ap f (sym (ap g p) · H x) · p ≡ K y)
 
         φ≅H : (f : X → Y)(g : Y → X) → Φ f g ≅ A f g
         φ≅H f g = record
           { to = λ φ x → φ (f x) x refl
-          ; from = λ H y x p → sym (ap g p) ⊚ H x 
+          ; from = λ H y x p → sym (ap g p) · H x 
           ; iso₁ = λ φ → funext λ y → funext λ x → funext λ p → lem φ y x p
           ; iso₂ = λ H → refl }
           where
             lem : (φ : (y : Y)(x : X) → f x ≡ y → g y ≡ x)
                 → (y : Y)(x : X)(p : f x ≡ y)
-                → sym (ap g p) ⊚ φ (f x) x refl ≡ φ y x p
+                → sym (ap g p) · φ (f x) x refl ≡ φ y x p
             lem φ .(f x) x refl = refl
 
         ψ≅γ : (f : X → Y)(g : Y → X)(H : A f g)(K : B f g)
@@ -155,17 +155,17 @@ private
           ; iso₂ = λ γ → funext λ x → lem₂ γ x }
           where
             to : Ψ' f g K H → coherent (iso f g H K)
-            to ψ x = sym (left-unit _) ⊚ ψ (f x) x refl
+            to ψ x = sym (left-unit _) · ψ (f x) x refl
 
             from : coherent (iso f g H K) → Ψ' f g K H
-            from γ .(f x) x refl = left-unit _ ⊚ γ x
+            from γ .(f x) x refl = left-unit _ · γ x
 
             lem₁ : (ψ : Ψ' f g K H)(y : Y)(x : X)(p : f x ≡ y)
                 → from (to ψ) y x p ≡ ψ y x p
             lem₁ φ .(f x) x refl =
               J (λ u v q → (z : f (g (f x)) ≡ f x)
                             (r : u ≡ z)
-                         → q ⊚ (sym q ⊚ r) ≡ r)
+                         → q · (sym q · r) ≡ r)
                 (λ u z r → refl) _ _
                 (left-unit (ap f (H x))) _
                 (φ (f x) x refl)
@@ -175,7 +175,7 @@ private
             lem₂ γ x =
               J (λ u v q → (z : f (g (f x)) ≡ f x)
                          → (r : v ≡ z)
-                         → sym q ⊚ (q ⊚ r) ≡ r)
+                         → sym q · (q · r) ≡ r)
                 (λ u z r → refl) _ _
                 (left-unit (ap f (H x))) _
                 (γ x)

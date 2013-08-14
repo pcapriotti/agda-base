@@ -42,9 +42,9 @@ open import hott.hlevel.core
       renaming ( to to f ; from to g
                ; iso₁ to H; iso₂ to K )
 
-    lem : (x : X') → sym (H (g x)) ⊚ ap g (K x) ≡ refl
-    lem x = ap (λ z → sym (H (g x)) ⊚ z) (co-coherence _ γ x)
-          ⊚ right-inverse (H (g x))
+    lem : (x : X') → sym (H (g x)) · ap g (K x) ≡ refl
+    lem x = ap (λ z → sym (H (g x)) · z) (co-coherence _ γ x)
+          · right-inverse (H (g x))
 
     Σ-iso : Σ X Y ≅ Σ X' (Y ∘ g)
     Σ-iso = record
@@ -52,11 +52,11 @@ open import hott.hlevel.core
       ; from = λ { (x , y) → (g x , y) }
       ; iso₁ = λ { (x , y) → unapΣ (H x ,
             subst-hom Y (sym (H x)) (H x) y
-          ⊚ ap (λ p → subst Y p y) (right-inverse (H x)) ) }
+          · ap (λ p → subst Y p y) (right-inverse (H x)) ) }
       ; iso₂ = λ { (x , y) → unapΣ (K x ,
             subst-naturality Y g (K x) _
-          ⊚ (subst-hom Y (sym (H (g x))) (ap g (K x)) y
-          ⊚ ap (λ p → subst Y p y) (lem x) ) ) } }
+          · (subst-hom Y (sym (H (g x))) (ap g (K x)) y
+          · ap (λ p → subst Y p y) (lem x) ) ) } }
 
     Σ-iso' : ∀ {i j j'}{X : Set i}{Y : X → Set j}{Y' : X → Set j'}
            → ((x : X) → Y x ≅ Y' x)
@@ -85,8 +85,8 @@ open import hott.hlevel.core
       ; iso₁ = λ h → funext λ x → ap' h (H x)
       ; iso₂ = λ h' → funext λ x' →
               ap (λ p → subst Y p _) (sym (γ' x'))
-            ⊚ sym (subst-naturality Y g (K x') _)
-            ⊚ ap' h' (K x') }
+            · sym (subst-naturality Y g (K x') _)
+            · ap' h' (K x') }
       where γ' = co-coherence (iso f g H K) γ
 
     Π-iso' : ∀ {i j j'}{X : Set i}
@@ -185,6 +185,6 @@ sym≡-iso _ _ = iso sym sym double-inverse double-inverse
 
 move-≡-iso : ∀ {i}{X : Set i}{x y z : X}
            → (p : x ≡ y)(q : y ≡ z)(r : x ≡ z)
-           → (p ⊚ q ≡ r)
-           ≅ (sym p ⊚ r ≡ q)
+           → (p · q ≡ r)
+           ≅ (sym p · r ≡ q)
 move-≡-iso refl = sym≡-iso

@@ -8,7 +8,7 @@ open import category.graph
 open import category.category
 open import category.functor.core
 open import equality.core
-open import equality.calculus using (_⊚_; _⁻¹)
+open import equality.calculus using (_·_; _⁻¹)
 open import equality.reasoning
 
 module category.trans.core {i}{j}{i'}{j'}

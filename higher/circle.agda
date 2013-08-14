@@ -33,7 +33,7 @@ private
 private
   module Eliminators {i} {B : Set i}
                      (m : B) (l : m ≡ m) where
-    open Eliminators' (λ _ → B) m (subst-const loop m ⊚ l)
+    open Eliminators' (λ _ → B) m (subst-const loop m · l)
 
     elim : S¹ → B
     elim = elim'

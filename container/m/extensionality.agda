@@ -75,7 +75,7 @@ module Extensionality {li la lb}(c : Container li la lb) where
         lem refl f = refl
 
     equal-π : ∀ {i}(e : E i) → π₁ e ≡ π₂ e
-    equal-π e = unfold-η f π₁ π₁-mor e ⊚ sym (unfold-η f π₂ π₂-mor e)
+    equal-π e = unfold-η f π₁ π₁-mor e · sym (unfold-η f π₂ π₂-mor e)
 
     abstract
       mext₀ : ∀ {i} {xs ys : M i} → xs ≡M ys → xs ≡ ys
@@ -85,7 +85,7 @@ module Extensionality {li la lb}(c : Container li la lb) where
   mext-inv refl = reflM
 
   mext : ∀ {i} {xs ys : M i} → xs ≡M ys → xs ≡ ys
-  mext p = mext₀ p ⊚ sym (mext₀ reflM)
+  mext p = mext₀ p · sym (mext₀ reflM)
 
   mext-id : ∀ {i}{u : M i} → mext (reflM {u = u}) ≡ refl
   mext-id = left-inverse (mext₀ reflM)

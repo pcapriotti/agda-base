@@ -39,10 +39,10 @@ trans≅ {X = X}{Z = Z} (iso f g H K) (iso f' g' H' K') = record
   where
     abstract
       iso₁ : (x : X) → g (g' (f' (f x))) ≡ x
-      iso₁ x = ap g (H' (f x)) ⊚ H x
+      iso₁ x = ap g (H' (f x)) · H x
 
       iso₂ : (z : Z) → f' (f (g (g' z))) ≡ z
-      iso₂ y = ap f' (K (g' y)) ⊚ K' y
+      iso₂ y = ap f' (K (g' y)) · K' y
 
 module ≅-Reasoning where
   infix  4 _IsRelatedTo_
@@ -116,7 +116,7 @@ private
     open iso-methods public
 
     iso⇒inj : (iso : X ≅ Y) → injective (apply iso)
-    iso⇒inj f {x}{x'} q = (iso₁ x) ⁻¹ ⊚ ap from q ⊚ iso₁ x'
+    iso⇒inj f {x}{x'} q = (iso₁ x) ⁻¹ · ap from q · iso₁ x'
       where
         open _≅_ f
 

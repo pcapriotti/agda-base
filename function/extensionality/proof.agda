@@ -65,7 +65,7 @@ abstract
 
 abstract
   funext : ∀ {i j} → Extensionality' i j
-  funext h = funext₀ h ⊚ sym (funext₀ (λ _ → refl))
+  funext h = funext₀ h · sym (funext₀ (λ _ → refl))
 
   funext-id : ∀ {i j}{X : Set i}{Y : X → Set j}
          → (f : (x : X) → Y x)

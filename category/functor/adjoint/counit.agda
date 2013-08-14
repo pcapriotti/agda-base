@@ -34,10 +34,10 @@ adj-ε = nt eps eps-natural
         → map G (id) ∘ id ∘ map G f
         ≡ map G f ∘ id ∘ id
     lem f = ap (λ z → z ∘ id ∘ map G f) (map-id G _)
-          ⊚ ap (λ z → z ∘ map G f) (left-id _)
-          ⊚ left-id _
-          ⊚ sym (right-id _)
-          ⊚ sym (right-id _)
+          · ap (λ z → z ∘ map G f) (left-id _)
+          · left-id _
+          · sym (right-id _)
+          · sym (right-id _)
 
     eps-natural : natural (F ∘ G) id eps
     eps-natural {Y} {Y'} f = begin
@@ -52,7 +52,7 @@ adj-ε = nt eps eps-natural
       ≡⟨ adj-nat-op adjunction id f id ⟩
         f ∘ eps Y ∘ map F (id)
       ≡⟨ ap (λ z → f ∘ eps Y ∘ z) (map-id F _)
-        ⊚ right-id _ ⟩
+        · right-id _ ⟩
         f ∘ eps Y
       ∎
       where open ≡-Reasoning

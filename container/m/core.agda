@@ -81,7 +81,7 @@ module Definition {li la lb}(c : Container li la lb) where
 
   -- the constructor is the inverse of the destructor
   inM-η : ∀ {i} (x : M i) → inM (out x) ≡ x
-  inM-η x = unfold-η out (inM ∘ out) (λ _ → refl) x ⊚ unfold-id x
+  inM-η x = unfold-η out (inM ∘ out) (λ _ → refl) x · unfold-id x
 
   inM-β : ∀ {i} (x : F M i) → out (inM x) ≡ x
   inM-β {i} x = ap u (impl-funext (λ i → funext inM-η))

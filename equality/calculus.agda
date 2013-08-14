@@ -19,19 +19,19 @@ subst-naturality _ _ refl _ = refl
 
 subst-hom : ∀ {i j}{X : Set i}(P : X → Set j){x y z : X}
           → (p : x ≡ y)(q : y ≡ z)(u : P x)
-          → subst P q (subst P p u) ≡ subst P (p ⊚ q) u
+          → subst P q (subst P p u) ≡ subst P (p · q) u
 subst-hom _ refl q u = refl
 
 subst-eq : ∀ {i} {X : Set i}{x y z : X}
          → (p : y ≡ x)(q : y ≡ z)
          → subst (λ y → y ≡ z) p q
-         ≡ sym p ⊚ q
+         ≡ sym p · q
 subst-eq refl _ = refl
 
 subst-eq₂ : ∀ {i} {X : Set i}{x y : X}
           → (p : x ≡ y)
           → (q : x ≡ x)
-          → subst (λ z → z ≡ z) p q ≡ sym p ⊚ q ⊚ p
+          → subst (λ z → z ≡ z) p q ≡ sym p · q · p
 subst-eq₂ refl q = sym (left-unit _)
 
 subst-const : ∀ {i j} {A : Set i}{X : Set j}
@@ -41,7 +41,7 @@ subst-const refl x = refl
 
 subst-const-ap : ∀ {i j} {A : Set i}{X : Set j}
                  → {a a' : A}(f : A → X)(p : a ≡ a')
-                 → ap' f p ≡ subst-const p (f a) ⊚ ap f p
+                 → ap' f p ≡ subst-const p (f a) · ap f p
 subst-const-ap f refl = refl
 
 apΣ : ∀ {i j}{A : Set i}{B : A → Set j}
@@ -94,7 +94,7 @@ ap-map-id f = refl
 
 ap-map-hom : ∀ {i j}{X : Set i}{Y : Set j}{x y z : X}
              → (f : X → Y)(p : x ≡ y)(q : y ≡ z)
-             → ap f (p ⊚ q) ≡ ap f p ⊚ ap f q
+             → ap f (p · q) ≡ ap f p · ap f q
 ap-map-hom f refl _ = refl
 
 ap-id : ∀ {l} {A : Set l}{x y : A}(p : x ≡ y)
@@ -118,11 +118,11 @@ double-inverse refl = refl
 
 inverse-comp : ∀ {i} {X : Set i} {x y z : X}
                (p : x ≡ y)(q : y ≡ z)
-             → sym (p ⊚ q) ≡ sym q ⊚ sym p
+             → sym (p · q) ≡ sym q · sym p
 inverse-comp refl q = sym (left-unit (sym q))
 
 inverse-unique : ∀ {i} {X : Set i} {x y : X}
                  (p : x ≡ y)(q : y ≡ x)
-               → p ⊚ q ≡ refl
+               → p · q ≡ refl
                → sym p ≡ q
 inverse-unique refl q t = sym t

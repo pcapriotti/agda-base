@@ -21,10 +21,10 @@ lem-rewrite : {x y y' z : X}
             → (p : x ≡ y)(q : y ≡ z)
             → (r r' : y' ≡ y)
             → (r ≡ r')
-            → p ⊚ q ≡ (p ⊚ r ⁻¹) ⊚ (r' ⊚ q)
+            → p · q ≡ (p · r ⁻¹) · (r' · q)
 lem-rewrite refl q r .r refl =
-    sym (ap (λ α → α ⊚ q) (right-inverse r))
-  ⊚ associativity (sym r) r q
+    sym (ap (λ α → α · q) (right-inverse r))
+  · associativity (sym r) r q
 
 module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
   open DecGraph dec
@@ -80,21 +80,21 @@ module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
       ≡⟨ fuse-correct ws us' ⟩
         evalL (reverse ws ++ us')
       ≡⟨ eval++ (reverse ws) us' ⟩
-        evalL (reverse ws) ⊚ evalL us'
-      ≡⟨ ap (λ α → α ⊚ evalL us') (reverse-inv ws) ⟩
-        evalL ws ⁻¹ ⊚ evalL us'
+        evalL (reverse ws) · evalL us'
+      ≡⟨ ap (λ α → α · evalL us') (reverse-inv ws) ⟩
+        evalL ws ⁻¹ · evalL us'
       ≡⟨ lem-rewrite (evalL ws ⁻¹) (evalL us')
                      (evalW (fwd w)) (evalW (fwd u'))
                      (ap (gmap env) (sym p)) ⟩
-        (evalL ws ⁻¹ ⊚ evalW (fwd w) ⁻¹) ⊚ (evalW (fwd u') ⊚ evalL us')
-      ≡⟨ ap (λ α → (evalL ws ⁻¹ ⊚ evalW (fwd w) ⁻¹) ⊚ α) (lem q u us) ⟩
-        (evalL ws ⁻¹ ⊚ evalW (fwd w) ⁻¹) ⊚ (evalW (fwd u) ⊚ evalL us)
-      ≡⟨ ap (λ α → α ⊚ (evalW (fwd u) ⊚ evalL us))
+        (evalL ws ⁻¹ · evalW (fwd w) ⁻¹) · (evalW (fwd u') · evalL us')
+      ≡⟨ ap (λ α → (evalL ws ⁻¹ · evalW (fwd w) ⁻¹) · α) (lem q u us) ⟩
+        (evalL ws ⁻¹ · evalW (fwd w) ⁻¹) · (evalW (fwd u) · evalL us)
+      ≡⟨ ap (λ α → α · (evalW (fwd u) · evalL us))
               (sym (inverse-comp (evalW (fwd w)) (evalL ws))) ⟩
-        (evalW (fwd w) ⊚ evalL ws) ⁻¹ ⊚ (evalW (fwd u) ⊚ evalL us)
-      ≡⟨ ap (λ α → α ⊚ evalL (fwd u ∷ us))
+        (evalW (fwd w) · evalL ws) ⁻¹ · (evalW (fwd u) · evalL us)
+      ≡⟨ ap (λ α → α · evalL (fwd u ∷ us))
               (sym (reverse-inv (fwd w ∷ ws))) ⟩
-        evalL (reverse (fwd w ∷ ws)) ⊚ evalL (fwd u ∷ us)
+        evalL (reverse (fwd w ∷ ws)) · evalL (fwd u ∷ us)
       ≡⟨ sym (eval++ (reverse (fwd w ∷ ws)) (fwd u ∷ us)) ⟩
         evalL (reverse (fwd w ∷ ws) ++ (fwd u ∷ us))
       ∎
@@ -104,8 +104,8 @@ module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
 
         lem : ∀ {x z z' y} (q : z ≡ z') (w : W x z) (ws : List z y)
              → evalW (fwd (subst (W x) q w))
-             ⊚ evalL (subst (λ α → List α y) q ws)
-             ≡ evalW (fwd w) ⊚ evalL ws
+             · evalL (subst (λ α → List α y) q ws)
+             ≡ evalW (fwd w) · evalL ws
         lem refl w ws = refl
 
     ... | no _ = refl
@@ -115,22 +115,22 @@ module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
       ≡⟨ fuse-correct ws us' ⟩
         evalL (reverse ws ++ us')
       ≡⟨ eval++ (reverse ws) us' ⟩
-        evalL (reverse ws) ⊚ evalL us'
-      ≡⟨ ap (λ α → α ⊚ evalL us') (reverse-inv ws) ⟩
-        evalL ws ⁻¹ ⊚ evalL us'
+        evalL (reverse ws) · evalL us'
+      ≡⟨ ap (λ α → α · evalL us') (reverse-inv ws) ⟩
+        evalL ws ⁻¹ · evalL us'
       ≡⟨ lem-rewrite (evalL ws ⁻¹) (evalL us')
                       (evalW (inv w)) (evalW (inv u'))
                       (ap (sym ∘ gmap env) (sym p)) ⟩
-        (evalL ws ⁻¹ ⊚ evalW (inv w) ⁻¹) ⊚ (evalW (inv u') ⊚ evalL us')
-      ≡⟨ ap (λ α → (evalL ws ⁻¹ ⊚ evalW (inv w) ⁻¹) ⊚ α)
+        (evalL ws ⁻¹ · evalW (inv w) ⁻¹) · (evalW (inv u') · evalL us')
+      ≡⟨ ap (λ α → (evalL ws ⁻¹ · evalW (inv w) ⁻¹) · α)
               (lem q u us) ⟩
-        (evalL ws ⁻¹ ⊚ evalW (inv w) ⁻¹) ⊚ (evalW (inv u) ⊚ evalL us)
-      ≡⟨ ap (λ α → α ⊚ (evalW (inv u) ⊚ evalL us))
+        (evalL ws ⁻¹ · evalW (inv w) ⁻¹) · (evalW (inv u) · evalL us)
+      ≡⟨ ap (λ α → α · (evalW (inv u) · evalL us))
               (sym (inverse-comp (evalW (inv w)) (evalL ws))) ⟩
-        (evalW (inv w) ⊚ evalL ws) ⁻¹ ⊚ (evalW (inv u) ⊚ evalL us)
-      ≡⟨ ap (λ α → α ⊚ evalL (inv u ∷ us))
+        (evalW (inv w) · evalL ws) ⁻¹ · (evalW (inv u) · evalL us)
+      ≡⟨ ap (λ α → α · evalL (inv u ∷ us))
               (sym (reverse-inv (inv w ∷ ws))) ⟩
-        evalL (reverse (inv w ∷ ws)) ⊚ evalL (inv u ∷ us)
+        evalL (reverse (inv w ∷ ws)) · evalL (inv u ∷ us)
       ≡⟨ sym (eval++ (reverse (inv w ∷ ws)) (inv u ∷ us)) ⟩
         evalL (reverse (inv w ∷ ws) ++ (inv u ∷ us))
       ∎
@@ -140,8 +140,8 @@ module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
 
         lem : ∀ {x z z' y} (q : z ≡ z') (w : W z x) (ws : List z y)
              → evalW (inv (subst (λ α → W α x) q w))
-             ⊚ evalL (subst (λ α → List α y) q ws)
-             ≡ evalW (inv w) ⊚ evalL ws
+             · evalL (subst (λ α → List α y) q ws)
+             ≡ evalW (inv w) · evalL ws
         lem refl w ws = refl
     ... | no _ = refl
     fuse-correct (fwd w ∷ ws) (inv u ∷ us) = refl
@@ -156,13 +156,13 @@ module WithDec {n k} (W : Edges (Fin n) k)(dec : DecGraph W) where
     linearize-correct (var w) = left-unit (gmap env w)
     linearize-correct (t₁ * t₂) = 
         fuse-correct (reverse (linearize t₁)) (linearize t₂)
-      ⊚ (ap (λ α → evalL (α ++ linearize t₂))
+      · (ap (λ α → evalL (α ++ linearize t₂))
               (reverse-reverse (linearize t₁))
-      ⊚ (eval++ (linearize t₁) (linearize t₂)
-      ⊚ ap₂ _⊚_ (linearize-correct t₁) (linearize-correct t₂)))
+      · (eval++ (linearize t₁) (linearize t₂)
+      · ap₂ _·_ (linearize-correct t₁) (linearize-correct t₂)))
       
     linearize-correct (inv t) =
-      reverse-inv (linearize t) ⊚
+      reverse-inv (linearize t) ·
       ap sym (linearize-correct t)
 
     run-solver : ∀ {x y} (t₁ t₂ : Term x y)

@@ -48,14 +48,14 @@ lem-subst-fixpoint : ∀ {i}{X : Set i}
 lem-subst-fixpoint {i}{X} f x p = begin
     subst (λ x → f x ≡ x) (p ⁻¹) p
   ≡⟨ lem (f x) (sym p) ⟩ 
-    ap f (sym (sym p)) ⊚ p ⊚ sym p
-  ≡⟨ ap (λ z → ap f z ⊚ p ⊚ sym p)
+    ap f (sym (sym p)) · p · sym p
+  ≡⟨ ap (λ z → ap f z · p · sym p)
            (double-inverse p) ⟩
-    ap f p ⊚ p ⊚ sym p
+    ap f p · p · sym p
   ≡⟨ associativity (ap f p) p (sym p) ⟩
-    ap f p ⊚ (p ⊚ sym p)
-  ≡⟨ ap (λ z → ap f p ⊚ z) (left-inverse p) ⟩
-    ap f p ⊚ refl
+    ap f p · (p · sym p)
+  ≡⟨ ap (λ z → ap f p · z) (left-inverse p) ⟩
+    ap f p · refl
   ≡⟨ left-unit (ap f p) ⟩
     ap f p
   ∎
@@ -63,7 +63,7 @@ lem-subst-fixpoint {i}{X} f x p = begin
     open ≡-Reasoning
     lem : (y : X) (q : x ≡ y)
         → subst (λ z → f z ≡ z) q p
-        ≡ ap f (sym q) ⊚ p ⊚ q
+        ≡ ap f (sym q) · p · q
     lem .x refl = sym (left-unit p)
 
 lem-whiskering : ∀ {i} {X : Set i}
@@ -82,7 +82,7 @@ lem-whiskering f H x = begin
 lem-homotopy-nat : ∀ {i j}{X : Set i}{Y : Set j}
                    {x x' : X}{f g : X → Y}
                    (H : (x : X) → f x ≡ g x) (p : x ≡ x')
-                 → H x ⊚ ap g p ≡ ap f p ⊚ H x'
+                 → H x · ap g p ≡ ap f p · H x'
 lem-homotopy-nat H refl = left-unit _
 
 co-coherence : ∀ {i j}{X : Set i}{Y : Set j}
@@ -141,7 +141,7 @@ vogt-lemma {X = X}{Y = Y} isom = K' , γ
     -- every element in the diagram, except the bottom row, so if we
     -- define:
     --
-    --     K' = (f g K) ⁻¹ ⊚ (f H g f) ⊚ (K f)
+    --     K' = (f g K) ⁻¹ · (f H g f) · (K f)
     --
     -- we get that K' f must be equal to the bottom row, which is
     -- exactly the required coherence condition.
@@ -150,27 +150,27 @@ vogt-lemma {X = X}{Y = Y} isom = K' , γ
 
     -- the diagram above commutes
     lem : (x : X)
-        → ap f (H (g (f x))) ⊚ K (f x)
-        ≡ ap (f ∘ g) (K (f x)) ⊚ ap f (H x)
+        → ap f (H (g (f x))) · K (f x)
+        ≡ ap (f ∘ g) (K (f x)) · ap f (H x)
     lem x = begin
-        ap f (H (g (f x))) ⊚ K (f x)
-      ≡⟨ ap (λ z → ap f z ⊚ K (f x))
+        ap f (H (g (f x))) · K (f x)
+      ≡⟨ ap (λ z → ap f z · K (f x))
               (sym (lem-whiskering (g ∘ f) H x)) ⟩
-        ap f (ap (g ∘ f) (H x)) ⊚ K (f x)
-      ≡⟨ ap (λ z → z ⊚ K (f x))
+        ap f (ap (g ∘ f) (H x)) · K (f x)
+      ≡⟨ ap (λ z → z · K (f x))
               (ap-hom (g ∘ f) f (H x)) ⟩
-        ap (f ∘ g ∘ f) (H x) ⊚ K (f x)
+        ap (f ∘ g ∘ f) (H x) · K (f x)
       ≡⟨ sym (lem-homotopy-nat (λ x → K (f x)) (H x)) ⟩
-        K (f (g (f x))) ⊚ ap f (H x)
-      ≡⟨ ap (λ z → z ⊚ ap f (H x))
+        K (f (g (f x))) · ap f (H x)
+      ≡⟨ ap (λ z → z · ap f (H x))
               (sym (lem-whiskering (f ∘ g) K (f x))) ⟩
-        ap (f ∘ g) (K (f x)) ⊚ ap f (H x)
+        ap (f ∘ g) (K (f x)) · ap f (H x)
       ∎
 
     K' : (y : Y) → f (g y) ≡ y
     K' y = ap (f ∘ g) (sym (K y))
-         ⊚ ap f (H (g y))
-         ⊚ K y
+         · ap f (H (g y))
+         · K y
 
     iso' = iso f g H K'
 
@@ -179,29 +179,29 @@ vogt-lemma {X = X}{Y = Y} isom = K' , γ
     γ x = sym $ begin
         K' (f x)
       ≡⟨ refl ⟩
-        ap (f ∘ g) (sym (K (f x))) ⊚
-        ap f (H (g (f x))) ⊚ K (f x)
+        ap (f ∘ g) (sym (K (f x))) ·
+        ap f (H (g (f x))) · K (f x)
       ≡⟨ associativity (ap (f ∘ g) (sym (K (f x))))
                (ap f (H (g (f x))))
                (K (f x)) ⟩
-        ap (f ∘ g) (sym (K (f x))) ⊚
-        (ap f (H (g (f x))) ⊚ K (f x))
-      ≡⟨ ap (λ z → ap (f ∘ g) (sym (K (f x))) ⊚ z) (lem x) ⟩
-        ap (f ∘ g) (sym (K (f x))) ⊚
-        (ap (f ∘ g) (K (f x)) ⊚ ap f (H x))
-      ≡⟨ ap (λ z → z ⊚ (ap (f ∘ g) (K (f x)) ⊚ ap f (H x)))
+        ap (f ∘ g) (sym (K (f x))) ·
+        (ap f (H (g (f x))) · K (f x))
+      ≡⟨ ap (λ z → ap (f ∘ g) (sym (K (f x))) · z) (lem x) ⟩
+        ap (f ∘ g) (sym (K (f x))) ·
+        (ap (f ∘ g) (K (f x)) · ap f (H x))
+      ≡⟨ ap (λ z → z · (ap (f ∘ g) (K (f x)) · ap f (H x)))
               (ap-inv (f ∘ g) (K (f x))) ⟩
-        sym (ap (f ∘ g) (K (f x))) ⊚
-        (ap (f ∘ g) (K (f x)) ⊚ ap f (H x))
+        sym (ap (f ∘ g) (K (f x))) ·
+        (ap (f ∘ g) (K (f x)) · ap f (H x))
       ≡⟨ sym (associativity (sym (ap (f ∘ g) (K (f x))))
                        (ap (f ∘ g) (K (f x)))
                        (ap f (H x))) ⟩
-        ( sym (ap (f ∘ g) (K (f x))) ⊚
-          ap (f ∘ g) (K (f x)) ) ⊚
+        ( sym (ap (f ∘ g) (K (f x))) ·
+          ap (f ∘ g) (K (f x)) ) ·
         ap f (H x)
-      ≡⟨ ap (λ z → z ⊚ ap f (H x))
+      ≡⟨ ap (λ z → z · ap f (H x))
                (right-inverse (ap (f ∘ g) (K (f x)))) ⟩
-        refl ⊚ ap f (H x)
+        refl · ap f (H x)
       ≡⟨ right-unit (ap f (H x)) ⟩
         ap f (H x)
       ∎

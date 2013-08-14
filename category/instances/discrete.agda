@@ -22,7 +22,7 @@ discrete₀ X = mk-groupoid₀ record
   { obj = X
   ; hom = _≡_
   ; id = λ _ → refl
-  ; _∘_ = λ p q → q ⊚ p
+  ; _∘_ = λ p q → q · p
   ; inv = sym }
 
 discrete : ∀ {i} → Type i 1 → Groupoid i i
@@ -30,7 +30,7 @@ discrete (X , hX) = mk-groupoid record
   { obj = X
   ; hom = _≡_
   ; id = λ _ → refl
-  ; _∘_ = λ p q → q ⊚ p
+  ; _∘_ = λ p q → q · p
   ; inv = sym
   ; trunc = hX
   ; left-id = left-unit
@@ -58,7 +58,7 @@ discrete-lift {A = A}{C = C} f = mk-functor record
 
     d-map-hom : {x y z : proj₁ A}
                 (q : y ≡ z)(p : x ≡ y)
-              → d-map (p ⊚ q)
+              → d-map (p · q)
               ≡ d-map q ∘ d-map p
     d-map-hom refl refl = sym (left-id _)
 
@@ -88,7 +88,7 @@ discrete-univ A x y = proj₂ (≅⇒≈ lem-iso)
         → ≡⇒iso C (cat-iso.to isom) ≡ isom
     iso₂ isom = cat-iso-equality
       (iso₁ (cat-iso.to isom))
-      (iso₁' (cat-iso.to isom) ⊚ iso-inv isom)
+      (iso₁' (cat-iso.to isom) · iso-inv isom)
 
     lem-iso : (x ≡ y) ≅ cat-iso C x y
     lem-iso = record

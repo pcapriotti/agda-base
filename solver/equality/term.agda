@@ -20,5 +20,5 @@ module WithEnv {j}{X' : Set j}(env : Env W X') where
       go : ∀ {x y} → Term x y → imap env x ≡ imap env y
       go null = refl
       go (var x) = gmap env x
-      go (g * f) = go g ⊚ go f
+      go (g * f) = go g · go f
       go (inv t) = go t ⁻¹

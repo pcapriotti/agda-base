@@ -45,7 +45,7 @@ right-distr (suc n) m p = begin
 *-associativity 0 m p = refl
 *-associativity (suc n) m p =
     right-distr m (n * m) p
-  ⊚ ap (λ z → (m * p) + z)
+  · ap (λ z → (m * p) + z)
          (*-associativity n m p)
 
 +-commutativity : ∀ n m → n + m ≡ m + n

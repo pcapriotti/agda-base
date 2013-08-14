@@ -47,11 +47,11 @@ abstract
       q-β : coerce q ≡ invert≈ w
       q-β = uni-coherence (sym≈ w)
 
-      lem : coerce (p ⊚ q) ≡ coerce refl
+      lem : coerce (p · q) ≡ coerce refl
       lem = coerce-hom p q
-          ⊚ (ap (λ h → coerce q ∘ h) p-β
-          ⊚ ap (λ h → h ∘ apply≈ w) q-β
-          ⊚ funext (_≅_.iso₁ (≈⇒≅ w)))
+          · (ap (λ h → coerce q ∘ h) p-β
+          · ap (λ h → h ∘ apply≈ w) q-β
+          · funext (_≅_.iso₁ (≈⇒≅ w)))
 
-      lem-inv : p ⊚ q ≡ refl
+      lem-inv : p · q ≡ refl
       lem-inv = iso⇒inj uni-iso (apply≈-inj lem)

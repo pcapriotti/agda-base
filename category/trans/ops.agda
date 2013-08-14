@@ -21,7 +21,7 @@ private
   Id : (F : Functor C D) → Nat F F
   Id F = nt (λ X → id)
             ( λ f → left-id (map F f)
-                  ⊚ right-id (map F f) ⁻¹ )
+                  · right-id (map F f) ⁻¹ )
 
   Compose : {F G H : Functor C D} → Nat G H → Nat F G → Nat F H
   Compose {F}{G}{H} (nt α α-nat) (nt β β-nat) = (nt γ γ-nat)

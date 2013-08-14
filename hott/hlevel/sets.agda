@@ -44,17 +44,17 @@ hedberg {A = A} dec x y = prop⇒h1 ≡-prop
     ... | no f = ⊥-elim (f p)
 
     canonical-inv : {x y : A}(p : x ≡ y)
-                  → canonical p ⊚ sym (canonical refl) ≡ p
+                  → canonical p · sym (canonical refl) ≡ p
     canonical-inv refl = left-inverse (canonical refl)
   
     ≡-prop : {x y : A}(p q : x ≡ y) → p ≡ q
     ≡-prop p q = begin
         p
       ≡⟨ sym (canonical-inv p) ⟩
-        canonical p ⊚ sym (canonical refl)
-      ≡⟨ ap (λ z → z ⊚ sym (canonical refl))
+        canonical p · sym (canonical refl)
+      ≡⟨ ap (λ z → z · sym (canonical refl))
               (canonical-const p q) ⟩
-        canonical q ⊚ sym (canonical refl)
+        canonical q · sym (canonical refl)
       ≡⟨ canonical-inv q ⟩
         q
       ∎

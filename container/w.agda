@@ -43,7 +43,7 @@ private
       fold-η : (h : W ↝ X)
              → (∀ {i} (x : F W i) → h (inW x) ≡ α (imap W h x))
              → ∀ {i} (x : W i) → h x ≡ fold x
-      fold-η h p (sup a f) = p (a , λ b → f b) ⊚ lem
+      fold-η h p (sup a f) = p (a , λ b → f b) · lem
         where
           lem : α (a , (λ b → h (f b)))
               ≡ α (a , (λ b → fold (f b)))
