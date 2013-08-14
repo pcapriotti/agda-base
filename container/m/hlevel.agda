@@ -10,120 +10,60 @@ open import function.core
 open import function.isomorphism
 open import function.extensionality
 open import sets.unit
+open import sets.nat
 open import hott.hlevel
 open import hott.univalence
 open import container.core
+open import container.equality
+open import container.fixpoint
 open import container.m.core
+open import container.m.extensionality
 
 private
-  -- Given a container with A i ≡ ⊤
-  module M-⊤ {li lb} (la : Level)
-             (I : Set li)
-             (B : I → Set lb)
-             (r : {i : I} → B i → I) where
-    c : Container li la lb
-    c = record
-      { I = I
-      ; A = λ _ → ↑ la ⊤
-      ; B = λ {i} _ → B i
-      ; r = r }
-
-    open Container c
-
-    -- prove that ⊤ is a terminal coalgebra
-    module T where
-      M : I → Set lzero
-      M _ = ⊤
-
-      out : M ↝ F M
-      out tt = lift tt , λ _ → tt
-
-      module Elim {lx}{X : I → Set lx}
-                    (α : X ↝ F X) where
-        unfold : X ↝ M
-        unfold _ = tt
-
-        unfold-β : {i : I}(x : X i)
-                 → out (unfold x) ≡ imap X unfold (α x)
-        unfold-β x = refl
-
-        unfold-η : (h : X ↝ M)
-                 → (∀ {i} (x : X i) → out (h x) ≡ imap X h (α x))
-                 → ∀ {i} (x : X i) → h x ≡ unfold x
-        unfold-η h _ x = refl
-      open Elim public
-
-    module M = Definition c
-
-    -- so the corresponding M-type is trivial
-    m-t-iso : ∀ i → T.M i ≅ M.M i
-    m-t-iso i = iso f g (α i) β
-      where
-        f : ∀ {i} → T.M i → M.M i
-        f = M.unfold T.out
-
-        g : ∀ {i} → M.M i → T.M i
-        g = T.unfold M.out
-
-        α : ∀ i → (x : T.M i) → g (f {i} x) ≡ x
-        α _ tt = refl
-
-        β : ∀ {i} → (x : M.M i) → f (g x) ≡ x
-        β x = M.unfold-η M.out (f ∘ g) (λ {(M.inf a f) → refl }) x
-            ⊚ M.unfold-id x
-
-    m-contr : ∀ i → contr (M.M i)
-    m-contr i = iso-hlevel (m-t-iso i) ⊤-contr
-
   module Properties {li la lb}
                     {c : Container li la lb}
                     (hA : ∀ i → contr (Container.A c i)) where
-    abstract
-      -- if A is trivial, then the container is equal to the one in M-⊤
-      lem-container : ∀ {li la lb}(c : Container li la lb)
-                    → let open Container c in (p : (λ _ → ↑ la ⊤) ≡ A)
-                    → let B₀ = (λ i → B (coerce (funext-inv p i) (lift tt)))
-                          module M₀ = M-⊤ la I B₀ r
-                      in M₀.c ≡ c
-      lem-container {la = la} (container I .(λ _ → ↑ la ⊤) B r) refl = refl
-
-      -- the above equality is the identity on I
-      lem-container-I : ∀ {li la lb}(c : Container li la lb)
-                      → let open Container c in (p : (λ _ → ↑ la ⊤) ≡ A)
-                      → let B₀ = (λ i → B (coerce (funext-inv p i) (lift tt)))
-                            module M₀ = M-⊤ la I B₀ r
-                            q : M₀.c ≡ c
-                            q = lem-container c p
-                        in ∀ i → subst Container.I q i ≡ i
-      lem-container-I {la = la} (container I .(λ _ → ↑ la ⊤) B r) refl i = refl
-
-      -- given equal containers, the corresponding M-types are equal
-      apply-M : ∀ {li la lb} {c c' : Container li la lb}
-              → (p : c ≡ c')
-              → (i : Container.I c)
-              → Definition.M c i ≡ Definition.M c' (subst Container.I p i)
-      apply-M {c = c}{c' = .c} refl _ = refl
-
     open Definition c
+    open Extensionality c
+    open Fixpoint (fix M fixpoint)
+      using (head; tail)
 
-    A-eq : (λ _ → ↑ la ⊤) ≡ A
-    A-eq = funext λ i → unique-contr (↑-hlevel la ⊤-contr) (hA i)
+    module S where
+      module local where
+        open Equality c (fix M fixpoint)
+          using (equality)
+        open Definition equality public
 
-    B₀ : I → Set lb
-    B₀ i = B (coerce (funext-inv A-eq i) (lift tt))
+      open Fixpoint (fix local.M local.fixpoint) public
+        using (head; tail)
+      open local public
 
-    module M₀ = M-⊤ la I B₀ r
+    center : ∀ {i} → M i
+    center {i} = inf (proj₁ (hA i)) λ _ → ♯ center
 
-    c-iso : M₀.c ≡ c
-    c-iso = lem-container c A-eq
-
-    c-iso-I : ∀ i → subst Container.I c-iso i ≡ i
-    c-iso-I i = lem-container-I c A-eq i
-
-    m-iso : ∀ i → M₀.M.M i ≡ M i
-    m-iso i = apply-M c-iso i ⊚ ap M (c-iso-I i)
+    contraction : ∀ {i} (x : M i) → center ≡ x
+    contraction {i} x = mext (lem x)
+      where
+        lem : ∀ {i}(x : M i) → center ≡M x
+        lem {i} x = S.inf (proj₂ (hA i) (head x))
+                          (λ b → ♯ lem _)
 
     m-contr : ∀ i → contr (M i)
-    m-contr i = subst contr (m-iso i) (M₀.m-contr i)
+    m-contr i = center , contraction
 
-open Properties public using (m-contr)
+m-hlevel : ∀ {n li la lb} {c : Container li la lb}
+         → let open Definition c
+         in ((i : I) → h n (A i))
+         → (i : I) → h n (M i)
+m-hlevel {n = 0} hA i = Properties.m-contr hA i
+m-hlevel {n = suc n} {c = c} hA i = λ xs ys
+  → retract-hlevel mext mext-inv mext-retraction (ih xs ys)
+  where
+    open Definition c
+    open Extensionality c
+    open Fixpoint (fix M fixpoint)
+      using (head; tail)
+
+    ih : (xs ys : M i) → h n (xs ≡M ys)
+    ih xs ys = m-hlevel (λ { (i , xs , ys) → hA i (head xs) (head ys) })
+                        (i , xs , ys)
