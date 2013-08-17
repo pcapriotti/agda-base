@@ -43,6 +43,9 @@ subst₂ C refl refl = id
 singleton : ∀ {i}{A : Set i} → A → Set i
 singleton {A = A} a = Σ A λ a' → a ≡ a'
 
+singleton' : ∀ {i}{A : Set i} → A → Set i
+singleton' {A = A} a = Σ A λ a' → a' ≡ a
+
 J' : ∀ {i j}{X : Set i}{x : X}
    → (P : (y : X) → x ≡ y → Set j)
    → P x refl

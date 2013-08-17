@@ -71,3 +71,9 @@ singl-contr {A = A} x = (x , refl) , λ { (x' , p) → lem x' p }
   where
     lem : (x' : A)(p : x ≡ x') → (x , refl) ≡ (x' , p)
     lem .x refl = refl
+
+singl-contr' : ∀ {i} {A : Set i} → (x : A) → contr (singleton' x)
+singl-contr' {A = A} x = (x , refl) , λ { (x' , p) → lem x' p }
+  where
+    lem : (x' : A)(p : x' ≡ x) → (x , refl) ≡ (x' , p)
+    lem .x refl = refl
