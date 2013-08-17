@@ -61,6 +61,12 @@ unapΣ : ∀ {i j}{A : Set i}{B : A → Set j}
         → (a , b) ≡ (a' , b')
 unapΣ (refl , refl) = refl
 
+pair≡ : ∀ {i j}{A : Set i}{B : Set j}
+          {a a' : A}{b b' : B}
+        → (a ≡ a') → (b ≡ b')
+        → (a , b) ≡ (a' , b')
+pair≡ refl refl = refl
+
 apΣ-proj : ∀ {i j}{A : Set i}{B : A → Set j}
              {a a' : A}{b : B a}{b' : B a'}
              (p : (a , b) ≡ (a' , b'))

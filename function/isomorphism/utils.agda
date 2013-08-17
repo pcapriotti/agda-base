@@ -29,12 +29,40 @@ open import hott.hlevel.core
           (λ {(a , b) → refl })
           (a , b) (a' , b')
 
-Σ-ap-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
-             {Y : X → Set j}{Y' : X' → Set j'}
+×-ap-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
+             {Y : Set j}{Y' : Set j'}
            → (isom : X ≅ X')
-           → ((x' : X') → Y (invert isom x') ≅ Y' x')
-           → Σ X Y ≅ Σ X' Y'
-Σ-ap-iso {X = X}{X'}{Y}{Y'} isom isom' = trans≅ Σ-iso (Σ-iso' isom')
+           → (isom' : Y ≅ Y')
+           → (X × Y) ≅ (X' × Y')
+×-ap-iso isom isom' = record
+  { to = λ { (x , y) → (apply isom x , apply isom' y) }
+  ; from = λ { (x' , y') → (invert isom x' , invert isom' y') }
+  ; iso₁ = λ { (x , y) → pair≡ (_≅_.iso₁ isom x) (_≅_.iso₁ isom' y) }
+  ; iso₂ = λ { (x' , y') → pair≡ (_≅_.iso₂ isom x') (_≅_.iso₂ isom' y') } }
+
+Σ-ap-iso₂ : ∀ {i j j'}{X : Set i}
+          → {Y : X → Set j}{Y' : X → Set j'}
+          → ((x : X) → Y x ≅ Y' x)
+          → Σ X Y ≅ Σ X Y'
+Σ-ap-iso₂ {X = X}{Y}{Y'} isom = record
+  { to = λ { (x , y) → (x , apply (isom x) y) }
+  ; from = λ { (x , y') → (x , invert (isom x) y') }
+  ; iso₁ = λ { (x , y) → unapΣ (refl , _≅_.iso₁ (isom x) y) }
+  ; iso₂ = λ { (x , y') → unapΣ (refl , _≅_.iso₂ (isom x) y') } }
+
+Σ-ap-iso₁ : ∀ {i i' j}{X : Set i}{X' : Set i'}{Y : X' → Set j}
+          → (isom : X ≅ X')
+          → Σ X (Y ∘ apply isom) ≅ Σ X' Y
+Σ-ap-iso₁ {X = X}{X'}{Y} isom = record
+  { to = λ { (x , y) → (f x , y) }
+  ; from = λ { (x , y) → (g x , subst Y (sym (K x)) y) }
+  ; iso₁ = λ { (x , y) → unapΣ (H x ,
+           subst-naturality Y f (H x) _
+         · (subst-hom Y (sym (K (f x))) (ap f (H x)) y
+         · ap (λ p → subst Y p y) (lem x) ) ) }
+  ; iso₂ = λ { (x , y) → unapΣ (K x ,
+           subst-hom Y (sym (K x)) (K x) y
+         · ap (λ p → subst Y p y) (right-inverse (K x)) ) } }
   where
     isom-c = ≅⇒≅' isom
     γ = proj₂ isom-c
@@ -42,30 +70,25 @@ open import hott.hlevel.core
       renaming ( to to f ; from to g
                ; iso₁ to H; iso₂ to K )
 
-    lem : (x : X') → sym (H (g x)) · ap g (K x) ≡ refl
-    lem x = ap (λ z → sym (H (g x)) · z) (co-coherence _ γ x)
-          · right-inverse (H (g x))
+    lem : (x : X) → sym (K (f x)) · ap f (H x) ≡ refl
+    lem x = ap (λ z → sym (K (f x)) · z) (γ x)
+          · right-inverse (K (f x))
 
-    Σ-iso : Σ X Y ≅ Σ X' (Y ∘ g)
-    Σ-iso = record
-      { to = λ { (x , y) → (f x , subst Y (sym (H x)) y) }
-      ; from = λ { (x , y) → (g x , y) }
-      ; iso₁ = λ { (x , y) → unapΣ (H x ,
-            subst-hom Y (sym (H x)) (H x) y
-          · ap (λ p → subst Y p y) (right-inverse (H x)) ) }
-      ; iso₂ = λ { (x , y) → unapΣ (K x ,
-            subst-naturality Y g (K x) _
-          · (subst-hom Y (sym (H (g x))) (ap g (K x)) y
-          · ap (λ p → subst Y p y) (lem x) ) ) } }
+Σ-ap-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
+           {Y : X → Set j}{Y' : X' → Set j'}
+         → (isom : X ≅ X')
+         → ((x : X) → Y x ≅ Y' (apply isom x))
+         → Σ X Y ≅ Σ X' Y'
+Σ-ap-iso {X = X}{X'}{Y}{Y'} isom isom' = trans≅
+  (Σ-ap-iso₂ isom') (Σ-ap-iso₁ isom)
 
-    Σ-iso' : ∀ {i j j'}{X : Set i}{Y : X → Set j}{Y' : X → Set j'}
-           → ((x : X) → Y x ≅ Y' x)
-           → Σ X Y ≅ Σ X Y'
-    Σ-iso' isom = record
-      { to = λ { (x , y) → (x , apply (isom x) y) }
-      ; from = λ { (x , y') → (x , invert (isom x) y') }
-      ; iso₁ = λ { (x , y) → unapΣ (refl , _≅_.iso₁ (isom x) y) }
-      ; iso₂ = λ { (x , y') → unapΣ (refl , _≅_.iso₂ (isom x) y') } }
+Σ-ap-iso' : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
+            {Y : X → Set j}{Y' : X' → Set j'}
+          → (isom : X ≅ X')
+          → ((x : X') → Y (invert isom x) ≅ Y' x)
+          → Σ X Y ≅ Σ X' Y'
+Σ-ap-iso' {X = X}{X'}{Y}{Y'} isom isom'
+  = sym≅ (Σ-ap-iso (sym≅ isom) (λ x → sym≅ (isom' x)))
 
 Π-ap-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
              {Y : X → Set j}{Y' : X' → Set j'}
@@ -117,6 +140,24 @@ curry-iso : ∀ {i j k}{X : Set i}{Y : X → Set j}
 curry-iso _ = record
   { to = λ f x y → f (x , y)
   ; from = λ { f (x , y) → f x y }
+  ; iso₁ = λ _ → refl
+  ; iso₂ = λ _ → refl }
+
+Π-comm-iso : ∀ {i j k}{X : Set i}{Y : Set j}{Z : X → Y → Set k}
+           → ((x : X)(y : Y) → Z x y)
+           ≅ ((y : Y)(x : X) → Z x y)
+Π-comm-iso = record
+  { to = λ f y x → f x y
+  ; from = λ f x y → f y x
+  ; iso₁ = λ _ → refl
+  ; iso₂ = λ _ → refl }
+
+Σ-comm-iso : ∀ {i j k}{X : Set i}{Y : Set j}{Z : X → Y → Set k}
+           → (Σ X λ x → Σ Y λ y → Z x y)
+           ≅ (Σ Y λ y → Σ X λ x → Z x y)
+Σ-comm-iso = record
+  { to = λ { (x , y , z) → (y , x , z) }
+  ; from = λ { (y , x , z) → (x , y , z) }
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
@@ -183,8 +224,28 @@ sym≡-iso : ∀ {i}{X : Set i}(x y : X)
          ≅ (y ≡ x)
 sym≡-iso _ _ = iso sym sym double-inverse double-inverse
 
+trans≡-iso : ∀ {i}{X : Set i}{x y z : X}
+           → (p : x ≡ y)
+           → (x ≡ z) ≅ (y ≡ z)
+trans≡-iso refl = refl≅
+
 move-≡-iso : ∀ {i}{X : Set i}{x y z : X}
            → (p : x ≡ y)(q : y ≡ z)(r : x ≡ z)
            → (p · q ≡ r)
            ≅ (sym p · r ≡ q)
 move-≡-iso refl = sym≡-iso
+
+J-iso : ∀ {i j}{X : Set i}{x : X}
+      → {P : (y : X) → x ≡ y → Set j}
+      → P x refl
+      ≅ ((y : X)(p : x ≡ y) → P y p)
+J-iso {X = X}{x}{P} = record
+  { to = J' P
+  ; from = λ u → u x refl
+  ; iso₁ = λ _ → refl
+  ; iso₂ = λ u → funext λ y → funext λ p → β u y p }
+  where
+    β : (u : (y : X)(p : x ≡ y) → P y p)
+      → (y : X)(p : x ≡ y)
+      → J' P (u x refl) y p ≡ u y p
+    β u .x refl = refl
