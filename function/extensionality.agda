@@ -5,6 +5,7 @@ open import function.extensionality.core public
 open import function.extensionality.proof public
 open import function.extensionality.strong public
   using (strong-funext; strong-funext-iso)
+open import function.extensionality.computation public
 
 open import equality.core
 open import function.isomorphism
