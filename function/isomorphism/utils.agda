@@ -229,6 +229,19 @@ trans≡-iso : ∀ {i}{X : Set i}{x y z : X}
            → (x ≡ z) ≅ (y ≡ z)
 trans≡-iso refl = refl≅
 
+trans≡-iso' : ∀ {i}{X : Set i}{x y z : X}
+            → (y ≡ z)
+            → (x ≡ y) ≅ (x ≡ z)
+trans≡-iso' q = record
+  { to = λ p → p · q
+  ; from = λ p → p · sym q
+  ; iso₁ = λ p → associativity p q (sym q)
+               · ap (_·_ p) (left-inverse q)
+               · left-unit p
+  ; iso₂ = λ p → associativity p (sym q) q
+               · (ap (_·_ p) (right-inverse q)
+               · left-unit p) }
+
 move-≡-iso : ∀ {i}{X : Set i}{x y z : X}
            → (p : x ≡ y)(q : y ≡ z)(r : x ≡ z)
            → (p · q ≡ r)
