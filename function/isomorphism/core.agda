@@ -19,6 +19,7 @@ record _≅_ {i j}(X : Set i)(Y : Set j) : Set (i ⊔ j) where
     from : Y → X
     iso₁ : (x : X) → from (to x) ≡ x
     iso₂ : (y : Y) → to (from y) ≡ y
+infix 5 _≅_
 
 refl≅ : ∀ {i}{X : Set i} → X ≅ X
 refl≅ = iso id id (λ _ → refl) (λ _ → refl)

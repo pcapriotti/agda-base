@@ -1,15 +1,10 @@
 {-# OPTIONS --without-K #-}
-
 module sets.nat.core where
 
 open import level
-  using (lzero)
 open import equality.core
-  using (_≡_; refl; ap)
 open import function.core
-  using (_$_; _∘_; func-comp)
 open import decidable
-  using (Dec; yes; no)
 
 infixl 7 _*_
 infixl 6 _+_
