@@ -11,6 +11,7 @@ open import function.isomorphism.core
 open import function.isomorphism.coherent
 open import function.extensionality.proof
 open import sets.unit
+open import sets.empty
 open import hott.hlevel.core
 
 Σ-split-iso : ∀ {i j}{X : Set i}{Y : X → Set j}
@@ -202,6 +203,14 @@ contr-⊤-iso hX = record
   ; iso₁ = λ x → proj₂ hX x
   ; iso₂ = λ { tt → refl } }
 
+empty-⊥-iso : ∀ {i}{X : Set i}
+            → (X → ⊥) → X ≅ ⊥
+empty-⊥-iso u = record
+  { to = u
+  ; from = ⊥-elim
+  ; iso₁ = λ x → ⊥-elim (u x)
+  ; iso₂ = λ () }
+
 ×-comm : ∀ {i j}{X : Set i}{Y : Set j}
        → (X × Y) ≅ (Y × X)
 ×-comm = record
@@ -225,9 +234,15 @@ sym≡-iso : ∀ {i}{X : Set i}(x y : X)
 sym≡-iso _ _ = iso sym sym double-inverse double-inverse
 
 trans≡-iso : ∀ {i}{X : Set i}{x y z : X}
-           → (p : x ≡ y)
-           → (x ≡ z) ≅ (y ≡ z)
-trans≡-iso refl = refl≅
+           → (x ≡ y)
+           → (y ≡ z) ≅ (x ≡ z)
+trans≡-iso p = record
+  { to = λ q → p · q
+  ; from = λ q → sym p · q
+  ; iso₁ = λ q → sym (associativity (sym p) p q)
+                · ap (λ z → z · q) (right-inverse p)
+  ; iso₂ = λ q → sym (associativity p (sym p) q)
+                · ap (λ z → z · q) (left-inverse p) }
 
 trans≡-iso' : ∀ {i}{X : Set i}{x y z : X}
             → (y ≡ z)

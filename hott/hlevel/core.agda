@@ -51,7 +51,7 @@ h↑ {n = suc n} hn = λ x x' → h↑ (hn x x')
 
 -- Prop: the set of propositions
 HProp : ∀ i → Set (lsuc i)
-HProp i = Σ (Set i) prop
+HProp i = Σ (Set i) (h 1)
 
 -- HSet : sets
 HSet : ∀ i → Set (lsuc i)

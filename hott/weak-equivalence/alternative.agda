@@ -57,9 +57,9 @@ module _ {i j}{X : Set i}{Y : Set j} where
           → Π-ap-iso refl≅ λ x
           → Π-ap-iso refl≅ λ p
           → Σ-ap-iso₂ λ q
-          → trans≡-iso (
+          → sym≅ ( trans≡-iso (
                  subst-naturality (λ x' → x' ≡ y) f q (β y)
-               · subst-eq (ap f q) (β y)) ) ⟩
+               · subst-eq (ap f q) (β y)) )) ⟩
         ( Σ (Y → X) λ g
         → Σ ((y : Y) → f (g y) ≡ y) λ β
         → (y : Y)(x : X)(p : f x ≡ y)
@@ -93,8 +93,8 @@ module _ {i j}{X : Set i}{Y : Set j} where
          → Σ-ap-iso₂ λ β
          → Σ-ap-iso₂ λ α
          → Π-ap-iso refl≅ λ x
-         → (trans≅ (sym≅ (move-≡-iso (ap f (α x)) refl (β (f x))))
-                    (trans≡-iso (left-unit (ap f (α x))))) ) ⟩
+         → sym≅ (trans≅ (trans≡-iso (left-unit (ap f (α x))))
+                         (move-≡-iso (ap f (α x)) refl (β (f x)))) ) ⟩
         ( Σ (Y → X) λ g
         → Σ ((y : Y) → f (g y) ≡ y) λ β
         → Σ ((x : X) → g (f x) ≡ x) λ α
