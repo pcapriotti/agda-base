@@ -178,3 +178,6 @@ fin-iso-iso {suc n} = begin
             α _ p zero = sym p
             α (f , f-inj) p (suc i) = pred-β (f (suc i))
               (λ q → fin-disj _ (f-inj (p · sym q)))
+
+fin-subsets : ∀ {n} → (Fin n → Bool) ≅ Fin (2 ^ n)
+fin-subsets = trans≅ (Π-ap-iso refl≅ λ _ → fin2-bool) fin-exp
