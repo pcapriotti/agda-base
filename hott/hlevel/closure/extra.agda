@@ -12,13 +12,15 @@ open import function.extensionality
 open import function.isomorphism
 open import sets.bool
 open import sets.unit
-open import sets.nat.core using (ℕ; suc; _≤_)
+open import sets.nat.core
+open import sets.nat.ordering.leq.core
 open import hott.hlevel.core
-open import hott.hlevel.sets using (⊤-contr; bool-set)
+open import hott.hlevel.sets
 open import hott.hlevel.closure.core
 open import hott.weak-equivalence.core
   using (weak-equiv; _≈_)
 open import hott.univalence
+open import sets.empty
 
 abstract
   -- Π preserves h-levels
@@ -104,3 +106,32 @@ abstract
                 → h 1 (weak-equiv f)
   weak-equiv-h1 f = Π-hlevel λ y
                   → contr-h1 _
+
+  ⊎-h1 : ∀ {i j}{A : Set i}{B : Set j}
+       → h 1 A → h 1 B → ¬ (A × B)
+       → h 1 (A ⊎ B)
+  ⊎-h1 {A = A}{B = B} hA hB u = prop⇒h1 ⊎-prop
+    where
+      ⊎-prop : prop (A ⊎ B)
+      ⊎-prop (inj₁ a) (inj₁ a') = ap inj₁ (h1⇒prop hA a a')
+      ⊎-prop (inj₁ a) (inj₂ b') = ⊥-elim (u (a , b'))
+      ⊎-prop (inj₂ b) (inj₁ a') = ⊥-elim (u (a' , b))
+      ⊎-prop (inj₂ b) (inj₂ b') = ap inj₂ (h1⇒prop hB b b')
+
+  inj-hlevel : ∀ {i j n}{A : Set i}{B : Set j}
+             → (f : A → B)
+             → h (suc n) A → h n (injective f)
+  inj-hlevel f hA
+    = Π-hlevel-impl λ x
+    → Π-hlevel-impl λ x'
+    → Π-hlevel λ p
+    → hA x x'
+
+  ↣-hlevel : ∀ {i j n}{A : Set i}{B : Set j}
+           → h (suc n) A → h n B → h n (A ↣ B)
+  ↣-hlevel hA hB
+    = Σ-hlevel (Π-hlevel λ _ → hB) λ f
+    → inj-hlevel f hA
+
+  ¬-h1 : ∀ {i}{X : Set i} → h 1 (¬ X)
+  ¬-h1 = Π-hlevel λ _ → ⊥-prop

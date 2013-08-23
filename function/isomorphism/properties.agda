@@ -82,3 +82,14 @@ iso≡ isom = iso'≡ (≅⇒≅' isom)
 -- lifting is an isomorphism
 lift-iso : ∀ {i} j (X : Set i) → X ≅ ↑ j X
 lift-iso j X = iso lift lower (λ _ → refl) (λ _ → refl)
+
+abstract
+  subtype-eq : ∀ {i j k}{A : Set i}{P : A → Set j}
+             → ((x : A) → h 1 (P x))
+             → {X : Set k}
+             → (isom : X ≅ Σ A P)
+             → {x y : X}
+             → (proj₁ (apply isom x) ≡ proj₁ (apply isom y))
+             → x ≡ y
+  subtype-eq hP isom p = iso⇒inj isom
+    (unapΣ (p , h1⇒prop (hP _) _ _))

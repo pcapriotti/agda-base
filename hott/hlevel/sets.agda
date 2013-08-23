@@ -78,7 +78,7 @@ open NatSet public
 -- Fin is a set
 private
   module FinSet where
-    open import sets.fin
+    open import sets.fin.core
     fin-set : ∀ n → h 2 (Fin n)
     fin-set n = hedberg _≟_
 open FinSet public

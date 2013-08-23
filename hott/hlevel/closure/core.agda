@@ -13,6 +13,9 @@ open import hott.hlevel.sets
 open import hott.weak-equivalence.core
 open import hott.univalence
 open import sets.nat.core
+open import sets.nat.ordering.leq.core
+open import sets.nat.ordering.leq.decide
+open import sets.empty
 open import sets.unit
 
 Σ-contr : ∀ {i j}{X : Set i}{Y : X → Set j}

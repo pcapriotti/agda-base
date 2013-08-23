@@ -21,6 +21,18 @@ record _≅_ {i j}(X : Set i)(Y : Set j) : Set (i ⊔ j) where
     iso₂ : (y : Y) → to (from y) ≡ y
 infix 5 _≅_
 
+≅-struct-iso : ∀ {i j}{X : Set i}{Y : Set j}
+             → (X ≅ Y)
+             ≅ ( Σ (X → Y) λ f
+               → Σ (Y → X) λ g
+               → ((x : X) → g (f x) ≡ x)
+               × ((y : Y) → f (g y) ≡ y) )
+≅-struct-iso = record
+  { to = λ { (iso f g α β) → f , g , α , β }
+  ; from = λ { (f , g , α , β) → iso f g α β }
+  ; iso₁ = λ _ → refl
+  ; iso₂ = λ _ → refl  }
+
 refl≅ : ∀ {i}{X : Set i} → X ≅ X
 refl≅ = iso id id (λ _ → refl) (λ _ → refl)
 

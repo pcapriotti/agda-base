@@ -181,6 +181,50 @@ impl-iso = record
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
+⊎-ap-iso : ∀ {i j i' j'}
+         → {X : Set i}{X' : Set i'}
+         → {Y : Set j}{Y' : Set j'}
+         → X ≅ X'
+         → Y ≅ Y'
+         → (X ⊎ Y) ≅ (X' ⊎ Y')
+⊎-ap-iso (iso f g α β) (iso f' g' α' β') = record
+  { to = λ { (inj₁ x) → inj₁ (f x) ; (inj₂ y) → inj₂ (f' y) }
+  ; from = λ { (inj₁ x) → inj₁ (g x) ; (inj₂ y) → inj₂ (g' y) }
+  ; iso₁ = λ { (inj₁ x) → ap inj₁ (α x) ; (inj₂ y) → ap inj₂ (α' y) }
+  ; iso₂ = λ { (inj₁ x) → ap inj₁ (β x) ; (inj₂ y) → ap inj₂ (β' y) } }
+
+⊎-assoc-iso : ∀ {i j k}
+            → {X : Set i}{Y : Set j}{Z : Set k}
+            → ((X ⊎ Y) ⊎ Z)
+            ≅ (X ⊎ (Y ⊎ Z))
+⊎-assoc-iso = record
+  { to = λ { (inj₁ (inj₁ x)) → inj₁ x
+           ; (inj₁ (inj₂ y)) → inj₂ (inj₁ y)
+           ; (inj₂ z) → inj₂ (inj₂ z) }
+  ; from = λ { (inj₁ x) → inj₁ (inj₁ x)
+             ; (inj₂ (inj₁ y)) → inj₁ (inj₂ y)
+             ; (inj₂ (inj₂ z)) → inj₂ z }
+  ; iso₁ = λ { (inj₁ (inj₁ x)) → refl
+             ; (inj₁ (inj₂ y)) → refl
+             ; (inj₂ z) → refl }
+  ; iso₂ = λ { (inj₁ x) → refl
+             ; (inj₂ (inj₁ y)) → refl
+             ; (inj₂ (inj₂ z)) → refl } }
+
+⊎×-distr-iso : ∀ {i j k}
+             → {X : Set i}{Y : Set j}{Z : Set k}
+             → ((X ⊎ Y) × Z)
+             ≅ ((X × Z) ⊎ (Y × Z))
+⊎×-distr-iso = record
+  { to = λ { (inj₁ x , z) → inj₁ (x , z)
+           ; (inj₂ y , z) → inj₂ (y , z) }
+  ; from = λ { (inj₁ (x , z)) → inj₁ x , z
+             ; (inj₂ (y , z)) → inj₂ y , z }
+  ; iso₁ = λ { (inj₁ x , z) → refl
+             ; (inj₂ y , z) → refl }
+  ; iso₂ = λ { (inj₁ (x , z)) → refl
+             ; (inj₂ (y , z)) → refl } }
+
 ×-left-unit : ∀ {i}{X : Set i} → (⊤ × X) ≅ X
 ×-left-unit = record
   { to = λ {(tt , x) → x }
@@ -226,6 +270,20 @@ empty-⊥-iso u = record
   ; from = λ x _ → x
   ; iso₁ = λ _ → refl
   ; iso₂ = λ f → refl }
+
+total-space-iso : ∀ {i j}{A : Set i}{B : Set j}
+                → (f : A → B)
+                → (Σ B λ b → f ⁻¹ b) ≅ A
+total-space-iso {A = A}{B} f = begin
+    (Σ B λ b → Σ A λ a → f a ≡ b)
+  ≅⟨ Σ-comm-iso ⟩
+    (Σ A λ a → singleton (f a))
+  ≅⟨ Σ-ap-iso₂ (λ a → contr-⊤-iso (singl-contr (f a))) ⟩
+    (A × ⊤)
+  ≅⟨ ×-right-unit ⟩
+    A
+  ∎
+  where open ≅-Reasoning
 
 -- rewriting lemmas for equations on equalities
 sym≡-iso : ∀ {i}{X : Set i}(x y : X)

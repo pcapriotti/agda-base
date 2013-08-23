@@ -2,7 +2,7 @@
 module sets.vec.dependent where
 
 open import sets.nat.core
-open import sets.fin
+open import sets.fin.core
 
 -- syntactic sugar to create finite dependent functions
 

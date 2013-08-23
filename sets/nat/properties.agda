@@ -1,5 +1,4 @@
 {-# OPTIONS --without-K #-}
-
 module sets.nat.properties where
 
 open import equality.core
