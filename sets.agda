@@ -8,3 +8,6 @@ import sets.nat
 import sets.unit
 import sets.vec
 import sets.list
+
+open import sets.properties
+open import sets.finite

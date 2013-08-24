@@ -57,6 +57,11 @@ trans≅ {X = X}{Z = Z} (iso f g H K) (iso f' g' H' K') = record
       iso₂ : (z : Z) → f' (f (g (g' z))) ≡ z
       iso₂ y = ap f' (K (g' y)) · K' y
 
+_·≅_ : ∀ {i j k}{X : Set i}{Y : Set j}{Z : Set k}
+     → X ≅ Y → Y ≅ Z → X ≅ Z
+_·≅_ = trans≅
+infixl 9 _·≅_
+
 module ≅-Reasoning where
   infix  4 _IsRelatedTo_
   infix  2 _∎
