@@ -32,3 +32,7 @@ suc≰ {suc n} p = suc≰ (ap-pred-≤ p)
 trans≤ : ∀ {n m p} → n ≤ m → m ≤ p → n ≤ p
 trans≤ z≤n q = z≤n
 trans≤ (s≤s p) (s≤s q) = s≤s (trans≤ p q)
+
+antisym≤ : ∀ {n m} → n ≤ m → m ≤ n → n ≡ m
+antisym≤ z≤n z≤n = refl
+antisym≤ (s≤s p) (s≤s q) = ap suc (antisym≤ p q)

@@ -8,6 +8,7 @@ open import function.core
 open import function.extensionality
 open import function.isomorphism
 open import function.overloading
+open import sets.core
 open import sets.nat
   hiding (_≟_; pred)
 open import sets.fin.core
@@ -271,3 +272,7 @@ inj⇒iso : ∀ {n}(f : Fin n → Fin n)
          → Fin n ≅ Fin n
 inj⇒iso f inj = inj+surj⇒iso f inj (inj⇒surj f inj)
 
+Fin-inj : ∀ {n m} → Fin n ≅ Fin m → n ≡ m
+Fin-inj {n}{m} isoF
+  = antisym≤ (fin-lt (_ , iso⇒inj isoF))
+             (fin-lt (_ , iso⇒inj (sym≅ isoF)))

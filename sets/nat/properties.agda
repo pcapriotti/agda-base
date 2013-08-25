@@ -6,6 +6,7 @@ open import equality.calculus
 open import equality.reasoning
 open import function.isomorphism.core
 open import sets.nat.core
+open import sets.empty
 
 +-left-unit : ∀ n → 0 + n ≡ n
 +-left-unit n = refl
@@ -102,3 +103,7 @@ right-zero (suc n) = right-zero n
     m * suc n
   ∎
   where open ≡-Reasoning
+
+suc-fixpoint : ∀ {n} → ¬ (suc n ≡ n)
+suc-fixpoint {zero} ()
+suc-fixpoint {suc n} p = suc-fixpoint (suc-inj p)
