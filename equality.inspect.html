@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >equality.inspect</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K  </a
+      ><a name="26" class="Symbol"
+      >#-}</a
+      ><a name="29"
+      >
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="equality.inspect.html#1" class="Module"
+      >equality.inspect</a
+      ><a name="53"
+      > </a
+      ><a name="54" class="Keyword"
+      >where</a
+      ><a name="59"
+      >
+
+</a
+      ><a name="61" class="Keyword"
+      >open</a
+      ><a name="65"
+      > </a
+      ><a name="66" class="Keyword"
+      >import</a
+      ><a name="72"
+      > </a
+      ><a name="73" href="level.html#1" class="Module"
+      >level</a
+      ><a name="78"
+      >
+</a
+      ><a name="79" class="Keyword"
+      >open</a
+      ><a name="83"
+      > </a
+      ><a name="84" class="Keyword"
+      >import</a
+      ><a name="90"
+      > </a
+      ><a name="91" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="104"
+      >
+
+</a
+      ><a name="106" class="Keyword"
+      >data</a
+      ><a name="110"
+      > </a
+      ><a name="111" href="equality.inspect.html#111" class="Datatype Operator"
+      >_of_is_</a
+      ><a name="118"
+      > </a
+      ><a name="119" class="Symbol"
+      >{</a
+      ><a name="120" href="equality.inspect.html#120" class="Bound"
+      >i</a
+      ><a name="121"
+      > </a
+      ><a name="122" href="equality.inspect.html#122" class="Bound"
+      >j</a
+      ><a name="123" class="Symbol"
+      >}{</a
+      ><a name="125" href="equality.inspect.html#125" class="Bound"
+      >A</a
+      ><a name="126"
+      > </a
+      ><a name="127" class="Symbol"
+      >:</a
+      ><a name="128"
+      > </a
+      ><a name="129" class="PrimitiveType"
+      >Set</a
+      ><a name="132"
+      > </a
+      ><a name="133" href="equality.inspect.html#120" class="Bound"
+      >i</a
+      ><a name="134" class="Symbol"
+      >}{</a
+      ><a name="136" href="equality.inspect.html#136" class="Bound"
+      >B</a
+      ><a name="137"
+      > </a
+      ><a name="138" class="Symbol"
+      >:</a
+      ><a name="139"
+      > </a
+      ><a name="140" href="equality.inspect.html#125" class="Bound"
+      >A</a
+      ><a name="141"
+      > </a
+      ><a name="142" class="Symbol"
+      >&#8594;</a
+      ><a name="143"
+      > </a
+      ><a name="144" class="PrimitiveType"
+      >Set</a
+      ><a name="147"
+      > </a
+      ><a name="148" href="equality.inspect.html#122" class="Bound"
+      >j</a
+      ><a name="149" class="Symbol"
+      >}</a
+      ><a name="150"
+      >
+            </a
+      ><a name="163" class="Symbol"
+      >(</a
+      ><a name="164" href="equality.inspect.html#164" class="Bound"
+      >f</a
+      ><a name="165"
+      > </a
+      ><a name="166" class="Symbol"
+      >:</a
+      ><a name="167"
+      > </a
+      ><a name="168" class="Symbol"
+      >(</a
+      ><a name="169" href="equality.inspect.html#169" class="Bound"
+      >x</a
+      ><a name="170"
+      > </a
+      ><a name="171" class="Symbol"
+      >:</a
+      ><a name="172"
+      > </a
+      ><a name="173" href="equality.inspect.html#125" class="Bound"
+      >A</a
+      ><a name="174" class="Symbol"
+      >)</a
+      ><a name="175"
+      > </a
+      ><a name="176" class="Symbol"
+      >&#8594;</a
+      ><a name="177"
+      > </a
+      ><a name="178" href="equality.inspect.html#136" class="Bound"
+      >B</a
+      ><a name="179"
+      > </a
+      ><a name="180" href="equality.inspect.html#169" class="Bound"
+      >x</a
+      ><a name="181" class="Symbol"
+      >)(</a
+      ><a name="183" href="equality.inspect.html#183" class="Bound"
+      >x</a
+      ><a name="184"
+      > </a
+      ><a name="185" class="Symbol"
+      >:</a
+      ><a name="186"
+      > </a
+      ><a name="187" href="equality.inspect.html#125" class="Bound"
+      >A</a
+      ><a name="188" class="Symbol"
+      >)(</a
+      ><a name="190" href="equality.inspect.html#190" class="Bound"
+      >y</a
+      ><a name="191"
+      > </a
+      ><a name="192" class="Symbol"
+      >:</a
+      ><a name="193"
+      > </a
+      ><a name="194" href="equality.inspect.html#136" class="Bound"
+      >B</a
+      ><a name="195"
+      > </a
+      ><a name="196" href="equality.inspect.html#183" class="Bound"
+      >x</a
+      ><a name="197" class="Symbol"
+      >)</a
+      ><a name="198"
+      > </a
+      ><a name="199" class="Symbol"
+      >:</a
+      ><a name="200"
+      > </a
+      ><a name="201" class="PrimitiveType"
+      >Set</a
+      ><a name="204"
+      > </a
+      ><a name="205" class="Symbol"
+      >(</a
+      ><a name="206" href="equality.inspect.html#120" class="Bound"
+      >i</a
+      ><a name="207"
+      > </a
+      ><a name="208" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="209"
+      > </a
+      ><a name="210" href="equality.inspect.html#122" class="Bound"
+      >j</a
+      ><a name="211" class="Symbol"
+      >)</a
+      ><a name="212"
+      > </a
+      ><a name="213" class="Keyword"
+      >where</a
+      ><a name="218"
+      >
+  </a
+      ><a name="221" href="equality.inspect.html#221" class="InductiveConstructor Operator"
+      >[_]</a
+      ><a name="224"
+      > </a
+      ><a name="225" class="Symbol"
+      >:</a
+      ><a name="226"
+      > </a
+      ><a name="227" href="equality.inspect.html#164" class="Bound"
+      >f</a
+      ><a name="228"
+      > </a
+      ><a name="229" href="equality.inspect.html#183" class="Bound"
+      >x</a
+      ><a name="230"
+      > </a
+      ><a name="231" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="232"
+      > </a
+      ><a name="233" href="equality.inspect.html#190" class="Bound"
+      >y</a
+      ><a name="234"
+      > </a
+      ><a name="235" class="Symbol"
+      >&#8594;</a
+      ><a name="236"
+      > </a
+      ><a name="237" href="equality.inspect.html#164" class="Bound"
+      >f</a
+      ><a name="238"
+      > </a
+      ><a name="239" href="equality.inspect.html#111" class="Datatype Operator"
+      >of</a
+      ><a name="241"
+      > </a
+      ><a name="242" href="equality.inspect.html#183" class="Bound"
+      >x</a
+      ><a name="243"
+      > </a
+      ><a name="244" href="equality.inspect.html#111" class="Datatype Operator"
+      >is</a
+      ><a name="246"
+      > </a
+      ><a name="247" href="equality.inspect.html#190" class="Bound"
+      >y</a
+      ><a name="248"
+      >
+
+</a
+      ><a name="250" href="equality.inspect.html#250" class="Function"
+      >inspect</a
+      ><a name="257"
+      > </a
+      ><a name="258" class="Symbol"
+      >:</a
+      ><a name="259"
+      > </a
+      ><a name="260" class="Symbol"
+      >&#8704;</a
+      ><a name="261"
+      > </a
+      ><a name="262" class="Symbol"
+      >{</a
+      ><a name="263" href="equality.inspect.html#263" class="Bound"
+      >i</a
+      ><a name="264"
+      > </a
+      ><a name="265" href="equality.inspect.html#265" class="Bound"
+      >j</a
+      ><a name="266" class="Symbol"
+      >}{</a
+      ><a name="268" href="equality.inspect.html#268" class="Bound"
+      >A</a
+      ><a name="269"
+      > </a
+      ><a name="270" class="Symbol"
+      >:</a
+      ><a name="271"
+      > </a
+      ><a name="272" class="PrimitiveType"
+      >Set</a
+      ><a name="275"
+      > </a
+      ><a name="276" href="equality.inspect.html#263" class="Bound"
+      >i</a
+      ><a name="277" class="Symbol"
+      >}{</a
+      ><a name="279" href="equality.inspect.html#279" class="Bound"
+      >B</a
+      ><a name="280"
+      > </a
+      ><a name="281" class="Symbol"
+      >:</a
+      ><a name="282"
+      > </a
+      ><a name="283" href="equality.inspect.html#268" class="Bound"
+      >A</a
+      ><a name="284"
+      > </a
+      ><a name="285" class="Symbol"
+      >&#8594;</a
+      ><a name="286"
+      > </a
+      ><a name="287" class="PrimitiveType"
+      >Set</a
+      ><a name="290"
+      > </a
+      ><a name="291" href="equality.inspect.html#265" class="Bound"
+      >j</a
+      ><a name="292" class="Symbol"
+      >}</a
+      ><a name="293"
+      >
+        </a
+      ><a name="302" class="Symbol"
+      >&#8594;</a
+      ><a name="303"
+      > </a
+      ><a name="304" class="Symbol"
+      >(</a
+      ><a name="305" href="equality.inspect.html#305" class="Bound"
+      >f</a
+      ><a name="306"
+      > </a
+      ><a name="307" class="Symbol"
+      >:</a
+      ><a name="308"
+      > </a
+      ><a name="309" class="Symbol"
+      >(</a
+      ><a name="310" href="equality.inspect.html#310" class="Bound"
+      >x</a
+      ><a name="311"
+      > </a
+      ><a name="312" class="Symbol"
+      >:</a
+      ><a name="313"
+      > </a
+      ><a name="314" href="equality.inspect.html#268" class="Bound"
+      >A</a
+      ><a name="315" class="Symbol"
+      >)&#8594;</a
+      ><a name="317"
+      > </a
+      ><a name="318" href="equality.inspect.html#279" class="Bound"
+      >B</a
+      ><a name="319"
+      > </a
+      ><a name="320" href="equality.inspect.html#310" class="Bound"
+      >x</a
+      ><a name="321" class="Symbol"
+      >)(</a
+      ><a name="323" href="equality.inspect.html#323" class="Bound"
+      >x</a
+      ><a name="324"
+      > </a
+      ><a name="325" class="Symbol"
+      >:</a
+      ><a name="326"
+      > </a
+      ><a name="327" href="equality.inspect.html#268" class="Bound"
+      >A</a
+      ><a name="328" class="Symbol"
+      >)</a
+      ><a name="329"
+      >
+        </a
+      ><a name="338" class="Symbol"
+      >&#8594;</a
+      ><a name="339"
+      > </a
+      ><a name="340" href="equality.inspect.html#305" class="Bound"
+      >f</a
+      ><a name="341"
+      > </a
+      ><a name="342" href="equality.inspect.html#111" class="Datatype Operator"
+      >of</a
+      ><a name="344"
+      > </a
+      ><a name="345" href="equality.inspect.html#323" class="Bound"
+      >x</a
+      ><a name="346"
+      > </a
+      ><a name="347" href="equality.inspect.html#111" class="Datatype Operator"
+      >is</a
+      ><a name="349"
+      > </a
+      ><a name="350" href="equality.inspect.html#305" class="Bound"
+      >f</a
+      ><a name="351"
+      > </a
+      ><a name="352" href="equality.inspect.html#323" class="Bound"
+      >x</a
+      ><a name="353"
+      >
+</a
+      ><a name="354" href="equality.inspect.html#250" class="Function"
+      >inspect</a
+      ><a name="361"
+      > </a
+      ><a name="362" href="equality.inspect.html#362" class="Bound"
+      >f</a
+      ><a name="363"
+      > </a
+      ><a name="364" href="equality.inspect.html#364" class="Bound"
+      >x</a
+      ><a name="365"
+      > </a
+      ><a name="366" class="Symbol"
+      >=</a
+      ><a name="367"
+      > </a
+      ><a name="368" href="equality.inspect.html#221" class="InductiveConstructor Operator"
+      >[</a
+      ><a name="369"
+      > </a
+      ><a name="370" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="374"
+      > </a
+      ><a name="375" href="equality.inspect.html#221" class="InductiveConstructor Operator"
+      >]</a
+      ><a name="376"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

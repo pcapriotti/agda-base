@@ -21,1398 +21,934 @@
       >#-}</a
       ><a name="28"
       >
-
 </a
-      ><a name="30" class="Keyword"
+      ><a name="29" class="Keyword"
       >module</a
-      ><a name="36"
+      ><a name="35"
       > </a
-      ><a name="37" href="sets.nat.core.html#1" class="Module"
+      ><a name="36" href="sets.nat.core.html#1" class="Module"
       >sets.nat.core</a
-      ><a name="50"
+      ><a name="49"
       > </a
-      ><a name="51" class="Keyword"
+      ><a name="50" class="Keyword"
       >where</a
-      ><a name="56"
+      ><a name="55"
       >
 
 </a
-      ><a name="58" class="Keyword"
+      ><a name="57" class="Keyword"
       >open</a
-      ><a name="62"
+      ><a name="61"
       > </a
-      ><a name="63" class="Keyword"
+      ><a name="62" class="Keyword"
       >import</a
-      ><a name="69"
+      ><a name="68"
       > </a
-      ><a name="70" href="level.html#1" class="Module"
+      ><a name="69" href="level.html#1" class="Module"
       >level</a
-      ><a name="75"
-      >
-  </a
-      ><a name="78" class="Keyword"
-      >using</a
-      ><a name="83"
-      > </a
-      ><a name="84" class="Symbol"
-      >(</a
-      ><a name="85"
-      >lzero</a
-      ><a name="90" class="Symbol"
-      >)</a
-      ><a name="91"
+      ><a name="74"
       >
 </a
-      ><a name="92" class="Keyword"
+      ><a name="75" class="Keyword"
       >open</a
+      ><a name="79"
+      > </a
+      ><a name="80" class="Keyword"
+      >import</a
+      ><a name="86"
+      > </a
+      ><a name="87" href="decidable.html#1" class="Module"
+      >decidable</a
       ><a name="96"
-      > </a
-      ><a name="97" class="Keyword"
-      >import</a
-      ><a name="103"
-      > </a
-      ><a name="104" href="equality.core.html#1" class="Module"
-      >equality.core</a
-      ><a name="117"
-      >
-  </a
-      ><a name="120" class="Keyword"
-      >using</a
-      ><a name="125"
-      > </a
-      ><a name="126" class="Symbol"
-      >(</a
-      ><a name="127"
-      >_&#8801;_</a
-      ><a name="130" class="Symbol"
-      >;</a
-      ><a name="131"
-      > refl</a
-      ><a name="136" class="Symbol"
-      >;</a
-      ><a name="137"
-      > ap</a
-      ><a name="140" class="Symbol"
-      >)</a
-      ><a name="141"
       >
 </a
-      ><a name="142" class="Keyword"
+      ><a name="97" class="Keyword"
       >open</a
-      ><a name="146"
+      ><a name="101"
       > </a
-      ><a name="147" class="Keyword"
+      ><a name="102" class="Keyword"
       >import</a
+      ><a name="108"
+      > </a
+      ><a name="109" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="122"
+      >
+</a
+      ><a name="123" class="Keyword"
+      >open</a
+      ><a name="127"
+      > </a
+      ><a name="128" class="Keyword"
+      >import</a
+      ><a name="134"
+      > </a
+      ><a name="135" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="148"
+      >
+</a
+      ><a name="149" class="Keyword"
+      >open</a
       ><a name="153"
       > </a
-      ><a name="154" href="function.core.html#1" class="Module"
-      >function.core</a
-      ><a name="167"
-      >
-  </a
-      ><a name="170" class="Keyword"
-      >using</a
-      ><a name="175"
+      ><a name="154" class="Keyword"
+      >import</a
+      ><a name="160"
       > </a
-      ><a name="176" class="Symbol"
-      >(</a
-      ><a name="177"
-      >_$_</a
-      ><a name="180" class="Symbol"
-      >;</a
-      ><a name="181"
-      > _&#8728;_</a
-      ><a name="185" class="Symbol"
-      >;</a
+      ><a name="161" href="function.isomorphism.core.html#1" class="Module"
+      >function.isomorphism.core</a
       ><a name="186"
-      > func-comp</a
-      ><a name="196" class="Symbol"
-      >)</a
-      ><a name="197"
       >
 </a
-      ><a name="198" class="Keyword"
+      ><a name="187" class="Keyword"
       >open</a
-      ><a name="202"
+      ><a name="191"
       > </a
-      ><a name="203" class="Keyword"
+      ><a name="192" class="Keyword"
       >import</a
+      ><a name="198"
+      > </a
+      ><a name="199" href="sets.empty.html#1" class="Module"
+      >sets.empty</a
       ><a name="209"
-      > </a
-      ><a name="210" href="decidable.html#1" class="Module"
-      >decidable</a
-      ><a name="219"
-      >
-  </a
-      ><a name="222" class="Keyword"
-      >using</a
-      ><a name="227"
-      > </a
-      ><a name="228" class="Symbol"
-      >(</a
-      ><a name="229"
-      >Dec</a
-      ><a name="232" class="Symbol"
-      >;</a
-      ><a name="233"
-      > yes</a
-      ><a name="237" class="Symbol"
-      >;</a
-      ><a name="238"
-      > no</a
-      ><a name="241" class="Symbol"
-      >)</a
-      ><a name="242"
       >
 
 </a
-      ><a name="244" class="Keyword"
-      >infixl</a
-      ><a name="250"
+      ><a name="211" class="Keyword"
+      >infixr</a
+      ><a name="217"
       > </a
-      ><a name="251" class="Number"
+      ><a name="218" class="Number"
+      >8</a
+      ><a name="219"
+      > _^_
+</a
+      ><a name="224" class="Keyword"
+      >infixl</a
+      ><a name="230"
+      > </a
+      ><a name="231" class="Number"
       >7</a
-      ><a name="252"
+      ><a name="232"
       > _*_
 </a
-      ><a name="257" class="Keyword"
+      ><a name="237" class="Keyword"
       >infixl</a
-      ><a name="263"
+      ><a name="243"
       > </a
-      ><a name="264" class="Number"
+      ><a name="244" class="Number"
       >6</a
-      ><a name="265"
+      ><a name="245"
       > _+_
 
 </a
-      ><a name="271" class="Keyword"
+      ><a name="251" class="Keyword"
       >data</a
-      ><a name="275"
+      ><a name="255"
       > </a
-      ><a name="276" href="sets.nat.core.html#276" class="Datatype"
+      ><a name="256" href="sets.nat.core.html#256" class="Datatype"
       >&#8469;</a
-      ><a name="277"
+      ><a name="257"
       > </a
-      ><a name="278" class="Symbol"
+      ><a name="258" class="Symbol"
       >:</a
-      ><a name="279"
+      ><a name="259"
       > </a
-      ><a name="280" class="PrimitiveType"
+      ><a name="260" class="PrimitiveType"
       >Set</a
-      ><a name="283"
+      ><a name="263"
       > </a
-      ><a name="284" class="Keyword"
+      ><a name="264" class="Keyword"
       >where</a
+      ><a name="269"
+      >
+  </a
+      ><a name="272" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >zero</a
+      ><a name="276"
+      > </a
+      ><a name="277" class="Symbol"
+      >:</a
+      ><a name="278"
+      > </a
+      ><a name="279" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="280"
+      >
+  </a
+      ><a name="283" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="286"
+      >  </a
+      ><a name="288" class="Symbol"
+      >:</a
       ><a name="289"
-      >
-  </a
-      ><a name="292" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >zero</a
-      ><a name="296"
       > </a
+      ><a name="290" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="291"
+      > </a
+      ><a name="292" class="Symbol"
+      >&#8594;</a
+      ><a name="293"
+      > </a
+      ><a name="294" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="295"
+      >
+
+</a
       ><a name="297" class="Symbol"
-      >:</a
-      ><a name="298"
-      > </a
-      ><a name="299" href="sets.nat.core.html#276" class="Datatype"
-      >&#8469;</a
+      >{-#</a
       ><a name="300"
-      >
-  </a
-      ><a name="303" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="306"
-      >  </a
-      ><a name="308" class="Symbol"
-      >:</a
-      ><a name="309"
       > </a
-      ><a name="310" href="sets.nat.core.html#276" class="Datatype"
-      >&#8469;</a
-      ><a name="311"
-      > </a
-      ><a name="312" class="Symbol"
-      >&#8594;</a
-      ><a name="313"
-      > </a
-      ><a name="314" href="sets.nat.core.html#276" class="Datatype"
-      >&#8469;</a
-      ><a name="315"
-      >
-
-</a
-      ><a name="317" class="Symbol"
-      >{-#</a
-      ><a name="320"
-      > </a
-      ><a name="321" class="Keyword"
+      ><a name="301" class="Keyword"
       >BUILTIN</a
-      ><a name="328"
+      ><a name="308"
       > NATURAL </a
-      ><a name="337" href="sets.nat.core.html#276" class="Datatype"
+      ><a name="317" href="sets.nat.core.html#256" class="Datatype"
       >&#8469;</a
-      ><a name="338"
+      ><a name="318"
       >    </a
-      ><a name="342" class="Symbol"
+      ><a name="322" class="Symbol"
       >#-}</a
-      ><a name="345"
+      ><a name="325"
       >
 </a
-      ><a name="346" class="Symbol"
+      ><a name="326" class="Symbol"
       >{-#</a
-      ><a name="349"
+      ><a name="329"
       > </a
-      ><a name="350" class="Keyword"
+      ><a name="330" class="Keyword"
       >BUILTIN</a
-      ><a name="357"
+      ><a name="337"
       > ZERO    </a
-      ><a name="366" href="sets.nat.core.html#292" class="InductiveConstructor"
+      ><a name="346" href="sets.nat.core.html#272" class="InductiveConstructor"
       >zero</a
-      ><a name="370"
+      ><a name="350"
       > </a
-      ><a name="371" class="Symbol"
+      ><a name="351" class="Symbol"
       >#-}</a
-      ><a name="374"
+      ><a name="354"
       >
 </a
-      ><a name="375" class="Symbol"
+      ><a name="355" class="Symbol"
       >{-#</a
-      ><a name="378"
+      ><a name="358"
       > </a
-      ><a name="379" class="Keyword"
+      ><a name="359" class="Keyword"
       >BUILTIN</a
-      ><a name="386"
+      ><a name="366"
       > SUC     </a
-      ><a name="395" href="sets.nat.core.html#303" class="InductiveConstructor"
+      ><a name="375" href="sets.nat.core.html#283" class="InductiveConstructor"
       >suc</a
-      ><a name="398"
+      ><a name="378"
       >  </a
-      ><a name="400" class="Symbol"
+      ><a name="380" class="Symbol"
       >#-}</a
-      ><a name="403"
+      ><a name="383"
       >
 
 </a
-      ><a name="405" href="sets.nat.core.html#405" class="Function"
+      ><a name="385" href="sets.nat.core.html#385" class="Function"
       >pred</a
-      ><a name="409"
+      ><a name="389"
       > </a
-      ><a name="410" class="Symbol"
+      ><a name="390" class="Symbol"
       >:</a
-      ><a name="411"
+      ><a name="391"
       > </a
-      ><a name="412" href="sets.nat.core.html#276" class="Datatype"
+      ><a name="392" href="sets.nat.core.html#256" class="Datatype"
       >&#8469;</a
-      ><a name="413"
+      ><a name="393"
       > </a
-      ><a name="414" class="Symbol"
+      ><a name="394" class="Symbol"
       >&#8594;</a
-      ><a name="415"
+      ><a name="395"
       > </a
-      ><a name="416" href="sets.nat.core.html#276" class="Datatype"
+      ><a name="396" href="sets.nat.core.html#256" class="Datatype"
       >&#8469;</a
+      ><a name="397"
+      >
+</a
+      ><a name="398" href="sets.nat.core.html#385" class="Function"
+      >pred</a
+      ><a name="402"
+      > </a
+      ><a name="403" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >zero</a
+      ><a name="407"
+      >    </a
+      ><a name="411" class="Symbol"
+      >=</a
+      ><a name="412"
+      > </a
+      ><a name="413" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >zero</a
       ><a name="417"
       >
 </a
-      ><a name="418" href="sets.nat.core.html#405" class="Function"
+      ><a name="418" href="sets.nat.core.html#385" class="Function"
       >pred</a
       ><a name="422"
       > </a
-      ><a name="423" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >zero</a
+      ><a name="423" class="Symbol"
+      >(</a
+      ><a name="424" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
       ><a name="427"
-      >    </a
+      > </a
+      ><a name="428" href="sets.nat.core.html#428" class="Bound"
+      >n</a
+      ><a name="429" class="Symbol"
+      >)</a
+      ><a name="430"
+      > </a
       ><a name="431" class="Symbol"
       >=</a
       ><a name="432"
       > </a
-      ><a name="433" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >zero</a
-      ><a name="437"
-      >
-</a
-      ><a name="438" href="sets.nat.core.html#405" class="Function"
-      >pred</a
-      ><a name="442"
-      > </a
-      ><a name="443" class="Symbol"
-      >(</a
-      ><a name="444" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="447"
-      > </a
-      ><a name="448" href="sets.nat.core.html#448" class="Bound"
+      ><a name="433" href="sets.nat.core.html#428" class="Bound"
       >n</a
-      ><a name="449" class="Symbol"
-      >)</a
-      ><a name="450"
-      > </a
-      ><a name="451" class="Symbol"
-      >=</a
-      ><a name="452"
-      > </a
-      ><a name="453" href="sets.nat.core.html#448" class="Bound"
-      >n</a
-      ><a name="454"
+      ><a name="434"
       >
 
 </a
-      ><a name="456" href="sets.nat.core.html#456" class="Function Operator"
+      ><a name="436" href="sets.nat.core.html#436" class="Function Operator"
       >_+_</a
-      ><a name="459"
+      ><a name="439"
       > </a
-      ><a name="460" class="Symbol"
+      ><a name="440" class="Symbol"
       >:</a
-      ><a name="461"
+      ><a name="441"
       > </a
-      ><a name="462" href="sets.nat.core.html#276" class="Datatype"
+      ><a name="442" href="sets.nat.core.html#256" class="Datatype"
       >&#8469;</a
-      ><a name="463"
+      ><a name="443"
       > </a
-      ><a name="464" class="Symbol"
+      ><a name="444" class="Symbol"
       >&#8594;</a
-      ><a name="465"
+      ><a name="445"
       > </a
-      ><a name="466" href="sets.nat.core.html#276" class="Datatype"
+      ><a name="446" href="sets.nat.core.html#256" class="Datatype"
       >&#8469;</a
-      ><a name="467"
+      ><a name="447"
       > </a
-      ><a name="468" class="Symbol"
+      ><a name="448" class="Symbol"
       >&#8594;</a
-      ><a name="469"
+      ><a name="449"
       > </a
-      ><a name="470" href="sets.nat.core.html#276" class="Datatype"
+      ><a name="450" href="sets.nat.core.html#256" class="Datatype"
       >&#8469;</a
-      ><a name="471"
+      ><a name="451"
       >
 </a
-      ><a name="472" href="sets.nat.core.html#292" class="InductiveConstructor"
+      ><a name="452" href="sets.nat.core.html#272" class="InductiveConstructor"
       >zero</a
-      ><a name="476"
+      ><a name="456"
       >  </a
-      ><a name="478" href="sets.nat.core.html#456" class="Function Operator"
+      ><a name="458" href="sets.nat.core.html#436" class="Function Operator"
       >+</a
-      ><a name="479"
+      ><a name="459"
       > </a
-      ><a name="480" href="sets.nat.core.html#480" class="Bound"
+      ><a name="460" href="sets.nat.core.html#460" class="Bound"
       >n</a
+      ><a name="461"
+      > </a
+      ><a name="462" class="Symbol"
+      >=</a
+      ><a name="463"
+      > </a
+      ><a name="464" href="sets.nat.core.html#460" class="Bound"
+      >n</a
+      ><a name="465"
+      >
+</a
+      ><a name="466" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="469"
+      > </a
+      ><a name="470" href="sets.nat.core.html#470" class="Bound"
+      >m</a
+      ><a name="471"
+      > </a
+      ><a name="472" href="sets.nat.core.html#436" class="Function Operator"
+      >+</a
+      ><a name="473"
+      > </a
+      ><a name="474" href="sets.nat.core.html#474" class="Bound"
+      >n</a
+      ><a name="475"
+      > </a
+      ><a name="476" class="Symbol"
+      >=</a
+      ><a name="477"
+      > </a
+      ><a name="478" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
       ><a name="481"
       > </a
       ><a name="482" class="Symbol"
-      >=</a
-      ><a name="483"
-      > </a
-      ><a name="484" href="sets.nat.core.html#480" class="Bound"
-      >n</a
-      ><a name="485"
-      >
-</a
-      ><a name="486" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="489"
-      > </a
-      ><a name="490" href="sets.nat.core.html#490" class="Bound"
-      >m</a
-      ><a name="491"
-      > </a
-      ><a name="492" href="sets.nat.core.html#456" class="Function Operator"
-      >+</a
-      ><a name="493"
-      > </a
-      ><a name="494" href="sets.nat.core.html#494" class="Bound"
-      >n</a
-      ><a name="495"
-      > </a
-      ><a name="496" class="Symbol"
-      >=</a
-      ><a name="497"
-      > </a
-      ><a name="498" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="501"
-      > </a
-      ><a name="502" class="Symbol"
       >(</a
-      ><a name="503" href="sets.nat.core.html#490" class="Bound"
+      ><a name="483" href="sets.nat.core.html#470" class="Bound"
       >m</a
+      ><a name="484"
+      > </a
+      ><a name="485" href="sets.nat.core.html#436" class="Function Operator"
+      >+</a
+      ><a name="486"
+      > </a
+      ><a name="487" href="sets.nat.core.html#474" class="Bound"
+      >n</a
+      ><a name="488" class="Symbol"
+      >)</a
+      ><a name="489"
+      >
+
+</a
+      ><a name="491" href="sets.nat.core.html#491" class="Function Operator"
+      >_*_</a
+      ><a name="494"
+      > </a
+      ><a name="495" class="Symbol"
+      >:</a
+      ><a name="496"
+      > </a
+      ><a name="497" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="498"
+      > </a
+      ><a name="499" class="Symbol"
+      >&#8594;</a
+      ><a name="500"
+      > </a
+      ><a name="501" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="502"
+      > </a
+      ><a name="503" class="Symbol"
+      >&#8594;</a
       ><a name="504"
       > </a
-      ><a name="505" href="sets.nat.core.html#456" class="Function Operator"
-      >+</a
+      ><a name="505" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
       ><a name="506"
-      > </a
-      ><a name="507" href="sets.nat.core.html#494" class="Bound"
-      >n</a
-      ><a name="508" class="Symbol"
-      >)</a
-      ><a name="509"
       >
-
 </a
-      ><a name="511" href="sets.nat.core.html#511" class="Function Operator"
-      >_*_</a
+      ><a name="507" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >0</a
+      ><a name="508"
+      > </a
+      ><a name="509" href="sets.nat.core.html#491" class="Function Operator"
+      >*</a
+      ><a name="510"
+      > </a
+      ><a name="511" href="sets.nat.core.html#511" class="Bound"
+      >n</a
+      ><a name="512"
+      > </a
+      ><a name="513" class="Symbol"
+      >=</a
       ><a name="514"
       > </a
-      ><a name="515" class="Symbol"
-      >:</a
-      ><a name="516"
-      > </a
-      ><a name="517" href="sets.nat.core.html#276" class="Datatype"
-      >&#8469;</a
-      ><a name="518"
-      > </a
-      ><a name="519" class="Symbol"
-      >&#8594;</a
-      ><a name="520"
-      > </a
-      ><a name="521" href="sets.nat.core.html#276" class="Datatype"
-      >&#8469;</a
-      ><a name="522"
-      > </a
-      ><a name="523" class="Symbol"
-      >&#8594;</a
-      ><a name="524"
-      > </a
-      ><a name="525" href="sets.nat.core.html#276" class="Datatype"
-      >&#8469;</a
-      ><a name="526"
+      ><a name="515" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >zero</a
+      ><a name="519"
       >
 </a
-      ><a name="527" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >zero</a
-      ><a name="531"
-      >  </a
-      ><a name="533" href="sets.nat.core.html#511" class="Function Operator"
-      >*</a
-      ><a name="534"
-      > </a
-      ><a name="535" href="sets.nat.core.html#535" class="Bound"
-      >n</a
-      ><a name="536"
-      > </a
-      ><a name="537" class="Symbol"
-      >=</a
-      ><a name="538"
-      > </a
-      ><a name="539" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >zero</a
-      ><a name="543"
-      >
-</a
-      ><a name="544" href="sets.nat.core.html#303" class="InductiveConstructor"
+      ><a name="520" href="sets.nat.core.html#283" class="InductiveConstructor"
       >suc</a
-      ><a name="547"
+      ><a name="523"
       > </a
-      ><a name="548" href="sets.nat.core.html#548" class="Bound"
+      ><a name="524" href="sets.nat.core.html#524" class="Bound"
       >m</a
-      ><a name="549"
+      ><a name="525"
       > </a
-      ><a name="550" href="sets.nat.core.html#511" class="Function Operator"
+      ><a name="526" href="sets.nat.core.html#491" class="Function Operator"
       >*</a
-      ><a name="551"
+      ><a name="527"
       > </a
-      ><a name="552" href="sets.nat.core.html#552" class="Bound"
+      ><a name="528" href="sets.nat.core.html#528" class="Bound"
       >n</a
-      ><a name="553"
+      ><a name="529"
       > </a
-      ><a name="554" class="Symbol"
+      ><a name="530" class="Symbol"
       >=</a
-      ><a name="555"
+      ><a name="531"
       > </a
-      ><a name="556" href="sets.nat.core.html#552" class="Bound"
+      ><a name="532" href="sets.nat.core.html#528" class="Bound"
       >n</a
-      ><a name="557"
+      ><a name="533"
       > </a
-      ><a name="558" href="sets.nat.core.html#456" class="Function Operator"
+      ><a name="534" href="sets.nat.core.html#436" class="Function Operator"
       >+</a
-      ><a name="559"
+      ><a name="535"
       > </a
-      ><a name="560" href="sets.nat.core.html#548" class="Bound"
+      ><a name="536" href="sets.nat.core.html#524" class="Bound"
       >m</a
-      ><a name="561"
+      ><a name="537"
       > </a
-      ><a name="562" href="sets.nat.core.html#511" class="Function Operator"
+      ><a name="538" href="sets.nat.core.html#491" class="Function Operator"
       >*</a
-      ><a name="563"
+      ><a name="539"
       > </a
-      ><a name="564" href="sets.nat.core.html#552" class="Bound"
+      ><a name="540" href="sets.nat.core.html#528" class="Bound"
       >n</a
-      ><a name="565"
+      ><a name="541"
       >
 
 </a
-      ><a name="567" href="sets.nat.core.html#567" class="Function Operator"
-      >_&#8799;_</a
+      ><a name="543" href="sets.nat.core.html#543" class="Function Operator"
+      >_^_</a
+      ><a name="546"
+      > </a
+      ><a name="547" class="Symbol"
+      >:</a
+      ><a name="548"
+      > </a
+      ><a name="549" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="550"
+      > </a
+      ><a name="551" class="Symbol"
+      >&#8594;</a
+      ><a name="552"
+      > </a
+      ><a name="553" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="554"
+      > </a
+      ><a name="555" class="Symbol"
+      >&#8594;</a
+      ><a name="556"
+      > </a
+      ><a name="557" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="558"
+      >
+</a
+      ><a name="559" href="sets.nat.core.html#559" class="Bound"
+      >n</a
+      ><a name="560"
+      > </a
+      ><a name="561" href="sets.nat.core.html#543" class="Function Operator"
+      >^</a
+      ><a name="562"
+      > </a
+      ><a name="563" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >0</a
+      ><a name="564"
+      > </a
+      ><a name="565" class="Symbol"
+      >=</a
+      ><a name="566"
+      > </a
+      ><a name="567" class="Number"
+      >1</a
+      ><a name="568"
+      >
+</a
+      ><a name="569" href="sets.nat.core.html#569" class="Bound"
+      >n</a
       ><a name="570"
       > </a
-      ><a name="571" class="Symbol"
-      >:</a
+      ><a name="571" href="sets.nat.core.html#543" class="Function Operator"
+      >^</a
       ><a name="572"
       > </a
       ><a name="573" class="Symbol"
       >(</a
-      ><a name="574" href="sets.nat.core.html#574" class="Bound"
-      >a</a
-      ><a name="575"
-      > </a
-      ><a name="576" href="sets.nat.core.html#576" class="Bound"
-      >b</a
+      ><a name="574" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
       ><a name="577"
       > </a
-      ><a name="578" class="Symbol"
-      >:</a
-      ><a name="579"
-      > </a
-      ><a name="580" href="sets.nat.core.html#276" class="Datatype"
-      >&#8469;</a
-      ><a name="581" class="Symbol"
+      ><a name="578" href="sets.nat.core.html#578" class="Bound"
+      >m</a
+      ><a name="579" class="Symbol"
       >)</a
+      ><a name="580"
+      > </a
+      ><a name="581" class="Symbol"
+      >=</a
       ><a name="582"
       > </a
-      ><a name="583" class="Symbol"
-      >&#8594;</a
+      ><a name="583" href="sets.nat.core.html#569" class="Bound"
+      >n</a
       ><a name="584"
       > </a
-      ><a name="585" href="decidable.html#191" class="Datatype"
-      >Dec</a
-      ><a name="588"
+      ><a name="585" href="sets.nat.core.html#491" class="Function Operator"
+      >*</a
+      ><a name="586"
       > </a
-      ><a name="589" class="Symbol"
+      ><a name="587" class="Symbol"
       >(</a
-      ><a name="590" href="sets.nat.core.html#574" class="Bound"
-      >a</a
+      ><a name="588" href="sets.nat.core.html#569" class="Bound"
+      >n</a
+      ><a name="589"
+      > </a
+      ><a name="590" href="sets.nat.core.html#543" class="Function Operator"
+      >^</a
       ><a name="591"
       > </a
-      ><a name="592" href="equality.core.html#145" class="Datatype Operator"
-      >&#8801;</a
-      ><a name="593"
-      > </a
-      ><a name="594" href="sets.nat.core.html#576" class="Bound"
-      >b</a
-      ><a name="595" class="Symbol"
+      ><a name="592" href="sets.nat.core.html#578" class="Bound"
+      >m</a
+      ><a name="593" class="Symbol"
       >)</a
-      ><a name="596"
+      ><a name="594"
+      >
+
+</a
+      ><a name="596" href="sets.nat.core.html#596" class="Function"
+      >suc-inj</a
+      ><a name="603"
+      > </a
+      ><a name="604" class="Symbol"
+      >:</a
+      ><a name="605"
+      > </a
+      ><a name="606" href="function.isomorphism.core.html#2346" class="Function"
+      >injective</a
+      ><a name="615"
+      > </a
+      ><a name="616" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="619"
       >
 </a
-      ><a name="597" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >zero</a
-      ><a name="601"
-      >  </a
-      ><a name="603" href="sets.nat.core.html#567" class="Function Operator"
-      >&#8799;</a
-      ><a name="604"
+      ><a name="620" href="sets.nat.core.html#596" class="Function"
+      >suc-inj</a
+      ><a name="627"
       > </a
-      ><a name="605" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >zero</a
-      ><a name="609"
-      >  </a
-      ><a name="611" class="Symbol"
+      ><a name="628" class="Symbol"
       >=</a
-      ><a name="612"
-      > </a
-      ><a name="613" href="decidable.html#227" class="InductiveConstructor"
-      >yes</a
-      ><a name="616"
-      > </a
-      ><a name="617" href="equality.core.html#193" class="InductiveConstructor"
-      >refl</a
-      ><a name="621"
-      >
-</a
-      ><a name="622" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >zero</a
-      ><a name="626"
-      >  </a
-      ><a name="628" href="sets.nat.core.html#567" class="Function Operator"
-      >&#8799;</a
       ><a name="629"
       > </a
-      ><a name="630" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="633"
+      ><a name="630" href="equality.core.html#364" class="Function"
+      >ap</a
+      ><a name="632"
       > </a
-      ><a name="634" class="Symbol"
-      >_</a
-      ><a name="635"
-      > </a
-      ><a name="636" class="Symbol"
-      >=</a
+      ><a name="633" href="sets.nat.core.html#385" class="Function"
+      >pred</a
       ><a name="637"
-      > </a
-      ><a name="638" href="decidable.html#254" class="InductiveConstructor"
-      >no</a
-      ><a name="640"
-      > </a
-      ><a name="641" class="Symbol"
-      >(&#955;</a
-      ><a name="643"
-      > </a
-      ><a name="644" class="Symbol"
-      >())</a
-      ><a name="647"
       >
+
 </a
-      ><a name="648" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
+      ><a name="639" href="sets.nat.core.html#639" class="Function Operator"
+      >_&#8799;_</a
+      ><a name="642"
+      > </a
+      ><a name="643" class="Symbol"
+      >:</a
+      ><a name="644"
+      > </a
+      ><a name="645" class="Symbol"
+      >(</a
+      ><a name="646" href="sets.nat.core.html#646" class="Bound"
+      >a</a
+      ><a name="647"
+      > </a
+      ><a name="648" href="sets.nat.core.html#648" class="Bound"
+      >b</a
+      ><a name="649"
+      > </a
+      ><a name="650" class="Symbol"
+      >:</a
       ><a name="651"
       > </a
-      ><a name="652" class="Symbol"
-      >_</a
-      ><a name="653"
+      ><a name="652" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="653" class="Symbol"
+      >)</a
+      ><a name="654"
       > </a
-      ><a name="654" href="sets.nat.core.html#567" class="Function Operator"
-      >&#8799;</a
-      ><a name="655"
+      ><a name="655" class="Symbol"
+      >&#8594;</a
+      ><a name="656"
       > </a
-      ><a name="656" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >zero</a
+      ><a name="657" href="decidable.html#191" class="Datatype"
+      >Dec</a
       ><a name="660"
-      >  </a
-      ><a name="662" class="Symbol"
-      >=</a
+      > </a
+      ><a name="661" class="Symbol"
+      >(</a
+      ><a name="662" href="sets.nat.core.html#646" class="Bound"
+      >a</a
       ><a name="663"
       > </a
-      ><a name="664" href="decidable.html#254" class="InductiveConstructor"
-      >no</a
-      ><a name="666"
+      ><a name="664" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="665"
       > </a
+      ><a name="666" href="sets.nat.core.html#648" class="Bound"
+      >b</a
       ><a name="667" class="Symbol"
-      >(&#955;</a
-      ><a name="669"
-      > </a
-      ><a name="670" class="Symbol"
-      >())</a
+      >)</a
+      ><a name="668"
+      >
+</a
+      ><a name="669" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >zero</a
       ><a name="673"
-      >
-</a
-      ><a name="674" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="677"
-      > </a
-      ><a name="678" href="sets.nat.core.html#678" class="Bound"
-      >a</a
-      ><a name="679"
-      > </a
-      ><a name="680" href="sets.nat.core.html#567" class="Function Operator"
+      >  </a
+      ><a name="675" href="sets.nat.core.html#639" class="Function Operator"
       >&#8799;</a
+      ><a name="676"
+      > </a
+      ><a name="677" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >zero</a
       ><a name="681"
+      >  </a
+      ><a name="683" class="Symbol"
+      >=</a
+      ><a name="684"
       > </a
-      ><a name="682" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="685"
+      ><a name="685" href="decidable.html#227" class="InductiveConstructor"
+      >yes</a
+      ><a name="688"
       > </a
-      ><a name="686" href="sets.nat.core.html#686" class="Bound"
-      >b</a
-      ><a name="687"
-      > </a
-      ><a name="688" class="Keyword"
-      >with</a
-      ><a name="692"
-      > </a
-      ><a name="693" href="sets.nat.core.html#678" class="Bound"
-      >a</a
-      ><a name="694"
-      > </a
-      ><a name="695" href="sets.nat.core.html#567" class="Function Operator"
-      >&#8799;</a
-      ><a name="696"
-      > </a
-      ><a name="697" href="sets.nat.core.html#686" class="Bound"
-      >b</a
-      ><a name="698"
+      ><a name="689" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="693"
       >
 </a
-      ><a name="699" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="702"
-      > </a
-      ><a name="703" href="sets.nat.core.html#703" class="Bound"
-      >a</a
-      ><a name="704"
-      > </a
-      ><a name="705" href="sets.nat.core.html#567" class="Function Operator"
+      ><a name="694" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >zero</a
+      ><a name="698"
+      >  </a
+      ><a name="700" href="sets.nat.core.html#639" class="Function Operator"
       >&#8799;</a
-      ><a name="706"
+      ><a name="701"
       > </a
-      ><a name="707" href="sets.nat.core.html#303" class="InductiveConstructor"
+      ><a name="702" href="sets.nat.core.html#283" class="InductiveConstructor"
       >suc</a
-      ><a name="710"
+      ><a name="705"
       > </a
-      ><a name="711" href="sets.nat.core.html#711" class="Bound"
-      >b</a
+      ><a name="706" class="Symbol"
+      >_</a
+      ><a name="707"
+      > </a
+      ><a name="708" class="Symbol"
+      >=</a
+      ><a name="709"
+      > </a
+      ><a name="710" href="decidable.html#254" class="InductiveConstructor"
+      >no</a
       ><a name="712"
       > </a
       ><a name="713" class="Symbol"
-      >|</a
-      ><a name="714"
+      >(&#955;</a
+      ><a name="715"
       > </a
-      ><a name="715" href="decidable.html#227" class="InductiveConstructor"
-      >yes</a
-      ><a name="718"
-      > </a
-      ><a name="719" href="sets.nat.core.html#719" class="Bound"
-      >a&#8801;b</a
-      ><a name="722"
-      > </a
-      ><a name="723" class="Symbol"
-      >=</a
-      ><a name="724"
-      > </a
-      ><a name="725" href="decidable.html#227" class="InductiveConstructor"
-      >yes</a
-      ><a name="728"
-      > </a
-      ><a name="729" href="function.core.html#400" class="Function Operator"
-      >$</a
-      ><a name="730"
-      > </a
-      ><a name="731" href="equality.core.html#364" class="Function"
-      >ap</a
-      ><a name="733"
-      > </a
-      ><a name="734" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="737"
-      > </a
-      ><a name="738" href="sets.nat.core.html#719" class="Bound"
-      >a&#8801;b</a
-      ><a name="741"
+      ><a name="716" class="Symbol"
+      >())</a
+      ><a name="719"
       >
 </a
-      ><a name="742" href="sets.nat.core.html#303" class="InductiveConstructor"
+      ><a name="720" href="sets.nat.core.html#283" class="InductiveConstructor"
       >suc</a
-      ><a name="745"
+      ><a name="723"
       > </a
-      ><a name="746" href="sets.nat.core.html#746" class="Bound"
-      >a</a
-      ><a name="747"
+      ><a name="724" class="Symbol"
+      >_</a
+      ><a name="725"
       > </a
-      ><a name="748" href="sets.nat.core.html#567" class="Function Operator"
+      ><a name="726" href="sets.nat.core.html#639" class="Function Operator"
       >&#8799;</a
+      ><a name="727"
+      > </a
+      ><a name="728" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >zero</a
+      ><a name="732"
+      >  </a
+      ><a name="734" class="Symbol"
+      >=</a
+      ><a name="735"
+      > </a
+      ><a name="736" href="decidable.html#254" class="InductiveConstructor"
+      >no</a
+      ><a name="738"
+      > </a
+      ><a name="739" class="Symbol"
+      >(&#955;</a
+      ><a name="741"
+      > </a
+      ><a name="742" class="Symbol"
+      >())</a
+      ><a name="745"
+      >
+</a
+      ><a name="746" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
       ><a name="749"
       > </a
-      ><a name="750" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
+      ><a name="750" href="sets.nat.core.html#750" class="Bound"
+      >a</a
+      ><a name="751"
+      > </a
+      ><a name="752" href="sets.nat.core.html#639" class="Function Operator"
+      >&#8799;</a
       ><a name="753"
       > </a
-      ><a name="754" href="sets.nat.core.html#754" class="Bound"
-      >b</a
-      ><a name="755"
-      > </a
-      ><a name="756" class="Symbol"
-      >|</a
+      ><a name="754" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
       ><a name="757"
       > </a
-      ><a name="758" href="decidable.html#254" class="InductiveConstructor"
-      >no</a
-      ><a name="760"
+      ><a name="758" href="sets.nat.core.html#758" class="Bound"
+      >b</a
+      ><a name="759"
       > </a
-      ><a name="761" href="sets.nat.core.html#761" class="Bound"
-      >&#172;a&#8801;b</a
-      ><a name="765"
+      ><a name="760" class="Keyword"
+      >with</a
+      ><a name="764"
       > </a
-      ><a name="766" class="Symbol"
-      >=</a
-      ><a name="767"
+      ><a name="765" href="sets.nat.core.html#750" class="Bound"
+      >a</a
+      ><a name="766"
       > </a
-      ><a name="768" href="decidable.html#254" class="InductiveConstructor"
-      >no</a
+      ><a name="767" href="sets.nat.core.html#639" class="Function Operator"
+      >&#8799;</a
+      ><a name="768"
+      > </a
+      ><a name="769" href="sets.nat.core.html#758" class="Bound"
+      >b</a
       ><a name="770"
-      > </a
-      ><a name="771" href="function.core.html#400" class="Function Operator"
-      >$</a
-      ><a name="772"
-      > </a
-      ><a name="773" class="Symbol"
-      >(&#955;</a
-      ><a name="775"
-      > </a
-      ><a name="776" href="sets.nat.core.html#776" class="Bound"
-      >sa&#8801;sb</a
-      ><a name="781"
-      > </a
-      ><a name="782" class="Symbol"
-      >&#8594;</a
-      ><a name="783"
-      > </a
-      ><a name="784" href="sets.nat.core.html#761" class="Bound"
-      >&#172;a&#8801;b</a
-      ><a name="788"
-      > </a
-      ><a name="789" class="Symbol"
-      >(</a
-      ><a name="790" href="equality.core.html#364" class="Function"
-      >ap</a
-      ><a name="792"
-      > </a
-      ><a name="793" href="sets.nat.core.html#405" class="Function"
-      >pred</a
-      ><a name="797"
-      > </a
-      ><a name="798" href="sets.nat.core.html#776" class="Bound"
-      >sa&#8801;sb</a
-      ><a name="803" class="Symbol"
-      >))</a
-      ><a name="805"
       >
-
 </a
-      ><a name="807" class="Keyword"
-      >data</a
-      ><a name="811"
+      ><a name="771" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="774"
       > </a
-      ><a name="812" href="sets.nat.core.html#812" class="Datatype Operator"
-      >_&#8804;_</a
-      ><a name="815"
+      ><a name="775" href="sets.nat.core.html#775" class="Bound"
+      >a</a
+      ><a name="776"
       > </a
-      ><a name="816" class="Symbol"
-      >:</a
+      ><a name="777" href="sets.nat.core.html#639" class="Function Operator"
+      >&#8799;</a
+      ><a name="778"
+      > </a
+      ><a name="779" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="782"
+      > </a
+      ><a name="783" href="sets.nat.core.html#783" class="Bound"
+      >b</a
+      ><a name="784"
+      > </a
+      ><a name="785" class="Symbol"
+      >|</a
+      ><a name="786"
+      > </a
+      ><a name="787" href="decidable.html#227" class="InductiveConstructor"
+      >yes</a
+      ><a name="790"
+      > </a
+      ><a name="791" href="sets.nat.core.html#791" class="Bound"
+      >a&#8801;b</a
+      ><a name="794"
+      > </a
+      ><a name="795" class="Symbol"
+      >=</a
+      ><a name="796"
+      > </a
+      ><a name="797" href="decidable.html#227" class="InductiveConstructor"
+      >yes</a
+      ><a name="800"
+      > </a
+      ><a name="801" href="function.core.html#400" class="Function Operator"
+      >$</a
+      ><a name="802"
+      > </a
+      ><a name="803" href="equality.core.html#364" class="Function"
+      >ap</a
+      ><a name="805"
+      > </a
+      ><a name="806" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="809"
+      > </a
+      ><a name="810" href="sets.nat.core.html#791" class="Bound"
+      >a&#8801;b</a
+      ><a name="813"
+      >
+</a
+      ><a name="814" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
       ><a name="817"
       > </a
-      ><a name="818" href="sets.nat.core.html#276" class="Datatype"
-      >&#8469;</a
+      ><a name="818" href="sets.nat.core.html#818" class="Bound"
+      >a</a
       ><a name="819"
       > </a
-      ><a name="820" class="Symbol"
-      >&#8594;</a
+      ><a name="820" href="sets.nat.core.html#639" class="Function Operator"
+      >&#8799;</a
       ><a name="821"
       > </a
-      ><a name="822" href="sets.nat.core.html#276" class="Datatype"
-      >&#8469;</a
-      ><a name="823"
-      > </a
-      ><a name="824" class="Symbol"
-      >&#8594;</a
+      ><a name="822" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
       ><a name="825"
       > </a
-      ><a name="826" class="PrimitiveType"
-      >Set</a
+      ><a name="826" href="sets.nat.core.html#826" class="Bound"
+      >b</a
+      ><a name="827"
+      > </a
+      ><a name="828" class="Symbol"
+      >|</a
       ><a name="829"
       > </a
-      ><a name="830" class="Keyword"
-      >where</a
-      ><a name="835"
-      >
-  </a
-      ><a name="838" href="sets.nat.core.html#838" class="InductiveConstructor"
-      >z&#8804;n</a
-      ><a name="841"
-      > </a
-      ><a name="842" class="Symbol"
-      >:</a
-      ><a name="843"
-      > </a
-      ><a name="844" class="Symbol"
-      >&#8704;</a
-      ><a name="845"
-      > </a
-      ><a name="846" class="Symbol"
-      >{</a
-      ><a name="847" href="sets.nat.core.html#847" class="Bound"
-      >n</a
-      ><a name="848" class="Symbol"
-      >}</a
-      ><a name="849"
-      > </a
-      ><a name="850" class="Symbol"
-      >&#8594;</a
-      ><a name="851"
-      > </a
-      ><a name="852" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >zero</a
-      ><a name="856"
-      > </a
-      ><a name="857" href="sets.nat.core.html#812" class="Datatype Operator"
-      >&#8804;</a
-      ><a name="858"
-      > </a
-      ><a name="859" href="sets.nat.core.html#847" class="Bound"
-      >n</a
-      ><a name="860"
-      >
-  </a
-      ><a name="863" href="sets.nat.core.html#863" class="InductiveConstructor"
-      >s&#8804;s</a
-      ><a name="866"
-      > </a
-      ><a name="867" class="Symbol"
-      >:</a
-      ><a name="868"
-      > </a
-      ><a name="869" class="Symbol"
-      >&#8704;</a
-      ><a name="870"
-      > </a
-      ><a name="871" class="Symbol"
-      >{</a
-      ><a name="872" href="sets.nat.core.html#872" class="Bound"
-      >m</a
-      ><a name="873"
-      > </a
-      ><a name="874" href="sets.nat.core.html#874" class="Bound"
-      >n</a
-      ><a name="875" class="Symbol"
-      >}</a
-      ><a name="876"
-      > </a
-      ><a name="877" class="Symbol"
-      >(</a
-      ><a name="878" href="sets.nat.core.html#878" class="Bound"
-      >p</a
-      ><a name="879"
-      > </a
-      ><a name="880" class="Symbol"
-      >:</a
-      ><a name="881"
-      > </a
-      ><a name="882" href="sets.nat.core.html#872" class="Bound"
-      >m</a
-      ><a name="883"
-      > </a
-      ><a name="884" href="sets.nat.core.html#812" class="Datatype Operator"
-      >&#8804;</a
-      ><a name="885"
-      > </a
-      ><a name="886" href="sets.nat.core.html#874" class="Bound"
-      >n</a
-      ><a name="887" class="Symbol"
-      >)</a
-      ><a name="888"
-      > </a
-      ><a name="889" class="Symbol"
-      >&#8594;</a
-      ><a name="890"
-      > </a
-      ><a name="891" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="894"
-      > </a
-      ><a name="895" href="sets.nat.core.html#872" class="Bound"
-      >m</a
-      ><a name="896"
-      > </a
-      ><a name="897" href="sets.nat.core.html#812" class="Datatype Operator"
-      >&#8804;</a
-      ><a name="898"
-      > </a
-      ><a name="899" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="902"
-      > </a
-      ><a name="903" href="sets.nat.core.html#874" class="Bound"
-      >n</a
-      ><a name="904"
-      >
-
-</a
-      ><a name="906" href="sets.nat.core.html#906" class="Function"
-      >ap-pred-&#8804;</a
-      ><a name="915"
-      > </a
-      ><a name="916" class="Symbol"
-      >:</a
-      ><a name="917"
-      > </a
-      ><a name="918" class="Symbol"
-      >&#8704;</a
-      ><a name="919"
-      > </a
-      ><a name="920" class="Symbol"
-      >{</a
-      ><a name="921" href="sets.nat.core.html#921" class="Bound"
-      >n</a
-      ><a name="922"
-      > </a
-      ><a name="923" href="sets.nat.core.html#923" class="Bound"
-      >m</a
-      ><a name="924" class="Symbol"
-      >}</a
-      ><a name="925"
-      > </a
-      ><a name="926" class="Symbol"
-      >&#8594;</a
-      ><a name="927"
-      > </a
-      ><a name="928" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="931"
-      > </a
-      ><a name="932" href="sets.nat.core.html#921" class="Bound"
-      >n</a
-      ><a name="933"
-      > </a
-      ><a name="934" href="sets.nat.core.html#812" class="Datatype Operator"
-      >&#8804;</a
-      ><a name="935"
-      > </a
-      ><a name="936" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="939"
-      > </a
-      ><a name="940" href="sets.nat.core.html#923" class="Bound"
-      >m</a
-      ><a name="941"
-      > </a
-      ><a name="942" class="Symbol"
-      >&#8594;</a
-      ><a name="943"
-      > </a
-      ><a name="944" href="sets.nat.core.html#921" class="Bound"
-      >n</a
-      ><a name="945"
-      > </a
-      ><a name="946" href="sets.nat.core.html#812" class="Datatype Operator"
-      >&#8804;</a
-      ><a name="947"
-      > </a
-      ><a name="948" href="sets.nat.core.html#923" class="Bound"
-      >m</a
-      ><a name="949"
-      >
-</a
-      ><a name="950" href="sets.nat.core.html#906" class="Function"
-      >ap-pred-&#8804;</a
-      ><a name="959"
-      > </a
-      ><a name="960" class="Symbol"
-      >(</a
-      ><a name="961" href="sets.nat.core.html#863" class="InductiveConstructor"
-      >s&#8804;s</a
-      ><a name="964"
-      > </a
-      ><a name="965" href="sets.nat.core.html#965" class="Bound"
-      >p</a
-      ><a name="966" class="Symbol"
-      >)</a
-      ><a name="967"
-      > </a
-      ><a name="968" class="Symbol"
-      >=</a
-      ><a name="969"
-      > </a
-      ><a name="970" href="sets.nat.core.html#965" class="Bound"
-      >p</a
-      ><a name="971"
-      >
-
-</a
-      ><a name="973" href="sets.nat.core.html#973" class="Function"
-      >refl-&#8804;</a
-      ><a name="979"
-      > </a
-      ><a name="980" class="Symbol"
-      >:</a
-      ><a name="981"
-      > </a
-      ><a name="982" class="Symbol"
-      >{</a
-      ><a name="983" href="sets.nat.core.html#983" class="Bound"
-      >n</a
-      ><a name="984"
-      > </a
-      ><a name="985" class="Symbol"
-      >:</a
-      ><a name="986"
-      > </a
-      ><a name="987" href="sets.nat.core.html#276" class="Datatype"
-      >&#8469;</a
-      ><a name="988" class="Symbol"
-      >}</a
-      ><a name="989"
-      > </a
-      ><a name="990" class="Symbol"
-      >&#8594;</a
-      ><a name="991"
-      > </a
-      ><a name="992" href="sets.nat.core.html#983" class="Bound"
-      >n</a
-      ><a name="993"
-      > </a
-      ><a name="994" href="sets.nat.core.html#812" class="Datatype Operator"
-      >&#8804;</a
-      ><a name="995"
-      > </a
-      ><a name="996" href="sets.nat.core.html#983" class="Bound"
-      >n</a
-      ><a name="997"
-      >
-</a
-      ><a name="998" href="sets.nat.core.html#973" class="Function"
-      >refl-&#8804;</a
-      ><a name="1004"
-      > </a
-      ><a name="1005" class="Symbol"
-      >{</a
-      ><a name="1006" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >0</a
-      ><a name="1007" class="Symbol"
-      >}</a
-      ><a name="1008"
-      > </a
-      ><a name="1009" class="Symbol"
-      >=</a
-      ><a name="1010"
-      > </a
-      ><a name="1011" href="sets.nat.core.html#838" class="InductiveConstructor"
-      >z&#8804;n</a
-      ><a name="1014"
-      >
-</a
-      ><a name="1015" href="sets.nat.core.html#973" class="Function"
-      >refl-&#8804;</a
-      ><a name="1021"
-      > </a
-      ><a name="1022" class="Symbol"
-      >{</a
-      ><a name="1023" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="1026"
-      > </a
-      ><a name="1027" href="sets.nat.core.html#1027" class="Bound"
-      >n</a
-      ><a name="1028" class="Symbol"
-      >}</a
-      ><a name="1029"
-      > </a
-      ><a name="1030" class="Symbol"
-      >=</a
-      ><a name="1031"
-      > </a
-      ><a name="1032" href="sets.nat.core.html#863" class="InductiveConstructor"
-      >s&#8804;s</a
-      ><a name="1035"
-      > </a
-      ><a name="1036" href="sets.nat.core.html#973" class="Function"
-      >refl-&#8804;</a
-      ><a name="1042"
-      >
-
-</a
-      ><a name="1044" href="sets.nat.core.html#1044" class="Function Operator"
-      >_&#8804;?_</a
-      ><a name="1048"
-      > </a
-      ><a name="1049" class="Symbol"
-      >:</a
-      ><a name="1050"
-      > </a
-      ><a name="1051" class="Symbol"
-      >(</a
-      ><a name="1052" href="sets.nat.core.html#1052" class="Bound"
-      >n</a
-      ><a name="1053"
-      > </a
-      ><a name="1054" href="sets.nat.core.html#1054" class="Bound"
-      >m</a
-      ><a name="1055"
-      > </a
-      ><a name="1056" class="Symbol"
-      >:</a
-      ><a name="1057"
-      > </a
-      ><a name="1058" href="sets.nat.core.html#276" class="Datatype"
-      >&#8469;</a
-      ><a name="1059" class="Symbol"
-      >)</a
-      ><a name="1060"
-      > </a
-      ><a name="1061" class="Symbol"
-      >&#8594;</a
-      ><a name="1062"
-      > </a
-      ><a name="1063" href="decidable.html#191" class="Datatype"
-      >Dec</a
-      ><a name="1066"
-      > </a
-      ><a name="1067" class="Symbol"
-      >(</a
-      ><a name="1068" href="sets.nat.core.html#1052" class="Bound"
-      >n</a
-      ><a name="1069"
-      > </a
-      ><a name="1070" href="sets.nat.core.html#812" class="Datatype Operator"
-      >&#8804;</a
-      ><a name="1071"
-      > </a
-      ><a name="1072" href="sets.nat.core.html#1054" class="Bound"
-      >m</a
-      ><a name="1073" class="Symbol"
-      >)</a
-      ><a name="1074"
-      >
-</a
-      ><a name="1075" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >0</a
-      ><a name="1076"
-      > </a
-      ><a name="1077" href="sets.nat.core.html#1044" class="Function Operator"
-      >&#8804;?</a
-      ><a name="1079"
-      > </a
-      ><a name="1080" href="sets.nat.core.html#1080" class="Bound"
-      >n</a
-      ><a name="1081"
-      > </a
-      ><a name="1082" class="Symbol"
-      >=</a
-      ><a name="1083"
-      > </a
-      ><a name="1084" href="decidable.html#227" class="InductiveConstructor"
-      >yes</a
-      ><a name="1087"
-      > </a
-      ><a name="1088" href="sets.nat.core.html#838" class="InductiveConstructor"
-      >z&#8804;n</a
-      ><a name="1091"
-      >
-</a
-      ><a name="1092" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="1095"
-      > </a
-      ><a name="1096" class="Symbol"
-      >_</a
-      ><a name="1097"
-      > </a
-      ><a name="1098" href="sets.nat.core.html#1044" class="Function Operator"
-      >&#8804;?</a
-      ><a name="1100"
-      > </a
-      ><a name="1101" href="sets.nat.core.html#292" class="InductiveConstructor"
-      >0</a
-      ><a name="1102"
-      > </a
-      ><a name="1103" class="Symbol"
-      >=</a
-      ><a name="1104"
-      > </a
-      ><a name="1105" href="decidable.html#254" class="InductiveConstructor"
+      ><a name="830" href="decidable.html#254" class="InductiveConstructor"
       >no</a
-      ><a name="1107"
+      ><a name="832"
       > </a
-      ><a name="1108" class="Symbol"
+      ><a name="833" href="sets.nat.core.html#833" class="Bound"
+      >&#172;a&#8801;b</a
+      ><a name="837"
+      > </a
+      ><a name="838" class="Symbol"
+      >=</a
+      ><a name="839"
+      > </a
+      ><a name="840" href="decidable.html#254" class="InductiveConstructor"
+      >no</a
+      ><a name="842"
+      > </a
+      ><a name="843" href="function.core.html#400" class="Function Operator"
+      >$</a
+      ><a name="844"
+      > </a
+      ><a name="845" class="Symbol"
       >(&#955;</a
-      ><a name="1110"
+      ><a name="847"
       > </a
-      ><a name="1111" class="Symbol"
-      >())</a
-      ><a name="1114"
-      >
-</a
-      ><a name="1115" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="1118"
+      ><a name="848" href="sets.nat.core.html#848" class="Bound"
+      >sa&#8801;sb</a
+      ><a name="853"
       > </a
-      ><a name="1119" href="sets.nat.core.html#1119" class="Bound"
-      >n</a
-      ><a name="1120"
+      ><a name="854" class="Symbol"
+      >&#8594;</a
+      ><a name="855"
       > </a
-      ><a name="1121" href="sets.nat.core.html#1044" class="Function Operator"
-      >&#8804;?</a
-      ><a name="1123"
+      ><a name="856" href="sets.nat.core.html#833" class="Bound"
+      >&#172;a&#8801;b</a
+      ><a name="860"
       > </a
-      ><a name="1124" href="sets.nat.core.html#303" class="InductiveConstructor"
-      >suc</a
-      ><a name="1127"
-      > </a
-      ><a name="1128" href="sets.nat.core.html#1128" class="Bound"
-      >m</a
-      ><a name="1129"
-      > </a
-      ><a name="1130" class="Keyword"
-      >with</a
-      ><a name="1134"
-      > </a
-      ><a name="1135" href="sets.nat.core.html#1119" class="Bound"
-      >n</a
-      ><a name="1136"
-      > </a
-      ><a name="1137" href="sets.nat.core.html#1044" class="Function Operator"
-      >&#8804;?</a
-      ><a name="1139"
-      > </a
-      ><a name="1140" href="sets.nat.core.html#1128" class="Bound"
-      >m</a
-      ><a name="1141"
-      >
-</a
-      ><a name="1142" class="Symbol"
-      >...</a
-      ><a name="1145"
-      > </a
-      ><a name="1146" class="Symbol"
-      >|</a
-      ><a name="1147"
-      > </a
-      ><a name="1148" href="decidable.html#227" class="InductiveConstructor"
-      >yes</a
-      ><a name="1151"
-      > </a
-      ><a name="1152" href="sets.nat.core.html#1152" class="Bound"
-      >p</a
-      ><a name="1153"
-      > </a
-      ><a name="1154" class="Symbol"
-      >=</a
-      ><a name="1155"
-      > </a
-      ><a name="1156" href="decidable.html#227" class="InductiveConstructor"
-      >yes</a
-      ><a name="1159"
-      > </a
-      ><a name="1160" class="Symbol"
+      ><a name="861" class="Symbol"
       >(</a
-      ><a name="1161" href="sets.nat.core.html#863" class="InductiveConstructor"
-      >s&#8804;s</a
-      ><a name="1164"
+      ><a name="862" href="equality.core.html#364" class="Function"
+      >ap</a
+      ><a name="864"
       > </a
-      ><a name="1165" href="sets.nat.core.html#1152" class="Bound"
-      >p</a
-      ><a name="1166" class="Symbol"
-      >)</a
-      ><a name="1167"
+      ><a name="865" href="sets.nat.core.html#385" class="Function"
+      >pred</a
+      ><a name="869"
+      > </a
+      ><a name="870" href="sets.nat.core.html#848" class="Bound"
+      >sa&#8801;sb</a
+      ><a name="875" class="Symbol"
+      >))</a
+      ><a name="877"
       >
-</a
-      ><a name="1168" class="Symbol"
-      >...</a
-      ><a name="1171"
-      > </a
-      ><a name="1172" class="Symbol"
-      >|</a
-      ><a name="1173"
-      > </a
-      ><a name="1174" href="decidable.html#254" class="InductiveConstructor"
-      >no</a
-      ><a name="1176"
-      > </a
-      ><a name="1177" href="sets.nat.core.html#1177" class="Bound"
-      >f</a
-      ><a name="1178"
-      > </a
-      ><a name="1179" class="Symbol"
-      >=</a
-      ><a name="1180"
-      > </a
-      ><a name="1181" href="decidable.html#254" class="InductiveConstructor"
-      >no</a
-      ><a name="1183"
-      > </a
-      ><a name="1184" class="Symbol"
-      >(</a
-      ><a name="1185" href="sets.nat.core.html#1177" class="Bound"
-      >f</a
-      ><a name="1186"
-      > </a
-      ><a name="1187" href="function.core.html#912" class="Function Operator"
-      >&#8728;</a
-      ><a name="1188"
-      > </a
-      ><a name="1189" href="sets.nat.core.html#906" class="Function"
-      >ap-pred-&#8804;</a
-      ><a name="1198" class="Symbol"
-      >)</a
-      ><a name="1199"
-      >
+
 </a
       ></pre
     ></body
