@@ -8,6 +8,7 @@ open import equality.calculus
 open import equality.reasoning
 open import function.core
 open import function.extensionality
+open import function.fibration
 open import function.isomorphism
 open import function.overloading
 open import container.core
@@ -23,24 +24,31 @@ apply≅' : ∀ {i j}{X : Set i}{Y : Set j}
 apply≅' (i , _) = _≅_.to i
 
 is-≅' : ∀ {i j}{X : Set i}{Y : Set j} → (X → Y) → Set _
-is-≅' {X = X}{Y = Y} f = Σ (X ≅' Y) λ isom → f ≡ apply isom
+is-≅' {X = X}{Y = Y} f = apply≅' ⁻¹ f
 
 abstract
+  ≅'-≈-fib-comm : ∀ {i j}{X : Set i}{Y : Set j}(eq : X ≅' Y)
+                → proj₁ (≅'⇒≈ eq) ≡ apply≅' eq
+  ≅'-≈-fib-comm eq = refl
+
+  ≅'⇒≈-we : ∀ {i j}{X : Set i}{Y : Set j}
+           → weak-equiv (≅'⇒≈ {X = X}{Y = Y})
+  ≅'⇒≈-we = proj₂ (≅⇒≈ (sym≅ ≈⇔≅'))
+
   is-≅'-≈-iso : ∀ {i j}{X : Set i}{Y : Set j}(f : X → Y)
               → is-≅' f ≅ weak-equiv f
   is-≅'-≈-iso {X = X}{Y = Y} f = begin
-      (Σ (X ≅' Y) λ isom → f ≡ apply isom)
-    ≅⟨ Σ-ap-iso (sym≅ ≈⇔≅') (λ _ → refl≅) ⟩
-      (Σ (Σ (X → Y) λ f' → weak-equiv f') λ eq → f ≡ proj₁ eq)
-    ≅⟨ Σ-assoc-iso ⟩
-      (Σ (X → Y) λ f' → (weak-equiv f' × f ≡ f'))
-    ≅⟨ (Σ-ap-iso refl≅ λ f' → ×-comm) ⟩
-      (Σ (X → Y) λ f' → (f ≡ f' × weak-equiv f'))
-    ≅⟨ sym≅ Σ-assoc-iso ⟩
-      (Σ (Σ (X → Y) λ f' → f ≡ f') λ {(f' , _) → weak-equiv f'})
-    ≅⟨ Σ-ap-iso (contr-⊤-iso (singl-contr f)) (λ _ → refl≅) ⟩
-      (⊤ × weak-equiv f)
-    ≅⟨ ×-left-unit ⟩
+      is-≅' f
+    ≡⟨ refl ⟩
+      (fib weak-equiv ∘' ≅'⇒≈) ⁻¹ f
+    ≅⟨ fib-compose ≅'⇒≈ (fib weak-equiv) f ⟩
+      ( Σ (fib weak-equiv ⁻¹ f) λ { (we , _) → ≅'⇒≈ ⁻¹ we } )
+    ≅⟨ ( Σ-ap-iso refl≅ λ { (we , _)
+        → contr-⊤-iso (≅'⇒≈-we we) } ) ⟩
+      ( fib weak-equiv ⁻¹ f × ⊤ )
+    ≅⟨ ×-right-unit ⟩
+      fib weak-equiv ⁻¹ f
+    ≅⟨ fib-iso f ⟩
       weak-equiv f
     ∎
     where open ≅-Reasoning
@@ -51,22 +59,7 @@ is-≅'-h1 f = iso-hlevel (sym≅ (is-≅'-≈-iso f)) (weak-equiv-h1 f)
 
 ≅'-Σ-iso : ∀ {i j}{X : Set i}{Y : Set j}
          → (X ≅' Y) ≅ (Σ (X → Y) λ f → is-≅' f)
-≅'-Σ-iso {X = X}{Y = Y} = begin
-    (X ≅' Y)
-  ≅⟨ sym≅ ×-right-unit ⟩
-    ((X ≅' Y) × ⊤)
-  ≅⟨ sym≅ (Σ-ap-iso refl≅ λ i → contr-⊤-iso (singl-contr (apply i))) ⟩
-    (Σ (X ≅' Y) λ i → singleton (apply i))
-  ≅⟨ ( Σ-ap-iso refl≅ λ i → Σ-ap-iso refl≅ λ f → sym≡-iso (apply i) f ) ⟩
-    (Σ (X ≅' Y) λ i → Σ (X → Y) λ f → f ≡ apply i)
-  ≅⟨ sym≅ Σ-assoc-iso ⟩
-    (Σ ((X ≅' Y) × (X → Y)) λ {(i , f) → f ≡ apply i})
-  ≅⟨ Σ-ap-iso ×-comm (λ _ → refl≅) ⟩
-    (Σ ((X → Y) × (X ≅' Y)) λ {(f , i) → f ≡ apply i})
-  ≅⟨ Σ-assoc-iso ⟩
-    (Σ (X → Y) λ f → Σ (X ≅' Y) λ i → f ≡ apply i)
-  ∎
-  where open ≅-Reasoning
+≅'-Σ-iso {X = X}{Y = Y} = sym≅ (total-space-iso apply≅')
 
 ≅'-equality : ∀ {i j}{X : Set i}{Y : Set j}
             → {isom₁ isom₂ : X ≅' Y}
