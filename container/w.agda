@@ -6,7 +6,6 @@ open import equality
 open import function.extensionality
 open import function.isomorphism
 open import function.isomorphism.properties
-open import function.overloading
 open import sets.empty
 open import sets.nat.core using (suc)
 open import sets.unit
@@ -96,7 +95,7 @@ private
     fixpoint-W {i}{sup a f}{sup a' f'} = begin
         (sup a f ≡ sup a' f')
       ≅⟨ iso≡ (fixpoint i) ⟩
-        (apply (fixpoint i) (sup a f) ≡ apply (fixpoint i) (sup a' f'))
+        (apply≅ (fixpoint i) (sup a f) ≡ apply≅ (fixpoint i) (sup a' f'))
       ≅⟨ sym≅ Σ-split-iso ⟩
         (Σ (a ≡ a') λ p → subst (λ a → (b : B a) → W (r b)) p f ≡ f')
       ≅⟨ Σ-ap-iso refl≅ (substX-β f f') ⟩

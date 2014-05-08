@@ -6,7 +6,6 @@ open import equality
 open import function.isomorphism.core
 open import function.isomorphism.utils
 open import function.isomorphism.properties
-open import function.overloading
 open import sets.empty
 
 _minus_ : (A : Set) → A → Set
@@ -16,7 +15,7 @@ iso-remove : {A : Set}{B : Set}
            → (isom : A ≅ B)
            → (x : A)
            → (A minus x)
-           ≅ (B minus (apply isom x))
+           ≅ (B minus (apply≅ isom x))
 iso-remove {A = A}{B} isom x =
   Σ-ap-iso isom λ a
    → Π-ap-iso (iso≡ isom) λ _

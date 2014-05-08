@@ -7,8 +7,6 @@ open import equality.calculus
 open import equality.reasoning
 open import function.core
 open import function.isomorphism.core
-open import function.overloading
-open import overloading.core
 
 coherent : {X : Set}{Y : Set} → X ≅ Y → Set
 coherent f = ∀ x → ap to (iso₁ x) ≡ iso₂ (to x)
@@ -27,15 +25,6 @@ coherent' f = ∀ y → ap from (iso₂ y) ≡ iso₁ (from y)
 _≅'_ : (X Y : Set) → Set
 X ≅' Y = Σ (X ≅ Y) coherent
 
-iso'-is-fun : {X Y : Set} → Coercion (X ≅' Y) (X → Y)
-iso'-is-fun = record
-  { coerce = λ isom → apply (proj₁ isom) }
-
-
-iso'-is-iso : {X Y : Set} → Coercion (X ≅' Y) (X ≅ Y)
-iso'-is-iso = record
-  { coerce = proj₁ }
-
 -- technical lemma: substiting a fixpoint proof into itself is like
 -- applying the function
 lem-subst-fixpoint : {X : Set}
@@ -45,7 +34,7 @@ lem-subst-fixpoint : {X : Set}
                    ≡ ap f p
 lem-subst-fixpoint {X} f x p = begin
     subst (λ x → f x ≡ x) (p ⁻¹) p
-  ≡⟨ lem (f x) (sym p) ⟩ 
+  ≡⟨ lem (f x) (sym p) ⟩
     ap f (sym (sym p)) · p · sym p
   ≡⟨ ap (λ z → ap f z · p · sym p)
            (double-inverse p) ⟩

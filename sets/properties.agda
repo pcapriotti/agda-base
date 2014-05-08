@@ -5,7 +5,6 @@ open import sum
 open import equality.core
 open import equality.calculus
 open import function.isomorphism
-open import function.overloading
 open import hott.hlevel
 open import hott.weak-equivalence
 open import sets.unit
@@ -40,7 +39,7 @@ iso-equiv-h2 hA hB = trans≅ ≈⇔≅'
 iso-eq-h2 : {A : Set}{B : Set}
           → h 2 A → h 2 B
           → {isom isom' : A ≅ B}
-          → (apply isom ≡ apply isom')
+          → (apply≅ isom ≡ apply≅ isom')
           → isom ≡ isom'
 iso-eq-h2 hA hB p =
   subtype-eq (λ f → weak-equiv-h1 f)
@@ -48,7 +47,7 @@ iso-eq-h2 hA hB p =
 
 inj-eq-h2 : {A : Set}{B : Set}
           → h 2 A → {f f' : A ↣ B}
-          → (apply f ≡ apply f')
+          → (apply↣ f ≡ apply↣ f')
           → f ≡ f'
 inj-eq-h2 hA refl
   = ap (_,_ _) (h1⇒prop (inj-hlevel _ hA) _ _)

@@ -9,11 +9,10 @@ open import function.extensionality.computation public
 
 open import equality.core
 open import function.isomorphism
-open import function.overloading
 
 -- extensionality for functions of implicit arguments
 impl-funext : {X : Set}{Y : X → Set}
           → {f g : {x : X} → Y x}
           → ((x : X) → f {x} ≡ g {x})
           → (λ {x} → f {x}) ≡ g
-impl-funext h = ap (apply impl-iso) (funext h)
+impl-funext h = ap (apply≅ impl-iso) (funext h)

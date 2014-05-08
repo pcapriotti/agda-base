@@ -9,7 +9,6 @@ open import equality.inspect
 open import function.isomorphism
 open import function.core
 open import function.extensionality
-open import function.overloading
 open import sets.core
 open import sets.properties
 open import sets.nat
@@ -115,7 +114,7 @@ factorial (suc n) = suc n * factorial n
 
 fin-inj-iso : ∀ {n} → (Fin n ≅ Fin n) ≅ (Fin n ↣ Fin n)
 fin-inj-iso {n} = record
-  { to = λ f → (apply f , iso⇒inj f)
+  { to = λ f → (apply≅ f , iso⇒inj f)
   ; from = λ { (f , inj) → inj⇒iso f inj }
   ; iso₁ = λ f → iso-eq-h2 (fin-set n) (fin-set n) refl
   ; iso₂ = λ { (f , inj) → inj-eq-h2 (fin-set n) refl } }
@@ -171,10 +170,10 @@ fin-iso-iso {suc n} = begin
       ; iso₂ = λ g → inj-eq-h2 (fin-set n) refl }
         where
             α : (f : Fin (suc n) ↣ Fin (suc n))
-              → (p : apply f zero ≡ zero)
+              → (p : apply↣ f zero ≡ zero)
               → (i : Fin (suc n))
-              → apply (fin-inj-add (fin-inj-remove₀ f p)) i
-              ≡ apply f i
+              → apply↣ (fin-inj-add (fin-inj-remove₀ f p)) i
+              ≡ apply↣ f i
             α _ p zero = sym p
             α (f , f-inj) p (suc i) = pred-β (f (suc i))
               (λ q → fin-disj _ (f-inj (p · sym q)))

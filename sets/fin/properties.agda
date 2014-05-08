@@ -7,7 +7,6 @@ open import equality
 open import function.core
 open import function.extensionality
 open import function.isomorphism
-open import function.overloading
 open import sets.core
 open import sets.nat
   hiding (_≟_; pred)
@@ -159,7 +158,7 @@ transpose-inj-iso' {n} i j
   → mk-prop-iso (inj-hlevel f (fin-set _))
                 (inj-hlevel _ (fin-set _))
                 (transpose-inj i j f)
-                (λ inj p → inj (ap (apply tiso) p))
+                (λ inj p → inj (ap (apply≅ tiso) p))
    where
      tiso : Fin n ≅ Fin n
      tiso = transpose-iso i j
@@ -196,7 +195,7 @@ inj-nonsurj {n}{A} f inj {z} u = g , g-inj
     inj' p = inj (ap proj₁ p)
 
     g : A → Fin n
-    g = apply (fin-remove-iso z) ∘' f'
+    g = apply≅ (fin-remove-iso z) ∘' f'
 
     g-inj : injective g
     g-inj p = inj' (iso⇒inj (fin-remove-iso z) p)
@@ -216,7 +215,7 @@ preimage {n = suc n} f dec x with dec (f zero) x
 
 fin-inj-remove₀ : ∀ {n m}
                 → (f : Fin (suc n) ↣ Fin (suc m))
-                → (apply f zero ≡ zero)
+                → (apply↣ f zero ≡ zero)
                 → Fin n ↣ Fin m
 fin-inj-remove₀ {n}{m} (f , inj) p = g , g-inj
   where

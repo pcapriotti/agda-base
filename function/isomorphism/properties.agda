@@ -6,7 +6,6 @@ open import sets.nat.core
 open import equality.core
 open import equality.calculus
 open import equality.reasoning
-open import function.overloading
 open import function.isomorphism.core
 open import function.isomorphism.coherent
 open import hott.hlevel.core
@@ -75,7 +74,7 @@ iso≡ : {X Y : Set}
      → (isom : X ≅ Y)
      → {x x' : X}
      → (x ≡ x')
-     ≅ (apply isom x ≡ apply isom x')
+     ≅ (apply≅ isom x ≡ apply≅ isom x')
 iso≡ isom = iso'≡ (≅⇒≅' isom)
 
 abstract
@@ -84,7 +83,7 @@ abstract
              → {X : Set}
              → (isom : X ≅ Σ A P)
              → {x y : X}
-             → (proj₁ (apply isom x) ≡ proj₁ (apply isom y))
+             → (proj₁ (apply≅ isom x) ≡ proj₁ (apply≅ isom y))
              → x ≡ y
   subtype-eq hP isom p = iso⇒inj isom
     (unapΣ (p , h1⇒prop (hP _) _ _))

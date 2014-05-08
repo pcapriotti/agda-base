@@ -6,7 +6,6 @@ open import sum
 open import equality.core
 open import equality.calculus
 open import function.core
-open import function.overloading
 open import function.isomorphism.core
 open import function.isomorphism.coherent
 open import function.extensionality.proof
@@ -36,8 +35,8 @@ open import hott.hlevel.core
          → (isom' : Y ≅ Y')
          → (X × Y) ≅ (X' × Y')
 ×-ap-iso isom isom' = record
-  { to = λ { (x , y) → (apply isom x , apply isom' y) }
-  ; from = λ { (x' , y') → (invert isom x' , invert isom' y') }
+  { to = λ { (x , y) → (apply≅ isom x , apply≅ isom' y) }
+  ; from = λ { (x' , y') → (invert≅ isom x' , invert≅ isom' y') }
   ; iso₁ = λ { (x , y) → pair≡ (_≅_.iso₁ isom x) (_≅_.iso₁ isom' y) }
   ; iso₂ = λ { (x' , y') → pair≡ (_≅_.iso₂ isom x') (_≅_.iso₂ isom' y') } }
 
@@ -45,14 +44,14 @@ open import hott.hlevel.core
           → ((x : X) → Y x ≅ Y' x)
           → Σ X Y ≅ Σ X Y'
 Σ-ap-iso₂ {X = X}{Y}{Y'} isom = record
-  { to = λ { (x , y) → (x , apply (isom x) y) }
-  ; from = λ { (x , y') → (x , invert (isom x) y') }
+  { to = λ { (x , y) → (x , apply≅ (isom x) y) }
+  ; from = λ { (x , y') → (x , invert≅ (isom x) y') }
   ; iso₁ = λ { (x , y) → unapΣ (refl , _≅_.iso₁ (isom x) y) }
   ; iso₂ = λ { (x , y') → unapΣ (refl , _≅_.iso₂ (isom x) y') } }
 
 Σ-ap-iso₁ : {X : Set}{X' : Set}{Y : X' → Set}
           → (isom : X ≅ X')
-          → Σ X (Y ∘ apply isom) ≅ Σ X' Y
+          → Σ X (Y ∘ apply≅ isom) ≅ Σ X' Y
 Σ-ap-iso₁ {X = X}{X'}{Y} isom = record
   { to = λ { (x , y) → (f x , y) }
   ; from = λ { (x , y) → (g x , subst Y (sym (K x)) y) }
@@ -77,7 +76,7 @@ open import hott.hlevel.core
 Σ-ap-iso : {X : Set}{X' : Set}
            {Y : X → Set}{Y' : X' → Set}
          → (isom : X ≅ X')
-         → ((x : X) → Y x ≅ Y' (apply isom x))
+         → ((x : X) → Y x ≅ Y' (apply≅ isom x))
          → Σ X Y ≅ Σ X' Y'
 Σ-ap-iso {X = X}{X'}{Y}{Y'} isom isom' = trans≅
   (Σ-ap-iso₂ isom') (Σ-ap-iso₁ isom)
@@ -85,7 +84,7 @@ open import hott.hlevel.core
 Σ-ap-iso' : {X : Set}{X' : Set}
             {Y : X → Set}{Y' : X' → Set}
           → (isom : X ≅ X')
-          → ((x : X') → Y (invert isom x) ≅ Y' x)
+          → ((x : X') → Y (invert≅ isom x) ≅ Y' x)
           → Σ X Y ≅ Σ X' Y'
 Σ-ap-iso' {X = X}{X'}{Y}{Y'} isom isom'
   = sym≅ (Σ-ap-iso (sym≅ isom) (λ x → sym≅ (isom' x)))
@@ -93,7 +92,7 @@ open import hott.hlevel.core
 Π-ap-iso : {X : Set}{X' : Set}
            {Y : X → Set}{Y' : X' → Set}
            → (isom : X ≅ X')
-           → ((x' : X') → Y (invert isom x') ≅ Y' x')
+           → ((x' : X') → Y (invert≅ isom x') ≅ Y' x')
            → ((x : X) → Y x)
            ≅ ((x' : X') → Y' x')
 Π-ap-iso {X = X}{X'}{Y}{Y'} isom isom' =
@@ -101,7 +100,7 @@ open import hott.hlevel.core
   where
     Π-iso : (isom : X ≅' X')
           → ((x : X) → Y x)
-          ≅ ((x' : X') → Y (invert (proj₁ isom) x'))
+          ≅ ((x' : X') → Y (invert≅ (proj₁ isom) x'))
     Π-iso (iso f g H K , γ) = record
       { to = λ h x' → h (g x')
       ; from = λ h' x → subst Y (H x) (h' (f x))
@@ -117,8 +116,8 @@ open import hott.hlevel.core
            → ((x : X) → Y x)
            ≅ ((x : X) → Y' x)
     Π-iso' isom = record
-      { to = λ h x → apply (isom x) (h x)
-      ; from = λ h' x → invert (isom x) (h' x)
+      { to = λ h x → apply≅ (isom x) (h x)
+      ; from = λ h' x → invert≅ (isom x) (h' x)
       ; iso₁ = λ h → funext λ x → _≅_.iso₁ (isom x) _
       ; iso₂ = λ h' → funext λ x → _≅_.iso₂ (isom x) _ }
 

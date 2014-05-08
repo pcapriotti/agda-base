@@ -7,7 +7,6 @@ open import function.isomorphism.core
 open import function.isomorphism.utils
 open import function.isomorphism.properties
 open import function.extensionality
-open import function.overloading
 open import equality.core
 open import sets.unit
 open import sets.nat using (suc)
@@ -27,7 +26,7 @@ module _ {A : Set}{B : Set} where
     isom : A ≅ B
     isom = iso f g α β
 
-  iso⇒inv : (f : A ≅ B) → inverse (apply f)
+  iso⇒inv : (f : A ≅ B) → inverse (apply≅ f)
   iso⇒inv (iso f g α β) = mk-inverse g α β
 
   inverse-struct-iso : (f : A → B)

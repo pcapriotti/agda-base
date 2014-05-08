@@ -29,9 +29,6 @@ import decidable
 -- Functions, isomorphisms and properties thereof
 import function
 
--- Overloading system
-import overloading
-
 -- Container functors, W and M types
 import container
 

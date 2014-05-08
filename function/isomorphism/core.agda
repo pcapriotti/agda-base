@@ -5,9 +5,7 @@ open import equality.core
 open import equality.groupoid
 open import equality.reasoning
 open import function.core
-open import function.overloading
 open import sum
-open import overloading.core
 
 -- isomorphisms
 record _≅_ (X : Set)(Y : Set) : Set where
@@ -18,6 +16,10 @@ record _≅_ (X : Set)(Y : Set) : Set where
     iso₁ : (x : X) → from (to x) ≡ x
     iso₂ : (y : Y) → to (from y) ≡ y
 infix 5 _≅_
+
+open _≅_ public using ()
+  renaming ( to to apply≅
+           ; from to invert≅ )
 
 ≅-struct-iso : {X : Set}{Y : Set}
              → (X ≅ Y)
@@ -95,6 +97,9 @@ surjective {X = X}{Y = Y} f = (y : Y) → Σ X λ x → f x ≡ y
 _↣_ : Set → Set → Set
 A ↣ B = Σ (A → B) injective
 
+apply↣ : {A B : Set} → (A ↣ B) → A → B
+apply↣ = proj₁
+
 -- composition of injections:
 _∘i_ : {A : Set}{B : Set}{C : Set}
      → (B ↣ C) → (A ↣ B) → (A ↣ C)
@@ -105,38 +110,12 @@ A ↠ B = Σ (A → B) surjective
 
 private
   module properties {X : Set}{Y : Set} where
-    iso-is-fun : Coercion (X ≅ Y) (X → Y)
-    iso-is-fun = record
-      { coerce = _≅_.to }
-
-    iso-is-iso : Coercion (X ≅ Y) (X ≅ Y)
-    iso-is-iso = coerce-self _
-
-    inj-is-fun : Coercion (X ↣ Y) (X → Y)
-    inj-is-fun = record
-      { coerce = proj₁ }
-
-    srj-is-fun : Coercion (X ↠ Y) (X → Y)
-    srj-is-fun = record
-      { coerce = proj₁ }
-
-    private
-      module iso-methods {Source : Set}
-                         ⦃ c : Coercion Source (X ≅ Y) ⦄ where
-        private
-          module with-source (source : Source) where
-            private target = coerce c source
-            open _≅_ target public using ()
-              renaming (from to invert)
-        open with-source public
-    open iso-methods public
-
-    iso⇒inj : (iso : X ≅ Y) → injective (apply iso)
+    iso⇒inj : (iso : X ≅ Y) → injective (apply≅ iso)
     iso⇒inj f {x}{x'} q = (iso₁ x) ⁻¹ · ap from q · iso₁ x'
       where
         open _≅_ f
 
-    iso⇒surj : (iso : X ≅ Y) → surjective (apply iso)
+    iso⇒surj : (iso : X ≅ Y) → surjective (apply≅ iso)
     iso⇒surj f y = from y , iso₂ y
       where
         open _≅_ f

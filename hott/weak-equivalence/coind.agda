@@ -8,7 +8,6 @@ open import equality.reasoning
 open import function.core
 open import function.extensionality
 open import function.isomorphism
-open import function.overloading
 open import container.core
 open import container.fixpoint
 open import container.m
