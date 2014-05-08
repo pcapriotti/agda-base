@@ -81,10 +81,10 @@ module Definition (c : Container) where
 
   -- the constructor is the inverse of the destructor
   inM-η : ∀ {i} (x : M i) → inM (out x) ≡ x
-  inM-η x = unfold-η out (inM ∘ out) (λ _ → refl) x ⊚ unfold-id x
+  inM-η x = unfold-η out (inM ∘ out) (λ _ → refl) x · unfold-id x
 
   inM-β : ∀ {i} (x : F M i) → out (inM x) ≡ x
-  inM-β {i} x = cong u (impl-ext' (λ i → ext' inM-η))
+  inM-β {i} x = ap u (impl-funext (λ i → funext inM-η))
     where
       u : (M ↝ M) → F M i
       u h = imap M h {i} x

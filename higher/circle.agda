@@ -28,12 +28,12 @@ private
     β-base' : elim' base ≡ m
     β-base' = refl
 
-    postulate β-loop' : cong' elim' loop ≡ l
+    postulate β-loop' : ap' elim' loop ≡ l
 
 private
   module Eliminators {B : Set}
                      (m : B) (l : m ≡ m) where
-    open Eliminators' (λ _ → B) m (subst-const loop m ⊚ l)
+    open Eliminators' (λ _ → B) m (subst-const loop m · l)
 
     elim : S¹ → B
     elim = elim'
@@ -41,7 +41,7 @@ private
     β-base : elim base ≡ m
     β-base = refl
 
-    postulate β-loop : cong elim loop ≡ l
+    postulate β-loop : ap elim loop ≡ l
 
 open Eliminators public
 open Eliminators' public
@@ -56,7 +56,7 @@ non-simply-connected loop-trivial = inv-non-trivial inv-trivial
         H true = refl
         H false = refl
 
-        γ : (x : Bool) → cong not (H x) ≡ H (not x)
+        γ : (x : Bool) → ap not (H x) ≡ H (not x)
         γ true = refl
         γ false = refl
 
@@ -83,10 +83,10 @@ non-simply-connected loop-trivial = inv-non-trivial inv-trivial
             false
           ≡⟨ refl ⟩
             not true
-          ≡⟨ cong (λ g → g true)
+          ≡⟨ ap (λ g → g true)
                   (sym (uni-coherence not-equiv)) ⟩
             coerce inv true
-          ≡⟨ cong (λ z → coerce z true) q ⟩
+          ≡⟨ ap (λ z → coerce z true) q ⟩
             coerce refl true
           ≡⟨ refl ⟩
             true
@@ -96,7 +96,7 @@ non-simply-connected loop-trivial = inv-non-trivial inv-trivial
     f = elim Bool inv
 
     f' : base ≡ base → Bool ≡ Bool
-    f' p = cong f p
+    f' p = ap f p
 
     β₂ : f' loop ≡ inv
     β₂ = β-loop Bool inv
@@ -106,7 +106,7 @@ non-simply-connected loop-trivial = inv-non-trivial inv-trivial
         inv
       ≡⟨ sym β₂ ⟩
         f' loop
-      ≡⟨ cong f' loop-trivial ⟩
+      ≡⟨ ap f' loop-trivial ⟩
         refl
       ∎
       where

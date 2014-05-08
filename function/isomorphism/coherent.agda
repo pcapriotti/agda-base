@@ -10,16 +10,16 @@ open import function.isomorphism.core
 open import function.overloading
 open import overloading.core
 
-coherent : {X Y : Set} → X ≅ Y → Set
-coherent f = ∀ x → cong to (iso₁ x) ≡ iso₂ (to x)
+coherent : {X : Set}{Y : Set} → X ≅ Y → Set
+coherent f = ∀ x → ap to (iso₁ x) ≡ iso₂ (to x)
   -- this definition says that the two possible proofs that
   --     to (from (to x)) ≡ to x
   -- are equal
   where
     open _≅_ f
 
-coherent' : {X Y : Set} → X ≅ Y → Set
-coherent' f = ∀ y → cong from (iso₂ y) ≡ iso₁ (from y)
+coherent' : {X : Set}{Y : Set} → X ≅ Y → Set
+coherent' f = ∀ y → ap from (iso₂ y) ≡ iso₁ (from y)
   where
     open _≅_ f
 
@@ -42,36 +42,36 @@ lem-subst-fixpoint : {X : Set}
                      (f : X → X)(x : X)
                      (p : f x ≡ x)
                    → subst (λ x → f x ≡ x) (sym p) p
-                   ≡ cong f p
+                   ≡ ap f p
 lem-subst-fixpoint {X} f x p = begin
     subst (λ x → f x ≡ x) (p ⁻¹) p
   ≡⟨ lem (f x) (sym p) ⟩ 
-    cong f (sym (sym p)) ⊚ p ⊚ sym p
-  ≡⟨ cong (λ z → cong f z ⊚ p ⊚ sym p)
+    ap f (sym (sym p)) · p · sym p
+  ≡⟨ ap (λ z → ap f z · p · sym p)
            (double-inverse p) ⟩
-    cong f p ⊚ p ⊚ sym p
-  ≡⟨ associativity (cong f p) p (sym p) ⟩
-    cong f p ⊚ (p ⊚ sym p)
-  ≡⟨ cong (λ z → cong f p ⊚ z) (left-inverse p) ⟩
-    cong f p ⊚ refl
-  ≡⟨ left-unit (cong f p) ⟩
-    cong f p
+    ap f p · p · sym p
+  ≡⟨ associativity (ap f p) p (sym p) ⟩
+    ap f p · (p · sym p)
+  ≡⟨ ap (λ z → ap f p · z) (left-inverse p) ⟩
+    ap f p · refl
+  ≡⟨ left-unit (ap f p) ⟩
+    ap f p
   ∎
   where
     open ≡-Reasoning
     lem : (y : X) (q : x ≡ y)
         → subst (λ z → f z ≡ z) q p
-        ≡ cong f (sym q) ⊚ p ⊚ q
+        ≡ ap f (sym q) · p · q
     lem .x refl = sym (left-unit p)
 
 lem-whiskering : {X : Set}
                  (f : X → X) (H : (x : X) → f x ≡ x)
-                 (x : X) → cong f (H x) ≡ H (f x)
+                 (x : X) → ap f (H x) ≡ H (f x)
 lem-whiskering f H x = begin
-    cong f (H x)
+    ap f (H x)
   ≡⟨ sym (lem-subst-fixpoint f x (H x)) ⟩
     subst (λ z → f z ≡ z) (sym (H x)) (H x)
-  ≡⟨ cong' H (sym (H x)) ⟩
+  ≡⟨ ap' H (sym (H x)) ⟩
     H (f x)
   ∎
   where
@@ -80,7 +80,7 @@ lem-whiskering f H x = begin
 lem-homotopy-nat : {X Y : Set}
                    {x x' : X}{f g : X → Y}
                    (H : (x : X) → f x ≡ g x) (p : x ≡ x')
-                 → H x ⊚ cong g p ≡ cong f p ⊚ H x'
+                 → H x · ap g p ≡ ap f p · H x'
 lem-homotopy-nat H refl = left-unit _
 
 co-coherence : {X Y : Set}
@@ -88,18 +88,18 @@ co-coherence : {X Y : Set}
              → coherent isom
              → coherent' isom
 co-coherence (iso f g H K) coherence y =
-  subst (λ z → cong g (K z) ≡ H (g z)) (K y) lem
+  subst (λ z → ap g (K z) ≡ H (g z)) (K y) lem
   where
     open ≡-Reasoning
 
-    lem : cong g (K (f (g y)))
+    lem : ap g (K (f (g y)))
         ≡ H (g (f (g y)))
     lem = begin
-        cong g (K (f (g y)))
-      ≡⟨ cong (cong g) (sym (coherence (g y))) ⟩
-        cong g (cong f (H (g y)))
-      ≡⟨ cong-hom f g _ ⟩
-        cong (g ∘ f) (H (g y))
+        ap g (K (f (g y)))
+      ≡⟨ ap (ap g) (sym (coherence (g y))) ⟩
+        ap g (ap f (H (g y)))
+      ≡⟨ ap-hom f g _ ⟩
+        ap (g ∘ f) (H (g y))
       ≡⟨ lem-whiskering (g ∘ f) H (g y) ⟩
         H (g (f (g y)))
       ∎
@@ -139,7 +139,7 @@ vogt-lemma {X = X}{Y = Y} isom = K' , γ
     -- every element in the diagram, except the bottom row, so if we
     -- define:
     --
-    --     K' = (f g K) ⁻¹ ⊚ (f H g f) ⊚ (K f)
+    --     K' = (f g K) ⁻¹ · (f H g f) · (K f)
     --
     -- we get that K' f must be equal to the bottom row, which is
     -- exactly the required coherence condition.
@@ -148,27 +148,27 @@ vogt-lemma {X = X}{Y = Y} isom = K' , γ
 
     -- the diagram above commutes
     lem : (x : X)
-        → cong f (H (g (f x))) ⊚ K (f x)
-        ≡ cong (f ∘ g) (K (f x)) ⊚ cong f (H x)
+        → ap f (H (g (f x))) · K (f x)
+        ≡ ap (f ∘ g) (K (f x)) · ap f (H x)
     lem x = begin
-        cong f (H (g (f x))) ⊚ K (f x)
-      ≡⟨ cong (λ z → cong f z ⊚ K (f x))
+        ap f (H (g (f x))) · K (f x)
+      ≡⟨ ap (λ z → ap f z · K (f x))
               (sym (lem-whiskering (g ∘ f) H x)) ⟩
-        cong f (cong (g ∘ f) (H x)) ⊚ K (f x)
-      ≡⟨ cong (λ z → z ⊚ K (f x))
-              (cong-hom (g ∘ f) f (H x)) ⟩
-        cong (f ∘ g ∘ f) (H x) ⊚ K (f x)
+        ap f (ap (g ∘ f) (H x)) · K (f x)
+      ≡⟨ ap (λ z → z · K (f x))
+              (ap-hom (g ∘ f) f (H x)) ⟩
+        ap (f ∘ g ∘ f) (H x) · K (f x)
       ≡⟨ sym (lem-homotopy-nat (λ x → K (f x)) (H x)) ⟩
-        K (f (g (f x))) ⊚ cong f (H x)
-      ≡⟨ cong (λ z → z ⊚ cong f (H x))
+        K (f (g (f x))) · ap f (H x)
+      ≡⟨ ap (λ z → z · ap f (H x))
               (sym (lem-whiskering (f ∘ g) K (f x))) ⟩
-        cong (f ∘ g) (K (f x)) ⊚ cong f (H x)
+        ap (f ∘ g) (K (f x)) · ap f (H x)
       ∎
 
     K' : (y : Y) → f (g y) ≡ y
-    K' y = cong (f ∘ g) (sym (K y))
-         ⊚ cong f (H (g y))
-         ⊚ K y
+    K' y = ap (f ∘ g) (sym (K y))
+         · ap f (H (g y))
+         · K y
 
     iso' = iso f g H K'
 
@@ -177,31 +177,31 @@ vogt-lemma {X = X}{Y = Y} isom = K' , γ
     γ x = sym $ begin
         K' (f x)
       ≡⟨ refl ⟩
-        cong (f ∘ g) (sym (K (f x))) ⊚
-        cong f (H (g (f x))) ⊚ K (f x)
-      ≡⟨ associativity (cong (f ∘ g) (sym (K (f x))))
-               (cong f (H (g (f x))))
+        ap (f ∘ g) (sym (K (f x))) ·
+        ap f (H (g (f x))) · K (f x)
+      ≡⟨ associativity (ap (f ∘ g) (sym (K (f x))))
+               (ap f (H (g (f x))))
                (K (f x)) ⟩
-        cong (f ∘ g) (sym (K (f x))) ⊚
-        (cong f (H (g (f x))) ⊚ K (f x))
-      ≡⟨ cong (λ z → cong (f ∘ g) (sym (K (f x))) ⊚ z) (lem x) ⟩
-        cong (f ∘ g) (sym (K (f x))) ⊚
-        (cong (f ∘ g) (K (f x)) ⊚ cong f (H x))
-      ≡⟨ cong (λ z → z ⊚ (cong (f ∘ g) (K (f x)) ⊚ cong f (H x)))
-              (cong-inv (f ∘ g) (K (f x))) ⟩
-        sym (cong (f ∘ g) (K (f x))) ⊚
-        (cong (f ∘ g) (K (f x)) ⊚ cong f (H x))
-      ≡⟨ sym (associativity (sym (cong (f ∘ g) (K (f x))))
-                       (cong (f ∘ g) (K (f x)))
-                       (cong f (H x))) ⟩
-        ( sym (cong (f ∘ g) (K (f x))) ⊚
-          cong (f ∘ g) (K (f x)) ) ⊚
-        cong f (H x)
-      ≡⟨ cong (λ z → z ⊚ cong f (H x))
-               (right-inverse (cong (f ∘ g) (K (f x)))) ⟩
-        refl ⊚ cong f (H x)
-      ≡⟨ right-unit (cong f (H x)) ⟩
-        cong f (H x)
+        ap (f ∘ g) (sym (K (f x))) ·
+        (ap f (H (g (f x))) · K (f x))
+      ≡⟨ ap (λ z → ap (f ∘ g) (sym (K (f x))) · z) (lem x) ⟩
+        ap (f ∘ g) (sym (K (f x))) ·
+        (ap (f ∘ g) (K (f x)) · ap f (H x))
+      ≡⟨ ap (λ z → z · (ap (f ∘ g) (K (f x)) · ap f (H x)))
+              (ap-inv (f ∘ g) (K (f x))) ⟩
+        sym (ap (f ∘ g) (K (f x))) ·
+        (ap (f ∘ g) (K (f x)) · ap f (H x))
+      ≡⟨ sym (associativity (sym (ap (f ∘ g) (K (f x))))
+                       (ap (f ∘ g) (K (f x)))
+                       (ap f (H x))) ⟩
+        ( sym (ap (f ∘ g) (K (f x))) ·
+          ap (f ∘ g) (K (f x)) ) ·
+        ap f (H x)
+      ≡⟨ ap (λ z → z · ap f (H x))
+               (right-inverse (ap (f ∘ g) (K (f x)))) ⟩
+        refl · ap f (H x)
+      ≡⟨ right-unit (ap f (H x)) ⟩
+        ap f (H x)
       ∎
 
 ≅⇒≅' : {X Y : Set} → X ≅ Y → X ≅' Y

@@ -35,23 +35,23 @@ prop⇒h1 : {X : Set} → prop X → h 1 X
 prop⇒h1 {X = X} f x y = p₀ x y , lem x y
   where
     p₀ : (x y : X) → x ≡ y
-    p₀ x y = f x y ⊚ (f y y)⁻¹
+    p₀ x y = f x y · (f y y)⁻¹
 
     lem : (x y : X)(p : x ≡ y) → p₀ x y ≡ p
     lem x .x refl = left-inverse (f x x)
 
 -- a contractible set is propositional
 contr⇒prop : {X : Set} → contr X → prop X
-contr⇒prop (x , p) = λ x' x'' → sym (p x') ⊚ p x''
+contr⇒prop (x , p) = λ x' x'' → sym (p x') · p x''
 
 -- h-levels are upwards closed
 h↑ : ∀ {n}{X : Set} → h n X → h (suc n) X
 h↑ {n = 0} c = prop⇒h1 (contr⇒prop c)
 h↑ {n = suc n} hn = λ x x' → h↑ (hn x x')
 
--- Prop: the set of propositions
+-- Prop: the type of propositions
 HProp : Set
-HProp = Σ Set prop
+HProp = Σ Set (h 1)
 
 -- HSet : sets
 HSet : Set
@@ -70,4 +70,10 @@ singl-contr : {A : Set} → (x : A) → contr (singleton x)
 singl-contr {A = A} x = (x , refl) , λ { (x' , p) → lem x' p }
   where
     lem : (x' : A)(p : x ≡ x') → (x , refl) ≡ (x' , p)
+    lem .x refl = refl
+
+singl-contr' : {A : Set} → (x : A) → contr (singleton' x)
+singl-contr' {A = A} x = (x , refl) , λ { (x' , p) → lem x' p }
+  where
+    lem : (x' : A)(p : x' ≡ x) → (x , refl) ≡ (x' , p)
     lem .x refl = refl

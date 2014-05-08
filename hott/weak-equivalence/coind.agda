@@ -30,15 +30,15 @@ abstract
               → is-≅' f ≅ weak-equiv f
   is-≅'-≈-iso {X = X}{Y = Y} f = begin
       (Σ (X ≅' Y) λ isom → f ≡ apply isom)
-    ≅⟨ Σ-cong-iso (sym≅ ≈⇔≅') (λ _ → refl≅) ⟩
+    ≅⟨ Σ-ap-iso (sym≅ ≈⇔≅') (λ _ → refl≅) ⟩
       (Σ (Σ (X → Y) λ f' → weak-equiv f') λ eq → f ≡ proj₁ eq)
     ≅⟨ Σ-assoc-iso ⟩
       (Σ (X → Y) λ f' → (weak-equiv f' × f ≡ f'))
-    ≅⟨ (Σ-cong-iso refl≅ λ f' → ×-comm) ⟩
+    ≅⟨ (Σ-ap-iso refl≅ λ f' → ×-comm) ⟩
       (Σ (X → Y) λ f' → (f ≡ f' × weak-equiv f'))
     ≅⟨ sym≅ Σ-assoc-iso ⟩
       (Σ (Σ (X → Y) λ f' → f ≡ f') λ {(f' , _) → weak-equiv f'})
-    ≅⟨ Σ-cong-iso (contr-⊤-iso (singl-contr f)) (λ _ → refl≅) ⟩
+    ≅⟨ Σ-ap-iso (contr-⊤-iso (singl-contr f)) (λ _ → refl≅) ⟩
       (⊤ × weak-equiv f)
     ≅⟨ ×-left-unit ⟩
       weak-equiv f
@@ -55,13 +55,13 @@ is-≅'-h1 f = iso-hlevel (sym≅ (is-≅'-≈-iso f)) (weak-equiv-h1 f)
     (X ≅' Y)
   ≅⟨ sym≅ ×-right-unit ⟩
     ((X ≅' Y) × ⊤)
-  ≅⟨ sym≅ (Σ-cong-iso refl≅ λ i → contr-⊤-iso (singl-contr (apply i))) ⟩
+  ≅⟨ sym≅ (Σ-ap-iso refl≅ λ i → contr-⊤-iso (singl-contr (apply i))) ⟩
     (Σ (X ≅' Y) λ i → singleton (apply i))
-  ≅⟨ ( Σ-cong-iso refl≅ λ i → Σ-cong-iso refl≅ λ f → sym≡-iso (apply i) f ) ⟩
+  ≅⟨ ( Σ-ap-iso refl≅ λ i → Σ-ap-iso refl≅ λ f → sym≡-iso (apply i) f ) ⟩
     (Σ (X ≅' Y) λ i → Σ (X → Y) λ f → f ≡ apply i)
   ≅⟨ sym≅ Σ-assoc-iso ⟩
     (Σ ((X ≅' Y) × (X → Y)) λ {(i , f) → f ≡ apply i})
-  ≅⟨ Σ-cong-iso ×-comm (λ _ → refl≅) ⟩
+  ≅⟨ Σ-ap-iso ×-comm (λ _ → refl≅) ⟩
     (Σ ((X → Y) × (X ≅' Y)) λ {(f , i) → f ≡ apply i})
   ≅⟨ Σ-assoc-iso ⟩
     (Σ (X → Y) λ f → Σ (X ≅' Y) λ i → f ≡ apply i)
@@ -75,7 +75,7 @@ is-≅'-h1 f = iso-hlevel (sym≅ (is-≅'-≈-iso f)) (weak-equiv-h1 f)
 ≅'-equality {X = X}{Y = Y} {isom₁}{isom₂} p = iso⇒inj ≅'-Σ-iso q
   where
     q : apply ≅'-Σ-iso isom₁ ≡ apply ≅'-Σ-iso isom₂
-    q = uncongΣ (p , h1⇒prop (is-≅'-h1 _) _ _)
+    q = unapΣ (p , h1⇒prop (is-≅'-h1 _) _ _)
 
 record F {i j}(Z : ∀ {i j} → Set i → Set j → Set (i ⊔ j))
          (X : Set i)(Y : Set j) : Set (i ⊔ j) where
@@ -107,42 +107,42 @@ unfold≅' {X = X}{Y = Y} (iso f g α β , δ) =
     δ' = co-coherence (iso f g α β) δ
 
     iso₁ : {x : X}{y : Y}(p : f x ≡ y)
-         → cong f (sym (α x) ⊚ cong g p) ⊚ β y ≡ p
+         → ap f (sym (α x) · ap g p) · β y ≡ p
     iso₁ {x} .{f x} refl = begin
-        cong f (sym (α x) ⊚ refl) ⊚ β (f x)
-      ≡⟨ cong (λ z → cong f z ⊚ β (f x)) (left-unit (sym (α x)))  ⟩
-        cong f (sym (α x)) ⊚ β (f x)
-      ≡⟨ cong (λ z → z ⊚ β (f x)) (cong-inv f (α x)) ⟩
-        sym (cong f (α x)) ⊚ β (f x)
-      ≡⟨ cong (λ z → sym z ⊚ β (f x)) (δ x) ⟩
-        sym (β (f x)) ⊚ β (f x)
+        ap f (sym (α x) · refl) · β (f x)
+      ≡⟨ ap (λ z → ap f z · β (f x)) (left-unit (sym (α x)))  ⟩
+        ap f (sym (α x)) · β (f x)
+      ≡⟨ ap (λ z → z · β (f x)) (ap-inv f (α x)) ⟩
+        sym (ap f (α x)) · β (f x)
+      ≡⟨ ap (λ z → sym z · β (f x)) (δ x) ⟩
+        sym (β (f x)) · β (f x)
       ≡⟨ right-inverse (β (f x)) ⟩
         refl
       ∎
 
     iso₂' : {x : X}{y : Y}(q : g y ≡ x)
-         → sym (α x) ⊚ cong g (cong f (sym q) ⊚ β y) ≡ sym q
+         → sym (α x) · ap g (ap f (sym q) · β y) ≡ sym q
     iso₂' .{g y}{y} refl = begin
-        sym (α (g y)) ⊚ cong g (refl ⊚ β y)
-      ≡⟨ cong (λ z → sym (α (g y)) ⊚ cong g z) (right-unit (β y)) ⟩
-        sym (α (g y)) ⊚ cong g (β y)
-      ≡⟨ cong (λ z → sym (α (g y)) ⊚ z) (δ' y) ⟩
-        sym (α (g y)) ⊚ α (g y)
+        sym (α (g y)) · ap g (refl · β y)
+      ≡⟨ ap (λ z → sym (α (g y)) · ap g z) (right-unit (β y)) ⟩
+        sym (α (g y)) · ap g (β y)
+      ≡⟨ ap (λ z → sym (α (g y)) · z) (δ' y) ⟩
+        sym (α (g y)) · α (g y)
       ≡⟨ right-inverse (α (g y)) ⟩
         refl
       ∎
 
     iso₂ : {x : X}{y : Y}(q : x ≡ g y)
-         → sym (α x) ⊚ cong g (cong f q ⊚ β y) ≡ q
+         → sym (α x) · ap g (ap f q · β y) ≡ q
     iso₂ {x}{y} q =
-      subst (λ z → sym (α x) ⊚ cong g (cong f z ⊚ β y) ≡ z)
+      subst (λ z → sym (α x) · ap g (ap f z · β y) ≡ z)
             (double-inverse q)
             (iso₂' (sym q))
 
     φ : (x : X)(y : Y) → (f x ≡ y) ≅ (x ≡ g y)
     φ x y = record
-      { to = λ p → sym (α x) ⊚ cong g p
-      ; from = λ q → cong f q ⊚ β y
+      { to = λ p → sym (α x) · ap g p
+      ; from = λ q → ap f q · β y
       ; iso₁ = iso₁
       ; iso₂ = iso₂ }
 
@@ -181,7 +181,7 @@ private
              → (eq : X ~ Y)
              → unfold≅' (u eq)
              ≡ D.imap D.M u (D.out eq)
-  u-morphism {i}{X}{Y} eq = uncongΣ (refl , ext' λ {(x , y) → lem₂ x y})
+  u-morphism {i}{X}{Y} eq = unapΣ (refl , funext λ {(x , y) → lem₂ x y})
     where
       f : X → Y
       f = apply~ eq
@@ -198,11 +198,11 @@ private
 
       lem : (x : X)(y : Y)(p : f x ≡ y)
            → apply≅' (σ x y) p ≡ apply≅' (τ x y) p
-      lem x .(f x) refl = left-unit _ ⊚ double-inverse _
+      lem x .(f x) refl = left-unit _ · double-inverse _
 
       lem₂ : (x : X)(y : Y) → proj₂ (unfold≅' (u eq)) (x , y)
                             ≡ u (D.tail eq (x , y))
-      lem₂ x y = ≅'-equality (ext' (lem x y))
+      lem₂ x y = ≅'-equality (funext (lem x y))
 
   v : ∀ {i}{X Y : Set i} → X ≅' Y → X ~ Y
   v = D.unfold unfold≅'
@@ -211,10 +211,10 @@ private
               → (eq : X ~ Y)
               → D.out (v (u eq))
               ≡ D.imap D.M (v ∘ u) (D.out eq)
-  vu-morphism {X = X}{Y = Y} eq = cong (D.imap Iso' v) (u-morphism eq)
+  vu-morphism {X = X}{Y = Y} eq = ap (D.imap Iso' v) (u-morphism eq)
 
   vu-id : ∀ {i}{X Y : Set i} (eq : X ~ Y) → v (u eq) ≡ eq
-  vu-id eq = D.unfold-η D.out (v ∘ u) vu-morphism eq ⊚ D.unfold-id eq
+  vu-id eq = D.unfold-η D.out (v ∘ u) vu-morphism eq · D.unfold-id eq
 
   uv-id : ∀ {i}{X Y : Set i} (i : X ≅' Y) → u (v i) ≡ i
   uv-id {X = X}{Y = Y} i = ≅'-equality refl

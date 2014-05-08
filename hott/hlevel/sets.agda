@@ -1,6 +1,7 @@
 {-# OPTIONS --without-K #-}
 module hott.hlevel.sets where
 
+open import level
 open import decidable
 open import sum
 open import equality.core
@@ -12,11 +13,8 @@ open import sets.unit
 open import hott.hlevel.core
 
 -- ⊤ is contractible
-⊤-contr : h 0 ⊤
-⊤-contr = tt , c
-  where
-    c : (x : ⊤) → tt ≡ x
-    c tt = refl
+⊤-contr : contr ⊤
+⊤-contr = tt , λ { tt → refl }
 
 -- ⊥ is propositional
 ⊥-prop : h 1 ⊥
@@ -43,17 +41,17 @@ hedberg {A = A} dec x y = prop⇒h1 ≡-prop
     ... | no f = ⊥-elim (f p)
 
     canonical-inv : {x y : A}(p : x ≡ y)
-                  → canonical p ⊚ sym (canonical refl) ≡ p
+                  → canonical p · sym (canonical refl) ≡ p
     canonical-inv refl = left-inverse (canonical refl)
 
     ≡-prop : {x y : A}(p q : x ≡ y) → p ≡ q
     ≡-prop p q = begin
         p
       ≡⟨ sym (canonical-inv p) ⟩
-        canonical p ⊚ sym (canonical refl)
-      ≡⟨ cong (λ z → z ⊚ sym (canonical refl))
+        canonical p · sym (canonical refl)
+      ≡⟨ ap (λ z → z · sym (canonical refl))
               (canonical-const p q) ⟩
-        canonical q ⊚ sym (canonical refl)
+        canonical q · sym (canonical refl)
       ≡⟨ canonical-inv q ⟩
         q
       ∎
@@ -77,7 +75,7 @@ open NatSet public
 -- Fin is a set
 private
   module FinSet where
-    open import sets.fin
+    open import sets.fin.core
     fin-set : ∀ n → h 2 (Fin n)
     fin-set n = hedberg _≟_
 open FinSet public

@@ -18,15 +18,15 @@ trans : {A : Set} {x y z : A}
       → x ≡ y → y ≡ z → x ≡ z
 trans refl p = p
 
-cong : {A : Set}{B : Set}{x y : A}
-     → (f : A → B) → x ≡ y → f x ≡ f y
-cong f refl = refl
+ap : {A : Set}{B : Set}{x y : A}
+   → (f : A → B) → x ≡ y → f x ≡ f y
+ap f refl = refl
 
-cong₂ : {A : Set}{B : Set}{C : Set}
+ap₂ : {A : Set}{B : Set}{C : Set}
         {x x' : A}{y y' : B}
       → (f : A → B → C)
       → x ≡ x' → y ≡ y' → f x y ≡ f x' y'
-cong₂ f refl refl = refl
+ap₂ f refl refl = refl
 
 subst : {A : Set}{x y : A}
       → (B : A → Set) → x ≡ y
@@ -43,8 +43,12 @@ subst₂ C refl refl = id
 singleton : {A : Set} → A → Set
 singleton {A = A} a = Σ A λ a' → a ≡ a'
 
+singleton' : {A : Set} → A → Set
+singleton' {A = A} a = Σ A λ a' → a' ≡ a
+
 J' : {X : Set}{x : X}
    → (P : (y : X) → x ≡ y → Set)
+
    → P x refl
    → (y : X)
    → (p : x ≡ y)

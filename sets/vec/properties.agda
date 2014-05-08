@@ -13,20 +13,20 @@ tabulate-lookup : {A : Set}{n : ℕ}
                 → (xs : Vec A n)
                 → tabulate (lookup xs) ≡ xs
 tabulate-lookup [] = refl
-tabulate-lookup (x ∷ xs) = cong (_∷_ x) (tabulate-lookup xs)
+tabulate-lookup (x ∷ xs) = ap (_∷_ x) (tabulate-lookup xs)
 
-lookup-tabulate-ext : {A : Set}{n : ℕ}
+lookup-tabulate-funext : {A : Set}{n : ℕ}
                     → (f : Fin n → A)(i : Fin n)
                     → lookup (tabulate f) i ≡ f i
-lookup-tabulate-ext {n = zero} f ()
-lookup-tabulate-ext {n = suc m} f zero = refl
-lookup-tabulate-ext {n = suc m} f (suc i) =
-  lookup-tabulate-ext (f ∘ suc) i
+lookup-tabulate-funext {n = zero} f ()
+lookup-tabulate-funext {n = suc m} f zero = refl
+lookup-tabulate-funext {n = suc m} f (suc i) =
+  lookup-tabulate-funext (f ∘ suc) i
 
 lookup-tabulate : {A : Set}{n : ℕ}
                 → (f : Fin n → A)
                 → lookup (tabulate f) ≡ f
-lookup-tabulate f = ext (lookup-tabulate-ext f)
+lookup-tabulate f = funext (lookup-tabulate-funext f)
 
 lookup-iso : {A : Set}{n : ℕ}
            → Vec A n ≅ (Fin n → A)

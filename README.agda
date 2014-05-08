@@ -38,12 +38,6 @@ import level
 -- Container functors, W and M types
 import container
 
--- Solvers: automate certain kinds of proofs
-import solver
-
--- Category theory
-import category
-
 -- Homotopy type theory infrastructure and results
 import hott
 

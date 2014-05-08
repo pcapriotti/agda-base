@@ -43,12 +43,12 @@ private
       fold-η : (h : W ↝ X)
              → (∀ {i} (x : F W i) → h (inW x) ≡ α (imap W h x))
              → ∀ {i} (x : W i) → h x ≡ fold x
-      fold-η h p (sup a f) = p (a , λ b → f b) ⊚ lem
+      fold-η h p (sup a f) = p (a , λ b → f b) · lem
         where
           lem : α (a , (λ b → h (f b)))
               ≡ α (a , (λ b → fold (f b)))
-          lem = cong (λ z → α (a , z))
-                     (ext' λ b → fold-η h p (f b))
+          lem = ap (λ z → α (a , z))
+                     (funext λ b → fold-η h p (f b))
     open Elim public
 
     head : ∀ {i} → W i → A i
@@ -100,7 +100,7 @@ private
         (apply (fixpoint i) (sup a f) ≡ apply (fixpoint i) (sup a' f'))
       ≅⟨ sym≅ Σ-split-iso ⟩
         (Σ (a ≡ a') λ p → subst (λ a → (b : B a) → W (r b)) p f ≡ f')
-      ≅⟨ Σ-cong-iso refl≅ (substX-β f f') ⟩
+      ≅⟨ Σ-ap-iso refl≅ (substX-β f f') ⟩
         (Σ (a ≡ a') λ p → ∀ b → f b ≡ substX p b (f' (subst B p b)))
       ∎
       where open ≅-Reasoning
@@ -110,7 +110,7 @@ private
         (sup a f ≡ sup a' f')
       ≅⟨ fixpoint-W ⟩
         (Σ (a ≡ a') λ p → ∀ b → f b ≡ substX p b (f' (subst B p b)))
-      ≅⟨ Σ-cong-iso refl≅ (λ a → Π-cong-iso ext' refl≅ λ b → str-iso) ⟩
+      ≅⟨ Σ-ap-iso refl≅ (λ a → Π-ap-iso refl≅ λ b → str-iso) ⟩
         (Σ (a ≡ a') λ p → ∀ b → f b ≡W substX p b (f' (subst B p b)))
       ≅⟨ sym≅ (fixpoint-≡ _) ⟩
         (sup a f ≡W sup a' f')

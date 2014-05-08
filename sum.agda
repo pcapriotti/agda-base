@@ -1,6 +1,8 @@
 {-# OPTIONS --without-K  #-}
 module sum where
 
+open import function.core
+
 infixr 4 _,_
 infixr 2 _×_
 infixr 1 _⊎_
@@ -28,3 +30,15 @@ uncurry' f (x , y) = f x y
 data _⊎_ (A : Set) (B : Set) : Set where
   inj₁ : (x : A) → A ⊎ B
   inj₂ : (y : B) → A ⊎ B
+
+[_,⊎_] : {A : Set}{A' : Set}{B : Set}
+      → (A → B) → (A' → B)
+      → A ⊎ A' → B
+[ f ,⊎ f' ] (inj₁ a) = f a
+[ f ,⊎ f' ] (inj₂ a') = f' a'
+
+map-⊎ : {A : Set}{A' : Set}
+      → {B : Set}{B' : Set}
+      → (A → B) → (A' → B')
+      → A ⊎ A' → B ⊎ B'
+map-⊎ g g' = [ inj₁ ∘' g ,⊎ inj₂ ∘' g' ]

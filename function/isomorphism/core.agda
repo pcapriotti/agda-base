@@ -18,6 +18,19 @@ record _≅_ (X : Set)(Y : Set) : Set where
     from : Y → X
     iso₁ : (x : X) → from (to x) ≡ x
     iso₂ : (y : Y) → to (from y) ≡ y
+infix 5 _≅_
+
+≅-struct-iso : {X : Set}{Y : Set}
+             → (X ≅ Y)
+             ≅ ( Σ (X → Y) λ f
+               → Σ (Y → X) λ g
+               → ((x : X) → g (f x) ≡ x)
+               × ((y : Y) → f (g y) ≡ y) )
+≅-struct-iso = record
+  { to = λ { (iso f g α β) → f , g , α , β }
+  ; from = λ { (f , g , α , β) → iso f g α β }
+  ; iso₁ = λ _ → refl
+  ; iso₂ = λ _ → refl  }
 
 refl≅ : {X : Set} → X ≅ X
 refl≅ = iso id id (λ _ → refl) (λ _ → refl)
@@ -38,10 +51,15 @@ trans≅ {X = X}{Z = Z} (iso f g H K) (iso f' g' H' K') = record
   where
     abstract
       iso₁ : (x : X) → g (g' (f' (f x))) ≡ x
-      iso₁ x = cong g (H' (f x)) ⊚ H x
+      iso₁ x = ap g (H' (f x)) · H x
 
       iso₂ : (z : Z) → f' (f (g (g' z))) ≡ z
-      iso₂ y = cong f' (K (g' y)) ⊚ K' y
+      iso₂ y = ap f' (K (g' y)) · K' y
+
+_·≅_ : {X : Set}{Y : Set}{Z : Set}
+     → X ≅ Y → Y ≅ Z → X ≅ Z
+_·≅_ = trans≅
+infixl 9 _·≅_
 
 module ≅-Reasoning where
   infix  4 _IsRelatedTo_
@@ -115,7 +133,7 @@ private
     open iso-methods public
 
     iso⇒inj : (iso : X ≅ Y) → injective (apply iso)
-    iso⇒inj f {x}{x'} q = (iso₁ x) ⁻¹ ⊚ cong from q ⊚ iso₁ x'
+    iso⇒inj f {x}{x'} q = (iso₁ x) ⁻¹ · ap from q · iso₁ x'
       where
         open _≅_ f
 
