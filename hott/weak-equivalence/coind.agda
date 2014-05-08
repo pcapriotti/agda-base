@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K #-}
 module hott.weak-equivalence.coind where
 
-open import level
 open import sum
 open import equality.core
 open import equality.calculus

@@ -2,13 +2,11 @@
 
 module sets.empty where
 
-open import level using ()
-
 data ⊥ : Set where
 
-⊥-elim : ∀ {i}{A : Set i} → ⊥ → A
+⊥-elim : {A : Set} → ⊥ → A
 ⊥-elim ()
 
-¬_ : ∀ {i} → Set i → Set i
+¬_ : Set → Set
 ¬ X = X → ⊥
 infix 3 ¬_

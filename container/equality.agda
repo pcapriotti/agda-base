@@ -2,7 +2,6 @@
 
 module container.equality where
 
-open import level
 open import sum
 open import equality.core
 open import function.isomorphism

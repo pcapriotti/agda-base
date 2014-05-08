@@ -6,7 +6,6 @@ open import sets.empty     using (⊥)
 open import sets.unit      using (⊤)
 open import decidable using (Dec; yes; no)
 open import equality.core        using (_≡_; refl)
-open import level     using (Level)
 
 infixr 6 _∧_
 infixr 5 _∨_ _xor_
@@ -23,7 +22,7 @@ T : Bool → Set
 T true  = ⊤
 T false = ⊥
 
-if_then_else_ : {a : Level} {A : Set a} → Bool → A → A → A
+if_then_else_ : {A : Set} → Bool → A → A → A
 if true  then t else f = t
 if false then t else f = f
 

@@ -2,7 +2,6 @@
 open import solver.equality.core
 module solver.equality.word {X : Set}(W : Edges X) where
 
-open import level using (_⊔_)
 open import equality.core
 open import equality.calculus
 

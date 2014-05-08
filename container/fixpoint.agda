@@ -3,7 +3,6 @@
 module container.fixpoint where
 
 open import sum
-open import level
 open import container.core
 open import function.core
 open import function.isomorphism

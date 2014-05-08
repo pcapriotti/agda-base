@@ -2,7 +2,7 @@
 
 module container.m.core where
 
-open import level
+open import level -- needed by the coinduction operators
 open import sum
 open import equality.core
 open import equality.calculus

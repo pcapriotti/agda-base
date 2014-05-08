@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K #-}
 module sets.list.properties where
 
-open import level
 open import equality.core
 open import sets.list.core
 

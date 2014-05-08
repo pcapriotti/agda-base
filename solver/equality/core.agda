@@ -7,7 +7,6 @@ open import function using (flip)
 open import sets.empty
 open import sets.fin using (Fin)
 open import sets.vec
-open import level using (_⊔_)
 open import equality.core
 open import equality.calculus
 open import hott.hlevel

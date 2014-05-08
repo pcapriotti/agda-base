@@ -2,7 +2,6 @@
 
 module container.m.bisimilarity where
 
-open import level
 open import sum
 open import equality.core
 open import equality.calculus

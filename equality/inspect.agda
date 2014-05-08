@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K  #-}
 module equality.inspect where
 
-open import level
 open import equality.core
 
 data _of_is_ {A : Set}{B : A → Set}

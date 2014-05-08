@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K --type-in-type #-}
 module hott.univalence where
 
-open import level using (lsuc)
 open import sum using (_,_ ; proj₁)
 open import equality.core
 open import equality.calculus

@@ -1,7 +1,6 @@
 {-# OPTIONS --type-in-type --without-K #-}
 module solver.equality.builder where
 
-open import level using (lzero; lsuc; _⊔_)
 open import decidable
 open import sum
 open import function

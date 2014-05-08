@@ -4,7 +4,6 @@ module solver.equality.solver (X : Set) where
 open import decidable
 open import sum
 open import function.core
-open import level using (lsuc; _⊔_)
 open import category.graph
 open import equality.core hiding (singleton)
 open import equality.reasoning

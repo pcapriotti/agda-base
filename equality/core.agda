@@ -2,7 +2,6 @@
 module equality.core where
 
 open import sum
-open import level using ()
 open import function.core
 
 infix 4 _≡_

@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K #-}
 module sets.nat.core where
 
-open import level
 open import decidable
 open import equality.core
 open import function.core

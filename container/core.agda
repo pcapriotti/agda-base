@@ -2,7 +2,6 @@
 
 module container.core where
 
-open import level
 open import sum
 open import function.core
 
@@ -19,7 +18,7 @@ record Container : Set₁ where
   F X i = Σ (A i) λ a → (b : B a) → X (r b)
 
   -- homsets in the slice category
-  _↝_ : ∀ {lx ly} → (I → Set lx) → (I → Set ly) → Set _
+  _↝_ : (I → Set) → (I → Set) → Set
   X ↝ Y = {i : I} → X i → Y i
 
   -- morphism map for the functor F

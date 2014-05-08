@@ -117,7 +117,6 @@ module overloading.core where
 -- `Target`. Extra edges coming out of `Target` can optionally be added as well
 -- for convenience.
 
-open import level
 open import overloading.bundle
 
 record Coercion (Source : Set)(Target : Set) : Set where

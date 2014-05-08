@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K --type-in-type #-}
 module function.isomorphism.core where
 
-open import level using (_⊔_)
 open import equality.core
 open import equality.groupoid
 open import equality.reasoning

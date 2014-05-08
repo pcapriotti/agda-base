@@ -32,9 +32,6 @@ import function
 -- Overloading system
 import overloading
 
--- Universe levels
-import level
-
 -- Container functors, W and M types
 import container
 

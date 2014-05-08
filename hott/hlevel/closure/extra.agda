@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K --type-in-type #-}
 module hott.hlevel.closure.extra where
 
-open import level
 open import decidable
 open import sum
 open import equality.core

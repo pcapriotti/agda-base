@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K --type-in-type #-}
 module hott.hlevel.properties where
 
-open import level
 open import sum
 open import decidable
 open import equality.core

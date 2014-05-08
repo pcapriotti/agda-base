@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K #-}
 module function.extensionality.dependent where
 
-open import level using (_⊔_; ↑; lift)
 open import sets.unit
 open import sum
 open import equality.core

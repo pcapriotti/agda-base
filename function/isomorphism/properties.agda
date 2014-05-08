@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K --type-in-type #-}
 module function.isomorphism.properties where
 
-open import level
 open import sum
 open import sets.nat.core
 open import equality.core

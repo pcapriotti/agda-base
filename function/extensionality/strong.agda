@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K --type-in-type #-}
 module function.extensionality.strong where
 
-open import level
 open import sum
 open import function.core
 open import equality.core

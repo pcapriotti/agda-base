@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K #-}
 module hott.hlevel.sets where
 
-open import level
 open import decidable
 open import sum
 open import equality.core

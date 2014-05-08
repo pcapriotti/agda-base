@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K --type-in-type #-}
 module function.extensionality.core where
 
-open import level using (lsuc; _⊔_)
 open import equality.core
 
 Extensionality : Set

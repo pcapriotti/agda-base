@@ -1,7 +1,6 @@
 {-# OPTIONS --without-K #-}
 module container.w where
 
-open import level
 open import sum
 open import equality
 open import function.extensionality
@@ -90,7 +89,7 @@ private
         → ∀ {i} → W i → W i → Set
     F-≡ X  u v = F-≡' (λ {(i , u , v) → X {i} u v}) (_ , u , v)
 
-    _≡W_ : ∀ {i} → W i → W i → Set _
+    _≡W_ : ∀ {i} → W i → W i → Set
     _≡W_ {i} u v = W-≡ (i , u , v)
 
     fixpoint-W : ∀ {i}{u v : W i} → (u ≡ v) ≅ F-≡ _≡_ u v

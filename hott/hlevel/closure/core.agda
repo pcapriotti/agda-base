@@ -2,7 +2,6 @@
 
 module hott.hlevel.closure.core where
 
-open import level
 open import decidable
 open import equality
 open import function.isomorphism.core

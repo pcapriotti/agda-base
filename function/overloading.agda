@@ -2,7 +2,6 @@
 
 module function.overloading {X : Set}{Y : Set} where
 
-open import level
 open import sum
 open import overloading.core
 
