@@ -44,9 +44,6 @@ import solver
 -- Category theory
 import category
 
--- Basic algebra
-import algebra
-
 -- Homotopy type theory infrastructure and results
 import hott
 

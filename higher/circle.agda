@@ -1,4 +1,4 @@
-{-# OPTIONS --without-K #-}
+{-# OPTIONS --without-K --type-in-type #-}
 module higher.circle where
 
 open import sum using (_,_ ; proj₂)
@@ -19,7 +19,7 @@ data S¹ : Set where
 postulate loop : base ≡ base
 
 private
-  module Eliminators' {i}(B : S¹ → Set i)
+  module Eliminators' (B : S¹ → Set)
                       (m : B base)
                       (l : subst B loop m ≡ m) where
     elim' : (x : S¹) → B x
@@ -31,7 +31,7 @@ private
     postulate β-loop' : cong' elim' loop ≡ l
 
 private
-  module Eliminators {i} {B : Set i}
+  module Eliminators {B : Set}
                      (m : B) (l : m ≡ m) where
     open Eliminators' (λ _ → B) m (subst-const loop m ⊚ l)
 
