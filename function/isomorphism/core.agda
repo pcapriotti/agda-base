@@ -90,9 +90,9 @@ injective : ∀ {i j}{X : Set i}{Y : Set j}
           → (f : X → Y) → Set _
 injective f = ∀ {x x'} → f x ≡ f x' → x ≡ x'
 
-surjective : ∀ {i j}{X : Set i}{Y : Set j}
+retraction : ∀ {i j}{X : Set i}{Y : Set j}
            → (f : X → Y) → Set _
-surjective {X = X}{Y = Y} f = (y : Y) → Σ X λ x → f x ≡ y
+retraction {X = X}{Y = Y} f = (y : Y) → Σ X λ x → f x ≡ y
 
 _↣_ : ∀ {i j} → Set i → Set j → Set _
 A ↣ B = Σ (A → B) injective
@@ -103,7 +103,7 @@ _∘i_ : ∀ {i j k}{A : Set i}{B : Set j}{C : Set k}
 (g , p) ∘i (f , q) = g ∘ f , q ∘ p
 
 _↠_ : ∀ {i j} → Set i → Set j → Set _
-A ↠ B = Σ (A → B) surjective
+A ↠ B = Σ (A → B) retraction
 
 private
   module properties {i j}{X : Set i}{Y : Set j} where
@@ -138,21 +138,21 @@ private
       where
         open _≅_ f
 
-    iso⇒surj : (iso : X ≅ Y) → surjective (apply iso)
-    iso⇒surj f y = from y , iso₂ y
+    iso⇒retr : (iso : X ≅ Y) → retraction (apply iso)
+    iso⇒retr f y = from y , iso₂ y
       where
         open _≅_ f
 
-    inj+surj⇒iso : (f : X → Y) → injective f → surjective f → X ≅ Y
-    inj+surj⇒iso f inj-f surj-f = iso f g H K
+    inj+retr⇒iso : (f : X → Y) → injective f → retraction f → X ≅ Y
+    inj+retr⇒iso f inj-f retr-f = iso f g H K
       where
         g : Y → X
-        g y = proj₁ (surj-f y)
+        g y = proj₁ (retr-f y)
 
         H : (x : X) → g (f x) ≡ x
-        H x = inj-f (proj₂ (surj-f (f x)))
+        H x = inj-f (proj₂ (retr-f (f x)))
 
         K : (y : Y) → f (g y) ≡ y
-        K y = proj₂ (surj-f y)
+        K y = proj₂ (retr-f y)
 
 open properties public

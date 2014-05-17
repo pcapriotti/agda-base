@@ -259,18 +259,18 @@ fin-lt {suc n} {0} (f , _) with f zero
 ... | ()
 fin-lt {suc n}{suc m} f = s≤s (fin-lt (fin-inj-remove f))
 
-inj⇒surj : ∀ {n}(f : Fin n → Fin n)
+inj⇒retr : ∀ {n}(f : Fin n → Fin n)
          → injective f
-         → surjective f
-inj⇒surj {0} f inj ()
-inj⇒surj {suc n} f inj y with preimage f _≟_ y
+         → retraction f
+inj⇒retr {0} f inj ()
+inj⇒retr {suc n} f inj y with preimage f _≟_ y
 ... | inj₁ t = t
 ... | inj₂ u = ⊥-elim (suc≰ (fin-lt (inj-nonsurj f inj u)))
 
 inj⇒iso : ∀ {n}(f : Fin n → Fin n)
          → injective f
          → Fin n ≅ Fin n
-inj⇒iso f inj = inj+surj⇒iso f inj (inj⇒surj f inj)
+inj⇒iso f inj = inj+retr⇒iso f inj (inj⇒retr f inj)
 
 Fin-inj : ∀ {n m} → Fin n ≅ Fin m → n ≡ m
 Fin-inj {n}{m} isoF
