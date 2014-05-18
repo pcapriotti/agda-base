@@ -11,7 +11,7 @@ open import function.extensionality.proof
 open import function.isomorphism.core
 open import function.isomorphism.coherent
 open import function.isomorphism.utils
-open import hott.hlevel.core
+open import hott.level.core
 open import hott.weak-equivalence.core
 open import hott.univalence
 

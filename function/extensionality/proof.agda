@@ -6,9 +6,9 @@ open import sum
 open import equality
 open import function.extensionality.core
 open import hott.univalence
-open import hott.hlevel.core
-open import hott.hlevel.sets
-open import hott.hlevel.closure.core
+open import hott.level.core
+open import hott.level.sets
+open import hott.level.closure.core
 open import hott.weak-equivalence.core
 open import sets.unit
 

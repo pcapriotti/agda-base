@@ -2,7 +2,7 @@
 module hott.truncation.core where
 
 open import equality
-open import hott.hlevel.core
+open import hott.level.core
 
 private
   module _ {i}(A : Set i) where

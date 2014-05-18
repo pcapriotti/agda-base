@@ -12,7 +12,7 @@ open import function.overloading
 open import equality.core
 open import sets.unit
 open import sets.nat.core using (suc)
-open import hott.hlevel
+open import hott.level
 open import hott.weak-equivalence.core
 open import hott.weak-equivalence.alternative
 open import hott.univalence

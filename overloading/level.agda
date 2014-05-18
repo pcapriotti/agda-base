@@ -1,12 +1,12 @@
 {-# OPTIONS --without-K #-}
 
-module overloading.hlevel where
+module overloading.level where
 
 open import sum
 open import equality.core
 open import overloading.bundle
 open import function.isomorphism
-open import hott.hlevel.core
+open import hott.level.core
 open import sets.unit
 
 open Bundle

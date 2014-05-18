@@ -10,7 +10,7 @@ open import equality.reasoning
 open import function.overloading
 open import function.isomorphism.core
 open import function.isomorphism.coherent
-open import hott.hlevel.core
+open import hott.level.core
 
 private
   module Dummy {i j}{X : Set i}{Y : Set j}

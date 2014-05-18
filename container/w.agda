@@ -11,7 +11,7 @@ open import function.overloading
 open import sets.empty
 open import sets.nat.core using (suc)
 open import sets.unit
-open import hott.hlevel
+open import hott.level
 open import container.core
 open import container.fixpoint
 open import container.equality
@@ -118,9 +118,9 @@ private
       ∎
       where open ≅-Reasoning
 
-    w-hlevel : ∀ {n} → ((i : I) → h (suc n) (A i)) → (i : I) → h (suc n) (W i)
-    w-hlevel hA i (sup a f) (sup a' f') = iso-hlevel (sym≅ lem)
-      (Σ-hlevel (hA i a a') (λ p → Π-hlevel λ b → w-hlevel hA _ _ _))
+    w-level : ∀ {n} → ((i : I) → h (suc n) (A i)) → (i : I) → h (suc n) (W i)
+    w-level hA i (sup a f) (sup a' f') = iso-level (sym≅ lem)
+      (Σ-level (hA i a a') (λ p → Π-level λ b → w-level hA _ _ _))
       where
         lem : ∀ {i}{a a' : A i}
               {f : (b : B a) → W (r b)}
@@ -130,4 +130,4 @@ private
         lem = fixpoint-W
 
 open Definition public
-open Properties public using (w-hlevel)
+open Properties public using (w-level)

@@ -11,7 +11,7 @@ open import function.extensionality
 open import hott.weak-equivalence.core
 open import hott.weak-equivalence.alternative
 open import hott.univalence
-open import hott.hlevel
+open import hott.level
 
 sym≈ : ∀ {i j}{X : Set i}{Y : Set j}
      → X ≈ Y → Y ≈ X
@@ -21,7 +21,7 @@ sym≈ = ≅'⇒≈ ∘ sym≅' ∘ ≈⇒≅'
 we-h1 : ∀ {i j}{X : Set i}{Y : Set j}
       → (f : X → Y)
       → h 1 (weak-equiv f)
-we-h1 f = Π-hlevel λ _ → contr-h1 _
+we-h1 f = Π-level λ _ → contr-h1 _
 
 apply≈-inj : ∀ {i j}{X : Set i}{Y : Set j}
            → injective (apply≈ {X = X}{Y = Y})

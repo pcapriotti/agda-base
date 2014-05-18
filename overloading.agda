@@ -7,4 +7,4 @@ module overloading where
 
 open import overloading.bundle public
 open import overloading.core public
-open import overloading.hlevel public
+open import overloading.level public

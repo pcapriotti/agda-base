@@ -15,9 +15,9 @@ open import sets.nat.ordering
 open import sets.fin.core
 open import sets.empty
 open import sets.properties
-open import hott.hlevel.core
-open import hott.hlevel.closure
-open import hott.hlevel.sets
+open import hott.level.core
+open import hott.level.closure
+open import hott.level.sets
 
 pred : ∀ {n}(i : Fin (suc n))
      → ¬ (i ≡ zero) → Fin n
@@ -58,7 +58,7 @@ toℕ-iso {n} = record
   { to = λ i → toℕ i , toℕ-sound i
   ; from = λ { (_ , p) → fromℕ p }
   ; iso₁ = α
-  ; iso₂ = λ { (i , p) → unapΣ (β i p , h1⇒prop ≤-hlevel _ _) } }
+  ; iso₂ = λ { (i , p) → unapΣ (β i p , h1⇒prop ≤-level _ _) } }
   where
     α : ∀ {n} (i : Fin n) → fromℕ (toℕ-sound i) ≡ i
     α zero = refl
@@ -70,7 +70,7 @@ toℕ-iso {n} = record
     β {suc n} (suc i) (s≤s p) = ap suc (β i p)
 
 toℕ-inj : ∀ {n} → injective (toℕ {n = n})
-toℕ-inj p = iso⇒inj toℕ-iso (unapΣ (p , h1⇒prop ≤-hlevel _ _))
+toℕ-inj p = iso⇒inj toℕ-iso (unapΣ (p , h1⇒prop ≤-level _ _))
 
 #_ : ∀ {n} i {p : True (suc i ≤? n)} → Fin n
 #_ {n} i {p} = fromℕ (witness p)
@@ -157,8 +157,8 @@ transpose-inj-iso' : ∀ {n} (i j : Fin n)
                    ≅ (Fin n ↣ Fin n)
 transpose-inj-iso' {n} i j
   = Σ-ap-iso (Π-ap-iso refl≅ λ _ → tiso) λ f
-  → mk-prop-iso (inj-hlevel f (fin-set _))
-                (inj-hlevel _ (fin-set _))
+  → mk-prop-iso (inj-level f (fin-set _))
+                (inj-level _ (fin-set _))
                 (transpose-inj i j f)
                 (λ inj p → inj (ap (apply tiso) p))
    where
@@ -171,8 +171,8 @@ transpose-inj-iso : ∀ {n} (i j : Fin n)
                   ≅ (Fin n ↣ Fin n)
 transpose-inj-iso {n} i j
   = Σ-ap-iso (Π-ap-iso tiso λ _ → refl≅) λ f
-  → mk-prop-iso (inj-hlevel f (fin-set _))
-                (inj-hlevel _ (fin-set _))
+  → mk-prop-iso (inj-level f (fin-set _))
+                (inj-level _ (fin-set _))
                 (λ inj → iso⇒inj tiso ∘' inj)
                 (λ inj p → iso⇒inj tiso (inj (
                            ap f (_≅_.iso₁ tiso _)

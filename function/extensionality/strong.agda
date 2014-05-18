@@ -8,8 +8,8 @@ open import equality.core
 open import function.isomorphism
 open import function.extensionality.core
 open import function.extensionality.proof
-open import hott.hlevel.core
-open import hott.hlevel.closure.core
+open import hott.level.core
+open import hott.level.closure.core
 open import hott.weak-equivalence.core
 
 private
@@ -35,7 +35,7 @@ private
         E = Σ ((x : X) → Y x) λ g → f ~ g
 
         e-contr : contr E
-        e-contr = retract-hlevel
+        e-contr = retract-level
           (λ u → proj₁ ∘' u , proj₂ ∘' u)
           (λ {(g , h) x → g x , h x})
           (λ {(g , h) → refl})

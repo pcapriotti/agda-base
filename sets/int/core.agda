@@ -10,7 +10,7 @@ open N using (ℕ; suc)
 open import sets.int.definition
 open import sets.int.utils
 open import sets.vec
-open import hott.hlevel.closure
+open import hott.level.closure
 
 infixl 7 _*_
 infixl 6 _+_

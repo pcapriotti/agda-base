@@ -1,5 +1,5 @@
 {-# OPTIONS --without-K #-}
-module hott.hlevel.core where
+module hott.level.core where
 
 open import level using (_⊔_; lsuc)
 open import sum

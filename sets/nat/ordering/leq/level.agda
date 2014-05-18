@@ -1,11 +1,11 @@
 {-# OPTIONS --without-K #-}
-module sets.nat.ordering.leq.hlevel where
+module sets.nat.ordering.leq.level where
 
 open import sum
 open import equality
 open import function.isomorphism
 open import function.extensionality
-open import hott.hlevel
+open import hott.level
 open import sets.nat.core
 open import sets.nat.ordering.leq.core
 open import container.core
@@ -13,7 +13,7 @@ open import container.w
 open import sets.empty
 open import sets.unit
 
-open import hott.hlevel.sets public
+open import hott.level.sets public
   using (nat-set)
 
 module ≤-container where
@@ -49,8 +49,8 @@ module ≤-container where
       β {suc m} {suc n} _ = pair≡ (funext λ ()) (funext λ ())
 
   A₂-h1 : ∀ i → h 1 (A₂ i)
-  A₂-h1 (m , n) = iso-hlevel (sym≅ (A₂-struct-iso m n))
-    (×-hlevel (Π-hlevel λ _ → ⊥-prop) (Π-hlevel λ _ → ⊥-prop))
+  A₂-h1 (m , n) = iso-level (sym≅ (A₂-struct-iso m n))
+    (×-level (Π-level λ _ → ⊥-prop) (Π-level λ _ → ⊥-prop))
 
   A-disj : ∀ i → ¬ (A₁ i × A₂ i)
   A-disj (.zero , n) (refl , (m' , n') , () , pn)
@@ -94,5 +94,5 @@ open ≤-container using (c; A-h1)
     β (sup (inj₂ ((m' , n') , (refl , refl))) u)
       = ap (sup _) (funext λ { tt → β (u tt) })
 
-≤-hlevel : ∀ {m n} → h 1 (m ≤ n)
-≤-hlevel {m}{n} = iso-hlevel (sym≅ ≤-struct-iso) (w-hlevel A-h1 (m , n))
+≤-level : ∀ {m n} → h 1 (m ≤ n)
+≤-level {m}{n} = iso-level (sym≅ ≤-struct-iso) (w-level A-h1 (m , n))

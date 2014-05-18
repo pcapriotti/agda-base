@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 
-module hott.hlevel.closure.core where
+module hott.level.closure.core where
 
 open import level
 open import decidable
@@ -8,8 +8,8 @@ open import equality
 open import function.isomorphism.core
 open import function.isomorphism.properties
 open import sum
-open import hott.hlevel.core
-open import hott.hlevel.sets
+open import hott.level.core
+open import hott.level.sets
 open import hott.weak-equivalence.core
 open import hott.univalence
 open import sets.nat.core
@@ -59,17 +59,17 @@ h! : ∀ {i n m}{X : Set i}
 h! {p = p} = h-≤ (witness p)
 
 abstract
-  -- retractions preserve hlevels
-  retract-hlevel : ∀ {i j n} {X : Set i}{Y : Set j}
+  -- retractions preserve levels
+  retract-level : ∀ {i j n} {X : Set i}{Y : Set j}
                  → (f : X → Y)(g : Y → X)
                  → ((y : Y) → f (g y) ≡ y)
                  → h n X → h n Y
-  retract-hlevel {n = 0}{X}{Y} f g r (x , c) = (f x , c')
+  retract-level {n = 0}{X}{Y} f g r (x , c) = (f x , c')
     where
       c' : (y : Y) → f x ≡ y
       c' y = ap f (c (g y)) · r y
-  retract-hlevel {n = suc n}{X}{Y} f g r hX = λ y y'
-    → retract-hlevel f' g' r' (hX (g y) (g y'))
+  retract-level {n = suc n}{X}{Y} f g r hX = λ y y'
+    → retract-level f' g' r' (hX (g y) (g y'))
     where
       f' : {y y' : Y} → g y ≡ g y' → y ≡ y'
       f' {y}{y'} p = sym (r y) · ap f p · r y'
@@ -81,12 +81,12 @@ abstract
       r' {y}{.y} refl = ap (λ α → α · r y) (left-unit (sym (r y)))
                       · right-inverse (r y)
 
-  iso-hlevel : ∀ {i j n}{X : Set i}{Y : Set j}
+  iso-level : ∀ {i j n}{X : Set i}{Y : Set j}
              → X ≅ Y → h n X → h n Y
-  iso-hlevel (iso f g H K) = retract-hlevel f g K
+  iso-level (iso f g H K) = retract-level f g K
 
   -- lifting preserves h-levels
-  ↑-hlevel : ∀ {i n} j {X : Set i}
+  ↑-level : ∀ {i n} j {X : Set i}
           → h n X
           → h n (↑ j X)
-  ↑-hlevel j {X} = iso-hlevel (lift-iso j X)
+  ↑-level j {X} = iso-level (lift-iso j X)

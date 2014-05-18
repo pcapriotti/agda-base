@@ -7,7 +7,7 @@ open import equality
 open import function
 open import sets.nat.core
 open import sets.int.definition
-open import hott.hlevel
+open import hott.level
 
 module _ {i}{X : Set i}(hX : h 2 X)
   (f : ℕ → ℕ → ℕ → ℕ → X)
@@ -26,7 +26,7 @@ module _ {i}{X : Set i}(hX : h 2 X)
       (lem n n' d) m
 
     hX' : h 2 (ℤ → X)
-    hX' = Π-hlevel λ _ → hX
+    hX' = Π-level λ _ → hX
 
   elim₂-ℤ : ℤ → ℤ → X
   elim₂-ℤ = elim-ℤ hX' (g , v)
@@ -40,7 +40,7 @@ elim₂-prop-ℤ {i}{X} hX f = elim-prop-ℤ hX' g
     g n n' = elim-prop-ℤ (hX (n [-] n')) (f n n')
 
     hX' : ∀ n → h 1 (∀ m → X n m)
-    hX' n = Π-hlevel λ m → hX n m
+    hX' n = Π-level λ m → hX n m
 
 elim₃-prop-ℤ : ∀ {i}{X : ℤ → ℤ → ℤ → Set i} → (∀ n m p → h 1 (X n m p))
              → ((n n' m m' p p' : ℕ) → X (n [-] n') (m [-] m') (p [-] p'))
@@ -51,4 +51,4 @@ elim₃-prop-ℤ {i}{X} hX f = elim-prop-ℤ hX' g
     g n n' = elim₂-prop-ℤ (hX (n [-] n')) (f n n')
 
     hX' : ∀ n → h 1 (∀ m p → X n m p)
-    hX' n = Π-hlevel λ m → Π-hlevel λ p → hX n m p
+    hX' n = Π-level λ m → Π-level λ p → hX n m p

@@ -12,7 +12,7 @@ open import function.isomorphism.coherent
 open import function.extensionality.proof
 open import sets.unit
 open import sets.empty
-open import hott.hlevel.core
+open import hott.level.core
 
 Σ-split-iso : ∀ {i j}{X : Set i}{Y : X → Set j}
             → {a a' : X}{b : Y a}{b' : Y a'}

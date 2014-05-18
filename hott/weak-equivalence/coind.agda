@@ -16,7 +16,7 @@ open import container.fixpoint
 open import container.m
 open import hott.weak-equivalence.core
 open import hott.weak-equivalence.alternative
-open import hott.hlevel
+open import hott.level
 open import sets.unit
 
 apply≅' : ∀ {i j}{X : Set i}{Y : Set j}
@@ -55,7 +55,7 @@ abstract
 
 is-≅'-h1 : ∀ {i j}{X : Set i}{Y : Set j}
          → (f : X → Y) → h 1 (is-≅' f)
-is-≅'-h1 f = iso-hlevel (sym≅ (is-≅'-≈-iso f)) (weak-equiv-h1 f)
+is-≅'-h1 f = iso-level (sym≅ (is-≅'-≈-iso f)) (weak-equiv-h1 f)
 
 ≅'-Σ-iso : ∀ {i j}{X : Set i}{Y : Set j}
          → (X ≅' Y) ≅ (Σ (X → Y) λ f → is-≅' f)

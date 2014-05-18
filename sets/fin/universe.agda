@@ -23,9 +23,9 @@ open import sets.unit
 open import sets.empty
 open import sets.bool
 open import sets.vec.dependent
-open import hott.hlevel.core
-open import hott.hlevel.closure
-open import hott.hlevel.sets
+open import hott.level.core
+open import hott.level.closure
+open import hott.level.sets
 
 fin-struct-iso : ∀ {n} → Fin (suc n) ≅ (⊤ ⊎ Fin n)
 fin-struct-iso = record

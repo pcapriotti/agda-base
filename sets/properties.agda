@@ -6,7 +6,7 @@ open import equality.core
 open import equality.calculus
 open import function.isomorphism
 open import function.overloading
-open import hott.hlevel
+open import hott.level
 open import hott.weak-equivalence
 open import sets.unit
 
@@ -24,7 +24,7 @@ iso-coherence-h2 : ∀ {i j}(A : HSet i)(B : HSet j)
 iso-coherence-h2 (A , hA)(B , hB) = begin
     (A ≅' B)
   ≅⟨ ( Σ-ap-iso₂ λ isom
-      → contr-⊤-iso (Π-hlevel λ x → hB _ _ _ _) ) ⟩
+      → contr-⊤-iso (Π-level λ x → hB _ _ _ _) ) ⟩
     ((A ≅ B) × ⊤)
   ≅⟨ ×-right-unit ⟩
     (A ≅ B)
@@ -51,4 +51,4 @@ inj-eq-h2 : ∀ {i j}{A : Set i}{B : Set j}
           → (apply f ≡ apply f')
           → f ≡ f'
 inj-eq-h2 hA refl
-  = ap (_,_ _) (h1⇒prop (inj-hlevel _ hA) _ _)
+  = ap (_,_ _) (h1⇒prop (inj-level _ hA) _ _)

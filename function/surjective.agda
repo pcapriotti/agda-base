@@ -5,7 +5,7 @@ module function.surjective where
 open import sum
 open import equality
 open import function.isomorphism.core
-open import hott.hlevel.core
+open import hott.level.core
 open import hott.weak-equivalence.core
 open import hott.truncation
 

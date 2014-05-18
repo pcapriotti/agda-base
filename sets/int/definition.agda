@@ -6,7 +6,7 @@ open import sum
 open import equality
 open import function
 open import sets.nat.core
-open import hott.hlevel
+open import hott.level
 
 private
   data Z : Set where
@@ -90,7 +90,7 @@ elim-prop-ℤ {X = X} hX f n = subst X (i-β₀ n) (proj₂ (s₀ n))
     Y = Σ ℤ X
 
     hY : h 2 Y
-    hY = Σ-hlevel hℤ λ n → h↑ (hX n)
+    hY = Σ-level hℤ λ n → h↑ (hX n)
 
     aY : IsAlg-ℤ Y
     aY = (λ n m → (n [-] m , f n m))
@@ -98,7 +98,7 @@ elim-prop-ℤ {X = X} hX f n = subst X (i-β₀ n) (proj₂ (s₀ n))
 
     pY : Hom-ℤ aY aℤ
     pY = proj₁ , unapΣ (refl , h1⇒prop
-      (Π-hlevel λ n → Π-hlevel λ m → Π-hlevel λ p → hℤ _ _) _ _)
+      (Π-level λ n → Π-level λ m → Π-level λ p → hℤ _ _) _ _)
 
     s : Hom-ℤ aℤ aY
     s = elim-Alg-ℤ hY aY

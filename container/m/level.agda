@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 
-module container.m.hlevel where
+module container.m.level where
 
 open import level
 open import sum
@@ -11,7 +11,7 @@ open import function.isomorphism
 open import function.extensionality
 open import sets.unit
 open import sets.nat.core
-open import hott.hlevel
+open import hott.level
 open import hott.univalence
 open import container.core
 open import container.equality
@@ -51,13 +51,13 @@ private
     m-contr : ∀ i → contr (M i)
     m-contr i = center , contraction
 
-m-hlevel : ∀ {n li la lb} {c : Container li la lb}
+m-level : ∀ {n li la lb} {c : Container li la lb}
          → let open Definition c
          in ((i : I) → h n (A i))
          → (i : I) → h n (M i)
-m-hlevel {n = 0} hA i = Properties.m-contr hA i
-m-hlevel {n = suc n} {c = c} hA i = λ xs ys
-  → retract-hlevel mext mext-inv mext-retraction (ih xs ys)
+m-level {n = 0} hA i = Properties.m-contr hA i
+m-level {n = suc n} {c = c} hA i = λ xs ys
+  → retract-level mext mext-inv mext-retraction (ih xs ys)
   where
     open Definition c
     open Extensionality c
@@ -65,5 +65,5 @@ m-hlevel {n = suc n} {c = c} hA i = λ xs ys
       using (head; tail)
 
     ih : (xs ys : M i) → h n (xs ≡M ys)
-    ih xs ys = m-hlevel (λ { (i , xs , ys) → hA i (head xs) (head ys) })
+    ih xs ys = m-level (λ { (i , xs , ys) → hA i (head xs) (head ys) })
                         (i , xs , ys)

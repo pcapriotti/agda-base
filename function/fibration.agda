@@ -7,7 +7,7 @@ open import equality.core
 open import function.core
 open import function.isomorphism.core
 open import function.isomorphism.utils
-open import hott.hlevel.core
+open import hott.level.core
 open import sets.unit
 
 fib : ∀ {i j}{X : Set i}(Y : X → Set j)
