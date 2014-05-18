@@ -11,7 +11,7 @@ open import function.extensionality
 open import function.overloading
 open import equality.core
 open import sets.unit
-open import sets.nat using (suc)
+open import sets.nat.core using (suc)
 open import hott.hlevel
 open import hott.weak-equivalence.core
 open import hott.weak-equivalence.alternative

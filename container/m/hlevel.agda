@@ -10,7 +10,7 @@ open import function.core
 open import function.isomorphism
 open import function.extensionality
 open import sets.unit
-open import sets.nat
+open import sets.nat.core
 open import hott.hlevel
 open import hott.univalence
 open import container.core

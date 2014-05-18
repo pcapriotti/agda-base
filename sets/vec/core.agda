@@ -10,6 +10,12 @@ data Vec {i}(A : Set i) : ℕ → Set i where
   _∷_ : ∀ {n} → A → Vec A n → Vec A (suc n)
 infixr 5 _∷_
 
+head : ∀ {i}{A : Set i}{n : ℕ} → Vec A (suc n) → A
+head (x ∷ _) = x
+
+tail : ∀ {i}{A : Set i}{n : ℕ} → Vec A (suc n) → Vec A n
+tail (_ ∷ xs) = xs
+
 tabulate : ∀ {i}{A : Set i}{n : ℕ}
          → (Fin n → A) → Vec A n
 tabulate {n = zero} _ = []

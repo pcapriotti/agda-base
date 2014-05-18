@@ -9,8 +9,9 @@ open import function.extensionality
 open import function.isomorphism
 open import function.overloading
 open import sets.core
-open import sets.nat
+open import sets.nat.core
   hiding (_≟_; pred)
+open import sets.nat.ordering
 open import sets.fin.core
 open import sets.empty
 open import sets.properties

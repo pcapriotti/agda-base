@@ -12,8 +12,10 @@ open import function.extensionality
 open import function.overloading
 open import sets.core
 open import sets.properties
-open import sets.nat
-  hiding (_≟_; compare)
+open import sets.nat.core
+  hiding (_≟_)
+open import sets.nat.ordering
+  hiding (compare)
 open import sets.fin.core
 open import sets.fin.ordering
 open import sets.fin.properties
