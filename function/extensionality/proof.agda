@@ -9,7 +9,7 @@ open import hott.univalence
 open import hott.level.core
 open import hott.level.sets
 open import hott.level.closure.core
-open import hott.weak-equivalence.core
+open import hott.equivalence.core
 open import sets.unit
 
 top : ∀ {i} → Set i

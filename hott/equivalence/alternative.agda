@@ -1,7 +1,7 @@
 {-# OPTIONS --without-K #-}
 open import function.extensionality.core
 
-module hott.weak-equivalence.alternative where
+module hott.equivalence.alternative where
 
 open import sum
 open import equality.core
@@ -12,7 +12,7 @@ open import function.isomorphism.core
 open import function.isomorphism.coherent
 open import function.isomorphism.utils
 open import hott.level.core
-open import hott.weak-equivalence.core
+open import hott.equivalence.core
 open import hott.univalence
 
 module _ {i j}{X : Set i}{Y : Set j} where

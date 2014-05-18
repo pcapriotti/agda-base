@@ -1,5 +1,5 @@
 {-# OPTIONS --without-K #-}
-module hott.weak-equivalence.coind where
+module hott.equivalence.coind where
 
 open import level
 open import sum
@@ -14,8 +14,8 @@ open import function.overloading
 open import container.core
 open import container.fixpoint
 open import container.m
-open import hott.weak-equivalence.core
-open import hott.weak-equivalence.alternative
+open import hott.equivalence.core
+open import hott.equivalence.alternative
 open import hott.level
 open import sets.unit
 

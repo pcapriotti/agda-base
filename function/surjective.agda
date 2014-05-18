@@ -6,7 +6,7 @@ open import sum
 open import equality
 open import function.isomorphism.core
 open import hott.level.core
-open import hott.weak-equivalence.core
+open import hott.equivalence.core
 open import hott.truncation
 
 surjective : ∀ {i j}{A : Set i}{B : Set j} → (A → B) → Set _

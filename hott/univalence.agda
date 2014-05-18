@@ -8,7 +8,7 @@ open import equality.calculus
 open import equality.reasoning
 open import function.core
 open import function.isomorphism.core using (_≅_ ; module _≅_)
-open import hott.weak-equivalence.core
+open import hott.equivalence.core
 
 -- mapping from equality to function
 coerce : ∀ {i} {X Y : Set i} → X ≡ Y → X → Y

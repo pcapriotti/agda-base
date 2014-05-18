@@ -10,7 +10,7 @@ open import function.extensionality.core
 open import function.extensionality.proof
 open import hott.level.core
 open import hott.level.closure.core
-open import hott.weak-equivalence.core
+open import hott.equivalence.core
 
 private
   module Dummy {i j}{X : Set i}{Y : X → Set j} where

@@ -1,5 +1,5 @@
 {-# OPTIONS --without-K #-}
-module hott.weak-equivalence.core where
+module hott.equivalence.core where
 
 open import equality.core using (_≡_ ; refl ; ap)
 open import sum using (Σ ; proj₁ ; proj₂ ; _,_)

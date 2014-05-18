@@ -1,5 +1,5 @@
 {-# OPTIONS --without-K #-}
-module hott.weak-equivalence.inverse where
+module hott.equivalence.inverse where
 
 open import level
 open import sum
@@ -13,8 +13,8 @@ open import equality.core
 open import sets.unit
 open import sets.nat.core using (suc)
 open import hott.level
-open import hott.weak-equivalence.core
-open import hott.weak-equivalence.alternative
+open import hott.equivalence.core
+open import hott.equivalence.alternative
 open import hott.univalence
 
 module _ {i j}{A : Set i}{B : Set j} where

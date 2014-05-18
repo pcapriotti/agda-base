@@ -1,6 +1,6 @@
 {-# OPTIONS --without-K #-}
 
-module hott.weak-equivalence.properties where
+module hott.equivalence.properties where
 
 open import sum
 open import equality.core
@@ -8,8 +8,8 @@ open import equality.calculus
 open import function.core
 open import function.isomorphism
 open import function.extensionality
-open import hott.weak-equivalence.core
-open import hott.weak-equivalence.alternative
+open import hott.equivalence.core
+open import hott.equivalence.alternative
 open import hott.univalence
 open import hott.level
 

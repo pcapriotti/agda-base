@@ -17,7 +17,7 @@ open import sets.nat.ordering.leq.core
 open import hott.level.core
 open import hott.level.sets
 open import hott.level.closure.core
-open import hott.weak-equivalence.core
+open import hott.equivalence.core
   using (weak-equiv; _≈_)
 open import hott.univalence
 open import sets.empty

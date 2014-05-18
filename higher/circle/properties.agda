@@ -6,7 +6,7 @@ open import equality
 open import function.isomorphism
 open import sets.empty
 open import sets.bool
-open import hott.weak-equivalence
+open import hott.equivalence
 open import hott.univalence
 open import higher.circle.core
 

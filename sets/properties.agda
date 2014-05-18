@@ -7,7 +7,7 @@ open import equality.calculus
 open import function.isomorphism
 open import function.overloading
 open import hott.level
-open import hott.weak-equivalence
+open import hott.equivalence
 open import sets.unit
 
 mk-prop-iso : ∀ {i j}{A : Set i}{B : Set j}

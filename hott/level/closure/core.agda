@@ -10,7 +10,7 @@ open import function.isomorphism.properties
 open import sum
 open import hott.level.core
 open import hott.level.sets
-open import hott.weak-equivalence.core
+open import hott.equivalence.core
 open import hott.univalence
 open import sets.nat.core
 open import sets.nat.ordering.leq.core
