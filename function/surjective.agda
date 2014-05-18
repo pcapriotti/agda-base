@@ -30,4 +30,4 @@ inj+surj⇒eq {A = A}{B = B} hA hB f inj surj b = retr-f b , propFib b (retr-f b
     propFib b (a , p) (a' , p') = unapΣ (inj (p · sym p') , h1⇒prop (hB (f a') b) _ _)
 
     retr-f : retraction f
-    retr-f b = elim' (prop⇒h1 (propFib b)) (λ x → x) (surj b)
+    retr-f b = Trunc-elim (prop⇒h1 (propFib b)) (λ x → x) (surj b)

@@ -4,21 +4,29 @@ module hott.truncation.core where
 open import equality
 open import hott.hlevel.core
 
-data ∥_∥ {i}(A : Set i) : Set i where
-  η : A → ∥ A ∥
+private
+  module _ {i}(A : Set i) where
+    data Trunc : Set i where
+      mk-trunc : A → Trunc
+
+∥_∥ : ∀ {i} → Set i → Set i
+∥_∥ = Trunc
+
+η : ∀ {i}{A : Set i} → A → ∥ A ∥
+η = mk-trunc
 
 postulate
   trunc-prop : ∀ {i}{A : Set i}
              → (x y : ∥ A ∥) → x ≡ y
 
-elim : ∀ {i j}{A : Set i}
-     → {P : ∥ A ∥ → Set j}
-     → ((x : ∥ A ∥) → h 1 (P x))
-     → ((x : A) → P (η x))
-     → (x : ∥ A ∥) → P x
-elim _ f (η x) = f x
+Trunc-elim' : ∀ {i j}{A : Set i}
+            → {P : ∥ A ∥ → Set j}
+            → ((x : ∥ A ∥) → h 1 (P x))
+            → ((x : A) → P (η x))
+            → (x : ∥ A ∥) → P x
+Trunc-elim' _ f (mk-trunc x) = f x
 
-elim' : ∀ {i j}{A : Set i}{P : Set j}
-      → h 1 P
-      → (A → P) → ∥ A ∥ → P
-elim' _ f (η x) = f x
+Trunc-elim : ∀ {i j}{A : Set i}{P : Set j}
+           → h 1 P
+           → (A → P) → ∥ A ∥ → P
+Trunc-elim _ f (mk-trunc x) = f x

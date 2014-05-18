@@ -28,7 +28,7 @@ const-factorisation {A = A}{B} hB f c = f'
     hE a₀ = (f a₀ , λ a → c a a₀) , λ { (b , u) → lem a₀ b u }
 
     u : ∥ A ∥ → contr E
-    u = elim' (contr-h1 E) hE
+    u = Trunc-elim (contr-h1 E) hE
 
     s : ∥ A ∥ → E
     s a = proj₁ (u a)
