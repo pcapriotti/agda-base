@@ -42,11 +42,18 @@ private
     center {i} = inf (proj₁ (hA i)) λ _ → ♯ center
 
     contraction : ∀ {i} (x : M i) → center ≡ x
-    contraction {i} x = mext (lem x)
+    contraction {i} x = mext (lem' x)
       where
-        lem : ∀ {i}(x : M i) → center ≡M x
-        lem {i} x = S.inf (proj₂ (hA i) (head x))
-                          (λ b → ♯ lem _)
+        coalg : ∀ {i}{x y : M i}
+              → center ≡ x
+              → Σ (head x ≡ head y) λ p
+              → ((b : B (head x)) → center ≡ tail x b)
+        coalg {i}{y = y} refl
+          = proj₂ (hA i) (head y)
+          , λ b → refl
+
+        lem' : ∀ {i}(x : M i) → center ≡M x
+        lem' _ = S.unfold coalg refl
 
     m-contr : ∀ i → contr (M i)
     m-contr i = center , contraction
