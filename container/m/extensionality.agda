@@ -1,5 +1,3 @@
-{-# OPTIONS --without-K #-}
-
 module container.m.extensionality where
 
 open import sum
