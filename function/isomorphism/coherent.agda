@@ -27,16 +27,16 @@ coherent' f = ∀ y → ap from (iso₂ y) ≡ iso₁ (from y)
 _≅'_ : ∀ {i j} → (X : Set i)(Y : Set j) → Set _
 X ≅' Y = Σ (X ≅ Y) coherent
 
-iso'-is-fun : ∀ {i j}{X : Set i}{Y : Set j}
-            → Coercion (X ≅' Y) (X → Y)
-iso'-is-fun = record
-  { coerce = λ isom → apply (proj₁ isom) }
+instance
+  iso'-is-fun : ∀ {i j}{X : Set i}{Y : Set j}
+              → Coercion (X ≅' Y) (X → Y)
+  iso'-is-fun = record
+    { coerce = λ isom → apply (proj₁ isom) }
 
-
-iso'-is-iso : ∀ {i j}{X : Set i}{Y : Set j}
-            → Coercion (X ≅' Y) (X ≅ Y)
-iso'-is-iso = record
-  { coerce = proj₁ }
+  iso'-is-iso : ∀ {i j}{X : Set i}{Y : Set j}
+              → Coercion (X ≅' Y) (X ≅ Y)
+  iso'-is-iso = record
+    { coerce = proj₁ }
 
 -- technical lemma: substiting a fixpoint proof into itself is like
 -- applying the function

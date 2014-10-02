@@ -107,20 +107,21 @@ A ↠ B = Σ (A → B) retraction
 
 private
   module properties {i j}{X : Set i}{Y : Set j} where
-    iso-is-fun : Coercion (X ≅ Y) (X → Y)
-    iso-is-fun = record
-      { coerce = _≅_.to }
+    instance
+      iso-is-fun : Coercion (X ≅ Y) (X → Y)
+      iso-is-fun = record
+        { coerce = _≅_.to }
 
-    iso-is-iso : Coercion (X ≅ Y) (X ≅ Y)
-    iso-is-iso = coerce-self _
+      iso-is-iso : Coercion (X ≅ Y) (X ≅ Y)
+      iso-is-iso = coerce-self _
 
-    inj-is-fun : Coercion (X ↣ Y) (X → Y)
-    inj-is-fun = record
-      { coerce = proj₁ }
+      inj-is-fun : Coercion (X ↣ Y) (X → Y)
+      inj-is-fun = record
+        { coerce = proj₁ }
 
-    srj-is-fun : Coercion (X ↠ Y) (X → Y)
-    srj-is-fun = record
-      { coerce = proj₁ }
+      srj-is-fun : Coercion (X ↠ Y) (X → Y)
+      srj-is-fun = record
+        { coerce = proj₁ }
 
     private
       module iso-methods {k}{Source : Set k}

@@ -150,8 +150,9 @@ coerce-parent : ∀ {i j k}
 coerce-parent ⦃ c ⦄ = record
   { coerce = λ x → coerce c (Bundle.parent x) }
 
-set-is-set : ∀ {i} → Coercion (Set i) (Set i)
-set-is-set {i} = coerce-self _
+instance
+  set-is-set : ∀ {i} → Coercion (Set i) (Set i)
+  set-is-set {i} = coerce-self _
 
 ∣_∣ : ∀ {i j}{Source : Set i} ⦃ o : Coercion Source (Set j) ⦄
     → Source → Set j

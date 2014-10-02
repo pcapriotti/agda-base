@@ -45,21 +45,23 @@ record Identity u e : Set (lsuc (u ⊔ e)) where
     endo : U → Set e
     id : {X : U} → endo X
 
-func-comp : ∀ {i j k} → Composition _ _ _ _ _ _
-func-comp {i}{j}{k} = record
-  { U₁ = Set i
-  ; U₂ = Set j
-  ; U₃ = Set k
-  ; hom₁₂ = λ X Y → X → Y
-  ; hom₂₃ = λ X Y → X → Y
-  ; hom₁₃ = λ X Y → X → Y
-  ; _∘_ = λ f g x → f (g x) }
+instance
+  func-comp : ∀ {i j k} → Composition _ _ _ _ _ _
+  func-comp {i}{j}{k} = record
+    { U₁ = Set i
+    ; U₂ = Set j
+    ; U₃ = Set k
+    ; hom₁₂ = λ X Y → X → Y
+    ; hom₂₃ = λ X Y → X → Y
+    ; hom₁₃ = λ X Y → X → Y
+    ; _∘_ = λ f g x → f (g x) }
 
-func-id : ∀ {i} → Identity _ _
-func-id {i} = record
-  { U = Set i
-  ; endo = λ X → X → X
-  ; id = λ x → x }
+instance
+  func-id : ∀ {i} → Identity _ _
+  func-id {i} = record
+    { U = Set i
+    ; endo = λ X → X → X
+    ; id = λ x → x }
 
 module ComposeInterface {u₁ u₂ u₃ u₁₂ u₂₃ u₁₃}
                         ⦃ comp : Composition u₁ u₂ u₃ u₁₂ u₂₃ u₁₃ ⦄ where
