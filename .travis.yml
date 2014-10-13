@@ -7,7 +7,12 @@ before_install:
   - agda --version
 
 install:
- - /bin/true
+  - /bin/true
 
 script:
   - agda -i. README.agda
+  - ./build-website.sh
+
+env:
+  global:
+    secure: "B2P08vwI6oeWUFh57NpbMcET3B0i4khjdTJkyRWEuzH2tq3Yi9YNX/z9UZEz3bKSAERrLglvPG0OG7298aFXPT9EqDJtwpuHn1rBxLg5mIl8Ow+BNUdOCMFBEFPq6mL6VxG2sG6VIGl+4Q8oZMDUmsWVoQUfC0zs7Cm/dM9WC4E="
