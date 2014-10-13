@@ -1,0 +1,13 @@
+language: haskell
+
+before_install:
+  - cabal update
+  - cabal install happy alex
+  - cabal install Agda
+  - agda --version
+
+install:
+ - /bin/true
+
+script:
+  - agda -i. README.agda
