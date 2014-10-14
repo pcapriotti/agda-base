@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
-if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
+if [ "${TRAVIS_PULL_REQUEST}" = "false" ] || \
+   [ "$(git rev-parse --abbrev-ref HEAD)" == "master" ]
 then
   # generate html
   html=`mktemp -d`
@@ -24,5 +25,5 @@ then
   cd -
   rm -fr $html
 else
-  echo "pull request, skipping website generation"
+  echo "skipping website generation"
 fi
