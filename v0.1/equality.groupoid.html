@@ -1,0 +1,1000 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >equality.groupoid</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="equality.groupoid.html#1" class="Module"
+      >equality.groupoid</a
+      ><a name="53"
+      > </a
+      ><a name="54" class="Keyword"
+      >where</a
+      ><a name="59"
+      >
+
+</a
+      ><a name="61" class="Keyword"
+      >open</a
+      ><a name="65"
+      > </a
+      ><a name="66" class="Keyword"
+      >import</a
+      ><a name="72"
+      > </a
+      ><a name="73" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="86"
+      >
+
+</a
+      ><a name="88" href="equality.groupoid.html#88" class="Function Operator"
+      >_&#8315;&#185;</a
+      ><a name="91"
+      > </a
+      ><a name="92" class="Symbol"
+      >:</a
+      ><a name="93"
+      > </a
+      ><a name="94" class="Symbol"
+      >&#8704;</a
+      ><a name="95"
+      > </a
+      ><a name="96" class="Symbol"
+      >{</a
+      ><a name="97" href="equality.groupoid.html#97" class="Bound"
+      >i</a
+      ><a name="98" class="Symbol"
+      >}{</a
+      ><a name="100" href="equality.groupoid.html#100" class="Bound"
+      >X</a
+      ><a name="101"
+      > </a
+      ><a name="102" class="Symbol"
+      >:</a
+      ><a name="103"
+      > </a
+      ><a name="104" class="PrimitiveType"
+      >Set</a
+      ><a name="107"
+      > </a
+      ><a name="108" href="equality.groupoid.html#97" class="Bound"
+      >i</a
+      ><a name="109" class="Symbol"
+      >}{</a
+      ><a name="111" href="equality.groupoid.html#111" class="Bound"
+      >x</a
+      ><a name="112"
+      > </a
+      ><a name="113" href="equality.groupoid.html#113" class="Bound"
+      >y</a
+      ><a name="114"
+      > </a
+      ><a name="115" class="Symbol"
+      >:</a
+      ><a name="116"
+      > </a
+      ><a name="117" href="equality.groupoid.html#100" class="Bound"
+      >X</a
+      ><a name="118" class="Symbol"
+      >}</a
+      ><a name="119"
+      > </a
+      ><a name="120" class="Symbol"
+      >&#8594;</a
+      ><a name="121"
+      > </a
+      ><a name="122" href="equality.groupoid.html#111" class="Bound"
+      >x</a
+      ><a name="123"
+      > </a
+      ><a name="124" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="125"
+      > </a
+      ><a name="126" href="equality.groupoid.html#113" class="Bound"
+      >y</a
+      ><a name="127"
+      > </a
+      ><a name="128" class="Symbol"
+      >&#8594;</a
+      ><a name="129"
+      > </a
+      ><a name="130" href="equality.groupoid.html#113" class="Bound"
+      >y</a
+      ><a name="131"
+      > </a
+      ><a name="132" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="133"
+      > </a
+      ><a name="134" href="equality.groupoid.html#111" class="Bound"
+      >x</a
+      ><a name="135"
+      >
+</a
+      ><a name="136" href="equality.groupoid.html#88" class="Function Operator"
+      >_&#8315;&#185;</a
+      ><a name="139"
+      > </a
+      ><a name="140" class="Symbol"
+      >=</a
+      ><a name="141"
+      > </a
+      ><a name="142" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="145"
+      >
+
+</a
+      ><a name="147" href="equality.groupoid.html#147" class="Function Operator"
+      >_&#183;_</a
+      ><a name="150"
+      > </a
+      ><a name="151" class="Symbol"
+      >:</a
+      ><a name="152"
+      > </a
+      ><a name="153" class="Symbol"
+      >&#8704;</a
+      ><a name="154"
+      > </a
+      ><a name="155" class="Symbol"
+      >{</a
+      ><a name="156" href="equality.groupoid.html#156" class="Bound"
+      >i</a
+      ><a name="157" class="Symbol"
+      >}{</a
+      ><a name="159" href="equality.groupoid.html#159" class="Bound"
+      >X</a
+      ><a name="160"
+      > </a
+      ><a name="161" class="Symbol"
+      >:</a
+      ><a name="162"
+      > </a
+      ><a name="163" class="PrimitiveType"
+      >Set</a
+      ><a name="166"
+      > </a
+      ><a name="167" href="equality.groupoid.html#156" class="Bound"
+      >i</a
+      ><a name="168" class="Symbol"
+      >}{</a
+      ><a name="170" href="equality.groupoid.html#170" class="Bound"
+      >x</a
+      ><a name="171"
+      > </a
+      ><a name="172" href="equality.groupoid.html#172" class="Bound"
+      >y</a
+      ><a name="173"
+      > </a
+      ><a name="174" href="equality.groupoid.html#174" class="Bound"
+      >z</a
+      ><a name="175"
+      > </a
+      ><a name="176" class="Symbol"
+      >:</a
+      ><a name="177"
+      > </a
+      ><a name="178" href="equality.groupoid.html#159" class="Bound"
+      >X</a
+      ><a name="179" class="Symbol"
+      >}</a
+      ><a name="180"
+      >
+    </a
+      ><a name="185" class="Symbol"
+      >&#8594;</a
+      ><a name="186"
+      > </a
+      ><a name="187" href="equality.groupoid.html#170" class="Bound"
+      >x</a
+      ><a name="188"
+      > </a
+      ><a name="189" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="190"
+      > </a
+      ><a name="191" href="equality.groupoid.html#172" class="Bound"
+      >y</a
+      ><a name="192"
+      > </a
+      ><a name="193" class="Symbol"
+      >&#8594;</a
+      ><a name="194"
+      > </a
+      ><a name="195" href="equality.groupoid.html#172" class="Bound"
+      >y</a
+      ><a name="196"
+      > </a
+      ><a name="197" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="198"
+      > </a
+      ><a name="199" href="equality.groupoid.html#174" class="Bound"
+      >z</a
+      ><a name="200"
+      > </a
+      ><a name="201" class="Symbol"
+      >&#8594;</a
+      ><a name="202"
+      > </a
+      ><a name="203" href="equality.groupoid.html#170" class="Bound"
+      >x</a
+      ><a name="204"
+      > </a
+      ><a name="205" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="206"
+      > </a
+      ><a name="207" href="equality.groupoid.html#174" class="Bound"
+      >z</a
+      ><a name="208"
+      >
+</a
+      ><a name="209" href="equality.groupoid.html#147" class="Function Operator"
+      >_&#183;_</a
+      ><a name="212"
+      > </a
+      ><a name="213" class="Symbol"
+      >=</a
+      ><a name="214"
+      > </a
+      ><a name="215" href="equality.core.html#278" class="Function"
+      >trans</a
+      ><a name="220"
+      >
+</a
+      ><a name="221" class="Keyword"
+      >infixl</a
+      ><a name="227"
+      > </a
+      ><a name="228" class="Number"
+      >9</a
+      ><a name="229"
+      > _&#183;_
+
+</a
+      ><a name="235" href="equality.groupoid.html#235" class="Function"
+      >left-unit</a
+      ><a name="244"
+      > </a
+      ><a name="245" class="Symbol"
+      >:</a
+      ><a name="246"
+      > </a
+      ><a name="247" class="Symbol"
+      >&#8704;</a
+      ><a name="248"
+      > </a
+      ><a name="249" class="Symbol"
+      >{</a
+      ><a name="250" href="equality.groupoid.html#250" class="Bound"
+      >i</a
+      ><a name="251" class="Symbol"
+      >}{</a
+      ><a name="253" href="equality.groupoid.html#253" class="Bound"
+      >X</a
+      ><a name="254"
+      > </a
+      ><a name="255" class="Symbol"
+      >:</a
+      ><a name="256"
+      > </a
+      ><a name="257" class="PrimitiveType"
+      >Set</a
+      ><a name="260"
+      > </a
+      ><a name="261" href="equality.groupoid.html#250" class="Bound"
+      >i</a
+      ><a name="262" class="Symbol"
+      >}{</a
+      ><a name="264" href="equality.groupoid.html#264" class="Bound"
+      >x</a
+      ><a name="265"
+      > </a
+      ><a name="266" href="equality.groupoid.html#266" class="Bound"
+      >y</a
+      ><a name="267"
+      > </a
+      ><a name="268" class="Symbol"
+      >:</a
+      ><a name="269"
+      > </a
+      ><a name="270" href="equality.groupoid.html#253" class="Bound"
+      >X</a
+      ><a name="271" class="Symbol"
+      >}</a
+      ><a name="272"
+      >
+          </a
+      ><a name="283" class="Symbol"
+      >&#8594;</a
+      ><a name="284"
+      > </a
+      ><a name="285" class="Symbol"
+      >(</a
+      ><a name="286" href="equality.groupoid.html#286" class="Bound"
+      >p</a
+      ><a name="287"
+      > </a
+      ><a name="288" class="Symbol"
+      >:</a
+      ><a name="289"
+      > </a
+      ><a name="290" href="equality.groupoid.html#264" class="Bound"
+      >x</a
+      ><a name="291"
+      > </a
+      ><a name="292" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="293"
+      > </a
+      ><a name="294" href="equality.groupoid.html#266" class="Bound"
+      >y</a
+      ><a name="295" class="Symbol"
+      >)</a
+      ><a name="296"
+      >
+          </a
+      ><a name="307" class="Symbol"
+      >&#8594;</a
+      ><a name="308"
+      > </a
+      ><a name="309" href="equality.groupoid.html#286" class="Bound"
+      >p</a
+      ><a name="310"
+      > </a
+      ><a name="311" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="312"
+      > </a
+      ><a name="313" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="317"
+      > </a
+      ><a name="318" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="319"
+      > </a
+      ><a name="320" href="equality.groupoid.html#286" class="Bound"
+      >p</a
+      ><a name="321"
+      >
+</a
+      ><a name="322" href="equality.groupoid.html#235" class="Function"
+      >left-unit</a
+      ><a name="331"
+      > </a
+      ><a name="332" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="336"
+      > </a
+      ><a name="337" class="Symbol"
+      >=</a
+      ><a name="338"
+      > </a
+      ><a name="339" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="343"
+      >
+
+</a
+      ><a name="345" href="equality.groupoid.html#345" class="Function"
+      >right-unit</a
+      ><a name="355"
+      > </a
+      ><a name="356" class="Symbol"
+      >:</a
+      ><a name="357"
+      > </a
+      ><a name="358" class="Symbol"
+      >&#8704;</a
+      ><a name="359"
+      > </a
+      ><a name="360" class="Symbol"
+      >{</a
+      ><a name="361" href="equality.groupoid.html#361" class="Bound"
+      >i</a
+      ><a name="362" class="Symbol"
+      >}{</a
+      ><a name="364" href="equality.groupoid.html#364" class="Bound"
+      >X</a
+      ><a name="365"
+      > </a
+      ><a name="366" class="Symbol"
+      >:</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="PrimitiveType"
+      >Set</a
+      ><a name="371"
+      > </a
+      ><a name="372" href="equality.groupoid.html#361" class="Bound"
+      >i</a
+      ><a name="373" class="Symbol"
+      >}{</a
+      ><a name="375" href="equality.groupoid.html#375" class="Bound"
+      >x</a
+      ><a name="376"
+      > </a
+      ><a name="377" href="equality.groupoid.html#377" class="Bound"
+      >y</a
+      ><a name="378"
+      > </a
+      ><a name="379" class="Symbol"
+      >:</a
+      ><a name="380"
+      > </a
+      ><a name="381" href="equality.groupoid.html#364" class="Bound"
+      >X</a
+      ><a name="382" class="Symbol"
+      >}</a
+      ><a name="383"
+      >
+           </a
+      ><a name="395" class="Symbol"
+      >&#8594;</a
+      ><a name="396"
+      > </a
+      ><a name="397" class="Symbol"
+      >(</a
+      ><a name="398" href="equality.groupoid.html#398" class="Bound"
+      >p</a
+      ><a name="399"
+      > </a
+      ><a name="400" class="Symbol"
+      >:</a
+      ><a name="401"
+      > </a
+      ><a name="402" href="equality.groupoid.html#375" class="Bound"
+      >x</a
+      ><a name="403"
+      > </a
+      ><a name="404" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="405"
+      > </a
+      ><a name="406" href="equality.groupoid.html#377" class="Bound"
+      >y</a
+      ><a name="407" class="Symbol"
+      >)</a
+      ><a name="408"
+      >
+           </a
+      ><a name="420" class="Symbol"
+      >&#8594;</a
+      ><a name="421"
+      > </a
+      ><a name="422" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="426"
+      > </a
+      ><a name="427" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="428"
+      > </a
+      ><a name="429" href="equality.groupoid.html#398" class="Bound"
+      >p</a
+      ><a name="430"
+      > </a
+      ><a name="431" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="432"
+      > </a
+      ><a name="433" href="equality.groupoid.html#398" class="Bound"
+      >p</a
+      ><a name="434"
+      >
+</a
+      ><a name="435" href="equality.groupoid.html#345" class="Function"
+      >right-unit</a
+      ><a name="445"
+      > </a
+      ><a name="446" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="450"
+      > </a
+      ><a name="451" class="Symbol"
+      >=</a
+      ><a name="452"
+      > </a
+      ><a name="453" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="457"
+      >
+
+</a
+      ><a name="459" href="equality.groupoid.html#459" class="Function"
+      >associativity</a
+      ><a name="472"
+      > </a
+      ><a name="473" class="Symbol"
+      >:</a
+      ><a name="474"
+      > </a
+      ><a name="475" class="Symbol"
+      >&#8704;</a
+      ><a name="476"
+      > </a
+      ><a name="477" class="Symbol"
+      >{</a
+      ><a name="478" href="equality.groupoid.html#478" class="Bound"
+      >i</a
+      ><a name="479" class="Symbol"
+      >}{</a
+      ><a name="481" href="equality.groupoid.html#481" class="Bound"
+      >X</a
+      ><a name="482"
+      > </a
+      ><a name="483" class="Symbol"
+      >:</a
+      ><a name="484"
+      > </a
+      ><a name="485" class="PrimitiveType"
+      >Set</a
+      ><a name="488"
+      > </a
+      ><a name="489" href="equality.groupoid.html#478" class="Bound"
+      >i</a
+      ><a name="490" class="Symbol"
+      >}{</a
+      ><a name="492" href="equality.groupoid.html#492" class="Bound"
+      >x</a
+      ><a name="493"
+      > </a
+      ><a name="494" href="equality.groupoid.html#494" class="Bound"
+      >y</a
+      ><a name="495"
+      > </a
+      ><a name="496" href="equality.groupoid.html#496" class="Bound"
+      >z</a
+      ><a name="497"
+      > </a
+      ><a name="498" href="equality.groupoid.html#498" class="Bound"
+      >w</a
+      ><a name="499"
+      > </a
+      ><a name="500" class="Symbol"
+      >:</a
+      ><a name="501"
+      > </a
+      ><a name="502" href="equality.groupoid.html#481" class="Bound"
+      >X</a
+      ><a name="503" class="Symbol"
+      >}</a
+      ><a name="504"
+      >
+              </a
+      ><a name="519" class="Symbol"
+      >&#8594;</a
+      ><a name="520"
+      > </a
+      ><a name="521" class="Symbol"
+      >(</a
+      ><a name="522" href="equality.groupoid.html#522" class="Bound"
+      >p</a
+      ><a name="523"
+      > </a
+      ><a name="524" class="Symbol"
+      >:</a
+      ><a name="525"
+      > </a
+      ><a name="526" href="equality.groupoid.html#492" class="Bound"
+      >x</a
+      ><a name="527"
+      > </a
+      ><a name="528" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="529"
+      > </a
+      ><a name="530" href="equality.groupoid.html#494" class="Bound"
+      >y</a
+      ><a name="531" class="Symbol"
+      >)(</a
+      ><a name="533" href="equality.groupoid.html#533" class="Bound"
+      >q</a
+      ><a name="534"
+      > </a
+      ><a name="535" class="Symbol"
+      >:</a
+      ><a name="536"
+      > </a
+      ><a name="537" href="equality.groupoid.html#494" class="Bound"
+      >y</a
+      ><a name="538"
+      > </a
+      ><a name="539" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="540"
+      > </a
+      ><a name="541" href="equality.groupoid.html#496" class="Bound"
+      >z</a
+      ><a name="542" class="Symbol"
+      >)(</a
+      ><a name="544" href="equality.groupoid.html#544" class="Bound"
+      >r</a
+      ><a name="545"
+      > </a
+      ><a name="546" class="Symbol"
+      >:</a
+      ><a name="547"
+      > </a
+      ><a name="548" href="equality.groupoid.html#496" class="Bound"
+      >z</a
+      ><a name="549"
+      > </a
+      ><a name="550" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="551"
+      > </a
+      ><a name="552" href="equality.groupoid.html#498" class="Bound"
+      >w</a
+      ><a name="553" class="Symbol"
+      >)</a
+      ><a name="554"
+      >
+              </a
+      ><a name="569" class="Symbol"
+      >&#8594;</a
+      ><a name="570"
+      > </a
+      ><a name="571" href="equality.groupoid.html#522" class="Bound"
+      >p</a
+      ><a name="572"
+      > </a
+      ><a name="573" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="equality.groupoid.html#533" class="Bound"
+      >q</a
+      ><a name="576"
+      > </a
+      ><a name="577" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="578"
+      > </a
+      ><a name="579" href="equality.groupoid.html#544" class="Bound"
+      >r</a
+      ><a name="580"
+      > </a
+      ><a name="581" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="582"
+      > </a
+      ><a name="583" href="equality.groupoid.html#522" class="Bound"
+      >p</a
+      ><a name="584"
+      > </a
+      ><a name="585" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="586"
+      > </a
+      ><a name="587" class="Symbol"
+      >(</a
+      ><a name="588" href="equality.groupoid.html#533" class="Bound"
+      >q</a
+      ><a name="589"
+      > </a
+      ><a name="590" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="591"
+      > </a
+      ><a name="592" href="equality.groupoid.html#544" class="Bound"
+      >r</a
+      ><a name="593" class="Symbol"
+      >)</a
+      ><a name="594"
+      >
+</a
+      ><a name="595" href="equality.groupoid.html#459" class="Function"
+      >associativity</a
+      ><a name="608"
+      > </a
+      ><a name="609" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="613"
+      > </a
+      ><a name="614" class="Symbol"
+      >_</a
+      ><a name="615"
+      > </a
+      ><a name="616" class="Symbol"
+      >_</a
+      ><a name="617"
+      > </a
+      ><a name="618" class="Symbol"
+      >=</a
+      ><a name="619"
+      > </a
+      ><a name="620" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="624"
+      >
+
+</a
+      ><a name="626" href="equality.groupoid.html#626" class="Function"
+      >left-inverse</a
+      ><a name="638"
+      > </a
+      ><a name="639" class="Symbol"
+      >:</a
+      ><a name="640"
+      > </a
+      ><a name="641" class="Symbol"
+      >&#8704;</a
+      ><a name="642"
+      > </a
+      ><a name="643" class="Symbol"
+      >{</a
+      ><a name="644" href="equality.groupoid.html#644" class="Bound"
+      >i</a
+      ><a name="645" class="Symbol"
+      >}{</a
+      ><a name="647" href="equality.groupoid.html#647" class="Bound"
+      >X</a
+      ><a name="648"
+      > </a
+      ><a name="649" class="Symbol"
+      >:</a
+      ><a name="650"
+      > </a
+      ><a name="651" class="PrimitiveType"
+      >Set</a
+      ><a name="654"
+      > </a
+      ><a name="655" href="equality.groupoid.html#644" class="Bound"
+      >i</a
+      ><a name="656" class="Symbol"
+      >}{</a
+      ><a name="658" href="equality.groupoid.html#658" class="Bound"
+      >x</a
+      ><a name="659"
+      > </a
+      ><a name="660" href="equality.groupoid.html#660" class="Bound"
+      >y</a
+      ><a name="661"
+      > </a
+      ><a name="662" class="Symbol"
+      >:</a
+      ><a name="663"
+      > </a
+      ><a name="664" href="equality.groupoid.html#647" class="Bound"
+      >X</a
+      ><a name="665" class="Symbol"
+      >}</a
+      ><a name="666"
+      >
+             </a
+      ><a name="680" class="Symbol"
+      >&#8594;</a
+      ><a name="681"
+      > </a
+      ><a name="682" class="Symbol"
+      >(</a
+      ><a name="683" href="equality.groupoid.html#683" class="Bound"
+      >p</a
+      ><a name="684"
+      > </a
+      ><a name="685" class="Symbol"
+      >:</a
+      ><a name="686"
+      > </a
+      ><a name="687" href="equality.groupoid.html#658" class="Bound"
+      >x</a
+      ><a name="688"
+      > </a
+      ><a name="689" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="690"
+      > </a
+      ><a name="691" href="equality.groupoid.html#660" class="Bound"
+      >y</a
+      ><a name="692" class="Symbol"
+      >)</a
+      ><a name="693"
+      >
+             </a
+      ><a name="707" class="Symbol"
+      >&#8594;</a
+      ><a name="708"
+      > </a
+      ><a name="709" href="equality.groupoid.html#683" class="Bound"
+      >p</a
+      ><a name="710"
+      > </a
+      ><a name="711" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="712"
+      > </a
+      ><a name="713" href="equality.groupoid.html#683" class="Bound"
+      >p</a
+      ><a name="714"
+      > </a
+      ><a name="715" href="equality.groupoid.html#88" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="717"
+      > </a
+      ><a name="718" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="719"
+      > </a
+      ><a name="720" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="724"
+      >
+</a
+      ><a name="725" href="equality.groupoid.html#626" class="Function"
+      >left-inverse</a
+      ><a name="737"
+      > </a
+      ><a name="738" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="742"
+      > </a
+      ><a name="743" class="Symbol"
+      >=</a
+      ><a name="744"
+      > </a
+      ><a name="745" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="749"
+      >
+
+</a
+      ><a name="751" href="equality.groupoid.html#751" class="Function"
+      >right-inverse</a
+      ><a name="764"
+      > </a
+      ><a name="765" class="Symbol"
+      >:</a
+      ><a name="766"
+      > </a
+      ><a name="767" class="Symbol"
+      >&#8704;</a
+      ><a name="768"
+      > </a
+      ><a name="769" class="Symbol"
+      >{</a
+      ><a name="770" href="equality.groupoid.html#770" class="Bound"
+      >i</a
+      ><a name="771" class="Symbol"
+      >}{</a
+      ><a name="773" href="equality.groupoid.html#773" class="Bound"
+      >X</a
+      ><a name="774"
+      > </a
+      ><a name="775" class="Symbol"
+      >:</a
+      ><a name="776"
+      > </a
+      ><a name="777" class="PrimitiveType"
+      >Set</a
+      ><a name="780"
+      > </a
+      ><a name="781" href="equality.groupoid.html#770" class="Bound"
+      >i</a
+      ><a name="782" class="Symbol"
+      >}{</a
+      ><a name="784" href="equality.groupoid.html#784" class="Bound"
+      >x</a
+      ><a name="785"
+      > </a
+      ><a name="786" href="equality.groupoid.html#786" class="Bound"
+      >y</a
+      ><a name="787"
+      > </a
+      ><a name="788" class="Symbol"
+      >:</a
+      ><a name="789"
+      > </a
+      ><a name="790" href="equality.groupoid.html#773" class="Bound"
+      >X</a
+      ><a name="791" class="Symbol"
+      >}</a
+      ><a name="792"
+      >
+              </a
+      ><a name="807" class="Symbol"
+      >&#8594;</a
+      ><a name="808"
+      > </a
+      ><a name="809" class="Symbol"
+      >(</a
+      ><a name="810" href="equality.groupoid.html#810" class="Bound"
+      >p</a
+      ><a name="811"
+      > </a
+      ><a name="812" class="Symbol"
+      >:</a
+      ><a name="813"
+      > </a
+      ><a name="814" href="equality.groupoid.html#784" class="Bound"
+      >x</a
+      ><a name="815"
+      > </a
+      ><a name="816" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="817"
+      > </a
+      ><a name="818" href="equality.groupoid.html#786" class="Bound"
+      >y</a
+      ><a name="819" class="Symbol"
+      >)</a
+      ><a name="820"
+      >
+              </a
+      ><a name="835" class="Symbol"
+      >&#8594;</a
+      ><a name="836"
+      > </a
+      ><a name="837" href="equality.groupoid.html#810" class="Bound"
+      >p</a
+      ><a name="838"
+      > </a
+      ><a name="839" href="equality.groupoid.html#88" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="841"
+      > </a
+      ><a name="842" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="843"
+      > </a
+      ><a name="844" href="equality.groupoid.html#810" class="Bound"
+      >p</a
+      ><a name="845"
+      > </a
+      ><a name="846" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="847"
+      > </a
+      ><a name="848" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="852"
+      >
+</a
+      ><a name="853" href="equality.groupoid.html#751" class="Function"
+      >right-inverse</a
+      ><a name="866"
+      > </a
+      ><a name="867" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="871"
+      > </a
+      ><a name="872" class="Symbol"
+      >=</a
+      ><a name="873"
+      > </a
+      ><a name="874" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="878"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
