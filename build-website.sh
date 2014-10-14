@@ -2,7 +2,12 @@
 
 if [ "${TRAVIS_PULL_REQUEST}" = "false" ]
 then
-  branch="$(git rev-parse --abbrev-ref HEAD)"
+  if [ "$#" -gt 0 ]
+  then
+    branch="$1"
+  else
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+  fi
   html=`mktemp -d`
 
   # setup repo with gh-pages branch
