@@ -22,5 +22,5 @@ record Fixpoint {li la lb}
   head : X ↝ A
   head {i} = proj₁ ∘ apply (fixpoint i)
 
-  tail : ∀ {i}(u : X i)(b : B (head u)) → X (r b)
+  tail : ∀ {i}(u : X i) → ∀ j → B (head u) j → X j
   tail {i} = proj₂ ∘' apply (fixpoint i)

@@ -26,17 +26,17 @@ module Definition {li la lb}(c : Container li la lb) where
   open Container c public
 
   -- definition of indexed M-types using native Agda coinduction
-  data M (i : I) : Set (la ⊔ lb) where
-    inf : (a : A i) → ((b : B a) → ∞ (M (r b))) → M i
+  data M (i : I) : Set (li ⊔ la ⊔ lb) where
+    inf : (a : A i) → (∀ j → B a j → ∞ (M j)) → M i
 
   -- the terminal coalgebra
   out : M ↝ F M
-  out (inf a f) = a , ♭ ∘' f
+  out (inf a f) = a , λ j → ♭ ∘' f j
 
   -- normally, the constructor can be defined in terms of out and unfold, but
   -- Agda provides it natively, together with a definitional β rule
   inM' : F M ↝ M
-  inM' (a , f) = inf a (λ x → ♯ (f x))
+  inM' (a , f) = inf a (λ j x → ♯ (f j x))
 
   inM'-β : {i : I}(x : F M i) → out (inM' x) ≡ x
   inM'-β x = refl
@@ -53,8 +53,8 @@ module Definition {li la lb}(c : Container li la lb) where
         a : A i
         a = proj₁ u
 
-        f : (b : B a) → ∞ (M (r b))
-        f b = ♯ unfold (proj₂ u b)
+        f : ∀ j → B a j → ∞ (M j)
+        f j b = ♯ unfold (proj₂ u j b)
 
     -- computational rule for anamorphisms
     -- this holds definitionally

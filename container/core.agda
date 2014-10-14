@@ -11,12 +11,11 @@ record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
   field
     I : Set li
     A : I → Set la
-    B : {i : I} → A i → Set lb
-    r : {i : I}{a : A i} → B a → I
+    B : {i : I} → A i → I → Set lb
 
   -- functor associated to this indexed container
   F : ∀ {lx} → (I → Set lx) → I → Set _
-  F X i = Σ (A i) λ a → (b : B a) → X (r b)
+  F X i = Σ (A i) λ a → ∀ j → B a j → X j
 
   -- homsets in the slice category
   _↝_ : ∀ {lx ly} → (I → Set lx) → (I → Set ly) → Set _
@@ -28,4 +27,4 @@ record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
        → {Y : I → Set ly}
        → (X ↝ Y)
        → (F X ↝ F Y)
-  imap _ g {i} (a , f) = a , g ∘' f
+  imap _ g {i} (a , u) = a , λ j → g ∘' u j

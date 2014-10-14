@@ -37,18 +37,18 @@ private
       open local public
 
     center : ∀ {i} → M i
-    center {i} = inf (proj₁ (hA i)) λ _ → ♯ center
+    center {i} = inf (proj₁ (hA i)) λ _ _ → ♯ center
+
+    Center : S.I → Set _
+    Center (i , x , y) = center ≡ x
 
     contraction : ∀ {i} (x : M i) → center ≡ x
     contraction {i} x = mext (lem' x)
       where
-        coalg : ∀ {i}{x y : M i}
-              → center ≡ x
-              → Σ (head x ≡ head y) λ p
-              → ((b : B (head x)) → center ≡ tail x b)
+        coalg : ∀ {i}{x y : M i} → center ≡ x → S.F Center (i , x , y)
         coalg {i}{y = y} refl
           = proj₂ (hA i) (head y)
-          , λ b → refl
+          , λ { (j , ._ , ._) (b , refl , refl) → refl }
 
         lem' : ∀ {i}(x : M i) → center ≡M x
         lem' _ = S.unfold coalg refl
