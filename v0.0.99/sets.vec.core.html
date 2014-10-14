@@ -1,0 +1,725 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >sets.vec.core</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="sets.vec.core.html#1" class="Module"
+      >sets.vec.core</a
+      ><a name="49"
+      > </a
+      ><a name="50" class="Keyword"
+      >where</a
+      ><a name="55"
+      >
+
+</a
+      ><a name="57" class="Keyword"
+      >open</a
+      ><a name="61"
+      > </a
+      ><a name="62" class="Keyword"
+      >import</a
+      ><a name="68"
+      > </a
+      ><a name="69" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="82"
+      >
+</a
+      ><a name="83" class="Keyword"
+      >open</a
+      ><a name="87"
+      > </a
+      ><a name="88" class="Keyword"
+      >import</a
+      ><a name="94"
+      > </a
+      ><a name="95" href="sets.nat.core.html#1" class="Module"
+      >sets.nat.core</a
+      ><a name="108"
+      > </a
+      ><a name="109" class="Keyword"
+      >using</a
+      ><a name="114"
+      > </a
+      ><a name="115" class="Symbol"
+      >(</a
+      ><a name="116"
+      >&#8469;</a
+      ><a name="117" class="Symbol"
+      >;</a
+      ><a name="118"
+      > zero</a
+      ><a name="123" class="Symbol"
+      >;</a
+      ><a name="124"
+      > suc</a
+      ><a name="128" class="Symbol"
+      >)</a
+      ><a name="129"
+      >
+</a
+      ><a name="130" class="Keyword"
+      >open</a
+      ><a name="134"
+      > </a
+      ><a name="135" class="Keyword"
+      >import</a
+      ><a name="141"
+      > </a
+      ><a name="142" href="sets.fin.html#1" class="Module"
+      >sets.fin</a
+      ><a name="150"
+      >
+
+</a
+      ><a name="152" class="Keyword"
+      >data</a
+      ><a name="156"
+      > </a
+      ><a name="157" href="sets.vec.core.html#157" class="Datatype"
+      >Vec</a
+      ><a name="160"
+      > </a
+      ><a name="161" class="Symbol"
+      >{</a
+      ><a name="162" href="sets.vec.core.html#162" class="Bound"
+      >i</a
+      ><a name="163" class="Symbol"
+      >}(</a
+      ><a name="165" href="sets.vec.core.html#165" class="Bound"
+      >A</a
+      ><a name="166"
+      > </a
+      ><a name="167" class="Symbol"
+      >:</a
+      ><a name="168"
+      > </a
+      ><a name="169" class="PrimitiveType"
+      >Set</a
+      ><a name="172"
+      > </a
+      ><a name="173" href="sets.vec.core.html#162" class="Bound"
+      >i</a
+      ><a name="174" class="Symbol"
+      >)</a
+      ><a name="175"
+      > </a
+      ><a name="176" class="Symbol"
+      >:</a
+      ><a name="177"
+      > </a
+      ><a name="178" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="179"
+      > </a
+      ><a name="180" class="Symbol"
+      >&#8594;</a
+      ><a name="181"
+      > </a
+      ><a name="182" class="PrimitiveType"
+      >Set</a
+      ><a name="185"
+      > </a
+      ><a name="186" href="sets.vec.core.html#162" class="Bound"
+      >i</a
+      ><a name="187"
+      > </a
+      ><a name="188" class="Keyword"
+      >where</a
+      ><a name="193"
+      >
+  </a
+      ><a name="196" href="sets.vec.core.html#196" class="InductiveConstructor"
+      >[]</a
+      ><a name="198"
+      > </a
+      ><a name="199" class="Symbol"
+      >:</a
+      ><a name="200"
+      > </a
+      ><a name="201" href="sets.vec.core.html#157" class="Datatype"
+      >Vec</a
+      ><a name="204"
+      > </a
+      ><a name="205" href="sets.vec.core.html#165" class="Bound"
+      >A</a
+      ><a name="206"
+      > </a
+      ><a name="207" class="Number"
+      >0</a
+      ><a name="208"
+      >
+  </a
+      ><a name="211" href="sets.vec.core.html#211" class="InductiveConstructor Operator"
+      >_&#8759;_</a
+      ><a name="214"
+      > </a
+      ><a name="215" class="Symbol"
+      >:</a
+      ><a name="216"
+      > </a
+      ><a name="217" class="Symbol"
+      >&#8704;</a
+      ><a name="218"
+      > </a
+      ><a name="219" class="Symbol"
+      >{</a
+      ><a name="220" href="sets.vec.core.html#220" class="Bound"
+      >n</a
+      ><a name="221" class="Symbol"
+      >}</a
+      ><a name="222"
+      > </a
+      ><a name="223" class="Symbol"
+      >&#8594;</a
+      ><a name="224"
+      > </a
+      ><a name="225" href="sets.vec.core.html#165" class="Bound"
+      >A</a
+      ><a name="226"
+      > </a
+      ><a name="227" class="Symbol"
+      >&#8594;</a
+      ><a name="228"
+      > </a
+      ><a name="229" href="sets.vec.core.html#157" class="Datatype"
+      >Vec</a
+      ><a name="232"
+      > </a
+      ><a name="233" href="sets.vec.core.html#165" class="Bound"
+      >A</a
+      ><a name="234"
+      > </a
+      ><a name="235" href="sets.vec.core.html#220" class="Bound"
+      >n</a
+      ><a name="236"
+      > </a
+      ><a name="237" class="Symbol"
+      >&#8594;</a
+      ><a name="238"
+      > </a
+      ><a name="239" href="sets.vec.core.html#157" class="Datatype"
+      >Vec</a
+      ><a name="242"
+      > </a
+      ><a name="243" href="sets.vec.core.html#165" class="Bound"
+      >A</a
+      ><a name="244"
+      > </a
+      ><a name="245" class="Symbol"
+      >(</a
+      ><a name="246" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="249"
+      > </a
+      ><a name="250" href="sets.vec.core.html#220" class="Bound"
+      >n</a
+      ><a name="251" class="Symbol"
+      >)</a
+      ><a name="252"
+      >
+</a
+      ><a name="253" class="Keyword"
+      >infixr</a
+      ><a name="259"
+      > </a
+      ><a name="260" class="Number"
+      >5</a
+      ><a name="261"
+      > _&#8759;_
+
+</a
+      ><a name="267" href="sets.vec.core.html#267" class="Function"
+      >tabulate</a
+      ><a name="275"
+      > </a
+      ><a name="276" class="Symbol"
+      >:</a
+      ><a name="277"
+      > </a
+      ><a name="278" class="Symbol"
+      >&#8704;</a
+      ><a name="279"
+      > </a
+      ><a name="280" class="Symbol"
+      >{</a
+      ><a name="281" href="sets.vec.core.html#281" class="Bound"
+      >i</a
+      ><a name="282" class="Symbol"
+      >}{</a
+      ><a name="284" href="sets.vec.core.html#284" class="Bound"
+      >A</a
+      ><a name="285"
+      > </a
+      ><a name="286" class="Symbol"
+      >:</a
+      ><a name="287"
+      > </a
+      ><a name="288" class="PrimitiveType"
+      >Set</a
+      ><a name="291"
+      > </a
+      ><a name="292" href="sets.vec.core.html#281" class="Bound"
+      >i</a
+      ><a name="293" class="Symbol"
+      >}{</a
+      ><a name="295" href="sets.vec.core.html#295" class="Bound"
+      >n</a
+      ><a name="296"
+      > </a
+      ><a name="297" class="Symbol"
+      >:</a
+      ><a name="298"
+      > </a
+      ><a name="299" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="300" class="Symbol"
+      >}</a
+      ><a name="301"
+      >
+         </a
+      ><a name="311" class="Symbol"
+      >&#8594;</a
+      ><a name="312"
+      > </a
+      ><a name="313" class="Symbol"
+      >(</a
+      ><a name="314" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="317"
+      > </a
+      ><a name="318" href="sets.vec.core.html#295" class="Bound"
+      >n</a
+      ><a name="319"
+      > </a
+      ><a name="320" class="Symbol"
+      >&#8594;</a
+      ><a name="321"
+      > </a
+      ><a name="322" href="sets.vec.core.html#284" class="Bound"
+      >A</a
+      ><a name="323" class="Symbol"
+      >)</a
+      ><a name="324"
+      > </a
+      ><a name="325" class="Symbol"
+      >&#8594;</a
+      ><a name="326"
+      > </a
+      ><a name="327" href="sets.vec.core.html#157" class="Datatype"
+      >Vec</a
+      ><a name="330"
+      > </a
+      ><a name="331" href="sets.vec.core.html#284" class="Bound"
+      >A</a
+      ><a name="332"
+      > </a
+      ><a name="333" href="sets.vec.core.html#295" class="Bound"
+      >n</a
+      ><a name="334"
+      >
+</a
+      ><a name="335" href="sets.vec.core.html#267" class="Function"
+      >tabulate</a
+      ><a name="343"
+      > </a
+      ><a name="344" class="Symbol"
+      >{</a
+      ><a name="345"
+      >n </a
+      ><a name="347" class="Symbol"
+      >=</a
+      ><a name="348"
+      > </a
+      ><a name="349" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >zero</a
+      ><a name="353" class="Symbol"
+      >}</a
+      ><a name="354"
+      > </a
+      ><a name="355" class="Symbol"
+      >_</a
+      ><a name="356"
+      > </a
+      ><a name="357" class="Symbol"
+      >=</a
+      ><a name="358"
+      > </a
+      ><a name="359" href="sets.vec.core.html#196" class="InductiveConstructor"
+      >[]</a
+      ><a name="361"
+      >
+</a
+      ><a name="362" href="sets.vec.core.html#267" class="Function"
+      >tabulate</a
+      ><a name="370"
+      > </a
+      ><a name="371" class="Symbol"
+      >{</a
+      ><a name="372"
+      >n </a
+      ><a name="374" class="Symbol"
+      >=</a
+      ><a name="375"
+      > </a
+      ><a name="376" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="379"
+      > </a
+      ><a name="380" href="sets.vec.core.html#380" class="Bound"
+      >m</a
+      ><a name="381" class="Symbol"
+      >}</a
+      ><a name="382"
+      > </a
+      ><a name="383" href="sets.vec.core.html#383" class="Bound"
+      >f</a
+      ><a name="384"
+      > </a
+      ><a name="385" class="Symbol"
+      >=</a
+      ><a name="386"
+      > </a
+      ><a name="387" href="sets.vec.core.html#383" class="Bound"
+      >f</a
+      ><a name="388"
+      > </a
+      ><a name="389" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="393"
+      > </a
+      ><a name="394" href="sets.vec.core.html#211" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="395"
+      > </a
+      ><a name="396" href="sets.vec.core.html#267" class="Function"
+      >tabulate</a
+      ><a name="404"
+      > </a
+      ><a name="405" class="Symbol"
+      >(</a
+      ><a name="406" href="sets.vec.core.html#383" class="Bound"
+      >f</a
+      ><a name="407"
+      > </a
+      ><a name="408" href="function.core.html#912" class="Function Operator"
+      >&#8728;</a
+      ><a name="409"
+      > </a
+      ><a name="410" href="sets.fin.core.html#287" class="InductiveConstructor"
+      >suc</a
+      ><a name="413" class="Symbol"
+      >)</a
+      ><a name="414"
+      >
+
+</a
+      ><a name="416" href="sets.vec.core.html#416" class="Function"
+      >lookup</a
+      ><a name="422"
+      > </a
+      ><a name="423" class="Symbol"
+      >:</a
+      ><a name="424"
+      > </a
+      ><a name="425" class="Symbol"
+      >&#8704;</a
+      ><a name="426"
+      > </a
+      ><a name="427" class="Symbol"
+      >{</a
+      ><a name="428" href="sets.vec.core.html#428" class="Bound"
+      >i</a
+      ><a name="429" class="Symbol"
+      >}{</a
+      ><a name="431" href="sets.vec.core.html#431" class="Bound"
+      >A</a
+      ><a name="432"
+      > </a
+      ><a name="433" class="Symbol"
+      >:</a
+      ><a name="434"
+      > </a
+      ><a name="435" class="PrimitiveType"
+      >Set</a
+      ><a name="438"
+      > </a
+      ><a name="439" href="sets.vec.core.html#428" class="Bound"
+      >i</a
+      ><a name="440" class="Symbol"
+      >}{</a
+      ><a name="442" href="sets.vec.core.html#442" class="Bound"
+      >n</a
+      ><a name="443"
+      > </a
+      ><a name="444" class="Symbol"
+      >:</a
+      ><a name="445"
+      > </a
+      ><a name="446" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="447" class="Symbol"
+      >}</a
+      ><a name="448"
+      >
+       </a
+      ><a name="456" class="Symbol"
+      >&#8594;</a
+      ><a name="457"
+      > </a
+      ><a name="458" href="sets.vec.core.html#157" class="Datatype"
+      >Vec</a
+      ><a name="461"
+      > </a
+      ><a name="462" href="sets.vec.core.html#431" class="Bound"
+      >A</a
+      ><a name="463"
+      > </a
+      ><a name="464" href="sets.vec.core.html#442" class="Bound"
+      >n</a
+      ><a name="465"
+      > </a
+      ><a name="466" class="Symbol"
+      >&#8594;</a
+      ><a name="467"
+      > </a
+      ><a name="468" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="471"
+      > </a
+      ><a name="472" href="sets.vec.core.html#442" class="Bound"
+      >n</a
+      ><a name="473"
+      > </a
+      ><a name="474" class="Symbol"
+      >&#8594;</a
+      ><a name="475"
+      > </a
+      ><a name="476" href="sets.vec.core.html#431" class="Bound"
+      >A</a
+      ><a name="477"
+      >
+</a
+      ><a name="478" href="sets.vec.core.html#416" class="Function"
+      >lookup</a
+      ><a name="484"
+      > </a
+      ><a name="485" href="sets.vec.core.html#196" class="InductiveConstructor"
+      >[]</a
+      ><a name="487"
+      > </a
+      ><a name="488" class="Symbol"
+      >()</a
+      ><a name="490"
+      >
+</a
+      ><a name="491" href="sets.vec.core.html#416" class="Function"
+      >lookup</a
+      ><a name="497"
+      > </a
+      ><a name="498" class="Symbol"
+      >(</a
+      ><a name="499" href="sets.vec.core.html#499" class="Bound"
+      >x</a
+      ><a name="500"
+      > </a
+      ><a name="501" href="sets.vec.core.html#211" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="502"
+      > </a
+      ><a name="503" href="sets.vec.core.html#503" class="Bound"
+      >xs</a
+      ><a name="505" class="Symbol"
+      >)</a
+      ><a name="506"
+      > </a
+      ><a name="507" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="511"
+      > </a
+      ><a name="512" class="Symbol"
+      >=</a
+      ><a name="513"
+      > </a
+      ><a name="514" href="sets.vec.core.html#499" class="Bound"
+      >x</a
+      ><a name="515"
+      >
+</a
+      ><a name="516" href="sets.vec.core.html#416" class="Function"
+      >lookup</a
+      ><a name="522"
+      > </a
+      ><a name="523" class="Symbol"
+      >(</a
+      ><a name="524" href="sets.vec.core.html#524" class="Bound"
+      >x</a
+      ><a name="525"
+      > </a
+      ><a name="526" href="sets.vec.core.html#211" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="527"
+      > </a
+      ><a name="528" href="sets.vec.core.html#528" class="Bound"
+      >xs</a
+      ><a name="530" class="Symbol"
+      >)</a
+      ><a name="531"
+      > </a
+      ><a name="532" class="Symbol"
+      >(</a
+      ><a name="533" href="sets.fin.core.html#287" class="InductiveConstructor"
+      >suc</a
+      ><a name="536"
+      > </a
+      ><a name="537" href="sets.vec.core.html#537" class="Bound"
+      >i</a
+      ><a name="538" class="Symbol"
+      >)</a
+      ><a name="539"
+      > </a
+      ><a name="540" class="Symbol"
+      >=</a
+      ><a name="541"
+      > </a
+      ><a name="542" href="sets.vec.core.html#416" class="Function"
+      >lookup</a
+      ><a name="548"
+      > </a
+      ><a name="549" href="sets.vec.core.html#528" class="Bound"
+      >xs</a
+      ><a name="551"
+      > </a
+      ><a name="552" href="sets.vec.core.html#537" class="Bound"
+      >i</a
+      ><a name="553"
+      >
+
+</a
+      ><a name="555" href="sets.vec.core.html#555" class="Function Operator"
+      >_!_</a
+      ><a name="558"
+      > </a
+      ><a name="559" class="Symbol"
+      >:</a
+      ><a name="560"
+      > </a
+      ><a name="561" class="Symbol"
+      >&#8704;</a
+      ><a name="562"
+      > </a
+      ><a name="563" class="Symbol"
+      >{</a
+      ><a name="564" href="sets.vec.core.html#564" class="Bound"
+      >i</a
+      ><a name="565" class="Symbol"
+      >}{</a
+      ><a name="567" href="sets.vec.core.html#567" class="Bound"
+      >A</a
+      ><a name="568"
+      > </a
+      ><a name="569" class="Symbol"
+      >:</a
+      ><a name="570"
+      > </a
+      ><a name="571" class="PrimitiveType"
+      >Set</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="sets.vec.core.html#564" class="Bound"
+      >i</a
+      ><a name="576" class="Symbol"
+      >}{</a
+      ><a name="578" href="sets.vec.core.html#578" class="Bound"
+      >n</a
+      ><a name="579"
+      > </a
+      ><a name="580" class="Symbol"
+      >:</a
+      ><a name="581"
+      > </a
+      ><a name="582" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="583" class="Symbol"
+      >}</a
+      ><a name="584"
+      >
+    </a
+      ><a name="589" class="Symbol"
+      >&#8594;</a
+      ><a name="590"
+      > </a
+      ><a name="591" href="sets.vec.core.html#157" class="Datatype"
+      >Vec</a
+      ><a name="594"
+      > </a
+      ><a name="595" href="sets.vec.core.html#567" class="Bound"
+      >A</a
+      ><a name="596"
+      > </a
+      ><a name="597" href="sets.vec.core.html#578" class="Bound"
+      >n</a
+      ><a name="598"
+      > </a
+      ><a name="599" class="Symbol"
+      >&#8594;</a
+      ><a name="600"
+      > </a
+      ><a name="601" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="604"
+      > </a
+      ><a name="605" href="sets.vec.core.html#578" class="Bound"
+      >n</a
+      ><a name="606"
+      > </a
+      ><a name="607" class="Symbol"
+      >&#8594;</a
+      ><a name="608"
+      > </a
+      ><a name="609" href="sets.vec.core.html#567" class="Bound"
+      >A</a
+      ><a name="610"
+      >
+</a
+      ><a name="611" href="sets.vec.core.html#555" class="Function Operator"
+      >_!_</a
+      ><a name="614"
+      > </a
+      ><a name="615" class="Symbol"
+      >=</a
+      ><a name="616"
+      > </a
+      ><a name="617" href="sets.vec.core.html#416" class="Function"
+      >lookup</a
+      ><a name="623"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

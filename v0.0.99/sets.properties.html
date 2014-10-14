@@ -1,0 +1,1367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >sets.properties</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="sets.properties.html#1" class="Module"
+      >sets.properties</a
+      ><a name="51"
+      > </a
+      ><a name="52" class="Keyword"
+      >where</a
+      ><a name="57"
+      >
+
+</a
+      ><a name="59" class="Keyword"
+      >open</a
+      ><a name="63"
+      > </a
+      ><a name="64" class="Keyword"
+      >import</a
+      ><a name="70"
+      > </a
+      ><a name="71" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="74"
+      >
+</a
+      ><a name="75" class="Keyword"
+      >open</a
+      ><a name="79"
+      > </a
+      ><a name="80" class="Keyword"
+      >import</a
+      ><a name="86"
+      > </a
+      ><a name="87" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="100"
+      >
+</a
+      ><a name="101" class="Keyword"
+      >open</a
+      ><a name="105"
+      > </a
+      ><a name="106" class="Keyword"
+      >import</a
+      ><a name="112"
+      > </a
+      ><a name="113" href="equality.calculus.html#1" class="Module"
+      >equality.calculus</a
+      ><a name="130"
+      >
+</a
+      ><a name="131" class="Keyword"
+      >open</a
+      ><a name="135"
+      > </a
+      ><a name="136" class="Keyword"
+      >import</a
+      ><a name="142"
+      > </a
+      ><a name="143" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="163"
+      >
+</a
+      ><a name="164" class="Keyword"
+      >open</a
+      ><a name="168"
+      > </a
+      ><a name="169" class="Keyword"
+      >import</a
+      ><a name="175"
+      > </a
+      ><a name="176" href="function.overloading.html#1" class="Module"
+      >function.overloading</a
+      ><a name="196"
+      >
+</a
+      ><a name="197" class="Keyword"
+      >open</a
+      ><a name="201"
+      > </a
+      ><a name="202" class="Keyword"
+      >import</a
+      ><a name="208"
+      > </a
+      ><a name="209" href="hott.hlevel.html#1" class="Module"
+      >hott.hlevel</a
+      ><a name="220"
+      >
+</a
+      ><a name="221" class="Keyword"
+      >open</a
+      ><a name="225"
+      > </a
+      ><a name="226" class="Keyword"
+      >import</a
+      ><a name="232"
+      > </a
+      ><a name="233" href="hott.weak-equivalence.html#1" class="Module"
+      >hott.weak-equivalence</a
+      ><a name="254"
+      >
+</a
+      ><a name="255" class="Keyword"
+      >open</a
+      ><a name="259"
+      > </a
+      ><a name="260" class="Keyword"
+      >import</a
+      ><a name="266"
+      > </a
+      ><a name="267" href="sets.unit.html#1" class="Module"
+      >sets.unit</a
+      ><a name="276"
+      >
+
+</a
+      ><a name="278" href="sets.properties.html#278" class="Function"
+      >mk-prop-iso</a
+      ><a name="289"
+      > </a
+      ><a name="290" class="Symbol"
+      >:</a
+      ><a name="291"
+      > </a
+      ><a name="292" class="Symbol"
+      >&#8704;</a
+      ><a name="293"
+      > </a
+      ><a name="294" class="Symbol"
+      >{</a
+      ><a name="295" href="sets.properties.html#295" class="Bound"
+      >i</a
+      ><a name="296"
+      > </a
+      ><a name="297" href="sets.properties.html#297" class="Bound"
+      >j</a
+      ><a name="298" class="Symbol"
+      >}{</a
+      ><a name="300" href="sets.properties.html#300" class="Bound"
+      >A</a
+      ><a name="301"
+      > </a
+      ><a name="302" class="Symbol"
+      >:</a
+      ><a name="303"
+      > </a
+      ><a name="304" class="PrimitiveType"
+      >Set</a
+      ><a name="307"
+      > </a
+      ><a name="308" href="sets.properties.html#295" class="Bound"
+      >i</a
+      ><a name="309" class="Symbol"
+      >}{</a
+      ><a name="311" href="sets.properties.html#311" class="Bound"
+      >B</a
+      ><a name="312"
+      > </a
+      ><a name="313" class="Symbol"
+      >:</a
+      ><a name="314"
+      > </a
+      ><a name="315" class="PrimitiveType"
+      >Set</a
+      ><a name="318"
+      > </a
+      ><a name="319" href="sets.properties.html#297" class="Bound"
+      >j</a
+      ><a name="320" class="Symbol"
+      >}</a
+      ><a name="321"
+      >
+            </a
+      ><a name="334" class="Symbol"
+      >&#8594;</a
+      ><a name="335"
+      > </a
+      ><a name="336" href="hott.hlevel.core.html#245" class="Function"
+      >h</a
+      ><a name="337"
+      > </a
+      ><a name="338" class="Number"
+      >1</a
+      ><a name="339"
+      > </a
+      ><a name="340" href="sets.properties.html#300" class="Bound"
+      >A</a
+      ><a name="341"
+      > </a
+      ><a name="342" class="Symbol"
+      >&#8594;</a
+      ><a name="343"
+      > </a
+      ><a name="344" href="hott.hlevel.core.html#245" class="Function"
+      >h</a
+      ><a name="345"
+      > </a
+      ><a name="346" class="Number"
+      >1</a
+      ><a name="347"
+      > </a
+      ><a name="348" href="sets.properties.html#311" class="Bound"
+      >B</a
+      ><a name="349"
+      >
+            </a
+      ><a name="362" class="Symbol"
+      >&#8594;</a
+      ><a name="363"
+      > </a
+      ><a name="364" class="Symbol"
+      >(</a
+      ><a name="365" href="sets.properties.html#300" class="Bound"
+      >A</a
+      ><a name="366"
+      > </a
+      ><a name="367" class="Symbol"
+      >&#8594;</a
+      ><a name="368"
+      > </a
+      ><a name="369" href="sets.properties.html#311" class="Bound"
+      >B</a
+      ><a name="370" class="Symbol"
+      >)</a
+      ><a name="371"
+      > </a
+      ><a name="372" class="Symbol"
+      >&#8594;</a
+      ><a name="373"
+      > </a
+      ><a name="374" class="Symbol"
+      >(</a
+      ><a name="375" href="sets.properties.html#311" class="Bound"
+      >B</a
+      ><a name="376"
+      > </a
+      ><a name="377" class="Symbol"
+      >&#8594;</a
+      ><a name="378"
+      > </a
+      ><a name="379" href="sets.properties.html#300" class="Bound"
+      >A</a
+      ><a name="380" class="Symbol"
+      >)</a
+      ><a name="381"
+      >
+            </a
+      ><a name="394" class="Symbol"
+      >&#8594;</a
+      ><a name="395"
+      > </a
+      ><a name="396" href="sets.properties.html#300" class="Bound"
+      >A</a
+      ><a name="397"
+      > </a
+      ><a name="398" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="399"
+      > </a
+      ><a name="400" href="sets.properties.html#311" class="Bound"
+      >B</a
+      ><a name="401"
+      >
+</a
+      ><a name="402" href="sets.properties.html#278" class="Function"
+      >mk-prop-iso</a
+      ><a name="413"
+      > </a
+      ><a name="414" href="sets.properties.html#414" class="Bound"
+      >hA</a
+      ><a name="416"
+      > </a
+      ><a name="417" href="sets.properties.html#417" class="Bound"
+      >hB</a
+      ><a name="419"
+      > </a
+      ><a name="420" href="sets.properties.html#420" class="Bound"
+      >f</a
+      ><a name="421"
+      > </a
+      ><a name="422" href="sets.properties.html#422" class="Bound"
+      >g</a
+      ><a name="423"
+      >
+  </a
+      ><a name="426" class="Symbol"
+      >=</a
+      ><a name="427"
+      > </a
+      ><a name="428" href="function.isomorphism.core.html#421" class="InductiveConstructor"
+      >iso</a
+      ><a name="431"
+      > </a
+      ><a name="432" href="sets.properties.html#420" class="Bound"
+      >f</a
+      ><a name="433"
+      > </a
+      ><a name="434" href="sets.properties.html#422" class="Bound"
+      >g</a
+      ><a name="435"
+      > </a
+      ><a name="436" class="Symbol"
+      >(&#955;</a
+      ><a name="438"
+      > </a
+      ><a name="439" href="sets.properties.html#439" class="Bound"
+      >x</a
+      ><a name="440"
+      > </a
+      ><a name="441" class="Symbol"
+      >&#8594;</a
+      ><a name="442"
+      > </a
+      ><a name="443" href="hott.hlevel.core.html#805" class="Function"
+      >h1&#8658;prop</a
+      ><a name="450"
+      > </a
+      ><a name="451" href="sets.properties.html#414" class="Bound"
+      >hA</a
+      ><a name="453"
+      > </a
+      ><a name="454" class="Symbol"
+      >_</a
+      ><a name="455"
+      > </a
+      ><a name="456" class="Symbol"
+      >_)</a
+      ><a name="458"
+      >
+            </a
+      ><a name="471" class="Symbol"
+      >(&#955;</a
+      ><a name="473"
+      > </a
+      ><a name="474" href="sets.properties.html#474" class="Bound"
+      >y</a
+      ><a name="475"
+      > </a
+      ><a name="476" class="Symbol"
+      >&#8594;</a
+      ><a name="477"
+      > </a
+      ><a name="478" href="hott.hlevel.core.html#805" class="Function"
+      >h1&#8658;prop</a
+      ><a name="485"
+      > </a
+      ><a name="486" href="sets.properties.html#417" class="Bound"
+      >hB</a
+      ><a name="488"
+      > </a
+      ><a name="489" class="Symbol"
+      >_</a
+      ><a name="490"
+      > </a
+      ><a name="491" class="Symbol"
+      >_)</a
+      ><a name="493"
+      >
+
+</a
+      ><a name="495" href="sets.properties.html#495" class="Function"
+      >iso-coherence-h2</a
+      ><a name="511"
+      > </a
+      ><a name="512" class="Symbol"
+      >:</a
+      ><a name="513"
+      > </a
+      ><a name="514" class="Symbol"
+      >&#8704;</a
+      ><a name="515"
+      > </a
+      ><a name="516" class="Symbol"
+      >{</a
+      ><a name="517" href="sets.properties.html#517" class="Bound"
+      >i</a
+      ><a name="518"
+      > </a
+      ><a name="519" href="sets.properties.html#519" class="Bound"
+      >j</a
+      ><a name="520" class="Symbol"
+      >}(</a
+      ><a name="522" href="sets.properties.html#522" class="Bound"
+      >A</a
+      ><a name="523"
+      > </a
+      ><a name="524" class="Symbol"
+      >:</a
+      ><a name="525"
+      > </a
+      ><a name="526" href="hott.hlevel.core.html#1526" class="Function"
+      >HSet</a
+      ><a name="530"
+      > </a
+      ><a name="531" href="sets.properties.html#517" class="Bound"
+      >i</a
+      ><a name="532" class="Symbol"
+      >)(</a
+      ><a name="534" href="sets.properties.html#534" class="Bound"
+      >B</a
+      ><a name="535"
+      > </a
+      ><a name="536" class="Symbol"
+      >:</a
+      ><a name="537"
+      > </a
+      ><a name="538" href="hott.hlevel.core.html#1526" class="Function"
+      >HSet</a
+      ><a name="542"
+      > </a
+      ><a name="543" href="sets.properties.html#519" class="Bound"
+      >j</a
+      ><a name="544" class="Symbol"
+      >)</a
+      ><a name="545"
+      >
+                 </a
+      ><a name="563" class="Symbol"
+      >&#8594;</a
+      ><a name="564"
+      > </a
+      ><a name="565" class="Symbol"
+      >(</a
+      ><a name="566" href="sum.html#245" class="Function"
+      >proj&#8321;</a
+      ><a name="571"
+      > </a
+      ><a name="572" href="sets.properties.html#522" class="Bound"
+      >A</a
+      ><a name="573"
+      > </a
+      ><a name="574" href="function.isomorphism.coherent.html#702" class="Function Operator"
+      >&#8773;'</a
+      ><a name="576"
+      > </a
+      ><a name="577" href="sum.html#245" class="Function"
+      >proj&#8321;</a
+      ><a name="582"
+      > </a
+      ><a name="583" href="sets.properties.html#534" class="Bound"
+      >B</a
+      ><a name="584" class="Symbol"
+      >)</a
+      ><a name="585"
+      >
+                 </a
+      ><a name="603" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="604"
+      > </a
+      ><a name="605" class="Symbol"
+      >(</a
+      ><a name="606" href="sum.html#245" class="Function"
+      >proj&#8321;</a
+      ><a name="611"
+      > </a
+      ><a name="612" href="sets.properties.html#522" class="Bound"
+      >A</a
+      ><a name="613"
+      > </a
+      ><a name="614" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="615"
+      > </a
+      ><a name="616" href="sum.html#245" class="Function"
+      >proj&#8321;</a
+      ><a name="621"
+      > </a
+      ><a name="622" href="sets.properties.html#534" class="Bound"
+      >B</a
+      ><a name="623" class="Symbol"
+      >)</a
+      ><a name="624"
+      >
+</a
+      ><a name="625" href="sets.properties.html#495" class="Function"
+      >iso-coherence-h2</a
+      ><a name="641"
+      > </a
+      ><a name="642" class="Symbol"
+      >(</a
+      ><a name="643" href="sets.properties.html#643" class="Bound"
+      >A</a
+      ><a name="644"
+      > </a
+      ><a name="645" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="646"
+      > </a
+      ><a name="647" href="sets.properties.html#647" class="Bound"
+      >hA</a
+      ><a name="649" class="Symbol"
+      >)(</a
+      ><a name="651" href="sets.properties.html#651" class="Bound"
+      >B</a
+      ><a name="652"
+      > </a
+      ><a name="653" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="654"
+      > </a
+      ><a name="655" href="sets.properties.html#655" class="Bound"
+      >hB</a
+      ><a name="657" class="Symbol"
+      >)</a
+      ><a name="658"
+      > </a
+      ><a name="659" class="Symbol"
+      >=</a
+      ><a name="660"
+      > </a
+      ><a name="661" href="function.isomorphism.core.html#1890" class="Function Operator"
+      >begin</a
+      ><a name="666"
+      >
+    </a
+      ><a name="671" class="Symbol"
+      >(</a
+      ><a name="672" href="sets.properties.html#643" class="Bound"
+      >A</a
+      ><a name="673"
+      > </a
+      ><a name="674" href="function.isomorphism.coherent.html#702" class="Function Operator"
+      >&#8773;'</a
+      ><a name="676"
+      > </a
+      ><a name="677" href="sets.properties.html#651" class="Bound"
+      >B</a
+      ><a name="678" class="Symbol"
+      >)</a
+      ><a name="679"
+      >
+  </a
+      ><a name="682" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="684"
+      > </a
+      ><a name="685" class="Symbol"
+      >(</a
+      ><a name="686"
+      > </a
+      ><a name="687" href="function.isomorphism.utils.html#1442" class="Function"
+      >&#931;-ap-iso&#8322;</a
+      ><a name="696"
+      > </a
+      ><a name="697" class="Symbol"
+      >&#955;</a
+      ><a name="698"
+      > </a
+      ><a name="699" href="sets.properties.html#699" class="Bound"
+      >isom</a
+      ><a name="703"
+      >
+      </a
+      ><a name="710" class="Symbol"
+      >&#8594;</a
+      ><a name="711"
+      > </a
+      ><a name="712" href="function.isomorphism.utils.html#8217" class="Function"
+      >contr-&#8868;-iso</a
+      ><a name="723"
+      > </a
+      ><a name="724" class="Symbol"
+      >(</a
+      ><a name="725" href="hott.hlevel.closure.extra.html#693" class="Function"
+      >&#928;-hlevel</a
+      ><a name="733"
+      > </a
+      ><a name="734" class="Symbol"
+      >&#955;</a
+      ><a name="735"
+      > </a
+      ><a name="736" href="sets.properties.html#736" class="Bound"
+      >x</a
+      ><a name="737"
+      > </a
+      ><a name="738" class="Symbol"
+      >&#8594;</a
+      ><a name="739"
+      > </a
+      ><a name="740" href="sets.properties.html#655" class="Bound"
+      >hB</a
+      ><a name="742"
+      > </a
+      ><a name="743" class="Symbol"
+      >_</a
+      ><a name="744"
+      > </a
+      ><a name="745" class="Symbol"
+      >_</a
+      ><a name="746"
+      > </a
+      ><a name="747" class="Symbol"
+      >_</a
+      ><a name="748"
+      > </a
+      ><a name="749" class="Symbol"
+      >_)</a
+      ><a name="751"
+      > </a
+      ><a name="752" class="Symbol"
+      >)</a
+      ><a name="753"
+      > </a
+      ><a name="754" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="755"
+      >
+    </a
+      ><a name="760" class="Symbol"
+      >((</a
+      ><a name="762" href="sets.properties.html#643" class="Bound"
+      >A</a
+      ><a name="763"
+      > </a
+      ><a name="764" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="765"
+      > </a
+      ><a name="766" href="sets.properties.html#651" class="Bound"
+      >B</a
+      ><a name="767" class="Symbol"
+      >)</a
+      ><a name="768"
+      > </a
+      ><a name="769" href="sum.html#291" class="Function Operator"
+      >&#215;</a
+      ><a name="770"
+      > </a
+      ><a name="771" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="772" class="Symbol"
+      >)</a
+      ><a name="773"
+      >
+  </a
+      ><a name="776" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="778"
+      > </a
+      ><a name="779" href="function.isomorphism.utils.html#8051" class="Function"
+      >&#215;-right-unit</a
+      ><a name="791"
+      > </a
+      ><a name="792" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="793"
+      >
+    </a
+      ><a name="798" class="Symbol"
+      >(</a
+      ><a name="799" href="sets.properties.html#643" class="Bound"
+      >A</a
+      ><a name="800"
+      > </a
+      ><a name="801" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="802"
+      > </a
+      ><a name="803" href="sets.properties.html#651" class="Bound"
+      >B</a
+      ><a name="804" class="Symbol"
+      >)</a
+      ><a name="805"
+      >
+  </a
+      ><a name="808" href="function.isomorphism.core.html#2283" class="Function Operator"
+      >&#8718;</a
+      ><a name="809"
+      >
+  </a
+      ><a name="812" class="Keyword"
+      >where</a
+      ><a name="817"
+      > </a
+      ><a name="818" class="Keyword"
+      >open</a
+      ><a name="822"
+      > </a
+      ><a name="823" href="function.isomorphism.core.html#1670" class="Module"
+      >&#8773;-Reasoning</a
+      ><a name="834"
+      >
+
+</a
+      ><a name="836" href="sets.properties.html#836" class="Function"
+      >iso-equiv-h2</a
+      ><a name="848"
+      > </a
+      ><a name="849" class="Symbol"
+      >:</a
+      ><a name="850"
+      > </a
+      ><a name="851" class="Symbol"
+      >&#8704;</a
+      ><a name="852"
+      > </a
+      ><a name="853" class="Symbol"
+      >{</a
+      ><a name="854" href="sets.properties.html#854" class="Bound"
+      >i</a
+      ><a name="855"
+      > </a
+      ><a name="856" href="sets.properties.html#856" class="Bound"
+      >j</a
+      ><a name="857" class="Symbol"
+      >}{</a
+      ><a name="859" href="sets.properties.html#859" class="Bound"
+      >A</a
+      ><a name="860"
+      > </a
+      ><a name="861" class="Symbol"
+      >:</a
+      ><a name="862"
+      > </a
+      ><a name="863" class="PrimitiveType"
+      >Set</a
+      ><a name="866"
+      > </a
+      ><a name="867" href="sets.properties.html#854" class="Bound"
+      >i</a
+      ><a name="868" class="Symbol"
+      >}{</a
+      ><a name="870" href="sets.properties.html#870" class="Bound"
+      >B</a
+      ><a name="871"
+      > </a
+      ><a name="872" class="Symbol"
+      >:</a
+      ><a name="873"
+      > </a
+      ><a name="874" class="PrimitiveType"
+      >Set</a
+      ><a name="877"
+      > </a
+      ><a name="878" href="sets.properties.html#856" class="Bound"
+      >j</a
+      ><a name="879" class="Symbol"
+      >}</a
+      ><a name="880"
+      >
+             </a
+      ><a name="894" class="Symbol"
+      >&#8594;</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="hott.hlevel.core.html#245" class="Function"
+      >h</a
+      ><a name="897"
+      > </a
+      ><a name="898" class="Number"
+      >2</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="sets.properties.html#859" class="Bound"
+      >A</a
+      ><a name="901"
+      > </a
+      ><a name="902" class="Symbol"
+      >&#8594;</a
+      ><a name="903"
+      > </a
+      ><a name="904" href="hott.hlevel.core.html#245" class="Function"
+      >h</a
+      ><a name="905"
+      > </a
+      ><a name="906" class="Number"
+      >2</a
+      ><a name="907"
+      > </a
+      ><a name="908" href="sets.properties.html#870" class="Bound"
+      >B</a
+      ><a name="909"
+      >
+             </a
+      ><a name="923" class="Symbol"
+      >&#8594;</a
+      ><a name="924"
+      > </a
+      ><a name="925" class="Symbol"
+      >(</a
+      ><a name="926" href="sets.properties.html#859" class="Bound"
+      >A</a
+      ><a name="927"
+      > </a
+      ><a name="928" href="hott.weak-equivalence.core.html#589" class="Function Operator"
+      >&#8776;</a
+      ><a name="929"
+      > </a
+      ><a name="930" href="sets.properties.html#870" class="Bound"
+      >B</a
+      ><a name="931" class="Symbol"
+      >)</a
+      ><a name="932"
+      > </a
+      ><a name="933" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="934"
+      > </a
+      ><a name="935" class="Symbol"
+      >(</a
+      ><a name="936" href="sets.properties.html#859" class="Bound"
+      >A</a
+      ><a name="937"
+      > </a
+      ><a name="938" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="939"
+      > </a
+      ><a name="940" href="sets.properties.html#870" class="Bound"
+      >B</a
+      ><a name="941" class="Symbol"
+      >)</a
+      ><a name="942"
+      >
+</a
+      ><a name="943" href="sets.properties.html#836" class="Function"
+      >iso-equiv-h2</a
+      ><a name="955"
+      > </a
+      ><a name="956" href="sets.properties.html#956" class="Bound"
+      >hA</a
+      ><a name="958"
+      > </a
+      ><a name="959" href="sets.properties.html#959" class="Bound"
+      >hB</a
+      ><a name="961"
+      > </a
+      ><a name="962" class="Symbol"
+      >=</a
+      ><a name="963"
+      > </a
+      ><a name="964" href="function.isomorphism.core.html#1152" class="Function"
+      >trans&#8773;</a
+      ><a name="970"
+      > </a
+      ><a name="971" href="hott.weak-equivalence.alternative.html#3442" class="Function"
+      >&#8776;&#8660;&#8773;'</a
+      ><a name="975"
+      >
+  </a
+      ><a name="978" class="Symbol"
+      >(</a
+      ><a name="979" href="sets.properties.html#495" class="Function"
+      >iso-coherence-h2</a
+      ><a name="995"
+      > </a
+      ><a name="996" class="Symbol"
+      >(_</a
+      ><a name="998"
+      > </a
+      ><a name="999" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1000"
+      > </a
+      ><a name="1001" href="sets.properties.html#956" class="Bound"
+      >hA</a
+      ><a name="1003" class="Symbol"
+      >)</a
+      ><a name="1004"
+      > </a
+      ><a name="1005" class="Symbol"
+      >(_</a
+      ><a name="1007"
+      > </a
+      ><a name="1008" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1009"
+      > </a
+      ><a name="1010" href="sets.properties.html#959" class="Bound"
+      >hB</a
+      ><a name="1012" class="Symbol"
+      >))</a
+      ><a name="1014"
+      >
+
+</a
+      ><a name="1016" href="sets.properties.html#1016" class="Function"
+      >iso-eq-h2</a
+      ><a name="1025"
+      > </a
+      ><a name="1026" class="Symbol"
+      >:</a
+      ><a name="1027"
+      > </a
+      ><a name="1028" class="Symbol"
+      >&#8704;</a
+      ><a name="1029"
+      > </a
+      ><a name="1030" class="Symbol"
+      >{</a
+      ><a name="1031" href="sets.properties.html#1031" class="Bound"
+      >i</a
+      ><a name="1032"
+      > </a
+      ><a name="1033" href="sets.properties.html#1033" class="Bound"
+      >j</a
+      ><a name="1034" class="Symbol"
+      >}{</a
+      ><a name="1036" href="sets.properties.html#1036" class="Bound"
+      >A</a
+      ><a name="1037"
+      > </a
+      ><a name="1038" class="Symbol"
+      >:</a
+      ><a name="1039"
+      > </a
+      ><a name="1040" class="PrimitiveType"
+      >Set</a
+      ><a name="1043"
+      > </a
+      ><a name="1044" href="sets.properties.html#1031" class="Bound"
+      >i</a
+      ><a name="1045" class="Symbol"
+      >}{</a
+      ><a name="1047" href="sets.properties.html#1047" class="Bound"
+      >B</a
+      ><a name="1048"
+      > </a
+      ><a name="1049" class="Symbol"
+      >:</a
+      ><a name="1050"
+      > </a
+      ><a name="1051" class="PrimitiveType"
+      >Set</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" href="sets.properties.html#1033" class="Bound"
+      >j</a
+      ><a name="1056" class="Symbol"
+      >}</a
+      ><a name="1057"
+      >
+          </a
+      ><a name="1068" class="Symbol"
+      >&#8594;</a
+      ><a name="1069"
+      > </a
+      ><a name="1070" href="hott.hlevel.core.html#245" class="Function"
+      >h</a
+      ><a name="1071"
+      > </a
+      ><a name="1072" class="Number"
+      >2</a
+      ><a name="1073"
+      > </a
+      ><a name="1074" href="sets.properties.html#1036" class="Bound"
+      >A</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" class="Symbol"
+      >&#8594;</a
+      ><a name="1077"
+      > </a
+      ><a name="1078" href="hott.hlevel.core.html#245" class="Function"
+      >h</a
+      ><a name="1079"
+      > </a
+      ><a name="1080" class="Number"
+      >2</a
+      ><a name="1081"
+      > </a
+      ><a name="1082" href="sets.properties.html#1047" class="Bound"
+      >B</a
+      ><a name="1083"
+      >
+          </a
+      ><a name="1094" class="Symbol"
+      >&#8594;</a
+      ><a name="1095"
+      > </a
+      ><a name="1096" class="Symbol"
+      >{</a
+      ><a name="1097" href="sets.properties.html#1097" class="Bound"
+      >isom</a
+      ><a name="1101"
+      > </a
+      ><a name="1102" href="sets.properties.html#1102" class="Bound"
+      >isom'</a
+      ><a name="1107"
+      > </a
+      ><a name="1108" class="Symbol"
+      >:</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" href="sets.properties.html#1036" class="Bound"
+      >A</a
+      ><a name="1111"
+      > </a
+      ><a name="1112" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" href="sets.properties.html#1047" class="Bound"
+      >B</a
+      ><a name="1115" class="Symbol"
+      >}</a
+      ><a name="1116"
+      >
+          </a
+      ><a name="1127" class="Symbol"
+      >&#8594;</a
+      ><a name="1128"
+      > </a
+      ><a name="1129" class="Symbol"
+      >(</a
+      ><a name="1130" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="1135"
+      > </a
+      ><a name="1136" href="sets.properties.html#1097" class="Bound"
+      >isom</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="1148"
+      > </a
+      ><a name="1149" href="sets.properties.html#1102" class="Bound"
+      >isom'</a
+      ><a name="1154" class="Symbol"
+      >)</a
+      ><a name="1155"
+      >
+          </a
+      ><a name="1166" class="Symbol"
+      >&#8594;</a
+      ><a name="1167"
+      > </a
+      ><a name="1168" href="sets.properties.html#1097" class="Bound"
+      >isom</a
+      ><a name="1172"
+      > </a
+      ><a name="1173" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1174"
+      > </a
+      ><a name="1175" href="sets.properties.html#1102" class="Bound"
+      >isom'</a
+      ><a name="1180"
+      >
+</a
+      ><a name="1181" href="sets.properties.html#1016" class="Function"
+      >iso-eq-h2</a
+      ><a name="1190"
+      > </a
+      ><a name="1191" href="sets.properties.html#1191" class="Bound"
+      >hA</a
+      ><a name="1193"
+      > </a
+      ><a name="1194" href="sets.properties.html#1194" class="Bound"
+      >hB</a
+      ><a name="1196"
+      > </a
+      ><a name="1197" href="sets.properties.html#1197" class="Bound"
+      >p</a
+      ><a name="1198"
+      > </a
+      ><a name="1199" class="Symbol"
+      >=</a
+      ><a name="1200"
+      >
+  </a
+      ><a name="1203" href="function.isomorphism.properties.html#2388" class="Function"
+      >subtype-eq</a
+      ><a name="1213"
+      > </a
+      ><a name="1214" class="Symbol"
+      >(&#955;</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" href="sets.properties.html#1217" class="Bound"
+      >f</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" class="Symbol"
+      >&#8594;</a
+      ><a name="1220"
+      > </a
+      ><a name="1221" href="hott.hlevel.closure.extra.html#3335" class="Function"
+      >weak-equiv-h1</a
+      ><a name="1234"
+      > </a
+      ><a name="1235" href="sets.properties.html#1217" class="Bound"
+      >f</a
+      ><a name="1236" class="Symbol"
+      >)</a
+      ><a name="1237"
+      >
+             </a
+      ><a name="1251" class="Symbol"
+      >(</a
+      ><a name="1252" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="1256"
+      > </a
+      ><a name="1257" class="Symbol"
+      >(</a
+      ><a name="1258" href="sets.properties.html#836" class="Function"
+      >iso-equiv-h2</a
+      ><a name="1270"
+      > </a
+      ><a name="1271" href="sets.properties.html#1191" class="Bound"
+      >hA</a
+      ><a name="1273"
+      > </a
+      ><a name="1274" href="sets.properties.html#1194" class="Bound"
+      >hB</a
+      ><a name="1276" class="Symbol"
+      >))</a
+      ><a name="1278"
+      > </a
+      ><a name="1279" href="sets.properties.html#1197" class="Bound"
+      >p</a
+      ><a name="1280"
+      >
+
+</a
+      ><a name="1282" href="sets.properties.html#1282" class="Function"
+      >inj-eq-h2</a
+      ><a name="1291"
+      > </a
+      ><a name="1292" class="Symbol"
+      >:</a
+      ><a name="1293"
+      > </a
+      ><a name="1294" class="Symbol"
+      >&#8704;</a
+      ><a name="1295"
+      > </a
+      ><a name="1296" class="Symbol"
+      >{</a
+      ><a name="1297" href="sets.properties.html#1297" class="Bound"
+      >i</a
+      ><a name="1298"
+      > </a
+      ><a name="1299" href="sets.properties.html#1299" class="Bound"
+      >j</a
+      ><a name="1300" class="Symbol"
+      >}{</a
+      ><a name="1302" href="sets.properties.html#1302" class="Bound"
+      >A</a
+      ><a name="1303"
+      > </a
+      ><a name="1304" class="Symbol"
+      >:</a
+      ><a name="1305"
+      > </a
+      ><a name="1306" class="PrimitiveType"
+      >Set</a
+      ><a name="1309"
+      > </a
+      ><a name="1310" href="sets.properties.html#1297" class="Bound"
+      >i</a
+      ><a name="1311" class="Symbol"
+      >}{</a
+      ><a name="1313" href="sets.properties.html#1313" class="Bound"
+      >B</a
+      ><a name="1314"
+      > </a
+      ><a name="1315" class="Symbol"
+      >:</a
+      ><a name="1316"
+      > </a
+      ><a name="1317" class="PrimitiveType"
+      >Set</a
+      ><a name="1320"
+      > </a
+      ><a name="1321" href="sets.properties.html#1299" class="Bound"
+      >j</a
+      ><a name="1322" class="Symbol"
+      >}</a
+      ><a name="1323"
+      >
+          </a
+      ><a name="1334" class="Symbol"
+      >&#8594;</a
+      ><a name="1335"
+      > </a
+      ><a name="1336" href="hott.hlevel.core.html#245" class="Function"
+      >h</a
+      ><a name="1337"
+      > </a
+      ><a name="1338" class="Number"
+      >2</a
+      ><a name="1339"
+      > </a
+      ><a name="1340" href="sets.properties.html#1302" class="Bound"
+      >A</a
+      ><a name="1341"
+      > </a
+      ><a name="1342" class="Symbol"
+      >&#8594;</a
+      ><a name="1343"
+      > </a
+      ><a name="1344" class="Symbol"
+      >{</a
+      ><a name="1345" href="sets.properties.html#1345" class="Bound"
+      >f</a
+      ><a name="1346"
+      > </a
+      ><a name="1347" href="sets.properties.html#1347" class="Bound"
+      >f'</a
+      ><a name="1349"
+      > </a
+      ><a name="1350" class="Symbol"
+      >:</a
+      ><a name="1351"
+      > </a
+      ><a name="1352" href="sets.properties.html#1302" class="Bound"
+      >A</a
+      ><a name="1353"
+      > </a
+      ><a name="1354" href="function.isomorphism.core.html#2601" class="Function Operator"
+      >&#8611;</a
+      ><a name="1355"
+      > </a
+      ><a name="1356" href="sets.properties.html#1313" class="Bound"
+      >B</a
+      ><a name="1357" class="Symbol"
+      >}</a
+      ><a name="1358"
+      >
+          </a
+      ><a name="1369" class="Symbol"
+      >&#8594;</a
+      ><a name="1370"
+      > </a
+      ><a name="1371" class="Symbol"
+      >(</a
+      ><a name="1372" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="1377"
+      > </a
+      ><a name="1378" href="sets.properties.html#1345" class="Bound"
+      >f</a
+      ><a name="1379"
+      > </a
+      ><a name="1380" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1381"
+      > </a
+      ><a name="1382" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="1387"
+      > </a
+      ><a name="1388" href="sets.properties.html#1347" class="Bound"
+      >f'</a
+      ><a name="1390" class="Symbol"
+      >)</a
+      ><a name="1391"
+      >
+          </a
+      ><a name="1402" class="Symbol"
+      >&#8594;</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" href="sets.properties.html#1345" class="Bound"
+      >f</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1407"
+      > </a
+      ><a name="1408" href="sets.properties.html#1347" class="Bound"
+      >f'</a
+      ><a name="1410"
+      >
+</a
+      ><a name="1411" href="sets.properties.html#1282" class="Function"
+      >inj-eq-h2</a
+      ><a name="1420"
+      > </a
+      ><a name="1421" href="sets.properties.html#1421" class="Bound"
+      >hA</a
+      ><a name="1423"
+      > </a
+      ><a name="1424" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1428"
+      >
+  </a
+      ><a name="1431" class="Symbol"
+      >=</a
+      ><a name="1432"
+      > </a
+      ><a name="1433" href="equality.core.html#364" class="Function"
+      >ap</a
+      ><a name="1435"
+      > </a
+      ><a name="1436" class="Symbol"
+      >(</a
+      ><a name="1437" href="sum.html#229" class="InductiveConstructor Operator"
+      >_,_</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" class="Symbol"
+      >_)</a
+      ><a name="1443"
+      > </a
+      ><a name="1444" class="Symbol"
+      >(</a
+      ><a name="1445" href="hott.hlevel.core.html#805" class="Function"
+      >h1&#8658;prop</a
+      ><a name="1452"
+      > </a
+      ><a name="1453" class="Symbol"
+      >(</a
+      ><a name="1454" href="hott.hlevel.closure.extra.html#3924" class="Function"
+      >inj-hlevel</a
+      ><a name="1464"
+      > </a
+      ><a name="1465" class="Symbol"
+      >_</a
+      ><a name="1466"
+      > </a
+      ><a name="1467" href="sets.properties.html#1421" class="Bound"
+      >hA</a
+      ><a name="1469" class="Symbol"
+      >)</a
+      ><a name="1470"
+      > </a
+      ><a name="1471" class="Symbol"
+      >_</a
+      ><a name="1472"
+      > </a
+      ><a name="1473" class="Symbol"
+      >_)</a
+      ><a name="1475"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

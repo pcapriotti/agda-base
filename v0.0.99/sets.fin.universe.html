@@ -1,0 +1,5498 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >sets.fin.universe</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K  </a
+      ><a name="26" class="Symbol"
+      >#-}</a
+      ><a name="29"
+      >
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="sets.fin.universe.html#1" class="Module"
+      >sets.fin.universe</a
+      ><a name="54"
+      > </a
+      ><a name="55" class="Keyword"
+      >where</a
+      ><a name="60"
+      >
+
+</a
+      ><a name="62" class="Keyword"
+      >open</a
+      ><a name="66"
+      > </a
+      ><a name="67" class="Keyword"
+      >import</a
+      ><a name="73"
+      > </a
+      ><a name="74" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="77"
+      >
+</a
+      ><a name="78" class="Keyword"
+      >open</a
+      ><a name="82"
+      > </a
+      ><a name="83" class="Keyword"
+      >import</a
+      ><a name="89"
+      > </a
+      ><a name="90" href="decidable.html#1" class="Module"
+      >decidable</a
+      ><a name="99"
+      >
+</a
+      ><a name="100" class="Keyword"
+      >open</a
+      ><a name="104"
+      > </a
+      ><a name="105" class="Keyword"
+      >import</a
+      ><a name="111"
+      > </a
+      ><a name="112" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="125"
+      >
+</a
+      ><a name="126" class="Keyword"
+      >open</a
+      ><a name="130"
+      > </a
+      ><a name="131" class="Keyword"
+      >import</a
+      ><a name="137"
+      > </a
+      ><a name="138" href="equality.calculus.html#1" class="Module"
+      >equality.calculus</a
+      ><a name="155"
+      >
+</a
+      ><a name="156" class="Keyword"
+      >open</a
+      ><a name="160"
+      > </a
+      ><a name="161" class="Keyword"
+      >import</a
+      ><a name="167"
+      > </a
+      ><a name="168" href="equality.inspect.html#1" class="Module"
+      >equality.inspect</a
+      ><a name="184"
+      >
+</a
+      ><a name="185" class="Keyword"
+      >open</a
+      ><a name="189"
+      > </a
+      ><a name="190" class="Keyword"
+      >import</a
+      ><a name="196"
+      > </a
+      ><a name="197" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="217"
+      >
+</a
+      ><a name="218" class="Keyword"
+      >open</a
+      ><a name="222"
+      > </a
+      ><a name="223" class="Keyword"
+      >import</a
+      ><a name="229"
+      > </a
+      ><a name="230" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="243"
+      >
+</a
+      ><a name="244" class="Keyword"
+      >open</a
+      ><a name="248"
+      > </a
+      ><a name="249" class="Keyword"
+      >import</a
+      ><a name="255"
+      > </a
+      ><a name="256" href="function.extensionality.html#1" class="Module"
+      >function.extensionality</a
+      ><a name="279"
+      >
+</a
+      ><a name="280" class="Keyword"
+      >open</a
+      ><a name="284"
+      > </a
+      ><a name="285" class="Keyword"
+      >import</a
+      ><a name="291"
+      > </a
+      ><a name="292" href="function.overloading.html#1" class="Module"
+      >function.overloading</a
+      ><a name="312"
+      >
+</a
+      ><a name="313" class="Keyword"
+      >open</a
+      ><a name="317"
+      > </a
+      ><a name="318" class="Keyword"
+      >import</a
+      ><a name="324"
+      > </a
+      ><a name="325" href="sets.core.html#1" class="Module"
+      >sets.core</a
+      ><a name="334"
+      >
+</a
+      ><a name="335" class="Keyword"
+      >open</a
+      ><a name="339"
+      > </a
+      ><a name="340" class="Keyword"
+      >import</a
+      ><a name="346"
+      > </a
+      ><a name="347" href="sets.properties.html#1" class="Module"
+      >sets.properties</a
+      ><a name="362"
+      >
+</a
+      ><a name="363" class="Keyword"
+      >open</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="Keyword"
+      >import</a
+      ><a name="374"
+      > </a
+      ><a name="375" href="sets.nat.html#1" class="Module"
+      >sets.nat</a
+      ><a name="383"
+      >
+  </a
+      ><a name="386" class="Keyword"
+      >hiding</a
+      ><a name="392"
+      > </a
+      ><a name="393" class="Symbol"
+      >(</a
+      ><a name="394"
+      >_&#8799;_</a
+      ><a name="397" class="Symbol"
+      >;</a
+      ><a name="398"
+      > compare</a
+      ><a name="406" class="Symbol"
+      >)</a
+      ><a name="407"
+      >
+</a
+      ><a name="408" class="Keyword"
+      >open</a
+      ><a name="412"
+      > </a
+      ><a name="413" class="Keyword"
+      >import</a
+      ><a name="419"
+      > </a
+      ><a name="420" href="sets.fin.core.html#1" class="Module"
+      >sets.fin.core</a
+      ><a name="433"
+      >
+</a
+      ><a name="434" class="Keyword"
+      >open</a
+      ><a name="438"
+      > </a
+      ><a name="439" class="Keyword"
+      >import</a
+      ><a name="445"
+      > </a
+      ><a name="446" href="sets.fin.ordering.html#1" class="Module"
+      >sets.fin.ordering</a
+      ><a name="463"
+      >
+</a
+      ><a name="464" class="Keyword"
+      >open</a
+      ><a name="468"
+      > </a
+      ><a name="469" class="Keyword"
+      >import</a
+      ><a name="475"
+      > </a
+      ><a name="476" href="sets.fin.properties.html#1" class="Module"
+      >sets.fin.properties</a
+      ><a name="495"
+      >
+</a
+      ><a name="496" class="Keyword"
+      >open</a
+      ><a name="500"
+      > </a
+      ><a name="501" class="Keyword"
+      >import</a
+      ><a name="507"
+      > </a
+      ><a name="508" href="sets.unit.html#1" class="Module"
+      >sets.unit</a
+      ><a name="517"
+      >
+</a
+      ><a name="518" class="Keyword"
+      >open</a
+      ><a name="522"
+      > </a
+      ><a name="523" class="Keyword"
+      >import</a
+      ><a name="529"
+      > </a
+      ><a name="530" href="sets.empty.html#1" class="Module"
+      >sets.empty</a
+      ><a name="540"
+      >
+</a
+      ><a name="541" class="Keyword"
+      >open</a
+      ><a name="545"
+      > </a
+      ><a name="546" class="Keyword"
+      >import</a
+      ><a name="552"
+      > </a
+      ><a name="553" href="sets.bool.html#1" class="Module"
+      >sets.bool</a
+      ><a name="562"
+      >
+</a
+      ><a name="563" class="Keyword"
+      >open</a
+      ><a name="567"
+      > </a
+      ><a name="568" class="Keyword"
+      >import</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="sets.vec.dependent.html#1" class="Module"
+      >sets.vec.dependent</a
+      ><a name="593"
+      >
+</a
+      ><a name="594" class="Keyword"
+      >open</a
+      ><a name="598"
+      > </a
+      ><a name="599" class="Keyword"
+      >import</a
+      ><a name="605"
+      > </a
+      ><a name="606" href="hott.hlevel.core.html#1" class="Module"
+      >hott.hlevel.core</a
+      ><a name="622"
+      >
+</a
+      ><a name="623" class="Keyword"
+      >open</a
+      ><a name="627"
+      > </a
+      ><a name="628" class="Keyword"
+      >import</a
+      ><a name="634"
+      > </a
+      ><a name="635" href="hott.hlevel.closure.html#1" class="Module"
+      >hott.hlevel.closure</a
+      ><a name="654"
+      >
+</a
+      ><a name="655" class="Keyword"
+      >open</a
+      ><a name="659"
+      > </a
+      ><a name="660" class="Keyword"
+      >import</a
+      ><a name="666"
+      > </a
+      ><a name="667" href="hott.hlevel.sets.html#1" class="Module"
+      >hott.hlevel.sets</a
+      ><a name="683"
+      >
+
+</a
+      ><a name="685" href="sets.fin.universe.html#685" class="Function"
+      >fin-struct-iso</a
+      ><a name="699"
+      > </a
+      ><a name="700" class="Symbol"
+      >:</a
+      ><a name="701"
+      > </a
+      ><a name="702" class="Symbol"
+      >&#8704;</a
+      ><a name="703"
+      > </a
+      ><a name="704" class="Symbol"
+      >{</a
+      ><a name="705" href="sets.fin.universe.html#705" class="Bound"
+      >n</a
+      ><a name="706" class="Symbol"
+      >}</a
+      ><a name="707"
+      > </a
+      ><a name="708" class="Symbol"
+      >&#8594;</a
+      ><a name="709"
+      > </a
+      ><a name="710" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="713"
+      > </a
+      ><a name="714" class="Symbol"
+      >(</a
+      ><a name="715" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="718"
+      > </a
+      ><a name="719" href="sets.fin.universe.html#705" class="Bound"
+      >n</a
+      ><a name="720" class="Symbol"
+      >)</a
+      ><a name="721"
+      > </a
+      ><a name="722" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="723"
+      > </a
+      ><a name="724" class="Symbol"
+      >(</a
+      ><a name="725" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="726"
+      > </a
+      ><a name="727" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="728"
+      > </a
+      ><a name="729" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="732"
+      > </a
+      ><a name="733" href="sets.fin.universe.html#705" class="Bound"
+      >n</a
+      ><a name="734" class="Symbol"
+      >)</a
+      ><a name="735"
+      >
+</a
+      ><a name="736" href="sets.fin.universe.html#685" class="Function"
+      >fin-struct-iso</a
+      ><a name="750"
+      > </a
+      ><a name="751" class="Symbol"
+      >=</a
+      ><a name="752"
+      > </a
+      ><a name="753" class="Keyword"
+      >record</a
+      ><a name="759"
+      >
+  </a
+      ><a name="762" class="Symbol"
+      >{</a
+      ><a name="763"
+      > </a
+      ><a name="764" class="Field"
+      >to</a
+      ><a name="766"
+      > </a
+      ><a name="767" class="Symbol"
+      >=</a
+      ><a name="768"
+      > </a
+      ><a name="769" class="Symbol"
+      >&#955;</a
+      ><a name="770"
+      > </a
+      ><a name="771" class="Symbol"
+      >{</a
+      ><a name="772"
+      > </a
+      ><a name="773" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="777"
+      > </a
+      ><a name="778" class="Symbol"
+      >&#8594;</a
+      ><a name="779"
+      > </a
+      ><a name="780" href="sum.html#745" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="784"
+      > </a
+      ><a name="785" href="sets.unit.html#90" class="InductiveConstructor"
+      >tt</a
+      ><a name="787" class="Symbol"
+      >;</a
+      ><a name="788"
+      > </a
+      ><a name="789" class="Symbol"
+      >(</a
+      ><a name="790" href="sets.fin.core.html#287" class="InductiveConstructor"
+      >suc</a
+      ><a name="793"
+      > </a
+      ><a name="794" href="sets.fin.universe.html#794" class="Bound"
+      >i</a
+      ><a name="795" class="Symbol"
+      >)</a
+      ><a name="796"
+      > </a
+      ><a name="797" class="Symbol"
+      >&#8594;</a
+      ><a name="798"
+      > </a
+      ><a name="799" href="sum.html#770" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="803"
+      > </a
+      ><a name="804" href="sets.fin.universe.html#794" class="Bound"
+      >i</a
+      ><a name="805"
+      > </a
+      ><a name="806" class="Symbol"
+      >}</a
+      ><a name="807"
+      >
+  </a
+      ><a name="810" class="Symbol"
+      >;</a
+      ><a name="811"
+      > </a
+      ><a name="812" class="Field"
+      >from</a
+      ><a name="816"
+      > </a
+      ><a name="817" class="Symbol"
+      >=</a
+      ><a name="818"
+      > </a
+      ><a name="819" href="sum.html#794" class="Function Operator"
+      >[</a
+      ><a name="820"
+      > </a
+      ><a name="821" class="Symbol"
+      >(&#955;</a
+      ><a name="823"
+      > </a
+      ><a name="824" href="sets.fin.universe.html#824" class="Bound"
+      >_</a
+      ><a name="825"
+      > </a
+      ><a name="826" class="Symbol"
+      >&#8594;</a
+      ><a name="827"
+      > </a
+      ><a name="828" class="InductiveConstructor"
+      >zero</a
+      ><a name="832" class="Symbol"
+      >)</a
+      ><a name="833"
+      > </a
+      ><a name="834" href="sum.html#794" class="Function Operator"
+      >,&#8846;</a
+      ><a name="836"
+      > </a
+      ><a name="837" class="Symbol"
+      >(</a
+      ><a name="838" class="InductiveConstructor"
+      >suc</a
+      ><a name="841" class="Symbol"
+      >)</a
+      ><a name="842"
+      > </a
+      ><a name="843" href="sum.html#794" class="Function Operator"
+      >]</a
+      ><a name="844"
+      >
+  </a
+      ><a name="847" class="Symbol"
+      >;</a
+      ><a name="848"
+      > </a
+      ><a name="849" class="Field"
+      >iso&#8321;</a
+      ><a name="853"
+      > </a
+      ><a name="854" class="Symbol"
+      >=</a
+      ><a name="855"
+      > </a
+      ><a name="856" class="Symbol"
+      >&#955;</a
+      ><a name="857"
+      > </a
+      ><a name="858" class="Symbol"
+      >{</a
+      ><a name="859"
+      > </a
+      ><a name="860" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="864"
+      > </a
+      ><a name="865" class="Symbol"
+      >&#8594;</a
+      ><a name="866"
+      > </a
+      ><a name="867" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="871"
+      > </a
+      ><a name="872" class="Symbol"
+      >;</a
+      ><a name="873"
+      > </a
+      ><a name="874" class="Symbol"
+      >(</a
+      ><a name="875" href="sets.fin.core.html#287" class="InductiveConstructor"
+      >suc</a
+      ><a name="878"
+      > </a
+      ><a name="879" href="sets.fin.universe.html#879" class="Bound"
+      >i</a
+      ><a name="880" class="Symbol"
+      >)</a
+      ><a name="881"
+      > </a
+      ><a name="882" class="Symbol"
+      >&#8594;</a
+      ><a name="883"
+      > </a
+      ><a name="884" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="888"
+      > </a
+      ><a name="889" class="Symbol"
+      >}</a
+      ><a name="890"
+      >
+  </a
+      ><a name="893" class="Symbol"
+      >;</a
+      ><a name="894"
+      > </a
+      ><a name="895" class="Field"
+      >iso&#8322;</a
+      ><a name="899"
+      > </a
+      ><a name="900" class="Symbol"
+      >=</a
+      ><a name="901"
+      > </a
+      ><a name="902" class="Symbol"
+      >&#955;</a
+      ><a name="903"
+      > </a
+      ><a name="904" class="Symbol"
+      >{</a
+      ><a name="905"
+      > </a
+      ><a name="906" class="Symbol"
+      >(</a
+      ><a name="907" href="sum.html#745" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="911"
+      > </a
+      ><a name="912" class="Symbol"
+      >_)</a
+      ><a name="914"
+      > </a
+      ><a name="915" class="Symbol"
+      >&#8594;</a
+      ><a name="916"
+      > </a
+      ><a name="917" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="921" class="Symbol"
+      >;</a
+      ><a name="922"
+      > </a
+      ><a name="923" class="Symbol"
+      >(</a
+      ><a name="924" href="sum.html#770" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="928"
+      > </a
+      ><a name="929" href="sets.fin.universe.html#929" class="Bound"
+      >i</a
+      ><a name="930" class="Symbol"
+      >)</a
+      ><a name="931"
+      > </a
+      ><a name="932" class="Symbol"
+      >&#8594;</a
+      ><a name="933"
+      > </a
+      ><a name="934" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="938"
+      > </a
+      ><a name="939" class="Symbol"
+      >}</a
+      ><a name="940"
+      > </a
+      ><a name="941" class="Symbol"
+      >}</a
+      ><a name="942"
+      >
+
+</a
+      ><a name="944" href="sets.fin.universe.html#944" class="Function"
+      >fin0-empty</a
+      ><a name="954"
+      > </a
+      ><a name="955" class="Symbol"
+      >:</a
+      ><a name="956"
+      > </a
+      ><a name="957" href="sets.empty.html#89" class="Datatype"
+      >&#8869;</a
+      ><a name="958"
+      > </a
+      ><a name="959" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="960"
+      > </a
+      ><a name="961" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="964"
+      > </a
+      ><a name="965" class="Number"
+      >0</a
+      ><a name="966"
+      >
+</a
+      ><a name="967" href="sets.fin.universe.html#944" class="Function"
+      >fin0-empty</a
+      ><a name="977"
+      > </a
+      ><a name="978" class="Symbol"
+      >=</a
+      ><a name="979"
+      > </a
+      ><a name="980" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="984"
+      > </a
+      ><a name="985" class="Symbol"
+      >(</a
+      ><a name="986" href="function.isomorphism.utils.html#8409" class="Function"
+      >empty-&#8869;-iso</a
+      ><a name="997"
+      > </a
+      ><a name="998" class="Symbol"
+      >(&#955;</a
+      ><a name="1000"
+      > </a
+      ><a name="1001" class="Symbol"
+      >()))</a
+      ><a name="1005"
+      >
+
+</a
+      ><a name="1007" href="sets.fin.universe.html#1007" class="Function"
+      >fin1-unit</a
+      ><a name="1016"
+      > </a
+      ><a name="1017" class="Symbol"
+      >:</a
+      ><a name="1018"
+      > </a
+      ><a name="1019" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1022"
+      > </a
+      ><a name="1023" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1026"
+      > </a
+      ><a name="1027" class="Number"
+      >1</a
+      ><a name="1028"
+      >
+</a
+      ><a name="1029" href="sets.fin.universe.html#1007" class="Function"
+      >fin1-unit</a
+      ><a name="1038"
+      > </a
+      ><a name="1039" class="Symbol"
+      >=</a
+      ><a name="1040"
+      > </a
+      ><a name="1041" class="Keyword"
+      >record</a
+      ><a name="1047"
+      >
+  </a
+      ><a name="1050" class="Symbol"
+      >{</a
+      ><a name="1051"
+      > </a
+      ><a name="1052" class="Field"
+      >to</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" class="Symbol"
+      >=</a
+      ><a name="1056"
+      > </a
+      ><a name="1057" class="Symbol"
+      >&#955;</a
+      ><a name="1058"
+      > </a
+      ><a name="1059" href="sets.fin.universe.html#1059" class="Bound"
+      >_</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" class="Symbol"
+      >&#8594;</a
+      ><a name="1062"
+      > </a
+      ><a name="1063" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="1067"
+      >
+  </a
+      ><a name="1070" class="Symbol"
+      >;</a
+      ><a name="1071"
+      > </a
+      ><a name="1072" class="Field"
+      >from</a
+      ><a name="1076"
+      > </a
+      ><a name="1077" class="Symbol"
+      >=</a
+      ><a name="1078"
+      > </a
+      ><a name="1079" class="Symbol"
+      >&#955;</a
+      ><a name="1080"
+      > </a
+      ><a name="1081" class="Symbol"
+      >{</a
+      ><a name="1082"
+      > </a
+      ><a name="1083" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="1087"
+      > </a
+      ><a name="1088" class="Symbol"
+      >&#8594;</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" href="sets.unit.html#90" class="InductiveConstructor"
+      >tt</a
+      ><a name="1092"
+      > </a
+      ><a name="1093" class="Symbol"
+      >;</a
+      ><a name="1094"
+      > </a
+      ><a name="1095" class="Symbol"
+      >(</a
+      ><a name="1096" href="sets.fin.core.html#287" class="InductiveConstructor"
+      >suc</a
+      ><a name="1099"
+      > </a
+      ><a name="1100" class="Symbol"
+      >())</a
+      ><a name="1103"
+      > </a
+      ><a name="1104" class="Symbol"
+      >}</a
+      ><a name="1105"
+      >
+  </a
+      ><a name="1108" class="Symbol"
+      >;</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" class="Field"
+      >iso&#8321;</a
+      ><a name="1114"
+      > </a
+      ><a name="1115" class="Symbol"
+      >=</a
+      ><a name="1116"
+      > </a
+      ><a name="1117" class="Symbol"
+      >&#955;</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" href="sets.fin.universe.html#1119" class="Bound"
+      >_</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" class="Symbol"
+      >&#8594;</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1127"
+      >
+  </a
+      ><a name="1130" class="Symbol"
+      >;</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" class="Field"
+      >iso&#8322;</a
+      ><a name="1136"
+      > </a
+      ><a name="1137" class="Symbol"
+      >=</a
+      ><a name="1138"
+      > </a
+      ><a name="1139" class="Symbol"
+      >&#955;</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" class="Symbol"
+      >{</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="1147"
+      > </a
+      ><a name="1148" class="Symbol"
+      >&#8594;</a
+      ><a name="1149"
+      > </a
+      ><a name="1150" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1154"
+      > </a
+      ><a name="1155" class="Symbol"
+      >;</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" class="Symbol"
+      >(</a
+      ><a name="1158" href="sets.fin.core.html#287" class="InductiveConstructor"
+      >suc</a
+      ><a name="1161"
+      > </a
+      ><a name="1162" class="Symbol"
+      >())</a
+      ><a name="1165"
+      > </a
+      ><a name="1166" class="Symbol"
+      >}</a
+      ><a name="1167"
+      > </a
+      ><a name="1168" class="Symbol"
+      >}</a
+      ><a name="1169"
+      >
+
+</a
+      ><a name="1171" href="sets.fin.universe.html#1171" class="Function"
+      >fin2-bool</a
+      ><a name="1180"
+      > </a
+      ><a name="1181" class="Symbol"
+      >:</a
+      ><a name="1182"
+      > </a
+      ><a name="1183" href="sets.bool.html#321" class="Datatype"
+      >Bool</a
+      ><a name="1187"
+      > </a
+      ><a name="1188" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1193"
+      > </a
+      ><a name="1194" class="Number"
+      >2</a
+      ><a name="1195"
+      >
+</a
+      ><a name="1196" href="sets.fin.universe.html#1171" class="Function"
+      >fin2-bool</a
+      ><a name="1205"
+      > </a
+      ><a name="1206" class="Symbol"
+      >=</a
+      ><a name="1207"
+      > </a
+      ><a name="1208" class="Keyword"
+      >record</a
+      ><a name="1214"
+      >
+  </a
+      ><a name="1217" class="Symbol"
+      >{</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" class="Field"
+      >to</a
+      ><a name="1221"
+      > </a
+      ><a name="1222" class="Symbol"
+      >=</a
+      ><a name="1223"
+      > </a
+      ><a name="1224" class="Symbol"
+      >&#955;</a
+      ><a name="1225"
+      > </a
+      ><a name="1226" href="sets.fin.universe.html#1226" class="Bound"
+      >b</a
+      ><a name="1227"
+      > </a
+      ><a name="1228" class="Symbol"
+      >&#8594;</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" href="sets.bool.html#453" class="Function Operator"
+      >if</a
+      ><a name="1232"
+      > </a
+      ><a name="1233" href="sets.fin.universe.html#1226" class="Bound"
+      >b</a
+      ><a name="1234"
+      > </a
+      ><a name="1235" href="sets.bool.html#453" class="Function Operator"
+      >then</a
+      ><a name="1239"
+      > </a
+      ><a name="1240" href="sets.fin.properties.html#1939" class="Function Operator"
+      >#</a
+      ><a name="1241"
+      > </a
+      ><a name="1242" class="Number"
+      >0</a
+      ><a name="1243"
+      > </a
+      ><a name="1244" href="sets.bool.html#453" class="Function Operator"
+      >else</a
+      ><a name="1248"
+      > </a
+      ><a name="1249" href="sets.fin.properties.html#1939" class="Function Operator"
+      >#</a
+      ><a name="1250"
+      > </a
+      ><a name="1251" class="Number"
+      >1</a
+      ><a name="1252"
+      >
+  </a
+      ><a name="1255" class="Symbol"
+      >;</a
+      ><a name="1256"
+      > </a
+      ><a name="1257" class="Field"
+      >from</a
+      ><a name="1261"
+      > </a
+      ><a name="1262" class="Symbol"
+      >=</a
+      ><a name="1263"
+      > </a
+      ><a name="1264" href="sets.bool.html#340" class="InductiveConstructor"
+      >true</a
+      ><a name="1268"
+      > </a
+      ><a name="1269" href="sets.vec.dependent.html#229" class="Function Operator"
+      >&#8759;&#8759;</a
+      ><a name="1271"
+      > </a
+      ><a name="1272" href="sets.bool.html#345" class="InductiveConstructor"
+      >false</a
+      ><a name="1277"
+      > </a
+      ><a name="1278" href="sets.vec.dependent.html#229" class="Function Operator"
+      >&#8759;&#8759;</a
+      ><a name="1280"
+      > </a
+      ><a name="1281" href="sets.vec.dependent.html#172" class="Function"
+      >&#10214;&#10215;</a
+      ><a name="1283"
+      >
+  </a
+      ><a name="1286" class="Symbol"
+      >;</a
+      ><a name="1287"
+      > </a
+      ><a name="1288" class="Field"
+      >iso&#8321;</a
+      ><a name="1292"
+      > </a
+      ><a name="1293" class="Symbol"
+      >=</a
+      ><a name="1294"
+      > </a
+      ><a name="1295" class="Symbol"
+      >&#955;</a
+      ><a name="1296"
+      > </a
+      ><a name="1297" class="Symbol"
+      >{</a
+      ><a name="1298"
+      > </a
+      ><a name="1299" href="sets.bool.html#340" class="InductiveConstructor"
+      >true</a
+      ><a name="1303"
+      > </a
+      ><a name="1304" class="Symbol"
+      >&#8594;</a
+      ><a name="1305"
+      > </a
+      ><a name="1306" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1310"
+      > </a
+      ><a name="1311" class="Symbol"
+      >;</a
+      ><a name="1312"
+      > </a
+      ><a name="1313" href="sets.bool.html#345" class="InductiveConstructor"
+      >false</a
+      ><a name="1318"
+      > </a
+      ><a name="1319" class="Symbol"
+      >&#8594;</a
+      ><a name="1320"
+      > </a
+      ><a name="1321" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1325"
+      > </a
+      ><a name="1326" class="Symbol"
+      >}</a
+      ><a name="1327"
+      >
+  </a
+      ><a name="1330" class="Symbol"
+      >;</a
+      ><a name="1331"
+      > </a
+      ><a name="1332" class="Field"
+      >iso&#8322;</a
+      ><a name="1336"
+      > </a
+      ><a name="1337" class="Symbol"
+      >=</a
+      ><a name="1338"
+      > </a
+      ><a name="1339" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1343"
+      > </a
+      ><a name="1344" href="sets.vec.dependent.html#229" class="Function Operator"
+      >&#8759;&#8759;</a
+      ><a name="1346"
+      > </a
+      ><a name="1347" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1351"
+      > </a
+      ><a name="1352" href="sets.vec.dependent.html#229" class="Function Operator"
+      >&#8759;&#8759;</a
+      ><a name="1354"
+      > </a
+      ><a name="1355" href="sets.vec.dependent.html#172" class="Function"
+      >&#10214;&#10215;</a
+      ><a name="1357"
+      > </a
+      ><a name="1358" class="Symbol"
+      >}</a
+      ><a name="1359"
+      >
+
+</a
+      ><a name="1361" href="sets.fin.universe.html#1361" class="Function"
+      >fin-sum</a
+      ><a name="1368"
+      > </a
+      ><a name="1369" class="Symbol"
+      >:</a
+      ><a name="1370"
+      > </a
+      ><a name="1371" class="Symbol"
+      >&#8704;</a
+      ><a name="1372"
+      > </a
+      ><a name="1373" class="Symbol"
+      >{</a
+      ><a name="1374" href="sets.fin.universe.html#1374" class="Bound"
+      >n</a
+      ><a name="1375"
+      > </a
+      ><a name="1376" href="sets.fin.universe.html#1376" class="Bound"
+      >m</a
+      ><a name="1377" class="Symbol"
+      >}</a
+      ><a name="1378"
+      > </a
+      ><a name="1379" class="Symbol"
+      >&#8594;</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" class="Symbol"
+      >(</a
+      ><a name="1382" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1385"
+      > </a
+      ><a name="1386" href="sets.fin.universe.html#1374" class="Bound"
+      >n</a
+      ><a name="1387"
+      > </a
+      ><a name="1388" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="1389"
+      > </a
+      ><a name="1390" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1393"
+      > </a
+      ><a name="1394" href="sets.fin.universe.html#1376" class="Bound"
+      >m</a
+      ><a name="1395" class="Symbol"
+      >)</a
+      ><a name="1396"
+      > </a
+      ><a name="1397" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1398"
+      > </a
+      ><a name="1399" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1402"
+      > </a
+      ><a name="1403" class="Symbol"
+      >(</a
+      ><a name="1404" href="sets.fin.universe.html#1374" class="Bound"
+      >n</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" href="sets.nat.core.html#436" class="Function Operator"
+      >+</a
+      ><a name="1407"
+      > </a
+      ><a name="1408" href="sets.fin.universe.html#1376" class="Bound"
+      >m</a
+      ><a name="1409" class="Symbol"
+      >)</a
+      ><a name="1410"
+      >
+</a
+      ><a name="1411" href="sets.fin.universe.html#1361" class="Function"
+      >fin-sum</a
+      ><a name="1418"
+      > </a
+      ><a name="1419" class="Symbol"
+      >{</a
+      ><a name="1420" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >0</a
+      ><a name="1421" class="Symbol"
+      >}</a
+      ><a name="1422"
+      > </a
+      ><a name="1423" class="Symbol"
+      >=</a
+      ><a name="1424"
+      > </a
+      ><a name="1425" class="Keyword"
+      >record</a
+      ><a name="1431"
+      >
+  </a
+      ><a name="1434" class="Symbol"
+      >{</a
+      ><a name="1435"
+      > </a
+      ><a name="1436" class="Field"
+      >to</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" class="Symbol"
+      >=</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" class="Symbol"
+      >&#955;</a
+      ><a name="1442"
+      > </a
+      ><a name="1443" class="Symbol"
+      >{</a
+      ><a name="1444"
+      > </a
+      ><a name="1445" class="Symbol"
+      >(</a
+      ><a name="1446" href="sum.html#745" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="1450"
+      > </a
+      ><a name="1451" class="Symbol"
+      >())</a
+      ><a name="1454"
+      > </a
+      ><a name="1455" class="Symbol"
+      >;</a
+      ><a name="1456"
+      > </a
+      ><a name="1457" class="Symbol"
+      >(</a
+      ><a name="1458" href="sum.html#770" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="1462"
+      > </a
+      ><a name="1463" href="sets.fin.universe.html#1463" class="Bound"
+      >j</a
+      ><a name="1464" class="Symbol"
+      >)</a
+      ><a name="1465"
+      > </a
+      ><a name="1466" class="Symbol"
+      >&#8594;</a
+      ><a name="1467"
+      > </a
+      ><a name="1468" href="sets.fin.universe.html#1463" class="Bound"
+      >j</a
+      ><a name="1469"
+      > </a
+      ><a name="1470" class="Symbol"
+      >}</a
+      ><a name="1471"
+      >
+  </a
+      ><a name="1474" class="Symbol"
+      >;</a
+      ><a name="1475"
+      > </a
+      ><a name="1476" class="Field"
+      >from</a
+      ><a name="1480"
+      > </a
+      ><a name="1481" class="Symbol"
+      >=</a
+      ><a name="1482"
+      > </a
+      ><a name="1483" class="Symbol"
+      >&#955;</a
+      ><a name="1484"
+      > </a
+      ><a name="1485" class="Symbol"
+      >{</a
+      ><a name="1486"
+      > </a
+      ><a name="1487" href="sets.fin.universe.html#1487" class="Bound"
+      >j</a
+      ><a name="1488"
+      > </a
+      ><a name="1489" class="Symbol"
+      >&#8594;</a
+      ><a name="1490"
+      > </a
+      ><a name="1491" href="sum.html#770" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="1495"
+      > </a
+      ><a name="1496" href="sets.fin.universe.html#1487" class="Bound"
+      >j</a
+      ><a name="1497"
+      > </a
+      ><a name="1498" class="Symbol"
+      >}</a
+      ><a name="1499"
+      >
+  </a
+      ><a name="1502" class="Symbol"
+      >;</a
+      ><a name="1503"
+      > </a
+      ><a name="1504" class="Field"
+      >iso&#8321;</a
+      ><a name="1508"
+      > </a
+      ><a name="1509" class="Symbol"
+      >=</a
+      ><a name="1510"
+      > </a
+      ><a name="1511" class="Symbol"
+      >&#955;</a
+      ><a name="1512"
+      > </a
+      ><a name="1513" class="Symbol"
+      >{</a
+      ><a name="1514"
+      > </a
+      ><a name="1515" class="Symbol"
+      >(</a
+      ><a name="1516" href="sum.html#745" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="1520"
+      > </a
+      ><a name="1521" class="Symbol"
+      >());</a
+      ><a name="1525"
+      > </a
+      ><a name="1526" class="Symbol"
+      >(</a
+      ><a name="1527" href="sum.html#770" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="1531"
+      > </a
+      ><a name="1532" href="sets.fin.universe.html#1532" class="Bound"
+      >j</a
+      ><a name="1533" class="Symbol"
+      >)</a
+      ><a name="1534"
+      > </a
+      ><a name="1535" class="Symbol"
+      >&#8594;</a
+      ><a name="1536"
+      > </a
+      ><a name="1537" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" class="Symbol"
+      >}</a
+      ><a name="1543"
+      >
+  </a
+      ><a name="1546" class="Symbol"
+      >;</a
+      ><a name="1547"
+      > </a
+      ><a name="1548" class="Field"
+      >iso&#8322;</a
+      ><a name="1552"
+      > </a
+      ><a name="1553" class="Symbol"
+      >=</a
+      ><a name="1554"
+      > </a
+      ><a name="1555" class="Symbol"
+      >&#955;</a
+      ><a name="1556"
+      > </a
+      ><a name="1557" href="sets.fin.universe.html#1557" class="Bound"
+      >_</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" class="Symbol"
+      >&#8594;</a
+      ><a name="1560"
+      > </a
+      ><a name="1561" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1565"
+      > </a
+      ><a name="1566" class="Symbol"
+      >}</a
+      ><a name="1567"
+      >
+</a
+      ><a name="1568" href="sets.fin.universe.html#1361" class="Function"
+      >fin-sum</a
+      ><a name="1575"
+      > </a
+      ><a name="1576" class="Symbol"
+      >{</a
+      ><a name="1577" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="1580"
+      > </a
+      ><a name="1581" href="sets.fin.universe.html#1581" class="Bound"
+      >n</a
+      ><a name="1582" class="Symbol"
+      >}{</a
+      ><a name="1584" href="sets.fin.universe.html#1584" class="Bound"
+      >m</a
+      ><a name="1585" class="Symbol"
+      >}</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" class="Symbol"
+      >=</a
+      ><a name="1588"
+      > </a
+      ><a name="1589" href="function.isomorphism.core.html#1890" class="Function Operator"
+      >begin</a
+      ><a name="1594"
+      >
+    </a
+      ><a name="1599" class="Symbol"
+      >(</a
+      ><a name="1600" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1603"
+      > </a
+      ><a name="1604" class="Symbol"
+      >(</a
+      ><a name="1605" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="1608"
+      > </a
+      ><a name="1609" href="sets.fin.universe.html#1581" class="Bound"
+      >n</a
+      ><a name="1610" class="Symbol"
+      >)</a
+      ><a name="1611"
+      > </a
+      ><a name="1612" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="1613"
+      > </a
+      ><a name="1614" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1617"
+      > </a
+      ><a name="1618" href="sets.fin.universe.html#1584" class="Bound"
+      >m</a
+      ><a name="1619" class="Symbol"
+      >)</a
+      ><a name="1620"
+      >
+  </a
+      ><a name="1623" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="1625"
+      > </a
+      ><a name="1626" href="function.isomorphism.utils.html#6299" class="Function"
+      >&#8846;-ap-iso</a
+      ><a name="1634"
+      > </a
+      ><a name="1635" href="sets.fin.universe.html#685" class="Function"
+      >fin-struct-iso</a
+      ><a name="1649"
+      > </a
+      ><a name="1650" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="1655"
+      > </a
+      ><a name="1656" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="1657"
+      >
+    </a
+      ><a name="1662" class="Symbol"
+      >((</a
+      ><a name="1664" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="1665"
+      > </a
+      ><a name="1666" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="1667"
+      > </a
+      ><a name="1668" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1671"
+      > </a
+      ><a name="1672" href="sets.fin.universe.html#1581" class="Bound"
+      >n</a
+      ><a name="1673" class="Symbol"
+      >)</a
+      ><a name="1674"
+      > </a
+      ><a name="1675" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="1676"
+      > </a
+      ><a name="1677" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1680"
+      > </a
+      ><a name="1681" href="sets.fin.universe.html#1584" class="Bound"
+      >m</a
+      ><a name="1682" class="Symbol"
+      >)</a
+      ><a name="1683"
+      >
+  </a
+      ><a name="1686" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" href="function.isomorphism.utils.html#6782" class="Function"
+      >&#8846;-assoc-iso</a
+      ><a name="1700"
+      > </a
+      ><a name="1701" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="1702"
+      >
+    </a
+      ><a name="1707" class="Symbol"
+      >(</a
+      ><a name="1708" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="1709"
+      > </a
+      ><a name="1710" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="1711"
+      > </a
+      ><a name="1712" class="Symbol"
+      >(</a
+      ><a name="1713" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1716"
+      > </a
+      ><a name="1717" href="sets.fin.universe.html#1581" class="Bound"
+      >n</a
+      ><a name="1718"
+      > </a
+      ><a name="1719" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="1720"
+      > </a
+      ><a name="1721" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1724"
+      > </a
+      ><a name="1725" href="sets.fin.universe.html#1584" class="Bound"
+      >m</a
+      ><a name="1726" class="Symbol"
+      >))</a
+      ><a name="1728"
+      >
+  </a
+      ><a name="1731" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="1733"
+      > </a
+      ><a name="1734" href="function.isomorphism.utils.html#6299" class="Function"
+      >&#8846;-ap-iso</a
+      ><a name="1742"
+      > </a
+      ><a name="1743" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" href="sets.fin.universe.html#1361" class="Function"
+      >fin-sum</a
+      ><a name="1756"
+      > </a
+      ><a name="1757" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="1758"
+      >
+    </a
+      ><a name="1763" class="Symbol"
+      >(</a
+      ><a name="1764" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="1767"
+      > </a
+      ><a name="1768" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1771"
+      > </a
+      ><a name="1772" class="Symbol"
+      >(</a
+      ><a name="1773" href="sets.fin.universe.html#1581" class="Bound"
+      >n</a
+      ><a name="1774"
+      > </a
+      ><a name="1775" href="sets.nat.core.html#436" class="Function Operator"
+      >+</a
+      ><a name="1776"
+      > </a
+      ><a name="1777" href="sets.fin.universe.html#1584" class="Bound"
+      >m</a
+      ><a name="1778" class="Symbol"
+      >))</a
+      ><a name="1780"
+      >
+  </a
+      ><a name="1783" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="1790"
+      > </a
+      ><a name="1791" href="sets.fin.universe.html#685" class="Function"
+      >fin-struct-iso</a
+      ><a name="1805"
+      > </a
+      ><a name="1806" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="1807"
+      >
+    </a
+      ><a name="1812" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1815"
+      > </a
+      ><a name="1816" class="Symbol"
+      >(</a
+      ><a name="1817" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="1820"
+      > </a
+      ><a name="1821" class="Symbol"
+      >(</a
+      ><a name="1822" href="sets.fin.universe.html#1581" class="Bound"
+      >n</a
+      ><a name="1823"
+      > </a
+      ><a name="1824" href="sets.nat.core.html#436" class="Function Operator"
+      >+</a
+      ><a name="1825"
+      > </a
+      ><a name="1826" href="sets.fin.universe.html#1584" class="Bound"
+      >m</a
+      ><a name="1827" class="Symbol"
+      >))</a
+      ><a name="1829"
+      >
+  </a
+      ><a name="1832" href="function.isomorphism.core.html#2283" class="Function Operator"
+      >&#8718;</a
+      ><a name="1833"
+      >
+  </a
+      ><a name="1836" class="Keyword"
+      >where</a
+      ><a name="1841"
+      > </a
+      ><a name="1842" class="Keyword"
+      >open</a
+      ><a name="1846"
+      > </a
+      ><a name="1847" href="function.isomorphism.core.html#1670" class="Module"
+      >&#8773;-Reasoning</a
+      ><a name="1858"
+      >
+
+</a
+      ><a name="1860" href="sets.fin.universe.html#1860" class="Function"
+      >fin-prod</a
+      ><a name="1868"
+      > </a
+      ><a name="1869" class="Symbol"
+      >:</a
+      ><a name="1870"
+      > </a
+      ><a name="1871" class="Symbol"
+      >&#8704;</a
+      ><a name="1872"
+      > </a
+      ><a name="1873" class="Symbol"
+      >{</a
+      ><a name="1874" href="sets.fin.universe.html#1874" class="Bound"
+      >n</a
+      ><a name="1875"
+      > </a
+      ><a name="1876" href="sets.fin.universe.html#1876" class="Bound"
+      >m</a
+      ><a name="1877" class="Symbol"
+      >}</a
+      ><a name="1878"
+      > </a
+      ><a name="1879" class="Symbol"
+      >&#8594;</a
+      ><a name="1880"
+      > </a
+      ><a name="1881" class="Symbol"
+      >(</a
+      ><a name="1882" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1885"
+      > </a
+      ><a name="1886" href="sets.fin.universe.html#1874" class="Bound"
+      >n</a
+      ><a name="1887"
+      > </a
+      ><a name="1888" href="sum.html#291" class="Function Operator"
+      >&#215;</a
+      ><a name="1889"
+      > </a
+      ><a name="1890" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1893"
+      > </a
+      ><a name="1894" href="sets.fin.universe.html#1876" class="Bound"
+      >m</a
+      ><a name="1895" class="Symbol"
+      >)</a
+      ><a name="1896"
+      > </a
+      ><a name="1897" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1898"
+      > </a
+      ><a name="1899" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="1902"
+      > </a
+      ><a name="1903" class="Symbol"
+      >(</a
+      ><a name="1904" href="sets.fin.universe.html#1874" class="Bound"
+      >n</a
+      ><a name="1905"
+      > </a
+      ><a name="1906" href="sets.nat.core.html#491" class="Function Operator"
+      >*</a
+      ><a name="1907"
+      > </a
+      ><a name="1908" href="sets.fin.universe.html#1876" class="Bound"
+      >m</a
+      ><a name="1909" class="Symbol"
+      >)</a
+      ><a name="1910"
+      >
+</a
+      ><a name="1911" href="sets.fin.universe.html#1860" class="Function"
+      >fin-prod</a
+      ><a name="1919"
+      > </a
+      ><a name="1920" class="Symbol"
+      >{</a
+      ><a name="1921" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >0</a
+      ><a name="1922" class="Symbol"
+      >}</a
+      ><a name="1923"
+      > </a
+      ><a name="1924" class="Symbol"
+      >=</a
+      ><a name="1925"
+      > </a
+      ><a name="1926" href="function.isomorphism.core.html#421" class="InductiveConstructor"
+      >iso</a
+      ><a name="1929"
+      > </a
+      ><a name="1930" class="Symbol"
+      >(&#955;</a
+      ><a name="1932"
+      > </a
+      ><a name="1933" class="Symbol"
+      >{</a
+      ><a name="1934"
+      > </a
+      ><a name="1935" class="Symbol"
+      >(()</a
+      ><a name="1938"
+      > </a
+      ><a name="1939" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1940"
+      > </a
+      ><a name="1941" class="Symbol"
+      >_)</a
+      ><a name="1943"
+      > </a
+      ><a name="1944" class="Symbol"
+      >})</a
+      ><a name="1946"
+      > </a
+      ><a name="1947" class="Symbol"
+      >(&#955;</a
+      ><a name="1949"
+      > </a
+      ><a name="1950" class="Symbol"
+      >())</a
+      ><a name="1953"
+      > </a
+      ><a name="1954" class="Symbol"
+      >(&#955;</a
+      ><a name="1956"
+      > </a
+      ><a name="1957" class="Symbol"
+      >{</a
+      ><a name="1958"
+      > </a
+      ><a name="1959" class="Symbol"
+      >(()</a
+      ><a name="1962"
+      > </a
+      ><a name="1963" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1964"
+      > </a
+      ><a name="1965" class="Symbol"
+      >_)</a
+      ><a name="1967"
+      > </a
+      ><a name="1968" class="Symbol"
+      >})</a
+      ><a name="1970"
+      > </a
+      ><a name="1971" class="Symbol"
+      >(&#955;</a
+      ><a name="1973"
+      > </a
+      ><a name="1974" class="Symbol"
+      >())</a
+      ><a name="1977"
+      >
+</a
+      ><a name="1978" href="sets.fin.universe.html#1860" class="Function"
+      >fin-prod</a
+      ><a name="1986"
+      > </a
+      ><a name="1987" class="Symbol"
+      >{</a
+      ><a name="1988" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="1991"
+      > </a
+      ><a name="1992" href="sets.fin.universe.html#1992" class="Bound"
+      >n</a
+      ><a name="1993" class="Symbol"
+      >}{</a
+      ><a name="1995" href="sets.fin.universe.html#1995" class="Bound"
+      >m</a
+      ><a name="1996" class="Symbol"
+      >}</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" class="Symbol"
+      >=</a
+      ><a name="1999"
+      > </a
+      ><a name="2000" href="function.isomorphism.core.html#1890" class="Function Operator"
+      >begin</a
+      ><a name="2005"
+      >
+    </a
+      ><a name="2010" class="Symbol"
+      >(</a
+      ><a name="2011" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2014"
+      > </a
+      ><a name="2015" class="Symbol"
+      >(</a
+      ><a name="2016" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="2019"
+      > </a
+      ><a name="2020" href="sets.fin.universe.html#1992" class="Bound"
+      >n</a
+      ><a name="2021" class="Symbol"
+      >)</a
+      ><a name="2022"
+      > </a
+      ><a name="2023" href="sum.html#291" class="Function Operator"
+      >&#215;</a
+      ><a name="2024"
+      > </a
+      ><a name="2025" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2028"
+      > </a
+      ><a name="2029" href="sets.fin.universe.html#1995" class="Bound"
+      >m</a
+      ><a name="2030" class="Symbol"
+      >)</a
+      ><a name="2031"
+      >
+  </a
+      ><a name="2034" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2036"
+      > </a
+      ><a name="2037" href="function.isomorphism.utils.html#967" class="Function"
+      >&#215;-ap-iso</a
+      ><a name="2045"
+      > </a
+      ><a name="2046" href="sets.fin.universe.html#685" class="Function"
+      >fin-struct-iso</a
+      ><a name="2060"
+      > </a
+      ><a name="2061" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="2066"
+      > </a
+      ><a name="2067" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2068"
+      >
+    </a
+      ><a name="2073" class="Symbol"
+      >((</a
+      ><a name="2075" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="2076"
+      > </a
+      ><a name="2077" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="2078"
+      > </a
+      ><a name="2079" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2082"
+      > </a
+      ><a name="2083" href="sets.fin.universe.html#1992" class="Bound"
+      >n</a
+      ><a name="2084" class="Symbol"
+      >)</a
+      ><a name="2085"
+      > </a
+      ><a name="2086" href="sum.html#291" class="Function Operator"
+      >&#215;</a
+      ><a name="2087"
+      > </a
+      ><a name="2088" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2091"
+      > </a
+      ><a name="2092" href="sets.fin.universe.html#1995" class="Bound"
+      >m</a
+      ><a name="2093" class="Symbol"
+      >)</a
+      ><a name="2094"
+      >
+  </a
+      ><a name="2097" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2099"
+      > </a
+      ><a name="2100" href="function.isomorphism.utils.html#7404" class="Function"
+      >&#8846;&#215;-distr-iso</a
+      ><a name="2112"
+      > </a
+      ><a name="2113" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2114"
+      >
+    </a
+      ><a name="2119" class="Symbol"
+      >((</a
+      ><a name="2121" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="2122"
+      > </a
+      ><a name="2123" href="sum.html#291" class="Function Operator"
+      >&#215;</a
+      ><a name="2124"
+      > </a
+      ><a name="2125" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2128"
+      > </a
+      ><a name="2129" href="sets.fin.universe.html#1995" class="Bound"
+      >m</a
+      ><a name="2130" class="Symbol"
+      >)</a
+      ><a name="2131"
+      > </a
+      ><a name="2132" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="2133"
+      > </a
+      ><a name="2134" class="Symbol"
+      >(</a
+      ><a name="2135" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2138"
+      > </a
+      ><a name="2139" href="sets.fin.universe.html#1992" class="Bound"
+      >n</a
+      ><a name="2140"
+      > </a
+      ><a name="2141" href="sum.html#291" class="Function Operator"
+      >&#215;</a
+      ><a name="2142"
+      > </a
+      ><a name="2143" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2146"
+      > </a
+      ><a name="2147" href="sets.fin.universe.html#1995" class="Bound"
+      >m</a
+      ><a name="2148" class="Symbol"
+      >))</a
+      ><a name="2150"
+      >
+  </a
+      ><a name="2153" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2155"
+      > </a
+      ><a name="2156" href="function.isomorphism.utils.html#6299" class="Function"
+      >&#8846;-ap-iso</a
+      ><a name="2164"
+      > </a
+      ><a name="2165" href="function.isomorphism.utils.html#7887" class="Function"
+      >&#215;-left-unit</a
+      ><a name="2176"
+      > </a
+      ><a name="2177" href="sets.fin.universe.html#1860" class="Function"
+      >fin-prod</a
+      ><a name="2185"
+      > </a
+      ><a name="2186" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2187"
+      >
+    </a
+      ><a name="2192" class="Symbol"
+      >(</a
+      ><a name="2193" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2196"
+      > </a
+      ><a name="2197" href="sets.fin.universe.html#1995" class="Bound"
+      >m</a
+      ><a name="2198"
+      > </a
+      ><a name="2199" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="2200"
+      > </a
+      ><a name="2201" class="Symbol"
+      >(</a
+      ><a name="2202" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2205"
+      > </a
+      ><a name="2206" class="Symbol"
+      >(</a
+      ><a name="2207" href="sets.fin.universe.html#1992" class="Bound"
+      >n</a
+      ><a name="2208"
+      > </a
+      ><a name="2209" href="sets.nat.core.html#491" class="Function Operator"
+      >*</a
+      ><a name="2210"
+      > </a
+      ><a name="2211" href="sets.fin.universe.html#1995" class="Bound"
+      >m</a
+      ><a name="2212" class="Symbol"
+      >)))</a
+      ><a name="2215"
+      >
+  </a
+      ><a name="2218" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2220"
+      > </a
+      ><a name="2221" href="sets.fin.universe.html#1361" class="Function"
+      >fin-sum</a
+      ><a name="2228"
+      > </a
+      ><a name="2229" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2230"
+      >
+    </a
+      ><a name="2235" class="Symbol"
+      >(</a
+      ><a name="2236" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2239"
+      > </a
+      ><a name="2240" class="Symbol"
+      >(</a
+      ><a name="2241" href="sets.fin.universe.html#1995" class="Bound"
+      >m</a
+      ><a name="2242"
+      > </a
+      ><a name="2243" href="sets.nat.core.html#436" class="Function Operator"
+      >+</a
+      ><a name="2244"
+      > </a
+      ><a name="2245" class="Symbol"
+      >(</a
+      ><a name="2246" href="sets.fin.universe.html#1992" class="Bound"
+      >n</a
+      ><a name="2247"
+      > </a
+      ><a name="2248" href="sets.nat.core.html#491" class="Function Operator"
+      >*</a
+      ><a name="2249"
+      > </a
+      ><a name="2250" href="sets.fin.universe.html#1995" class="Bound"
+      >m</a
+      ><a name="2251" class="Symbol"
+      >)))</a
+      ><a name="2254"
+      >
+  </a
+      ><a name="2257" href="function.isomorphism.core.html#2128" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="2259"
+      > </a
+      ><a name="2260" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2264"
+      > </a
+      ><a name="2265" href="function.isomorphism.core.html#2128" class="Function Operator"
+      >&#10217;</a
+      ><a name="2266"
+      >
+    </a
+      ><a name="2271" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2274"
+      > </a
+      ><a name="2275" class="Symbol"
+      >(</a
+      ><a name="2276" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="2279"
+      > </a
+      ><a name="2280" href="sets.fin.universe.html#1992" class="Bound"
+      >n</a
+      ><a name="2281"
+      > </a
+      ><a name="2282" href="sets.nat.core.html#491" class="Function Operator"
+      >*</a
+      ><a name="2283"
+      > </a
+      ><a name="2284" href="sets.fin.universe.html#1995" class="Bound"
+      >m</a
+      ><a name="2285" class="Symbol"
+      >)</a
+      ><a name="2286"
+      >
+  </a
+      ><a name="2289" href="function.isomorphism.core.html#2283" class="Function Operator"
+      >&#8718;</a
+      ><a name="2290"
+      >
+  </a
+      ><a name="2293" class="Keyword"
+      >where</a
+      ><a name="2298"
+      > </a
+      ><a name="2299" class="Keyword"
+      >open</a
+      ><a name="2303"
+      > </a
+      ><a name="2304" href="function.isomorphism.core.html#1670" class="Module"
+      >&#8773;-Reasoning</a
+      ><a name="2315"
+      >
+
+</a
+      ><a name="2317" href="sets.fin.universe.html#2317" class="Function"
+      >fin-exp</a
+      ><a name="2324"
+      > </a
+      ><a name="2325" class="Symbol"
+      >:</a
+      ><a name="2326"
+      > </a
+      ><a name="2327" class="Symbol"
+      >&#8704;</a
+      ><a name="2328"
+      > </a
+      ><a name="2329" class="Symbol"
+      >{</a
+      ><a name="2330" href="sets.fin.universe.html#2330" class="Bound"
+      >n</a
+      ><a name="2331"
+      > </a
+      ><a name="2332" href="sets.fin.universe.html#2332" class="Bound"
+      >m</a
+      ><a name="2333" class="Symbol"
+      >}</a
+      ><a name="2334"
+      > </a
+      ><a name="2335" class="Symbol"
+      >&#8594;</a
+      ><a name="2336"
+      > </a
+      ><a name="2337" class="Symbol"
+      >(</a
+      ><a name="2338" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2341"
+      > </a
+      ><a name="2342" href="sets.fin.universe.html#2330" class="Bound"
+      >n</a
+      ><a name="2343"
+      > </a
+      ><a name="2344" class="Symbol"
+      >&#8594;</a
+      ><a name="2345"
+      > </a
+      ><a name="2346" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2349"
+      > </a
+      ><a name="2350" href="sets.fin.universe.html#2332" class="Bound"
+      >m</a
+      ><a name="2351" class="Symbol"
+      >)</a
+      ><a name="2352"
+      > </a
+      ><a name="2353" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="2354"
+      > </a
+      ><a name="2355" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2358"
+      > </a
+      ><a name="2359" class="Symbol"
+      >(</a
+      ><a name="2360" href="sets.fin.universe.html#2332" class="Bound"
+      >m</a
+      ><a name="2361"
+      > </a
+      ><a name="2362" href="sets.nat.core.html#543" class="Function Operator"
+      >^</a
+      ><a name="2363"
+      > </a
+      ><a name="2364" href="sets.fin.universe.html#2330" class="Bound"
+      >n</a
+      ><a name="2365" class="Symbol"
+      >)</a
+      ><a name="2366"
+      >
+</a
+      ><a name="2367" href="sets.fin.universe.html#2317" class="Function"
+      >fin-exp</a
+      ><a name="2374"
+      > </a
+      ><a name="2375" class="Symbol"
+      >{</a
+      ><a name="2376" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >0</a
+      ><a name="2377" class="Symbol"
+      >}</a
+      ><a name="2378"
+      > </a
+      ><a name="2379" class="Symbol"
+      >=</a
+      ><a name="2380"
+      > </a
+      ><a name="2381" class="Keyword"
+      >record</a
+      ><a name="2387"
+      >
+  </a
+      ><a name="2390" class="Symbol"
+      >{</a
+      ><a name="2391"
+      > </a
+      ><a name="2392" class="Field"
+      >to</a
+      ><a name="2394"
+      > </a
+      ><a name="2395" class="Symbol"
+      >=</a
+      ><a name="2396"
+      > </a
+      ><a name="2397" class="Symbol"
+      >&#955;</a
+      ><a name="2398"
+      > </a
+      ><a name="2399" href="sets.fin.universe.html#2399" class="Bound"
+      >f</a
+      ><a name="2400"
+      > </a
+      ><a name="2401" class="Symbol"
+      >&#8594;</a
+      ><a name="2402"
+      > </a
+      ><a name="2403" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="2407"
+      >
+  </a
+      ><a name="2410" class="Symbol"
+      >;</a
+      ><a name="2411"
+      > </a
+      ><a name="2412" class="Field"
+      >from</a
+      ><a name="2416"
+      > </a
+      ><a name="2417" class="Symbol"
+      >=</a
+      ><a name="2418"
+      > </a
+      ><a name="2419" class="Symbol"
+      >(&#955;</a
+      ><a name="2421"
+      > </a
+      ><a name="2422" class="Symbol"
+      >())</a
+      ><a name="2425"
+      > </a
+      ><a name="2426" href="sets.vec.dependent.html#229" class="Function Operator"
+      >&#8759;&#8759;</a
+      ><a name="2428"
+      > </a
+      ><a name="2429" href="sets.vec.dependent.html#172" class="Function"
+      >&#10214;&#10215;</a
+      ><a name="2431"
+      >
+  </a
+      ><a name="2434" class="Symbol"
+      >;</a
+      ><a name="2435"
+      > </a
+      ><a name="2436" class="Field"
+      >iso&#8321;</a
+      ><a name="2440"
+      > </a
+      ><a name="2441" class="Symbol"
+      >=</a
+      ><a name="2442"
+      > </a
+      ><a name="2443" class="Symbol"
+      >&#955;</a
+      ><a name="2444"
+      > </a
+      ><a name="2445" href="sets.fin.universe.html#2445" class="Bound"
+      >f</a
+      ><a name="2446"
+      > </a
+      ><a name="2447" class="Symbol"
+      >&#8594;</a
+      ><a name="2448"
+      > </a
+      ><a name="2449" href="function.extensionality.proof.html#1824" class="Function"
+      >funext</a
+      ><a name="2455"
+      > </a
+      ><a name="2456" class="Symbol"
+      >&#955;</a
+      ><a name="2457"
+      > </a
+      ><a name="2458" class="Symbol"
+      >()</a
+      ><a name="2460"
+      >
+  </a
+      ><a name="2463" class="Symbol"
+      >;</a
+      ><a name="2464"
+      > </a
+      ><a name="2465" class="Field"
+      >iso&#8322;</a
+      ><a name="2469"
+      > </a
+      ><a name="2470" class="Symbol"
+      >=</a
+      ><a name="2471"
+      > </a
+      ><a name="2472" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2476"
+      > </a
+      ><a name="2477" href="sets.vec.dependent.html#229" class="Function Operator"
+      >&#8759;&#8759;</a
+      ><a name="2479"
+      > </a
+      ><a name="2480" href="sets.vec.dependent.html#172" class="Function"
+      >&#10214;&#10215;</a
+      ><a name="2482"
+      > </a
+      ><a name="2483" class="Symbol"
+      >}</a
+      ><a name="2484"
+      >
+</a
+      ><a name="2485" href="sets.fin.universe.html#2317" class="Function"
+      >fin-exp</a
+      ><a name="2492"
+      > </a
+      ><a name="2493" class="Symbol"
+      >{</a
+      ><a name="2494" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="2497"
+      > </a
+      ><a name="2498" href="sets.fin.universe.html#2498" class="Bound"
+      >n</a
+      ><a name="2499" class="Symbol"
+      >}{</a
+      ><a name="2501" href="sets.fin.universe.html#2501" class="Bound"
+      >m</a
+      ><a name="2502" class="Symbol"
+      >}</a
+      ><a name="2503"
+      > </a
+      ><a name="2504" class="Symbol"
+      >=</a
+      ><a name="2505"
+      > </a
+      ><a name="2506" href="function.isomorphism.core.html#1890" class="Function Operator"
+      >begin</a
+      ><a name="2511"
+      >
+    </a
+      ><a name="2516" class="Symbol"
+      >(</a
+      ><a name="2517" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2520"
+      > </a
+      ><a name="2521" class="Symbol"
+      >(</a
+      ><a name="2522" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="2525"
+      > </a
+      ><a name="2526" href="sets.fin.universe.html#2498" class="Bound"
+      >n</a
+      ><a name="2527" class="Symbol"
+      >)</a
+      ><a name="2528"
+      > </a
+      ><a name="2529" class="Symbol"
+      >&#8594;</a
+      ><a name="2530"
+      > </a
+      ><a name="2531" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2534"
+      > </a
+      ><a name="2535" href="sets.fin.universe.html#2501" class="Bound"
+      >m</a
+      ><a name="2536" class="Symbol"
+      >)</a
+      ><a name="2537"
+      >
+  </a
+      ><a name="2540" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2542"
+      > </a
+      ><a name="2543" class="Symbol"
+      >(</a
+      ><a name="2544" href="function.isomorphism.utils.html#3315" class="Function"
+      >&#928;-ap-iso</a
+      ><a name="2552"
+      > </a
+      ><a name="2553" href="sets.fin.universe.html#685" class="Function"
+      >fin-struct-iso</a
+      ><a name="2567"
+      > </a
+      ><a name="2568" class="Symbol"
+      >&#955;</a
+      ><a name="2569"
+      > </a
+      ><a name="2570" href="sets.fin.universe.html#2570" class="Bound"
+      >_</a
+      ><a name="2571"
+      > </a
+      ><a name="2572" class="Symbol"
+      >&#8594;</a
+      ><a name="2573"
+      > </a
+      ><a name="2574" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="2579" class="Symbol"
+      >)</a
+      ><a name="2580"
+      > </a
+      ><a name="2581" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2582"
+      >
+    </a
+      ><a name="2587" class="Symbol"
+      >((</a
+      ><a name="2589" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="2590"
+      > </a
+      ><a name="2591" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="2592"
+      > </a
+      ><a name="2593" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2596"
+      > </a
+      ><a name="2597" href="sets.fin.universe.html#2498" class="Bound"
+      >n</a
+      ><a name="2598" class="Symbol"
+      >)</a
+      ><a name="2599"
+      > </a
+      ><a name="2600" class="Symbol"
+      >&#8594;</a
+      ><a name="2601"
+      > </a
+      ><a name="2602" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2605"
+      > </a
+      ><a name="2606" href="sets.fin.universe.html#2501" class="Bound"
+      >m</a
+      ><a name="2607" class="Symbol"
+      >)</a
+      ><a name="2608"
+      >
+  </a
+      ><a name="2611" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2613"
+      > </a
+      ><a name="2614" href="function.isomorphism.core.html#421" class="InductiveConstructor"
+      >iso</a
+      ><a name="2617"
+      > </a
+      ><a name="2618" class="Symbol"
+      >(&#955;</a
+      ><a name="2620"
+      > </a
+      ><a name="2621" href="sets.fin.universe.html#2621" class="Bound"
+      >f</a
+      ><a name="2622"
+      > </a
+      ><a name="2623" class="Symbol"
+      >&#8594;</a
+      ><a name="2624"
+      > </a
+      ><a name="2625" href="sets.fin.universe.html#2621" class="Bound"
+      >f</a
+      ><a name="2626"
+      > </a
+      ><a name="2627" class="Symbol"
+      >(</a
+      ><a name="2628" href="sum.html#745" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="2632"
+      > </a
+      ><a name="2633" href="sets.unit.html#90" class="InductiveConstructor"
+      >tt</a
+      ><a name="2635" class="Symbol"
+      >)</a
+      ><a name="2636"
+      > </a
+      ><a name="2637" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2638"
+      > </a
+      ><a name="2639" href="sets.fin.universe.html#2621" class="Bound"
+      >f</a
+      ><a name="2640"
+      > </a
+      ><a name="2641" href="function.core.html#144" class="Function Operator"
+      >&#8728;'</a
+      ><a name="2643"
+      > </a
+      ><a name="2644" href="sum.html#770" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="2648" class="Symbol"
+      >)</a
+      ><a name="2649"
+      >
+         </a
+      ><a name="2659" class="Symbol"
+      >(&#955;</a
+      ><a name="2661"
+      > </a
+      ><a name="2662" class="Symbol"
+      >{</a
+      ><a name="2663"
+      > </a
+      ><a name="2664" class="Symbol"
+      >(</a
+      ><a name="2665" href="sets.fin.universe.html#2665" class="Bound"
+      >i</a
+      ><a name="2666"
+      > </a
+      ><a name="2667" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2668"
+      > </a
+      ><a name="2669" class="Symbol"
+      >_)</a
+      ><a name="2671"
+      > </a
+      ><a name="2672" class="Symbol"
+      >(</a
+      ><a name="2673" href="sum.html#745" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="2677"
+      > </a
+      ><a name="2678" class="Symbol"
+      >_)</a
+      ><a name="2680"
+      > </a
+      ><a name="2681" class="Symbol"
+      >&#8594;</a
+      ><a name="2682"
+      > </a
+      ><a name="2683" href="sets.fin.universe.html#2665" class="Bound"
+      >i</a
+      ><a name="2684"
+      >
+            </a
+      ><a name="2697" class="Symbol"
+      >;</a
+      ><a name="2698"
+      > </a
+      ><a name="2699" class="Symbol"
+      >(_</a
+      ><a name="2701"
+      > </a
+      ><a name="2702" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2703"
+      > </a
+      ><a name="2704" href="sets.fin.universe.html#2704" class="Bound"
+      >g</a
+      ><a name="2705" class="Symbol"
+      >)</a
+      ><a name="2706"
+      > </a
+      ><a name="2707" class="Symbol"
+      >(</a
+      ><a name="2708" href="sum.html#770" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="2712"
+      > </a
+      ><a name="2713" href="sets.fin.universe.html#2713" class="Bound"
+      >i</a
+      ><a name="2714" class="Symbol"
+      >)</a
+      ><a name="2715"
+      > </a
+      ><a name="2716" class="Symbol"
+      >&#8594;</a
+      ><a name="2717"
+      > </a
+      ><a name="2718" href="sets.fin.universe.html#2704" class="Bound"
+      >g</a
+      ><a name="2719"
+      > </a
+      ><a name="2720" href="sets.fin.universe.html#2713" class="Bound"
+      >i</a
+      ><a name="2721"
+      > </a
+      ><a name="2722" class="Symbol"
+      >})</a
+      ><a name="2724"
+      >
+         </a
+      ><a name="2734" class="Symbol"
+      >(&#955;</a
+      ><a name="2736"
+      > </a
+      ><a name="2737" href="sets.fin.universe.html#2737" class="Bound"
+      >f</a
+      ><a name="2738"
+      > </a
+      ><a name="2739" class="Symbol"
+      >&#8594;</a
+      ><a name="2740"
+      > </a
+      ><a name="2741" href="function.extensionality.proof.html#1824" class="Function"
+      >funext</a
+      ><a name="2747"
+      > </a
+      ><a name="2748" class="Symbol"
+      >&#955;</a
+      ><a name="2749"
+      > </a
+      ><a name="2750" class="Symbol"
+      >{</a
+      ><a name="2751"
+      > </a
+      ><a name="2752" class="Symbol"
+      >(</a
+      ><a name="2753" href="sum.html#745" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="2757"
+      > </a
+      ><a name="2758" href="sets.unit.html#90" class="InductiveConstructor"
+      >tt</a
+      ><a name="2760" class="Symbol"
+      >)</a
+      ><a name="2761"
+      > </a
+      ><a name="2762" class="Symbol"
+      >&#8594;</a
+      ><a name="2763"
+      > </a
+      ><a name="2764" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2768"
+      >
+                          </a
+      ><a name="2795" class="Symbol"
+      >;</a
+      ><a name="2796"
+      > </a
+      ><a name="2797" class="Symbol"
+      >(</a
+      ><a name="2798" href="sum.html#770" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="2802"
+      > </a
+      ><a name="2803" href="sets.fin.universe.html#2803" class="Bound"
+      >i</a
+      ><a name="2804" class="Symbol"
+      >)</a
+      ><a name="2805"
+      > </a
+      ><a name="2806" class="Symbol"
+      >&#8594;</a
+      ><a name="2807"
+      > </a
+      ><a name="2808" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2812"
+      > </a
+      ><a name="2813" class="Symbol"
+      >})</a
+      ><a name="2815"
+      >
+         </a
+      ><a name="2825" class="Symbol"
+      >(&#955;</a
+      ><a name="2827"
+      > </a
+      ><a name="2828" class="Symbol"
+      >{</a
+      ><a name="2829"
+      > </a
+      ><a name="2830" class="Symbol"
+      >(</a
+      ><a name="2831" href="sets.fin.universe.html#2831" class="Bound"
+      >i</a
+      ><a name="2832"
+      > </a
+      ><a name="2833" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2834"
+      > </a
+      ><a name="2835" href="sets.fin.universe.html#2835" class="Bound"
+      >g</a
+      ><a name="2836" class="Symbol"
+      >)</a
+      ><a name="2837"
+      > </a
+      ><a name="2838" class="Symbol"
+      >&#8594;</a
+      ><a name="2839"
+      > </a
+      ><a name="2840" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2844"
+      > </a
+      ><a name="2845" class="Symbol"
+      >})</a
+      ><a name="2847"
+      > </a
+      ><a name="2848" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2849"
+      >
+    </a
+      ><a name="2854" class="Symbol"
+      >(</a
+      ><a name="2855" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2858"
+      > </a
+      ><a name="2859" href="sets.fin.universe.html#2501" class="Bound"
+      >m</a
+      ><a name="2860"
+      > </a
+      ><a name="2861" href="sum.html#291" class="Function Operator"
+      >&#215;</a
+      ><a name="2862"
+      > </a
+      ><a name="2863" class="Symbol"
+      >(</a
+      ><a name="2864" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2867"
+      > </a
+      ><a name="2868" href="sets.fin.universe.html#2498" class="Bound"
+      >n</a
+      ><a name="2869"
+      > </a
+      ><a name="2870" class="Symbol"
+      >&#8594;</a
+      ><a name="2871"
+      > </a
+      ><a name="2872" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2875"
+      > </a
+      ><a name="2876" href="sets.fin.universe.html#2501" class="Bound"
+      >m</a
+      ><a name="2877" class="Symbol"
+      >))</a
+      ><a name="2879"
+      >
+  </a
+      ><a name="2882" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2884"
+      > </a
+      ><a name="2885" href="function.isomorphism.utils.html#967" class="Function"
+      >&#215;-ap-iso</a
+      ><a name="2893"
+      > </a
+      ><a name="2894" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="2899"
+      > </a
+      ><a name="2900" href="sets.fin.universe.html#2317" class="Function"
+      >fin-exp</a
+      ><a name="2907"
+      > </a
+      ><a name="2908" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2909"
+      >
+    </a
+      ><a name="2914" class="Symbol"
+      >(</a
+      ><a name="2915" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2918"
+      > </a
+      ><a name="2919" href="sets.fin.universe.html#2501" class="Bound"
+      >m</a
+      ><a name="2920"
+      > </a
+      ><a name="2921" href="sum.html#291" class="Function Operator"
+      >&#215;</a
+      ><a name="2922"
+      > </a
+      ><a name="2923" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2926"
+      > </a
+      ><a name="2927" class="Symbol"
+      >(</a
+      ><a name="2928" href="sets.fin.universe.html#2501" class="Bound"
+      >m</a
+      ><a name="2929"
+      > </a
+      ><a name="2930" href="sets.nat.core.html#543" class="Function Operator"
+      >^</a
+      ><a name="2931"
+      > </a
+      ><a name="2932" href="sets.fin.universe.html#2498" class="Bound"
+      >n</a
+      ><a name="2933" class="Symbol"
+      >))</a
+      ><a name="2935"
+      >
+  </a
+      ><a name="2938" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2940"
+      > </a
+      ><a name="2941" href="sets.fin.universe.html#1860" class="Function"
+      >fin-prod</a
+      ><a name="2949"
+      > </a
+      ><a name="2950" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2951"
+      >
+    </a
+      ><a name="2956" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="2959"
+      > </a
+      ><a name="2960" class="Symbol"
+      >(</a
+      ><a name="2961" href="sets.fin.universe.html#2501" class="Bound"
+      >m</a
+      ><a name="2962"
+      > </a
+      ><a name="2963" href="sets.nat.core.html#543" class="Function Operator"
+      >^</a
+      ><a name="2964"
+      > </a
+      ><a name="2965" class="Symbol"
+      >(</a
+      ><a name="2966" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="2969"
+      > </a
+      ><a name="2970" href="sets.fin.universe.html#2498" class="Bound"
+      >n</a
+      ><a name="2971" class="Symbol"
+      >))</a
+      ><a name="2973"
+      >
+  </a
+      ><a name="2976" href="function.isomorphism.core.html#2283" class="Function Operator"
+      >&#8718;</a
+      ><a name="2977"
+      >
+  </a
+      ><a name="2980" class="Keyword"
+      >where</a
+      ><a name="2985"
+      > </a
+      ><a name="2986" class="Keyword"
+      >open</a
+      ><a name="2990"
+      > </a
+      ><a name="2991" href="function.isomorphism.core.html#1670" class="Module"
+      >&#8773;-Reasoning</a
+      ><a name="3002"
+      >
+
+</a
+      ><a name="3004" href="sets.fin.universe.html#3004" class="Function"
+      >factorial</a
+      ><a name="3013"
+      > </a
+      ><a name="3014" class="Symbol"
+      >:</a
+      ><a name="3015"
+      > </a
+      ><a name="3016" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="3017"
+      > </a
+      ><a name="3018" class="Symbol"
+      >&#8594;</a
+      ><a name="3019"
+      > </a
+      ><a name="3020" href="sets.nat.core.html#256" class="Datatype"
+      >&#8469;</a
+      ><a name="3021"
+      >
+</a
+      ><a name="3022" href="sets.fin.universe.html#3004" class="Function"
+      >factorial</a
+      ><a name="3031"
+      > </a
+      ><a name="3032" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >0</a
+      ><a name="3033"
+      > </a
+      ><a name="3034" class="Symbol"
+      >=</a
+      ><a name="3035"
+      > </a
+      ><a name="3036" class="Number"
+      >1</a
+      ><a name="3037"
+      >
+</a
+      ><a name="3038" href="sets.fin.universe.html#3004" class="Function"
+      >factorial</a
+      ><a name="3047"
+      > </a
+      ><a name="3048" class="Symbol"
+      >(</a
+      ><a name="3049" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="3052"
+      > </a
+      ><a name="3053" href="sets.fin.universe.html#3053" class="Bound"
+      >n</a
+      ><a name="3054" class="Symbol"
+      >)</a
+      ><a name="3055"
+      > </a
+      ><a name="3056" class="Symbol"
+      >=</a
+      ><a name="3057"
+      > </a
+      ><a name="3058" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="3061"
+      > </a
+      ><a name="3062" href="sets.fin.universe.html#3053" class="Bound"
+      >n</a
+      ><a name="3063"
+      > </a
+      ><a name="3064" href="sets.nat.core.html#491" class="Function Operator"
+      >*</a
+      ><a name="3065"
+      > </a
+      ><a name="3066" href="sets.fin.universe.html#3004" class="Function"
+      >factorial</a
+      ><a name="3075"
+      > </a
+      ><a name="3076" href="sets.fin.universe.html#3053" class="Bound"
+      >n</a
+      ><a name="3077"
+      >
+
+</a
+      ><a name="3079" href="sets.fin.universe.html#3079" class="Function"
+      >fin-inj-iso</a
+      ><a name="3090"
+      > </a
+      ><a name="3091" class="Symbol"
+      >:</a
+      ><a name="3092"
+      > </a
+      ><a name="3093" class="Symbol"
+      >&#8704;</a
+      ><a name="3094"
+      > </a
+      ><a name="3095" class="Symbol"
+      >{</a
+      ><a name="3096" href="sets.fin.universe.html#3096" class="Bound"
+      >n</a
+      ><a name="3097" class="Symbol"
+      >}</a
+      ><a name="3098"
+      > </a
+      ><a name="3099" class="Symbol"
+      >&#8594;</a
+      ><a name="3100"
+      > </a
+      ><a name="3101" class="Symbol"
+      >(</a
+      ><a name="3102" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3105"
+      > </a
+      ><a name="3106" href="sets.fin.universe.html#3096" class="Bound"
+      >n</a
+      ><a name="3107"
+      > </a
+      ><a name="3108" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="3109"
+      > </a
+      ><a name="3110" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3113"
+      > </a
+      ><a name="3114" href="sets.fin.universe.html#3096" class="Bound"
+      >n</a
+      ><a name="3115" class="Symbol"
+      >)</a
+      ><a name="3116"
+      > </a
+      ><a name="3117" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="3118"
+      > </a
+      ><a name="3119" class="Symbol"
+      >(</a
+      ><a name="3120" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3123"
+      > </a
+      ><a name="3124" href="sets.fin.universe.html#3096" class="Bound"
+      >n</a
+      ><a name="3125"
+      > </a
+      ><a name="3126" href="function.isomorphism.core.html#2601" class="Function Operator"
+      >&#8611;</a
+      ><a name="3127"
+      > </a
+      ><a name="3128" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3131"
+      > </a
+      ><a name="3132" href="sets.fin.universe.html#3096" class="Bound"
+      >n</a
+      ><a name="3133" class="Symbol"
+      >)</a
+      ><a name="3134"
+      >
+</a
+      ><a name="3135" href="sets.fin.universe.html#3079" class="Function"
+      >fin-inj-iso</a
+      ><a name="3146"
+      > </a
+      ><a name="3147" class="Symbol"
+      >{</a
+      ><a name="3148" href="sets.fin.universe.html#3148" class="Bound"
+      >n</a
+      ><a name="3149" class="Symbol"
+      >}</a
+      ><a name="3150"
+      > </a
+      ><a name="3151" class="Symbol"
+      >=</a
+      ><a name="3152"
+      > </a
+      ><a name="3153" class="Keyword"
+      >record</a
+      ><a name="3159"
+      >
+  </a
+      ><a name="3162" class="Symbol"
+      >{</a
+      ><a name="3163"
+      > </a
+      ><a name="3164" class="Field"
+      >to</a
+      ><a name="3166"
+      > </a
+      ><a name="3167" class="Symbol"
+      >=</a
+      ><a name="3168"
+      > </a
+      ><a name="3169" class="Symbol"
+      >&#955;</a
+      ><a name="3170"
+      > </a
+      ><a name="3171" href="sets.fin.universe.html#3171" class="Bound"
+      >f</a
+      ><a name="3172"
+      > </a
+      ><a name="3173" class="Symbol"
+      >&#8594;</a
+      ><a name="3174"
+      > </a
+      ><a name="3175" class="Symbol"
+      >(</a
+      ><a name="3176" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="3181"
+      > </a
+      ><a name="3182" href="sets.fin.universe.html#3171" class="Bound"
+      >f</a
+      ><a name="3183"
+      > </a
+      ><a name="3184" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3185"
+      > </a
+      ><a name="3186" href="function.isomorphism.core.html#3683" class="Function"
+      >iso&#8658;inj</a
+      ><a name="3193"
+      > </a
+      ><a name="3194" href="sets.fin.universe.html#3171" class="Bound"
+      >f</a
+      ><a name="3195" class="Symbol"
+      >)</a
+      ><a name="3196"
+      >
+  </a
+      ><a name="3199" class="Symbol"
+      >;</a
+      ><a name="3200"
+      > </a
+      ><a name="3201" class="Field"
+      >from</a
+      ><a name="3205"
+      > </a
+      ><a name="3206" class="Symbol"
+      >=</a
+      ><a name="3207"
+      > </a
+      ><a name="3208" class="Symbol"
+      >&#955;</a
+      ><a name="3209"
+      > </a
+      ><a name="3210" class="Symbol"
+      >{</a
+      ><a name="3211"
+      > </a
+      ><a name="3212" class="Symbol"
+      >(</a
+      ><a name="3213" href="sets.fin.universe.html#3213" class="Bound"
+      >f</a
+      ><a name="3214"
+      > </a
+      ><a name="3215" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3216"
+      > </a
+      ><a name="3217" href="sets.fin.universe.html#3217" class="Bound"
+      >inj</a
+      ><a name="3220" class="Symbol"
+      >)</a
+      ><a name="3221"
+      > </a
+      ><a name="3222" class="Symbol"
+      >&#8594;</a
+      ><a name="3223"
+      > </a
+      ><a name="3224" href="sets.fin.properties.html#8071" class="Function"
+      >inj&#8658;iso</a
+      ><a name="3231"
+      > </a
+      ><a name="3232" href="sets.fin.universe.html#3213" class="Bound"
+      >f</a
+      ><a name="3233"
+      > </a
+      ><a name="3234" href="sets.fin.universe.html#3217" class="Bound"
+      >inj</a
+      ><a name="3237"
+      > </a
+      ><a name="3238" class="Symbol"
+      >}</a
+      ><a name="3239"
+      >
+  </a
+      ><a name="3242" class="Symbol"
+      >;</a
+      ><a name="3243"
+      > </a
+      ><a name="3244" class="Field"
+      >iso&#8321;</a
+      ><a name="3248"
+      > </a
+      ><a name="3249" class="Symbol"
+      >=</a
+      ><a name="3250"
+      > </a
+      ><a name="3251" class="Symbol"
+      >&#955;</a
+      ><a name="3252"
+      > </a
+      ><a name="3253" href="sets.fin.universe.html#3253" class="Bound"
+      >f</a
+      ><a name="3254"
+      > </a
+      ><a name="3255" class="Symbol"
+      >&#8594;</a
+      ><a name="3256"
+      > </a
+      ><a name="3257" href="sets.properties.html#1016" class="Function"
+      >iso-eq-h2</a
+      ><a name="3266"
+      > </a
+      ><a name="3267" class="Symbol"
+      >(</a
+      ><a name="3268" href="hott.hlevel.sets.html#1874" class="Function"
+      >fin-set</a
+      ><a name="3275"
+      > </a
+      ><a name="3276" href="sets.fin.universe.html#3148" class="Bound"
+      >n</a
+      ><a name="3277" class="Symbol"
+      >)</a
+      ><a name="3278"
+      > </a
+      ><a name="3279" class="Symbol"
+      >(</a
+      ><a name="3280" href="hott.hlevel.sets.html#1874" class="Function"
+      >fin-set</a
+      ><a name="3287"
+      > </a
+      ><a name="3288" href="sets.fin.universe.html#3148" class="Bound"
+      >n</a
+      ><a name="3289" class="Symbol"
+      >)</a
+      ><a name="3290"
+      > </a
+      ><a name="3291" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3295"
+      >
+  </a
+      ><a name="3298" class="Symbol"
+      >;</a
+      ><a name="3299"
+      > </a
+      ><a name="3300" class="Field"
+      >iso&#8322;</a
+      ><a name="3304"
+      > </a
+      ><a name="3305" class="Symbol"
+      >=</a
+      ><a name="3306"
+      > </a
+      ><a name="3307" class="Symbol"
+      >&#955;</a
+      ><a name="3308"
+      > </a
+      ><a name="3309" class="Symbol"
+      >{</a
+      ><a name="3310"
+      > </a
+      ><a name="3311" class="Symbol"
+      >(</a
+      ><a name="3312" href="sets.fin.universe.html#3312" class="Bound"
+      >f</a
+      ><a name="3313"
+      > </a
+      ><a name="3314" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3315"
+      > </a
+      ><a name="3316" href="sets.fin.universe.html#3316" class="Bound"
+      >inj</a
+      ><a name="3319" class="Symbol"
+      >)</a
+      ><a name="3320"
+      > </a
+      ><a name="3321" class="Symbol"
+      >&#8594;</a
+      ><a name="3322"
+      > </a
+      ><a name="3323" href="sets.properties.html#1282" class="Function"
+      >inj-eq-h2</a
+      ><a name="3332"
+      > </a
+      ><a name="3333" class="Symbol"
+      >(</a
+      ><a name="3334" href="hott.hlevel.sets.html#1874" class="Function"
+      >fin-set</a
+      ><a name="3341"
+      > </a
+      ><a name="3342" href="sets.fin.universe.html#3148" class="Bound"
+      >n</a
+      ><a name="3343" class="Symbol"
+      >)</a
+      ><a name="3344"
+      > </a
+      ><a name="3345" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3349"
+      > </a
+      ><a name="3350" class="Symbol"
+      >}</a
+      ><a name="3351"
+      > </a
+      ><a name="3352" class="Symbol"
+      >}</a
+      ><a name="3353"
+      >
+
+</a
+      ><a name="3355" href="sets.fin.universe.html#3355" class="Function"
+      >fin-iso-iso</a
+      ><a name="3366"
+      > </a
+      ><a name="3367" class="Symbol"
+      >:</a
+      ><a name="3368"
+      > </a
+      ><a name="3369" class="Symbol"
+      >&#8704;</a
+      ><a name="3370"
+      > </a
+      ><a name="3371" class="Symbol"
+      >{</a
+      ><a name="3372" href="sets.fin.universe.html#3372" class="Bound"
+      >n</a
+      ><a name="3373" class="Symbol"
+      >}</a
+      ><a name="3374"
+      > </a
+      ><a name="3375" class="Symbol"
+      >&#8594;</a
+      ><a name="3376"
+      > </a
+      ><a name="3377" class="Symbol"
+      >(</a
+      ><a name="3378" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3381"
+      > </a
+      ><a name="3382" href="sets.fin.universe.html#3372" class="Bound"
+      >n</a
+      ><a name="3383"
+      > </a
+      ><a name="3384" href="function.isomorphism.core.html#2601" class="Function Operator"
+      >&#8611;</a
+      ><a name="3385"
+      > </a
+      ><a name="3386" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3389"
+      > </a
+      ><a name="3390" href="sets.fin.universe.html#3372" class="Bound"
+      >n</a
+      ><a name="3391" class="Symbol"
+      >)</a
+      ><a name="3392"
+      > </a
+      ><a name="3393" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="3394"
+      > </a
+      ><a name="3395" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3398"
+      > </a
+      ><a name="3399" class="Symbol"
+      >(</a
+      ><a name="3400" href="sets.fin.universe.html#3004" class="Function"
+      >factorial</a
+      ><a name="3409"
+      > </a
+      ><a name="3410" href="sets.fin.universe.html#3372" class="Bound"
+      >n</a
+      ><a name="3411" class="Symbol"
+      >)</a
+      ><a name="3412"
+      >
+</a
+      ><a name="3413" href="sets.fin.universe.html#3355" class="Function"
+      >fin-iso-iso</a
+      ><a name="3424"
+      > </a
+      ><a name="3425" class="Symbol"
+      >{</a
+      ><a name="3426" href="sets.nat.core.html#272" class="InductiveConstructor"
+      >0</a
+      ><a name="3427" class="Symbol"
+      >}</a
+      ><a name="3428"
+      > </a
+      ><a name="3429" class="Symbol"
+      >=</a
+      ><a name="3430"
+      > </a
+      ><a name="3431" class="Keyword"
+      >record</a
+      ><a name="3437"
+      >
+  </a
+      ><a name="3440" class="Symbol"
+      >{</a
+      ><a name="3441"
+      > </a
+      ><a name="3442" class="Field"
+      >to</a
+      ><a name="3444"
+      > </a
+      ><a name="3445" class="Symbol"
+      >=</a
+      ><a name="3446"
+      > </a
+      ><a name="3447" class="Symbol"
+      >&#955;</a
+      ><a name="3448"
+      > </a
+      ><a name="3449" class="Symbol"
+      >{</a
+      ><a name="3450"
+      > </a
+      ><a name="3451" class="Symbol"
+      >(</a
+      ><a name="3452" href="sets.fin.universe.html#3452" class="Bound"
+      >f</a
+      ><a name="3453"
+      > </a
+      ><a name="3454" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3455"
+      > </a
+      ><a name="3456" class="Symbol"
+      >_)</a
+      ><a name="3458"
+      > </a
+      ><a name="3459" class="Symbol"
+      >&#8594;</a
+      ><a name="3460"
+      > </a
+      ><a name="3461" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="3465"
+      > </a
+      ><a name="3466" class="Symbol"
+      >}</a
+      ><a name="3467"
+      >
+  </a
+      ><a name="3470" class="Symbol"
+      >;</a
+      ><a name="3471"
+      > </a
+      ><a name="3472" class="Field"
+      >from</a
+      ><a name="3476"
+      > </a
+      ><a name="3477" class="Symbol"
+      >=</a
+      ><a name="3478"
+      > </a
+      ><a name="3479" class="Symbol"
+      >&#955;</a
+      ><a name="3480"
+      > </a
+      ><a name="3481" href="sets.fin.universe.html#3481" class="Bound"
+      >_</a
+      ><a name="3482"
+      > </a
+      ><a name="3483" class="Symbol"
+      >&#8594;</a
+      ><a name="3484"
+      > </a
+      ><a name="3485" class="Symbol"
+      >(&#955;</a
+      ><a name="3487"
+      > </a
+      ><a name="3488" class="Symbol"
+      >())</a
+      ><a name="3491"
+      > </a
+      ><a name="3492" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3493"
+      > </a
+      ><a name="3494" class="Symbol"
+      >(&#955;</a
+      ><a name="3496"
+      > </a
+      ><a name="3497" class="Symbol"
+      >{</a
+      ><a name="3498"
+      > </a
+      ><a name="3499" class="Symbol"
+      >{()}</a
+      ><a name="3503"
+      > </a
+      ><a name="3504" href="sets.fin.universe.html#3504" class="Bound"
+      >p</a
+      ><a name="3505"
+      > </a
+      ><a name="3506" class="Symbol"
+      >})</a
+      ><a name="3508"
+      >
+  </a
+      ><a name="3511" class="Symbol"
+      >;</a
+      ><a name="3512"
+      > </a
+      ><a name="3513" class="Field"
+      >iso&#8321;</a
+      ><a name="3517"
+      > </a
+      ><a name="3518" class="Symbol"
+      >=</a
+      ><a name="3519"
+      > </a
+      ><a name="3520" class="Symbol"
+      >&#955;</a
+      ><a name="3521"
+      > </a
+      ><a name="3522" class="Symbol"
+      >{</a
+      ><a name="3523"
+      > </a
+      ><a name="3524" class="Symbol"
+      >(</a
+      ><a name="3525" href="sets.fin.universe.html#3525" class="Bound"
+      >f</a
+      ><a name="3526"
+      > </a
+      ><a name="3527" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3528"
+      > </a
+      ><a name="3529" class="Symbol"
+      >_)</a
+      ><a name="3531"
+      > </a
+      ><a name="3532" class="Symbol"
+      >&#8594;</a
+      ><a name="3533"
+      > </a
+      ><a name="3534" href="sets.properties.html#1282" class="Function"
+      >inj-eq-h2</a
+      ><a name="3543"
+      > </a
+      ><a name="3544" class="Symbol"
+      >(</a
+      ><a name="3545" href="hott.hlevel.sets.html#1874" class="Function"
+      >fin-set</a
+      ><a name="3552"
+      > </a
+      ><a name="3553" class="Symbol"
+      >_)</a
+      ><a name="3555"
+      > </a
+      ><a name="3556" class="Symbol"
+      >(</a
+      ><a name="3557" href="function.extensionality.proof.html#1824" class="Function"
+      >funext</a
+      ><a name="3563"
+      > </a
+      ><a name="3564" class="Symbol"
+      >&#955;</a
+      ><a name="3565"
+      > </a
+      ><a name="3566" class="Symbol"
+      >())</a
+      ><a name="3569"
+      > </a
+      ><a name="3570" class="Symbol"
+      >}</a
+      ><a name="3571"
+      >
+  </a
+      ><a name="3574" class="Symbol"
+      >;</a
+      ><a name="3575"
+      > </a
+      ><a name="3576" class="Field"
+      >iso&#8322;</a
+      ><a name="3580"
+      > </a
+      ><a name="3581" class="Symbol"
+      >=</a
+      ><a name="3582"
+      > </a
+      ><a name="3583" class="Symbol"
+      >&#955;</a
+      ><a name="3584"
+      > </a
+      ><a name="3585" class="Symbol"
+      >{</a
+      ><a name="3586"
+      > </a
+      ><a name="3587" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="3591"
+      > </a
+      ><a name="3592" class="Symbol"
+      >&#8594;</a
+      ><a name="3593"
+      > </a
+      ><a name="3594" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3598"
+      > </a
+      ><a name="3599" class="Symbol"
+      >;</a
+      ><a name="3600"
+      > </a
+      ><a name="3601" class="Symbol"
+      >(</a
+      ><a name="3602" href="sets.fin.core.html#287" class="InductiveConstructor"
+      >suc</a
+      ><a name="3605"
+      > </a
+      ><a name="3606" class="Symbol"
+      >())</a
+      ><a name="3609"
+      > </a
+      ><a name="3610" class="Symbol"
+      >}</a
+      ><a name="3611"
+      > </a
+      ><a name="3612" class="Symbol"
+      >}</a
+      ><a name="3613"
+      >
+</a
+      ><a name="3614" href="sets.fin.universe.html#3355" class="Function"
+      >fin-iso-iso</a
+      ><a name="3625"
+      > </a
+      ><a name="3626" class="Symbol"
+      >{</a
+      ><a name="3627" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="3630"
+      > </a
+      ><a name="3631" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="3632" class="Symbol"
+      >}</a
+      ><a name="3633"
+      > </a
+      ><a name="3634" class="Symbol"
+      >=</a
+      ><a name="3635"
+      > </a
+      ><a name="3636" href="function.isomorphism.core.html#1890" class="Function Operator"
+      >begin</a
+      ><a name="3641"
+      >
+    </a
+      ><a name="3646" class="Symbol"
+      >(</a
+      ><a name="3647" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="3648"
+      > </a
+      ><a name="3649" href="function.isomorphism.core.html#2601" class="Function Operator"
+      >&#8611;</a
+      ><a name="3650"
+      > </a
+      ><a name="3651" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="3652" class="Symbol"
+      >)</a
+      ><a name="3653"
+      >
+  </a
+      ><a name="3656" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3658"
+      > </a
+      ><a name="3659" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="3663"
+      > </a
+      ><a name="3664" class="Symbol"
+      >(</a
+      ><a name="3665" href="function.isomorphism.utils.html#8930" class="Function"
+      >total-space-iso</a
+      ><a name="3680"
+      > </a
+      ><a name="3681" href="sets.fin.universe.html#4003" class="Function"
+      >classify</a
+      ><a name="3689" class="Symbol"
+      >)</a
+      ><a name="3690"
+      > </a
+      ><a name="3691" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="3692"
+      >
+    </a
+      ><a name="3697" class="Symbol"
+      >(</a
+      ><a name="3698" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="3699"
+      > </a
+      ><a name="3700" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="3701"
+      > </a
+      ><a name="3702" class="Symbol"
+      >&#955;</a
+      ><a name="3703"
+      > </a
+      ><a name="3704" href="sets.fin.universe.html#3704" class="Bound"
+      >i</a
+      ><a name="3705"
+      > </a
+      ><a name="3706" class="Symbol"
+      >&#8594;</a
+      ><a name="3707"
+      > </a
+      ><a name="3708" href="sets.fin.universe.html#4003" class="Function"
+      >classify</a
+      ><a name="3716"
+      > </a
+      ><a name="3717" href="hott.hlevel.core.html#1748" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="3719"
+      > </a
+      ><a name="3720" href="sets.fin.universe.html#3704" class="Bound"
+      >i</a
+      ><a name="3721" class="Symbol"
+      >)</a
+      ><a name="3722"
+      >
+  </a
+      ><a name="3725" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3727"
+      > </a
+      ><a name="3728" class="Symbol"
+      >(</a
+      ><a name="3729" href="function.isomorphism.utils.html#1442" class="Function"
+      >&#931;-ap-iso&#8322;</a
+      ><a name="3738"
+      > </a
+      ><a name="3739" class="Symbol"
+      >&#955;</a
+      ><a name="3740"
+      > </a
+      ><a name="3741" href="sets.fin.universe.html#3741" class="Bound"
+      >i</a
+      ><a name="3742"
+      > </a
+      ><a name="3743" class="Symbol"
+      >&#8594;</a
+      ><a name="3744"
+      > </a
+      ><a name="3745" href="function.isomorphism.core.html#1152" class="Function"
+      >trans&#8773;</a
+      ><a name="3751"
+      > </a
+      ><a name="3752" class="Symbol"
+      >(</a
+      ><a name="3753" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="3757"
+      > </a
+      ><a name="3758" class="Symbol"
+      >(</a
+      ><a name="3759" href="sets.fin.universe.html#4061" class="Function"
+      >const-fibre</a
+      ><a name="3770"
+      > </a
+      ><a name="3771" href="sets.fin.universe.html#3741" class="Bound"
+      >i</a
+      ><a name="3772" class="Symbol"
+      >))</a
+      ><a name="3774"
+      > </a
+      ><a name="3775" href="sets.fin.universe.html#4681" class="Function"
+      >fibre-zero-iso</a
+      ><a name="3789" class="Symbol"
+      >)</a
+      ><a name="3790"
+      > </a
+      ><a name="3791" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="3792"
+      >
+    </a
+      ><a name="3797" class="Symbol"
+      >(</a
+      ><a name="3798" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3801"
+      > </a
+      ><a name="3802" class="Symbol"
+      >(</a
+      ><a name="3803" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="3806"
+      > </a
+      ><a name="3807" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="3808" class="Symbol"
+      >)</a
+      ><a name="3809"
+      > </a
+      ><a name="3810" href="sum.html#291" class="Function Operator"
+      >&#215;</a
+      ><a name="3811"
+      > </a
+      ><a name="3812" class="Symbol"
+      >(</a
+      ><a name="3813" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3816"
+      > </a
+      ><a name="3817" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="3818"
+      > </a
+      ><a name="3819" href="function.isomorphism.core.html#2601" class="Function Operator"
+      >&#8611;</a
+      ><a name="3820"
+      > </a
+      ><a name="3821" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3824"
+      > </a
+      ><a name="3825" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="3826" class="Symbol"
+      >))</a
+      ><a name="3828"
+      >
+  </a
+      ><a name="3831" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3833"
+      > </a
+      ><a name="3834" href="function.isomorphism.utils.html#967" class="Function"
+      >&#215;-ap-iso</a
+      ><a name="3842"
+      > </a
+      ><a name="3843" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="3848"
+      > </a
+      ><a name="3849" href="sets.fin.universe.html#3355" class="Function"
+      >fin-iso-iso</a
+      ><a name="3860"
+      > </a
+      ><a name="3861" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="3862"
+      >
+    </a
+      ><a name="3867" class="Symbol"
+      >(</a
+      ><a name="3868" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3871"
+      > </a
+      ><a name="3872" class="Symbol"
+      >(</a
+      ><a name="3873" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="3876"
+      > </a
+      ><a name="3877" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="3878" class="Symbol"
+      >)</a
+      ><a name="3879"
+      > </a
+      ><a name="3880" href="sum.html#291" class="Function Operator"
+      >&#215;</a
+      ><a name="3881"
+      > </a
+      ><a name="3882" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3885"
+      > </a
+      ><a name="3886" class="Symbol"
+      >(</a
+      ><a name="3887" href="sets.fin.universe.html#3004" class="Function"
+      >factorial</a
+      ><a name="3896"
+      > </a
+      ><a name="3897" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="3898" class="Symbol"
+      >))</a
+      ><a name="3900"
+      >
+  </a
+      ><a name="3903" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3905"
+      > </a
+      ><a name="3906" href="sets.fin.universe.html#1860" class="Function"
+      >fin-prod</a
+      ><a name="3914"
+      > </a
+      ><a name="3915" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="3916"
+      >
+    </a
+      ><a name="3921" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3924"
+      > </a
+      ><a name="3925" class="Symbol"
+      >(</a
+      ><a name="3926" href="sets.fin.universe.html#3004" class="Function"
+      >factorial</a
+      ><a name="3935"
+      > </a
+      ><a name="3936" class="Symbol"
+      >(</a
+      ><a name="3937" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="3940"
+      > </a
+      ><a name="3941" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="3942" class="Symbol"
+      >))</a
+      ><a name="3944"
+      >
+  </a
+      ><a name="3947" href="function.isomorphism.core.html#2283" class="Function Operator"
+      >&#8718;</a
+      ><a name="3948"
+      >
+  </a
+      ><a name="3951" class="Keyword"
+      >where</a
+      ><a name="3956"
+      >
+    </a
+      ><a name="3961" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="3962"
+      > </a
+      ><a name="3963" class="Symbol"
+      >=</a
+      ><a name="3964"
+      > </a
+      ><a name="3965" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="3968"
+      > </a
+      ><a name="3969" class="Symbol"
+      >(</a
+      ><a name="3970" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="3973"
+      > </a
+      ><a name="3974" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="3975" class="Symbol"
+      >)</a
+      ><a name="3976"
+      >
+    </a
+      ><a name="3981" class="Keyword"
+      >open</a
+      ><a name="3985"
+      > </a
+      ><a name="3986" href="function.isomorphism.core.html#1670" class="Module"
+      >&#8773;-Reasoning</a
+      ><a name="3997"
+      >
+
+    </a
+      ><a name="4003" href="sets.fin.universe.html#4003" class="Function"
+      >classify</a
+      ><a name="4011"
+      > </a
+      ><a name="4012" class="Symbol"
+      >:</a
+      ><a name="4013"
+      > </a
+      ><a name="4014" class="Symbol"
+      >(</a
+      ><a name="4015" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="4016"
+      > </a
+      ><a name="4017" href="function.isomorphism.core.html#2601" class="Function Operator"
+      >&#8611;</a
+      ><a name="4018"
+      > </a
+      ><a name="4019" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="4020" class="Symbol"
+      >)</a
+      ><a name="4021"
+      > </a
+      ><a name="4022" class="Symbol"
+      >&#8594;</a
+      ><a name="4023"
+      > </a
+      ><a name="4024" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="4025"
+      >
+    </a
+      ><a name="4030" href="sets.fin.universe.html#4003" class="Function"
+      >classify</a
+      ><a name="4038"
+      > </a
+      ><a name="4039" class="Symbol"
+      >(</a
+      ><a name="4040" href="sets.fin.universe.html#4040" class="Bound"
+      >f</a
+      ><a name="4041"
+      > </a
+      ><a name="4042" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4043"
+      > </a
+      ><a name="4044" class="Symbol"
+      >_)</a
+      ><a name="4046"
+      > </a
+      ><a name="4047" class="Symbol"
+      >=</a
+      ><a name="4048"
+      > </a
+      ><a name="4049" href="sets.fin.universe.html#4040" class="Bound"
+      >f</a
+      ><a name="4050"
+      > </a
+      ><a name="4051" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4055"
+      >
+
+    </a
+      ><a name="4061" href="sets.fin.universe.html#4061" class="Function"
+      >const-fibre</a
+      ><a name="4072"
+      > </a
+      ><a name="4073" class="Symbol"
+      >:</a
+      ><a name="4074"
+      > </a
+      ><a name="4075" class="Symbol"
+      >(</a
+      ><a name="4076" href="sets.fin.universe.html#4076" class="Bound"
+      >i</a
+      ><a name="4077"
+      > </a
+      ><a name="4078" class="Symbol"
+      >:</a
+      ><a name="4079"
+      > </a
+      ><a name="4080" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="4081" class="Symbol"
+      >)</a
+      ><a name="4082"
+      > </a
+      ><a name="4083" class="Symbol"
+      >&#8594;</a
+      ><a name="4084"
+      > </a
+      ><a name="4085" href="sets.fin.universe.html#4003" class="Function"
+      >classify</a
+      ><a name="4093"
+      > </a
+      ><a name="4094" href="hott.hlevel.core.html#1748" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="4096"
+      > </a
+      ><a name="4097" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4101"
+      > </a
+      ><a name="4102" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="4103"
+      > </a
+      ><a name="4104" href="sets.fin.universe.html#4003" class="Function"
+      >classify</a
+      ><a name="4112"
+      > </a
+      ><a name="4113" href="hott.hlevel.core.html#1748" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="4115"
+      > </a
+      ><a name="4116" href="sets.fin.universe.html#4076" class="Bound"
+      >i</a
+      ><a name="4117"
+      >
+    </a
+      ><a name="4122" href="sets.fin.universe.html#4061" class="Function"
+      >const-fibre</a
+      ><a name="4133"
+      > </a
+      ><a name="4134" href="sets.fin.universe.html#4134" class="Bound"
+      >i</a
+      ><a name="4135"
+      > </a
+      ><a name="4136" class="Symbol"
+      >=</a
+      ><a name="4137"
+      > </a
+      ><a name="4138" href="function.isomorphism.core.html#1890" class="Function Operator"
+      >begin</a
+      ><a name="4143"
+      >
+        </a
+      ><a name="4152" class="Symbol"
+      >(</a
+      ><a name="4153"
+      > </a
+      ><a name="4154" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="4155"
+      > </a
+      ><a name="4156" class="Symbol"
+      >(</a
+      ><a name="4157" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="4158"
+      > </a
+      ><a name="4159" href="function.isomorphism.core.html#2601" class="Function Operator"
+      >&#8611;</a
+      ><a name="4160"
+      > </a
+      ><a name="4161" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="4162" class="Symbol"
+      >)</a
+      ><a name="4163"
+      > </a
+      ><a name="4164" class="Symbol"
+      >&#955;</a
+      ><a name="4165"
+      > </a
+      ><a name="4166" class="Symbol"
+      >{</a
+      ><a name="4167"
+      > </a
+      ><a name="4168" class="Symbol"
+      >(</a
+      ><a name="4169" href="sets.fin.universe.html#4169" class="Bound"
+      >f</a
+      ><a name="4170"
+      > </a
+      ><a name="4171" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4172"
+      > </a
+      ><a name="4173" class="Symbol"
+      >_)</a
+      ><a name="4175"
+      > </a
+      ><a name="4176" class="Symbol"
+      >&#8594;</a
+      ><a name="4177"
+      > </a
+      ><a name="4178" href="sets.fin.universe.html#4169" class="Bound"
+      >f</a
+      ><a name="4179"
+      > </a
+      ><a name="4180" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4184"
+      > </a
+      ><a name="4185" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4186"
+      > </a
+      ><a name="4187" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4191"
+      > </a
+      ><a name="4192" class="Symbol"
+      >}</a
+      ><a name="4193"
+      > </a
+      ><a name="4194" class="Symbol"
+      >)</a
+      ><a name="4195"
+      >
+      </a
+      ><a name="4202" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="4204"
+      > </a
+      ><a name="4205" class="Symbol"
+      >(</a
+      ><a name="4206"
+      > </a
+      ><a name="4207" href="function.isomorphism.utils.html#2736" class="Function"
+      >&#931;-ap-iso</a
+      ><a name="4215"
+      > </a
+      ><a name="4216" class="Symbol"
+      >(</a
+      ><a name="4217" href="sets.fin.properties.html#4572" class="Function"
+      >transpose-inj-iso'</a
+      ><a name="4235"
+      > </a
+      ><a name="4236" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4240"
+      > </a
+      ><a name="4241" href="sets.fin.universe.html#4134" class="Bound"
+      >i</a
+      ><a name="4242" class="Symbol"
+      >)</a
+      ><a name="4243"
+      > </a
+      ><a name="4244" class="Symbol"
+      >(&#955;</a
+      ><a name="4246"
+      > </a
+      ><a name="4247" class="Symbol"
+      >{</a
+      ><a name="4248"
+      > </a
+      ><a name="4249" class="Symbol"
+      >(</a
+      ><a name="4250" href="sets.fin.universe.html#4250" class="Bound"
+      >f</a
+      ><a name="4251"
+      > </a
+      ><a name="4252" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4253"
+      > </a
+      ><a name="4254" href="sets.fin.universe.html#4254" class="Bound"
+      >inj</a
+      ><a name="4257" class="Symbol"
+      >)</a
+      ><a name="4258"
+      >
+         </a
+      ><a name="4268" class="Symbol"
+      >&#8594;</a
+      ><a name="4269"
+      > </a
+      ><a name="4270" href="sets.properties.html#278" class="Function"
+      >mk-prop-iso</a
+      ><a name="4281"
+      > </a
+      ><a name="4282" class="Symbol"
+      >(</a
+      ><a name="4283" href="hott.hlevel.sets.html#1874" class="Function"
+      >fin-set</a
+      ><a name="4290"
+      > </a
+      ><a name="4291" class="Symbol"
+      >_</a
+      ><a name="4292"
+      > </a
+      ><a name="4293" class="Symbol"
+      >_</a
+      ><a name="4294"
+      > </a
+      ><a name="4295" class="Symbol"
+      >_)</a
+      ><a name="4297"
+      > </a
+      ><a name="4298" class="Symbol"
+      >(</a
+      ><a name="4299" href="hott.hlevel.sets.html#1874" class="Function"
+      >fin-set</a
+      ><a name="4306"
+      > </a
+      ><a name="4307" class="Symbol"
+      >_</a
+      ><a name="4308"
+      > </a
+      ><a name="4309" class="Symbol"
+      >_</a
+      ><a name="4310"
+      > </a
+      ><a name="4311" class="Symbol"
+      >_)</a
+      ><a name="4313"
+      >
+                       </a
+      ><a name="4337" class="Symbol"
+      >(</a
+      ><a name="4338" href="equality.core.html#364" class="Function"
+      >ap</a
+      ><a name="4340"
+      > </a
+      ><a name="4341" class="Symbol"
+      >(</a
+      ><a name="4342" href="sets.fin.properties.html#2018" class="Function"
+      >transpose</a
+      ><a name="4351"
+      > </a
+      ><a name="4352" class="InductiveConstructor"
+      >zero</a
+      ><a name="4356"
+      > </a
+      ><a name="4357" href="sets.fin.universe.html#4134" class="Bound"
+      >i</a
+      ><a name="4358" class="Symbol"
+      >))</a
+      ><a name="4360"
+      > </a
+      ><a name="4361" class="Symbol"
+      >(</a
+      ><a name="4362" href="sets.fin.universe.html#4451" class="Function"
+      >u</a
+      ><a name="4363"
+      > </a
+      ><a name="4364" href="sets.fin.universe.html#4250" class="Bound"
+      >f</a
+      ><a name="4365" class="Symbol"
+      >)</a
+      ><a name="4366"
+      > </a
+      ><a name="4367" class="Symbol"
+      >})</a
+      ><a name="4369"
+      > </a
+      ><a name="4370" class="Symbol"
+      >)</a
+      ><a name="4371"
+      > </a
+      ><a name="4372" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="4373"
+      >
+        </a
+      ><a name="4382" class="Symbol"
+      >(</a
+      ><a name="4383"
+      > </a
+      ><a name="4384" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="4385"
+      > </a
+      ><a name="4386" class="Symbol"
+      >(</a
+      ><a name="4387" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="4388"
+      > </a
+      ><a name="4389" href="function.isomorphism.core.html#2601" class="Function Operator"
+      >&#8611;</a
+      ><a name="4390"
+      > </a
+      ><a name="4391" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="4392" class="Symbol"
+      >)</a
+      ><a name="4393"
+      > </a
+      ><a name="4394" class="Symbol"
+      >&#955;</a
+      ><a name="4395"
+      > </a
+      ><a name="4396" class="Symbol"
+      >{</a
+      ><a name="4397"
+      > </a
+      ><a name="4398" class="Symbol"
+      >(</a
+      ><a name="4399" href="sets.fin.universe.html#4399" class="Bound"
+      >f</a
+      ><a name="4400"
+      > </a
+      ><a name="4401" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4402"
+      > </a
+      ><a name="4403" class="Symbol"
+      >_)</a
+      ><a name="4405"
+      > </a
+      ><a name="4406" class="Symbol"
+      >&#8594;</a
+      ><a name="4407"
+      > </a
+      ><a name="4408" href="sets.fin.universe.html#4399" class="Bound"
+      >f</a
+      ><a name="4409"
+      > </a
+      ><a name="4410" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4414"
+      > </a
+      ><a name="4415" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4416"
+      > </a
+      ><a name="4417" href="sets.fin.universe.html#4134" class="Bound"
+      >i</a
+      ><a name="4418"
+      > </a
+      ><a name="4419" class="Symbol"
+      >}</a
+      ><a name="4420"
+      > </a
+      ><a name="4421" class="Symbol"
+      >)</a
+      ><a name="4422"
+      >
+      </a
+      ><a name="4429" href="function.isomorphism.core.html#2283" class="Function Operator"
+      >&#8718;</a
+      ><a name="4430"
+      >
+      </a
+      ><a name="4437" class="Keyword"
+      >where</a
+      ><a name="4442"
+      >
+        </a
+      ><a name="4451" href="sets.fin.universe.html#4451" class="Function"
+      >u</a
+      ><a name="4452"
+      > </a
+      ><a name="4453" class="Symbol"
+      >:</a
+      ><a name="4454"
+      > </a
+      ><a name="4455" class="Symbol"
+      >(</a
+      ><a name="4456" href="sets.fin.universe.html#4456" class="Bound"
+      >f</a
+      ><a name="4457"
+      > </a
+      ><a name="4458" class="Symbol"
+      >:</a
+      ><a name="4459"
+      > </a
+      ><a name="4460" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="4461"
+      > </a
+      ><a name="4462" class="Symbol"
+      >&#8594;</a
+      ><a name="4463"
+      > </a
+      ><a name="4464" href="sets.fin.universe.html#3961" class="Function"
+      >X</a
+      ><a name="4465" class="Symbol"
+      >)</a
+      ><a name="4466"
+      >
+          </a
+      ><a name="4477" class="Symbol"
+      >&#8594;</a
+      ><a name="4478"
+      > </a
+      ><a name="4479" href="sets.fin.properties.html#2018" class="Function"
+      >transpose</a
+      ><a name="4488"
+      > </a
+      ><a name="4489" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4493"
+      > </a
+      ><a name="4494" href="sets.fin.universe.html#4134" class="Bound"
+      >i</a
+      ><a name="4495"
+      > </a
+      ><a name="4496" class="Symbol"
+      >(</a
+      ><a name="4497" href="sets.fin.universe.html#4456" class="Bound"
+      >f</a
+      ><a name="4498"
+      > </a
+      ><a name="4499" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4503" class="Symbol"
+      >)</a
+      ><a name="4504"
+      > </a
+      ><a name="4505" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4506"
+      > </a
+      ><a name="4507" href="sets.fin.universe.html#4134" class="Bound"
+      >i</a
+      ><a name="4508"
+      >
+          </a
+      ><a name="4519" class="Symbol"
+      >&#8594;</a
+      ><a name="4520"
+      > </a
+      ><a name="4521" href="sets.fin.universe.html#4456" class="Bound"
+      >f</a
+      ><a name="4522"
+      > </a
+      ><a name="4523" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4527"
+      > </a
+      ><a name="4528" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4529"
+      > </a
+      ><a name="4530" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4534"
+      >
+        </a
+      ><a name="4543" href="sets.fin.universe.html#4451" class="Function"
+      >u</a
+      ><a name="4544"
+      > </a
+      ><a name="4545" href="sets.fin.universe.html#4545" class="Bound"
+      >f</a
+      ><a name="4546"
+      > </a
+      ><a name="4547" href="sets.fin.universe.html#4547" class="Bound"
+      >p</a
+      ><a name="4548"
+      > </a
+      ><a name="4549" class="Symbol"
+      >=</a
+      ><a name="4550"
+      > </a
+      ><a name="4551" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="4554"
+      > </a
+      ><a name="4555" class="Symbol"
+      >(</a
+      ><a name="4556" href="function.isomorphism.core.html#469" class="Function"
+      >_&#8773;_.iso&#8321;</a
+      ><a name="4564"
+      > </a
+      ><a name="4565" class="Symbol"
+      >(</a
+      ><a name="4566" href="sets.fin.properties.html#3259" class="Function"
+      >transpose-iso</a
+      ><a name="4579"
+      > </a
+      ><a name="4580" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4584"
+      > </a
+      ><a name="4585" href="sets.fin.universe.html#4134" class="Bound"
+      >i</a
+      ><a name="4586" class="Symbol"
+      >)</a
+      ><a name="4587"
+      > </a
+      ><a name="4588" class="Symbol"
+      >(</a
+      ><a name="4589" href="sets.fin.universe.html#4545" class="Bound"
+      >f</a
+      ><a name="4590"
+      > </a
+      ><a name="4591" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4595" class="Symbol"
+      >))</a
+      ><a name="4597"
+      >
+              </a
+      ><a name="4612" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="4613"
+      > </a
+      ><a name="4614" class="Symbol"
+      >(</a
+      ><a name="4615" href="equality.core.html#364" class="Function"
+      >ap</a
+      ><a name="4617"
+      > </a
+      ><a name="4618" class="Symbol"
+      >(</a
+      ><a name="4619" href="sets.fin.properties.html#2018" class="Function"
+      >transpose</a
+      ><a name="4628"
+      > </a
+      ><a name="4629" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4633"
+      > </a
+      ><a name="4634" href="sets.fin.universe.html#4134" class="Bound"
+      >i</a
+      ><a name="4635" class="Symbol"
+      >)</a
+      ><a name="4636"
+      > </a
+      ><a name="4637" href="sets.fin.universe.html#4547" class="Bound"
+      >p</a
+      ><a name="4638"
+      >
+              </a
+      ><a name="4653" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="4654"
+      > </a
+      ><a name="4655" href="sets.fin.properties.html#2165" class="Function"
+      >transpose-&#946;&#8322;</a
+      ><a name="4667"
+      > </a
+      ><a name="4668" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4672"
+      > </a
+      ><a name="4673" href="sets.fin.universe.html#4134" class="Bound"
+      >i</a
+      ><a name="4674" class="Symbol"
+      >)</a
+      ><a name="4675"
+      >
+
+    </a
+      ><a name="4681" href="sets.fin.universe.html#4681" class="Function"
+      >fibre-zero-iso</a
+      ><a name="4695"
+      > </a
+      ><a name="4696" class="Symbol"
+      >:</a
+      ><a name="4697"
+      > </a
+      ><a name="4698" href="sets.fin.universe.html#4003" class="Function"
+      >classify</a
+      ><a name="4706"
+      > </a
+      ><a name="4707" href="hott.hlevel.core.html#1748" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="4709"
+      > </a
+      ><a name="4710" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="4714"
+      > </a
+      ><a name="4715" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="4716"
+      > </a
+      ><a name="4717" class="Symbol"
+      >(</a
+      ><a name="4718" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="4721"
+      > </a
+      ><a name="4722" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="4723"
+      > </a
+      ><a name="4724" href="function.isomorphism.core.html#2601" class="Function Operator"
+      >&#8611;</a
+      ><a name="4725"
+      > </a
+      ><a name="4726" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="4729"
+      > </a
+      ><a name="4730" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="4731" class="Symbol"
+      >)</a
+      ><a name="4732"
+      >
+    </a
+      ><a name="4737" href="sets.fin.universe.html#4681" class="Function"
+      >fibre-zero-iso</a
+      ><a name="4751"
+      > </a
+      ><a name="4752" class="Symbol"
+      >=</a
+      ><a name="4753"
+      > </a
+      ><a name="4754" class="Keyword"
+      >record</a
+      ><a name="4760"
+      >
+      </a
+      ><a name="4767" class="Symbol"
+      >{</a
+      ><a name="4768"
+      > </a
+      ><a name="4769" class="Field"
+      >to</a
+      ><a name="4771"
+      > </a
+      ><a name="4772" class="Symbol"
+      >=</a
+      ><a name="4773"
+      > </a
+      ><a name="4774" class="Symbol"
+      >&#955;</a
+      ><a name="4775"
+      > </a
+      ><a name="4776" class="Symbol"
+      >{</a
+      ><a name="4777"
+      > </a
+      ><a name="4778" class="Symbol"
+      >(</a
+      ><a name="4779" href="sets.fin.universe.html#4779" class="Bound"
+      >f</a
+      ><a name="4780"
+      > </a
+      ><a name="4781" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4782"
+      > </a
+      ><a name="4783" href="sets.fin.universe.html#4783" class="Bound"
+      >z</a
+      ><a name="4784" class="Symbol"
+      >)</a
+      ><a name="4785"
+      > </a
+      ><a name="4786" class="Symbol"
+      >&#8594;</a
+      ><a name="4787"
+      > </a
+      ><a name="4788" href="sets.fin.properties.html#6525" class="Function"
+      >fin-inj-remove&#8320;</a
+      ><a name="4803"
+      > </a
+      ><a name="4804" href="sets.fin.universe.html#4779" class="Bound"
+      >f</a
+      ><a name="4805"
+      > </a
+      ><a name="4806" href="sets.fin.universe.html#4783" class="Bound"
+      >z</a
+      ><a name="4807"
+      > </a
+      ><a name="4808" class="Symbol"
+      >}</a
+      ><a name="4809"
+      >
+      </a
+      ><a name="4816" class="Symbol"
+      >;</a
+      ><a name="4817"
+      > </a
+      ><a name="4818" class="Field"
+      >from</a
+      ><a name="4822"
+      > </a
+      ><a name="4823" class="Symbol"
+      >=</a
+      ><a name="4824"
+      > </a
+      ><a name="4825" class="Symbol"
+      >&#955;</a
+      ><a name="4826"
+      > </a
+      ><a name="4827" class="Symbol"
+      >{</a
+      ><a name="4828"
+      > </a
+      ><a name="4829" href="sets.fin.universe.html#4829" class="Bound"
+      >g</a
+      ><a name="4830"
+      > </a
+      ><a name="4831" class="Symbol"
+      >&#8594;</a
+      ><a name="4832"
+      > </a
+      ><a name="4833" href="sets.fin.properties.html#7218" class="Function"
+      >fin-inj-add</a
+      ><a name="4844"
+      > </a
+      ><a name="4845" href="sets.fin.universe.html#4829" class="Bound"
+      >g</a
+      ><a name="4846"
+      > </a
+      ><a name="4847" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4848"
+      > </a
+      ><a name="4849" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="4853"
+      > </a
+      ><a name="4854" class="Symbol"
+      >}</a
+      ><a name="4855"
+      >
+      </a
+      ><a name="4862" class="Symbol"
+      >;</a
+      ><a name="4863"
+      > </a
+      ><a name="4864" class="Field"
+      >iso&#8321;</a
+      ><a name="4868"
+      > </a
+      ><a name="4869" class="Symbol"
+      >=</a
+      ><a name="4870"
+      > </a
+      ><a name="4871" class="Symbol"
+      >&#955;</a
+      ><a name="4872"
+      > </a
+      ><a name="4873" class="Symbol"
+      >{</a
+      ><a name="4874"
+      > </a
+      ><a name="4875" class="Symbol"
+      >(</a
+      ><a name="4876" href="sets.fin.universe.html#4876" class="Bound"
+      >f</a
+      ><a name="4877"
+      > </a
+      ><a name="4878" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4879"
+      > </a
+      ><a name="4880" href="sets.fin.universe.html#4880" class="Bound"
+      >p</a
+      ><a name="4881" class="Symbol"
+      >)</a
+      ><a name="4882"
+      >
+                 </a
+      ><a name="4900" class="Symbol"
+      >&#8594;</a
+      ><a name="4901"
+      > </a
+      ><a name="4902" href="equality.calculus.html#1747" class="Function"
+      >unap&#931;</a
+      ><a name="4907"
+      > </a
+      ><a name="4908" class="Symbol"
+      >(</a
+      ><a name="4909" href="sets.properties.html#1282" class="Function"
+      >inj-eq-h2</a
+      ><a name="4918"
+      > </a
+      ><a name="4919" class="Symbol"
+      >(</a
+      ><a name="4920" href="hott.hlevel.sets.html#1874" class="Function"
+      >fin-set</a
+      ><a name="4927"
+      > </a
+      ><a name="4928" class="Symbol"
+      >(</a
+      ><a name="4929" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="4932"
+      > </a
+      ><a name="4933" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="4934" class="Symbol"
+      >))</a
+      ><a name="4936"
+      >
+                         </a
+      ><a name="4962" class="Symbol"
+      >(</a
+      ><a name="4963" href="function.extensionality.proof.html#1824" class="Function"
+      >funext</a
+      ><a name="4969"
+      > </a
+      ><a name="4970" class="Symbol"
+      >(</a
+      ><a name="4971" href="sets.fin.universe.html#5120" class="Function"
+      >&#945;</a
+      ><a name="4972"
+      > </a
+      ><a name="4973" href="sets.fin.universe.html#4876" class="Bound"
+      >f</a
+      ><a name="4974"
+      > </a
+      ><a name="4975" href="sets.fin.universe.html#4880" class="Bound"
+      >p</a
+      ><a name="4976"
+      > </a
+      ><a name="4977" class="Symbol"
+      >))</a
+      ><a name="4979"
+      >
+                         </a
+      ><a name="5005" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5006"
+      > </a
+      ><a name="5007" href="hott.hlevel.core.html#805" class="Function"
+      >h1&#8658;prop</a
+      ><a name="5014"
+      > </a
+      ><a name="5015" class="Symbol"
+      >(</a
+      ><a name="5016" href="hott.hlevel.sets.html#1874" class="Function"
+      >fin-set</a
+      ><a name="5023"
+      > </a
+      ><a name="5024" class="Symbol"
+      >(</a
+      ><a name="5025" class="InductiveConstructor"
+      >suc</a
+      ><a name="5028"
+      > </a
+      ><a name="5029" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="5030" class="Symbol"
+      >)</a
+      ><a name="5031"
+      > </a
+      ><a name="5032" class="Symbol"
+      >_</a
+      ><a name="5033"
+      > </a
+      ><a name="5034" class="Symbol"
+      >_)</a
+      ><a name="5036"
+      > </a
+      ><a name="5037" class="Symbol"
+      >_</a
+      ><a name="5038"
+      > </a
+      ><a name="5039" class="Symbol"
+      >_)</a
+      ><a name="5041"
+      > </a
+      ><a name="5042" class="Symbol"
+      >}</a
+      ><a name="5043"
+      >
+      </a
+      ><a name="5050" class="Symbol"
+      >;</a
+      ><a name="5051"
+      > </a
+      ><a name="5052" class="Field"
+      >iso&#8322;</a
+      ><a name="5056"
+      > </a
+      ><a name="5057" class="Symbol"
+      >=</a
+      ><a name="5058"
+      > </a
+      ><a name="5059" class="Symbol"
+      >&#955;</a
+      ><a name="5060"
+      > </a
+      ><a name="5061" href="sets.fin.universe.html#5061" class="Bound"
+      >g</a
+      ><a name="5062"
+      > </a
+      ><a name="5063" class="Symbol"
+      >&#8594;</a
+      ><a name="5064"
+      > </a
+      ><a name="5065" href="sets.properties.html#1282" class="Function"
+      >inj-eq-h2</a
+      ><a name="5074"
+      > </a
+      ><a name="5075" class="Symbol"
+      >(</a
+      ><a name="5076" href="hott.hlevel.sets.html#1874" class="Function"
+      >fin-set</a
+      ><a name="5083"
+      > </a
+      ><a name="5084" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="5085" class="Symbol"
+      >)</a
+      ><a name="5086"
+      > </a
+      ><a name="5087" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="5091"
+      > </a
+      ><a name="5092" class="Symbol"
+      >}</a
+      ><a name="5093"
+      >
+        </a
+      ><a name="5102" class="Keyword"
+      >where</a
+      ><a name="5107"
+      >
+            </a
+      ><a name="5120" href="sets.fin.universe.html#5120" class="Function"
+      >&#945;</a
+      ><a name="5121"
+      > </a
+      ><a name="5122" class="Symbol"
+      >:</a
+      ><a name="5123"
+      > </a
+      ><a name="5124" class="Symbol"
+      >(</a
+      ><a name="5125" href="sets.fin.universe.html#5125" class="Bound"
+      >f</a
+      ><a name="5126"
+      > </a
+      ><a name="5127" class="Symbol"
+      >:</a
+      ><a name="5128"
+      > </a
+      ><a name="5129" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="5132"
+      > </a
+      ><a name="5133" class="Symbol"
+      >(</a
+      ><a name="5134" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="5137"
+      > </a
+      ><a name="5138" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="5139" class="Symbol"
+      >)</a
+      ><a name="5140"
+      > </a
+      ><a name="5141" href="function.isomorphism.core.html#2601" class="Function Operator"
+      >&#8611;</a
+      ><a name="5142"
+      > </a
+      ><a name="5143" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="5146"
+      > </a
+      ><a name="5147" class="Symbol"
+      >(</a
+      ><a name="5148" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="5151"
+      > </a
+      ><a name="5152" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="5153" class="Symbol"
+      >))</a
+      ><a name="5155"
+      >
+              </a
+      ><a name="5170" class="Symbol"
+      >&#8594;</a
+      ><a name="5171"
+      > </a
+      ><a name="5172" class="Symbol"
+      >(</a
+      ><a name="5173" href="sets.fin.universe.html#5173" class="Bound"
+      >p</a
+      ><a name="5174"
+      > </a
+      ><a name="5175" class="Symbol"
+      >:</a
+      ><a name="5176"
+      > </a
+      ><a name="5177" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="5182"
+      > </a
+      ><a name="5183" href="sets.fin.universe.html#5125" class="Bound"
+      >f</a
+      ><a name="5184"
+      > </a
+      ><a name="5185" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="5189"
+      > </a
+      ><a name="5190" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="5191"
+      > </a
+      ><a name="5192" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="5196" class="Symbol"
+      >)</a
+      ><a name="5197"
+      >
+              </a
+      ><a name="5212" class="Symbol"
+      >&#8594;</a
+      ><a name="5213"
+      > </a
+      ><a name="5214" class="Symbol"
+      >(</a
+      ><a name="5215" href="sets.fin.universe.html#5215" class="Bound"
+      >i</a
+      ><a name="5216"
+      > </a
+      ><a name="5217" class="Symbol"
+      >:</a
+      ><a name="5218"
+      > </a
+      ><a name="5219" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="5222"
+      > </a
+      ><a name="5223" class="Symbol"
+      >(</a
+      ><a name="5224" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="5227"
+      > </a
+      ><a name="5228" href="sets.fin.universe.html#3631" class="Bound"
+      >n</a
+      ><a name="5229" class="Symbol"
+      >))</a
+      ><a name="5231"
+      >
+              </a
+      ><a name="5246" class="Symbol"
+      >&#8594;</a
+      ><a name="5247"
+      > </a
+      ><a name="5248" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="5253"
+      > </a
+      ><a name="5254" class="Symbol"
+      >(</a
+      ><a name="5255" href="sets.fin.properties.html#7218" class="Function"
+      >fin-inj-add</a
+      ><a name="5266"
+      > </a
+      ><a name="5267" class="Symbol"
+      >(</a
+      ><a name="5268" href="sets.fin.properties.html#6525" class="Function"
+      >fin-inj-remove&#8320;</a
+      ><a name="5283"
+      > </a
+      ><a name="5284" href="sets.fin.universe.html#5125" class="Bound"
+      >f</a
+      ><a name="5285"
+      > </a
+      ><a name="5286" href="sets.fin.universe.html#5173" class="Bound"
+      >p</a
+      ><a name="5287" class="Symbol"
+      >))</a
+      ><a name="5289"
+      > </a
+      ><a name="5290" href="sets.fin.universe.html#5215" class="Bound"
+      >i</a
+      ><a name="5291"
+      >
+              </a
+      ><a name="5306" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="5307"
+      > </a
+      ><a name="5308" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="5313"
+      > </a
+      ><a name="5314" href="sets.fin.universe.html#5125" class="Bound"
+      >f</a
+      ><a name="5315"
+      > </a
+      ><a name="5316" href="sets.fin.universe.html#5215" class="Bound"
+      >i</a
+      ><a name="5317"
+      >
+            </a
+      ><a name="5330" href="sets.fin.universe.html#5120" class="Function"
+      >&#945;</a
+      ><a name="5331"
+      > </a
+      ><a name="5332" class="Symbol"
+      >_</a
+      ><a name="5333"
+      > </a
+      ><a name="5334" href="sets.fin.universe.html#5334" class="Bound"
+      >p</a
+      ><a name="5335"
+      > </a
+      ><a name="5336" href="sets.fin.core.html#256" class="InductiveConstructor"
+      >zero</a
+      ><a name="5340"
+      > </a
+      ><a name="5341" class="Symbol"
+      >=</a
+      ><a name="5342"
+      > </a
+      ><a name="5343" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="5346"
+      > </a
+      ><a name="5347" href="sets.fin.universe.html#5334" class="Bound"
+      >p</a
+      ><a name="5348"
+      >
+            </a
+      ><a name="5361" href="sets.fin.universe.html#5120" class="Function"
+      >&#945;</a
+      ><a name="5362"
+      > </a
+      ><a name="5363" class="Symbol"
+      >(</a
+      ><a name="5364" href="sets.fin.universe.html#5364" class="Bound"
+      >f</a
+      ><a name="5365"
+      > </a
+      ><a name="5366" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="5367"
+      > </a
+      ><a name="5368" href="sets.fin.universe.html#5368" class="Bound"
+      >f-inj</a
+      ><a name="5373" class="Symbol"
+      >)</a
+      ><a name="5374"
+      > </a
+      ><a name="5375" href="sets.fin.universe.html#5375" class="Bound"
+      >p</a
+      ><a name="5376"
+      > </a
+      ><a name="5377" class="Symbol"
+      >(</a
+      ><a name="5378" href="sets.fin.core.html#287" class="InductiveConstructor"
+      >suc</a
+      ><a name="5381"
+      > </a
+      ><a name="5382" href="sets.fin.universe.html#5382" class="Bound"
+      >i</a
+      ><a name="5383" class="Symbol"
+      >)</a
+      ><a name="5384"
+      > </a
+      ><a name="5385" class="Symbol"
+      >=</a
+      ><a name="5386"
+      > </a
+      ><a name="5387" href="sets.fin.properties.html#591" class="Function"
+      >pred-&#946;</a
+      ><a name="5393"
+      > </a
+      ><a name="5394" class="Symbol"
+      >(</a
+      ><a name="5395" href="sets.fin.universe.html#5364" class="Bound"
+      >f</a
+      ><a name="5396"
+      > </a
+      ><a name="5397" class="Symbol"
+      >(</a
+      ><a name="5398" href="sets.fin.core.html#287" class="InductiveConstructor"
+      >suc</a
+      ><a name="5401"
+      > </a
+      ><a name="5402" href="sets.fin.universe.html#5382" class="Bound"
+      >i</a
+      ><a name="5403" class="Symbol"
+      >))</a
+      ><a name="5405"
+      >
+              </a
+      ><a name="5420" class="Symbol"
+      >(&#955;</a
+      ><a name="5422"
+      > </a
+      ><a name="5423" href="sets.fin.universe.html#5423" class="Bound"
+      >q</a
+      ><a name="5424"
+      > </a
+      ><a name="5425" class="Symbol"
+      >&#8594;</a
+      ><a name="5426"
+      > </a
+      ><a name="5427" href="sets.fin.core.html#410" class="Function"
+      >fin-disj</a
+      ><a name="5435"
+      > </a
+      ><a name="5436" class="Symbol"
+      >_</a
+      ><a name="5437"
+      > </a
+      ><a name="5438" class="Symbol"
+      >(</a
+      ><a name="5439" href="sets.fin.universe.html#5368" class="Bound"
+      >f-inj</a
+      ><a name="5444"
+      > </a
+      ><a name="5445" class="Symbol"
+      >(</a
+      ><a name="5446" href="sets.fin.universe.html#5375" class="Bound"
+      >p</a
+      ><a name="5447"
+      > </a
+      ><a name="5448" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="5449"
+      > </a
+      ><a name="5450" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="5453"
+      > </a
+      ><a name="5454" href="sets.fin.universe.html#5423" class="Bound"
+      >q</a
+      ><a name="5455" class="Symbol"
+      >)))</a
+      ><a name="5458"
+      >
+
+</a
+      ><a name="5460" href="sets.fin.universe.html#5460" class="Function"
+      >fin-subsets</a
+      ><a name="5471"
+      > </a
+      ><a name="5472" class="Symbol"
+      >:</a
+      ><a name="5473"
+      > </a
+      ><a name="5474" class="Symbol"
+      >&#8704;</a
+      ><a name="5475"
+      > </a
+      ><a name="5476" class="Symbol"
+      >{</a
+      ><a name="5477" href="sets.fin.universe.html#5477" class="Bound"
+      >n</a
+      ><a name="5478" class="Symbol"
+      >}</a
+      ><a name="5479"
+      > </a
+      ><a name="5480" class="Symbol"
+      >&#8594;</a
+      ><a name="5481"
+      > </a
+      ><a name="5482" class="Symbol"
+      >(</a
+      ><a name="5483" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="5486"
+      > </a
+      ><a name="5487" href="sets.fin.universe.html#5477" class="Bound"
+      >n</a
+      ><a name="5488"
+      > </a
+      ><a name="5489" class="Symbol"
+      >&#8594;</a
+      ><a name="5490"
+      > </a
+      ><a name="5491" href="sets.bool.html#321" class="Datatype"
+      >Bool</a
+      ><a name="5495" class="Symbol"
+      >)</a
+      ><a name="5496"
+      > </a
+      ><a name="5497" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="5498"
+      > </a
+      ><a name="5499" href="sets.fin.core.html#234" class="Datatype"
+      >Fin</a
+      ><a name="5502"
+      > </a
+      ><a name="5503" class="Symbol"
+      >(</a
+      ><a name="5504" class="Number"
+      >2</a
+      ><a name="5505"
+      > </a
+      ><a name="5506" href="sets.nat.core.html#543" class="Function Operator"
+      >^</a
+      ><a name="5507"
+      > </a
+      ><a name="5508" href="sets.fin.universe.html#5477" class="Bound"
+      >n</a
+      ><a name="5509" class="Symbol"
+      >)</a
+      ><a name="5510"
+      >
+</a
+      ><a name="5511" href="sets.fin.universe.html#5460" class="Function"
+      >fin-subsets</a
+      ><a name="5522"
+      > </a
+      ><a name="5523" class="Symbol"
+      >=</a
+      ><a name="5524"
+      > </a
+      ><a name="5525" href="function.isomorphism.core.html#1152" class="Function"
+      >trans&#8773;</a
+      ><a name="5531"
+      > </a
+      ><a name="5532" class="Symbol"
+      >(</a
+      ><a name="5533" href="function.isomorphism.utils.html#3315" class="Function"
+      >&#928;-ap-iso</a
+      ><a name="5541"
+      > </a
+      ><a name="5542" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="5547"
+      > </a
+      ><a name="5548" class="Symbol"
+      >&#955;</a
+      ><a name="5549"
+      > </a
+      ><a name="5550" href="sets.fin.universe.html#5550" class="Bound"
+      >_</a
+      ><a name="5551"
+      > </a
+      ><a name="5552" class="Symbol"
+      >&#8594;</a
+      ><a name="5553"
+      > </a
+      ><a name="5554" href="sets.fin.universe.html#1171" class="Function"
+      >fin2-bool</a
+      ><a name="5563" class="Symbol"
+      >)</a
+      ><a name="5564"
+      > </a
+      ><a name="5565" href="sets.fin.universe.html#2317" class="Function"
+      >fin-exp</a
+      ><a name="5572"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

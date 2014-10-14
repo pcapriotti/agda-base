@@ -1,0 +1,4122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >container.w</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="container.w.html#1" class="Module"
+      >container.w</a
+      ><a name="47"
+      > </a
+      ><a name="48" class="Keyword"
+      >where</a
+      ><a name="53"
+      >
+
+</a
+      ><a name="55" class="Keyword"
+      >open</a
+      ><a name="59"
+      > </a
+      ><a name="60" class="Keyword"
+      >import</a
+      ><a name="66"
+      > </a
+      ><a name="67" href="level.html#1" class="Module"
+      >level</a
+      ><a name="72"
+      >
+</a
+      ><a name="73" class="Keyword"
+      >open</a
+      ><a name="77"
+      > </a
+      ><a name="78" class="Keyword"
+      >import</a
+      ><a name="84"
+      > </a
+      ><a name="85" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="88"
+      >
+</a
+      ><a name="89" class="Keyword"
+      >open</a
+      ><a name="93"
+      > </a
+      ><a name="94" class="Keyword"
+      >import</a
+      ><a name="100"
+      > </a
+      ><a name="101" href="equality.html#1" class="Module"
+      >equality</a
+      ><a name="109"
+      >
+</a
+      ><a name="110" class="Keyword"
+      >open</a
+      ><a name="114"
+      > </a
+      ><a name="115" class="Keyword"
+      >import</a
+      ><a name="121"
+      > </a
+      ><a name="122" href="function.extensionality.html#1" class="Module"
+      >function.extensionality</a
+      ><a name="145"
+      >
+</a
+      ><a name="146" class="Keyword"
+      >open</a
+      ><a name="150"
+      > </a
+      ><a name="151" class="Keyword"
+      >import</a
+      ><a name="157"
+      > </a
+      ><a name="158" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="178"
+      >
+</a
+      ><a name="179" class="Keyword"
+      >open</a
+      ><a name="183"
+      > </a
+      ><a name="184" class="Keyword"
+      >import</a
+      ><a name="190"
+      > </a
+      ><a name="191" href="function.isomorphism.properties.html#1" class="Module"
+      >function.isomorphism.properties</a
+      ><a name="222"
+      >
+</a
+      ><a name="223" class="Keyword"
+      >open</a
+      ><a name="227"
+      > </a
+      ><a name="228" class="Keyword"
+      >import</a
+      ><a name="234"
+      > </a
+      ><a name="235" href="function.overloading.html#1" class="Module"
+      >function.overloading</a
+      ><a name="255"
+      >
+</a
+      ><a name="256" class="Keyword"
+      >open</a
+      ><a name="260"
+      > </a
+      ><a name="261" class="Keyword"
+      >import</a
+      ><a name="267"
+      > </a
+      ><a name="268" href="sets.empty.html#1" class="Module"
+      >sets.empty</a
+      ><a name="278"
+      >
+</a
+      ><a name="279" class="Keyword"
+      >open</a
+      ><a name="283"
+      > </a
+      ><a name="284" class="Keyword"
+      >import</a
+      ><a name="290"
+      > </a
+      ><a name="291" href="sets.nat.core.html#1" class="Module"
+      >sets.nat.core</a
+      ><a name="304"
+      > </a
+      ><a name="305" class="Keyword"
+      >using</a
+      ><a name="310"
+      > </a
+      ><a name="311" class="Symbol"
+      >(</a
+      ><a name="312"
+      >suc</a
+      ><a name="315" class="Symbol"
+      >)</a
+      ><a name="316"
+      >
+</a
+      ><a name="317" class="Keyword"
+      >open</a
+      ><a name="321"
+      > </a
+      ><a name="322" class="Keyword"
+      >import</a
+      ><a name="328"
+      > </a
+      ><a name="329" href="sets.unit.html#1" class="Module"
+      >sets.unit</a
+      ><a name="338"
+      >
+</a
+      ><a name="339" class="Keyword"
+      >open</a
+      ><a name="343"
+      > </a
+      ><a name="344" class="Keyword"
+      >import</a
+      ><a name="350"
+      > </a
+      ><a name="351" href="hott.hlevel.html#1" class="Module"
+      >hott.hlevel</a
+      ><a name="362"
+      >
+</a
+      ><a name="363" class="Keyword"
+      >open</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="Keyword"
+      >import</a
+      ><a name="374"
+      > </a
+      ><a name="375" href="container.core.html#1" class="Module"
+      >container.core</a
+      ><a name="389"
+      >
+</a
+      ><a name="390" class="Keyword"
+      >open</a
+      ><a name="394"
+      > </a
+      ><a name="395" class="Keyword"
+      >import</a
+      ><a name="401"
+      > </a
+      ><a name="402" href="container.fixpoint.html#1" class="Module"
+      >container.fixpoint</a
+      ><a name="420"
+      >
+</a
+      ><a name="421" class="Keyword"
+      >open</a
+      ><a name="425"
+      > </a
+      ><a name="426" class="Keyword"
+      >import</a
+      ><a name="432"
+      > </a
+      ><a name="433" href="container.equality.html#1" class="Module"
+      >container.equality</a
+      ><a name="451"
+      >
+
+</a
+      ><a name="453" class="Keyword"
+      >private</a
+      ><a name="460"
+      >
+  </a
+      ><a name="463" class="Keyword"
+      >module</a
+      ><a name="469"
+      > </a
+      ><a name="470" href="container.w.html#470" class="Module"
+      >Definition</a
+      ><a name="480"
+      > </a
+      ><a name="481" class="Symbol"
+      >{</a
+      ><a name="482" href="container.w.html#482" class="Bound"
+      >li</a
+      ><a name="484"
+      > </a
+      ><a name="485" href="container.w.html#485" class="Bound"
+      >la</a
+      ><a name="487"
+      > </a
+      ><a name="488" href="container.w.html#488" class="Bound"
+      >lb</a
+      ><a name="490" class="Symbol"
+      >}</a
+      ><a name="491"
+      > </a
+      ><a name="492" class="Symbol"
+      >(</a
+      ><a name="493" href="container.w.html#493" class="Bound"
+      >c</a
+      ><a name="494"
+      > </a
+      ><a name="495" class="Symbol"
+      >:</a
+      ><a name="496"
+      > </a
+      ><a name="497" href="container.core.html#127" class="Record"
+      >Container</a
+      ><a name="506"
+      > </a
+      ><a name="507" href="container.w.html#482" class="Bound"
+      >li</a
+      ><a name="509"
+      > </a
+      ><a name="510" href="container.w.html#485" class="Bound"
+      >la</a
+      ><a name="512"
+      > </a
+      ><a name="513" href="container.w.html#488" class="Bound"
+      >lb</a
+      ><a name="515" class="Symbol"
+      >)</a
+      ><a name="516"
+      > </a
+      ><a name="517" class="Keyword"
+      >where</a
+      ><a name="522"
+      >
+    </a
+      ><a name="527" class="Keyword"
+      >open</a
+      ><a name="531"
+      > </a
+      ><a name="532" href="container.core.html#127" class="Module"
+      >Container</a
+      ><a name="541"
+      > </a
+      ><a name="542" href="container.w.html#493" class="Bound"
+      >c</a
+      ><a name="543"
+      >
+
+    </a
+      ><a name="549" class="Comment"
+      >-- definition of indexed W-types using a type family</a
+      ><a name="601"
+      >
+    </a
+      ><a name="606" class="Keyword"
+      >data</a
+      ><a name="610"
+      > </a
+      ><a name="611" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="612"
+      > </a
+      ><a name="613" class="Symbol"
+      >(</a
+      ><a name="614" href="container.w.html#614" class="Bound"
+      >i</a
+      ><a name="615"
+      > </a
+      ><a name="616" class="Symbol"
+      >:</a
+      ><a name="617"
+      > </a
+      ><a name="618" href="container.core.html#226" class="Function"
+      >I</a
+      ><a name="619" class="Symbol"
+      >)</a
+      ><a name="620"
+      > </a
+      ><a name="621" class="Symbol"
+      >:</a
+      ><a name="622"
+      > </a
+      ><a name="623" class="PrimitiveType"
+      >Set</a
+      ><a name="626"
+      > </a
+      ><a name="627" class="Symbol"
+      >(</a
+      ><a name="628" href="container.w.html#485" class="Bound"
+      >la</a
+      ><a name="630"
+      > </a
+      ><a name="631" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="632"
+      > </a
+      ><a name="633" href="container.w.html#488" class="Bound"
+      >lb</a
+      ><a name="635" class="Symbol"
+      >)</a
+      ><a name="636"
+      > </a
+      ><a name="637" class="Keyword"
+      >where</a
+      ><a name="642"
+      >
+      </a
+      ><a name="649" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="652"
+      > </a
+      ><a name="653" class="Symbol"
+      >:</a
+      ><a name="654"
+      > </a
+      ><a name="655" class="Symbol"
+      >(</a
+      ><a name="656" href="container.w.html#656" class="Bound"
+      >a</a
+      ><a name="657"
+      > </a
+      ><a name="658" class="Symbol"
+      >:</a
+      ><a name="659"
+      > </a
+      ><a name="660" href="container.core.html#241" class="Function"
+      >A</a
+      ><a name="661"
+      > </a
+      ><a name="662" href="container.w.html#614" class="Bound"
+      >i</a
+      ><a name="663" class="Symbol"
+      >)</a
+      ><a name="664"
+      > </a
+      ><a name="665" class="Symbol"
+      >&#8594;</a
+      ><a name="666"
+      > </a
+      ><a name="667" class="Symbol"
+      >((</a
+      ><a name="669" href="container.w.html#669" class="Bound"
+      >b</a
+      ><a name="670"
+      > </a
+      ><a name="671" class="Symbol"
+      >:</a
+      ><a name="672"
+      > </a
+      ><a name="673" href="container.core.html#260" class="Function"
+      >B</a
+      ><a name="674"
+      > </a
+      ><a name="675" href="container.w.html#656" class="Bound"
+      >a</a
+      ><a name="676" class="Symbol"
+      >)</a
+      ><a name="677"
+      > </a
+      ><a name="678" class="Symbol"
+      >&#8594;</a
+      ><a name="679"
+      > </a
+      ><a name="680" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="681"
+      > </a
+      ><a name="682" class="Symbol"
+      >(</a
+      ><a name="683" href="container.core.html#291" class="Function"
+      >r</a
+      ><a name="684"
+      > </a
+      ><a name="685" href="container.w.html#669" class="Bound"
+      >b</a
+      ><a name="686" class="Symbol"
+      >))</a
+      ><a name="688"
+      > </a
+      ><a name="689" class="Symbol"
+      >&#8594;</a
+      ><a name="690"
+      > </a
+      ><a name="691" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="692"
+      > </a
+      ><a name="693" href="container.w.html#614" class="Bound"
+      >i</a
+      ><a name="694"
+      >
+
+    </a
+      ><a name="700" class="Comment"
+      >-- initial F-algebra</a
+      ><a name="720"
+      >
+    </a
+      ><a name="725" href="container.w.html#725" class="Function"
+      >inW</a
+      ><a name="728"
+      > </a
+      ><a name="729" class="Symbol"
+      >:</a
+      ><a name="730"
+      > </a
+      ><a name="731" href="container.core.html#375" class="Function"
+      >F</a
+      ><a name="732"
+      > </a
+      ><a name="733" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="734"
+      > </a
+      ><a name="735" href="container.core.html#495" class="Function Operator"
+      >&#8605;</a
+      ><a name="736"
+      > </a
+      ><a name="737" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="738"
+      >
+    </a
+      ><a name="743" href="container.w.html#725" class="Function"
+      >inW</a
+      ><a name="746"
+      > </a
+      ><a name="747" class="Symbol"
+      >(</a
+      ><a name="748" href="container.w.html#748" class="Bound"
+      >a</a
+      ><a name="749"
+      > </a
+      ><a name="750" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="751"
+      > </a
+      ><a name="752" href="container.w.html#752" class="Bound"
+      >f</a
+      ><a name="753" class="Symbol"
+      >)</a
+      ><a name="754"
+      > </a
+      ><a name="755" class="Symbol"
+      >=</a
+      ><a name="756"
+      > </a
+      ><a name="757" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="760"
+      > </a
+      ><a name="761" href="container.w.html#748" class="Bound"
+      >a</a
+      ><a name="762"
+      > </a
+      ><a name="763" href="container.w.html#752" class="Bound"
+      >f</a
+      ><a name="764"
+      >
+
+    </a
+      ><a name="770" class="Keyword"
+      >module</a
+      ><a name="776"
+      > </a
+      ><a name="777" href="container.w.html#777" class="Module"
+      >Elim</a
+      ><a name="781"
+      > </a
+      ><a name="782" class="Symbol"
+      >{</a
+      ><a name="783" href="container.w.html#783" class="Bound"
+      >lx</a
+      ><a name="785" class="Symbol"
+      >}</a
+      ><a name="786"
+      > </a
+      ><a name="787" class="Symbol"
+      >{</a
+      ><a name="788" href="container.w.html#788" class="Bound"
+      >X</a
+      ><a name="789"
+      > </a
+      ><a name="790" class="Symbol"
+      >:</a
+      ><a name="791"
+      > </a
+      ><a name="792" href="container.core.html#226" class="Function"
+      >I</a
+      ><a name="793"
+      > </a
+      ><a name="794" class="Symbol"
+      >&#8594;</a
+      ><a name="795"
+      > </a
+      ><a name="796" class="PrimitiveType"
+      >Set</a
+      ><a name="799"
+      > </a
+      ><a name="800" href="container.w.html#783" class="Bound"
+      >lx</a
+      ><a name="802" class="Symbol"
+      >}</a
+      ><a name="803"
+      >
+                </a
+      ><a name="820" class="Symbol"
+      >(</a
+      ><a name="821" href="container.w.html#821" class="Bound"
+      >&#945;</a
+      ><a name="822"
+      > </a
+      ><a name="823" class="Symbol"
+      >:</a
+      ><a name="824"
+      > </a
+      ><a name="825" href="container.core.html#375" class="Function"
+      >F</a
+      ><a name="826"
+      > </a
+      ><a name="827" href="container.w.html#788" class="Bound"
+      >X</a
+      ><a name="828"
+      > </a
+      ><a name="829" href="container.core.html#495" class="Function Operator"
+      >&#8605;</a
+      ><a name="830"
+      > </a
+      ><a name="831" href="container.w.html#788" class="Bound"
+      >X</a
+      ><a name="832" class="Symbol"
+      >)</a
+      ><a name="833"
+      > </a
+      ><a name="834" class="Keyword"
+      >where</a
+      ><a name="839"
+      >
+      </a
+      ><a name="846" class="Comment"
+      >-- catamorphisms</a
+      ><a name="862"
+      >
+      </a
+      ><a name="869" href="container.w.html#869" class="Function"
+      >fold</a
+      ><a name="873"
+      > </a
+      ><a name="874" class="Symbol"
+      >:</a
+      ><a name="875"
+      > </a
+      ><a name="876" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="877"
+      > </a
+      ><a name="878" href="container.core.html#495" class="Function Operator"
+      >&#8605;</a
+      ><a name="879"
+      > </a
+      ><a name="880" href="container.w.html#788" class="Bound"
+      >X</a
+      ><a name="881"
+      >
+      </a
+      ><a name="888" href="container.w.html#869" class="Function"
+      >fold</a
+      ><a name="892"
+      > </a
+      ><a name="893" class="Symbol"
+      >(</a
+      ><a name="894" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="897"
+      > </a
+      ><a name="898" href="container.w.html#898" class="Bound"
+      >a</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="container.w.html#900" class="Bound"
+      >f</a
+      ><a name="901" class="Symbol"
+      >)</a
+      ><a name="902"
+      > </a
+      ><a name="903" class="Symbol"
+      >=</a
+      ><a name="904"
+      > </a
+      ><a name="905" href="container.w.html#821" class="Bound"
+      >&#945;</a
+      ><a name="906"
+      > </a
+      ><a name="907" class="Symbol"
+      >(</a
+      ><a name="908" href="container.w.html#898" class="Bound"
+      >a</a
+      ><a name="909"
+      > </a
+      ><a name="910" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="911"
+      > </a
+      ><a name="912" class="Symbol"
+      >&#955;</a
+      ><a name="913"
+      > </a
+      ><a name="914" href="container.w.html#914" class="Bound"
+      >b</a
+      ><a name="915"
+      > </a
+      ><a name="916" class="Symbol"
+      >&#8594;</a
+      ><a name="917"
+      > </a
+      ><a name="918" href="container.w.html#869" class="Function"
+      >fold</a
+      ><a name="922"
+      > </a
+      ><a name="923" class="Symbol"
+      >(</a
+      ><a name="924" href="container.w.html#900" class="Bound"
+      >f</a
+      ><a name="925"
+      > </a
+      ><a name="926" href="container.w.html#914" class="Bound"
+      >b</a
+      ><a name="927" class="Symbol"
+      >))</a
+      ><a name="929"
+      >
+
+      </a
+      ><a name="937" class="Comment"
+      >-- computational rule for catamorphisms</a
+      ><a name="976"
+      >
+      </a
+      ><a name="983" class="Comment"
+      >-- this holds definitionally</a
+      ><a name="1011"
+      >
+      </a
+      ><a name="1018" href="container.w.html#1018" class="Function"
+      >fold-&#946;</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" class="Symbol"
+      >:</a
+      ><a name="1026"
+      > </a
+      ><a name="1027" class="Symbol"
+      >&#8704;</a
+      ><a name="1028"
+      > </a
+      ><a name="1029" class="Symbol"
+      >{</a
+      ><a name="1030" href="container.w.html#1030" class="Bound"
+      >i</a
+      ><a name="1031" class="Symbol"
+      >}</a
+      ><a name="1032"
+      > </a
+      ><a name="1033" class="Symbol"
+      >(</a
+      ><a name="1034" href="container.w.html#1034" class="Bound"
+      >x</a
+      ><a name="1035"
+      > </a
+      ><a name="1036" class="Symbol"
+      >:</a
+      ><a name="1037"
+      > </a
+      ><a name="1038" href="container.core.html#375" class="Function"
+      >F</a
+      ><a name="1039"
+      > </a
+      ><a name="1040" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1041"
+      > </a
+      ><a name="1042" href="container.w.html#1030" class="Bound"
+      >i</a
+      ><a name="1043" class="Symbol"
+      >)</a
+      ><a name="1044"
+      > </a
+      ><a name="1045" class="Symbol"
+      >&#8594;</a
+      ><a name="1046"
+      > </a
+      ><a name="1047" href="container.w.html#869" class="Function"
+      >fold</a
+      ><a name="1051"
+      > </a
+      ><a name="1052" class="Symbol"
+      >(</a
+      ><a name="1053" href="container.w.html#725" class="Function"
+      >inW</a
+      ><a name="1056"
+      > </a
+      ><a name="1057" href="container.w.html#1034" class="Bound"
+      >x</a
+      ><a name="1058" class="Symbol"
+      >)</a
+      ><a name="1059"
+      > </a
+      ><a name="1060" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1061"
+      > </a
+      ><a name="1062" href="container.w.html#821" class="Bound"
+      >&#945;</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" class="Symbol"
+      >(</a
+      ><a name="1065" href="container.core.html#618" class="Function"
+      >imap</a
+      ><a name="1069"
+      > </a
+      ><a name="1070" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1071"
+      > </a
+      ><a name="1072" href="container.w.html#869" class="Function"
+      >fold</a
+      ><a name="1076"
+      > </a
+      ><a name="1077" href="container.w.html#1034" class="Bound"
+      >x</a
+      ><a name="1078" class="Symbol"
+      >)</a
+      ><a name="1079"
+      >
+      </a
+      ><a name="1086" href="container.w.html#1018" class="Function"
+      >fold-&#946;</a
+      ><a name="1092"
+      > </a
+      ><a name="1093" href="container.w.html#1093" class="Bound"
+      >x</a
+      ><a name="1094"
+      > </a
+      ><a name="1095" class="Symbol"
+      >=</a
+      ><a name="1096"
+      > </a
+      ><a name="1097" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1101"
+      >
+
+      </a
+      ><a name="1109" class="Comment"
+      >-- &#951;-rule, this is only propositional</a
+      ><a name="1146"
+      >
+      </a
+      ><a name="1153" href="container.w.html#1153" class="Function"
+      >fold-&#951;</a
+      ><a name="1159"
+      > </a
+      ><a name="1160" class="Symbol"
+      >:</a
+      ><a name="1161"
+      > </a
+      ><a name="1162" class="Symbol"
+      >(</a
+      ><a name="1163" href="container.w.html#1163" class="Bound"
+      >h</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" class="Symbol"
+      >:</a
+      ><a name="1166"
+      > </a
+      ><a name="1167" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1168"
+      > </a
+      ><a name="1169" href="container.core.html#495" class="Function Operator"
+      >&#8605;</a
+      ><a name="1170"
+      > </a
+      ><a name="1171" href="container.w.html#788" class="Bound"
+      >X</a
+      ><a name="1172" class="Symbol"
+      >)</a
+      ><a name="1173"
+      >
+             </a
+      ><a name="1187" class="Symbol"
+      >&#8594;</a
+      ><a name="1188"
+      > </a
+      ><a name="1189" class="Symbol"
+      >(&#8704;</a
+      ><a name="1191"
+      > </a
+      ><a name="1192" class="Symbol"
+      >{</a
+      ><a name="1193" href="container.w.html#1193" class="Bound"
+      >i</a
+      ><a name="1194" class="Symbol"
+      >}</a
+      ><a name="1195"
+      > </a
+      ><a name="1196" class="Symbol"
+      >(</a
+      ><a name="1197" href="container.w.html#1197" class="Bound"
+      >x</a
+      ><a name="1198"
+      > </a
+      ><a name="1199" class="Symbol"
+      >:</a
+      ><a name="1200"
+      > </a
+      ><a name="1201" href="container.core.html#375" class="Function"
+      >F</a
+      ><a name="1202"
+      > </a
+      ><a name="1203" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1204"
+      > </a
+      ><a name="1205" href="container.w.html#1193" class="Bound"
+      >i</a
+      ><a name="1206" class="Symbol"
+      >)</a
+      ><a name="1207"
+      > </a
+      ><a name="1208" class="Symbol"
+      >&#8594;</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" href="container.w.html#1163" class="Bound"
+      >h</a
+      ><a name="1211"
+      > </a
+      ><a name="1212" class="Symbol"
+      >(</a
+      ><a name="1213" href="container.w.html#725" class="Function"
+      >inW</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" href="container.w.html#1197" class="Bound"
+      >x</a
+      ><a name="1218" class="Symbol"
+      >)</a
+      ><a name="1219"
+      > </a
+      ><a name="1220" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1221"
+      > </a
+      ><a name="1222" href="container.w.html#821" class="Bound"
+      >&#945;</a
+      ><a name="1223"
+      > </a
+      ><a name="1224" class="Symbol"
+      >(</a
+      ><a name="1225" href="container.core.html#618" class="Function"
+      >imap</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" href="container.w.html#1163" class="Bound"
+      >h</a
+      ><a name="1233"
+      > </a
+      ><a name="1234" href="container.w.html#1197" class="Bound"
+      >x</a
+      ><a name="1235" class="Symbol"
+      >))</a
+      ><a name="1237"
+      >
+             </a
+      ><a name="1251" class="Symbol"
+      >&#8594;</a
+      ><a name="1252"
+      > </a
+      ><a name="1253" class="Symbol"
+      >&#8704;</a
+      ><a name="1254"
+      > </a
+      ><a name="1255" class="Symbol"
+      >{</a
+      ><a name="1256" href="container.w.html#1256" class="Bound"
+      >i</a
+      ><a name="1257" class="Symbol"
+      >}</a
+      ><a name="1258"
+      > </a
+      ><a name="1259" class="Symbol"
+      >(</a
+      ><a name="1260" href="container.w.html#1260" class="Bound"
+      >x</a
+      ><a name="1261"
+      > </a
+      ><a name="1262" class="Symbol"
+      >:</a
+      ><a name="1263"
+      > </a
+      ><a name="1264" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1265"
+      > </a
+      ><a name="1266" href="container.w.html#1256" class="Bound"
+      >i</a
+      ><a name="1267" class="Symbol"
+      >)</a
+      ><a name="1268"
+      > </a
+      ><a name="1269" class="Symbol"
+      >&#8594;</a
+      ><a name="1270"
+      > </a
+      ><a name="1271" href="container.w.html#1163" class="Bound"
+      >h</a
+      ><a name="1272"
+      > </a
+      ><a name="1273" href="container.w.html#1260" class="Bound"
+      >x</a
+      ><a name="1274"
+      > </a
+      ><a name="1275" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1276"
+      > </a
+      ><a name="1277" href="container.w.html#869" class="Function"
+      >fold</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="container.w.html#1260" class="Bound"
+      >x</a
+      ><a name="1283"
+      >
+      </a
+      ><a name="1290" href="container.w.html#1153" class="Function"
+      >fold-&#951;</a
+      ><a name="1296"
+      > </a
+      ><a name="1297" href="container.w.html#1297" class="Bound"
+      >h</a
+      ><a name="1298"
+      > </a
+      ><a name="1299" href="container.w.html#1299" class="Bound"
+      >p</a
+      ><a name="1300"
+      > </a
+      ><a name="1301" class="Symbol"
+      >(</a
+      ><a name="1302" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="1305"
+      > </a
+      ><a name="1306" href="container.w.html#1306" class="Bound"
+      >a</a
+      ><a name="1307"
+      > </a
+      ><a name="1308" href="container.w.html#1308" class="Bound"
+      >f</a
+      ><a name="1309" class="Symbol"
+      >)</a
+      ><a name="1310"
+      > </a
+      ><a name="1311" class="Symbol"
+      >=</a
+      ><a name="1312"
+      > </a
+      ><a name="1313" href="container.w.html#1299" class="Bound"
+      >p</a
+      ><a name="1314"
+      > </a
+      ><a name="1315" class="Symbol"
+      >(</a
+      ><a name="1316" href="container.w.html#1306" class="Bound"
+      >a</a
+      ><a name="1317"
+      > </a
+      ><a name="1318" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1319"
+      > </a
+      ><a name="1320" class="Symbol"
+      >&#955;</a
+      ><a name="1321"
+      > </a
+      ><a name="1322" href="container.w.html#1322" class="Bound"
+      >b</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" class="Symbol"
+      >&#8594;</a
+      ><a name="1325"
+      > </a
+      ><a name="1326" href="container.w.html#1308" class="Bound"
+      >f</a
+      ><a name="1327"
+      > </a
+      ><a name="1328" href="container.w.html#1322" class="Bound"
+      >b</a
+      ><a name="1329" class="Symbol"
+      >)</a
+      ><a name="1330"
+      > </a
+      ><a name="1331" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="1332"
+      > </a
+      ><a name="1333" href="container.w.html#1361" class="Function"
+      >lem</a
+      ><a name="1336"
+      >
+        </a
+      ><a name="1345" class="Keyword"
+      >where</a
+      ><a name="1350"
+      >
+          </a
+      ><a name="1361" href="container.w.html#1361" class="Function"
+      >lem</a
+      ><a name="1364"
+      > </a
+      ><a name="1365" class="Symbol"
+      >:</a
+      ><a name="1366"
+      > </a
+      ><a name="1367" href="container.w.html#821" class="Bound"
+      >&#945;</a
+      ><a name="1368"
+      > </a
+      ><a name="1369" class="Symbol"
+      >(</a
+      ><a name="1370" href="container.w.html#1306" class="Bound"
+      >a</a
+      ><a name="1371"
+      > </a
+      ><a name="1372" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1373"
+      > </a
+      ><a name="1374" class="Symbol"
+      >(&#955;</a
+      ><a name="1376"
+      > </a
+      ><a name="1377" href="container.w.html#1377" class="Bound"
+      >b</a
+      ><a name="1378"
+      > </a
+      ><a name="1379" class="Symbol"
+      >&#8594;</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" href="container.w.html#1297" class="Bound"
+      >h</a
+      ><a name="1382"
+      > </a
+      ><a name="1383" class="Symbol"
+      >(</a
+      ><a name="1384" href="container.w.html#1308" class="Bound"
+      >f</a
+      ><a name="1385"
+      > </a
+      ><a name="1386" href="container.w.html#1377" class="Bound"
+      >b</a
+      ><a name="1387" class="Symbol"
+      >)))</a
+      ><a name="1390"
+      >
+              </a
+      ><a name="1405" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1406"
+      > </a
+      ><a name="1407" href="container.w.html#821" class="Bound"
+      >&#945;</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" class="Symbol"
+      >(</a
+      ><a name="1410" href="container.w.html#1306" class="Bound"
+      >a</a
+      ><a name="1411"
+      > </a
+      ><a name="1412" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1413"
+      > </a
+      ><a name="1414" class="Symbol"
+      >(&#955;</a
+      ><a name="1416"
+      > </a
+      ><a name="1417" href="container.w.html#1417" class="Bound"
+      >b</a
+      ><a name="1418"
+      > </a
+      ><a name="1419" class="Symbol"
+      >&#8594;</a
+      ><a name="1420"
+      > </a
+      ><a name="1421" href="container.w.html#869" class="Function"
+      >fold</a
+      ><a name="1425"
+      > </a
+      ><a name="1426" class="Symbol"
+      >(</a
+      ><a name="1427" href="container.w.html#1308" class="Bound"
+      >f</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" href="container.w.html#1417" class="Bound"
+      >b</a
+      ><a name="1430" class="Symbol"
+      >)))</a
+      ><a name="1433"
+      >
+          </a
+      ><a name="1444" href="container.w.html#1361" class="Function"
+      >lem</a
+      ><a name="1447"
+      > </a
+      ><a name="1448" class="Symbol"
+      >=</a
+      ><a name="1449"
+      > </a
+      ><a name="1450" href="equality.core.html#364" class="Function"
+      >ap</a
+      ><a name="1452"
+      > </a
+      ><a name="1453" class="Symbol"
+      >(&#955;</a
+      ><a name="1455"
+      > </a
+      ><a name="1456" href="container.w.html#1456" class="Bound"
+      >z</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" class="Symbol"
+      >&#8594;</a
+      ><a name="1459"
+      > </a
+      ><a name="1460" href="container.w.html#821" class="Bound"
+      >&#945;</a
+      ><a name="1461"
+      > </a
+      ><a name="1462" class="Symbol"
+      >(</a
+      ><a name="1463" href="container.w.html#1306" class="Bound"
+      >a</a
+      ><a name="1464"
+      > </a
+      ><a name="1465" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1466"
+      > </a
+      ><a name="1467" href="container.w.html#1456" class="Bound"
+      >z</a
+      ><a name="1468" class="Symbol"
+      >))</a
+      ><a name="1470"
+      >
+                     </a
+      ><a name="1492" class="Symbol"
+      >(</a
+      ><a name="1493" href="function.extensionality.proof.html#1824" class="Function"
+      >funext</a
+      ><a name="1499"
+      > </a
+      ><a name="1500" class="Symbol"
+      >&#955;</a
+      ><a name="1501"
+      > </a
+      ><a name="1502" href="container.w.html#1502" class="Bound"
+      >b</a
+      ><a name="1503"
+      > </a
+      ><a name="1504" class="Symbol"
+      >&#8594;</a
+      ><a name="1505"
+      > </a
+      ><a name="1506" href="container.w.html#1153" class="Function"
+      >fold-&#951;</a
+      ><a name="1512"
+      > </a
+      ><a name="1513" href="container.w.html#1297" class="Bound"
+      >h</a
+      ><a name="1514"
+      > </a
+      ><a name="1515" href="container.w.html#1299" class="Bound"
+      >p</a
+      ><a name="1516"
+      > </a
+      ><a name="1517" class="Symbol"
+      >(</a
+      ><a name="1518" href="container.w.html#1308" class="Bound"
+      >f</a
+      ><a name="1519"
+      > </a
+      ><a name="1520" href="container.w.html#1502" class="Bound"
+      >b</a
+      ><a name="1521" class="Symbol"
+      >))</a
+      ><a name="1523"
+      >
+    </a
+      ><a name="1528" class="Keyword"
+      >open</a
+      ><a name="1532"
+      > </a
+      ><a name="1533" href="container.w.html#777" class="Module"
+      >Elim</a
+      ><a name="1537"
+      > </a
+      ><a name="1538" class="Keyword"
+      >public</a
+      ><a name="1544"
+      >
+
+    </a
+      ><a name="1550" href="container.w.html#1550" class="Function"
+      >head</a
+      ><a name="1554"
+      > </a
+      ><a name="1555" class="Symbol"
+      >:</a
+      ><a name="1556"
+      > </a
+      ><a name="1557" class="Symbol"
+      >&#8704;</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" class="Symbol"
+      >{</a
+      ><a name="1560" href="container.w.html#1560" class="Bound"
+      >i</a
+      ><a name="1561" class="Symbol"
+      >}</a
+      ><a name="1562"
+      > </a
+      ><a name="1563" class="Symbol"
+      >&#8594;</a
+      ><a name="1564"
+      > </a
+      ><a name="1565" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1566"
+      > </a
+      ><a name="1567" href="container.w.html#1560" class="Bound"
+      >i</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" class="Symbol"
+      >&#8594;</a
+      ><a name="1570"
+      > </a
+      ><a name="1571" href="container.core.html#241" class="Function"
+      >A</a
+      ><a name="1572"
+      > </a
+      ><a name="1573" href="container.w.html#1560" class="Bound"
+      >i</a
+      ><a name="1574"
+      >
+    </a
+      ><a name="1579" href="container.w.html#1550" class="Function"
+      >head</a
+      ><a name="1583"
+      > </a
+      ><a name="1584" class="Symbol"
+      >(</a
+      ><a name="1585" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="1588"
+      > </a
+      ><a name="1589" href="container.w.html#1589" class="Bound"
+      >a</a
+      ><a name="1590"
+      > </a
+      ><a name="1591" href="container.w.html#1591" class="Bound"
+      >f</a
+      ><a name="1592" class="Symbol"
+      >)</a
+      ><a name="1593"
+      > </a
+      ><a name="1594" class="Symbol"
+      >=</a
+      ><a name="1595"
+      > </a
+      ><a name="1596" href="container.w.html#1589" class="Bound"
+      >a</a
+      ><a name="1597"
+      >
+
+    </a
+      ><a name="1603" href="container.w.html#1603" class="Function"
+      >tail</a
+      ><a name="1607"
+      > </a
+      ><a name="1608" class="Symbol"
+      >:</a
+      ><a name="1609"
+      > </a
+      ><a name="1610" class="Symbol"
+      >&#8704;</a
+      ><a name="1611"
+      > </a
+      ><a name="1612" class="Symbol"
+      >{</a
+      ><a name="1613" href="container.w.html#1613" class="Bound"
+      >i</a
+      ><a name="1614" class="Symbol"
+      >}</a
+      ><a name="1615"
+      > </a
+      ><a name="1616" class="Symbol"
+      >(</a
+      ><a name="1617" href="container.w.html#1617" class="Bound"
+      >x</a
+      ><a name="1618"
+      > </a
+      ><a name="1619" class="Symbol"
+      >:</a
+      ><a name="1620"
+      > </a
+      ><a name="1621" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1622"
+      > </a
+      ><a name="1623" href="container.w.html#1613" class="Bound"
+      >i</a
+      ><a name="1624" class="Symbol"
+      >)(</a
+      ><a name="1626" href="container.w.html#1626" class="Bound"
+      >b</a
+      ><a name="1627"
+      > </a
+      ><a name="1628" class="Symbol"
+      >:</a
+      ><a name="1629"
+      > </a
+      ><a name="1630" href="container.core.html#260" class="Function"
+      >B</a
+      ><a name="1631"
+      > </a
+      ><a name="1632" class="Symbol"
+      >(</a
+      ><a name="1633" href="container.w.html#1550" class="Function"
+      >head</a
+      ><a name="1637"
+      > </a
+      ><a name="1638" href="container.w.html#1617" class="Bound"
+      >x</a
+      ><a name="1639" class="Symbol"
+      >))</a
+      ><a name="1641"
+      > </a
+      ><a name="1642" class="Symbol"
+      >&#8594;</a
+      ><a name="1643"
+      > </a
+      ><a name="1644" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1645"
+      > </a
+      ><a name="1646" class="Symbol"
+      >(</a
+      ><a name="1647" href="container.core.html#291" class="Function"
+      >r</a
+      ><a name="1648"
+      > </a
+      ><a name="1649" href="container.w.html#1626" class="Bound"
+      >b</a
+      ><a name="1650" class="Symbol"
+      >)</a
+      ><a name="1651"
+      >
+    </a
+      ><a name="1656" href="container.w.html#1603" class="Function"
+      >tail</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" class="Symbol"
+      >(</a
+      ><a name="1662" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="1665"
+      > </a
+      ><a name="1666" href="container.w.html#1666" class="Bound"
+      >a</a
+      ><a name="1667"
+      > </a
+      ><a name="1668" href="container.w.html#1668" class="Bound"
+      >f</a
+      ><a name="1669" class="Symbol"
+      >)</a
+      ><a name="1670"
+      > </a
+      ><a name="1671" class="Symbol"
+      >=</a
+      ><a name="1672"
+      > </a
+      ><a name="1673" href="container.w.html#1668" class="Bound"
+      >f</a
+      ><a name="1674"
+      >
+
+    </a
+      ><a name="1680" href="container.w.html#1680" class="Function"
+      >fixpoint</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" class="Symbol"
+      >:</a
+      ><a name="1690"
+      > </a
+      ><a name="1691" class="Symbol"
+      >(</a
+      ><a name="1692" href="container.w.html#1692" class="Bound"
+      >i</a
+      ><a name="1693"
+      > </a
+      ><a name="1694" class="Symbol"
+      >:</a
+      ><a name="1695"
+      > </a
+      ><a name="1696" href="container.core.html#226" class="Function"
+      >I</a
+      ><a name="1697" class="Symbol"
+      >)</a
+      ><a name="1698"
+      > </a
+      ><a name="1699" class="Symbol"
+      >&#8594;</a
+      ><a name="1700"
+      > </a
+      ><a name="1701" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1702"
+      > </a
+      ><a name="1703" href="container.w.html#1692" class="Bound"
+      >i</a
+      ><a name="1704"
+      > </a
+      ><a name="1705" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1706"
+      > </a
+      ><a name="1707" href="container.core.html#375" class="Function"
+      >F</a
+      ><a name="1708"
+      > </a
+      ><a name="1709" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1710"
+      > </a
+      ><a name="1711" href="container.w.html#1692" class="Bound"
+      >i</a
+      ><a name="1712"
+      >
+    </a
+      ><a name="1717" href="container.w.html#1680" class="Function"
+      >fixpoint</a
+      ><a name="1725"
+      > </a
+      ><a name="1726" class="Symbol"
+      >_</a
+      ><a name="1727"
+      > </a
+      ><a name="1728" class="Symbol"
+      >=</a
+      ><a name="1729"
+      > </a
+      ><a name="1730" href="function.isomorphism.core.html#421" class="InductiveConstructor"
+      >iso</a
+      ><a name="1733"
+      > </a
+      ><a name="1734" href="container.w.html#1762" class="Function"
+      >f</a
+      ><a name="1735"
+      > </a
+      ><a name="1736" href="container.w.html#1825" class="Function"
+      >g</a
+      ><a name="1737"
+      > </a
+      ><a name="1738" href="container.w.html#1888" class="Function"
+      >H</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" href="container.w.html#1959" class="Function"
+      >K</a
+      ><a name="1741"
+      >
+      </a
+      ><a name="1748" class="Keyword"
+      >where</a
+      ><a name="1753"
+      >
+        </a
+      ><a name="1762" href="container.w.html#1762" class="Function"
+      >f</a
+      ><a name="1763"
+      > </a
+      ><a name="1764" class="Symbol"
+      >:</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" class="Symbol"
+      >{</a
+      ><a name="1767" href="container.w.html#1767" class="Bound"
+      >i</a
+      ><a name="1768"
+      > </a
+      ><a name="1769" class="Symbol"
+      >:</a
+      ><a name="1770"
+      > </a
+      ><a name="1771" href="container.core.html#226" class="Function"
+      >I</a
+      ><a name="1772" class="Symbol"
+      >}</a
+      ><a name="1773"
+      > </a
+      ><a name="1774" class="Symbol"
+      >&#8594;</a
+      ><a name="1775"
+      > </a
+      ><a name="1776" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1777"
+      > </a
+      ><a name="1778" href="container.w.html#1767" class="Bound"
+      >i</a
+      ><a name="1779"
+      > </a
+      ><a name="1780" class="Symbol"
+      >&#8594;</a
+      ><a name="1781"
+      > </a
+      ><a name="1782" href="container.core.html#375" class="Function"
+      >F</a
+      ><a name="1783"
+      > </a
+      ><a name="1784" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" href="container.w.html#1767" class="Bound"
+      >i</a
+      ><a name="1787"
+      >
+        </a
+      ><a name="1796" href="container.w.html#1762" class="Function"
+      >f</a
+      ><a name="1797"
+      > </a
+      ><a name="1798" class="Symbol"
+      >(</a
+      ><a name="1799" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="1802"
+      > </a
+      ><a name="1803" href="container.w.html#1803" class="Bound"
+      >a</a
+      ><a name="1804"
+      > </a
+      ><a name="1805" href="container.w.html#1805" class="Bound"
+      >f</a
+      ><a name="1806" class="Symbol"
+      >)</a
+      ><a name="1807"
+      > </a
+      ><a name="1808" class="Symbol"
+      >=</a
+      ><a name="1809"
+      > </a
+      ><a name="1810" href="container.w.html#1803" class="Bound"
+      >a</a
+      ><a name="1811"
+      > </a
+      ><a name="1812" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1813"
+      > </a
+      ><a name="1814" href="container.w.html#1805" class="Bound"
+      >f</a
+      ><a name="1815"
+      >
+
+        </a
+      ><a name="1825" href="container.w.html#1825" class="Function"
+      >g</a
+      ><a name="1826"
+      > </a
+      ><a name="1827" class="Symbol"
+      >:</a
+      ><a name="1828"
+      > </a
+      ><a name="1829" class="Symbol"
+      >{</a
+      ><a name="1830" href="container.w.html#1830" class="Bound"
+      >i</a
+      ><a name="1831"
+      > </a
+      ><a name="1832" class="Symbol"
+      >:</a
+      ><a name="1833"
+      > </a
+      ><a name="1834" href="container.core.html#226" class="Function"
+      >I</a
+      ><a name="1835" class="Symbol"
+      >}</a
+      ><a name="1836"
+      > </a
+      ><a name="1837" class="Symbol"
+      >&#8594;</a
+      ><a name="1838"
+      > </a
+      ><a name="1839" href="container.core.html#375" class="Function"
+      >F</a
+      ><a name="1840"
+      > </a
+      ><a name="1841" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1842"
+      > </a
+      ><a name="1843" href="container.w.html#1830" class="Bound"
+      >i</a
+      ><a name="1844"
+      > </a
+      ><a name="1845" class="Symbol"
+      >&#8594;</a
+      ><a name="1846"
+      > </a
+      ><a name="1847" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1848"
+      > </a
+      ><a name="1849" href="container.w.html#1830" class="Bound"
+      >i</a
+      ><a name="1850"
+      >
+        </a
+      ><a name="1859" href="container.w.html#1825" class="Function"
+      >g</a
+      ><a name="1860"
+      > </a
+      ><a name="1861" class="Symbol"
+      >(</a
+      ><a name="1862" href="container.w.html#1862" class="Bound"
+      >a</a
+      ><a name="1863"
+      > </a
+      ><a name="1864" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1865"
+      > </a
+      ><a name="1866" href="container.w.html#1866" class="Bound"
+      >f</a
+      ><a name="1867" class="Symbol"
+      >)</a
+      ><a name="1868"
+      > </a
+      ><a name="1869" class="Symbol"
+      >=</a
+      ><a name="1870"
+      > </a
+      ><a name="1871" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="1874"
+      > </a
+      ><a name="1875" href="container.w.html#1862" class="Bound"
+      >a</a
+      ><a name="1876"
+      > </a
+      ><a name="1877" href="container.w.html#1866" class="Bound"
+      >f</a
+      ><a name="1878"
+      >
+
+        </a
+      ><a name="1888" href="container.w.html#1888" class="Function"
+      >H</a
+      ><a name="1889"
+      > </a
+      ><a name="1890" class="Symbol"
+      >:</a
+      ><a name="1891"
+      > </a
+      ><a name="1892" class="Symbol"
+      >{</a
+      ><a name="1893" href="container.w.html#1893" class="Bound"
+      >i</a
+      ><a name="1894"
+      > </a
+      ><a name="1895" class="Symbol"
+      >:</a
+      ><a name="1896"
+      > </a
+      ><a name="1897" href="container.core.html#226" class="Function"
+      >I</a
+      ><a name="1898" class="Symbol"
+      >}(</a
+      ><a name="1900" href="container.w.html#1900" class="Bound"
+      >w</a
+      ><a name="1901"
+      > </a
+      ><a name="1902" class="Symbol"
+      >:</a
+      ><a name="1903"
+      > </a
+      ><a name="1904" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1905"
+      > </a
+      ><a name="1906" href="container.w.html#1893" class="Bound"
+      >i</a
+      ><a name="1907" class="Symbol"
+      >)</a
+      ><a name="1908"
+      > </a
+      ><a name="1909" class="Symbol"
+      >&#8594;</a
+      ><a name="1910"
+      > </a
+      ><a name="1911" href="container.w.html#1825" class="Function"
+      >g</a
+      ><a name="1912"
+      > </a
+      ><a name="1913" class="Symbol"
+      >(</a
+      ><a name="1914" href="container.w.html#1762" class="Function"
+      >f</a
+      ><a name="1915"
+      > </a
+      ><a name="1916" href="container.w.html#1900" class="Bound"
+      >w</a
+      ><a name="1917" class="Symbol"
+      >)</a
+      ><a name="1918"
+      > </a
+      ><a name="1919" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1920"
+      > </a
+      ><a name="1921" href="container.w.html#1900" class="Bound"
+      >w</a
+      ><a name="1922"
+      >
+        </a
+      ><a name="1931" href="container.w.html#1888" class="Function"
+      >H</a
+      ><a name="1932"
+      > </a
+      ><a name="1933" class="Symbol"
+      >(</a
+      ><a name="1934" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="1937"
+      > </a
+      ><a name="1938" href="container.w.html#1938" class="Bound"
+      >a</a
+      ><a name="1939"
+      > </a
+      ><a name="1940" href="container.w.html#1940" class="Bound"
+      >f</a
+      ><a name="1941" class="Symbol"
+      >)</a
+      ><a name="1942"
+      > </a
+      ><a name="1943" class="Symbol"
+      >=</a
+      ><a name="1944"
+      > </a
+      ><a name="1945" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1949"
+      >
+
+        </a
+      ><a name="1959" href="container.w.html#1959" class="Function"
+      >K</a
+      ><a name="1960"
+      > </a
+      ><a name="1961" class="Symbol"
+      >:</a
+      ><a name="1962"
+      > </a
+      ><a name="1963" class="Symbol"
+      >{</a
+      ><a name="1964" href="container.w.html#1964" class="Bound"
+      >i</a
+      ><a name="1965"
+      > </a
+      ><a name="1966" class="Symbol"
+      >:</a
+      ><a name="1967"
+      > </a
+      ><a name="1968" href="container.core.html#226" class="Function"
+      >I</a
+      ><a name="1969" class="Symbol"
+      >}(</a
+      ><a name="1971" href="container.w.html#1971" class="Bound"
+      >w</a
+      ><a name="1972"
+      > </a
+      ><a name="1973" class="Symbol"
+      >:</a
+      ><a name="1974"
+      > </a
+      ><a name="1975" href="container.core.html#375" class="Function"
+      >F</a
+      ><a name="1976"
+      > </a
+      ><a name="1977" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="1978"
+      > </a
+      ><a name="1979" href="container.w.html#1964" class="Bound"
+      >i</a
+      ><a name="1980" class="Symbol"
+      >)</a
+      ><a name="1981"
+      > </a
+      ><a name="1982" class="Symbol"
+      >&#8594;</a
+      ><a name="1983"
+      > </a
+      ><a name="1984" href="container.w.html#1762" class="Function"
+      >f</a
+      ><a name="1985"
+      > </a
+      ><a name="1986" class="Symbol"
+      >(</a
+      ><a name="1987" href="container.w.html#1825" class="Function"
+      >g</a
+      ><a name="1988"
+      > </a
+      ><a name="1989" href="container.w.html#1971" class="Bound"
+      >w</a
+      ><a name="1990" class="Symbol"
+      >)</a
+      ><a name="1991"
+      > </a
+      ><a name="1992" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1993"
+      > </a
+      ><a name="1994" href="container.w.html#1971" class="Bound"
+      >w</a
+      ><a name="1995"
+      >
+        </a
+      ><a name="2004" href="container.w.html#1959" class="Function"
+      >K</a
+      ><a name="2005"
+      > </a
+      ><a name="2006" class="Symbol"
+      >(</a
+      ><a name="2007" href="container.w.html#2007" class="Bound"
+      >a</a
+      ><a name="2008"
+      > </a
+      ><a name="2009" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2010"
+      > </a
+      ><a name="2011" href="container.w.html#2011" class="Bound"
+      >f</a
+      ><a name="2012" class="Symbol"
+      >)</a
+      ><a name="2013"
+      > </a
+      ><a name="2014" class="Symbol"
+      >=</a
+      ><a name="2015"
+      > </a
+      ><a name="2016" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2020"
+      >
+
+</a
+      ><a name="2022" class="Keyword"
+      >private</a
+      ><a name="2029"
+      >
+  </a
+      ><a name="2032" class="Keyword"
+      >module</a
+      ><a name="2038"
+      > </a
+      ><a name="2039" href="container.w.html#2039" class="Module"
+      >Properties</a
+      ><a name="2049"
+      > </a
+      ><a name="2050" class="Symbol"
+      >{</a
+      ><a name="2051" href="container.w.html#2051" class="Bound"
+      >li</a
+      ><a name="2053"
+      > </a
+      ><a name="2054" href="container.w.html#2054" class="Bound"
+      >la</a
+      ><a name="2056"
+      > </a
+      ><a name="2057" href="container.w.html#2057" class="Bound"
+      >lb</a
+      ><a name="2059" class="Symbol"
+      >}{</a
+      ><a name="2061" href="container.w.html#2061" class="Bound"
+      >c</a
+      ><a name="2062"
+      > </a
+      ><a name="2063" class="Symbol"
+      >:</a
+      ><a name="2064"
+      > </a
+      ><a name="2065" href="container.core.html#127" class="Record"
+      >Container</a
+      ><a name="2074"
+      > </a
+      ><a name="2075" href="container.w.html#2051" class="Bound"
+      >li</a
+      ><a name="2077"
+      > </a
+      ><a name="2078" href="container.w.html#2054" class="Bound"
+      >la</a
+      ><a name="2080"
+      > </a
+      ><a name="2081" href="container.w.html#2057" class="Bound"
+      >lb</a
+      ><a name="2083" class="Symbol"
+      >}</a
+      ><a name="2084"
+      > </a
+      ><a name="2085" class="Keyword"
+      >where</a
+      ><a name="2090"
+      >
+    </a
+      ><a name="2095" class="Keyword"
+      >open</a
+      ><a name="2099"
+      > </a
+      ><a name="2100" href="container.core.html#127" class="Module"
+      >Container</a
+      ><a name="2109"
+      > </a
+      ><a name="2110" href="container.w.html#2061" class="Bound"
+      >c</a
+      ><a name="2111"
+      >
+    </a
+      ><a name="2116" class="Keyword"
+      >open</a
+      ><a name="2120"
+      > </a
+      ><a name="2121" href="container.w.html#470" class="Module"
+      >Definition</a
+      ><a name="2131"
+      > </a
+      ><a name="2132" href="container.w.html#2061" class="Bound"
+      >c</a
+      ><a name="2133"
+      >
+
+    </a
+      ><a name="2139" class="Keyword"
+      >open</a
+      ><a name="2143"
+      > </a
+      ><a name="2144" href="container.equality.html#258" class="Module"
+      >Equality</a
+      ><a name="2152"
+      > </a
+      ><a name="2153" href="container.w.html#2061" class="Bound"
+      >c</a
+      ><a name="2154"
+      > </a
+      ><a name="2155" class="Symbol"
+      >(</a
+      ><a name="2156" href="container.fixpoint.html#365" class="InductiveConstructor"
+      >fix</a
+      ><a name="2159"
+      > </a
+      ><a name="2160" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="2161"
+      > </a
+      ><a name="2162" href="container.w.html#1680" class="Function"
+      >fixpoint</a
+      ><a name="2170" class="Symbol"
+      >)</a
+      ><a name="2171"
+      >
+    </a
+      ><a name="2176" class="Keyword"
+      >open</a
+      ><a name="2180"
+      > </a
+      ><a name="2181" href="container.core.html#127" class="Module"
+      >Container</a
+      ><a name="2190"
+      > </a
+      ><a name="2191" href="container.equality.html#1175" class="Function"
+      >equality</a
+      ><a name="2199"
+      >
+      </a
+      ><a name="2206" class="Keyword"
+      >using</a
+      ><a name="2211"
+      > </a
+      ><a name="2212" class="Symbol"
+      >()</a
+      ><a name="2214"
+      >
+      </a
+      ><a name="2221" class="Keyword"
+      >renaming</a
+      ><a name="2229"
+      > </a
+      ><a name="2230" class="Symbol"
+      >(</a
+      ><a name="2231"
+      >F </a
+      ><a name="2233" class="Symbol"
+      >to</a
+      ><a name="2235"
+      > F-&#8801;'</a
+      ><a name="2240" class="Symbol"
+      >)</a
+      ><a name="2241"
+      >
+    </a
+      ><a name="2246" class="Keyword"
+      >open</a
+      ><a name="2250"
+      > </a
+      ><a name="2251" href="container.w.html#470" class="Module"
+      >Definition</a
+      ><a name="2261"
+      > </a
+      ><a name="2262" href="container.equality.html#1175" class="Function"
+      >equality</a
+      ><a name="2270"
+      >
+      </a
+      ><a name="2277" class="Keyword"
+      >using</a
+      ><a name="2282"
+      > </a
+      ><a name="2283" class="Symbol"
+      >()</a
+      ><a name="2285"
+      >
+      </a
+      ><a name="2292" class="Keyword"
+      >renaming</a
+      ><a name="2300"
+      > </a
+      ><a name="2301" class="Symbol"
+      >(</a
+      ><a name="2302"
+      > W </a
+      ><a name="2305" class="Symbol"
+      >to</a
+      ><a name="2307"
+      > W-&#8801;
+               </a
+      ><a name="2327" class="Symbol"
+      >;</a
+      ><a name="2328"
+      > fixpoint </a
+      ><a name="2338" class="Symbol"
+      >to</a
+      ><a name="2340"
+      > fixpoint-&#8801; </a
+      ><a name="2352" class="Symbol"
+      >)</a
+      ><a name="2353"
+      >
+
+    </a
+      ><a name="2359" href="container.w.html#2359" class="Function"
+      >F-&#8801;</a
+      ><a name="2362"
+      > </a
+      ><a name="2363" class="Symbol"
+      >:</a
+      ><a name="2364"
+      > </a
+      ><a name="2365" class="Symbol"
+      >&#8704;</a
+      ><a name="2366"
+      > </a
+      ><a name="2367" class="Symbol"
+      >{</a
+      ><a name="2368" href="container.w.html#2368" class="Bound"
+      >lx</a
+      ><a name="2370" class="Symbol"
+      >}</a
+      ><a name="2371"
+      >
+        </a
+      ><a name="2380" class="Symbol"
+      >&#8594;</a
+      ><a name="2381"
+      > </a
+      ><a name="2382" class="Symbol"
+      >(&#8704;</a
+      ><a name="2384"
+      > </a
+      ><a name="2385" class="Symbol"
+      >{</a
+      ><a name="2386" href="container.w.html#2386" class="Bound"
+      >i</a
+      ><a name="2387" class="Symbol"
+      >}</a
+      ><a name="2388"
+      > </a
+      ><a name="2389" class="Symbol"
+      >&#8594;</a
+      ><a name="2390"
+      > </a
+      ><a name="2391" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="2392"
+      > </a
+      ><a name="2393" href="container.w.html#2386" class="Bound"
+      >i</a
+      ><a name="2394"
+      > </a
+      ><a name="2395" class="Symbol"
+      >&#8594;</a
+      ><a name="2396"
+      > </a
+      ><a name="2397" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="2398"
+      > </a
+      ><a name="2399" href="container.w.html#2386" class="Bound"
+      >i</a
+      ><a name="2400"
+      > </a
+      ><a name="2401" class="Symbol"
+      >&#8594;</a
+      ><a name="2402"
+      > </a
+      ><a name="2403" class="PrimitiveType"
+      >Set</a
+      ><a name="2406"
+      > </a
+      ><a name="2407" href="container.w.html#2368" class="Bound"
+      >lx</a
+      ><a name="2409" class="Symbol"
+      >)</a
+      ><a name="2410"
+      >
+        </a
+      ><a name="2419" class="Symbol"
+      >&#8594;</a
+      ><a name="2420"
+      > </a
+      ><a name="2421" class="Symbol"
+      >(&#8704;</a
+      ><a name="2423"
+      > </a
+      ><a name="2424" class="Symbol"
+      >{</a
+      ><a name="2425" href="container.w.html#2425" class="Bound"
+      >i</a
+      ><a name="2426" class="Symbol"
+      >}</a
+      ><a name="2427"
+      > </a
+      ><a name="2428" class="Symbol"
+      >&#8594;</a
+      ><a name="2429"
+      > </a
+      ><a name="2430" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="2431"
+      > </a
+      ><a name="2432" href="container.w.html#2425" class="Bound"
+      >i</a
+      ><a name="2433"
+      > </a
+      ><a name="2434" class="Symbol"
+      >&#8594;</a
+      ><a name="2435"
+      > </a
+      ><a name="2436" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="2437"
+      > </a
+      ><a name="2438" href="container.w.html#2425" class="Bound"
+      >i</a
+      ><a name="2439"
+      > </a
+      ><a name="2440" class="Symbol"
+      >&#8594;</a
+      ><a name="2441"
+      > </a
+      ><a name="2442" class="PrimitiveType"
+      >Set</a
+      ><a name="2445"
+      > </a
+      ><a name="2446" class="Symbol"
+      >_)</a
+      ><a name="2448"
+      >
+    </a
+      ><a name="2453" href="container.w.html#2359" class="Function"
+      >F-&#8801;</a
+      ><a name="2456"
+      > </a
+      ><a name="2457" href="container.w.html#2457" class="Bound"
+      >X</a
+      ><a name="2458"
+      >  </a
+      ><a name="2460" href="container.w.html#2460" class="Bound"
+      >u</a
+      ><a name="2461"
+      > </a
+      ><a name="2462" href="container.w.html#2462" class="Bound"
+      >v</a
+      ><a name="2463"
+      > </a
+      ><a name="2464" class="Symbol"
+      >=</a
+      ><a name="2465"
+      > </a
+      ><a name="2466" href="container.core.html#375" class="Function"
+      >F-&#8801;'</a
+      ><a name="2470"
+      > </a
+      ><a name="2471" class="Symbol"
+      >(&#955;</a
+      ><a name="2473"
+      > </a
+      ><a name="2474" class="Symbol"
+      >{(</a
+      ><a name="2476" href="container.w.html#2476" class="Bound"
+      >i</a
+      ><a name="2477"
+      > </a
+      ><a name="2478" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2479"
+      > </a
+      ><a name="2480" href="container.w.html#2480" class="Bound"
+      >u</a
+      ><a name="2481"
+      > </a
+      ><a name="2482" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2483"
+      > </a
+      ><a name="2484" href="container.w.html#2484" class="Bound"
+      >v</a
+      ><a name="2485" class="Symbol"
+      >)</a
+      ><a name="2486"
+      > </a
+      ><a name="2487" class="Symbol"
+      >&#8594;</a
+      ><a name="2488"
+      > </a
+      ><a name="2489" href="container.w.html#2457" class="Bound"
+      >X</a
+      ><a name="2490"
+      > </a
+      ><a name="2491" class="Symbol"
+      >{</a
+      ><a name="2492" href="container.w.html#2476" class="Bound"
+      >i</a
+      ><a name="2493" class="Symbol"
+      >}</a
+      ><a name="2494"
+      > </a
+      ><a name="2495" href="container.w.html#2480" class="Bound"
+      >u</a
+      ><a name="2496"
+      > </a
+      ><a name="2497" href="container.w.html#2484" class="Bound"
+      >v</a
+      ><a name="2498" class="Symbol"
+      >})</a
+      ><a name="2500"
+      > </a
+      ><a name="2501" class="Symbol"
+      >(_</a
+      ><a name="2503"
+      > </a
+      ><a name="2504" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2505"
+      > </a
+      ><a name="2506" href="container.w.html#2460" class="Bound"
+      >u</a
+      ><a name="2507"
+      > </a
+      ><a name="2508" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2509"
+      > </a
+      ><a name="2510" href="container.w.html#2462" class="Bound"
+      >v</a
+      ><a name="2511" class="Symbol"
+      >)</a
+      ><a name="2512"
+      >
+
+    </a
+      ><a name="2518" href="container.w.html#2518" class="Function Operator"
+      >_&#8801;W_</a
+      ><a name="2522"
+      > </a
+      ><a name="2523" class="Symbol"
+      >:</a
+      ><a name="2524"
+      > </a
+      ><a name="2525" class="Symbol"
+      >&#8704;</a
+      ><a name="2526"
+      > </a
+      ><a name="2527" class="Symbol"
+      >{</a
+      ><a name="2528" href="container.w.html#2528" class="Bound"
+      >i</a
+      ><a name="2529" class="Symbol"
+      >}</a
+      ><a name="2530"
+      > </a
+      ><a name="2531" class="Symbol"
+      >&#8594;</a
+      ><a name="2532"
+      > </a
+      ><a name="2533" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="2534"
+      > </a
+      ><a name="2535" href="container.w.html#2528" class="Bound"
+      >i</a
+      ><a name="2536"
+      > </a
+      ><a name="2537" class="Symbol"
+      >&#8594;</a
+      ><a name="2538"
+      > </a
+      ><a name="2539" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="2540"
+      > </a
+      ><a name="2541" href="container.w.html#2528" class="Bound"
+      >i</a
+      ><a name="2542"
+      > </a
+      ><a name="2543" class="Symbol"
+      >&#8594;</a
+      ><a name="2544"
+      > </a
+      ><a name="2545" class="PrimitiveType"
+      >Set</a
+      ><a name="2548"
+      > </a
+      ><a name="2549" class="Symbol"
+      >_</a
+      ><a name="2550"
+      >
+    </a
+      ><a name="2555" href="container.w.html#2518" class="Function Operator"
+      >_&#8801;W_</a
+      ><a name="2559"
+      > </a
+      ><a name="2560" class="Symbol"
+      >{</a
+      ><a name="2561" href="container.w.html#2561" class="Bound"
+      >i</a
+      ><a name="2562" class="Symbol"
+      >}</a
+      ><a name="2563"
+      > </a
+      ><a name="2564" href="container.w.html#2564" class="Bound"
+      >u</a
+      ><a name="2565"
+      > </a
+      ><a name="2566" href="container.w.html#2566" class="Bound"
+      >v</a
+      ><a name="2567"
+      > </a
+      ><a name="2568" class="Symbol"
+      >=</a
+      ><a name="2569"
+      > </a
+      ><a name="2570" href="container.w.html#611" class="Datatype"
+      >W-&#8801;</a
+      ><a name="2573"
+      > </a
+      ><a name="2574" class="Symbol"
+      >(</a
+      ><a name="2575" href="container.w.html#2561" class="Bound"
+      >i</a
+      ><a name="2576"
+      > </a
+      ><a name="2577" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2578"
+      > </a
+      ><a name="2579" href="container.w.html#2564" class="Bound"
+      >u</a
+      ><a name="2580"
+      > </a
+      ><a name="2581" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2582"
+      > </a
+      ><a name="2583" href="container.w.html#2566" class="Bound"
+      >v</a
+      ><a name="2584" class="Symbol"
+      >)</a
+      ><a name="2585"
+      >
+
+    </a
+      ><a name="2591" href="container.w.html#2591" class="Function"
+      >fixpoint-W</a
+      ><a name="2601"
+      > </a
+      ><a name="2602" class="Symbol"
+      >:</a
+      ><a name="2603"
+      > </a
+      ><a name="2604" class="Symbol"
+      >&#8704;</a
+      ><a name="2605"
+      > </a
+      ><a name="2606" class="Symbol"
+      >{</a
+      ><a name="2607" href="container.w.html#2607" class="Bound"
+      >i</a
+      ><a name="2608" class="Symbol"
+      >}{</a
+      ><a name="2610" href="container.w.html#2610" class="Bound"
+      >u</a
+      ><a name="2611"
+      > </a
+      ><a name="2612" href="container.w.html#2612" class="Bound"
+      >v</a
+      ><a name="2613"
+      > </a
+      ><a name="2614" class="Symbol"
+      >:</a
+      ><a name="2615"
+      > </a
+      ><a name="2616" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="2617"
+      > </a
+      ><a name="2618" href="container.w.html#2607" class="Bound"
+      >i</a
+      ><a name="2619" class="Symbol"
+      >}</a
+      ><a name="2620"
+      > </a
+      ><a name="2621" class="Symbol"
+      >&#8594;</a
+      ><a name="2622"
+      > </a
+      ><a name="2623" class="Symbol"
+      >(</a
+      ><a name="2624" href="container.w.html#2610" class="Bound"
+      >u</a
+      ><a name="2625"
+      > </a
+      ><a name="2626" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2627"
+      > </a
+      ><a name="2628" href="container.w.html#2612" class="Bound"
+      >v</a
+      ><a name="2629" class="Symbol"
+      >)</a
+      ><a name="2630"
+      > </a
+      ><a name="2631" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="2632"
+      > </a
+      ><a name="2633" href="container.w.html#2359" class="Function"
+      >F-&#8801;</a
+      ><a name="2636"
+      > </a
+      ><a name="2637" href="equality.core.html#145" class="Datatype Operator"
+      >_&#8801;_</a
+      ><a name="2640"
+      > </a
+      ><a name="2641" href="container.w.html#2610" class="Bound"
+      >u</a
+      ><a name="2642"
+      > </a
+      ><a name="2643" href="container.w.html#2612" class="Bound"
+      >v</a
+      ><a name="2644"
+      >
+    </a
+      ><a name="2649" href="container.w.html#2591" class="Function"
+      >fixpoint-W</a
+      ><a name="2659"
+      > </a
+      ><a name="2660" class="Symbol"
+      >{</a
+      ><a name="2661" href="container.w.html#2661" class="Bound"
+      >i</a
+      ><a name="2662" class="Symbol"
+      >}{</a
+      ><a name="2664" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="2667"
+      > </a
+      ><a name="2668" href="container.w.html#2668" class="Bound"
+      >a</a
+      ><a name="2669"
+      > </a
+      ><a name="2670" href="container.w.html#2670" class="Bound"
+      >f</a
+      ><a name="2671" class="Symbol"
+      >}{</a
+      ><a name="2673" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="2676"
+      > </a
+      ><a name="2677" href="container.w.html#2677" class="Bound"
+      >a'</a
+      ><a name="2679"
+      > </a
+      ><a name="2680" href="container.w.html#2680" class="Bound"
+      >f'</a
+      ><a name="2682" class="Symbol"
+      >}</a
+      ><a name="2683"
+      > </a
+      ><a name="2684" class="Symbol"
+      >=</a
+      ><a name="2685"
+      > </a
+      ><a name="2686" href="function.isomorphism.core.html#1890" class="Function Operator"
+      >begin</a
+      ><a name="2691"
+      >
+        </a
+      ><a name="2700" class="Symbol"
+      >(</a
+      ><a name="2701" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="2704"
+      > </a
+      ><a name="2705" href="container.w.html#2668" class="Bound"
+      >a</a
+      ><a name="2706"
+      > </a
+      ><a name="2707" href="container.w.html#2670" class="Bound"
+      >f</a
+      ><a name="2708"
+      > </a
+      ><a name="2709" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2710"
+      > </a
+      ><a name="2711" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="2714"
+      > </a
+      ><a name="2715" href="container.w.html#2677" class="Bound"
+      >a'</a
+      ><a name="2717"
+      > </a
+      ><a name="2718" href="container.w.html#2680" class="Bound"
+      >f'</a
+      ><a name="2720" class="Symbol"
+      >)</a
+      ><a name="2721"
+      >
+      </a
+      ><a name="2728" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2730"
+      > </a
+      ><a name="2731" href="function.isomorphism.properties.html#2086" class="Function"
+      >iso&#8801;</a
+      ><a name="2735"
+      > </a
+      ><a name="2736" class="Symbol"
+      >(</a
+      ><a name="2737" href="container.w.html#1680" class="Function"
+      >fixpoint</a
+      ><a name="2745"
+      > </a
+      ><a name="2746" href="container.w.html#2661" class="Bound"
+      >i</a
+      ><a name="2747" class="Symbol"
+      >)</a
+      ><a name="2748"
+      > </a
+      ><a name="2749" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2750"
+      >
+        </a
+      ><a name="2759" class="Symbol"
+      >(</a
+      ><a name="2760" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="2765"
+      > </a
+      ><a name="2766" class="Symbol"
+      >(</a
+      ><a name="2767" href="container.w.html#1680" class="Function"
+      >fixpoint</a
+      ><a name="2775"
+      > </a
+      ><a name="2776" href="container.w.html#2661" class="Bound"
+      >i</a
+      ><a name="2777" class="Symbol"
+      >)</a
+      ><a name="2778"
+      > </a
+      ><a name="2779" class="Symbol"
+      >(</a
+      ><a name="2780" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="2783"
+      > </a
+      ><a name="2784" href="container.w.html#2668" class="Bound"
+      >a</a
+      ><a name="2785"
+      > </a
+      ><a name="2786" href="container.w.html#2670" class="Bound"
+      >f</a
+      ><a name="2787" class="Symbol"
+      >)</a
+      ><a name="2788"
+      > </a
+      ><a name="2789" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2790"
+      > </a
+      ><a name="2791" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="2796"
+      > </a
+      ><a name="2797" class="Symbol"
+      >(</a
+      ><a name="2798" href="container.w.html#1680" class="Function"
+      >fixpoint</a
+      ><a name="2806"
+      > </a
+      ><a name="2807" href="container.w.html#2661" class="Bound"
+      >i</a
+      ><a name="2808" class="Symbol"
+      >)</a
+      ><a name="2809"
+      > </a
+      ><a name="2810" class="Symbol"
+      >(</a
+      ><a name="2811" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="2814"
+      > </a
+      ><a name="2815" href="container.w.html#2677" class="Bound"
+      >a'</a
+      ><a name="2817"
+      > </a
+      ><a name="2818" href="container.w.html#2680" class="Bound"
+      >f'</a
+      ><a name="2820" class="Symbol"
+      >))</a
+      ><a name="2822"
+      >
+      </a
+      ><a name="2829" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2831"
+      > </a
+      ><a name="2832" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="2836"
+      > </a
+      ><a name="2837" href="function.isomorphism.utils.html#399" class="Function"
+      >&#931;-split-iso</a
+      ><a name="2848"
+      > </a
+      ><a name="2849" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2850"
+      >
+        </a
+      ><a name="2859" class="Symbol"
+      >(</a
+      ><a name="2860" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="2861"
+      > </a
+      ><a name="2862" class="Symbol"
+      >(</a
+      ><a name="2863" href="container.w.html#2668" class="Bound"
+      >a</a
+      ><a name="2864"
+      > </a
+      ><a name="2865" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2866"
+      > </a
+      ><a name="2867" href="container.w.html#2677" class="Bound"
+      >a'</a
+      ><a name="2869" class="Symbol"
+      >)</a
+      ><a name="2870"
+      > </a
+      ><a name="2871" class="Symbol"
+      >&#955;</a
+      ><a name="2872"
+      > </a
+      ><a name="2873" href="container.w.html#2873" class="Bound"
+      >p</a
+      ><a name="2874"
+      > </a
+      ><a name="2875" class="Symbol"
+      >&#8594;</a
+      ><a name="2876"
+      > </a
+      ><a name="2877" href="equality.core.html#633" class="Function"
+      >subst</a
+      ><a name="2882"
+      > </a
+      ><a name="2883" class="Symbol"
+      >(&#955;</a
+      ><a name="2885"
+      > </a
+      ><a name="2886" href="container.w.html#2886" class="Bound"
+      >a</a
+      ><a name="2887"
+      > </a
+      ><a name="2888" class="Symbol"
+      >&#8594;</a
+      ><a name="2889"
+      > </a
+      ><a name="2890" class="Symbol"
+      >(</a
+      ><a name="2891" href="container.w.html#2891" class="Bound"
+      >b</a
+      ><a name="2892"
+      > </a
+      ><a name="2893" class="Symbol"
+      >:</a
+      ><a name="2894"
+      > </a
+      ><a name="2895" href="container.core.html#260" class="Function"
+      >B</a
+      ><a name="2896"
+      > </a
+      ><a name="2897" href="container.w.html#2886" class="Bound"
+      >a</a
+      ><a name="2898" class="Symbol"
+      >)</a
+      ><a name="2899"
+      > </a
+      ><a name="2900" class="Symbol"
+      >&#8594;</a
+      ><a name="2901"
+      > </a
+      ><a name="2902" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="2903"
+      > </a
+      ><a name="2904" class="Symbol"
+      >(</a
+      ><a name="2905" href="container.core.html#291" class="Function"
+      >r</a
+      ><a name="2906"
+      > </a
+      ><a name="2907" href="container.w.html#2891" class="Bound"
+      >b</a
+      ><a name="2908" class="Symbol"
+      >))</a
+      ><a name="2910"
+      > </a
+      ><a name="2911" href="container.w.html#2873" class="Bound"
+      >p</a
+      ><a name="2912"
+      > </a
+      ><a name="2913" href="container.w.html#2670" class="Bound"
+      >f</a
+      ><a name="2914"
+      > </a
+      ><a name="2915" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2916"
+      > </a
+      ><a name="2917" href="container.w.html#2680" class="Bound"
+      >f'</a
+      ><a name="2919" class="Symbol"
+      >)</a
+      ><a name="2920"
+      >
+      </a
+      ><a name="2927" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2929"
+      > </a
+      ><a name="2930" href="function.isomorphism.utils.html#2736" class="Function"
+      >&#931;-ap-iso</a
+      ><a name="2938"
+      > </a
+      ><a name="2939" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="2944"
+      > </a
+      ><a name="2945" class="Symbol"
+      >(</a
+      ><a name="2946" href="container.equality.html#522" class="Function"
+      >substX-&#946;</a
+      ><a name="2954"
+      > </a
+      ><a name="2955" href="container.w.html#2670" class="Bound"
+      >f</a
+      ><a name="2956"
+      > </a
+      ><a name="2957" href="container.w.html#2680" class="Bound"
+      >f'</a
+      ><a name="2959" class="Symbol"
+      >)</a
+      ><a name="2960"
+      > </a
+      ><a name="2961" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2962"
+      >
+        </a
+      ><a name="2971" class="Symbol"
+      >(</a
+      ><a name="2972" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="2973"
+      > </a
+      ><a name="2974" class="Symbol"
+      >(</a
+      ><a name="2975" href="container.w.html#2668" class="Bound"
+      >a</a
+      ><a name="2976"
+      > </a
+      ><a name="2977" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2978"
+      > </a
+      ><a name="2979" href="container.w.html#2677" class="Bound"
+      >a'</a
+      ><a name="2981" class="Symbol"
+      >)</a
+      ><a name="2982"
+      > </a
+      ><a name="2983" class="Symbol"
+      >&#955;</a
+      ><a name="2984"
+      > </a
+      ><a name="2985" href="container.w.html#2985" class="Bound"
+      >p</a
+      ><a name="2986"
+      > </a
+      ><a name="2987" class="Symbol"
+      >&#8594;</a
+      ><a name="2988"
+      > </a
+      ><a name="2989" class="Symbol"
+      >&#8704;</a
+      ><a name="2990"
+      > </a
+      ><a name="2991" href="container.w.html#2991" class="Bound"
+      >b</a
+      ><a name="2992"
+      > </a
+      ><a name="2993" class="Symbol"
+      >&#8594;</a
+      ><a name="2994"
+      > </a
+      ><a name="2995" href="container.w.html#2670" class="Bound"
+      >f</a
+      ><a name="2996"
+      > </a
+      ><a name="2997" href="container.w.html#2991" class="Bound"
+      >b</a
+      ><a name="2998"
+      > </a
+      ><a name="2999" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3000"
+      > </a
+      ><a name="3001" href="container.equality.html#406" class="Function"
+      >substX</a
+      ><a name="3007"
+      > </a
+      ><a name="3008" href="container.w.html#2985" class="Bound"
+      >p</a
+      ><a name="3009"
+      > </a
+      ><a name="3010" href="container.w.html#2991" class="Bound"
+      >b</a
+      ><a name="3011"
+      > </a
+      ><a name="3012" class="Symbol"
+      >(</a
+      ><a name="3013" href="container.w.html#2680" class="Bound"
+      >f'</a
+      ><a name="3015"
+      > </a
+      ><a name="3016" class="Symbol"
+      >(</a
+      ><a name="3017" href="equality.core.html#633" class="Function"
+      >subst</a
+      ><a name="3022"
+      > </a
+      ><a name="3023" href="container.core.html#260" class="Function"
+      >B</a
+      ><a name="3024"
+      > </a
+      ><a name="3025" href="container.w.html#2985" class="Bound"
+      >p</a
+      ><a name="3026"
+      > </a
+      ><a name="3027" href="container.w.html#2991" class="Bound"
+      >b</a
+      ><a name="3028" class="Symbol"
+      >)))</a
+      ><a name="3031"
+      >
+      </a
+      ><a name="3038" href="function.isomorphism.core.html#2283" class="Function Operator"
+      >&#8718;</a
+      ><a name="3039"
+      >
+      </a
+      ><a name="3046" class="Keyword"
+      >where</a
+      ><a name="3051"
+      > </a
+      ><a name="3052" class="Keyword"
+      >open</a
+      ><a name="3056"
+      > </a
+      ><a name="3057" href="function.isomorphism.core.html#1670" class="Module"
+      >&#8773;-Reasoning</a
+      ><a name="3068"
+      >
+
+    </a
+      ><a name="3074" href="container.w.html#3074" class="Function"
+      >str-iso</a
+      ><a name="3081"
+      > </a
+      ><a name="3082" class="Symbol"
+      >:</a
+      ><a name="3083"
+      > </a
+      ><a name="3084" class="Symbol"
+      >&#8704;</a
+      ><a name="3085"
+      > </a
+      ><a name="3086" class="Symbol"
+      >{</a
+      ><a name="3087" href="container.w.html#3087" class="Bound"
+      >i</a
+      ><a name="3088" class="Symbol"
+      >}{</a
+      ><a name="3090" href="container.w.html#3090" class="Bound"
+      >u</a
+      ><a name="3091"
+      > </a
+      ><a name="3092" href="container.w.html#3092" class="Bound"
+      >v</a
+      ><a name="3093"
+      > </a
+      ><a name="3094" class="Symbol"
+      >:</a
+      ><a name="3095"
+      > </a
+      ><a name="3096" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="3097"
+      > </a
+      ><a name="3098" href="container.w.html#3087" class="Bound"
+      >i</a
+      ><a name="3099" class="Symbol"
+      >}</a
+      ><a name="3100"
+      > </a
+      ><a name="3101" class="Symbol"
+      >&#8594;</a
+      ><a name="3102"
+      > </a
+      ><a name="3103" class="Symbol"
+      >(</a
+      ><a name="3104" href="container.w.html#3090" class="Bound"
+      >u</a
+      ><a name="3105"
+      > </a
+      ><a name="3106" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3107"
+      > </a
+      ><a name="3108" href="container.w.html#3092" class="Bound"
+      >v</a
+      ><a name="3109" class="Symbol"
+      >)</a
+      ><a name="3110"
+      > </a
+      ><a name="3111" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="3112"
+      > </a
+      ><a name="3113" class="Symbol"
+      >(</a
+      ><a name="3114" href="container.w.html#3090" class="Bound"
+      >u</a
+      ><a name="3115"
+      > </a
+      ><a name="3116" href="container.w.html#2518" class="Function Operator"
+      >&#8801;W</a
+      ><a name="3118"
+      > </a
+      ><a name="3119" href="container.w.html#3092" class="Bound"
+      >v</a
+      ><a name="3120" class="Symbol"
+      >)</a
+      ><a name="3121"
+      >
+    </a
+      ><a name="3126" href="container.w.html#3074" class="Function"
+      >str-iso</a
+      ><a name="3133"
+      > </a
+      ><a name="3134" class="Symbol"
+      >{</a
+      ><a name="3135" href="container.w.html#3135" class="Bound"
+      >i</a
+      ><a name="3136" class="Symbol"
+      >}{</a
+      ><a name="3138" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="3141"
+      > </a
+      ><a name="3142" href="container.w.html#3142" class="Bound"
+      >a</a
+      ><a name="3143"
+      > </a
+      ><a name="3144" href="container.w.html#3144" class="Bound"
+      >f</a
+      ><a name="3145" class="Symbol"
+      >}{</a
+      ><a name="3147" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="3150"
+      > </a
+      ><a name="3151" href="container.w.html#3151" class="Bound"
+      >a'</a
+      ><a name="3153"
+      > </a
+      ><a name="3154" href="container.w.html#3154" class="Bound"
+      >f'</a
+      ><a name="3156" class="Symbol"
+      >}</a
+      ><a name="3157"
+      > </a
+      ><a name="3158" class="Symbol"
+      >=</a
+      ><a name="3159"
+      > </a
+      ><a name="3160" href="function.isomorphism.core.html#1890" class="Function Operator"
+      >begin</a
+      ><a name="3165"
+      >
+        </a
+      ><a name="3174" class="Symbol"
+      >(</a
+      ><a name="3175" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="3178"
+      > </a
+      ><a name="3179" href="container.w.html#3142" class="Bound"
+      >a</a
+      ><a name="3180"
+      > </a
+      ><a name="3181" href="container.w.html#3144" class="Bound"
+      >f</a
+      ><a name="3182"
+      > </a
+      ><a name="3183" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3184"
+      > </a
+      ><a name="3185" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="3188"
+      > </a
+      ><a name="3189" href="container.w.html#3151" class="Bound"
+      >a'</a
+      ><a name="3191"
+      > </a
+      ><a name="3192" href="container.w.html#3154" class="Bound"
+      >f'</a
+      ><a name="3194" class="Symbol"
+      >)</a
+      ><a name="3195"
+      >
+      </a
+      ><a name="3202" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3204"
+      > </a
+      ><a name="3205" href="container.w.html#2591" class="Function"
+      >fixpoint-W</a
+      ><a name="3215"
+      > </a
+      ><a name="3216" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="3217"
+      >
+        </a
+      ><a name="3226" class="Symbol"
+      >(</a
+      ><a name="3227" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="3228"
+      > </a
+      ><a name="3229" class="Symbol"
+      >(</a
+      ><a name="3230" href="container.w.html#3142" class="Bound"
+      >a</a
+      ><a name="3231"
+      > </a
+      ><a name="3232" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3233"
+      > </a
+      ><a name="3234" href="container.w.html#3151" class="Bound"
+      >a'</a
+      ><a name="3236" class="Symbol"
+      >)</a
+      ><a name="3237"
+      > </a
+      ><a name="3238" class="Symbol"
+      >&#955;</a
+      ><a name="3239"
+      > </a
+      ><a name="3240" href="container.w.html#3240" class="Bound"
+      >p</a
+      ><a name="3241"
+      > </a
+      ><a name="3242" class="Symbol"
+      >&#8594;</a
+      ><a name="3243"
+      > </a
+      ><a name="3244" class="Symbol"
+      >&#8704;</a
+      ><a name="3245"
+      > </a
+      ><a name="3246" href="container.w.html#3246" class="Bound"
+      >b</a
+      ><a name="3247"
+      > </a
+      ><a name="3248" class="Symbol"
+      >&#8594;</a
+      ><a name="3249"
+      > </a
+      ><a name="3250" href="container.w.html#3144" class="Bound"
+      >f</a
+      ><a name="3251"
+      > </a
+      ><a name="3252" href="container.w.html#3246" class="Bound"
+      >b</a
+      ><a name="3253"
+      > </a
+      ><a name="3254" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3255"
+      > </a
+      ><a name="3256" href="container.equality.html#406" class="Function"
+      >substX</a
+      ><a name="3262"
+      > </a
+      ><a name="3263" href="container.w.html#3240" class="Bound"
+      >p</a
+      ><a name="3264"
+      > </a
+      ><a name="3265" href="container.w.html#3246" class="Bound"
+      >b</a
+      ><a name="3266"
+      > </a
+      ><a name="3267" class="Symbol"
+      >(</a
+      ><a name="3268" href="container.w.html#3154" class="Bound"
+      >f'</a
+      ><a name="3270"
+      > </a
+      ><a name="3271" class="Symbol"
+      >(</a
+      ><a name="3272" href="equality.core.html#633" class="Function"
+      >subst</a
+      ><a name="3277"
+      > </a
+      ><a name="3278" href="container.core.html#260" class="Function"
+      >B</a
+      ><a name="3279"
+      > </a
+      ><a name="3280" href="container.w.html#3240" class="Bound"
+      >p</a
+      ><a name="3281"
+      > </a
+      ><a name="3282" href="container.w.html#3246" class="Bound"
+      >b</a
+      ><a name="3283" class="Symbol"
+      >)))</a
+      ><a name="3286"
+      >
+      </a
+      ><a name="3293" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3295"
+      > </a
+      ><a name="3296" href="function.isomorphism.utils.html#2736" class="Function"
+      >&#931;-ap-iso</a
+      ><a name="3304"
+      > </a
+      ><a name="3305" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="3310"
+      > </a
+      ><a name="3311" class="Symbol"
+      >(&#955;</a
+      ><a name="3313"
+      > </a
+      ><a name="3314" href="container.w.html#3314" class="Bound"
+      >a</a
+      ><a name="3315"
+      > </a
+      ><a name="3316" class="Symbol"
+      >&#8594;</a
+      ><a name="3317"
+      > </a
+      ><a name="3318" href="function.isomorphism.utils.html#3315" class="Function"
+      >&#928;-ap-iso</a
+      ><a name="3326"
+      > </a
+      ><a name="3327" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="3332"
+      > </a
+      ><a name="3333" class="Symbol"
+      >&#955;</a
+      ><a name="3334"
+      > </a
+      ><a name="3335" href="container.w.html#3335" class="Bound"
+      >b</a
+      ><a name="3336"
+      > </a
+      ><a name="3337" class="Symbol"
+      >&#8594;</a
+      ><a name="3338"
+      > </a
+      ><a name="3339" href="container.w.html#3074" class="Function"
+      >str-iso</a
+      ><a name="3346" class="Symbol"
+      >)</a
+      ><a name="3347"
+      > </a
+      ><a name="3348" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="3349"
+      >
+        </a
+      ><a name="3358" class="Symbol"
+      >(</a
+      ><a name="3359" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="3360"
+      > </a
+      ><a name="3361" class="Symbol"
+      >(</a
+      ><a name="3362" href="container.w.html#3142" class="Bound"
+      >a</a
+      ><a name="3363"
+      > </a
+      ><a name="3364" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3365"
+      > </a
+      ><a name="3366" href="container.w.html#3151" class="Bound"
+      >a'</a
+      ><a name="3368" class="Symbol"
+      >)</a
+      ><a name="3369"
+      > </a
+      ><a name="3370" class="Symbol"
+      >&#955;</a
+      ><a name="3371"
+      > </a
+      ><a name="3372" href="container.w.html#3372" class="Bound"
+      >p</a
+      ><a name="3373"
+      > </a
+      ><a name="3374" class="Symbol"
+      >&#8594;</a
+      ><a name="3375"
+      > </a
+      ><a name="3376" class="Symbol"
+      >&#8704;</a
+      ><a name="3377"
+      > </a
+      ><a name="3378" href="container.w.html#3378" class="Bound"
+      >b</a
+      ><a name="3379"
+      > </a
+      ><a name="3380" class="Symbol"
+      >&#8594;</a
+      ><a name="3381"
+      > </a
+      ><a name="3382" href="container.w.html#3144" class="Bound"
+      >f</a
+      ><a name="3383"
+      > </a
+      ><a name="3384" href="container.w.html#3378" class="Bound"
+      >b</a
+      ><a name="3385"
+      > </a
+      ><a name="3386" href="container.w.html#2518" class="Function Operator"
+      >&#8801;W</a
+      ><a name="3388"
+      > </a
+      ><a name="3389" href="container.equality.html#406" class="Function"
+      >substX</a
+      ><a name="3395"
+      > </a
+      ><a name="3396" href="container.w.html#3372" class="Bound"
+      >p</a
+      ><a name="3397"
+      > </a
+      ><a name="3398" href="container.w.html#3378" class="Bound"
+      >b</a
+      ><a name="3399"
+      > </a
+      ><a name="3400" class="Symbol"
+      >(</a
+      ><a name="3401" href="container.w.html#3154" class="Bound"
+      >f'</a
+      ><a name="3403"
+      > </a
+      ><a name="3404" class="Symbol"
+      >(</a
+      ><a name="3405" href="equality.core.html#633" class="Function"
+      >subst</a
+      ><a name="3410"
+      > </a
+      ><a name="3411" href="container.core.html#260" class="Function"
+      >B</a
+      ><a name="3412"
+      > </a
+      ><a name="3413" href="container.w.html#3372" class="Bound"
+      >p</a
+      ><a name="3414"
+      > </a
+      ><a name="3415" href="container.w.html#3378" class="Bound"
+      >b</a
+      ><a name="3416" class="Symbol"
+      >)))</a
+      ><a name="3419"
+      >
+      </a
+      ><a name="3426" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3428"
+      > </a
+      ><a name="3429" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="3433"
+      > </a
+      ><a name="3434" class="Symbol"
+      >(</a
+      ><a name="3435" href="container.w.html#1680" class="Function"
+      >fixpoint-&#8801;</a
+      ><a name="3445"
+      > </a
+      ><a name="3446" class="Symbol"
+      >_)</a
+      ><a name="3448"
+      > </a
+      ><a name="3449" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="3450"
+      >
+        </a
+      ><a name="3459" class="Symbol"
+      >(</a
+      ><a name="3460" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="3463"
+      > </a
+      ><a name="3464" href="container.w.html#3142" class="Bound"
+      >a</a
+      ><a name="3465"
+      > </a
+      ><a name="3466" href="container.w.html#3144" class="Bound"
+      >f</a
+      ><a name="3467"
+      > </a
+      ><a name="3468" href="container.w.html#2518" class="Function Operator"
+      >&#8801;W</a
+      ><a name="3470"
+      > </a
+      ><a name="3471" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="3474"
+      > </a
+      ><a name="3475" href="container.w.html#3151" class="Bound"
+      >a'</a
+      ><a name="3477"
+      > </a
+      ><a name="3478" href="container.w.html#3154" class="Bound"
+      >f'</a
+      ><a name="3480" class="Symbol"
+      >)</a
+      ><a name="3481"
+      >
+      </a
+      ><a name="3488" href="function.isomorphism.core.html#2283" class="Function Operator"
+      >&#8718;</a
+      ><a name="3489"
+      >
+      </a
+      ><a name="3496" class="Keyword"
+      >where</a
+      ><a name="3501"
+      > </a
+      ><a name="3502" class="Keyword"
+      >open</a
+      ><a name="3506"
+      > </a
+      ><a name="3507" href="function.isomorphism.core.html#1670" class="Module"
+      >&#8773;-Reasoning</a
+      ><a name="3518"
+      >
+
+    </a
+      ><a name="3524" href="container.w.html#3524" class="Function"
+      >w-hlevel</a
+      ><a name="3532"
+      > </a
+      ><a name="3533" class="Symbol"
+      >:</a
+      ><a name="3534"
+      > </a
+      ><a name="3535" class="Symbol"
+      >&#8704;</a
+      ><a name="3536"
+      > </a
+      ><a name="3537" class="Symbol"
+      >{</a
+      ><a name="3538" href="container.w.html#3538" class="Bound"
+      >n</a
+      ><a name="3539" class="Symbol"
+      >}</a
+      ><a name="3540"
+      > </a
+      ><a name="3541" class="Symbol"
+      >&#8594;</a
+      ><a name="3542"
+      > </a
+      ><a name="3543" class="Symbol"
+      >((</a
+      ><a name="3545" href="container.w.html#3545" class="Bound"
+      >i</a
+      ><a name="3546"
+      > </a
+      ><a name="3547" class="Symbol"
+      >:</a
+      ><a name="3548"
+      > </a
+      ><a name="3549" href="container.core.html#226" class="Function"
+      >I</a
+      ><a name="3550" class="Symbol"
+      >)</a
+      ><a name="3551"
+      > </a
+      ><a name="3552" class="Symbol"
+      >&#8594;</a
+      ><a name="3553"
+      > </a
+      ><a name="3554" href="hott.hlevel.core.html#245" class="Function"
+      >h</a
+      ><a name="3555"
+      > </a
+      ><a name="3556" class="Symbol"
+      >(</a
+      ><a name="3557" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="3560"
+      > </a
+      ><a name="3561" href="container.w.html#3538" class="Bound"
+      >n</a
+      ><a name="3562" class="Symbol"
+      >)</a
+      ><a name="3563"
+      > </a
+      ><a name="3564" class="Symbol"
+      >(</a
+      ><a name="3565" href="container.core.html#241" class="Function"
+      >A</a
+      ><a name="3566"
+      > </a
+      ><a name="3567" href="container.w.html#3545" class="Bound"
+      >i</a
+      ><a name="3568" class="Symbol"
+      >))</a
+      ><a name="3570"
+      > </a
+      ><a name="3571" class="Symbol"
+      >&#8594;</a
+      ><a name="3572"
+      > </a
+      ><a name="3573" class="Symbol"
+      >(</a
+      ><a name="3574" href="container.w.html#3574" class="Bound"
+      >i</a
+      ><a name="3575"
+      > </a
+      ><a name="3576" class="Symbol"
+      >:</a
+      ><a name="3577"
+      > </a
+      ><a name="3578" href="container.core.html#226" class="Function"
+      >I</a
+      ><a name="3579" class="Symbol"
+      >)</a
+      ><a name="3580"
+      > </a
+      ><a name="3581" class="Symbol"
+      >&#8594;</a
+      ><a name="3582"
+      > </a
+      ><a name="3583" href="hott.hlevel.core.html#245" class="Function"
+      >h</a
+      ><a name="3584"
+      > </a
+      ><a name="3585" class="Symbol"
+      >(</a
+      ><a name="3586" href="sets.nat.core.html#283" class="InductiveConstructor"
+      >suc</a
+      ><a name="3589"
+      > </a
+      ><a name="3590" href="container.w.html#3538" class="Bound"
+      >n</a
+      ><a name="3591" class="Symbol"
+      >)</a
+      ><a name="3592"
+      > </a
+      ><a name="3593" class="Symbol"
+      >(</a
+      ><a name="3594" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="3595"
+      > </a
+      ><a name="3596" href="container.w.html#3574" class="Bound"
+      >i</a
+      ><a name="3597" class="Symbol"
+      >)</a
+      ><a name="3598"
+      >
+    </a
+      ><a name="3603" href="container.w.html#3524" class="Function"
+      >w-hlevel</a
+      ><a name="3611"
+      > </a
+      ><a name="3612" href="container.w.html#3612" class="Bound"
+      >hA</a
+      ><a name="3614"
+      > </a
+      ><a name="3615" href="container.w.html#3615" class="Bound"
+      >i</a
+      ><a name="3616"
+      > </a
+      ><a name="3617" class="Symbol"
+      >(</a
+      ><a name="3618" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="3621"
+      > </a
+      ><a name="3622" href="container.w.html#3622" class="Bound"
+      >a</a
+      ><a name="3623"
+      > </a
+      ><a name="3624" href="container.w.html#3624" class="Bound"
+      >f</a
+      ><a name="3625" class="Symbol"
+      >)</a
+      ><a name="3626"
+      > </a
+      ><a name="3627" class="Symbol"
+      >(</a
+      ><a name="3628" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="3631"
+      > </a
+      ><a name="3632" href="container.w.html#3632" class="Bound"
+      >a'</a
+      ><a name="3634"
+      > </a
+      ><a name="3635" href="container.w.html#3635" class="Bound"
+      >f'</a
+      ><a name="3637" class="Symbol"
+      >)</a
+      ><a name="3638"
+      > </a
+      ><a name="3639" class="Symbol"
+      >=</a
+      ><a name="3640"
+      > </a
+      ><a name="3641" href="hott.hlevel.closure.core.html#2304" class="Function"
+      >iso-hlevel</a
+      ><a name="3651"
+      > </a
+      ><a name="3652" class="Symbol"
+      >(</a
+      ><a name="3653" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="3657"
+      > </a
+      ><a name="3658" href="container.w.html#3753" class="Function"
+      >lem</a
+      ><a name="3661" class="Symbol"
+      >)</a
+      ><a name="3662"
+      >
+      </a
+      ><a name="3669" class="Symbol"
+      >(</a
+      ><a name="3670" href="hott.hlevel.closure.extra.html#984" class="Function"
+      >&#931;-hlevel</a
+      ><a name="3678"
+      > </a
+      ><a name="3679" class="Symbol"
+      >(</a
+      ><a name="3680" href="container.w.html#3612" class="Bound"
+      >hA</a
+      ><a name="3682"
+      > </a
+      ><a name="3683" href="container.w.html#3615" class="Bound"
+      >i</a
+      ><a name="3684"
+      > </a
+      ><a name="3685" href="container.w.html#3622" class="Bound"
+      >a</a
+      ><a name="3686"
+      > </a
+      ><a name="3687" href="container.w.html#3632" class="Bound"
+      >a'</a
+      ><a name="3689" class="Symbol"
+      >)</a
+      ><a name="3690"
+      > </a
+      ><a name="3691" class="Symbol"
+      >(&#955;</a
+      ><a name="3693"
+      > </a
+      ><a name="3694" href="container.w.html#3694" class="Bound"
+      >p</a
+      ><a name="3695"
+      > </a
+      ><a name="3696" class="Symbol"
+      >&#8594;</a
+      ><a name="3697"
+      > </a
+      ><a name="3698" href="hott.hlevel.closure.extra.html#693" class="Function"
+      >&#928;-hlevel</a
+      ><a name="3706"
+      > </a
+      ><a name="3707" class="Symbol"
+      >&#955;</a
+      ><a name="3708"
+      > </a
+      ><a name="3709" href="container.w.html#3709" class="Bound"
+      >b</a
+      ><a name="3710"
+      > </a
+      ><a name="3711" class="Symbol"
+      >&#8594;</a
+      ><a name="3712"
+      > </a
+      ><a name="3713" href="container.w.html#3524" class="Function"
+      >w-hlevel</a
+      ><a name="3721"
+      > </a
+      ><a name="3722" href="container.w.html#3612" class="Bound"
+      >hA</a
+      ><a name="3724"
+      > </a
+      ><a name="3725" class="Symbol"
+      >_</a
+      ><a name="3726"
+      > </a
+      ><a name="3727" class="Symbol"
+      >_</a
+      ><a name="3728"
+      > </a
+      ><a name="3729" class="Symbol"
+      >_))</a
+      ><a name="3732"
+      >
+      </a
+      ><a name="3739" class="Keyword"
+      >where</a
+      ><a name="3744"
+      >
+        </a
+      ><a name="3753" href="container.w.html#3753" class="Function"
+      >lem</a
+      ><a name="3756"
+      > </a
+      ><a name="3757" class="Symbol"
+      >:</a
+      ><a name="3758"
+      > </a
+      ><a name="3759" class="Symbol"
+      >&#8704;</a
+      ><a name="3760"
+      > </a
+      ><a name="3761" class="Symbol"
+      >{</a
+      ><a name="3762" href="container.w.html#3762" class="Bound"
+      >i</a
+      ><a name="3763" class="Symbol"
+      >}{</a
+      ><a name="3765" href="container.w.html#3765" class="Bound"
+      >a</a
+      ><a name="3766"
+      > </a
+      ><a name="3767" href="container.w.html#3767" class="Bound"
+      >a'</a
+      ><a name="3769"
+      > </a
+      ><a name="3770" class="Symbol"
+      >:</a
+      ><a name="3771"
+      > </a
+      ><a name="3772" href="container.core.html#241" class="Function"
+      >A</a
+      ><a name="3773"
+      > </a
+      ><a name="3774" href="container.w.html#3762" class="Bound"
+      >i</a
+      ><a name="3775" class="Symbol"
+      >}</a
+      ><a name="3776"
+      >
+              </a
+      ><a name="3791" class="Symbol"
+      >{</a
+      ><a name="3792" href="container.w.html#3792" class="Bound"
+      >f</a
+      ><a name="3793"
+      > </a
+      ><a name="3794" class="Symbol"
+      >:</a
+      ><a name="3795"
+      > </a
+      ><a name="3796" class="Symbol"
+      >(</a
+      ><a name="3797" href="container.w.html#3797" class="Bound"
+      >b</a
+      ><a name="3798"
+      > </a
+      ><a name="3799" class="Symbol"
+      >:</a
+      ><a name="3800"
+      > </a
+      ><a name="3801" href="container.core.html#260" class="Function"
+      >B</a
+      ><a name="3802"
+      > </a
+      ><a name="3803" href="container.w.html#3765" class="Bound"
+      >a</a
+      ><a name="3804" class="Symbol"
+      >)</a
+      ><a name="3805"
+      > </a
+      ><a name="3806" class="Symbol"
+      >&#8594;</a
+      ><a name="3807"
+      > </a
+      ><a name="3808" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="3809"
+      > </a
+      ><a name="3810" class="Symbol"
+      >(</a
+      ><a name="3811" href="container.core.html#291" class="Function"
+      >r</a
+      ><a name="3812"
+      > </a
+      ><a name="3813" href="container.w.html#3797" class="Bound"
+      >b</a
+      ><a name="3814" class="Symbol"
+      >)}</a
+      ><a name="3816"
+      >
+              </a
+      ><a name="3831" class="Symbol"
+      >{</a
+      ><a name="3832" href="container.w.html#3832" class="Bound"
+      >f'</a
+      ><a name="3834"
+      > </a
+      ><a name="3835" class="Symbol"
+      >:</a
+      ><a name="3836"
+      > </a
+      ><a name="3837" class="Symbol"
+      >(</a
+      ><a name="3838" href="container.w.html#3838" class="Bound"
+      >b</a
+      ><a name="3839"
+      > </a
+      ><a name="3840" class="Symbol"
+      >:</a
+      ><a name="3841"
+      > </a
+      ><a name="3842" href="container.core.html#260" class="Function"
+      >B</a
+      ><a name="3843"
+      > </a
+      ><a name="3844" href="container.w.html#3767" class="Bound"
+      >a'</a
+      ><a name="3846" class="Symbol"
+      >)</a
+      ><a name="3847"
+      > </a
+      ><a name="3848" class="Symbol"
+      >&#8594;</a
+      ><a name="3849"
+      > </a
+      ><a name="3850" href="container.w.html#611" class="Datatype"
+      >W</a
+      ><a name="3851"
+      > </a
+      ><a name="3852" class="Symbol"
+      >(</a
+      ><a name="3853" href="container.core.html#291" class="Function"
+      >r</a
+      ><a name="3854"
+      > </a
+      ><a name="3855" href="container.w.html#3838" class="Bound"
+      >b</a
+      ><a name="3856" class="Symbol"
+      >)}</a
+      ><a name="3858"
+      >
+            </a
+      ><a name="3871" class="Symbol"
+      >&#8594;</a
+      ><a name="3872"
+      > </a
+      ><a name="3873" class="Symbol"
+      >(</a
+      ><a name="3874" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="3877"
+      > </a
+      ><a name="3878" href="container.w.html#3765" class="Bound"
+      >a</a
+      ><a name="3879"
+      > </a
+      ><a name="3880" href="container.w.html#3792" class="Bound"
+      >f</a
+      ><a name="3881"
+      > </a
+      ><a name="3882" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3883"
+      > </a
+      ><a name="3884" href="container.w.html#649" class="InductiveConstructor"
+      >sup</a
+      ><a name="3887"
+      > </a
+      ><a name="3888" href="container.w.html#3767" class="Bound"
+      >a'</a
+      ><a name="3890"
+      > </a
+      ><a name="3891" href="container.w.html#3832" class="Bound"
+      >f'</a
+      ><a name="3893" class="Symbol"
+      >)</a
+      ><a name="3894"
+      >
+            </a
+      ><a name="3907" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="3908"
+      > </a
+      ><a name="3909" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="3910"
+      > </a
+      ><a name="3911" class="Symbol"
+      >(</a
+      ><a name="3912" href="container.w.html#3765" class="Bound"
+      >a</a
+      ><a name="3913"
+      > </a
+      ><a name="3914" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3915"
+      > </a
+      ><a name="3916" href="container.w.html#3767" class="Bound"
+      >a'</a
+      ><a name="3918" class="Symbol"
+      >)</a
+      ><a name="3919"
+      > </a
+      ><a name="3920" class="Symbol"
+      >&#955;</a
+      ><a name="3921"
+      > </a
+      ><a name="3922" href="container.w.html#3922" class="Bound"
+      >p</a
+      ><a name="3923"
+      > </a
+      ><a name="3924" class="Symbol"
+      >&#8594;</a
+      ><a name="3925"
+      > </a
+      ><a name="3926" class="Symbol"
+      >&#8704;</a
+      ><a name="3927"
+      > </a
+      ><a name="3928" href="container.w.html#3928" class="Bound"
+      >b</a
+      ><a name="3929"
+      > </a
+      ><a name="3930" class="Symbol"
+      >&#8594;</a
+      ><a name="3931"
+      > </a
+      ><a name="3932" href="container.w.html#3792" class="Bound"
+      >f</a
+      ><a name="3933"
+      > </a
+      ><a name="3934" href="container.w.html#3928" class="Bound"
+      >b</a
+      ><a name="3935"
+      > </a
+      ><a name="3936" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3937"
+      > </a
+      ><a name="3938" href="container.equality.html#406" class="Function"
+      >substX</a
+      ><a name="3944"
+      > </a
+      ><a name="3945" href="container.w.html#3922" class="Bound"
+      >p</a
+      ><a name="3946"
+      > </a
+      ><a name="3947" href="container.w.html#3928" class="Bound"
+      >b</a
+      ><a name="3948"
+      > </a
+      ><a name="3949" class="Symbol"
+      >(</a
+      ><a name="3950" href="container.w.html#3832" class="Bound"
+      >f'</a
+      ><a name="3952"
+      > </a
+      ><a name="3953" class="Symbol"
+      >(</a
+      ><a name="3954" href="equality.core.html#633" class="Function"
+      >subst</a
+      ><a name="3959"
+      > </a
+      ><a name="3960" href="container.core.html#260" class="Function"
+      >B</a
+      ><a name="3961"
+      > </a
+      ><a name="3962" href="container.w.html#3922" class="Bound"
+      >p</a
+      ><a name="3963"
+      > </a
+      ><a name="3964" href="container.w.html#3928" class="Bound"
+      >b</a
+      ><a name="3965" class="Symbol"
+      >))</a
+      ><a name="3967"
+      >
+        </a
+      ><a name="3976" href="container.w.html#3753" class="Function"
+      >lem</a
+      ><a name="3979"
+      > </a
+      ><a name="3980" class="Symbol"
+      >=</a
+      ><a name="3981"
+      > </a
+      ><a name="3982" href="container.w.html#2591" class="Function"
+      >fixpoint-W</a
+      ><a name="3992"
+      >
+
+</a
+      ><a name="3994" class="Keyword"
+      >open</a
+      ><a name="3998"
+      > </a
+      ><a name="3999" href="container.w.html#470" class="Module"
+      >Definition</a
+      ><a name="4009"
+      > </a
+      ><a name="4010" class="Keyword"
+      >public</a
+      ><a name="4016"
+      >
+</a
+      ><a name="4017" class="Keyword"
+      >open</a
+      ><a name="4021"
+      > </a
+      ><a name="4022" href="container.w.html#2039" class="Module"
+      >Properties</a
+      ><a name="4032"
+      > </a
+      ><a name="4033" class="Keyword"
+      >public</a
+      ><a name="4039"
+      > </a
+      ><a name="4040" class="Keyword"
+      >using</a
+      ><a name="4045"
+      > </a
+      ><a name="4046" class="Symbol"
+      >(</a
+      ><a name="4047"
+      >w-hlevel</a
+      ><a name="4055" class="Symbol"
+      >)</a
+      ><a name="4056"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

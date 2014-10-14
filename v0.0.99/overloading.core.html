@@ -1,0 +1,1585 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >overloading.core</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="overloading.core.html#1" class="Module"
+      >overloading.core</a
+      ><a name="52"
+      > </a
+      ><a name="53" class="Keyword"
+      >where</a
+      ><a name="58"
+      >
+
+</a
+      ><a name="60" class="Comment"
+      >-- ## Coercions</a
+      ><a name="75"
+      >
+</a
+      ><a name="76" class="Comment"
+      >--</a
+      ><a name="78"
+      >
+</a
+      ><a name="79" class="Comment"
+      >-- The overloading system implemented in this module is based on</a
+      ><a name="143"
+      >
+</a
+      ><a name="144" class="Comment"
+      >-- **coercions**. A coercion is simply a function converting a type into</a
+      ><a name="216"
+      >
+</a
+      ><a name="217" class="Comment"
+      >-- another. In object-oriented parliance, a coercion embodies an *is-a*</a
+      ><a name="288"
+      >
+</a
+      ><a name="289" class="Comment"
+      >-- relationship.  The two types involved in a coercions are called `Source` and</a
+      ><a name="368"
+      >
+</a
+      ><a name="369" class="Comment"
+      >-- `Target` respectively, and the coercion itself is a function `Source &#8594;</a
+      ><a name="442"
+      >
+</a
+      ><a name="443" class="Comment"
+      >-- Target`.</a
+      ><a name="454"
+      >
+</a
+      ><a name="455" class="Comment"
+      >--</a
+      ><a name="457"
+      >
+</a
+      ><a name="458" class="Comment"
+      >-- Coercions are implemented as terms of type `Coercion`, which is a record</a
+      ><a name="533"
+      >
+</a
+      ><a name="534" class="Comment"
+      >-- parameterized over the `Source` and `Target` types, with a single field for</a
+      ><a name="612"
+      >
+</a
+      ><a name="613" class="Comment"
+      >-- the actual coercion function.  Of course, the type `Coercion X Y` is</a
+      ><a name="684"
+      >
+</a
+      ><a name="685" class="Comment"
+      >-- isomorphic to `X &#8594; Y`, but using a record prevents possible ambiguities when</a
+      ><a name="764"
+      >
+</a
+      ><a name="765" class="Comment"
+      >-- using coercions as implicit parameters, and potentially makes instance</a
+      ><a name="838"
+      >
+</a
+      ><a name="839" class="Comment"
+      >-- resolution faster.</a
+      ><a name="860"
+      >
+</a
+      ><a name="861" class="Comment"
+      >--</a
+      ><a name="863"
+      >
+</a
+      ><a name="864" class="Comment"
+      >-- The typical scenario where coercions are used is when defining a subtype</a
+      ><a name="939"
+      >
+</a
+      ><a name="940" class="Comment"
+      >-- relationships between types.  Although Agda has no built-in support for</a
+      ><a name="1014"
+      >
+</a
+      ><a name="1015" class="Comment"
+      >-- subtypes, it is possible to achieve a reasonable level of syntactical</a
+      ><a name="1087"
+      >
+</a
+      ><a name="1088" class="Comment"
+      >-- convenience with the help of some boilerplace code that specifies the</a
+      ><a name="1160"
+      >
+</a
+      ><a name="1161" class="Comment"
+      >-- subtyping relation explicitly.  See `category.graph.core` for a detailed</a
+      ><a name="1236"
+      >
+</a
+      ><a name="1237" class="Comment"
+      >-- example.</a
+      ><a name="1248"
+      >
+</a
+      ><a name="1249" class="Comment"
+      >--</a
+      ><a name="1251"
+      >
+</a
+      ><a name="1252" class="Comment"
+      >-- This module also contains some functions to help reduce the amount of</a
+      ><a name="1324"
+      >
+</a
+      ><a name="1325" class="Comment"
+      >-- boilerplate needed for defining all the coercions necessary for a given type.</a
+      ><a name="1405"
+      >
+</a
+      ><a name="1406" class="Comment"
+      >-- See `coerce-self` and `coerce-parent` below.</a
+      ><a name="1453"
+      >
+</a
+      ><a name="1454" class="Comment"
+      >--</a
+      ><a name="1456"
+      >
+</a
+      ><a name="1457" class="Comment"
+      >-- ## Methods</a
+      ><a name="1470"
+      >
+</a
+      ><a name="1471" class="Comment"
+      >--</a
+      ><a name="1473"
+      >
+</a
+      ><a name="1474" class="Comment"
+      >-- The strategy employed by this library to implement overloading goes as</a
+      ><a name="1547"
+      >
+</a
+      ><a name="1548" class="Comment"
+      >-- follows.  Every type (denoted by `Target` in the following) defines a set of</a
+      ><a name="1627"
+      >
+</a
+      ><a name="1628" class="Comment"
+      >-- &quot;methods&quot; that constitute its interface, and are inherited by every subtype</a
+      ><a name="1706"
+      >
+</a
+      ><a name="1707" class="Comment"
+      >-- of `Target`.  Methods are divided into 2 groups:</a
+      ><a name="1758"
+      >
+</a
+      ><a name="1759" class="Comment"
+      >--</a
+      ><a name="1761"
+      >
+</a
+      ><a name="1762" class="Comment"
+      >-- - **static methods** are functions that take an argument `X` of a type</a
+      ><a name="1835"
+      >
+</a
+      ><a name="1836" class="Comment"
+      >-- convertible to `Target`. The typical example of a static method is an</a
+      ><a name="1908"
+      >
+</a
+      ><a name="1909" class="Comment"
+      >-- explicit coercion function, like `&#8739;_&#8739;` below, which returns the &quot;underlying</a
+      ><a name="1987"
+      >
+</a
+      ><a name="1988" class="Comment"
+      >-- set&quot; of `X`.  Another example of static method is the `total` function for</a
+      ><a name="2065"
+      >
+</a
+      ><a name="2066" class="Comment"
+      >-- graphs (see `category.graph.core`).</a
+      ><a name="2104"
+      >
+</a
+      ><a name="2105" class="Comment"
+      >--</a
+      ><a name="2107"
+      >
+</a
+      ><a name="2108" class="Comment"
+      >-- - **instance methods** are functions that work without requiring an explicit</a
+      ><a name="2187"
+      >
+</a
+      ><a name="2188" class="Comment"
+      >-- parameter of type `Target`.  A typical example of instance method is</a
+      ><a name="2259"
+      >
+</a
+      ><a name="2260" class="Comment"
+      >-- composition in a category (`_&#8728;_`): there's no need to pass the category</a
+      ><a name="2334"
+      >
+</a
+      ><a name="2335" class="Comment"
+      >-- itself when composing two morphisms.  In order to use instance methods, they</a
+      ><a name="2414"
+      >
+</a
+      ><a name="2415" class="Comment"
+      >-- have to be enabled explicitly for each instance for which they are used.</a
+      ><a name="2490"
+      >
+</a
+      ><a name="2491" class="Comment"
+      >-- Every type defines a special module (whose name is by convention always</a
+      ><a name="2565"
+      >
+</a
+      ><a name="2566" class="Comment"
+      >-- `as-target`, where `target` is replaced with the actual lowercase name of</a
+      ><a name="2642"
+      >
+</a
+      ><a name="2643" class="Comment"
+      >-- type) which allows instance methods to be enabled.  For example, to use the</a
+      ><a name="2721"
+      >
+</a
+      ><a name="2722" class="Comment"
+      >-- composition operator for morphisms of a category `C`, one can write:</a
+      ><a name="2793"
+      >
+</a
+      ><a name="2794" class="Comment"
+      >--</a
+      ><a name="2796"
+      >
+</a
+      ><a name="2797" class="Comment"
+      >--    open as-category C</a
+      ><a name="2821"
+      >
+</a
+      ><a name="2822" class="Comment"
+      >--</a
+      ><a name="2824"
+      >
+</a
+      ><a name="2825" class="Comment"
+      >-- The `as-target` module itself behaves like a *static* method, so it can be</a
+      ><a name="2902"
+      >
+</a
+      ><a name="2903" class="Comment"
+      >-- used to enable instance methods for any superclass of a given instance.</a
+      ><a name="2977"
+      >
+</a
+      ><a name="2978" class="Comment"
+      >-- Furthermore, enabling instance methods for `Target` enables instance methods</a
+      ><a name="3057"
+      >
+</a
+      ><a name="3058" class="Comment"
+      >-- for all superclasses of it in its principal inheritance path (see</a
+      ><a name="3126"
+      >
+</a
+      ><a name="3127" class="Comment"
+      >-- &quot;Inheritance Model&quot; below).</a
+      ><a name="3157"
+      >
+</a
+      ><a name="3158" class="Comment"
+      >--</a
+      ><a name="3160"
+      >
+</a
+      ><a name="3161" class="Comment"
+      >-- ## Implementation</a
+      ><a name="3181"
+      >
+</a
+      ><a name="3182" class="Comment"
+      >--</a
+      ><a name="3184"
+      >
+</a
+      ><a name="3185" class="Comment"
+      >-- The implementation of static methods is relatively straightforward.  A static</a
+      ><a name="3265"
+      >
+</a
+      ><a name="3266" class="Comment"
+      >-- method is defined as a function taking a coercion to `Target` as an instance</a
+      ><a name="3345"
+      >
+</a
+      ><a name="3346" class="Comment"
+      >-- argument, and uses the coercion to convert its argument to the correct type.</a
+      ><a name="3425"
+      >
+</a
+      ><a name="3426" class="Comment"
+      >--</a
+      ><a name="3428"
+      >
+</a
+      ><a name="3429" class="Comment"
+      >-- As for instance methods, they are implemented as functions that take a record</a
+      ><a name="3509"
+      >
+</a
+      ><a name="3510" class="Comment"
+      >-- with the full interface of `Target` (called **instance record** below) as an</a
+      ><a name="3589"
+      >
+</a
+      ><a name="3590" class="Comment"
+      >-- implicit argument (see &quot;Alternative Notations&quot; below for details), and just</a
+      ><a name="3668"
+      >
+</a
+      ><a name="3669" class="Comment"
+      >-- return the appropriate field.  This can be accomplished very easily using</a
+      ><a name="3745"
+      >
+</a
+      ><a name="3746" class="Comment"
+      >-- Agda's module system.</a
+      ><a name="3770"
+      >
+</a
+      ><a name="3771" class="Comment"
+      >--</a
+      ><a name="3773"
+      >
+</a
+      ><a name="3774" class="Comment"
+      >-- The `as-target` module, used to enable instance methods, is defined as a</a
+      ><a name="3849"
+      >
+</a
+      ><a name="3850" class="Comment"
+      >-- static method, and works simply by putting the record above into scope.</a
+      ><a name="3924"
+      >
+</a
+      ><a name="3925" class="Comment"
+      >--</a
+      ><a name="3927"
+      >
+</a
+      ><a name="3928" class="Comment"
+      >-- ## Alternative Notations</a
+      ><a name="3955"
+      >
+</a
+      ><a name="3956" class="Comment"
+      >--</a
+      ><a name="3958"
+      >
+</a
+      ><a name="3959" class="Comment"
+      >-- Some types have an interface which supports alternative notations.  For</a
+      ><a name="4033"
+      >
+</a
+      ><a name="4034" class="Comment"
+      >-- example, monoids have a &quot;default&quot; notation (`unit` and `_*_`), and an</a
+      ><a name="4106"
+      >
+</a
+      ><a name="4107" class="Comment"
+      >-- additive notation (`zero` and `_+_`).</a
+      ><a name="4147"
+      >
+</a
+      ><a name="4148" class="Comment"
+      >--</a
+      ><a name="4150"
+      >
+</a
+      ><a name="4151" class="Comment"
+      >-- To implement multiple notations, a `Styled` record is used as the implicit</a
+      ><a name="4228"
+      >
+</a
+      ><a name="4229" class="Comment"
+      >-- parameter for instance methods.  The `Styled` record is parameterized over a</a
+      ><a name="4308"
+      >
+</a
+      ><a name="4309" class="Comment"
+      >-- `style` parameter (normally `default`), and contains the interface record as</a
+      ><a name="4388"
+      >
+</a
+      ><a name="4389" class="Comment"
+      >-- its only field.</a
+      ><a name="4407"
+      >
+</a
+      ><a name="4408" class="Comment"
+      >--</a
+      ><a name="4410"
+      >
+</a
+      ><a name="4411" class="Comment"
+      >-- The `Styled` record thus serves two purposes:</a
+      ><a name="4459"
+      >
+</a
+      ><a name="4460" class="Comment"
+      >--</a
+      ><a name="4462"
+      >
+</a
+      ><a name="4463" class="Comment"
+      >-- - It prevents ambiguities in the resolution of instance arguments: if an</a
+      ><a name="4538"
+      >
+</a
+      ><a name="4539" class="Comment"
+      >-- interface record is in scope for reasons unrelated to the overloading system,</a
+      ><a name="4619"
+      >
+</a
+      ><a name="4620" class="Comment"
+      >-- then it will not be accidentally used as the argument of an instance methods,</a
+      ><a name="4700"
+      >
+</a
+      ><a name="4701" class="Comment"
+      >-- as it's not wrapped in a `Styled` record.</a
+      ><a name="4745"
+      >
+</a
+      ><a name="4746" class="Comment"
+      >--</a
+      ><a name="4748"
+      >
+</a
+      ><a name="4749" class="Comment"
+      >-- - It allows instance methods to specify an alternative style parameter for</a
+      ><a name="4826"
+      >
+</a
+      ><a name="4827" class="Comment"
+      >-- the record in which the interface record is wrapped.  Thus, multiple</a
+      ><a name="4898"
+      >
+</a
+      ><a name="4899" class="Comment"
+      >-- `as-target` module can be defined, one per supported style, that put the</a
+      ><a name="4974"
+      >
+</a
+      ><a name="4975" class="Comment"
+      >-- interface record in scope wrapped in the appropriate `Styled` record.  The</a
+      ><a name="5052"
+      >
+</a
+      ><a name="5053" class="Comment"
+      >-- `styled` function can be used to wrap an interface record using a given</a
+      ><a name="5127"
+      >
+</a
+      ><a name="5128" class="Comment"
+      >-- style.</a
+      ><a name="5137"
+      >
+</a
+      ><a name="5138" class="Comment"
+      >--</a
+      ><a name="5140"
+      >
+</a
+      ><a name="5141" class="Comment"
+      >-- ## Inheritance Model</a
+      ><a name="5164"
+      >
+</a
+      ><a name="5165" class="Comment"
+      >--</a
+      ><a name="5167"
+      >
+</a
+      ><a name="5168" class="Comment"
+      >-- Subtyping relations can form an arbitrary directed graph, with a</a
+      ><a name="5235"
+      >
+</a
+      ><a name="5236" class="Comment"
+      >-- distinguished spanning forest, whose edges we call *principal*.</a
+      ><a name="5302"
+      >
+</a
+      ><a name="5303" class="Comment"
+      >--</a
+      ><a name="5305"
+      >
+</a
+      ><a name="5306" class="Comment"
+      >-- Coercions are defined for every pair of connected nodes in the full graph.</a
+      ><a name="5383"
+      >
+</a
+      ><a name="5384" class="Comment"
+      >-- Exactly one coercion per pair should be defined, regardless of the number of</a
+      ><a name="5463"
+      >
+</a
+      ><a name="5464" class="Comment"
+      >-- paths that connect it.  Static methods are inherited automatically through</a
+      ><a name="5541"
+      >
+</a
+      ><a name="5542" class="Comment"
+      >-- paths in the full DAG, since the existence of a coercion is enough for static</a
+      ><a name="5622"
+      >
+</a
+      ><a name="5623" class="Comment"
+      >-- methods to propagate.</a
+      ><a name="5647"
+      >
+</a
+      ><a name="5648" class="Comment"
+      >--</a
+      ><a name="5650"
+      >
+</a
+      ><a name="5651" class="Comment"
+      >-- The principal subgraph is used for inheritance of instance methods.  Namely,</a
+      ><a name="5730"
+      >
+</a
+      ><a name="5731" class="Comment"
+      >-- the `as-target` record enables all instance methods for the ancestors of</a
+      ><a name="5806"
+      >
+</a
+      ><a name="5807" class="Comment"
+      >-- `Target` in the principal subgraph.  This is accomplished by simply</a
+      ><a name="5877"
+      >
+</a
+      ><a name="5878" class="Comment"
+      >-- re-exporting the `as-target` module for the immediate parent of</a
+      ><a name="5944"
+      >
+</a
+      ><a name="5945" class="Comment"
+      >-- `Target`. Extra edges coming out of `Target` can optionally be added as well</a
+      ><a name="6024"
+      >
+</a
+      ><a name="6025" class="Comment"
+      >-- for convenience.</a
+      ><a name="6044"
+      >
+
+</a
+      ><a name="6046" class="Keyword"
+      >open</a
+      ><a name="6050"
+      > </a
+      ><a name="6051" class="Keyword"
+      >import</a
+      ><a name="6057"
+      > </a
+      ><a name="6058" href="level.html#1" class="Module"
+      >level</a
+      ><a name="6063"
+      >
+</a
+      ><a name="6064" class="Keyword"
+      >open</a
+      ><a name="6068"
+      > </a
+      ><a name="6069" class="Keyword"
+      >import</a
+      ><a name="6075"
+      > </a
+      ><a name="6076" href="overloading.bundle.html#1" class="Module"
+      >overloading.bundle</a
+      ><a name="6094"
+      >
+
+</a
+      ><a name="6096" class="Keyword"
+      >record</a
+      ><a name="6102"
+      > </a
+      ><a name="6103" href="overloading.core.html#6103" class="Record"
+      >Coercion</a
+      ><a name="6111"
+      > </a
+      ><a name="6112" class="Symbol"
+      >{</a
+      ><a name="6113" href="overloading.core.html#6113" class="Bound"
+      >i</a
+      ><a name="6114" class="Symbol"
+      >}{</a
+      ><a name="6116" href="overloading.core.html#6116" class="Bound"
+      >j</a
+      ><a name="6117" class="Symbol"
+      >}(</a
+      ><a name="6119" href="overloading.core.html#6119" class="Bound"
+      >Source</a
+      ><a name="6125"
+      > </a
+      ><a name="6126" class="Symbol"
+      >:</a
+      ><a name="6127"
+      > </a
+      ><a name="6128" class="PrimitiveType"
+      >Set</a
+      ><a name="6131"
+      > </a
+      ><a name="6132" href="overloading.core.html#6113" class="Bound"
+      >i</a
+      ><a name="6133" class="Symbol"
+      >)(</a
+      ><a name="6135" href="overloading.core.html#6135" class="Bound"
+      >Target</a
+      ><a name="6141"
+      > </a
+      ><a name="6142" class="Symbol"
+      >:</a
+      ><a name="6143"
+      > </a
+      ><a name="6144" class="PrimitiveType"
+      >Set</a
+      ><a name="6147"
+      > </a
+      ><a name="6148" href="overloading.core.html#6116" class="Bound"
+      >j</a
+      ><a name="6149" class="Symbol"
+      >)</a
+      ><a name="6150"
+      > </a
+      ><a name="6151" class="Symbol"
+      >:</a
+      ><a name="6152"
+      > </a
+      ><a name="6153" class="PrimitiveType"
+      >Set</a
+      ><a name="6156"
+      > </a
+      ><a name="6157" class="Symbol"
+      >(</a
+      ><a name="6158" href="overloading.core.html#6113" class="Bound"
+      >i</a
+      ><a name="6159"
+      > </a
+      ><a name="6160" href="level.html#131" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="6161"
+      > </a
+      ><a name="6162" href="overloading.core.html#6116" class="Bound"
+      >j</a
+      ><a name="6163" class="Symbol"
+      >)</a
+      ><a name="6164"
+      > </a
+      ><a name="6165" class="Keyword"
+      >where</a
+      ><a name="6170"
+      >
+  </a
+      ><a name="6173" class="Keyword"
+      >constructor</a
+      ><a name="6184"
+      > </a
+      ><a name="6185" href="overloading.core.html#6185" class="InductiveConstructor"
+      >coercion</a
+      ><a name="6193"
+      >
+  </a
+      ><a name="6196" class="Keyword"
+      >field</a
+      ><a name="6201"
+      >
+    </a
+      ><a name="6206" href="overloading.core.html#6206" class="Field"
+      >coerce</a
+      ><a name="6212"
+      > </a
+      ><a name="6213" class="Symbol"
+      >:</a
+      ><a name="6214"
+      > </a
+      ><a name="6215" href="overloading.core.html#6119" class="Bound"
+      >Source</a
+      ><a name="6221"
+      > </a
+      ><a name="6222" class="Symbol"
+      >&#8594;</a
+      ><a name="6223"
+      > </a
+      ><a name="6224" href="overloading.core.html#6135" class="Bound"
+      >Target</a
+      ><a name="6230"
+      >
+</a
+      ><a name="6231" class="Keyword"
+      >open</a
+      ><a name="6235"
+      > </a
+      ><a name="6236" href="overloading.core.html#6103" class="Module"
+      >Coercion</a
+      ><a name="6244"
+      > </a
+      ><a name="6245" class="Keyword"
+      >public</a
+      ><a name="6251"
+      >
+
+</a
+      ><a name="6253" class="Keyword"
+      >data</a
+      ><a name="6257"
+      > </a
+      ><a name="6258" href="overloading.core.html#6258" class="Datatype"
+      >Style</a
+      ><a name="6263"
+      > </a
+      ><a name="6264" class="Symbol"
+      >:</a
+      ><a name="6265"
+      > </a
+      ><a name="6266" class="PrimitiveType"
+      >Set</a
+      ><a name="6269"
+      > </a
+      ><a name="6270" class="Keyword"
+      >where</a
+      ><a name="6275"
+      > </a
+      ><a name="6276" href="overloading.core.html#6276" class="InductiveConstructor"
+      >default</a
+      ><a name="6283"
+      > </a
+      ><a name="6284" class="Symbol"
+      >:</a
+      ><a name="6285"
+      > </a
+      ><a name="6286" href="overloading.core.html#6258" class="Datatype"
+      >Style</a
+      ><a name="6291"
+      >
+
+</a
+      ><a name="6293" class="Keyword"
+      >record</a
+      ><a name="6299"
+      > </a
+      ><a name="6300" href="overloading.core.html#6300" class="Record"
+      >Styled</a
+      ><a name="6306"
+      > </a
+      ><a name="6307" class="Symbol"
+      >{</a
+      ><a name="6308" href="overloading.core.html#6308" class="Bound"
+      >i</a
+      ><a name="6309" class="Symbol"
+      >}(</a
+      ><a name="6311" href="overloading.core.html#6311" class="Bound"
+      >style</a
+      ><a name="6316"
+      > </a
+      ><a name="6317" class="Symbol"
+      >:</a
+      ><a name="6318"
+      > </a
+      ><a name="6319" href="overloading.core.html#6258" class="Datatype"
+      >Style</a
+      ><a name="6324" class="Symbol"
+      >)(</a
+      ><a name="6326" href="overloading.core.html#6326" class="Bound"
+      >X</a
+      ><a name="6327"
+      > </a
+      ><a name="6328" class="Symbol"
+      >:</a
+      ><a name="6329"
+      > </a
+      ><a name="6330" class="PrimitiveType"
+      >Set</a
+      ><a name="6333"
+      > </a
+      ><a name="6334" href="overloading.core.html#6308" class="Bound"
+      >i</a
+      ><a name="6335" class="Symbol"
+      >)</a
+      ><a name="6336"
+      > </a
+      ><a name="6337" class="Symbol"
+      >:</a
+      ><a name="6338"
+      > </a
+      ><a name="6339" class="PrimitiveType"
+      >Set</a
+      ><a name="6342"
+      > </a
+      ><a name="6343" href="overloading.core.html#6308" class="Bound"
+      >i</a
+      ><a name="6344"
+      > </a
+      ><a name="6345" class="Keyword"
+      >where</a
+      ><a name="6350"
+      >
+  </a
+      ><a name="6353" class="Keyword"
+      >field</a
+      ><a name="6358"
+      > </a
+      ><a name="6359" href="overloading.core.html#6359" class="Field"
+      >value</a
+      ><a name="6364"
+      > </a
+      ><a name="6365" class="Symbol"
+      >:</a
+      ><a name="6366"
+      > </a
+      ><a name="6367" href="overloading.core.html#6326" class="Bound"
+      >X</a
+      ><a name="6368"
+      >
+
+</a
+      ><a name="6370" href="overloading.core.html#6370" class="Function"
+      >styled</a
+      ><a name="6376"
+      > </a
+      ><a name="6377" class="Symbol"
+      >:</a
+      ><a name="6378"
+      > </a
+      ><a name="6379" class="Symbol"
+      >&#8704;</a
+      ><a name="6380"
+      > </a
+      ><a name="6381" class="Symbol"
+      >{</a
+      ><a name="6382" href="overloading.core.html#6382" class="Bound"
+      >i</a
+      ><a name="6383" class="Symbol"
+      >}{</a
+      ><a name="6385" href="overloading.core.html#6385" class="Bound"
+      >X</a
+      ><a name="6386"
+      > </a
+      ><a name="6387" class="Symbol"
+      >:</a
+      ><a name="6388"
+      > </a
+      ><a name="6389" class="PrimitiveType"
+      >Set</a
+      ><a name="6392"
+      > </a
+      ><a name="6393" href="overloading.core.html#6382" class="Bound"
+      >i</a
+      ><a name="6394" class="Symbol"
+      >}</a
+      ><a name="6395"
+      > </a
+      ><a name="6396" class="Symbol"
+      >&#8594;</a
+      ><a name="6397"
+      > </a
+      ><a name="6398" class="Symbol"
+      >(</a
+      ><a name="6399" href="overloading.core.html#6399" class="Bound"
+      >s</a
+      ><a name="6400"
+      > </a
+      ><a name="6401" class="Symbol"
+      >:</a
+      ><a name="6402"
+      > </a
+      ><a name="6403" href="overloading.core.html#6258" class="Datatype"
+      >Style</a
+      ><a name="6408" class="Symbol"
+      >)</a
+      ><a name="6409"
+      > </a
+      ><a name="6410" class="Symbol"
+      >&#8594;</a
+      ><a name="6411"
+      > </a
+      ><a name="6412" href="overloading.core.html#6385" class="Bound"
+      >X</a
+      ><a name="6413"
+      > </a
+      ><a name="6414" class="Symbol"
+      >&#8594;</a
+      ><a name="6415"
+      > </a
+      ><a name="6416" href="overloading.core.html#6300" class="Record"
+      >Styled</a
+      ><a name="6422"
+      > </a
+      ><a name="6423" href="overloading.core.html#6399" class="Bound"
+      >s</a
+      ><a name="6424"
+      > </a
+      ><a name="6425" href="overloading.core.html#6385" class="Bound"
+      >X</a
+      ><a name="6426"
+      >
+</a
+      ><a name="6427" href="overloading.core.html#6370" class="Function"
+      >styled</a
+      ><a name="6433"
+      > </a
+      ><a name="6434" href="overloading.core.html#6434" class="Bound"
+      >s</a
+      ><a name="6435"
+      > </a
+      ><a name="6436" href="overloading.core.html#6436" class="Bound"
+      >x</a
+      ><a name="6437"
+      > </a
+      ><a name="6438" class="Symbol"
+      >=</a
+      ><a name="6439"
+      > </a
+      ><a name="6440" class="Keyword"
+      >record</a
+      ><a name="6446"
+      > </a
+      ><a name="6447" class="Symbol"
+      >{</a
+      ><a name="6448"
+      > </a
+      ><a name="6449" class="Field"
+      >value</a
+      ><a name="6454"
+      > </a
+      ><a name="6455" class="Symbol"
+      >=</a
+      ><a name="6456"
+      > </a
+      ><a name="6457" href="overloading.core.html#6436" class="Bound"
+      >x</a
+      ><a name="6458"
+      > </a
+      ><a name="6459" class="Symbol"
+      >}</a
+      ><a name="6460"
+      >
+
+</a
+      ><a name="6462" class="Comment"
+      >-- Trivial coercion: any type can be coerced into itself.</a
+      ><a name="6519"
+      >
+</a
+      ><a name="6520" href="overloading.core.html#6520" class="Function"
+      >coerce-self</a
+      ><a name="6531"
+      > </a
+      ><a name="6532" class="Symbol"
+      >:</a
+      ><a name="6533"
+      > </a
+      ><a name="6534" class="Symbol"
+      >&#8704;</a
+      ><a name="6535"
+      > </a
+      ><a name="6536" class="Symbol"
+      >{</a
+      ><a name="6537" href="overloading.core.html#6537" class="Bound"
+      >i</a
+      ><a name="6538" class="Symbol"
+      >}</a
+      ><a name="6539"
+      > </a
+      ><a name="6540" class="Symbol"
+      >(</a
+      ><a name="6541" href="overloading.core.html#6541" class="Bound"
+      >X</a
+      ><a name="6542"
+      > </a
+      ><a name="6543" class="Symbol"
+      >:</a
+      ><a name="6544"
+      > </a
+      ><a name="6545" class="PrimitiveType"
+      >Set</a
+      ><a name="6548"
+      > </a
+      ><a name="6549" href="overloading.core.html#6537" class="Bound"
+      >i</a
+      ><a name="6550" class="Symbol"
+      >)</a
+      ><a name="6551"
+      > </a
+      ><a name="6552" class="Symbol"
+      >&#8594;</a
+      ><a name="6553"
+      > </a
+      ><a name="6554" href="overloading.core.html#6103" class="Record"
+      >Coercion</a
+      ><a name="6562"
+      > </a
+      ><a name="6563" href="overloading.core.html#6541" class="Bound"
+      >X</a
+      ><a name="6564"
+      > </a
+      ><a name="6565" href="overloading.core.html#6541" class="Bound"
+      >X</a
+      ><a name="6566"
+      >
+</a
+      ><a name="6567" href="overloading.core.html#6520" class="Function"
+      >coerce-self</a
+      ><a name="6578"
+      > </a
+      ><a name="6579" class="Symbol"
+      >{</a
+      ><a name="6580" href="overloading.core.html#6580" class="Bound"
+      >i</a
+      ><a name="6581" class="Symbol"
+      >}</a
+      ><a name="6582"
+      > </a
+      ><a name="6583" class="Symbol"
+      >_</a
+      ><a name="6584"
+      > </a
+      ><a name="6585" class="Symbol"
+      >=</a
+      ><a name="6586"
+      > </a
+      ><a name="6587" class="Keyword"
+      >record</a
+      ><a name="6593"
+      >
+  </a
+      ><a name="6596" class="Symbol"
+      >{</a
+      ><a name="6597"
+      > </a
+      ><a name="6598" class="Field"
+      >coerce</a
+      ><a name="6604"
+      > </a
+      ><a name="6605" class="Symbol"
+      >=</a
+      ><a name="6606"
+      > </a
+      ><a name="6607" class="Symbol"
+      >&#955;</a
+      ><a name="6608"
+      > </a
+      ><a name="6609" href="overloading.core.html#6609" class="Bound"
+      >x</a
+      ><a name="6610"
+      > </a
+      ><a name="6611" class="Symbol"
+      >&#8594;</a
+      ><a name="6612"
+      > </a
+      ><a name="6613" href="overloading.core.html#6609" class="Bound"
+      >x</a
+      ><a name="6614"
+      > </a
+      ><a name="6615" class="Symbol"
+      >}</a
+      ><a name="6616"
+      >
+
+</a
+      ><a name="6618" class="Comment"
+      >-- Transport a coercion to a `Bundle` subtype.  See `overloading.bundle` for</a
+      ><a name="6694"
+      >
+</a
+      ><a name="6695" class="Comment"
+      >-- more details on bundles.</a
+      ><a name="6722"
+      >
+</a
+      ><a name="6723" href="overloading.core.html#6723" class="Function"
+      >coerce-parent</a
+      ><a name="6736"
+      > </a
+      ><a name="6737" class="Symbol"
+      >:</a
+      ><a name="6738"
+      > </a
+      ><a name="6739" class="Symbol"
+      >&#8704;</a
+      ><a name="6740"
+      > </a
+      ><a name="6741" class="Symbol"
+      >{</a
+      ><a name="6742" href="overloading.core.html#6742" class="Bound"
+      >i</a
+      ><a name="6743"
+      > </a
+      ><a name="6744" href="overloading.core.html#6744" class="Bound"
+      >j</a
+      ><a name="6745"
+      > </a
+      ><a name="6746" href="overloading.core.html#6746" class="Bound"
+      >k</a
+      ><a name="6747" class="Symbol"
+      >}</a
+      ><a name="6748"
+      >
+                </a
+      ><a name="6765" class="Symbol"
+      >{</a
+      ><a name="6766" href="overloading.core.html#6766" class="Bound"
+      >X</a
+      ><a name="6767"
+      > </a
+      ><a name="6768" class="Symbol"
+      >:</a
+      ><a name="6769"
+      > </a
+      ><a name="6770" class="PrimitiveType"
+      >Set</a
+      ><a name="6773"
+      > </a
+      ><a name="6774" href="overloading.core.html#6742" class="Bound"
+      >i</a
+      ><a name="6775" class="Symbol"
+      >}</a
+      ><a name="6776"
+      >
+                </a
+      ><a name="6793" class="Symbol"
+      >{</a
+      ><a name="6794" href="overloading.core.html#6794" class="Bound"
+      >Y</a
+      ><a name="6795"
+      > </a
+      ><a name="6796" class="Symbol"
+      >:</a
+      ><a name="6797"
+      > </a
+      ><a name="6798" class="PrimitiveType"
+      >Set</a
+      ><a name="6801"
+      > </a
+      ><a name="6802" href="overloading.core.html#6744" class="Bound"
+      >j</a
+      ><a name="6803" class="Symbol"
+      >}</a
+      ><a name="6804"
+      >
+              </a
+      ><a name="6819" class="Symbol"
+      >&#8594;</a
+      ><a name="6820"
+      > </a
+      ><a name="6821" class="Symbol"
+      >&#10627;</a
+      ><a name="6822"
+      > </a
+      ><a name="6823" href="overloading.core.html#6823" class="Bound"
+      >c</a
+      ><a name="6824"
+      > </a
+      ><a name="6825" class="Symbol"
+      >:</a
+      ><a name="6826"
+      > </a
+      ><a name="6827" href="overloading.core.html#6103" class="Record"
+      >Coercion</a
+      ><a name="6835"
+      > </a
+      ><a name="6836" href="overloading.core.html#6766" class="Bound"
+      >X</a
+      ><a name="6837"
+      > </a
+      ><a name="6838" href="overloading.core.html#6794" class="Bound"
+      >Y</a
+      ><a name="6839"
+      > </a
+      ><a name="6840" class="Symbol"
+      >&#10628;</a
+      ><a name="6841"
+      >
+              </a
+      ><a name="6856" class="Symbol"
+      >&#8594;</a
+      ><a name="6857"
+      > </a
+      ><a name="6858" class="Symbol"
+      >{</a
+      ><a name="6859" href="overloading.core.html#6859" class="Bound"
+      >Struct</a
+      ><a name="6865"
+      > </a
+      ><a name="6866" class="Symbol"
+      >:</a
+      ><a name="6867"
+      > </a
+      ><a name="6868" href="overloading.core.html#6766" class="Bound"
+      >X</a
+      ><a name="6869"
+      > </a
+      ><a name="6870" class="Symbol"
+      >&#8594;</a
+      ><a name="6871"
+      > </a
+      ><a name="6872" class="PrimitiveType"
+      >Set</a
+      ><a name="6875"
+      > </a
+      ><a name="6876" href="overloading.core.html#6746" class="Bound"
+      >k</a
+      ><a name="6877" class="Symbol"
+      >}</a
+      ><a name="6878"
+      >
+              </a
+      ><a name="6893" class="Symbol"
+      >&#8594;</a
+      ><a name="6894"
+      > </a
+      ><a name="6895" href="overloading.core.html#6103" class="Record"
+      >Coercion</a
+      ><a name="6903"
+      > </a
+      ><a name="6904" class="Symbol"
+      >(</a
+      ><a name="6905" href="overloading.bundle.html#88" class="Record"
+      >Bundle</a
+      ><a name="6911"
+      > </a
+      ><a name="6912" href="overloading.core.html#6859" class="Bound"
+      >Struct</a
+      ><a name="6918" class="Symbol"
+      >)</a
+      ><a name="6919"
+      > </a
+      ><a name="6920" href="overloading.core.html#6794" class="Bound"
+      >Y</a
+      ><a name="6921"
+      >
+</a
+      ><a name="6922" href="overloading.core.html#6723" class="Function"
+      >coerce-parent</a
+      ><a name="6935"
+      > </a
+      ><a name="6936" class="Symbol"
+      >&#10627;</a
+      ><a name="6937"
+      > </a
+      ><a name="6938" href="overloading.core.html#6938" class="Bound"
+      >c</a
+      ><a name="6939"
+      > </a
+      ><a name="6940" class="Symbol"
+      >&#10628;</a
+      ><a name="6941"
+      > </a
+      ><a name="6942" class="Symbol"
+      >=</a
+      ><a name="6943"
+      > </a
+      ><a name="6944" class="Keyword"
+      >record</a
+      ><a name="6950"
+      >
+  </a
+      ><a name="6953" class="Symbol"
+      >{</a
+      ><a name="6954"
+      > </a
+      ><a name="6955" class="Field"
+      >coerce</a
+      ><a name="6961"
+      > </a
+      ><a name="6962" class="Symbol"
+      >=</a
+      ><a name="6963"
+      > </a
+      ><a name="6964" class="Symbol"
+      >&#955;</a
+      ><a name="6965"
+      > </a
+      ><a name="6966" href="overloading.core.html#6966" class="Bound"
+      >x</a
+      ><a name="6967"
+      > </a
+      ><a name="6968" class="Symbol"
+      >&#8594;</a
+      ><a name="6969"
+      > </a
+      ><a name="6970" href="overloading.core.html#6206" class="Function"
+      >coerce</a
+      ><a name="6976"
+      > </a
+      ><a name="6977" href="overloading.core.html#6938" class="Bound"
+      >c</a
+      ><a name="6978"
+      > </a
+      ><a name="6979" class="Symbol"
+      >(</a
+      ><a name="6980" href="overloading.bundle.html#220" class="Function"
+      >Bundle.parent</a
+      ><a name="6993"
+      > </a
+      ><a name="6994" href="overloading.core.html#6966" class="Bound"
+      >x</a
+      ><a name="6995" class="Symbol"
+      >)</a
+      ><a name="6996"
+      > </a
+      ><a name="6997" class="Symbol"
+      >}</a
+      ><a name="6998"
+      >
+
+</a
+      ><a name="7000" href="overloading.core.html#7000" class="Function"
+      >set-is-set</a
+      ><a name="7010"
+      > </a
+      ><a name="7011" class="Symbol"
+      >:</a
+      ><a name="7012"
+      > </a
+      ><a name="7013" class="Symbol"
+      >&#8704;</a
+      ><a name="7014"
+      > </a
+      ><a name="7015" class="Symbol"
+      >{</a
+      ><a name="7016" href="overloading.core.html#7016" class="Bound"
+      >i</a
+      ><a name="7017" class="Symbol"
+      >}</a
+      ><a name="7018"
+      > </a
+      ><a name="7019" class="Symbol"
+      >&#8594;</a
+      ><a name="7020"
+      > </a
+      ><a name="7021" href="overloading.core.html#6103" class="Record"
+      >Coercion</a
+      ><a name="7029"
+      > </a
+      ><a name="7030" class="Symbol"
+      >(</a
+      ><a name="7031" class="PrimitiveType"
+      >Set</a
+      ><a name="7034"
+      > </a
+      ><a name="7035" href="overloading.core.html#7016" class="Bound"
+      >i</a
+      ><a name="7036" class="Symbol"
+      >)</a
+      ><a name="7037"
+      > </a
+      ><a name="7038" class="Symbol"
+      >(</a
+      ><a name="7039" class="PrimitiveType"
+      >Set</a
+      ><a name="7042"
+      > </a
+      ><a name="7043" href="overloading.core.html#7016" class="Bound"
+      >i</a
+      ><a name="7044" class="Symbol"
+      >)</a
+      ><a name="7045"
+      >
+</a
+      ><a name="7046" href="overloading.core.html#7000" class="Function"
+      >set-is-set</a
+      ><a name="7056"
+      > </a
+      ><a name="7057" class="Symbol"
+      >{</a
+      ><a name="7058" href="overloading.core.html#7058" class="Bound"
+      >i</a
+      ><a name="7059" class="Symbol"
+      >}</a
+      ><a name="7060"
+      > </a
+      ><a name="7061" class="Symbol"
+      >=</a
+      ><a name="7062"
+      > </a
+      ><a name="7063" href="overloading.core.html#6520" class="Function"
+      >coerce-self</a
+      ><a name="7074"
+      > </a
+      ><a name="7075" class="Symbol"
+      >_</a
+      ><a name="7076"
+      >
+
+</a
+      ><a name="7078" href="overloading.core.html#7078" class="Function Operator"
+      >&#8739;_&#8739;</a
+      ><a name="7081"
+      > </a
+      ><a name="7082" class="Symbol"
+      >:</a
+      ><a name="7083"
+      > </a
+      ><a name="7084" class="Symbol"
+      >&#8704;</a
+      ><a name="7085"
+      > </a
+      ><a name="7086" class="Symbol"
+      >{</a
+      ><a name="7087" href="overloading.core.html#7087" class="Bound"
+      >i</a
+      ><a name="7088"
+      > </a
+      ><a name="7089" href="overloading.core.html#7089" class="Bound"
+      >j</a
+      ><a name="7090" class="Symbol"
+      >}{</a
+      ><a name="7092" href="overloading.core.html#7092" class="Bound"
+      >Source</a
+      ><a name="7098"
+      > </a
+      ><a name="7099" class="Symbol"
+      >:</a
+      ><a name="7100"
+      > </a
+      ><a name="7101" class="PrimitiveType"
+      >Set</a
+      ><a name="7104"
+      > </a
+      ><a name="7105" href="overloading.core.html#7087" class="Bound"
+      >i</a
+      ><a name="7106" class="Symbol"
+      >}</a
+      ><a name="7107"
+      > </a
+      ><a name="7108" class="Symbol"
+      >&#10627;</a
+      ><a name="7109"
+      > </a
+      ><a name="7110" href="overloading.core.html#7110" class="Bound"
+      >o</a
+      ><a name="7111"
+      > </a
+      ><a name="7112" class="Symbol"
+      >:</a
+      ><a name="7113"
+      > </a
+      ><a name="7114" href="overloading.core.html#6103" class="Record"
+      >Coercion</a
+      ><a name="7122"
+      > </a
+      ><a name="7123" href="overloading.core.html#7092" class="Bound"
+      >Source</a
+      ><a name="7129"
+      > </a
+      ><a name="7130" class="Symbol"
+      >(</a
+      ><a name="7131" class="PrimitiveType"
+      >Set</a
+      ><a name="7134"
+      > </a
+      ><a name="7135" href="overloading.core.html#7089" class="Bound"
+      >j</a
+      ><a name="7136" class="Symbol"
+      >)</a
+      ><a name="7137"
+      > </a
+      ><a name="7138" class="Symbol"
+      >&#10628;</a
+      ><a name="7139"
+      >
+    </a
+      ><a name="7144" class="Symbol"
+      >&#8594;</a
+      ><a name="7145"
+      > </a
+      ><a name="7146" href="overloading.core.html#7092" class="Bound"
+      >Source</a
+      ><a name="7152"
+      > </a
+      ><a name="7153" class="Symbol"
+      >&#8594;</a
+      ><a name="7154"
+      > </a
+      ><a name="7155" class="PrimitiveType"
+      >Set</a
+      ><a name="7158"
+      > </a
+      ><a name="7159" href="overloading.core.html#7089" class="Bound"
+      >j</a
+      ><a name="7160"
+      >
+</a
+      ><a name="7161" href="overloading.core.html#7078" class="Function Operator"
+      >&#8739;_&#8739;</a
+      ><a name="7164"
+      > </a
+      ><a name="7165" class="Symbol"
+      >&#10627;</a
+      ><a name="7166"
+      > </a
+      ><a name="7167" href="overloading.core.html#7167" class="Bound"
+      >c</a
+      ><a name="7168"
+      > </a
+      ><a name="7169" class="Symbol"
+      >&#10628;</a
+      ><a name="7170"
+      > </a
+      ><a name="7171" class="Symbol"
+      >=</a
+      ><a name="7172"
+      > </a
+      ><a name="7173" href="overloading.core.html#6206" class="Function"
+      >coerce</a
+      ><a name="7179"
+      > </a
+      ><a name="7180" href="overloading.core.html#7167" class="Bound"
+      >c</a
+      ><a name="7181"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
