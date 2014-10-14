@@ -1,0 +1,910 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >function.surjective</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="function.surjective.html#1" class="Module"
+      >function.surjective</a
+      ><a name="56"
+      > </a
+      ><a name="57" class="Keyword"
+      >where</a
+      ><a name="62"
+      >
+
+</a
+      ><a name="64" class="Keyword"
+      >open</a
+      ><a name="68"
+      > </a
+      ><a name="69" class="Keyword"
+      >import</a
+      ><a name="75"
+      > </a
+      ><a name="76" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="79"
+      >
+</a
+      ><a name="80" class="Keyword"
+      >open</a
+      ><a name="84"
+      > </a
+      ><a name="85" class="Keyword"
+      >import</a
+      ><a name="91"
+      > </a
+      ><a name="92" href="equality.html#1" class="Module"
+      >equality</a
+      ><a name="100"
+      >
+</a
+      ><a name="101" class="Keyword"
+      >open</a
+      ><a name="105"
+      > </a
+      ><a name="106" class="Keyword"
+      >import</a
+      ><a name="112"
+      > </a
+      ><a name="113" href="function.isomorphism.core.html#1" class="Module"
+      >function.isomorphism.core</a
+      ><a name="138"
+      >
+</a
+      ><a name="139" class="Keyword"
+      >open</a
+      ><a name="143"
+      > </a
+      ><a name="144" class="Keyword"
+      >import</a
+      ><a name="150"
+      > </a
+      ><a name="151" href="hott.level.core.html#1" class="Module"
+      >hott.level.core</a
+      ><a name="166"
+      >
+</a
+      ><a name="167" class="Keyword"
+      >open</a
+      ><a name="171"
+      > </a
+      ><a name="172" class="Keyword"
+      >import</a
+      ><a name="178"
+      > </a
+      ><a name="179" href="hott.equivalence.core.html#1" class="Module"
+      >hott.equivalence.core</a
+      ><a name="200"
+      >
+</a
+      ><a name="201" class="Keyword"
+      >open</a
+      ><a name="205"
+      > </a
+      ><a name="206" class="Keyword"
+      >import</a
+      ><a name="212"
+      > </a
+      ><a name="213" href="hott.truncation.html#1" class="Module"
+      >hott.truncation</a
+      ><a name="228"
+      >
+
+</a
+      ><a name="230" href="function.surjective.html#230" class="Function"
+      >surjective</a
+      ><a name="240"
+      > </a
+      ><a name="241" class="Symbol"
+      >:</a
+      ><a name="242"
+      > </a
+      ><a name="243" class="Symbol"
+      >&#8704;</a
+      ><a name="244"
+      > </a
+      ><a name="245" class="Symbol"
+      >{</a
+      ><a name="246" href="function.surjective.html#246" class="Bound"
+      >i</a
+      ><a name="247"
+      > </a
+      ><a name="248" href="function.surjective.html#248" class="Bound"
+      >j</a
+      ><a name="249" class="Symbol"
+      >}{</a
+      ><a name="251" href="function.surjective.html#251" class="Bound"
+      >A</a
+      ><a name="252"
+      > </a
+      ><a name="253" class="Symbol"
+      >:</a
+      ><a name="254"
+      > </a
+      ><a name="255" class="PrimitiveType"
+      >Set</a
+      ><a name="258"
+      > </a
+      ><a name="259" href="function.surjective.html#246" class="Bound"
+      >i</a
+      ><a name="260" class="Symbol"
+      >}{</a
+      ><a name="262" href="function.surjective.html#262" class="Bound"
+      >B</a
+      ><a name="263"
+      > </a
+      ><a name="264" class="Symbol"
+      >:</a
+      ><a name="265"
+      > </a
+      ><a name="266" class="PrimitiveType"
+      >Set</a
+      ><a name="269"
+      > </a
+      ><a name="270" href="function.surjective.html#248" class="Bound"
+      >j</a
+      ><a name="271" class="Symbol"
+      >}</a
+      ><a name="272"
+      > </a
+      ><a name="273" class="Symbol"
+      >&#8594;</a
+      ><a name="274"
+      > </a
+      ><a name="275" class="Symbol"
+      >(</a
+      ><a name="276" href="function.surjective.html#251" class="Bound"
+      >A</a
+      ><a name="277"
+      > </a
+      ><a name="278" class="Symbol"
+      >&#8594;</a
+      ><a name="279"
+      > </a
+      ><a name="280" href="function.surjective.html#262" class="Bound"
+      >B</a
+      ><a name="281" class="Symbol"
+      >)</a
+      ><a name="282"
+      > </a
+      ><a name="283" class="Symbol"
+      >&#8594;</a
+      ><a name="284"
+      > </a
+      ><a name="285" class="PrimitiveType"
+      >Set</a
+      ><a name="288"
+      > </a
+      ><a name="289" class="Symbol"
+      >_</a
+      ><a name="290"
+      >
+</a
+      ><a name="291" href="function.surjective.html#230" class="Function"
+      >surjective</a
+      ><a name="301"
+      > </a
+      ><a name="302" href="function.surjective.html#302" class="Bound"
+      >f</a
+      ><a name="303"
+      > </a
+      ><a name="304" class="Symbol"
+      >=</a
+      ><a name="305"
+      > </a
+      ><a name="306" class="Symbol"
+      >&#8704;</a
+      ><a name="307"
+      > </a
+      ><a name="308" href="function.surjective.html#308" class="Bound"
+      >b</a
+      ><a name="309"
+      > </a
+      ><a name="310" class="Symbol"
+      >&#8594;</a
+      ><a name="311"
+      > </a
+      ><a name="312" href="hott.truncation.core.html#211" class="Function Operator"
+      >&#8741;</a
+      ><a name="313"
+      > </a
+      ><a name="314" href="function.surjective.html#302" class="Bound"
+      >f</a
+      ><a name="315"
+      > </a
+      ><a name="316" href="hott.level.core.html#1193" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="318"
+      > </a
+      ><a name="319" href="function.surjective.html#308" class="Bound"
+      >b</a
+      ><a name="320"
+      > </a
+      ><a name="321" href="hott.truncation.core.html#211" class="Function Operator"
+      >&#8741;</a
+      ><a name="322"
+      >
+
+</a
+      ><a name="324" href="function.surjective.html#324" class="Function"
+      >retr&#8658;surj</a
+      ><a name="333"
+      > </a
+      ><a name="334" class="Symbol"
+      >:</a
+      ><a name="335"
+      > </a
+      ><a name="336" class="Symbol"
+      >&#8704;</a
+      ><a name="337"
+      > </a
+      ><a name="338" class="Symbol"
+      >{</a
+      ><a name="339" href="function.surjective.html#339" class="Bound"
+      >i</a
+      ><a name="340"
+      > </a
+      ><a name="341" href="function.surjective.html#341" class="Bound"
+      >j</a
+      ><a name="342" class="Symbol"
+      >}{</a
+      ><a name="344" href="function.surjective.html#344" class="Bound"
+      >A</a
+      ><a name="345"
+      > </a
+      ><a name="346" class="Symbol"
+      >:</a
+      ><a name="347"
+      > </a
+      ><a name="348" class="PrimitiveType"
+      >Set</a
+      ><a name="351"
+      > </a
+      ><a name="352" href="function.surjective.html#339" class="Bound"
+      >i</a
+      ><a name="353" class="Symbol"
+      >}{</a
+      ><a name="355" href="function.surjective.html#355" class="Bound"
+      >B</a
+      ><a name="356"
+      > </a
+      ><a name="357" class="Symbol"
+      >:</a
+      ><a name="358"
+      > </a
+      ><a name="359" class="PrimitiveType"
+      >Set</a
+      ><a name="362"
+      > </a
+      ><a name="363" href="function.surjective.html#341" class="Bound"
+      >j</a
+      ><a name="364" class="Symbol"
+      >}</a
+      ><a name="365"
+      >
+          </a
+      ><a name="376" class="Symbol"
+      >&#8594;</a
+      ><a name="377"
+      > </a
+      ><a name="378" class="Symbol"
+      >(</a
+      ><a name="379" href="function.surjective.html#379" class="Bound"
+      >f</a
+      ><a name="380"
+      > </a
+      ><a name="381" class="Symbol"
+      >:</a
+      ><a name="382"
+      > </a
+      ><a name="383" href="function.surjective.html#344" class="Bound"
+      >A</a
+      ><a name="384"
+      > </a
+      ><a name="385" class="Symbol"
+      >&#8594;</a
+      ><a name="386"
+      > </a
+      ><a name="387" href="function.surjective.html#355" class="Bound"
+      >B</a
+      ><a name="388" class="Symbol"
+      >)</a
+      ><a name="389"
+      >
+          </a
+      ><a name="400" class="Symbol"
+      >&#8594;</a
+      ><a name="401"
+      > </a
+      ><a name="402" href="function.isomorphism.core.html#2466" class="Function"
+      >retraction</a
+      ><a name="412"
+      > </a
+      ><a name="413" href="function.surjective.html#379" class="Bound"
+      >f</a
+      ><a name="414"
+      >
+          </a
+      ><a name="425" class="Symbol"
+      >&#8594;</a
+      ><a name="426"
+      > </a
+      ><a name="427" href="function.surjective.html#230" class="Function"
+      >surjective</a
+      ><a name="437"
+      > </a
+      ><a name="438" href="function.surjective.html#379" class="Bound"
+      >f</a
+      ><a name="439"
+      >
+</a
+      ><a name="440" href="function.surjective.html#324" class="Function"
+      >retr&#8658;surj</a
+      ><a name="449"
+      > </a
+      ><a name="450" href="function.surjective.html#450" class="Bound"
+      >f</a
+      ><a name="451"
+      > </a
+      ><a name="452" href="function.surjective.html#452" class="Bound"
+      >retr</a
+      ><a name="456"
+      > </a
+      ><a name="457" href="function.surjective.html#457" class="Bound"
+      >b</a
+      ><a name="458"
+      > </a
+      ><a name="459" class="Symbol"
+      >=</a
+      ><a name="460"
+      > </a
+      ><a name="461" href="hott.truncation.core.html#252" class="Function"
+      >&#951;</a
+      ><a name="462"
+      > </a
+      ><a name="463" class="Symbol"
+      >(</a
+      ><a name="464" href="function.surjective.html#452" class="Bound"
+      >retr</a
+      ><a name="468"
+      > </a
+      ><a name="469" href="function.surjective.html#457" class="Bound"
+      >b</a
+      ><a name="470" class="Symbol"
+      >)</a
+      ><a name="471"
+      >
+
+</a
+      ><a name="473" href="function.surjective.html#473" class="Function"
+      >inj+surj&#8658;eq</a
+      ><a name="484"
+      > </a
+      ><a name="485" class="Symbol"
+      >:</a
+      ><a name="486"
+      > </a
+      ><a name="487" class="Symbol"
+      >&#8704;</a
+      ><a name="488"
+      > </a
+      ><a name="489" class="Symbol"
+      >{</a
+      ><a name="490" href="function.surjective.html#490" class="Bound"
+      >i</a
+      ><a name="491"
+      > </a
+      ><a name="492" href="function.surjective.html#492" class="Bound"
+      >j</a
+      ><a name="493" class="Symbol"
+      >}{</a
+      ><a name="495" href="function.surjective.html#495" class="Bound"
+      >A</a
+      ><a name="496"
+      > </a
+      ><a name="497" class="Symbol"
+      >:</a
+      ><a name="498"
+      > </a
+      ><a name="499" class="PrimitiveType"
+      >Set</a
+      ><a name="502"
+      > </a
+      ><a name="503" href="function.surjective.html#490" class="Bound"
+      >i</a
+      ><a name="504" class="Symbol"
+      >}{</a
+      ><a name="506" href="function.surjective.html#506" class="Bound"
+      >B</a
+      ><a name="507"
+      > </a
+      ><a name="508" class="Symbol"
+      >:</a
+      ><a name="509"
+      > </a
+      ><a name="510" class="PrimitiveType"
+      >Set</a
+      ><a name="513"
+      > </a
+      ><a name="514" href="function.surjective.html#492" class="Bound"
+      >j</a
+      ><a name="515" class="Symbol"
+      >}</a
+      ><a name="516"
+      >
+            </a
+      ><a name="529" class="Symbol"
+      >&#8594;</a
+      ><a name="530"
+      > </a
+      ><a name="531" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="532"
+      > </a
+      ><a name="533" class="Number"
+      >2</a
+      ><a name="534"
+      > </a
+      ><a name="535" href="function.surjective.html#495" class="Bound"
+      >A</a
+      ><a name="536"
+      > </a
+      ><a name="537" class="Symbol"
+      >&#8594;</a
+      ><a name="538"
+      > </a
+      ><a name="539" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="540"
+      > </a
+      ><a name="541" class="Number"
+      >2</a
+      ><a name="542"
+      > </a
+      ><a name="543" href="function.surjective.html#506" class="Bound"
+      >B</a
+      ><a name="544"
+      >
+            </a
+      ><a name="557" class="Symbol"
+      >&#8594;</a
+      ><a name="558"
+      > </a
+      ><a name="559" class="Symbol"
+      >(</a
+      ><a name="560" href="function.surjective.html#560" class="Bound"
+      >f</a
+      ><a name="561"
+      > </a
+      ><a name="562" class="Symbol"
+      >:</a
+      ><a name="563"
+      > </a
+      ><a name="564" href="function.surjective.html#495" class="Bound"
+      >A</a
+      ><a name="565"
+      > </a
+      ><a name="566" class="Symbol"
+      >&#8594;</a
+      ><a name="567"
+      > </a
+      ><a name="568" href="function.surjective.html#506" class="Bound"
+      >B</a
+      ><a name="569" class="Symbol"
+      >)</a
+      ><a name="570"
+      >
+            </a
+      ><a name="583" class="Symbol"
+      >&#8594;</a
+      ><a name="584"
+      > </a
+      ><a name="585" href="function.isomorphism.core.html#2346" class="Function"
+      >injective</a
+      ><a name="594"
+      > </a
+      ><a name="595" href="function.surjective.html#560" class="Bound"
+      >f</a
+      ><a name="596"
+      >
+            </a
+      ><a name="609" class="Symbol"
+      >&#8594;</a
+      ><a name="610"
+      > </a
+      ><a name="611" href="function.surjective.html#230" class="Function"
+      >surjective</a
+      ><a name="621"
+      > </a
+      ><a name="622" href="function.surjective.html#560" class="Bound"
+      >f</a
+      ><a name="623"
+      >
+            </a
+      ><a name="636" class="Symbol"
+      >&#8594;</a
+      ><a name="637"
+      > </a
+      ><a name="638" href="hott.equivalence.core.html#434" class="Function"
+      >weak-equiv</a
+      ><a name="648"
+      > </a
+      ><a name="649" href="function.surjective.html#560" class="Bound"
+      >f</a
+      ><a name="650"
+      >
+</a
+      ><a name="651" href="function.surjective.html#473" class="Function"
+      >inj+surj&#8658;eq</a
+      ><a name="662"
+      > </a
+      ><a name="663" class="Symbol"
+      >{</a
+      ><a name="664" class="Argument"
+      >A</a
+      ><a name="665"
+      > </a
+      ><a name="666" class="Symbol"
+      >=</a
+      ><a name="667"
+      > </a
+      ><a name="668" href="function.surjective.html#668" class="Bound"
+      >A</a
+      ><a name="669" class="Symbol"
+      >}{</a
+      ><a name="671" class="Argument"
+      >B</a
+      ><a name="672"
+      > </a
+      ><a name="673" class="Symbol"
+      >=</a
+      ><a name="674"
+      > </a
+      ><a name="675" href="function.surjective.html#675" class="Bound"
+      >B</a
+      ><a name="676" class="Symbol"
+      >}</a
+      ><a name="677"
+      > </a
+      ><a name="678" href="function.surjective.html#678" class="Bound"
+      >hA</a
+      ><a name="680"
+      > </a
+      ><a name="681" href="function.surjective.html#681" class="Bound"
+      >hB</a
+      ><a name="683"
+      > </a
+      ><a name="684" href="function.surjective.html#684" class="Bound"
+      >f</a
+      ><a name="685"
+      > </a
+      ><a name="686" href="function.surjective.html#686" class="Bound"
+      >inj</a
+      ><a name="689"
+      > </a
+      ><a name="690" href="function.surjective.html#690" class="Bound"
+      >surj</a
+      ><a name="694"
+      > </a
+      ><a name="695" href="function.surjective.html#695" class="Bound"
+      >b</a
+      ><a name="696"
+      > </a
+      ><a name="697" class="Symbol"
+      >=</a
+      ><a name="698"
+      > </a
+      ><a name="699" href="function.surjective.html#869" class="Function"
+      >retr-f</a
+      ><a name="705"
+      > </a
+      ><a name="706" href="function.surjective.html#695" class="Bound"
+      >b</a
+      ><a name="707"
+      > </a
+      ><a name="708" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="709"
+      > </a
+      ><a name="710" href="function.surjective.html#743" class="Function"
+      >propFib</a
+      ><a name="717"
+      > </a
+      ><a name="718" href="function.surjective.html#695" class="Bound"
+      >b</a
+      ><a name="719"
+      > </a
+      ><a name="720" class="Symbol"
+      >(</a
+      ><a name="721" href="function.surjective.html#869" class="Function"
+      >retr-f</a
+      ><a name="727"
+      > </a
+      ><a name="728" href="function.surjective.html#695" class="Bound"
+      >b</a
+      ><a name="729" class="Symbol"
+      >)</a
+      ><a name="730"
+      >
+  </a
+      ><a name="733" class="Keyword"
+      >where</a
+      ><a name="738"
+      >
+    </a
+      ><a name="743" href="function.surjective.html#743" class="Function"
+      >propFib</a
+      ><a name="750"
+      > </a
+      ><a name="751" class="Symbol"
+      >:</a
+      ><a name="752"
+      > </a
+      ><a name="753" class="Symbol"
+      >(</a
+      ><a name="754" href="function.surjective.html#754" class="Bound"
+      >b</a
+      ><a name="755"
+      > </a
+      ><a name="756" class="Symbol"
+      >:</a
+      ><a name="757"
+      > </a
+      ><a name="758" href="function.surjective.html#675" class="Bound"
+      >B</a
+      ><a name="759" class="Symbol"
+      >)</a
+      ><a name="760"
+      > </a
+      ><a name="761" class="Symbol"
+      >&#8594;</a
+      ><a name="762"
+      > </a
+      ><a name="763" href="hott.level.core.html#327" class="Function"
+      >prop</a
+      ><a name="767"
+      > </a
+      ><a name="768" class="Symbol"
+      >(</a
+      ><a name="769" href="function.surjective.html#684" class="Bound"
+      >f</a
+      ><a name="770"
+      > </a
+      ><a name="771" href="hott.level.core.html#1193" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="773"
+      > </a
+      ><a name="774" href="function.surjective.html#754" class="Bound"
+      >b</a
+      ><a name="775" class="Symbol"
+      >)</a
+      ><a name="776"
+      >
+    </a
+      ><a name="781" href="function.surjective.html#743" class="Function"
+      >propFib</a
+      ><a name="788"
+      > </a
+      ><a name="789" href="function.surjective.html#789" class="Bound"
+      >b</a
+      ><a name="790"
+      > </a
+      ><a name="791" class="Symbol"
+      >(</a
+      ><a name="792" href="function.surjective.html#792" class="Bound"
+      >a</a
+      ><a name="793"
+      > </a
+      ><a name="794" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="795"
+      > </a
+      ><a name="796" href="function.surjective.html#796" class="Bound"
+      >p</a
+      ><a name="797" class="Symbol"
+      >)</a
+      ><a name="798"
+      > </a
+      ><a name="799" class="Symbol"
+      >(</a
+      ><a name="800" href="function.surjective.html#800" class="Bound"
+      >a'</a
+      ><a name="802"
+      > </a
+      ><a name="803" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="804"
+      > </a
+      ><a name="805" href="function.surjective.html#805" class="Bound"
+      >p'</a
+      ><a name="807" class="Symbol"
+      >)</a
+      ><a name="808"
+      > </a
+      ><a name="809" class="Symbol"
+      >=</a
+      ><a name="810"
+      > </a
+      ><a name="811" href="equality.calculus.html#1747" class="Function"
+      >unap&#931;</a
+      ><a name="816"
+      > </a
+      ><a name="817" class="Symbol"
+      >(</a
+      ><a name="818" href="function.surjective.html#686" class="Bound"
+      >inj</a
+      ><a name="821"
+      > </a
+      ><a name="822" class="Symbol"
+      >(</a
+      ><a name="823" href="function.surjective.html#796" class="Bound"
+      >p</a
+      ><a name="824"
+      > </a
+      ><a name="825" href="equality.groupoid.html#147" class="Function Operator"
+      >&#183;</a
+      ><a name="826"
+      > </a
+      ><a name="827" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="830"
+      > </a
+      ><a name="831" href="function.surjective.html#805" class="Bound"
+      >p'</a
+      ><a name="833" class="Symbol"
+      >)</a
+      ><a name="834"
+      > </a
+      ><a name="835" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="836"
+      > </a
+      ><a name="837" href="hott.level.core.html#386" class="Function"
+      >h1&#8658;prop</a
+      ><a name="844"
+      > </a
+      ><a name="845" class="Symbol"
+      >(</a
+      ><a name="846" href="function.surjective.html#681" class="Bound"
+      >hB</a
+      ><a name="848"
+      > </a
+      ><a name="849" class="Symbol"
+      >(</a
+      ><a name="850" href="function.surjective.html#684" class="Bound"
+      >f</a
+      ><a name="851"
+      > </a
+      ><a name="852" href="function.surjective.html#800" class="Bound"
+      >a'</a
+      ><a name="854" class="Symbol"
+      >)</a
+      ><a name="855"
+      > </a
+      ><a name="856" href="function.surjective.html#789" class="Bound"
+      >b</a
+      ><a name="857" class="Symbol"
+      >)</a
+      ><a name="858"
+      > </a
+      ><a name="859" class="Symbol"
+      >_</a
+      ><a name="860"
+      > </a
+      ><a name="861" class="Symbol"
+      >_)</a
+      ><a name="863"
+      >
+
+    </a
+      ><a name="869" href="function.surjective.html#869" class="Function"
+      >retr-f</a
+      ><a name="875"
+      > </a
+      ><a name="876" class="Symbol"
+      >:</a
+      ><a name="877"
+      > </a
+      ><a name="878" href="function.isomorphism.core.html#2466" class="Function"
+      >retraction</a
+      ><a name="888"
+      > </a
+      ><a name="889" href="function.surjective.html#684" class="Bound"
+      >f</a
+      ><a name="890"
+      >
+    </a
+      ><a name="895" href="function.surjective.html#869" class="Function"
+      >retr-f</a
+      ><a name="901"
+      > </a
+      ><a name="902" href="function.surjective.html#902" class="Bound"
+      >b</a
+      ><a name="903"
+      > </a
+      ><a name="904" class="Symbol"
+      >=</a
+      ><a name="905"
+      > </a
+      ><a name="906" href="hott.truncation.core.html#588" class="Function"
+      >Trunc-elim</a
+      ><a name="916"
+      > </a
+      ><a name="917" class="Symbol"
+      >(</a
+      ><a name="918" href="hott.level.core.html#466" class="Function"
+      >prop&#8658;h1</a
+      ><a name="925"
+      > </a
+      ><a name="926" class="Symbol"
+      >(</a
+      ><a name="927" href="function.surjective.html#743" class="Function"
+      >propFib</a
+      ><a name="934"
+      > </a
+      ><a name="935" href="function.surjective.html#902" class="Bound"
+      >b</a
+      ><a name="936" class="Symbol"
+      >))</a
+      ><a name="938"
+      > </a
+      ><a name="939" class="Symbol"
+      >(&#955;</a
+      ><a name="941"
+      > </a
+      ><a name="942" href="function.surjective.html#942" class="Bound"
+      >x</a
+      ><a name="943"
+      > </a
+      ><a name="944" class="Symbol"
+      >&#8594;</a
+      ><a name="945"
+      > </a
+      ><a name="946" href="function.surjective.html#942" class="Bound"
+      >x</a
+      ><a name="947" class="Symbol"
+      >)</a
+      ><a name="948"
+      > </a
+      ><a name="949" class="Symbol"
+      >(</a
+      ><a name="950" href="function.surjective.html#690" class="Bound"
+      >surj</a
+      ><a name="954"
+      > </a
+      ><a name="955" href="function.surjective.html#902" class="Bound"
+      >b</a
+      ><a name="956" class="Symbol"
+      >)</a
+      ><a name="957"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
