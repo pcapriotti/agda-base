@@ -1,28 +1,37 @@
 #!/bin/bash -e
 
-if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
+if [ "${TRAVIS_PULL_REQUEST}" = "false" ]
 then
-  # generate html
+  if [ "$#" -gt 0 ]
+  then
+    branch="$1"
+  else
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+  fi
   html=`mktemp -d`
-  sha=`git log -1 HEAD --pretty=format:%H`
-  agda -i. --html --html-dir=$html README.agda
-  mv $html/README.html $html/index.html
 
-  # commit
+  # setup repo with gh-pages branch
+  git clone -b gh-pages https://$GIT_TOKEN@github.com/pcapriotti/agda-base $html
   cd $html
-  git init
   git config user.name "Paolo Capriotti"
   git config user.email "paolo@capriotti.io"
-  git remote add origin https://$GIT_TOKEN@github.com/pcapriotti/agda-base
-  git fetch origin
-  git reset origin/gh-pages
+  rm -fr "$branch"
+  cd -
+
+  # generate html
+  agda -i. --html --html-dir=$html/$branch README.agda
+  mv $html/$branch/README.html $html/$branch/index.html
+
+  # commit
+  sha=`git log -1 HEAD --pretty=format:%H`
+  cd $html
   git add -A
-  git commit -m "Update: $sha" || true
-  git push origin master:gh-pages 2>/dev/null || ( echo "Could not push" && false )
+  git commit -m "Update $branch: $sha" || true
+  git push origin 2>/dev/null || ( echo "Could not push" && false )
 
   # cleanup
   cd -
   rm -fr $html
 else
-  echo "pull request, skipping website generation"
+  echo "skipping website generation"
 fi
