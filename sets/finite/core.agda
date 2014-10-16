@@ -20,24 +20,24 @@ mk-is-finite {n = n} enum = n , enum
 fin-is-finite : ∀ {n} → IsFinite (Fin n)
 fin-is-finite {n} = mk-is-finite refl≅
 
-⊎-of-size : ∀ {i j n m}{A : Set i}{B : Set j}
-          → IsOfSize A n
-          → IsOfSize B m
-          → IsOfSize (A ⊎ B) (n + m)
-⊎-of-size isoA isoB = ⊎-ap-iso isoA isoB ·≅ fin-sum
-
-⊎-finite : ∀ {i j}{A : Set i}{B : Set j}
-         → IsFinite A → IsFinite B
-         → IsFinite (A ⊎ B)
-⊎-finite (_ , fA) (_ , fB) = mk-is-finite (⊎-of-size fA fB)
-
-×-of-size : ∀ {i j n m}{A : Set i}{B : Set j}
-          → IsOfSize A n
-          → IsOfSize B m
-          → IsOfSize (A × B) (n * m)
-×-of-size isoA isoB = ×-ap-iso isoA isoB ·≅ fin-prod
-
-×-finite : ∀ {i j}{A : Set i}{B : Set j}
-         → IsFinite A → IsFinite B
-         → IsFinite (A × B)
-×-finite (_ , fA) (_ , fB) = mk-is-finite (×-of-size fA fB)
+-- ⊎-of-size : ∀ {i j n m}{A : Set i}{B : Set j}
+--           → IsOfSize A n
+--           → IsOfSize B m
+--           → IsOfSize (A ⊎ B) (n + m)
+-- ⊎-of-size isoA isoB = ⊎-ap-iso isoA isoB ·≅ fin-sum
+-- 
+-- ⊎-finite : ∀ {i j}{A : Set i}{B : Set j}
+--          → IsFinite A → IsFinite B
+--          → IsFinite (A ⊎ B)
+-- ⊎-finite (_ , fA) (_ , fB) = mk-is-finite (⊎-of-size fA fB)
+-- 
+-- ×-of-size : ∀ {i j n m}{A : Set i}{B : Set j}
+--           → IsOfSize A n
+--           → IsOfSize B m
+--           → IsOfSize (A × B) (n * m)
+-- ×-of-size isoA isoB = ×-ap-iso isoA isoB ·≅ fin-prod
+-- 
+-- ×-finite : ∀ {i j}{A : Set i}{B : Set j}
+--          → IsFinite A → IsFinite B
+--          → IsFinite (A × B)
+-- ×-finite (_ , fA) (_ , fB) = mk-is-finite (×-of-size fA fB)
