@@ -1,0 +1,1646 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >sets.fin.universe</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K  </a
+      ><a name="26" class="Symbol"
+      >#-}</a
+      ><a name="29"
+      >
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="sets.fin.universe.html#1" class="Module"
+      >sets.fin.universe</a
+      ><a name="54"
+      > </a
+      ><a name="55" class="Keyword"
+      >where</a
+      ><a name="60"
+      >
+
+</a
+      ><a name="62" class="Keyword"
+      >open</a
+      ><a name="66"
+      > </a
+      ><a name="67" class="Keyword"
+      >import</a
+      ><a name="73"
+      > </a
+      ><a name="74" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="77"
+      >
+</a
+      ><a name="78" class="Keyword"
+      >open</a
+      ><a name="82"
+      > </a
+      ><a name="83" class="Keyword"
+      >import</a
+      ><a name="89"
+      > </a
+      ><a name="90" href="decidable.html#1" class="Module"
+      >decidable</a
+      ><a name="99"
+      >
+</a
+      ><a name="100" class="Keyword"
+      >open</a
+      ><a name="104"
+      > </a
+      ><a name="105" class="Keyword"
+      >import</a
+      ><a name="111"
+      > </a
+      ><a name="112" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="125"
+      >
+</a
+      ><a name="126" class="Keyword"
+      >open</a
+      ><a name="130"
+      > </a
+      ><a name="131" class="Keyword"
+      >import</a
+      ><a name="137"
+      > </a
+      ><a name="138" href="equality.calculus.html#1" class="Module"
+      >equality.calculus</a
+      ><a name="155"
+      >
+</a
+      ><a name="156" class="Keyword"
+      >open</a
+      ><a name="160"
+      > </a
+      ><a name="161" class="Keyword"
+      >import</a
+      ><a name="167"
+      > </a
+      ><a name="168" href="equality.inspect.html#1" class="Module"
+      >equality.inspect</a
+      ><a name="184"
+      >
+</a
+      ><a name="185" class="Keyword"
+      >open</a
+      ><a name="189"
+      > </a
+      ><a name="190" class="Keyword"
+      >import</a
+      ><a name="196"
+      > </a
+      ><a name="197" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="217"
+      >
+</a
+      ><a name="218" class="Keyword"
+      >open</a
+      ><a name="222"
+      > </a
+      ><a name="223" class="Keyword"
+      >import</a
+      ><a name="229"
+      > </a
+      ><a name="230" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="243"
+      >
+</a
+      ><a name="244" class="Keyword"
+      >open</a
+      ><a name="248"
+      > </a
+      ><a name="249" class="Keyword"
+      >import</a
+      ><a name="255"
+      > </a
+      ><a name="256" href="function.extensionality.html#1" class="Module"
+      >function.extensionality</a
+      ><a name="279"
+      >
+</a
+      ><a name="280" class="Keyword"
+      >open</a
+      ><a name="284"
+      > </a
+      ><a name="285" class="Keyword"
+      >import</a
+      ><a name="291"
+      > </a
+      ><a name="292" href="function.overloading.html#1" class="Module"
+      >function.overloading</a
+      ><a name="312"
+      >
+</a
+      ><a name="313" class="Keyword"
+      >open</a
+      ><a name="317"
+      > </a
+      ><a name="318" class="Keyword"
+      >import</a
+      ><a name="324"
+      > </a
+      ><a name="325" href="sets.core.html#1" class="Module"
+      >sets.core</a
+      ><a name="334"
+      >
+</a
+      ><a name="335" class="Keyword"
+      >open</a
+      ><a name="339"
+      > </a
+      ><a name="340" class="Keyword"
+      >import</a
+      ><a name="346"
+      > </a
+      ><a name="347" href="sets.properties.html#1" class="Module"
+      >sets.properties</a
+      ><a name="362"
+      >
+</a
+      ><a name="363" class="Keyword"
+      >open</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="Keyword"
+      >import</a
+      ><a name="374"
+      > </a
+      ><a name="375" href="sets.nat.core.html#1" class="Module"
+      >sets.nat.core</a
+      ><a name="388"
+      >
+  </a
+      ><a name="391" class="Keyword"
+      >hiding</a
+      ><a name="397"
+      > </a
+      ><a name="398" class="Symbol"
+      >(</a
+      ><a name="399"
+      >_&#8799;_</a
+      ><a name="402" class="Symbol"
+      >)</a
+      ><a name="403"
+      >
+</a
+      ><a name="404" class="Keyword"
+      >open</a
+      ><a name="408"
+      > </a
+      ><a name="409" class="Keyword"
+      >import</a
+      ><a name="415"
+      > </a
+      ><a name="416" href="sets.nat.ordering.html#1" class="Module"
+      >sets.nat.ordering</a
+      ><a name="433"
+      >
+  </a
+      ><a name="436" class="Keyword"
+      >hiding</a
+      ><a name="442"
+      > </a
+      ><a name="443" class="Symbol"
+      >(</a
+      ><a name="444"
+      >compare</a
+      ><a name="451" class="Symbol"
+      >)</a
+      ><a name="452"
+      >
+</a
+      ><a name="453" class="Keyword"
+      >open</a
+      ><a name="457"
+      > </a
+      ><a name="458" class="Keyword"
+      >import</a
+      ><a name="464"
+      > </a
+      ><a name="465" href="sets.fin.core.html#1" class="Module"
+      >sets.fin.core</a
+      ><a name="478"
+      >
+</a
+      ><a name="479" class="Keyword"
+      >open</a
+      ><a name="483"
+      > </a
+      ><a name="484" class="Keyword"
+      >import</a
+      ><a name="490"
+      > </a
+      ><a name="491" href="sets.fin.ordering.html#1" class="Module"
+      >sets.fin.ordering</a
+      ><a name="508"
+      >
+</a
+      ><a name="509" class="Keyword"
+      >open</a
+      ><a name="513"
+      > </a
+      ><a name="514" class="Keyword"
+      >import</a
+      ><a name="520"
+      > </a
+      ><a name="521" href="sets.fin.properties.html#1" class="Module"
+      >sets.fin.properties</a
+      ><a name="540"
+      >
+</a
+      ><a name="541" class="Keyword"
+      >open</a
+      ><a name="545"
+      > </a
+      ><a name="546" class="Keyword"
+      >import</a
+      ><a name="552"
+      > </a
+      ><a name="553" href="sets.unit.html#1" class="Module"
+      >sets.unit</a
+      ><a name="562"
+      >
+</a
+      ><a name="563" class="Keyword"
+      >open</a
+      ><a name="567"
+      > </a
+      ><a name="568" class="Keyword"
+      >import</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="sets.empty.html#1" class="Module"
+      >sets.empty</a
+      ><a name="585"
+      >
+</a
+      ><a name="586" class="Keyword"
+      >open</a
+      ><a name="590"
+      > </a
+      ><a name="591" class="Keyword"
+      >import</a
+      ><a name="597"
+      > </a
+      ><a name="598" href="sets.bool.html#1" class="Module"
+      >sets.bool</a
+      ><a name="607"
+      >
+</a
+      ><a name="608" class="Keyword"
+      >open</a
+      ><a name="612"
+      > </a
+      ><a name="613" class="Keyword"
+      >import</a
+      ><a name="619"
+      > </a
+      ><a name="620" href="sets.vec.dependent.html#1" class="Module"
+      >sets.vec.dependent</a
+      ><a name="638"
+      >
+</a
+      ><a name="639" class="Keyword"
+      >open</a
+      ><a name="643"
+      > </a
+      ><a name="644" class="Keyword"
+      >import</a
+      ><a name="650"
+      > </a
+      ><a name="651" href="hott.level.core.html#1" class="Module"
+      >hott.level.core</a
+      ><a name="666"
+      >
+</a
+      ><a name="667" class="Keyword"
+      >open</a
+      ><a name="671"
+      > </a
+      ><a name="672" class="Keyword"
+      >import</a
+      ><a name="678"
+      > </a
+      ><a name="679" href="hott.level.closure.html#1" class="Module"
+      >hott.level.closure</a
+      ><a name="697"
+      >
+</a
+      ><a name="698" class="Keyword"
+      >open</a
+      ><a name="702"
+      > </a
+      ><a name="703" class="Keyword"
+      >import</a
+      ><a name="709"
+      > </a
+      ><a name="710" href="hott.level.sets.html#1" class="Module"
+      >hott.level.sets</a
+      ><a name="725"
+      >
+
+</a
+      ><a name="727" href="sets.fin.universe.html#727" class="Function"
+      >fin-struct-iso</a
+      ><a name="741"
+      > </a
+      ><a name="742" class="Symbol"
+      >:</a
+      ><a name="743"
+      > </a
+      ><a name="744" class="Symbol"
+      >&#8704;</a
+      ><a name="745"
+      > </a
+      ><a name="746" class="Symbol"
+      >{</a
+      ><a name="747" href="sets.fin.universe.html#747" class="Bound"
+      >n</a
+      ><a name="748" class="Symbol"
+      >}</a
+      ><a name="749"
+      > </a
+      ><a name="750" class="Symbol"
+      >&#8594;</a
+      ><a name="751"
+      > </a
+      ><a name="752" href="sets.fin.core.html#205" class="Datatype"
+      >Fin</a
+      ><a name="755"
+      > </a
+      ><a name="756" class="Symbol"
+      >(</a
+      ><a name="757" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="760"
+      > </a
+      ><a name="761" href="sets.fin.universe.html#747" class="Bound"
+      >n</a
+      ><a name="762" class="Symbol"
+      >)</a
+      ><a name="763"
+      > </a
+      ><a name="764" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="765"
+      > </a
+      ><a name="766" class="Symbol"
+      >(</a
+      ><a name="767" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="768"
+      > </a
+      ><a name="769" href="sum.html#689" class="Datatype Operator"
+      >&#8846;</a
+      ><a name="770"
+      > </a
+      ><a name="771" href="sets.fin.core.html#205" class="Datatype"
+      >Fin</a
+      ><a name="774"
+      > </a
+      ><a name="775" href="sets.fin.universe.html#747" class="Bound"
+      >n</a
+      ><a name="776" class="Symbol"
+      >)</a
+      ><a name="777"
+      >
+</a
+      ><a name="778" href="sets.fin.universe.html#727" class="Function"
+      >fin-struct-iso</a
+      ><a name="792"
+      > </a
+      ><a name="793" class="Symbol"
+      >=</a
+      ><a name="794"
+      > </a
+      ><a name="795" class="Keyword"
+      >record</a
+      ><a name="801"
+      >
+  </a
+      ><a name="804" class="Symbol"
+      >{</a
+      ><a name="805"
+      > </a
+      ><a name="806" class="Field"
+      >to</a
+      ><a name="808"
+      > </a
+      ><a name="809" class="Symbol"
+      >=</a
+      ><a name="810"
+      > </a
+      ><a name="811" class="Symbol"
+      >&#955;</a
+      ><a name="812"
+      > </a
+      ><a name="813" class="Symbol"
+      >{</a
+      ><a name="814"
+      > </a
+      ><a name="815" href="sets.fin.core.html#227" class="InductiveConstructor"
+      >zero</a
+      ><a name="819"
+      > </a
+      ><a name="820" class="Symbol"
+      >&#8594;</a
+      ><a name="821"
+      > </a
+      ><a name="822" href="sum.html#745" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="826"
+      > </a
+      ><a name="827" href="sets.unit.html#90" class="InductiveConstructor"
+      >tt</a
+      ><a name="829" class="Symbol"
+      >;</a
+      ><a name="830"
+      > </a
+      ><a name="831" class="Symbol"
+      >(</a
+      ><a name="832" href="sets.fin.core.html#258" class="InductiveConstructor"
+      >suc</a
+      ><a name="835"
+      > </a
+      ><a name="836" href="sets.fin.universe.html#836" class="Bound"
+      >i</a
+      ><a name="837" class="Symbol"
+      >)</a
+      ><a name="838"
+      > </a
+      ><a name="839" class="Symbol"
+      >&#8594;</a
+      ><a name="840"
+      > </a
+      ><a name="841" href="sum.html#770" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="845"
+      > </a
+      ><a name="846" href="sets.fin.universe.html#836" class="Bound"
+      >i</a
+      ><a name="847"
+      > </a
+      ><a name="848" class="Symbol"
+      >}</a
+      ><a name="849"
+      >
+  </a
+      ><a name="852" class="Symbol"
+      >;</a
+      ><a name="853"
+      > </a
+      ><a name="854" class="Field"
+      >from</a
+      ><a name="858"
+      > </a
+      ><a name="859" class="Symbol"
+      >=</a
+      ><a name="860"
+      > </a
+      ><a name="861" href="sum.html#794" class="Function Operator"
+      >[</a
+      ><a name="862"
+      > </a
+      ><a name="863" class="Symbol"
+      >(&#955;</a
+      ><a name="865"
+      > </a
+      ><a name="866" href="sets.fin.universe.html#866" class="Bound"
+      >_</a
+      ><a name="867"
+      > </a
+      ><a name="868" class="Symbol"
+      >&#8594;</a
+      ><a name="869"
+      > </a
+      ><a name="870" href="sets.fin.core.html#227" class="InductiveConstructor"
+      >zero</a
+      ><a name="874" class="Symbol"
+      >)</a
+      ><a name="875"
+      > </a
+      ><a name="876" href="sum.html#794" class="Function Operator"
+      >,&#8846;</a
+      ><a name="878"
+      > </a
+      ><a name="879" class="Symbol"
+      >(</a
+      ><a name="880" href="sets.fin.core.html#258" class="InductiveConstructor"
+      >suc</a
+      ><a name="883" class="Symbol"
+      >)</a
+      ><a name="884"
+      > </a
+      ><a name="885" href="sum.html#794" class="Function Operator"
+      >]</a
+      ><a name="886"
+      >
+  </a
+      ><a name="889" class="Symbol"
+      >;</a
+      ><a name="890"
+      > </a
+      ><a name="891" class="Field"
+      >iso&#8321;</a
+      ><a name="895"
+      > </a
+      ><a name="896" class="Symbol"
+      >=</a
+      ><a name="897"
+      > </a
+      ><a name="898" class="Symbol"
+      >&#955;</a
+      ><a name="899"
+      > </a
+      ><a name="900" class="Symbol"
+      >{</a
+      ><a name="901"
+      > </a
+      ><a name="902" href="sets.fin.core.html#227" class="InductiveConstructor"
+      >zero</a
+      ><a name="906"
+      > </a
+      ><a name="907" class="Symbol"
+      >&#8594;</a
+      ><a name="908"
+      > </a
+      ><a name="909" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="913"
+      > </a
+      ><a name="914" class="Symbol"
+      >;</a
+      ><a name="915"
+      > </a
+      ><a name="916" class="Symbol"
+      >(</a
+      ><a name="917" href="sets.fin.core.html#258" class="InductiveConstructor"
+      >suc</a
+      ><a name="920"
+      > </a
+      ><a name="921" href="sets.fin.universe.html#921" class="Bound"
+      >i</a
+      ><a name="922" class="Symbol"
+      >)</a
+      ><a name="923"
+      > </a
+      ><a name="924" class="Symbol"
+      >&#8594;</a
+      ><a name="925"
+      > </a
+      ><a name="926" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="930"
+      > </a
+      ><a name="931" class="Symbol"
+      >}</a
+      ><a name="932"
+      >
+  </a
+      ><a name="935" class="Symbol"
+      >;</a
+      ><a name="936"
+      > </a
+      ><a name="937" class="Field"
+      >iso&#8322;</a
+      ><a name="941"
+      > </a
+      ><a name="942" class="Symbol"
+      >=</a
+      ><a name="943"
+      > </a
+      ><a name="944" class="Symbol"
+      >&#955;</a
+      ><a name="945"
+      > </a
+      ><a name="946" class="Symbol"
+      >{</a
+      ><a name="947"
+      > </a
+      ><a name="948" class="Symbol"
+      >(</a
+      ><a name="949" href="sum.html#745" class="InductiveConstructor"
+      >inj&#8321;</a
+      ><a name="953"
+      > </a
+      ><a name="954" class="Symbol"
+      >_)</a
+      ><a name="956"
+      > </a
+      ><a name="957" class="Symbol"
+      >&#8594;</a
+      ><a name="958"
+      > </a
+      ><a name="959" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="963" class="Symbol"
+      >;</a
+      ><a name="964"
+      > </a
+      ><a name="965" class="Symbol"
+      >(</a
+      ><a name="966" href="sum.html#770" class="InductiveConstructor"
+      >inj&#8322;</a
+      ><a name="970"
+      > </a
+      ><a name="971" href="sets.fin.universe.html#971" class="Bound"
+      >i</a
+      ><a name="972" class="Symbol"
+      >)</a
+      ><a name="973"
+      > </a
+      ><a name="974" class="Symbol"
+      >&#8594;</a
+      ><a name="975"
+      > </a
+      ><a name="976" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="980"
+      > </a
+      ><a name="981" class="Symbol"
+      >}</a
+      ><a name="982"
+      > </a
+      ><a name="983" class="Symbol"
+      >}</a
+      ><a name="984"
+      >
+
+</a
+      ><a name="986" href="sets.fin.universe.html#986" class="Function"
+      >fin0-empty</a
+      ><a name="996"
+      > </a
+      ><a name="997" class="Symbol"
+      >:</a
+      ><a name="998"
+      > </a
+      ><a name="999" href="sets.empty.html#89" class="Datatype"
+      >&#8869;</a
+      ><a name="1000"
+      > </a
+      ><a name="1001" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1002"
+      > </a
+      ><a name="1003" href="sets.fin.core.html#205" class="Datatype"
+      >Fin</a
+      ><a name="1006"
+      > </a
+      ><a name="1007" class="Number"
+      >0</a
+      ><a name="1008"
+      >
+</a
+      ><a name="1009" href="sets.fin.universe.html#986" class="Function"
+      >fin0-empty</a
+      ><a name="1019"
+      > </a
+      ><a name="1020" class="Symbol"
+      >=</a
+      ><a name="1021"
+      > </a
+      ><a name="1022" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="1026"
+      > </a
+      ><a name="1027" class="Symbol"
+      >(</a
+      ><a name="1028" href="function.isomorphism.utils.html#8408" class="Function"
+      >empty-&#8869;-iso</a
+      ><a name="1039"
+      > </a
+      ><a name="1040" class="Symbol"
+      >(&#955;</a
+      ><a name="1042"
+      > </a
+      ><a name="1043" class="Symbol"
+      >()))</a
+      ><a name="1047"
+      >
+
+</a
+      ><a name="1049" href="sets.fin.universe.html#1049" class="Function"
+      >fin1-unit</a
+      ><a name="1058"
+      > </a
+      ><a name="1059" class="Symbol"
+      >:</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="1062"
+      > </a
+      ><a name="1063" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1064"
+      > </a
+      ><a name="1065" href="sets.fin.core.html#205" class="Datatype"
+      >Fin</a
+      ><a name="1068"
+      > </a
+      ><a name="1069" class="Number"
+      >1</a
+      ><a name="1070"
+      >
+</a
+      ><a name="1071" href="sets.fin.universe.html#1049" class="Function"
+      >fin1-unit</a
+      ><a name="1080"
+      > </a
+      ><a name="1081" class="Symbol"
+      >=</a
+      ><a name="1082"
+      > </a
+      ><a name="1083" class="Keyword"
+      >record</a
+      ><a name="1089"
+      >
+  </a
+      ><a name="1092" class="Symbol"
+      >{</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" class="Field"
+      >to</a
+      ><a name="1096"
+      > </a
+      ><a name="1097" class="Symbol"
+      >=</a
+      ><a name="1098"
+      > </a
+      ><a name="1099" class="Symbol"
+      >&#955;</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" href="sets.fin.universe.html#1101" class="Bound"
+      >_</a
+      ><a name="1102"
+      > </a
+      ><a name="1103" class="Symbol"
+      >&#8594;</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" href="sets.fin.core.html#227" class="InductiveConstructor"
+      >zero</a
+      ><a name="1109"
+      >
+  </a
+      ><a name="1112" class="Symbol"
+      >;</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" class="Field"
+      >from</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" class="Symbol"
+      >=</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" class="Symbol"
+      >&#955;</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" class="Symbol"
+      >{</a
+      ><a name="1124"
+      > </a
+      ><a name="1125" href="sets.fin.core.html#227" class="InductiveConstructor"
+      >zero</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" class="Symbol"
+      >&#8594;</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" href="sets.unit.html#90" class="InductiveConstructor"
+      >tt</a
+      ><a name="1134"
+      > </a
+      ><a name="1135" class="Symbol"
+      >;</a
+      ><a name="1136"
+      > </a
+      ><a name="1137" class="Symbol"
+      >(</a
+      ><a name="1138" href="sets.fin.core.html#258" class="InductiveConstructor"
+      >suc</a
+      ><a name="1141"
+      > </a
+      ><a name="1142" class="Symbol"
+      >())</a
+      ><a name="1145"
+      > </a
+      ><a name="1146" class="Symbol"
+      >}</a
+      ><a name="1147"
+      >
+  </a
+      ><a name="1150" class="Symbol"
+      >;</a
+      ><a name="1151"
+      > </a
+      ><a name="1152" class="Field"
+      >iso&#8321;</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" class="Symbol"
+      >=</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" class="Symbol"
+      >&#955;</a
+      ><a name="1160"
+      > </a
+      ><a name="1161" href="sets.fin.universe.html#1161" class="Bound"
+      >_</a
+      ><a name="1162"
+      > </a
+      ><a name="1163" class="Symbol"
+      >&#8594;</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1169"
+      >
+  </a
+      ><a name="1172" class="Symbol"
+      >;</a
+      ><a name="1173"
+      > </a
+      ><a name="1174" class="Field"
+      >iso&#8322;</a
+      ><a name="1178"
+      > </a
+      ><a name="1179" class="Symbol"
+      >=</a
+      ><a name="1180"
+      > </a
+      ><a name="1181" class="Symbol"
+      >&#955;</a
+      ><a name="1182"
+      > </a
+      ><a name="1183" class="Symbol"
+      >{</a
+      ><a name="1184"
+      > </a
+      ><a name="1185" href="sets.fin.core.html#227" class="InductiveConstructor"
+      >zero</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" class="Symbol"
+      >&#8594;</a
+      ><a name="1191"
+      > </a
+      ><a name="1192" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1196"
+      > </a
+      ><a name="1197" class="Symbol"
+      >;</a
+      ><a name="1198"
+      > </a
+      ><a name="1199" class="Symbol"
+      >(</a
+      ><a name="1200" href="sets.fin.core.html#258" class="InductiveConstructor"
+      >suc</a
+      ><a name="1203"
+      > </a
+      ><a name="1204" class="Symbol"
+      >())</a
+      ><a name="1207"
+      > </a
+      ><a name="1208" class="Symbol"
+      >}</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" class="Symbol"
+      >}</a
+      ><a name="1211"
+      >
+
+</a
+      ><a name="1213" class="Comment"
+      >-- fin2-bool : Bool &#8773; Fin 2</a
+      ><a name="1240"
+      >
+</a
+      ><a name="1241" class="Comment"
+      >-- fin2-bool = record</a
+      ><a name="1262"
+      >
+</a
+      ><a name="1263" class="Comment"
+      >--   { to = &#955; b &#8594; if b then # 0 else # 1</a
+      ><a name="1303"
+      >
+</a
+      ><a name="1304" class="Comment"
+      >--   ; from = true &#8759;&#8759; false &#8759;&#8759; &#10214;&#10215;</a
+      ><a name="1337"
+      >
+</a
+      ><a name="1338" class="Comment"
+      >--   ; iso&#8321; = &#955; { true &#8594; refl ; false &#8594; refl }</a
+      ><a name="1384"
+      >
+</a
+      ><a name="1385" class="Comment"
+      >--   ; iso&#8322; = refl &#8759;&#8759; refl &#8759;&#8759; &#10214;&#10215; }</a
+      ><a name="1419"
+      >
+</a
+      ><a name="1420" class="Comment"
+      >-- </a
+      ><a name="1423"
+      >
+</a
+      ><a name="1424" class="Comment"
+      >-- fin-sum : &#8704; {n m} &#8594; (Fin n &#8846; Fin m) &#8773; Fin (n + m)</a
+      ><a name="1476"
+      >
+</a
+      ><a name="1477" class="Comment"
+      >-- fin-sum {0} = record</a
+      ><a name="1500"
+      >
+</a
+      ><a name="1501" class="Comment"
+      >--   { to = &#955; { (inj&#8321; ()) ; (inj&#8322; j) &#8594; j }</a
+      ><a name="1543"
+      >
+</a
+      ><a name="1544" class="Comment"
+      >--   ; from = &#955; { j &#8594; inj&#8322; j }</a
+      ><a name="1574"
+      >
+</a
+      ><a name="1575" class="Comment"
+      >--   ; iso&#8321; = &#955; { (inj&#8321; ()); (inj&#8322; j) &#8594; refl }</a
+      ><a name="1621"
+      >
+</a
+      ><a name="1622" class="Comment"
+      >--   ; iso&#8322; = &#955; _ &#8594; refl }</a
+      ><a name="1648"
+      >
+</a
+      ><a name="1649" class="Comment"
+      >-- fin-sum {suc n}{m} = begin</a
+      ><a name="1678"
+      >
+</a
+      ><a name="1679" class="Comment"
+      >--     (Fin (suc n) &#8846; Fin m)</a
+      ><a name="1707"
+      >
+</a
+      ><a name="1708" class="Comment"
+      >--   &#8773;&#10216; &#8846;-ap-iso fin-struct-iso refl&#8773; &#10217;</a
+      ><a name="1747"
+      >
+</a
+      ><a name="1748" class="Comment"
+      >--     ((&#8868; &#8846; Fin n) &#8846; Fin m)</a
+      ><a name="1776"
+      >
+</a
+      ><a name="1777" class="Comment"
+      >--   &#8773;&#10216; &#8846;-assoc-iso &#10217;</a
+      ><a name="1798"
+      >
+</a
+      ><a name="1799" class="Comment"
+      >--     (&#8868; &#8846; (Fin n &#8846; Fin m))</a
+      ><a name="1827"
+      >
+</a
+      ><a name="1828" class="Comment"
+      >--   &#8773;&#10216; &#8846;-ap-iso refl&#8773; fin-sum &#10217;</a
+      ><a name="1860"
+      >
+</a
+      ><a name="1861" class="Comment"
+      >--     (&#8868; &#8846; Fin (n + m))</a
+      ><a name="1885"
+      >
+</a
+      ><a name="1886" class="Comment"
+      >--   &#8773;&#10216; sym&#8773; fin-struct-iso &#10217;</a
+      ><a name="1915"
+      >
+</a
+      ><a name="1916" class="Comment"
+      >--     Fin (suc (n + m))</a
+      ><a name="1940"
+      >
+</a
+      ><a name="1941" class="Comment"
+      >--   &#8718;</a
+      ><a name="1947"
+      >
+</a
+      ><a name="1948" class="Comment"
+      >--   where open &#8773;-Reasoning</a
+      ><a name="1975"
+      >
+</a
+      ><a name="1976" class="Comment"
+      >-- </a
+      ><a name="1979"
+      >
+</a
+      ><a name="1980" class="Comment"
+      >-- fin-prod : &#8704; {n m} &#8594; (Fin n &#215; Fin m) &#8773; Fin (n * m)</a
+      ><a name="2033"
+      >
+</a
+      ><a name="2034" class="Comment"
+      >-- fin-prod {0} = iso (&#955; { (() , _) }) (&#955; ()) (&#955; { (() , _) }) (&#955; ())</a
+      ><a name="2103"
+      >
+</a
+      ><a name="2104" class="Comment"
+      >-- fin-prod {suc n}{m} = begin</a
+      ><a name="2134"
+      >
+</a
+      ><a name="2135" class="Comment"
+      >--     (Fin (suc n) &#215; Fin m)</a
+      ><a name="2163"
+      >
+</a
+      ><a name="2164" class="Comment"
+      >--   &#8773;&#10216; &#215;-ap-iso fin-struct-iso refl&#8773; &#10217;</a
+      ><a name="2203"
+      >
+</a
+      ><a name="2204" class="Comment"
+      >--     ((&#8868; &#8846; Fin n) &#215; Fin m)</a
+      ><a name="2232"
+      >
+</a
+      ><a name="2233" class="Comment"
+      >--   &#8773;&#10216; &#8846;&#215;-distr-iso &#10217;</a
+      ><a name="2255"
+      >
+</a
+      ><a name="2256" class="Comment"
+      >--     ((&#8868; &#215; Fin m) &#8846; (Fin n &#215; Fin m))</a
+      ><a name="2294"
+      >
+</a
+      ><a name="2295" class="Comment"
+      >--   &#8773;&#10216; &#8846;-ap-iso &#215;-left-unit fin-prod &#10217;</a
+      ><a name="2334"
+      >
+</a
+      ><a name="2335" class="Comment"
+      >--     (Fin m &#8846; (Fin (n * m)))</a
+      ><a name="2365"
+      >
+</a
+      ><a name="2366" class="Comment"
+      >--   &#8773;&#10216; fin-sum &#10217;</a
+      ><a name="2383"
+      >
+</a
+      ><a name="2384" class="Comment"
+      >--     (Fin (m + (n * m)))</a
+      ><a name="2410"
+      >
+</a
+      ><a name="2411" class="Comment"
+      >--   &#8801;&#10216; refl &#10217;</a
+      ><a name="2425"
+      >
+</a
+      ><a name="2426" class="Comment"
+      >--     Fin (suc n * m)</a
+      ><a name="2448"
+      >
+</a
+      ><a name="2449" class="Comment"
+      >--   &#8718;</a
+      ><a name="2455"
+      >
+</a
+      ><a name="2456" class="Comment"
+      >--   where open &#8773;-Reasoning</a
+      ><a name="2483"
+      >
+</a
+      ><a name="2484" class="Comment"
+      >-- </a
+      ><a name="2487"
+      >
+</a
+      ><a name="2488" class="Comment"
+      >-- fin-exp : &#8704; {n m} &#8594; (Fin n &#8594; Fin m) &#8773; Fin (m ^ n)</a
+      ><a name="2540"
+      >
+</a
+      ><a name="2541" class="Comment"
+      >-- fin-exp {0} = record</a
+      ><a name="2564"
+      >
+</a
+      ><a name="2565" class="Comment"
+      >--   { to = &#955; f &#8594; zero</a
+      ><a name="2587"
+      >
+</a
+      ><a name="2588" class="Comment"
+      >--   ; from = (&#955; ()) &#8759;&#8759; &#10214;&#10215;</a
+      ><a name="2614"
+      >
+</a
+      ><a name="2615" class="Comment"
+      >--   ; iso&#8321; = &#955; f &#8594; funext &#955; ()</a
+      ><a name="2646"
+      >
+</a
+      ><a name="2647" class="Comment"
+      >--   ; iso&#8322; = refl &#8759;&#8759; &#10214;&#10215; }</a
+      ><a name="2673"
+      >
+</a
+      ><a name="2674" class="Comment"
+      >-- fin-exp {suc n}{m} = begin</a
+      ><a name="2703"
+      >
+</a
+      ><a name="2704" class="Comment"
+      >--     (Fin (suc n) &#8594; Fin m)</a
+      ><a name="2732"
+      >
+</a
+      ><a name="2733" class="Comment"
+      >--   &#8773;&#10216; (&#928;-ap-iso fin-struct-iso &#955; _ &#8594; refl&#8773;) &#10217;</a
+      ><a name="2780"
+      >
+</a
+      ><a name="2781" class="Comment"
+      >--     ((&#8868; &#8846; Fin n) &#8594; Fin m)</a
+      ><a name="2809"
+      >
+</a
+      ><a name="2810" class="Comment"
+      >--   &#8773;&#10216; iso (&#955; f &#8594; f (inj&#8321; tt) , f &#8728;' inj&#8322;)</a
+      ><a name="2853"
+      >
+</a
+      ><a name="2854" class="Comment"
+      >--          (&#955; { (i , _) (inj&#8321; _) &#8594; i</a
+      ><a name="2891"
+      >
+</a
+      ><a name="2892" class="Comment"
+      >--             ; (_ , g) (inj&#8322; i) &#8594; g i })</a
+      ><a name="2934"
+      >
+</a
+      ><a name="2935" class="Comment"
+      >--          (&#955; f &#8594; funext &#955; { (inj&#8321; tt) &#8594; refl</a
+      ><a name="2981"
+      >
+</a
+      ><a name="2982" class="Comment"
+      >--                           ; (inj&#8322; i) &#8594; refl })</a
+      ><a name="3031"
+      >
+</a
+      ><a name="3032" class="Comment"
+      >--          (&#955; { (i , g) &#8594; refl }) &#10217;</a
+      ><a name="3068"
+      >
+</a
+      ><a name="3069" class="Comment"
+      >--     (Fin m &#215; (Fin n &#8594; Fin m))</a
+      ><a name="3101"
+      >
+</a
+      ><a name="3102" class="Comment"
+      >--   &#8773;&#10216; &#215;-ap-iso refl&#8773; fin-exp &#10217;</a
+      ><a name="3134"
+      >
+</a
+      ><a name="3135" class="Comment"
+      >--     (Fin m &#215; Fin (m ^ n))</a
+      ><a name="3163"
+      >
+</a
+      ><a name="3164" class="Comment"
+      >--   &#8773;&#10216; fin-prod &#10217;</a
+      ><a name="3182"
+      >
+</a
+      ><a name="3183" class="Comment"
+      >--     Fin (m ^ (suc n))</a
+      ><a name="3207"
+      >
+</a
+      ><a name="3208" class="Comment"
+      >--   &#8718;</a
+      ><a name="3214"
+      >
+</a
+      ><a name="3215" class="Comment"
+      >--   where open &#8773;-Reasoning</a
+      ><a name="3242"
+      >
+</a
+      ><a name="3243" class="Comment"
+      >-- </a
+      ><a name="3246"
+      >
+</a
+      ><a name="3247" class="Comment"
+      >-- factorial : &#8469; &#8594; &#8469;</a
+      ><a name="3267"
+      >
+</a
+      ><a name="3268" class="Comment"
+      >-- factorial 0 = 1</a
+      ><a name="3286"
+      >
+</a
+      ><a name="3287" class="Comment"
+      >-- factorial (suc n) = suc n * factorial n</a
+      ><a name="3329"
+      >
+</a
+      ><a name="3330" class="Comment"
+      >-- </a
+      ><a name="3333"
+      >
+</a
+      ><a name="3334" class="Comment"
+      >-- fin-inj-iso : &#8704; {n} &#8594; (Fin n &#8773; Fin n) &#8773; (Fin n &#8611; Fin n)</a
+      ><a name="3392"
+      >
+</a
+      ><a name="3393" class="Comment"
+      >-- fin-inj-iso {n} = record</a
+      ><a name="3420"
+      >
+</a
+      ><a name="3421" class="Comment"
+      >--   { to = &#955; f &#8594; (apply f , iso&#8658;inj f)</a
+      ><a name="3460"
+      >
+</a
+      ><a name="3461" class="Comment"
+      >--   ; from = &#955; { (f , inj) &#8594; inj&#8658;iso f inj }</a
+      ><a name="3506"
+      >
+</a
+      ><a name="3507" class="Comment"
+      >--   ; iso&#8321; = &#955; f &#8594; iso-eq-h2 (fin-set n) (fin-set n) refl</a
+      ><a name="3565"
+      >
+</a
+      ><a name="3566" class="Comment"
+      >--   ; iso&#8322; = &#955; { (f , inj) &#8594; inj-eq-h2 (fin-set n) refl } }</a
+      ><a name="3626"
+      >
+</a
+      ><a name="3627" class="Comment"
+      >-- </a
+      ><a name="3630"
+      >
+</a
+      ><a name="3631" class="Comment"
+      >-- fin-iso-iso : &#8704; {n} &#8594; (Fin n &#8611; Fin n) &#8773; Fin (factorial n)</a
+      ><a name="3691"
+      >
+</a
+      ><a name="3692" class="Comment"
+      >-- fin-iso-iso {0} = record</a
+      ><a name="3719"
+      >
+</a
+      ><a name="3720" class="Comment"
+      >--   { to = &#955; { (f , _) &#8594; zero }</a
+      ><a name="3752"
+      >
+</a
+      ><a name="3753" class="Comment"
+      >--   ; from = &#955; _ &#8594; (&#955; ()) , (&#955; { {()} p })</a
+      ><a name="3796"
+      >
+</a
+      ><a name="3797" class="Comment"
+      >--   ; iso&#8321; = &#955; { (f , _) &#8594; inj-eq-h2 (fin-set _) (funext &#955; ()) }</a
+      ><a name="3862"
+      >
+</a
+      ><a name="3863" class="Comment"
+      >--   ; iso&#8322; = &#955; { zero &#8594; refl ; (suc ()) } }</a
+      ><a name="3907"
+      >
+</a
+      ><a name="3908" class="Comment"
+      >-- fin-iso-iso {suc n} = begin</a
+      ><a name="3938"
+      >
+</a
+      ><a name="3939" class="Comment"
+      >--     (X &#8611; X)</a
+      ><a name="3953"
+      >
+</a
+      ><a name="3954" class="Comment"
+      >--   &#8773;&#10216; sym&#8773; (total-space-iso classify) &#10217;</a
+      ><a name="3995"
+      >
+</a
+      ><a name="3996" class="Comment"
+      >--     (&#931; X &#955; i &#8594; classify &#8315;&#185; i)</a
+      ><a name="4028"
+      >
+</a
+      ><a name="4029" class="Comment"
+      >--   &#8773;&#10216; (&#931;-ap-iso&#8322; &#955; i &#8594; trans&#8773; (sym&#8773; (const-fibre i)) fibre-zero-iso) &#10217;</a
+      ><a name="4101"
+      >
+</a
+      ><a name="4102" class="Comment"
+      >--     (Fin (suc n) &#215; (Fin n &#8611; Fin n))</a
+      ><a name="4140"
+      >
+</a
+      ><a name="4141" class="Comment"
+      >--   &#8773;&#10216; &#215;-ap-iso refl&#8773; fin-iso-iso &#10217;</a
+      ><a name="4177"
+      >
+</a
+      ><a name="4178" class="Comment"
+      >--     (Fin (suc n) &#215; Fin (factorial n))</a
+      ><a name="4218"
+      >
+</a
+      ><a name="4219" class="Comment"
+      >--   &#8773;&#10216; fin-prod &#10217;</a
+      ><a name="4237"
+      >
+</a
+      ><a name="4238" class="Comment"
+      >--     Fin (factorial (suc n))</a
+      ><a name="4268"
+      >
+</a
+      ><a name="4269" class="Comment"
+      >--   &#8718;</a
+      ><a name="4275"
+      >
+</a
+      ><a name="4276" class="Comment"
+      >--   where</a
+      ><a name="4286"
+      >
+</a
+      ><a name="4287" class="Comment"
+      >--     X = Fin (suc n)</a
+      ><a name="4309"
+      >
+</a
+      ><a name="4310" class="Comment"
+      >--     open &#8773;-Reasoning</a
+      ><a name="4333"
+      >
+</a
+      ><a name="4334" class="Comment"
+      >-- </a
+      ><a name="4337"
+      >
+</a
+      ><a name="4338" class="Comment"
+      >--     classify : (X &#8611; X) &#8594; X</a
+      ><a name="4367"
+      >
+</a
+      ><a name="4368" class="Comment"
+      >--     classify (f , _) = f zero</a
+      ><a name="4400"
+      >
+</a
+      ><a name="4401" class="Comment"
+      >-- </a
+      ><a name="4404"
+      >
+</a
+      ><a name="4405" class="Comment"
+      >--     const-fibre : (i : X) &#8594; classify &#8315;&#185; zero &#8773; classify &#8315;&#185; i</a
+      ><a name="4468"
+      >
+</a
+      ><a name="4469" class="Comment"
+      >--     const-fibre i = begin</a
+      ><a name="4497"
+      >
+</a
+      ><a name="4498" class="Comment"
+      >--         ( &#931; (X &#8611; X) &#955; { (f , _) &#8594; f zero &#8801; zero } )</a
+      ><a name="4552"
+      >
+</a
+      ><a name="4553" class="Comment"
+      >--       &#8773;&#10216; ( &#931;-ap-iso (transpose-inj-iso' zero i) (&#955; { (f , inj)</a
+      ><a name="4618"
+      >
+</a
+      ><a name="4619" class="Comment"
+      >--          &#8594; mk-prop-iso (fin-set _ _ _) (fin-set _ _ _)</a
+      ><a name="4676"
+      >
+</a
+      ><a name="4677" class="Comment"
+      >--                        (ap (transpose zero i)) (u f) }) ) &#10217;</a
+      ><a name="4739"
+      >
+</a
+      ><a name="4740" class="Comment"
+      >--         ( &#931; (X &#8611; X) &#955; { (f , _) &#8594; f zero &#8801; i } )</a
+      ><a name="4791"
+      >
+</a
+      ><a name="4792" class="Comment"
+      >--       &#8718;</a
+      ><a name="4802"
+      >
+</a
+      ><a name="4803" class="Comment"
+      >--       where</a
+      ><a name="4817"
+      >
+</a
+      ><a name="4818" class="Comment"
+      >--         u : (f : X &#8594; X)</a
+      ><a name="4844"
+      >
+</a
+      ><a name="4845" class="Comment"
+      >--           &#8594; transpose zero i (f zero) &#8801; i</a
+      ><a name="4889"
+      >
+</a
+      ><a name="4890" class="Comment"
+      >--           &#8594; f zero &#8801; zero</a
+      ><a name="4918"
+      >
+</a
+      ><a name="4919" class="Comment"
+      >--         u f p = sym (_&#8773;_.iso&#8321; (transpose-iso zero i) (f zero))</a
+      ><a name="4984"
+      >
+</a
+      ><a name="4985" class="Comment"
+      >--               &#183; (ap (transpose zero i) p</a
+      ><a name="5028"
+      >
+</a
+      ><a name="5029" class="Comment"
+      >--               &#183; transpose-&#946;&#8322; zero i)</a
+      ><a name="5068"
+      >
+</a
+      ><a name="5069" class="Comment"
+      >-- </a
+      ><a name="5072"
+      >
+</a
+      ><a name="5073" class="Comment"
+      >--     fibre-zero-iso : classify &#8315;&#185; zero &#8773; (Fin n &#8611; Fin n)</a
+      ><a name="5131"
+      >
+</a
+      ><a name="5132" class="Comment"
+      >--     fibre-zero-iso = record</a
+      ><a name="5162"
+      >
+</a
+      ><a name="5163" class="Comment"
+      >--       { to = &#955; { (f , z) &#8594; fin-inj-remove&#8320; f z }</a
+      ><a name="5214"
+      >
+</a
+      ><a name="5215" class="Comment"
+      >--       ; from = &#955; { g &#8594; fin-inj-add g , refl }</a
+      ><a name="5263"
+      >
+</a
+      ><a name="5264" class="Comment"
+      >--       ; iso&#8321; = &#955; { (f , p)</a
+      ><a name="5293"
+      >
+</a
+      ><a name="5294" class="Comment"
+      >--                  &#8594; unap&#931; (inj-eq-h2 (fin-set (suc n))</a
+      ><a name="5350"
+      >
+</a
+      ><a name="5351" class="Comment"
+      >--                          (funext (&#945; f p ))</a
+      ><a name="5396"
+      >
+</a
+      ><a name="5397" class="Comment"
+      >--                          , h1&#8658;prop (fin-set (suc n) _ _) _ _) }</a
+      ><a name="5463"
+      >
+</a
+      ><a name="5464" class="Comment"
+      >--       ; iso&#8322; = &#955; g &#8594; inj-eq-h2 (fin-set n) refl }</a
+      ><a name="5516"
+      >
+</a
+      ><a name="5517" class="Comment"
+      >--         where</a
+      ><a name="5533"
+      >
+</a
+      ><a name="5534" class="Comment"
+      >--             &#945; : (f : Fin (suc n) &#8611; Fin (suc n))</a
+      ><a name="5584"
+      >
+</a
+      ><a name="5585" class="Comment"
+      >--               &#8594; (p : apply f zero &#8801; zero)</a
+      ><a name="5629"
+      >
+</a
+      ><a name="5630" class="Comment"
+      >--               &#8594; (i : Fin (suc n))</a
+      ><a name="5666"
+      >
+</a
+      ><a name="5667" class="Comment"
+      >--               &#8594; apply (fin-inj-add (fin-inj-remove&#8320; f p)) i</a
+      ><a name="5729"
+      >
+</a
+      ><a name="5730" class="Comment"
+      >--               &#8801; apply f i</a
+      ><a name="5758"
+      >
+</a
+      ><a name="5759" class="Comment"
+      >--             &#945; _ p zero = sym p</a
+      ><a name="5792"
+      >
+</a
+      ><a name="5793" class="Comment"
+      >--             &#945; (f , f-inj) p (suc i) = pred-&#946; (f (suc i))</a
+      ><a name="5852"
+      >
+</a
+      ><a name="5853" class="Comment"
+      >--               (&#955; q &#8594; fin-disj _ (f-inj (p &#183; sym q)))</a
+      ><a name="5908"
+      >
+</a
+      ><a name="5909" class="Comment"
+      >-- </a
+      ><a name="5912"
+      >
+</a
+      ><a name="5913" class="Comment"
+      >-- fin-subsets : &#8704; {n} &#8594; (Fin n &#8594; Bool) &#8773; Fin (2 ^ n)</a
+      ><a name="5966"
+      >
+</a
+      ><a name="5967" class="Comment"
+      >-- fin-subsets = trans&#8773; (&#928;-ap-iso refl&#8773; &#955; _ &#8594; fin2-bool) fin-exp</a
+      ><a name="6031"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

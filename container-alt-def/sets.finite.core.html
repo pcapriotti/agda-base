@@ -1,0 +1,554 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >sets.finite.core</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="sets.finite.core.html#1" class="Module"
+      >sets.finite.core</a
+      ><a name="52"
+      > </a
+      ><a name="53" class="Keyword"
+      >where</a
+      ><a name="58"
+      >
+
+</a
+      ><a name="60" class="Keyword"
+      >open</a
+      ><a name="64"
+      > </a
+      ><a name="65" class="Keyword"
+      >import</a
+      ><a name="71"
+      > </a
+      ><a name="72" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="75"
+      >
+</a
+      ><a name="76" class="Keyword"
+      >open</a
+      ><a name="80"
+      > </a
+      ><a name="81" class="Keyword"
+      >import</a
+      ><a name="87"
+      > </a
+      ><a name="88" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="108"
+      >
+</a
+      ><a name="109" class="Keyword"
+      >open</a
+      ><a name="113"
+      > </a
+      ><a name="114" class="Keyword"
+      >import</a
+      ><a name="120"
+      > </a
+      ><a name="121" href="sets.nat.html#1" class="Module"
+      >sets.nat</a
+      ><a name="129"
+      >
+</a
+      ><a name="130" class="Keyword"
+      >open</a
+      ><a name="134"
+      > </a
+      ><a name="135" class="Keyword"
+      >import</a
+      ><a name="141"
+      > </a
+      ><a name="142" href="sets.fin.html#1" class="Module"
+      >sets.fin</a
+      ><a name="150"
+      >
+
+</a
+      ><a name="152" href="sets.finite.core.html#152" class="Function"
+      >IsOfSize</a
+      ><a name="160"
+      > </a
+      ><a name="161" class="Symbol"
+      >:</a
+      ><a name="162"
+      > </a
+      ><a name="163" class="Symbol"
+      >&#8704;</a
+      ><a name="164"
+      > </a
+      ><a name="165" class="Symbol"
+      >{</a
+      ><a name="166" href="sets.finite.core.html#166" class="Bound"
+      >i</a
+      ><a name="167" class="Symbol"
+      >}</a
+      ><a name="168"
+      > </a
+      ><a name="169" class="Symbol"
+      >&#8594;</a
+      ><a name="170"
+      > </a
+      ><a name="171" class="PrimitiveType"
+      >Set</a
+      ><a name="174"
+      > </a
+      ><a name="175" href="sets.finite.core.html#166" class="Bound"
+      >i</a
+      ><a name="176"
+      > </a
+      ><a name="177" class="Symbol"
+      >&#8594;</a
+      ><a name="178"
+      > </a
+      ><a name="179" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="180"
+      > </a
+      ><a name="181" class="Symbol"
+      >&#8594;</a
+      ><a name="182"
+      > </a
+      ><a name="183" class="PrimitiveType"
+      >Set</a
+      ><a name="186"
+      > </a
+      ><a name="187" href="sets.finite.core.html#166" class="Bound"
+      >i</a
+      ><a name="188"
+      >
+</a
+      ><a name="189" href="sets.finite.core.html#152" class="Function"
+      >IsOfSize</a
+      ><a name="197"
+      > </a
+      ><a name="198" href="sets.finite.core.html#198" class="Bound"
+      >A</a
+      ><a name="199"
+      > </a
+      ><a name="200" href="sets.finite.core.html#200" class="Bound"
+      >n</a
+      ><a name="201"
+      > </a
+      ><a name="202" class="Symbol"
+      >=</a
+      ><a name="203"
+      > </a
+      ><a name="204" href="sets.finite.core.html#198" class="Bound"
+      >A</a
+      ><a name="205"
+      > </a
+      ><a name="206" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="207"
+      > </a
+      ><a name="208" href="sets.fin.core.html#205" class="Datatype"
+      >Fin</a
+      ><a name="211"
+      > </a
+      ><a name="212" href="sets.finite.core.html#200" class="Bound"
+      >n</a
+      ><a name="213"
+      >
+
+</a
+      ><a name="215" href="sets.finite.core.html#215" class="Function"
+      >IsFinite</a
+      ><a name="223"
+      > </a
+      ><a name="224" class="Symbol"
+      >:</a
+      ><a name="225"
+      > </a
+      ><a name="226" class="Symbol"
+      >&#8704;</a
+      ><a name="227"
+      > </a
+      ><a name="228" class="Symbol"
+      >{</a
+      ><a name="229" href="sets.finite.core.html#229" class="Bound"
+      >i</a
+      ><a name="230" class="Symbol"
+      >}</a
+      ><a name="231"
+      > </a
+      ><a name="232" class="Symbol"
+      >&#8594;</a
+      ><a name="233"
+      > </a
+      ><a name="234" class="PrimitiveType"
+      >Set</a
+      ><a name="237"
+      > </a
+      ><a name="238" href="sets.finite.core.html#229" class="Bound"
+      >i</a
+      ><a name="239"
+      > </a
+      ><a name="240" class="Symbol"
+      >&#8594;</a
+      ><a name="241"
+      > </a
+      ><a name="242" class="PrimitiveType"
+      >Set</a
+      ><a name="245"
+      > </a
+      ><a name="246" href="sets.finite.core.html#229" class="Bound"
+      >i</a
+      ><a name="247"
+      >
+</a
+      ><a name="248" href="sets.finite.core.html#215" class="Function"
+      >IsFinite</a
+      ><a name="256"
+      > </a
+      ><a name="257" href="sets.finite.core.html#257" class="Bound"
+      >A</a
+      ><a name="258"
+      > </a
+      ><a name="259" class="Symbol"
+      >=</a
+      ><a name="260"
+      > </a
+      ><a name="261" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="262"
+      > </a
+      ><a name="263" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="264"
+      > </a
+      ><a name="265" class="Symbol"
+      >(</a
+      ><a name="266" href="sets.finite.core.html#152" class="Function"
+      >IsOfSize</a
+      ><a name="274"
+      > </a
+      ><a name="275" href="sets.finite.core.html#257" class="Bound"
+      >A</a
+      ><a name="276" class="Symbol"
+      >)</a
+      ><a name="277"
+      >
+
+</a
+      ><a name="279" href="sets.finite.core.html#279" class="Function"
+      >mk-is-finite</a
+      ><a name="291"
+      > </a
+      ><a name="292" class="Symbol"
+      >:</a
+      ><a name="293"
+      > </a
+      ><a name="294" class="Symbol"
+      >&#8704;</a
+      ><a name="295"
+      > </a
+      ><a name="296" class="Symbol"
+      >{</a
+      ><a name="297" href="sets.finite.core.html#297" class="Bound"
+      >i</a
+      ><a name="298"
+      > </a
+      ><a name="299" href="sets.finite.core.html#299" class="Bound"
+      >n</a
+      ><a name="300" class="Symbol"
+      >}{</a
+      ><a name="302" href="sets.finite.core.html#302" class="Bound"
+      >A</a
+      ><a name="303"
+      > </a
+      ><a name="304" class="Symbol"
+      >:</a
+      ><a name="305"
+      > </a
+      ><a name="306" class="PrimitiveType"
+      >Set</a
+      ><a name="309"
+      > </a
+      ><a name="310" href="sets.finite.core.html#297" class="Bound"
+      >i</a
+      ><a name="311" class="Symbol"
+      >}</a
+      ><a name="312"
+      >
+             </a
+      ><a name="326" class="Symbol"
+      >&#8594;</a
+      ><a name="327"
+      > </a
+      ><a name="328" class="Symbol"
+      >(</a
+      ><a name="329" href="sets.finite.core.html#302" class="Bound"
+      >A</a
+      ><a name="330"
+      > </a
+      ><a name="331" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="332"
+      > </a
+      ><a name="333" href="sets.fin.core.html#205" class="Datatype"
+      >Fin</a
+      ><a name="336"
+      > </a
+      ><a name="337" href="sets.finite.core.html#299" class="Bound"
+      >n</a
+      ><a name="338" class="Symbol"
+      >)</a
+      ><a name="339"
+      >
+             </a
+      ><a name="353" class="Symbol"
+      >&#8594;</a
+      ><a name="354"
+      > </a
+      ><a name="355" href="sets.finite.core.html#215" class="Function"
+      >IsFinite</a
+      ><a name="363"
+      > </a
+      ><a name="364" href="sets.finite.core.html#302" class="Bound"
+      >A</a
+      ><a name="365"
+      >
+</a
+      ><a name="366" href="sets.finite.core.html#279" class="Function"
+      >mk-is-finite</a
+      ><a name="378"
+      > </a
+      ><a name="379" class="Symbol"
+      >{</a
+      ><a name="380" class="Argument"
+      >n</a
+      ><a name="381"
+      > </a
+      ><a name="382" class="Symbol"
+      >=</a
+      ><a name="383"
+      > </a
+      ><a name="384" href="sets.finite.core.html#384" class="Bound"
+      >n</a
+      ><a name="385" class="Symbol"
+      >}</a
+      ><a name="386"
+      > </a
+      ><a name="387" href="sets.finite.core.html#387" class="Bound"
+      >enum</a
+      ><a name="391"
+      > </a
+      ><a name="392" class="Symbol"
+      >=</a
+      ><a name="393"
+      > </a
+      ><a name="394" href="sets.finite.core.html#384" class="Bound"
+      >n</a
+      ><a name="395"
+      > </a
+      ><a name="396" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="397"
+      > </a
+      ><a name="398" href="sets.finite.core.html#387" class="Bound"
+      >enum</a
+      ><a name="402"
+      >
+
+</a
+      ><a name="404" href="sets.finite.core.html#404" class="Function"
+      >fin-is-finite</a
+      ><a name="417"
+      > </a
+      ><a name="418" class="Symbol"
+      >:</a
+      ><a name="419"
+      > </a
+      ><a name="420" class="Symbol"
+      >&#8704;</a
+      ><a name="421"
+      > </a
+      ><a name="422" class="Symbol"
+      >{</a
+      ><a name="423" href="sets.finite.core.html#423" class="Bound"
+      >n</a
+      ><a name="424" class="Symbol"
+      >}</a
+      ><a name="425"
+      > </a
+      ><a name="426" class="Symbol"
+      >&#8594;</a
+      ><a name="427"
+      > </a
+      ><a name="428" href="sets.finite.core.html#215" class="Function"
+      >IsFinite</a
+      ><a name="436"
+      > </a
+      ><a name="437" class="Symbol"
+      >(</a
+      ><a name="438" href="sets.fin.core.html#205" class="Datatype"
+      >Fin</a
+      ><a name="441"
+      > </a
+      ><a name="442" href="sets.finite.core.html#423" class="Bound"
+      >n</a
+      ><a name="443" class="Symbol"
+      >)</a
+      ><a name="444"
+      >
+</a
+      ><a name="445" href="sets.finite.core.html#404" class="Function"
+      >fin-is-finite</a
+      ><a name="458"
+      > </a
+      ><a name="459" class="Symbol"
+      >{</a
+      ><a name="460" href="sets.finite.core.html#460" class="Bound"
+      >n</a
+      ><a name="461" class="Symbol"
+      >}</a
+      ><a name="462"
+      > </a
+      ><a name="463" class="Symbol"
+      >=</a
+      ><a name="464"
+      > </a
+      ><a name="465" href="sets.finite.core.html#279" class="Function"
+      >mk-is-finite</a
+      ><a name="477"
+      > </a
+      ><a name="478" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="483"
+      >
+
+</a
+      ><a name="485" class="Comment"
+      >-- &#8846;-of-size : &#8704; {i j n m}{A : Set i}{B : Set j}</a
+      ><a name="533"
+      >
+</a
+      ><a name="534" class="Comment"
+      >--           &#8594; IsOfSize A n</a
+      ><a name="561"
+      >
+</a
+      ><a name="562" class="Comment"
+      >--           &#8594; IsOfSize B m</a
+      ><a name="589"
+      >
+</a
+      ><a name="590" class="Comment"
+      >--           &#8594; IsOfSize (A &#8846; B) (n + m)</a
+      ><a name="629"
+      >
+</a
+      ><a name="630" class="Comment"
+      >-- &#8846;-of-size isoA isoB = &#8846;-ap-iso isoA isoB &#183;&#8773; fin-sum</a
+      ><a name="684"
+      >
+</a
+      ><a name="685" class="Comment"
+      >-- </a
+      ><a name="688"
+      >
+</a
+      ><a name="689" class="Comment"
+      >-- &#8846;-finite : &#8704; {i j}{A : Set i}{B : Set j}</a
+      ><a name="732"
+      >
+</a
+      ><a name="733" class="Comment"
+      >--          &#8594; IsFinite A &#8594; IsFinite B</a
+      ><a name="770"
+      >
+</a
+      ><a name="771" class="Comment"
+      >--          &#8594; IsFinite (A &#8846; B)</a
+      ><a name="801"
+      >
+</a
+      ><a name="802" class="Comment"
+      >-- &#8846;-finite (_ , fA) (_ , fB) = mk-is-finite (&#8846;-of-size fA fB)</a
+      ><a name="864"
+      >
+</a
+      ><a name="865" class="Comment"
+      >-- </a
+      ><a name="868"
+      >
+</a
+      ><a name="869" class="Comment"
+      >-- &#215;-of-size : &#8704; {i j n m}{A : Set i}{B : Set j}</a
+      ><a name="917"
+      >
+</a
+      ><a name="918" class="Comment"
+      >--           &#8594; IsOfSize A n</a
+      ><a name="945"
+      >
+</a
+      ><a name="946" class="Comment"
+      >--           &#8594; IsOfSize B m</a
+      ><a name="973"
+      >
+</a
+      ><a name="974" class="Comment"
+      >--           &#8594; IsOfSize (A &#215; B) (n * m)</a
+      ><a name="1013"
+      >
+</a
+      ><a name="1014" class="Comment"
+      >-- &#215;-of-size isoA isoB = &#215;-ap-iso isoA isoB &#183;&#8773; fin-prod</a
+      ><a name="1069"
+      >
+</a
+      ><a name="1070" class="Comment"
+      >-- </a
+      ><a name="1073"
+      >
+</a
+      ><a name="1074" class="Comment"
+      >-- &#215;-finite : &#8704; {i j}{A : Set i}{B : Set j}</a
+      ><a name="1117"
+      >
+</a
+      ><a name="1118" class="Comment"
+      >--          &#8594; IsFinite A &#8594; IsFinite B</a
+      ><a name="1155"
+      >
+</a
+      ><a name="1156" class="Comment"
+      >--          &#8594; IsFinite (A &#215; B)</a
+      ><a name="1186"
+      >
+</a
+      ><a name="1187" class="Comment"
+      >-- &#215;-finite (_ , fA) (_ , fB) = mk-is-finite (&#215;-of-size fA fB)</a
+      ><a name="1249"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
