@@ -15,5 +15,5 @@ composed of a number of submodules: `core` (containing the basic
 definitions), `groupoid` (groupoid laws), `calculus` (for calculations
 involving equality proofs) and `reasoning` (for equational reasoning).
 
- [status-png]: https://api.travis-ci.org/pcapriotti/agda-base.svg
+ [status-png]: https://api.travis-ci.org/pcapriotti/agda-base.svg?branch=master
  [status]: http://travis-ci.org/pcapriotti/agda-base
