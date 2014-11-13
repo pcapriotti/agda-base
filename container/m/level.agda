@@ -51,7 +51,7 @@ private
           , λ b → refl
 
         lem' : ∀ {i}(x : M i) → center ≡M x
-        lem' _ = S.unfold coalg refl
+        lem' _ = S.unfold (λ _ → coalg) _ refl
 
     m-contr : ∀ i → contr (M i)
     m-contr i = center , contraction

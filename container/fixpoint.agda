@@ -19,7 +19,7 @@ record Fixpoint {li la lb}
     X : I → Set lx
     fixpoint : ∀ i → X i ≅ F X i
 
-  head : X ↝ A
+  head : ∀ {i} → X i → A i
   head {i} = proj₁ ∘ apply (fixpoint i)
 
   tail : ∀ {i}(u : X i)(b : B (head u)) → X (r b)

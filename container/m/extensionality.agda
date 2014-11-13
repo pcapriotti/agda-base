@@ -45,24 +45,24 @@ module Extensionality {li la lb}(c : Container li la lb) where
     E : ∀ i → Set _
     E i = Σ (M i × M i) (uncurry _≡M_)
 
-    f : E ↝ F E
-    f ((xs , ys) , bisim)
+    f : E →ⁱ F E
+    f i ((xs , ys) , bisim)
       = head xs
       , (λ b → (( tail xs b
                 , S.substX (S.head bisim) b
                            (tail ys (subst B (S.head bisim) b)))
                 , S.tail bisim b))
 
-    π₁ : E ↝ M
-    π₁ ((xs , _), _) = xs
+    π₁ : E →ⁱ M
+    π₁ i ((xs , _), _) = xs
 
-    π₁-mor : ∀ {i} (e : E i) → out (π₁ e) ≡ imap E π₁ (f e)
+    π₁-mor : ∀ {i} (e : E i) → out i (π₁ i e) ≡ imap π₁ i (f i e)
     π₁-mor ((xs , ys) , p) = refl
 
-    π₂ : E ↝ M
-    π₂ ((_ , ys), _) = ys
+    π₂ : E →ⁱ M
+    π₂ _ ((_ , ys), _) = ys
 
-    π₂-mor : ∀ {i} (e : E i) → out (π₂ e) ≡ imap E π₂ (f e)
+    π₂-mor : ∀ {i} (e : E i) → out i (π₂ i e) ≡ imap π₂ i (f i e)
     π₂-mor {i} ((xs , ys) , bisim) = lem (S.head bisim) (tail ys)
       where
         lem : {a a' : A i}(p : a ≡ a')
@@ -72,7 +72,7 @@ module Extensionality {li la lb}(c : Container li la lb) where
               (a , λ b → S.substX p b (f (subst B p b)))
         lem refl f = refl
 
-    equal-π : ∀ {i}(e : E i) → π₁ e ≡ π₂ e
+    equal-π : ∀ {i}(e : E i) → π₁ i e ≡ π₂ i e
     equal-π e = unfold-η f π₁ π₁-mor e · sym (unfold-η f π₂ π₂-mor e)
 
     abstract

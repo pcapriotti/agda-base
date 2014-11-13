@@ -24,29 +24,29 @@ private
       sup : (a : A i) → ((b : B a) → W (r b)) → W i
 
     -- initial F-algebra
-    inW : F W ↝ W
-    inW (a , f) = sup a f
+    inW : F W →ⁱ W
+    inW i (a , f) = sup a f
 
     module Elim {lx} {X : I → Set lx}
-                (α : F X ↝ X) where
+                (α : F X →ⁱ X) where
       -- catamorphisms
-      fold : W ↝ X
-      fold (sup a f) = α (a , λ b → fold (f b))
+      fold : W →ⁱ X
+      fold i (sup a f) = α i (a , λ b → fold _ (f b))
 
       -- computational rule for catamorphisms
       -- this holds definitionally
-      fold-β : ∀ {i} (x : F W i) → fold (inW x) ≡ α (imap W fold x)
+      fold-β : ∀ {i} (x : F W i) → fold i (inW i x) ≡ α i (imap fold i x)
       fold-β x = refl
 
       -- η-rule, this is only propositional
-      fold-η : (h : W ↝ X)
-             → (∀ {i} (x : F W i) → h (inW x) ≡ α (imap W h x))
-             → ∀ {i} (x : W i) → h x ≡ fold x
-      fold-η h p (sup a f) = p (a , λ b → f b) · lem
+      fold-η : (h : W →ⁱ X)
+             → (∀ {i} (x : F W i) → h i (inW i x) ≡ α i (imap h i x))
+             → ∀ {i} (x : W i) → h i x ≡ fold i x
+      fold-η h p {i} (sup a f) = p (a , λ b → f b) · lem
         where
-          lem : α (a , (λ b → h (f b)))
-              ≡ α (a , (λ b → fold (f b)))
-          lem = ap (λ z → α (a , z))
+          lem : α i (a , (λ b → h _ (f b)))
+              ≡ α i (a , (λ b → fold _ (f b)))
+          lem = ap (λ z → α i (a , z))
                      (funext λ b → fold-η h p (f b))
     open Elim public
 

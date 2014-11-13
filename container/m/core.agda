@@ -30,67 +30,67 @@ module Definition {li la lb}(c : Container li la lb) where
     inf : (a : A i) → ((b : B a) → ∞ (M (r b))) → M i
 
   -- the terminal coalgebra
-  out : M ↝ F M
-  out (inf a f) = a , ♭ ∘' f
+  out : M →ⁱ F M
+  out i (inf a f) = a , ♭ ∘' f
 
   -- normally, the constructor can be defined in terms of out and unfold, but
   -- Agda provides it natively, together with a definitional β rule
-  inM' : F M ↝ M
-  inM' (a , f) = inf a (λ x → ♯ (f x))
+  inM' : F M →ⁱ M
+  inM' i (a , f) = inf a (λ x → ♯ (f x))
 
-  inM'-β : {i : I}(x : F M i) → out (inM' x) ≡ x
+  inM'-β : {i : I}(x : F M i) → out i (inM' i x) ≡ x
   inM'-β x = refl
 
   module Elim {lx}{X : I → Set lx}
-              (α : X ↝ F X) where
+              (α : X →ⁱ F X) where
     -- anamorphisms
-    unfold : X ↝ M
-    unfold {i} x = inf a f
+    unfold : X →ⁱ M
+    unfold i x = inf a f
       where
         u : F X i
-        u = α x
+        u = α i x
 
         a : A i
         a = proj₁ u
 
         f : (b : B a) → ∞ (M (r b))
-        f b = ♯ unfold (proj₂ u b)
+        f b = ♯ unfold (r b) (proj₂ u b)
 
     -- computational rule for anamorphisms
     -- this holds definitionally
     unfold-β : {i : I}(x : X i)
-             → out (unfold x) ≡ imap X unfold (α x)
+             → out i (unfold i x) ≡ imap unfold i (α i x)
     unfold-β x = refl
 
     -- the corresponding η rule doesn't hold, so we postulate it
     postulate
-      unfold-η : (h : X ↝ M)
-               → (∀ {i} (x : X i) → out (h x) ≡ imap X h (α x))
-               → ∀ {i} (x : X i) → h x ≡ unfold x
+      unfold-η : (h : X →ⁱ M)
+               → (∀ {i} (x : X i) → out i (h i x) ≡ imap h i (α i x))
+               → ∀ {i} (x : X i) → h i x ≡ unfold i x
   open Elim public
 
   -- using η, we can prove that the unfolding of out is the identity
-  unfold-id : ∀ {i} (x : M i) → unfold out x ≡ x
-  unfold-id x = sym (unfold-η out id (λ _ → refl) x)
+  unfold-id : ∀ {i} (x : M i) → unfold out i x ≡ x
+  unfold-id x = sym (unfold-η out idⁱ (λ _ → refl) x)
 
   -- the usual definition of the constructor
-  inM : F M ↝ M
-  inM = unfold (imap M out)
+  inM : F M →ⁱ M
+  inM = unfold (imap out)
 
   -- the constructor is the inverse of the destructor
-  inM-η : ∀ {i} (x : M i) → inM (out x) ≡ x
-  inM-η x = unfold-η out (inM ∘ out) (λ _ → refl) x · unfold-id x
+  inM-η : ∀ {i} (x : M i) → inM i (out i x) ≡ x
+  inM-η x = unfold-η out (inM ∘ⁱ out) (λ _ → refl) x · unfold-id x
 
-  inM-β : ∀ {i} (x : F M i) → out (inM x) ≡ x
-  inM-β {i} x = ap u (impl-funext (λ i → funext inM-η))
+  inM-β : ∀ {i} (x : F M i) → out i (inM i x) ≡ x
+  inM-β {i} x = ap u (funext (λ i → funext inM-η))
     where
-      u : (M ↝ M) → F M i
-      u h = imap M h {i} x
+      u : (M →ⁱ M) → F M i
+      u h = imap h i x
 
   fixpoint : ∀ i → M i ≅ F M i
-  fixpoint i = iso out inM inM-η inM-β
+  fixpoint i = iso (out i) (inM i) inM-η inM-β
 
   -- now we can prove that the constructor provided by Agda is equal to the
   -- usual one
-  inM-alt : ∀ {i} (x : F M i) → inM' x ≡ inM x
-  inM-alt x = sym (inM-η (inM' x))
+  inM-alt : ∀ {i} (x : F M i) → inM' i x ≡ inM i x
+  inM-alt {i} x = sym (inM-η (inM' i x))

@@ -152,8 +152,9 @@ invert~ : ∀ {i}{X Y : Set i} → X ~ Y → Y → X
 invert~ eq = proj₂ (D.head eq)
 
 private
-  u : ∀ {i}{X Y : Set i} → X ~ Y → X ≅' Y
-  u {X = X}{Y = Y} eq = ≅⇒≅' (iso f g α β)
+  u : ∀ {i}(XY : Set i × Set i)
+    → let (X , Y) = XY in X ~ Y → X ≅' Y
+  u (X , Y) eq = ≅⇒≅' (iso f g α β)
     where
       f : X → Y
       f = apply~ eq
@@ -172,8 +173,8 @@ private
 
   u-morphism : ∀ {i}{X Y : Set i}
              → (eq : X ~ Y)
-             → unfold≅' (u eq)
-             ≡ D.imap D.M u (D.out eq)
+             → unfold≅' (u _ eq)
+             ≡ D.imap u _ (D.out _ eq)
   u-morphism {i}{X}{Y} eq = unapΣ (refl , funext λ {(x , y) → lem₂ x y})
     where
       f : X → Y
@@ -186,31 +187,31 @@ private
       φ x y = D.tail eq (x , y)
 
       σ τ : (x : X)(y : Y) → (f x ≡ y) ≅' (x ≡ g y)
-      σ x y = proj₂ (unfold≅' (u eq)) (x , y)
-      τ x y = u (φ x y)
+      σ x y = proj₂ (unfold≅' (u _ eq)) (x , y)
+      τ x y = u _ (φ x y)
 
       lem : (x : X)(y : Y)(p : f x ≡ y)
            → apply≅' (σ x y) p ≡ apply≅' (τ x y) p
       lem x .(f x) refl = left-unit _ · double-inverse _
 
-      lem₂ : (x : X)(y : Y) → proj₂ (unfold≅' (u eq)) (x , y)
-                            ≡ u (D.tail eq (x , y))
+      lem₂ : (x : X)(y : Y) → proj₂ (unfold≅' (u (X , Y) eq)) (x , y)
+                            ≡ u _ (D.tail eq (x , y))
       lem₂ x y = ≅'-equality (funext (lem x y))
 
-  v : ∀ {i}{X Y : Set i} → X ≅' Y → X ~ Y
-  v = D.unfold unfold≅'
+  v : ∀ {i}(XY : Set i × Set i) → let (X , Y) = XY in X ≅' Y → X ~ Y
+  v = D.unfold (λ _ → unfold≅')
 
   vu-morphism : ∀ {i}{X Y : Set i}
               → (eq : X ~ Y)
-              → D.out (v (u eq))
-              ≡ D.imap D.M (v ∘ u) (D.out eq)
-  vu-morphism {X = X}{Y = Y} eq = ap (D.imap Iso' v) (u-morphism eq)
+              → D.out _ (v _ (u _ eq))
+              ≡ D.imap (v D.∘ⁱ u) _ (D.out _ eq)
+  vu-morphism {X = X}{Y = Y} eq = ap (D.imap v _) (u-morphism eq)
 
-  vu-id : ∀ {i}{X Y : Set i} (eq : X ~ Y) → v (u eq) ≡ eq
-  vu-id eq = D.unfold-η D.out (v ∘ u) vu-morphism eq · D.unfold-id eq
+  vu-id : ∀ {i}{X Y : Set i} (eq : X ~ Y) → v _ (u _ eq) ≡ eq
+  vu-id eq = D.unfold-η D.out (v D.∘ⁱ u) vu-morphism eq · D.unfold-id eq
 
-  uv-id : ∀ {i}{X Y : Set i} (i : X ≅' Y) → u (v i) ≡ i
+  uv-id : ∀ {i}{X Y : Set i} (i : X ≅' Y) → u _ (v _ i) ≡ i
   uv-id {X = X}{Y = Y} i = ≅'-equality refl
 
 ~⇔≅' : ∀ {i}{X Y : Set i} → (X ~ Y) ≅ (X ≅' Y)
-~⇔≅' = iso u v vu-id uv-id
+~⇔≅' = iso (u _) (v _) vu-id uv-id
