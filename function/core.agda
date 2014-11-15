@@ -45,6 +45,9 @@ record Identity u e : Set (lsuc (u ⊔ e)) where
     endo : U → Set e
     id : {X : U} → endo X
 
+  id- : (X : U) → endo X
+  id- X = id {X}
+
 instance
   func-comp : ∀ {i j k} → Composition _ _ _ _ _ _
   func-comp {i}{j}{k} = record
@@ -70,5 +73,5 @@ open ComposeInterface public
 
 module IdentityInterface {i e}
                          ⦃ identity : Identity i e ⦄ where
-  open Identity identity public using (id)
+  open Identity identity public using (id; id-)
 open IdentityInterface public
