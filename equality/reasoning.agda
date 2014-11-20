@@ -19,7 +19,7 @@ module ≡-Reasoning {i} {X : Set i} where
   begin relTo p = p
 
   _≡⟨_⟩_ : ∀ x {y z} → x ≡ y → y IsRelatedTo z → x IsRelatedTo z
-  _ ≡⟨ p ⟩ relTo q = relTo (trans p q)
+  _ ≡⟨ p ⟩ relTo q = relTo (p · q)
 
   _∎ : ∀ x → x IsRelatedTo x
   _∎ _ = relTo refl

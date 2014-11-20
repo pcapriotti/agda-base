@@ -4,7 +4,8 @@ module container.core where
 
 open import level
 open import sum
-open import function.core
+open import equality
+open import function
 
 record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
   constructor container
@@ -31,6 +32,25 @@ record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
        → (Y →ⁱ Z) → (X →ⁱ Y) → (X →ⁱ Z)
   (f ∘ⁱ g) i = f i ∘ g i
 
+  -- extensionality
+  funext-isoⁱ : ∀ {lx ly} {X : I → Set lx}{Y : I → Set ly}
+              → {f g : X →ⁱ Y}
+              → (∀ i x → f i x ≡ g i x)
+              ≅ (f ≡ g)
+  funext-isoⁱ {f = f}{g = g}
+    = (Π-ap-iso refl≅ λ i → strong-funext-iso)
+    ·≅ strong-funext-iso
+
+  funext-invⁱ : ∀ {lx ly} {X : I → Set lx}{Y : I → Set ly}
+              → {f g : X →ⁱ Y}
+              → f ≡ g → ∀ i x → f i x ≡ g i x
+  funext-invⁱ = invert funext-isoⁱ
+
+  funextⁱ : ∀ {lx ly} {X : I → Set lx}{Y : I → Set ly}
+          → {f g : X →ⁱ Y}
+          → (∀ i x → f i x ≡ g i x) → f ≡ g
+  funextⁱ = apply funext-isoⁱ
+
   -- morphism map for the functor F
   imap : ∀ {lx ly}
        → {X : I → Set lx}
@@ -38,3 +58,20 @@ record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
        → (X →ⁱ Y)
        → (F X →ⁱ F Y)
   imap g i (a , f) = a , λ b → g (r b) (f b)
+
+  -- action of a functor on homotopies
+  hmap : ∀ {lx ly}
+       → {X : I → Set lx}
+       → {Y : I → Set ly}
+       → {f g : X →ⁱ Y}
+       → (∀ i x → f i x ≡ g i x)
+       → (∀ i x → imap f i x ≡ imap g i x)
+  hmap p i (a , u) = ap (_,_ a) (funext (λ b → p (r b) (u b)))
+
+  hmap-id : ∀ {lx ly}
+          → {X : I → Set lx}
+          → {Y : I → Set ly}
+          → (f : X →ⁱ Y)
+          → ∀ i x
+          → hmap (λ i x → refl {x = f i x}) i x ≡ refl
+  hmap-id f i (a , u) = ap (ap (_,_ a)) (funext-id _)

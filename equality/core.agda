@@ -14,9 +14,10 @@ sym : ∀ {i} {A : Set i} {x y : A}
     → x ≡ y → y ≡ x
 sym refl = refl
 
-trans : ∀ {i} {A : Set i} {x y z : A}
-      → x ≡ y → y ≡ z → x ≡ z
-trans refl p = p
+_·_ : ∀ {i}{X : Set i}{x y z : X}
+    → x ≡ y → y ≡ z → x ≡ z
+refl · p = p
+infixl 9 _·_
 
 ap : ∀ {i j}{A : Set i}{B : Set j}{x y : A}
      → (f : A → B) → x ≡ y → f x ≡ f y

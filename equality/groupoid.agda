@@ -6,11 +6,6 @@ open import equality.core
 _⁻¹ : ∀ {i}{X : Set i}{x y : X} → x ≡ y → y ≡ x
 _⁻¹ = sym
 
-_·_ : ∀ {i}{X : Set i}{x y z : X}
-    → x ≡ y → y ≡ z → x ≡ z
-_·_ = trans
-infixl 9 _·_
-
 left-unit : ∀ {i}{X : Set i}{x y : X}
           → (p : x ≡ y)
           → p · refl ≡ p
