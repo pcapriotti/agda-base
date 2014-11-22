@@ -86,10 +86,10 @@ fib-eq-iso {i}{j}{X}{Y₁}{Y₂} p₁ p₂ = begin
           ≅ (p₁ ≡ p₂ ∘ coerce q)
       lem refl p₁ p₂ = refl≅
 
-fibration-iso : ∀ {i j}{X : Set i}
+fibration-iso : ∀ {i} j {X : Set i}
               → (Σ (Set (i ⊔ j)) λ Y → Y → X)
               ≅ (X → Set (i ⊔ j))
-fibration-iso {i}{j}{X} = record
+fibration-iso {i} j {X} = record
   { to = λ { (Y , p) x → p ⁻¹ x }
   ; from = λ P → (Σ X P , fib P)
   ; iso₁ = λ { (Y , p) → α Y p }
