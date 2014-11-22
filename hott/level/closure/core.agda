@@ -1,12 +1,11 @@
 {-# OPTIONS --without-K #-}
-
 module hott.level.closure.core where
 
 open import level
 open import decidable
 open import equality
 open import function.isomorphism.core
-open import function.isomorphism.properties
+-- open import function.isomorphism.properties
 open import sum
 open import hott.level.core
 open import hott.level.sets
@@ -84,9 +83,3 @@ abstract
   iso-level : ∀ {i j n}{X : Set i}{Y : Set j}
              → X ≅ Y → h n X → h n Y
   iso-level (iso f g H K) = retract-level f g K
-
-  -- lifting preserves h-levels
-  ↑-level : ∀ {i n} j {X : Set i}
-          → h n X
-          → h n (↑ j X)
-  ↑-level j {X} = iso-level (lift-iso j X)

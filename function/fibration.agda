@@ -6,8 +6,12 @@ open import level
 open import sum
 open import equality.core
 open import function.core
-open import function.isomorphism
-open import function.extensionality
+open import function.isomorphism.core
+open import function.isomorphism.coherent
+open import function.isomorphism.univalence
+open import function.isomorphism.utils
+open import function.extensionality.core
+open import function.extensionality.proof
 open import function.overloading
 open import hott.level.core
 open import hott.equivalence.core
@@ -112,27 +116,16 @@ fib-compose {X = X}{Y}{Z} f g z = begin
   ≅⟨ ( Σ-ap-iso refl≅ λ x
       → Σ-ap-iso (sym≅ (contr-⊤-iso (singl-contr (f x))) ) λ _
       → refl≅ ) ⟩
-    ( Σ X λ x
-    → singleton (f x)
-    × g (f x) ≡ z )
+    ( Σ X λ x → singleton (f x) × g (f x) ≡ z )
   ≅⟨ ( Σ-ap-iso refl≅ λ x → Σ-assoc-iso ) ⟩
-    ( Σ X λ x
-    → Σ Y λ y
-    → (f x ≡ y)
-    × (g (f x) ≡ z) )
+    ( Σ X λ x → Σ Y λ y → (f x ≡ y) × (g (f x) ≡ z) )
   ≅⟨ ( Σ-ap-iso refl≅ λ x
        → Σ-ap-iso refl≅ λ y
        → Σ-ap-iso refl≅ λ p
        → ≡⇒≅ (ap (λ u → g u ≡ z) p) ) ⟩
-    ( Σ X λ x
-    → Σ Y λ y
-    → (f x ≡ y)
-    × (g y ≡ z) )
+    ( Σ X λ x → Σ Y λ y → (f x ≡ y) × (g y ≡ z) )
   ≅⟨ Σ-comm-iso ⟩
-    ( Σ Y λ y
-    → Σ X λ x
-    → (f x ≡ y)
-    × (g y ≡ z) )
+    ( Σ Y λ y → Σ X λ x → (f x ≡ y) × (g y ≡ z) )
   ≅⟨ ( Σ-ap-iso refl≅ λ y → sym≅ Σ-assoc-iso ) ⟩
     ( Σ Y λ y → (f ⁻¹ y) × (g y ≡ z) )
   ≅⟨ ( Σ-ap-iso refl≅ λ y → ×-comm ) ⟩
