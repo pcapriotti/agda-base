@@ -107,6 +107,12 @@ A ↠ B = Σ (A → B) retraction
 
 private
   module properties {i j}{X : Set i}{Y : Set j} where
+    apply≅ : (X ≅ Y) → X → Y
+    apply≅ = _≅_.to
+
+    invert≅ : (X ≅ Y) → Y → X
+    invert≅ = _≅_.from
+
     instance
       iso-is-fun : Coercion (X ≅ Y) (X → Y)
       iso-is-fun = record

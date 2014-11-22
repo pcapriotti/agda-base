@@ -8,6 +8,7 @@ open import equality.core
 open import function.core
 open import function.isomorphism.core
 open import function.isomorphism.coherent
+open import function.isomorphism.lift
 open import function.isomorphism.univalence
 open import function.isomorphism.utils
 open import function.extensionality.core
@@ -102,6 +103,45 @@ fibration-iso {i} j {X} = record
     α Y p = invert (fib-eq-iso proj₁ p)
             ( ≅⇒≅' (total-iso p)
             , funext λ { (y , x , eq) → sym eq } )
+
+family-eq-iso : ∀ {i j₁ j₂}{X : Set i}{Y₁ : X → Set j₁}{Y₂ : X → Set j₂}
+              → (isom : Σ X Y₁ ≅ Σ X Y₂)
+              → (∀ x y → proj₁ (apply≅ isom (x , y)) ≡ x)
+              → (x : X) → Y₁ x ≅ Y₂ x
+family-eq-iso {i}{j₁}{j₂}{X}{Y₁}{Y₂} isom comm x
+  = lift-iso _ (Y₁ x)
+  ·≅ ≡⇒≅ (funext-inv eq' x)
+  ·≅ sym≅ (lift-iso _ (Y₂ x))
+  where
+    open _≅_ isom
+
+    to-we : weak-equiv to
+    to-we = proj₂ (≅⇒≈ isom)
+
+    P₁ : X → Set (i ⊔ j₁ ⊔ j₂)
+    P₁ x = ↑ (i ⊔ j₂) (Y₁ x)
+
+    p₁ : Σ X P₁ → X
+    p₁ = proj₁
+
+    P₂ : X → Set (i ⊔ j₁ ⊔ j₂)
+    P₂ x = ↑ (i ⊔ j₁) (Y₂ x)
+
+    p₂ : Σ X P₂ → X
+    p₂ = proj₁
+
+    total : Σ X P₁ ≅ Σ X P₂
+    total = (Σ-ap-iso refl≅ λ x → sym≅ (lift-iso _ _))
+          ·≅ isom
+          ·≅ (Σ-ap-iso refl≅ λ x → lift-iso _ _)
+
+    comm' : (a : Σ X P₁) → p₁ a ≡ p₂ (apply total a)
+    comm' (x , lift u) = sym (comm x u)
+
+    eq' : P₁ ≡ P₂
+    eq' = iso⇒inj (sym≅ (fibration-iso (i ⊔ j₁ ⊔ j₂)))
+          (invert (fib-eq-iso p₁ p₂) (≅⇒≅' total , funext comm'))
+
 
 fib-compose : ∀ {i j k}{X : Set i}{Y : Set j}{Z : Set k}
             → (f : X → Y)(g : Y → Z)(z : Z)
