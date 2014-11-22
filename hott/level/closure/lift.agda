@@ -2,7 +2,7 @@
 module hott.level.closure.lift where
 
 open import level
-open import function.isomorphism.properties
+open import function.isomorphism.lift
 open import hott.level.core
 open import hott.level.closure.core
 
