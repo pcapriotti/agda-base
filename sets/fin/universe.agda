@@ -9,6 +9,7 @@ open import equality.inspect
 open import function.isomorphism
 open import function.core
 open import function.extensionality
+open import function.fibration
 open import function.overloading
 open import sets.core
 open import sets.properties
@@ -130,7 +131,7 @@ fin-iso-iso {0} = record
   ; iso₂ = λ { zero → refl ; (suc ()) } }
 fin-iso-iso {suc n} = begin
     (X ↣ X)
-  ≅⟨ sym≅ (total-space-iso classify) ⟩
+  ≅⟨ sym≅ (total-iso classify) ⟩
     (Σ X λ i → classify ⁻¹ i)
   ≅⟨ (Σ-ap-iso₂ λ i → trans≅ (sym≅ (const-fibre i)) fibre-zero-iso) ⟩
     (Fin (suc n) × (Fin n ↣ Fin n))

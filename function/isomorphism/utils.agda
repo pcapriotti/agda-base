@@ -271,20 +271,6 @@ empty-⊥-iso u = record
   ; iso₁ = λ _ → refl
   ; iso₂ = λ f → refl }
 
-total-space-iso : ∀ {i j}{A : Set i}{B : Set j}
-                → (f : A → B)
-                → (Σ B λ b → f ⁻¹ b) ≅ A
-total-space-iso {A = A}{B} f = begin
-    (Σ B λ b → Σ A λ a → f a ≡ b)
-  ≅⟨ Σ-comm-iso ⟩
-    (Σ A λ a → singleton (f a))
-  ≅⟨ Σ-ap-iso₂ (λ a → contr-⊤-iso (singl-contr (f a))) ⟩
-    (A × ⊤)
-  ≅⟨ ×-right-unit ⟩
-    A
-  ∎
-  where open ≅-Reasoning
-
 -- rewriting lemmas for equations on equalities
 sym≡-iso : ∀ {i}{X : Set i}(x y : X)
          → (x ≡ y)
