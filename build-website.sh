@@ -6,7 +6,7 @@ then
   then
     branch="$1"
   else
-    branch="$(git rev-parse --abbrev-ref HEAD)"
+    branch="${TRAVIS_BRANCH}"
   fi
   html=`mktemp -d`
 
