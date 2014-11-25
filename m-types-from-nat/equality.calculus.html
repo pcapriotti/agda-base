@@ -1,0 +1,4851 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >equality.calculus</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="equality.calculus.html#1" class="Module"
+      >equality.calculus</a
+      ><a name="53"
+      > </a
+      ><a name="54" class="Keyword"
+      >where</a
+      ><a name="59"
+      >
+
+</a
+      ><a name="61" class="Keyword"
+      >open</a
+      ><a name="65"
+      > </a
+      ><a name="66" class="Keyword"
+      >import</a
+      ><a name="72"
+      > </a
+      ><a name="73" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="76"
+      > </a
+      ><a name="77" class="Keyword"
+      >using</a
+      ><a name="82"
+      > </a
+      ><a name="83" class="Symbol"
+      >(</a
+      ><a name="84"
+      >&#931; </a
+      ><a name="86" class="Symbol"
+      >;</a
+      ><a name="87"
+      > _,_ </a
+      ><a name="92" class="Symbol"
+      >;</a
+      ><a name="93"
+      > proj&#8321;</a
+      ><a name="99" class="Symbol"
+      >;</a
+      ><a name="100"
+      > proj&#8322;</a
+      ><a name="106" class="Symbol"
+      >)</a
+      ><a name="107"
+      >
+</a
+      ><a name="108" class="Keyword"
+      >open</a
+      ><a name="112"
+      > </a
+      ><a name="113" class="Keyword"
+      >import</a
+      ><a name="119"
+      > </a
+      ><a name="120" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="133"
+      >
+</a
+      ><a name="134" class="Keyword"
+      >open</a
+      ><a name="138"
+      > </a
+      ><a name="139" class="Keyword"
+      >import</a
+      ><a name="145"
+      > </a
+      ><a name="146" href="equality.groupoid.html#1" class="Module"
+      >equality.groupoid</a
+      ><a name="163"
+      > </a
+      ><a name="164" class="Keyword"
+      >public</a
+      ><a name="170"
+      >
+</a
+      ><a name="171" class="Keyword"
+      >open</a
+      ><a name="175"
+      > </a
+      ><a name="176" class="Keyword"
+      >import</a
+      ><a name="182"
+      > </a
+      ><a name="183" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="196"
+      >
+
+</a
+      ><a name="198" href="equality.calculus.html#198" class="Function"
+      >ap'</a
+      ><a name="201"
+      > </a
+      ><a name="202" class="Symbol"
+      >:</a
+      ><a name="203"
+      > </a
+      ><a name="204" class="Symbol"
+      >&#8704;</a
+      ><a name="205"
+      > </a
+      ><a name="206" class="Symbol"
+      >{</a
+      ><a name="207" href="equality.calculus.html#207" class="Bound"
+      >i</a
+      ><a name="208"
+      > </a
+      ><a name="209" href="equality.calculus.html#209" class="Bound"
+      >j</a
+      ><a name="210" class="Symbol"
+      >}</a
+      ><a name="211"
+      > </a
+      ><a name="212" class="Symbol"
+      >{</a
+      ><a name="213" href="equality.calculus.html#213" class="Bound"
+      >X</a
+      ><a name="214"
+      > </a
+      ><a name="215" class="Symbol"
+      >:</a
+      ><a name="216"
+      > </a
+      ><a name="217" class="PrimitiveType"
+      >Set</a
+      ><a name="220"
+      > </a
+      ><a name="221" href="equality.calculus.html#207" class="Bound"
+      >i</a
+      ><a name="222" class="Symbol"
+      >}{</a
+      ><a name="224" href="equality.calculus.html#224" class="Bound"
+      >Y</a
+      ><a name="225"
+      > </a
+      ><a name="226" class="Symbol"
+      >:</a
+      ><a name="227"
+      > </a
+      ><a name="228" href="equality.calculus.html#213" class="Bound"
+      >X</a
+      ><a name="229"
+      > </a
+      ><a name="230" class="Symbol"
+      >&#8594;</a
+      ><a name="231"
+      > </a
+      ><a name="232" class="PrimitiveType"
+      >Set</a
+      ><a name="235"
+      > </a
+      ><a name="236" href="equality.calculus.html#209" class="Bound"
+      >j</a
+      ><a name="237" class="Symbol"
+      >}</a
+      ><a name="238"
+      >
+        </a
+      ><a name="247" class="Symbol"
+      >{</a
+      ><a name="248" href="equality.calculus.html#248" class="Bound"
+      >x</a
+      ><a name="249"
+      > </a
+      ><a name="250" href="equality.calculus.html#250" class="Bound"
+      >x'</a
+      ><a name="252"
+      > </a
+      ><a name="253" class="Symbol"
+      >:</a
+      ><a name="254"
+      > </a
+      ><a name="255" href="equality.calculus.html#213" class="Bound"
+      >X</a
+      ><a name="256" class="Symbol"
+      >}(</a
+      ><a name="258" href="equality.calculus.html#258" class="Bound"
+      >f</a
+      ><a name="259"
+      > </a
+      ><a name="260" class="Symbol"
+      >:</a
+      ><a name="261"
+      > </a
+      ><a name="262" class="Symbol"
+      >(</a
+      ><a name="263" href="equality.calculus.html#263" class="Bound"
+      >x</a
+      ><a name="264"
+      > </a
+      ><a name="265" class="Symbol"
+      >:</a
+      ><a name="266"
+      > </a
+      ><a name="267" href="equality.calculus.html#213" class="Bound"
+      >X</a
+      ><a name="268" class="Symbol"
+      >)</a
+      ><a name="269"
+      > </a
+      ><a name="270" class="Symbol"
+      >&#8594;</a
+      ><a name="271"
+      > </a
+      ><a name="272" href="equality.calculus.html#224" class="Bound"
+      >Y</a
+      ><a name="273"
+      > </a
+      ><a name="274" href="equality.calculus.html#263" class="Bound"
+      >x</a
+      ><a name="275" class="Symbol"
+      >)(</a
+      ><a name="277" href="equality.calculus.html#277" class="Bound"
+      >p</a
+      ><a name="278"
+      > </a
+      ><a name="279" class="Symbol"
+      >:</a
+      ><a name="280"
+      > </a
+      ><a name="281" href="equality.calculus.html#248" class="Bound"
+      >x</a
+      ><a name="282"
+      > </a
+      ><a name="283" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="284"
+      > </a
+      ><a name="285" href="equality.calculus.html#250" class="Bound"
+      >x'</a
+      ><a name="287" class="Symbol"
+      >)</a
+      ><a name="288"
+      >
+      </a
+      ><a name="295" class="Symbol"
+      >&#8594;</a
+      ><a name="296"
+      > </a
+      ><a name="297" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="302"
+      > </a
+      ><a name="303" href="equality.calculus.html#224" class="Bound"
+      >Y</a
+      ><a name="304"
+      > </a
+      ><a name="305" href="equality.calculus.html#277" class="Bound"
+      >p</a
+      ><a name="306"
+      > </a
+      ><a name="307" class="Symbol"
+      >(</a
+      ><a name="308" href="equality.calculus.html#258" class="Bound"
+      >f</a
+      ><a name="309"
+      > </a
+      ><a name="310" href="equality.calculus.html#248" class="Bound"
+      >x</a
+      ><a name="311" class="Symbol"
+      >)</a
+      ><a name="312"
+      > </a
+      ><a name="313" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="314"
+      > </a
+      ><a name="315" href="equality.calculus.html#258" class="Bound"
+      >f</a
+      ><a name="316"
+      > </a
+      ><a name="317" href="equality.calculus.html#250" class="Bound"
+      >x'</a
+      ><a name="319"
+      >
+</a
+      ><a name="320" href="equality.calculus.html#198" class="Function"
+      >ap'</a
+      ><a name="323"
+      > </a
+      ><a name="324" class="Symbol"
+      >_</a
+      ><a name="325"
+      > </a
+      ><a name="326" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="330"
+      > </a
+      ><a name="331" class="Symbol"
+      >=</a
+      ><a name="332"
+      > </a
+      ><a name="333" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="337"
+      >
+
+</a
+      ><a name="339" href="equality.calculus.html#339" class="Function"
+      >subst-naturality</a
+      ><a name="355"
+      > </a
+      ><a name="356" class="Symbol"
+      >:</a
+      ><a name="357"
+      > </a
+      ><a name="358" class="Symbol"
+      >&#8704;</a
+      ><a name="359"
+      > </a
+      ><a name="360" class="Symbol"
+      >{</a
+      ><a name="361" href="equality.calculus.html#361" class="Bound"
+      >i</a
+      ><a name="362"
+      > </a
+      ><a name="363" href="equality.calculus.html#363" class="Bound"
+      >i'</a
+      ><a name="365"
+      > </a
+      ><a name="366" href="equality.calculus.html#366" class="Bound"
+      >j</a
+      ><a name="367" class="Symbol"
+      >}</a
+      ><a name="368"
+      > </a
+      ><a name="369" class="Symbol"
+      >{</a
+      ><a name="370" href="equality.calculus.html#370" class="Bound"
+      >X</a
+      ><a name="371"
+      > </a
+      ><a name="372" class="Symbol"
+      >:</a
+      ><a name="373"
+      > </a
+      ><a name="374" class="PrimitiveType"
+      >Set</a
+      ><a name="377"
+      > </a
+      ><a name="378" href="equality.calculus.html#361" class="Bound"
+      >i</a
+      ><a name="379" class="Symbol"
+      >}</a
+      ><a name="380"
+      > </a
+      ><a name="381" class="Symbol"
+      >{</a
+      ><a name="382" href="equality.calculus.html#382" class="Bound"
+      >Y</a
+      ><a name="383"
+      > </a
+      ><a name="384" class="Symbol"
+      >:</a
+      ><a name="385"
+      > </a
+      ><a name="386" class="PrimitiveType"
+      >Set</a
+      ><a name="389"
+      > </a
+      ><a name="390" href="equality.calculus.html#363" class="Bound"
+      >i'</a
+      ><a name="392" class="Symbol"
+      >}</a
+      ><a name="393"
+      >
+                   </a
+      ><a name="413" class="Symbol"
+      >{</a
+      ><a name="414" href="equality.calculus.html#414" class="Bound"
+      >x</a
+      ><a name="415"
+      > </a
+      ><a name="416" href="equality.calculus.html#416" class="Bound"
+      >x'</a
+      ><a name="418"
+      > </a
+      ><a name="419" class="Symbol"
+      >:</a
+      ><a name="420"
+      > </a
+      ><a name="421" href="equality.calculus.html#370" class="Bound"
+      >X</a
+      ><a name="422" class="Symbol"
+      >}</a
+      ><a name="423"
+      > </a
+      ><a name="424" class="Symbol"
+      >(</a
+      ><a name="425" href="equality.calculus.html#425" class="Bound"
+      >P</a
+      ><a name="426"
+      > </a
+      ><a name="427" class="Symbol"
+      >:</a
+      ><a name="428"
+      > </a
+      ><a name="429" href="equality.calculus.html#382" class="Bound"
+      >Y</a
+      ><a name="430"
+      > </a
+      ><a name="431" class="Symbol"
+      >&#8594;</a
+      ><a name="432"
+      > </a
+      ><a name="433" class="PrimitiveType"
+      >Set</a
+      ><a name="436"
+      > </a
+      ><a name="437" href="equality.calculus.html#366" class="Bound"
+      >j</a
+      ><a name="438" class="Symbol"
+      >)</a
+      ><a name="439"
+      >
+                   </a
+      ><a name="459" class="Symbol"
+      >(</a
+      ><a name="460" href="equality.calculus.html#460" class="Bound"
+      >f</a
+      ><a name="461"
+      > </a
+      ><a name="462" class="Symbol"
+      >:</a
+      ><a name="463"
+      > </a
+      ><a name="464" href="equality.calculus.html#370" class="Bound"
+      >X</a
+      ><a name="465"
+      > </a
+      ><a name="466" class="Symbol"
+      >&#8594;</a
+      ><a name="467"
+      > </a
+      ><a name="468" href="equality.calculus.html#382" class="Bound"
+      >Y</a
+      ><a name="469" class="Symbol"
+      >)(</a
+      ><a name="471" href="equality.calculus.html#471" class="Bound"
+      >p</a
+      ><a name="472"
+      > </a
+      ><a name="473" class="Symbol"
+      >:</a
+      ><a name="474"
+      > </a
+      ><a name="475" href="equality.calculus.html#414" class="Bound"
+      >x</a
+      ><a name="476"
+      > </a
+      ><a name="477" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="478"
+      > </a
+      ><a name="479" href="equality.calculus.html#416" class="Bound"
+      >x'</a
+      ><a name="481" class="Symbol"
+      >)(</a
+      ><a name="483" href="equality.calculus.html#483" class="Bound"
+      >u</a
+      ><a name="484"
+      > </a
+      ><a name="485" class="Symbol"
+      >:</a
+      ><a name="486"
+      > </a
+      ><a name="487" href="equality.calculus.html#425" class="Bound"
+      >P</a
+      ><a name="488"
+      > </a
+      ><a name="489" class="Symbol"
+      >(</a
+      ><a name="490" href="equality.calculus.html#460" class="Bound"
+      >f</a
+      ><a name="491"
+      > </a
+      ><a name="492" href="equality.calculus.html#414" class="Bound"
+      >x</a
+      ><a name="493" class="Symbol"
+      >))</a
+      ><a name="495"
+      >
+                 </a
+      ><a name="513" class="Symbol"
+      >&#8594;</a
+      ><a name="514"
+      > </a
+      ><a name="515" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="520"
+      > </a
+      ><a name="521" class="Symbol"
+      >(</a
+      ><a name="522" href="equality.calculus.html#425" class="Bound"
+      >P</a
+      ><a name="523"
+      > </a
+      ><a name="524" href="function.core.html#912" class="Function Operator"
+      >&#8728;</a
+      ><a name="525"
+      > </a
+      ><a name="526" href="equality.calculus.html#460" class="Bound"
+      >f</a
+      ><a name="527" class="Symbol"
+      >)</a
+      ><a name="528"
+      > </a
+      ><a name="529" href="equality.calculus.html#471" class="Bound"
+      >p</a
+      ><a name="530"
+      > </a
+      ><a name="531" href="equality.calculus.html#483" class="Bound"
+      >u</a
+      ><a name="532"
+      > </a
+      ><a name="533" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="534"
+      > </a
+      ><a name="535" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="540"
+      > </a
+      ><a name="541" href="equality.calculus.html#425" class="Bound"
+      >P</a
+      ><a name="542"
+      > </a
+      ><a name="543" class="Symbol"
+      >(</a
+      ><a name="544" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="546"
+      > </a
+      ><a name="547" href="equality.calculus.html#460" class="Bound"
+      >f</a
+      ><a name="548"
+      > </a
+      ><a name="549" href="equality.calculus.html#471" class="Bound"
+      >p</a
+      ><a name="550" class="Symbol"
+      >)</a
+      ><a name="551"
+      > </a
+      ><a name="552" href="equality.calculus.html#483" class="Bound"
+      >u</a
+      ><a name="553"
+      >
+</a
+      ><a name="554" href="equality.calculus.html#339" class="Function"
+      >subst-naturality</a
+      ><a name="570"
+      > </a
+      ><a name="571" class="Symbol"
+      >_</a
+      ><a name="572"
+      > </a
+      ><a name="573" class="Symbol"
+      >_</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="579"
+      > </a
+      ><a name="580" class="Symbol"
+      >_</a
+      ><a name="581"
+      > </a
+      ><a name="582" class="Symbol"
+      >=</a
+      ><a name="583"
+      > </a
+      ><a name="584" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="588"
+      >
+
+</a
+      ><a name="590" href="equality.calculus.html#590" class="Function"
+      >subst-hom</a
+      ><a name="599"
+      > </a
+      ><a name="600" class="Symbol"
+      >:</a
+      ><a name="601"
+      > </a
+      ><a name="602" class="Symbol"
+      >&#8704;</a
+      ><a name="603"
+      > </a
+      ><a name="604" class="Symbol"
+      >{</a
+      ><a name="605" href="equality.calculus.html#605" class="Bound"
+      >i</a
+      ><a name="606"
+      > </a
+      ><a name="607" href="equality.calculus.html#607" class="Bound"
+      >j</a
+      ><a name="608" class="Symbol"
+      >}{</a
+      ><a name="610" href="equality.calculus.html#610" class="Bound"
+      >X</a
+      ><a name="611"
+      > </a
+      ><a name="612" class="Symbol"
+      >:</a
+      ><a name="613"
+      > </a
+      ><a name="614" class="PrimitiveType"
+      >Set</a
+      ><a name="617"
+      > </a
+      ><a name="618" href="equality.calculus.html#605" class="Bound"
+      >i</a
+      ><a name="619" class="Symbol"
+      >}(</a
+      ><a name="621" href="equality.calculus.html#621" class="Bound"
+      >P</a
+      ><a name="622"
+      > </a
+      ><a name="623" class="Symbol"
+      >:</a
+      ><a name="624"
+      > </a
+      ><a name="625" href="equality.calculus.html#610" class="Bound"
+      >X</a
+      ><a name="626"
+      > </a
+      ><a name="627" class="Symbol"
+      >&#8594;</a
+      ><a name="628"
+      > </a
+      ><a name="629" class="PrimitiveType"
+      >Set</a
+      ><a name="632"
+      > </a
+      ><a name="633" href="equality.calculus.html#607" class="Bound"
+      >j</a
+      ><a name="634" class="Symbol"
+      >){</a
+      ><a name="636" href="equality.calculus.html#636" class="Bound"
+      >x</a
+      ><a name="637"
+      > </a
+      ><a name="638" href="equality.calculus.html#638" class="Bound"
+      >y</a
+      ><a name="639"
+      > </a
+      ><a name="640" href="equality.calculus.html#640" class="Bound"
+      >z</a
+      ><a name="641"
+      > </a
+      ><a name="642" class="Symbol"
+      >:</a
+      ><a name="643"
+      > </a
+      ><a name="644" href="equality.calculus.html#610" class="Bound"
+      >X</a
+      ><a name="645" class="Symbol"
+      >}</a
+      ><a name="646"
+      >
+          </a
+      ><a name="657" class="Symbol"
+      >&#8594;</a
+      ><a name="658"
+      > </a
+      ><a name="659" class="Symbol"
+      >(</a
+      ><a name="660" href="equality.calculus.html#660" class="Bound"
+      >p</a
+      ><a name="661"
+      > </a
+      ><a name="662" class="Symbol"
+      >:</a
+      ><a name="663"
+      > </a
+      ><a name="664" href="equality.calculus.html#636" class="Bound"
+      >x</a
+      ><a name="665"
+      > </a
+      ><a name="666" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="667"
+      > </a
+      ><a name="668" href="equality.calculus.html#638" class="Bound"
+      >y</a
+      ><a name="669" class="Symbol"
+      >)(</a
+      ><a name="671" href="equality.calculus.html#671" class="Bound"
+      >q</a
+      ><a name="672"
+      > </a
+      ><a name="673" class="Symbol"
+      >:</a
+      ><a name="674"
+      > </a
+      ><a name="675" href="equality.calculus.html#638" class="Bound"
+      >y</a
+      ><a name="676"
+      > </a
+      ><a name="677" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="678"
+      > </a
+      ><a name="679" href="equality.calculus.html#640" class="Bound"
+      >z</a
+      ><a name="680" class="Symbol"
+      >)(</a
+      ><a name="682" href="equality.calculus.html#682" class="Bound"
+      >u</a
+      ><a name="683"
+      > </a
+      ><a name="684" class="Symbol"
+      >:</a
+      ><a name="685"
+      > </a
+      ><a name="686" href="equality.calculus.html#621" class="Bound"
+      >P</a
+      ><a name="687"
+      > </a
+      ><a name="688" href="equality.calculus.html#636" class="Bound"
+      >x</a
+      ><a name="689" class="Symbol"
+      >)</a
+      ><a name="690"
+      >
+          </a
+      ><a name="701" class="Symbol"
+      >&#8594;</a
+      ><a name="702"
+      > </a
+      ><a name="703" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="708"
+      > </a
+      ><a name="709" href="equality.calculus.html#621" class="Bound"
+      >P</a
+      ><a name="710"
+      > </a
+      ><a name="711" href="equality.calculus.html#671" class="Bound"
+      >q</a
+      ><a name="712"
+      > </a
+      ><a name="713" class="Symbol"
+      >(</a
+      ><a name="714" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="719"
+      > </a
+      ><a name="720" href="equality.calculus.html#621" class="Bound"
+      >P</a
+      ><a name="721"
+      > </a
+      ><a name="722" href="equality.calculus.html#660" class="Bound"
+      >p</a
+      ><a name="723"
+      > </a
+      ><a name="724" href="equality.calculus.html#682" class="Bound"
+      >u</a
+      ><a name="725" class="Symbol"
+      >)</a
+      ><a name="726"
+      > </a
+      ><a name="727" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="728"
+      > </a
+      ><a name="729" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="734"
+      > </a
+      ><a name="735" href="equality.calculus.html#621" class="Bound"
+      >P</a
+      ><a name="736"
+      > </a
+      ><a name="737" class="Symbol"
+      >(</a
+      ><a name="738" href="equality.calculus.html#660" class="Bound"
+      >p</a
+      ><a name="739"
+      > </a
+      ><a name="740" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="741"
+      > </a
+      ><a name="742" href="equality.calculus.html#671" class="Bound"
+      >q</a
+      ><a name="743" class="Symbol"
+      >)</a
+      ><a name="744"
+      > </a
+      ><a name="745" href="equality.calculus.html#682" class="Bound"
+      >u</a
+      ><a name="746"
+      >
+</a
+      ><a name="747" href="equality.calculus.html#590" class="Function"
+      >subst-hom</a
+      ><a name="756"
+      > </a
+      ><a name="757" class="Symbol"
+      >_</a
+      ><a name="758"
+      > </a
+      ><a name="759" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="763"
+      > </a
+      ><a name="764" href="equality.calculus.html#764" class="Bound"
+      >q</a
+      ><a name="765"
+      > </a
+      ><a name="766" href="equality.calculus.html#766" class="Bound"
+      >u</a
+      ><a name="767"
+      > </a
+      ><a name="768" class="Symbol"
+      >=</a
+      ><a name="769"
+      > </a
+      ><a name="770" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="774"
+      >
+
+</a
+      ><a name="776" href="equality.calculus.html#776" class="Function"
+      >subst-eq</a
+      ><a name="784"
+      > </a
+      ><a name="785" class="Symbol"
+      >:</a
+      ><a name="786"
+      > </a
+      ><a name="787" class="Symbol"
+      >&#8704;</a
+      ><a name="788"
+      > </a
+      ><a name="789" class="Symbol"
+      >{</a
+      ><a name="790" href="equality.calculus.html#790" class="Bound"
+      >i</a
+      ><a name="791" class="Symbol"
+      >}</a
+      ><a name="792"
+      > </a
+      ><a name="793" class="Symbol"
+      >{</a
+      ><a name="794" href="equality.calculus.html#794" class="Bound"
+      >X</a
+      ><a name="795"
+      > </a
+      ><a name="796" class="Symbol"
+      >:</a
+      ><a name="797"
+      > </a
+      ><a name="798" class="PrimitiveType"
+      >Set</a
+      ><a name="801"
+      > </a
+      ><a name="802" href="equality.calculus.html#790" class="Bound"
+      >i</a
+      ><a name="803" class="Symbol"
+      >}{</a
+      ><a name="805" href="equality.calculus.html#805" class="Bound"
+      >x</a
+      ><a name="806"
+      > </a
+      ><a name="807" href="equality.calculus.html#807" class="Bound"
+      >y</a
+      ><a name="808"
+      > </a
+      ><a name="809" href="equality.calculus.html#809" class="Bound"
+      >z</a
+      ><a name="810"
+      > </a
+      ><a name="811" class="Symbol"
+      >:</a
+      ><a name="812"
+      > </a
+      ><a name="813" href="equality.calculus.html#794" class="Bound"
+      >X</a
+      ><a name="814" class="Symbol"
+      >}</a
+      ><a name="815"
+      >
+         </a
+      ><a name="825" class="Symbol"
+      >&#8594;</a
+      ><a name="826"
+      > </a
+      ><a name="827" class="Symbol"
+      >(</a
+      ><a name="828" href="equality.calculus.html#828" class="Bound"
+      >p</a
+      ><a name="829"
+      > </a
+      ><a name="830" class="Symbol"
+      >:</a
+      ><a name="831"
+      > </a
+      ><a name="832" href="equality.calculus.html#807" class="Bound"
+      >y</a
+      ><a name="833"
+      > </a
+      ><a name="834" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="835"
+      > </a
+      ><a name="836" href="equality.calculus.html#805" class="Bound"
+      >x</a
+      ><a name="837" class="Symbol"
+      >)(</a
+      ><a name="839" href="equality.calculus.html#839" class="Bound"
+      >q</a
+      ><a name="840"
+      > </a
+      ><a name="841" class="Symbol"
+      >:</a
+      ><a name="842"
+      > </a
+      ><a name="843" href="equality.calculus.html#807" class="Bound"
+      >y</a
+      ><a name="844"
+      > </a
+      ><a name="845" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="846"
+      > </a
+      ><a name="847" href="equality.calculus.html#809" class="Bound"
+      >z</a
+      ><a name="848" class="Symbol"
+      >)</a
+      ><a name="849"
+      >
+         </a
+      ><a name="859" class="Symbol"
+      >&#8594;</a
+      ><a name="860"
+      > </a
+      ><a name="861" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="866"
+      > </a
+      ><a name="867" class="Symbol"
+      >(&#955;</a
+      ><a name="869"
+      > </a
+      ><a name="870" href="equality.calculus.html#870" class="Bound"
+      >y</a
+      ><a name="871"
+      > </a
+      ><a name="872" class="Symbol"
+      >&#8594;</a
+      ><a name="873"
+      > </a
+      ><a name="874" href="equality.calculus.html#870" class="Bound"
+      >y</a
+      ><a name="875"
+      > </a
+      ><a name="876" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="877"
+      > </a
+      ><a name="878" href="equality.calculus.html#809" class="Bound"
+      >z</a
+      ><a name="879" class="Symbol"
+      >)</a
+      ><a name="880"
+      > </a
+      ><a name="881" href="equality.calculus.html#828" class="Bound"
+      >p</a
+      ><a name="882"
+      > </a
+      ><a name="883" href="equality.calculus.html#839" class="Bound"
+      >q</a
+      ><a name="884"
+      >
+         </a
+      ><a name="894" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="equality.calculus.html#828" class="Bound"
+      >p</a
+      ><a name="901"
+      > </a
+      ><a name="902" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="903"
+      > </a
+      ><a name="904" href="equality.calculus.html#839" class="Bound"
+      >q</a
+      ><a name="905"
+      >
+</a
+      ><a name="906" href="equality.calculus.html#776" class="Function"
+      >subst-eq</a
+      ><a name="914"
+      > </a
+      ><a name="915" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="919"
+      > </a
+      ><a name="920" class="Symbol"
+      >_</a
+      ><a name="921"
+      > </a
+      ><a name="922" class="Symbol"
+      >=</a
+      ><a name="923"
+      > </a
+      ><a name="924" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="928"
+      >
+
+</a
+      ><a name="930" href="equality.calculus.html#930" class="Function"
+      >subst-eq&#8322;</a
+      ><a name="939"
+      > </a
+      ><a name="940" class="Symbol"
+      >:</a
+      ><a name="941"
+      > </a
+      ><a name="942" class="Symbol"
+      >&#8704;</a
+      ><a name="943"
+      > </a
+      ><a name="944" class="Symbol"
+      >{</a
+      ><a name="945" href="equality.calculus.html#945" class="Bound"
+      >i</a
+      ><a name="946" class="Symbol"
+      >}</a
+      ><a name="947"
+      > </a
+      ><a name="948" class="Symbol"
+      >{</a
+      ><a name="949" href="equality.calculus.html#949" class="Bound"
+      >X</a
+      ><a name="950"
+      > </a
+      ><a name="951" class="Symbol"
+      >:</a
+      ><a name="952"
+      > </a
+      ><a name="953" class="PrimitiveType"
+      >Set</a
+      ><a name="956"
+      > </a
+      ><a name="957" href="equality.calculus.html#945" class="Bound"
+      >i</a
+      ><a name="958" class="Symbol"
+      >}{</a
+      ><a name="960" href="equality.calculus.html#960" class="Bound"
+      >x</a
+      ><a name="961"
+      > </a
+      ><a name="962" href="equality.calculus.html#962" class="Bound"
+      >y</a
+      ><a name="963"
+      > </a
+      ><a name="964" class="Symbol"
+      >:</a
+      ><a name="965"
+      > </a
+      ><a name="966" href="equality.calculus.html#949" class="Bound"
+      >X</a
+      ><a name="967" class="Symbol"
+      >}</a
+      ><a name="968"
+      >
+          </a
+      ><a name="979" class="Symbol"
+      >&#8594;</a
+      ><a name="980"
+      > </a
+      ><a name="981" class="Symbol"
+      >(</a
+      ><a name="982" href="equality.calculus.html#982" class="Bound"
+      >p</a
+      ><a name="983"
+      > </a
+      ><a name="984" class="Symbol"
+      >:</a
+      ><a name="985"
+      > </a
+      ><a name="986" href="equality.calculus.html#960" class="Bound"
+      >x</a
+      ><a name="987"
+      > </a
+      ><a name="988" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="989"
+      > </a
+      ><a name="990" href="equality.calculus.html#962" class="Bound"
+      >y</a
+      ><a name="991" class="Symbol"
+      >)</a
+      ><a name="992"
+      >
+          </a
+      ><a name="1003" class="Symbol"
+      >&#8594;</a
+      ><a name="1004"
+      > </a
+      ><a name="1005" class="Symbol"
+      >(</a
+      ><a name="1006" href="equality.calculus.html#1006" class="Bound"
+      >q</a
+      ><a name="1007"
+      > </a
+      ><a name="1008" class="Symbol"
+      >:</a
+      ><a name="1009"
+      > </a
+      ><a name="1010" href="equality.calculus.html#960" class="Bound"
+      >x</a
+      ><a name="1011"
+      > </a
+      ><a name="1012" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1013"
+      > </a
+      ><a name="1014" href="equality.calculus.html#960" class="Bound"
+      >x</a
+      ><a name="1015" class="Symbol"
+      >)</a
+      ><a name="1016"
+      >
+          </a
+      ><a name="1027" class="Symbol"
+      >&#8594;</a
+      ><a name="1028"
+      > </a
+      ><a name="1029" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="1034"
+      > </a
+      ><a name="1035" class="Symbol"
+      >(&#955;</a
+      ><a name="1037"
+      > </a
+      ><a name="1038" href="equality.calculus.html#1038" class="Bound"
+      >z</a
+      ><a name="1039"
+      > </a
+      ><a name="1040" class="Symbol"
+      >&#8594;</a
+      ><a name="1041"
+      > </a
+      ><a name="1042" href="equality.calculus.html#1038" class="Bound"
+      >z</a
+      ><a name="1043"
+      > </a
+      ><a name="1044" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1045"
+      > </a
+      ><a name="1046" href="equality.calculus.html#1038" class="Bound"
+      >z</a
+      ><a name="1047" class="Symbol"
+      >)</a
+      ><a name="1048"
+      > </a
+      ><a name="1049" href="equality.calculus.html#982" class="Bound"
+      >p</a
+      ><a name="1050"
+      > </a
+      ><a name="1051" href="equality.calculus.html#1006" class="Bound"
+      >q</a
+      ><a name="1052"
+      > </a
+      ><a name="1053" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1058"
+      > </a
+      ><a name="1059" href="equality.calculus.html#982" class="Bound"
+      >p</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1062"
+      > </a
+      ><a name="1063" href="equality.calculus.html#1006" class="Bound"
+      >q</a
+      ><a name="1064"
+      > </a
+      ><a name="1065" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1066"
+      > </a
+      ><a name="1067" href="equality.calculus.html#982" class="Bound"
+      >p</a
+      ><a name="1068"
+      >
+</a
+      ><a name="1069" href="equality.calculus.html#930" class="Function"
+      >subst-eq&#8322;</a
+      ><a name="1078"
+      > </a
+      ><a name="1079" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1083"
+      > </a
+      ><a name="1084" href="equality.calculus.html#1084" class="Bound"
+      >q</a
+      ><a name="1085"
+      > </a
+      ><a name="1086" class="Symbol"
+      >=</a
+      ><a name="1087"
+      > </a
+      ><a name="1088" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1091"
+      > </a
+      ><a name="1092" class="Symbol"
+      >(</a
+      ><a name="1093" href="equality.groupoid.html#147" class="Function"
+      >left-unit</a
+      ><a name="1102"
+      > </a
+      ><a name="1103" class="Symbol"
+      >_)</a
+      ><a name="1105"
+      >
+
+</a
+      ><a name="1107" href="equality.calculus.html#1107" class="Function"
+      >subst-const</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" class="Symbol"
+      >:</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" class="Symbol"
+      >&#8704;</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" class="Symbol"
+      >{</a
+      ><a name="1124" href="equality.calculus.html#1124" class="Bound"
+      >i</a
+      ><a name="1125"
+      > </a
+      ><a name="1126" href="equality.calculus.html#1126" class="Bound"
+      >j</a
+      ><a name="1127" class="Symbol"
+      >}</a
+      ><a name="1128"
+      > </a
+      ><a name="1129" class="Symbol"
+      >{</a
+      ><a name="1130" href="equality.calculus.html#1130" class="Bound"
+      >A</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" class="Symbol"
+      >:</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" class="PrimitiveType"
+      >Set</a
+      ><a name="1137"
+      > </a
+      ><a name="1138" href="equality.calculus.html#1124" class="Bound"
+      >i</a
+      ><a name="1139" class="Symbol"
+      >}{</a
+      ><a name="1141" href="equality.calculus.html#1141" class="Bound"
+      >X</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" class="Symbol"
+      >:</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" class="PrimitiveType"
+      >Set</a
+      ><a name="1148"
+      > </a
+      ><a name="1149" href="equality.calculus.html#1126" class="Bound"
+      >j</a
+      ><a name="1150" class="Symbol"
+      >}</a
+      ><a name="1151"
+      >
+            </a
+      ><a name="1164" class="Symbol"
+      >&#8594;</a
+      ><a name="1165"
+      > </a
+      ><a name="1166" class="Symbol"
+      >{</a
+      ><a name="1167" href="equality.calculus.html#1167" class="Bound"
+      >a</a
+      ><a name="1168"
+      > </a
+      ><a name="1169" href="equality.calculus.html#1169" class="Bound"
+      >a'</a
+      ><a name="1171"
+      > </a
+      ><a name="1172" class="Symbol"
+      >:</a
+      ><a name="1173"
+      > </a
+      ><a name="1174" href="equality.calculus.html#1130" class="Bound"
+      >A</a
+      ><a name="1175" class="Symbol"
+      >}(</a
+      ><a name="1177" href="equality.calculus.html#1177" class="Bound"
+      >p</a
+      ><a name="1178"
+      > </a
+      ><a name="1179" class="Symbol"
+      >:</a
+      ><a name="1180"
+      > </a
+      ><a name="1181" href="equality.calculus.html#1167" class="Bound"
+      >a</a
+      ><a name="1182"
+      > </a
+      ><a name="1183" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1184"
+      > </a
+      ><a name="1185" href="equality.calculus.html#1169" class="Bound"
+      >a'</a
+      ><a name="1187" class="Symbol"
+      >)(</a
+      ><a name="1189" href="equality.calculus.html#1189" class="Bound"
+      >x</a
+      ><a name="1190"
+      > </a
+      ><a name="1191" class="Symbol"
+      >:</a
+      ><a name="1192"
+      > </a
+      ><a name="1193" href="equality.calculus.html#1141" class="Bound"
+      >X</a
+      ><a name="1194" class="Symbol"
+      >)</a
+      ><a name="1195"
+      >
+            </a
+      ><a name="1208" class="Symbol"
+      >&#8594;</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="1215"
+      > </a
+      ><a name="1216" class="Symbol"
+      >(&#955;</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" href="equality.calculus.html#1219" class="Bound"
+      >_</a
+      ><a name="1220"
+      > </a
+      ><a name="1221" class="Symbol"
+      >&#8594;</a
+      ><a name="1222"
+      > </a
+      ><a name="1223" href="equality.calculus.html#1141" class="Bound"
+      >X</a
+      ><a name="1224" class="Symbol"
+      >)</a
+      ><a name="1225"
+      > </a
+      ><a name="1226" href="equality.calculus.html#1177" class="Bound"
+      >p</a
+      ><a name="1227"
+      > </a
+      ><a name="1228" href="equality.calculus.html#1189" class="Bound"
+      >x</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" href="equality.calculus.html#1189" class="Bound"
+      >x</a
+      ><a name="1233"
+      >
+</a
+      ><a name="1234" href="equality.calculus.html#1107" class="Function"
+      >subst-const</a
+      ><a name="1245"
+      > </a
+      ><a name="1246" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1250"
+      > </a
+      ><a name="1251" href="equality.calculus.html#1251" class="Bound"
+      >x</a
+      ><a name="1252"
+      > </a
+      ><a name="1253" class="Symbol"
+      >=</a
+      ><a name="1254"
+      > </a
+      ><a name="1255" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1259"
+      >
+
+</a
+      ><a name="1261" href="equality.calculus.html#1261" class="Function"
+      >subst-const-ap</a
+      ><a name="1275"
+      > </a
+      ><a name="1276" class="Symbol"
+      >:</a
+      ><a name="1277"
+      > </a
+      ><a name="1278" class="Symbol"
+      >&#8704;</a
+      ><a name="1279"
+      > </a
+      ><a name="1280" class="Symbol"
+      >{</a
+      ><a name="1281" href="equality.calculus.html#1281" class="Bound"
+      >i</a
+      ><a name="1282"
+      > </a
+      ><a name="1283" href="equality.calculus.html#1283" class="Bound"
+      >j</a
+      ><a name="1284" class="Symbol"
+      >}</a
+      ><a name="1285"
+      > </a
+      ><a name="1286" class="Symbol"
+      >{</a
+      ><a name="1287" href="equality.calculus.html#1287" class="Bound"
+      >A</a
+      ><a name="1288"
+      > </a
+      ><a name="1289" class="Symbol"
+      >:</a
+      ><a name="1290"
+      > </a
+      ><a name="1291" class="PrimitiveType"
+      >Set</a
+      ><a name="1294"
+      > </a
+      ><a name="1295" href="equality.calculus.html#1281" class="Bound"
+      >i</a
+      ><a name="1296" class="Symbol"
+      >}{</a
+      ><a name="1298" href="equality.calculus.html#1298" class="Bound"
+      >X</a
+      ><a name="1299"
+      > </a
+      ><a name="1300" class="Symbol"
+      >:</a
+      ><a name="1301"
+      > </a
+      ><a name="1302" class="PrimitiveType"
+      >Set</a
+      ><a name="1305"
+      > </a
+      ><a name="1306" href="equality.calculus.html#1283" class="Bound"
+      >j</a
+      ><a name="1307" class="Symbol"
+      >}</a
+      ><a name="1308"
+      >
+                 </a
+      ><a name="1326" class="Symbol"
+      >&#8594;</a
+      ><a name="1327"
+      > </a
+      ><a name="1328" class="Symbol"
+      >{</a
+      ><a name="1329" href="equality.calculus.html#1329" class="Bound"
+      >a</a
+      ><a name="1330"
+      > </a
+      ><a name="1331" href="equality.calculus.html#1331" class="Bound"
+      >a'</a
+      ><a name="1333"
+      > </a
+      ><a name="1334" class="Symbol"
+      >:</a
+      ><a name="1335"
+      > </a
+      ><a name="1336" href="equality.calculus.html#1287" class="Bound"
+      >A</a
+      ><a name="1337" class="Symbol"
+      >}(</a
+      ><a name="1339" href="equality.calculus.html#1339" class="Bound"
+      >f</a
+      ><a name="1340"
+      > </a
+      ><a name="1341" class="Symbol"
+      >:</a
+      ><a name="1342"
+      > </a
+      ><a name="1343" href="equality.calculus.html#1287" class="Bound"
+      >A</a
+      ><a name="1344"
+      > </a
+      ><a name="1345" class="Symbol"
+      >&#8594;</a
+      ><a name="1346"
+      > </a
+      ><a name="1347" href="equality.calculus.html#1298" class="Bound"
+      >X</a
+      ><a name="1348" class="Symbol"
+      >)(</a
+      ><a name="1350" href="equality.calculus.html#1350" class="Bound"
+      >p</a
+      ><a name="1351"
+      > </a
+      ><a name="1352" class="Symbol"
+      >:</a
+      ><a name="1353"
+      > </a
+      ><a name="1354" href="equality.calculus.html#1329" class="Bound"
+      >a</a
+      ><a name="1355"
+      > </a
+      ><a name="1356" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1357"
+      > </a
+      ><a name="1358" href="equality.calculus.html#1331" class="Bound"
+      >a'</a
+      ><a name="1360" class="Symbol"
+      >)</a
+      ><a name="1361"
+      >
+                 </a
+      ><a name="1379" class="Symbol"
+      >&#8594;</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" href="equality.calculus.html#198" class="Function"
+      >ap'</a
+      ><a name="1384"
+      > </a
+      ><a name="1385" href="equality.calculus.html#1339" class="Bound"
+      >f</a
+      ><a name="1386"
+      > </a
+      ><a name="1387" href="equality.calculus.html#1350" class="Bound"
+      >p</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1390"
+      > </a
+      ><a name="1391" href="equality.calculus.html#1107" class="Function"
+      >subst-const</a
+      ><a name="1402"
+      > </a
+      ><a name="1403" href="equality.calculus.html#1350" class="Bound"
+      >p</a
+      ><a name="1404"
+      > </a
+      ><a name="1405" class="Symbol"
+      >(</a
+      ><a name="1406" href="equality.calculus.html#1339" class="Bound"
+      >f</a
+      ><a name="1407"
+      > </a
+      ><a name="1408" href="equality.calculus.html#1329" class="Bound"
+      >a</a
+      ><a name="1409" class="Symbol"
+      >)</a
+      ><a name="1410"
+      > </a
+      ><a name="1411" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1412"
+      > </a
+      ><a name="1413" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1415"
+      > </a
+      ><a name="1416" href="equality.calculus.html#1339" class="Bound"
+      >f</a
+      ><a name="1417"
+      > </a
+      ><a name="1418" href="equality.calculus.html#1350" class="Bound"
+      >p</a
+      ><a name="1419"
+      >
+</a
+      ><a name="1420" href="equality.calculus.html#1261" class="Function"
+      >subst-const-ap</a
+      ><a name="1434"
+      > </a
+      ><a name="1435" href="equality.calculus.html#1435" class="Bound"
+      >f</a
+      ><a name="1436"
+      > </a
+      ><a name="1437" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1441"
+      > </a
+      ><a name="1442" class="Symbol"
+      >=</a
+      ><a name="1443"
+      > </a
+      ><a name="1444" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1448"
+      >
+
+</a
+      ><a name="1450" href="equality.calculus.html#1450" class="Function"
+      >ap&#931;</a
+      ><a name="1453"
+      > </a
+      ><a name="1454" class="Symbol"
+      >:</a
+      ><a name="1455"
+      > </a
+      ><a name="1456" class="Symbol"
+      >&#8704;</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" class="Symbol"
+      >{</a
+      ><a name="1459" href="equality.calculus.html#1459" class="Bound"
+      >i</a
+      ><a name="1460"
+      > </a
+      ><a name="1461" href="equality.calculus.html#1461" class="Bound"
+      >j</a
+      ><a name="1462" class="Symbol"
+      >}{</a
+      ><a name="1464" href="equality.calculus.html#1464" class="Bound"
+      >A</a
+      ><a name="1465"
+      > </a
+      ><a name="1466" class="Symbol"
+      >:</a
+      ><a name="1467"
+      > </a
+      ><a name="1468" class="PrimitiveType"
+      >Set</a
+      ><a name="1471"
+      > </a
+      ><a name="1472" href="equality.calculus.html#1459" class="Bound"
+      >i</a
+      ><a name="1473" class="Symbol"
+      >}{</a
+      ><a name="1475" href="equality.calculus.html#1475" class="Bound"
+      >B</a
+      ><a name="1476"
+      > </a
+      ><a name="1477" class="Symbol"
+      >:</a
+      ><a name="1478"
+      > </a
+      ><a name="1479" href="equality.calculus.html#1464" class="Bound"
+      >A</a
+      ><a name="1480"
+      > </a
+      ><a name="1481" class="Symbol"
+      >&#8594;</a
+      ><a name="1482"
+      > </a
+      ><a name="1483" class="PrimitiveType"
+      >Set</a
+      ><a name="1486"
+      > </a
+      ><a name="1487" href="equality.calculus.html#1461" class="Bound"
+      >j</a
+      ><a name="1488" class="Symbol"
+      >}</a
+      ><a name="1489"
+      >
+        </a
+      ><a name="1498" class="Symbol"
+      >{</a
+      ><a name="1499" href="equality.calculus.html#1499" class="Bound"
+      >x</a
+      ><a name="1500"
+      > </a
+      ><a name="1501" href="equality.calculus.html#1501" class="Bound"
+      >x'</a
+      ><a name="1503"
+      > </a
+      ><a name="1504" class="Symbol"
+      >:</a
+      ><a name="1505"
+      > </a
+      ><a name="1506" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1507"
+      > </a
+      ><a name="1508" href="equality.calculus.html#1464" class="Bound"
+      >A</a
+      ><a name="1509"
+      > </a
+      ><a name="1510" href="equality.calculus.html#1475" class="Bound"
+      >B</a
+      ><a name="1511" class="Symbol"
+      >}</a
+      ><a name="1512"
+      >
+     </a
+      ><a name="1518" class="Symbol"
+      >&#8594;</a
+      ><a name="1519"
+      > </a
+      ><a name="1520" class="Symbol"
+      >(</a
+      ><a name="1521" href="equality.calculus.html#1521" class="Bound"
+      >p</a
+      ><a name="1522"
+      > </a
+      ><a name="1523" class="Symbol"
+      >:</a
+      ><a name="1524"
+      > </a
+      ><a name="1525" href="equality.calculus.html#1499" class="Bound"
+      >x</a
+      ><a name="1526"
+      > </a
+      ><a name="1527" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" href="equality.calculus.html#1501" class="Bound"
+      >x'</a
+      ><a name="1531" class="Symbol"
+      >)</a
+      ><a name="1532"
+      >
+     </a
+      ><a name="1538" class="Symbol"
+      >&#8594;</a
+      ><a name="1539"
+      > </a
+      ><a name="1540" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" class="Symbol"
+      >(</a
+      ><a name="1543" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1548"
+      > </a
+      ><a name="1549" href="equality.calculus.html#1499" class="Bound"
+      >x</a
+      ><a name="1550"
+      > </a
+      ><a name="1551" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1552"
+      > </a
+      ><a name="1553" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" href="equality.calculus.html#1501" class="Bound"
+      >x'</a
+      ><a name="1561" class="Symbol"
+      >)</a
+      ><a name="1562"
+      > </a
+      ><a name="1563" class="Symbol"
+      >&#955;</a
+      ><a name="1564"
+      > </a
+      ><a name="1565" href="equality.calculus.html#1565" class="Bound"
+      >q</a
+      ><a name="1566"
+      >
+     </a
+      ><a name="1572" class="Symbol"
+      >&#8594;</a
+      ><a name="1573"
+      > </a
+      ><a name="1574" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="1579"
+      > </a
+      ><a name="1580" href="equality.calculus.html#1475" class="Bound"
+      >B</a
+      ><a name="1581"
+      > </a
+      ><a name="1582" href="equality.calculus.html#1565" class="Bound"
+      >q</a
+      ><a name="1583"
+      > </a
+      ><a name="1584" class="Symbol"
+      >(</a
+      ><a name="1585" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="1590"
+      > </a
+      ><a name="1591" href="equality.calculus.html#1499" class="Bound"
+      >x</a
+      ><a name="1592" class="Symbol"
+      >)</a
+      ><a name="1593"
+      > </a
+      ><a name="1594" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1595"
+      > </a
+      ><a name="1596" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="1601"
+      > </a
+      ><a name="1602" href="equality.calculus.html#1501" class="Bound"
+      >x'</a
+      ><a name="1604"
+      >
+</a
+      ><a name="1605" href="equality.calculus.html#1450" class="Function"
+      >ap&#931;</a
+      ><a name="1608"
+      > </a
+      ><a name="1609" class="Symbol"
+      >{</a
+      ><a name="1610" class="Argument"
+      >B</a
+      ><a name="1611"
+      > </a
+      ><a name="1612" class="Symbol"
+      >=</a
+      ><a name="1613"
+      > </a
+      ><a name="1614" href="equality.calculus.html#1614" class="Bound"
+      >B</a
+      ><a name="1615" class="Symbol"
+      >}</a
+      ><a name="1616"
+      > </a
+      ><a name="1617" href="equality.calculus.html#1617" class="Bound"
+      >p</a
+      ><a name="1618"
+      > </a
+      ><a name="1619" class="Symbol"
+      >=</a
+      ><a name="1620"
+      >
+  </a
+      ><a name="1623" href="equality.core.html#1224" class="Function"
+      >J</a
+      ><a name="1624"
+      > </a
+      ><a name="1625" class="Symbol"
+      >(&#955;</a
+      ><a name="1627"
+      > </a
+      ><a name="1628" href="equality.calculus.html#1628" class="Bound"
+      >x</a
+      ><a name="1629"
+      > </a
+      ><a name="1630" href="equality.calculus.html#1630" class="Bound"
+      >x'</a
+      ><a name="1632"
+      > </a
+      ><a name="1633" href="equality.calculus.html#1633" class="Bound"
+      >p</a
+      ><a name="1634"
+      > </a
+      ><a name="1635" class="Symbol"
+      >&#8594;</a
+      ><a name="1636"
+      > </a
+      ><a name="1637" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1638"
+      > </a
+      ><a name="1639" class="Symbol"
+      >(</a
+      ><a name="1640" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1645"
+      > </a
+      ><a name="1646" href="equality.calculus.html#1628" class="Bound"
+      >x</a
+      ><a name="1647"
+      > </a
+      ><a name="1648" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1649"
+      > </a
+      ><a name="1650" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1655"
+      > </a
+      ><a name="1656" href="equality.calculus.html#1630" class="Bound"
+      >x'</a
+      ><a name="1658" class="Symbol"
+      >)</a
+      ><a name="1659"
+      > </a
+      ><a name="1660" class="Symbol"
+      >&#955;</a
+      ><a name="1661"
+      > </a
+      ><a name="1662" href="equality.calculus.html#1662" class="Bound"
+      >q</a
+      ><a name="1663"
+      >
+              </a
+      ><a name="1678" class="Symbol"
+      >&#8594;</a
+      ><a name="1679"
+      > </a
+      ><a name="1680" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="1685"
+      > </a
+      ><a name="1686" href="equality.calculus.html#1614" class="Bound"
+      >B</a
+      ><a name="1687"
+      > </a
+      ><a name="1688" href="equality.calculus.html#1662" class="Bound"
+      >q</a
+      ><a name="1689"
+      > </a
+      ><a name="1690" class="Symbol"
+      >(</a
+      ><a name="1691" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="1696"
+      > </a
+      ><a name="1697" href="equality.calculus.html#1628" class="Bound"
+      >x</a
+      ><a name="1698" class="Symbol"
+      >)</a
+      ><a name="1699"
+      > </a
+      ><a name="1700" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1701"
+      > </a
+      ><a name="1702" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="1707"
+      > </a
+      ><a name="1708" href="equality.calculus.html#1630" class="Bound"
+      >x'</a
+      ><a name="1710" class="Symbol"
+      >)</a
+      ><a name="1711"
+      >
+    </a
+      ><a name="1716" class="Symbol"
+      >(&#955;</a
+      ><a name="1718"
+      > </a
+      ><a name="1719" href="equality.calculus.html#1719" class="Bound"
+      >x</a
+      ><a name="1720"
+      > </a
+      ><a name="1721" class="Symbol"
+      >&#8594;</a
+      ><a name="1722"
+      > </a
+      ><a name="1723" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1727"
+      > </a
+      ><a name="1728" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1729"
+      > </a
+      ><a name="1730" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1734" class="Symbol"
+      >)</a
+      ><a name="1735"
+      >
+    </a
+      ><a name="1740" class="Symbol"
+      >_</a
+      ><a name="1741"
+      > </a
+      ><a name="1742" class="Symbol"
+      >_</a
+      ><a name="1743"
+      > </a
+      ><a name="1744" href="equality.calculus.html#1617" class="Bound"
+      >p</a
+      ><a name="1745"
+      >
+
+</a
+      ><a name="1747" href="equality.calculus.html#1747" class="Function"
+      >unap&#931;</a
+      ><a name="1752"
+      > </a
+      ><a name="1753" class="Symbol"
+      >:</a
+      ><a name="1754"
+      > </a
+      ><a name="1755" class="Symbol"
+      >&#8704;</a
+      ><a name="1756"
+      > </a
+      ><a name="1757" class="Symbol"
+      >{</a
+      ><a name="1758" href="equality.calculus.html#1758" class="Bound"
+      >i</a
+      ><a name="1759"
+      > </a
+      ><a name="1760" href="equality.calculus.html#1760" class="Bound"
+      >j</a
+      ><a name="1761" class="Symbol"
+      >}{</a
+      ><a name="1763" href="equality.calculus.html#1763" class="Bound"
+      >A</a
+      ><a name="1764"
+      > </a
+      ><a name="1765" class="Symbol"
+      >:</a
+      ><a name="1766"
+      > </a
+      ><a name="1767" class="PrimitiveType"
+      >Set</a
+      ><a name="1770"
+      > </a
+      ><a name="1771" href="equality.calculus.html#1758" class="Bound"
+      >i</a
+      ><a name="1772" class="Symbol"
+      >}{</a
+      ><a name="1774" href="equality.calculus.html#1774" class="Bound"
+      >B</a
+      ><a name="1775"
+      > </a
+      ><a name="1776" class="Symbol"
+      >:</a
+      ><a name="1777"
+      > </a
+      ><a name="1778" href="equality.calculus.html#1763" class="Bound"
+      >A</a
+      ><a name="1779"
+      > </a
+      ><a name="1780" class="Symbol"
+      >&#8594;</a
+      ><a name="1781"
+      > </a
+      ><a name="1782" class="PrimitiveType"
+      >Set</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" href="equality.calculus.html#1760" class="Bound"
+      >j</a
+      ><a name="1787" class="Symbol"
+      >}</a
+      ><a name="1788"
+      >
+          </a
+      ><a name="1799" class="Symbol"
+      >{</a
+      ><a name="1800" href="equality.calculus.html#1800" class="Bound"
+      >a</a
+      ><a name="1801"
+      > </a
+      ><a name="1802" href="equality.calculus.html#1802" class="Bound"
+      >a'</a
+      ><a name="1804"
+      > </a
+      ><a name="1805" class="Symbol"
+      >:</a
+      ><a name="1806"
+      > </a
+      ><a name="1807" href="equality.calculus.html#1763" class="Bound"
+      >A</a
+      ><a name="1808" class="Symbol"
+      >}{</a
+      ><a name="1810" href="equality.calculus.html#1810" class="Bound"
+      >b</a
+      ><a name="1811"
+      > </a
+      ><a name="1812" class="Symbol"
+      >:</a
+      ><a name="1813"
+      > </a
+      ><a name="1814" href="equality.calculus.html#1774" class="Bound"
+      >B</a
+      ><a name="1815"
+      > </a
+      ><a name="1816" href="equality.calculus.html#1800" class="Bound"
+      >a</a
+      ><a name="1817" class="Symbol"
+      >}{</a
+      ><a name="1819" href="equality.calculus.html#1819" class="Bound"
+      >b'</a
+      ><a name="1821"
+      > </a
+      ><a name="1822" class="Symbol"
+      >:</a
+      ><a name="1823"
+      > </a
+      ><a name="1824" href="equality.calculus.html#1774" class="Bound"
+      >B</a
+      ><a name="1825"
+      > </a
+      ><a name="1826" href="equality.calculus.html#1802" class="Bound"
+      >a'</a
+      ><a name="1828" class="Symbol"
+      >}</a
+      ><a name="1829"
+      >
+        </a
+      ><a name="1838" class="Symbol"
+      >&#8594;</a
+      ><a name="1839"
+      > </a
+      ><a name="1840" class="Symbol"
+      >(</a
+      ><a name="1841" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1842"
+      > </a
+      ><a name="1843" class="Symbol"
+      >(</a
+      ><a name="1844" href="equality.calculus.html#1800" class="Bound"
+      >a</a
+      ><a name="1845"
+      > </a
+      ><a name="1846" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1847"
+      > </a
+      ><a name="1848" href="equality.calculus.html#1802" class="Bound"
+      >a'</a
+      ><a name="1850" class="Symbol"
+      >)</a
+      ><a name="1851"
+      > </a
+      ><a name="1852" class="Symbol"
+      >&#955;</a
+      ><a name="1853"
+      > </a
+      ><a name="1854" href="equality.calculus.html#1854" class="Bound"
+      >q</a
+      ><a name="1855"
+      > </a
+      ><a name="1856" class="Symbol"
+      >&#8594;</a
+      ><a name="1857"
+      > </a
+      ><a name="1858" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="1863"
+      > </a
+      ><a name="1864" href="equality.calculus.html#1774" class="Bound"
+      >B</a
+      ><a name="1865"
+      > </a
+      ><a name="1866" href="equality.calculus.html#1854" class="Bound"
+      >q</a
+      ><a name="1867"
+      > </a
+      ><a name="1868" href="equality.calculus.html#1810" class="Bound"
+      >b</a
+      ><a name="1869"
+      > </a
+      ><a name="1870" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1871"
+      > </a
+      ><a name="1872" href="equality.calculus.html#1819" class="Bound"
+      >b'</a
+      ><a name="1874" class="Symbol"
+      >)</a
+      ><a name="1875"
+      >
+        </a
+      ><a name="1884" class="Symbol"
+      >&#8594;</a
+      ><a name="1885"
+      > </a
+      ><a name="1886" class="Symbol"
+      >(</a
+      ><a name="1887" href="equality.calculus.html#1800" class="Bound"
+      >a</a
+      ><a name="1888"
+      > </a
+      ><a name="1889" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1890"
+      > </a
+      ><a name="1891" href="equality.calculus.html#1810" class="Bound"
+      >b</a
+      ><a name="1892" class="Symbol"
+      >)</a
+      ><a name="1893"
+      > </a
+      ><a name="1894" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1895"
+      > </a
+      ><a name="1896" class="Symbol"
+      >(</a
+      ><a name="1897" href="equality.calculus.html#1802" class="Bound"
+      >a'</a
+      ><a name="1899"
+      > </a
+      ><a name="1900" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1901"
+      > </a
+      ><a name="1902" href="equality.calculus.html#1819" class="Bound"
+      >b'</a
+      ><a name="1904" class="Symbol"
+      >)</a
+      ><a name="1905"
+      >
+</a
+      ><a name="1906" href="equality.calculus.html#1747" class="Function"
+      >unap&#931;</a
+      ><a name="1911"
+      > </a
+      ><a name="1912" class="Symbol"
+      >(</a
+      ><a name="1913" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1917"
+      > </a
+      ><a name="1918" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1919"
+      > </a
+      ><a name="1920" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1924" class="Symbol"
+      >)</a
+      ><a name="1925"
+      > </a
+      ><a name="1926" class="Symbol"
+      >=</a
+      ><a name="1927"
+      > </a
+      ><a name="1928" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1932"
+      >
+
+</a
+      ><a name="1934" href="equality.calculus.html#1934" class="Function"
+      >pair&#8801;</a
+      ><a name="1939"
+      > </a
+      ><a name="1940" class="Symbol"
+      >:</a
+      ><a name="1941"
+      > </a
+      ><a name="1942" class="Symbol"
+      >&#8704;</a
+      ><a name="1943"
+      > </a
+      ><a name="1944" class="Symbol"
+      >{</a
+      ><a name="1945" href="equality.calculus.html#1945" class="Bound"
+      >i</a
+      ><a name="1946"
+      > </a
+      ><a name="1947" href="equality.calculus.html#1947" class="Bound"
+      >j</a
+      ><a name="1948" class="Symbol"
+      >}{</a
+      ><a name="1950" href="equality.calculus.html#1950" class="Bound"
+      >A</a
+      ><a name="1951"
+      > </a
+      ><a name="1952" class="Symbol"
+      >:</a
+      ><a name="1953"
+      > </a
+      ><a name="1954" class="PrimitiveType"
+      >Set</a
+      ><a name="1957"
+      > </a
+      ><a name="1958" href="equality.calculus.html#1945" class="Bound"
+      >i</a
+      ><a name="1959" class="Symbol"
+      >}{</a
+      ><a name="1961" href="equality.calculus.html#1961" class="Bound"
+      >B</a
+      ><a name="1962"
+      > </a
+      ><a name="1963" class="Symbol"
+      >:</a
+      ><a name="1964"
+      > </a
+      ><a name="1965" class="PrimitiveType"
+      >Set</a
+      ><a name="1968"
+      > </a
+      ><a name="1969" href="equality.calculus.html#1947" class="Bound"
+      >j</a
+      ><a name="1970" class="Symbol"
+      >}</a
+      ><a name="1971"
+      >
+          </a
+      ><a name="1982" class="Symbol"
+      >{</a
+      ><a name="1983" href="equality.calculus.html#1983" class="Bound"
+      >a</a
+      ><a name="1984"
+      > </a
+      ><a name="1985" href="equality.calculus.html#1985" class="Bound"
+      >a'</a
+      ><a name="1987"
+      > </a
+      ><a name="1988" class="Symbol"
+      >:</a
+      ><a name="1989"
+      > </a
+      ><a name="1990" href="equality.calculus.html#1950" class="Bound"
+      >A</a
+      ><a name="1991" class="Symbol"
+      >}{</a
+      ><a name="1993" href="equality.calculus.html#1993" class="Bound"
+      >b</a
+      ><a name="1994"
+      > </a
+      ><a name="1995" href="equality.calculus.html#1995" class="Bound"
+      >b'</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" class="Symbol"
+      >:</a
+      ><a name="1999"
+      > </a
+      ><a name="2000" href="equality.calculus.html#1961" class="Bound"
+      >B</a
+      ><a name="2001" class="Symbol"
+      >}</a
+      ><a name="2002"
+      >
+        </a
+      ><a name="2011" class="Symbol"
+      >&#8594;</a
+      ><a name="2012"
+      > </a
+      ><a name="2013" class="Symbol"
+      >(</a
+      ><a name="2014" href="equality.calculus.html#1983" class="Bound"
+      >a</a
+      ><a name="2015"
+      > </a
+      ><a name="2016" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2017"
+      > </a
+      ><a name="2018" href="equality.calculus.html#1985" class="Bound"
+      >a'</a
+      ><a name="2020" class="Symbol"
+      >)</a
+      ><a name="2021"
+      > </a
+      ><a name="2022" class="Symbol"
+      >&#8594;</a
+      ><a name="2023"
+      > </a
+      ><a name="2024" class="Symbol"
+      >(</a
+      ><a name="2025" href="equality.calculus.html#1993" class="Bound"
+      >b</a
+      ><a name="2026"
+      > </a
+      ><a name="2027" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2028"
+      > </a
+      ><a name="2029" href="equality.calculus.html#1995" class="Bound"
+      >b'</a
+      ><a name="2031" class="Symbol"
+      >)</a
+      ><a name="2032"
+      >
+        </a
+      ><a name="2041" class="Symbol"
+      >&#8594;</a
+      ><a name="2042"
+      > </a
+      ><a name="2043" class="Symbol"
+      >(</a
+      ><a name="2044" href="equality.calculus.html#1983" class="Bound"
+      >a</a
+      ><a name="2045"
+      > </a
+      ><a name="2046" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2047"
+      > </a
+      ><a name="2048" href="equality.calculus.html#1993" class="Bound"
+      >b</a
+      ><a name="2049" class="Symbol"
+      >)</a
+      ><a name="2050"
+      > </a
+      ><a name="2051" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2052"
+      > </a
+      ><a name="2053" class="Symbol"
+      >(</a
+      ><a name="2054" href="equality.calculus.html#1985" class="Bound"
+      >a'</a
+      ><a name="2056"
+      > </a
+      ><a name="2057" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2058"
+      > </a
+      ><a name="2059" href="equality.calculus.html#1995" class="Bound"
+      >b'</a
+      ><a name="2061" class="Symbol"
+      >)</a
+      ><a name="2062"
+      >
+</a
+      ><a name="2063" href="equality.calculus.html#1934" class="Function"
+      >pair&#8801;</a
+      ><a name="2068"
+      > </a
+      ><a name="2069" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2073"
+      > </a
+      ><a name="2074" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2078"
+      > </a
+      ><a name="2079" class="Symbol"
+      >=</a
+      ><a name="2080"
+      > </a
+      ><a name="2081" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2085"
+      >
+
+</a
+      ><a name="2087" href="equality.calculus.html#2087" class="Function"
+      >ap&#931;-proj</a
+      ><a name="2095"
+      > </a
+      ><a name="2096" class="Symbol"
+      >:</a
+      ><a name="2097"
+      > </a
+      ><a name="2098" class="Symbol"
+      >&#8704;</a
+      ><a name="2099"
+      > </a
+      ><a name="2100" class="Symbol"
+      >{</a
+      ><a name="2101" href="equality.calculus.html#2101" class="Bound"
+      >i</a
+      ><a name="2102"
+      > </a
+      ><a name="2103" href="equality.calculus.html#2103" class="Bound"
+      >j</a
+      ><a name="2104" class="Symbol"
+      >}{</a
+      ><a name="2106" href="equality.calculus.html#2106" class="Bound"
+      >A</a
+      ><a name="2107"
+      > </a
+      ><a name="2108" class="Symbol"
+      >:</a
+      ><a name="2109"
+      > </a
+      ><a name="2110" class="PrimitiveType"
+      >Set</a
+      ><a name="2113"
+      > </a
+      ><a name="2114" href="equality.calculus.html#2101" class="Bound"
+      >i</a
+      ><a name="2115" class="Symbol"
+      >}{</a
+      ><a name="2117" href="equality.calculus.html#2117" class="Bound"
+      >B</a
+      ><a name="2118"
+      > </a
+      ><a name="2119" class="Symbol"
+      >:</a
+      ><a name="2120"
+      > </a
+      ><a name="2121" href="equality.calculus.html#2106" class="Bound"
+      >A</a
+      ><a name="2122"
+      > </a
+      ><a name="2123" class="Symbol"
+      >&#8594;</a
+      ><a name="2124"
+      > </a
+      ><a name="2125" class="PrimitiveType"
+      >Set</a
+      ><a name="2128"
+      > </a
+      ><a name="2129" href="equality.calculus.html#2103" class="Bound"
+      >j</a
+      ><a name="2130" class="Symbol"
+      >}</a
+      ><a name="2131"
+      >
+             </a
+      ><a name="2145" class="Symbol"
+      >{</a
+      ><a name="2146" href="equality.calculus.html#2146" class="Bound"
+      >a</a
+      ><a name="2147"
+      > </a
+      ><a name="2148" href="equality.calculus.html#2148" class="Bound"
+      >a'</a
+      ><a name="2150"
+      > </a
+      ><a name="2151" class="Symbol"
+      >:</a
+      ><a name="2152"
+      > </a
+      ><a name="2153" href="equality.calculus.html#2106" class="Bound"
+      >A</a
+      ><a name="2154" class="Symbol"
+      >}{</a
+      ><a name="2156" href="equality.calculus.html#2156" class="Bound"
+      >b</a
+      ><a name="2157"
+      > </a
+      ><a name="2158" class="Symbol"
+      >:</a
+      ><a name="2159"
+      > </a
+      ><a name="2160" href="equality.calculus.html#2117" class="Bound"
+      >B</a
+      ><a name="2161"
+      > </a
+      ><a name="2162" href="equality.calculus.html#2146" class="Bound"
+      >a</a
+      ><a name="2163" class="Symbol"
+      >}{</a
+      ><a name="2165" href="equality.calculus.html#2165" class="Bound"
+      >b'</a
+      ><a name="2167"
+      > </a
+      ><a name="2168" class="Symbol"
+      >:</a
+      ><a name="2169"
+      > </a
+      ><a name="2170" href="equality.calculus.html#2117" class="Bound"
+      >B</a
+      ><a name="2171"
+      > </a
+      ><a name="2172" href="equality.calculus.html#2148" class="Bound"
+      >a'</a
+      ><a name="2174" class="Symbol"
+      >}</a
+      ><a name="2175"
+      >
+             </a
+      ><a name="2189" class="Symbol"
+      >(</a
+      ><a name="2190" href="equality.calculus.html#2190" class="Bound"
+      >p</a
+      ><a name="2191"
+      > </a
+      ><a name="2192" class="Symbol"
+      >:</a
+      ><a name="2193"
+      > </a
+      ><a name="2194" class="Symbol"
+      >(</a
+      ><a name="2195" href="equality.calculus.html#2146" class="Bound"
+      >a</a
+      ><a name="2196"
+      > </a
+      ><a name="2197" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2198"
+      > </a
+      ><a name="2199" href="equality.calculus.html#2156" class="Bound"
+      >b</a
+      ><a name="2200" class="Symbol"
+      >)</a
+      ><a name="2201"
+      > </a
+      ><a name="2202" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2203"
+      > </a
+      ><a name="2204" class="Symbol"
+      >(</a
+      ><a name="2205" href="equality.calculus.html#2148" class="Bound"
+      >a'</a
+      ><a name="2207"
+      > </a
+      ><a name="2208" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2209"
+      > </a
+      ><a name="2210" href="equality.calculus.html#2165" class="Bound"
+      >b'</a
+      ><a name="2212" class="Symbol"
+      >))</a
+      ><a name="2214"
+      >
+           </a
+      ><a name="2226" class="Symbol"
+      >&#8594;</a
+      ><a name="2227"
+      > </a
+      ><a name="2228" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="2233"
+      > </a
+      ><a name="2234" class="Symbol"
+      >(</a
+      ><a name="2235" href="equality.calculus.html#1450" class="Function"
+      >ap&#931;</a
+      ><a name="2238"
+      > </a
+      ><a name="2239" href="equality.calculus.html#2190" class="Bound"
+      >p</a
+      ><a name="2240" class="Symbol"
+      >)</a
+      ><a name="2241"
+      >
+           </a
+      ><a name="2253" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2254"
+      > </a
+      ><a name="2255" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="2257"
+      > </a
+      ><a name="2258" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="2263"
+      > </a
+      ><a name="2264" href="equality.calculus.html#2190" class="Bound"
+      >p</a
+      ><a name="2265"
+      >
+</a
+      ><a name="2266" href="equality.calculus.html#2087" class="Function"
+      >ap&#931;-proj</a
+      ><a name="2274"
+      > </a
+      ><a name="2275" class="Symbol"
+      >=</a
+      ><a name="2276"
+      >
+  </a
+      ><a name="2279" href="equality.core.html#1224" class="Function"
+      >J</a
+      ><a name="2280"
+      > </a
+      ><a name="2281" class="Symbol"
+      >(&#955;</a
+      ><a name="2283"
+      > </a
+      ><a name="2284" href="equality.calculus.html#2284" class="Bound"
+      >_</a
+      ><a name="2285"
+      > </a
+      ><a name="2286" href="equality.calculus.html#2286" class="Bound"
+      >_</a
+      ><a name="2287"
+      > </a
+      ><a name="2288" href="equality.calculus.html#2288" class="Bound"
+      >p</a
+      ><a name="2289"
+      > </a
+      ><a name="2290" class="Symbol"
+      >&#8594;</a
+      ><a name="2291"
+      > </a
+      ><a name="2292" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="2297"
+      > </a
+      ><a name="2298" class="Symbol"
+      >(</a
+      ><a name="2299" href="equality.calculus.html#1450" class="Function"
+      >ap&#931;</a
+      ><a name="2302"
+      > </a
+      ><a name="2303" href="equality.calculus.html#2288" class="Bound"
+      >p</a
+      ><a name="2304" class="Symbol"
+      >)</a
+      ><a name="2305"
+      > </a
+      ><a name="2306" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2307"
+      > </a
+      ><a name="2308" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="2310"
+      > </a
+      ><a name="2311" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="2316"
+      > </a
+      ><a name="2317" href="equality.calculus.html#2288" class="Bound"
+      >p</a
+      ><a name="2318" class="Symbol"
+      >)</a
+      ><a name="2319"
+      >
+    </a
+      ><a name="2324" class="Symbol"
+      >(&#955;</a
+      ><a name="2326"
+      > </a
+      ><a name="2327" href="equality.calculus.html#2327" class="Bound"
+      >x</a
+      ><a name="2328"
+      > </a
+      ><a name="2329" class="Symbol"
+      >&#8594;</a
+      ><a name="2330"
+      > </a
+      ><a name="2331" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2335" class="Symbol"
+      >)</a
+      ><a name="2336"
+      > </a
+      ><a name="2337" class="Symbol"
+      >_</a
+      ><a name="2338"
+      > </a
+      ><a name="2339" class="Symbol"
+      >_</a
+      ><a name="2340"
+      >
+
+</a
+      ><a name="2342" href="equality.calculus.html#2342" class="Function"
+      >ap&#931;-sym</a
+      ><a name="2349"
+      > </a
+      ><a name="2350" class="Symbol"
+      >:</a
+      ><a name="2351"
+      > </a
+      ><a name="2352" class="Symbol"
+      >&#8704;</a
+      ><a name="2353"
+      > </a
+      ><a name="2354" class="Symbol"
+      >{</a
+      ><a name="2355" href="equality.calculus.html#2355" class="Bound"
+      >i</a
+      ><a name="2356"
+      > </a
+      ><a name="2357" href="equality.calculus.html#2357" class="Bound"
+      >j</a
+      ><a name="2358" class="Symbol"
+      >}{</a
+      ><a name="2360" href="equality.calculus.html#2360" class="Bound"
+      >A</a
+      ><a name="2361"
+      > </a
+      ><a name="2362" class="Symbol"
+      >:</a
+      ><a name="2363"
+      > </a
+      ><a name="2364" class="PrimitiveType"
+      >Set</a
+      ><a name="2367"
+      > </a
+      ><a name="2368" href="equality.calculus.html#2355" class="Bound"
+      >i</a
+      ><a name="2369" class="Symbol"
+      >}{</a
+      ><a name="2371" href="equality.calculus.html#2371" class="Bound"
+      >B</a
+      ><a name="2372"
+      > </a
+      ><a name="2373" class="Symbol"
+      >:</a
+      ><a name="2374"
+      > </a
+      ><a name="2375" href="equality.calculus.html#2360" class="Bound"
+      >A</a
+      ><a name="2376"
+      > </a
+      ><a name="2377" class="Symbol"
+      >&#8594;</a
+      ><a name="2378"
+      > </a
+      ><a name="2379" class="PrimitiveType"
+      >Set</a
+      ><a name="2382"
+      > </a
+      ><a name="2383" href="equality.calculus.html#2357" class="Bound"
+      >j</a
+      ><a name="2384" class="Symbol"
+      >}</a
+      ><a name="2385"
+      >
+            </a
+      ><a name="2398" class="Symbol"
+      >{</a
+      ><a name="2399" href="equality.calculus.html#2399" class="Bound"
+      >a</a
+      ><a name="2400"
+      > </a
+      ><a name="2401" href="equality.calculus.html#2401" class="Bound"
+      >a'</a
+      ><a name="2403"
+      > </a
+      ><a name="2404" class="Symbol"
+      >:</a
+      ><a name="2405"
+      > </a
+      ><a name="2406" href="equality.calculus.html#2360" class="Bound"
+      >A</a
+      ><a name="2407" class="Symbol"
+      >}{</a
+      ><a name="2409" href="equality.calculus.html#2409" class="Bound"
+      >b</a
+      ><a name="2410"
+      > </a
+      ><a name="2411" class="Symbol"
+      >:</a
+      ><a name="2412"
+      > </a
+      ><a name="2413" href="equality.calculus.html#2371" class="Bound"
+      >B</a
+      ><a name="2414"
+      > </a
+      ><a name="2415" href="equality.calculus.html#2399" class="Bound"
+      >a</a
+      ><a name="2416" class="Symbol"
+      >}{</a
+      ><a name="2418" href="equality.calculus.html#2418" class="Bound"
+      >b'</a
+      ><a name="2420"
+      > </a
+      ><a name="2421" class="Symbol"
+      >:</a
+      ><a name="2422"
+      > </a
+      ><a name="2423" href="equality.calculus.html#2371" class="Bound"
+      >B</a
+      ><a name="2424"
+      > </a
+      ><a name="2425" href="equality.calculus.html#2401" class="Bound"
+      >a'</a
+      ><a name="2427" class="Symbol"
+      >}</a
+      ><a name="2428"
+      >
+            </a
+      ><a name="2441" class="Symbol"
+      >(</a
+      ><a name="2442" href="equality.calculus.html#2442" class="Bound"
+      >p</a
+      ><a name="2443"
+      > </a
+      ><a name="2444" class="Symbol"
+      >:</a
+      ><a name="2445"
+      > </a
+      ><a name="2446" class="Symbol"
+      >(</a
+      ><a name="2447" href="equality.calculus.html#2399" class="Bound"
+      >a</a
+      ><a name="2448"
+      > </a
+      ><a name="2449" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2450"
+      > </a
+      ><a name="2451" href="equality.calculus.html#2409" class="Bound"
+      >b</a
+      ><a name="2452" class="Symbol"
+      >)</a
+      ><a name="2453"
+      > </a
+      ><a name="2454" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2455"
+      > </a
+      ><a name="2456" class="Symbol"
+      >(</a
+      ><a name="2457" href="equality.calculus.html#2401" class="Bound"
+      >a'</a
+      ><a name="2459"
+      > </a
+      ><a name="2460" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2461"
+      > </a
+      ><a name="2462" href="equality.calculus.html#2418" class="Bound"
+      >b'</a
+      ><a name="2464" class="Symbol"
+      >))</a
+      ><a name="2466"
+      >
+          </a
+      ><a name="2477" class="Symbol"
+      >&#8594;</a
+      ><a name="2478"
+      > </a
+      ><a name="2479" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="2484"
+      > </a
+      ><a name="2485" class="Symbol"
+      >(</a
+      ><a name="2486" href="equality.calculus.html#1450" class="Function"
+      >ap&#931;</a
+      ><a name="2489"
+      > </a
+      ><a name="2490" class="Symbol"
+      >(</a
+      ><a name="2491" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="2494"
+      > </a
+      ><a name="2495" href="equality.calculus.html#2442" class="Bound"
+      >p</a
+      ><a name="2496" class="Symbol"
+      >))</a
+      ><a name="2498"
+      >
+          </a
+      ><a name="2509" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2510"
+      > </a
+      ><a name="2511" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="2514"
+      > </a
+      ><a name="2515" class="Symbol"
+      >(</a
+      ><a name="2516" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="2521"
+      > </a
+      ><a name="2522" class="Symbol"
+      >(</a
+      ><a name="2523" href="equality.calculus.html#1450" class="Function"
+      >ap&#931;</a
+      ><a name="2526"
+      > </a
+      ><a name="2527" href="equality.calculus.html#2442" class="Bound"
+      >p</a
+      ><a name="2528" class="Symbol"
+      >))</a
+      ><a name="2530"
+      >
+</a
+      ><a name="2531" href="equality.calculus.html#2342" class="Function"
+      >ap&#931;-sym</a
+      ><a name="2538"
+      > </a
+      ><a name="2539" class="Symbol"
+      >=</a
+      ><a name="2540"
+      >
+  </a
+      ><a name="2543" href="equality.core.html#1224" class="Function"
+      >J</a
+      ><a name="2544"
+      > </a
+      ><a name="2545" class="Symbol"
+      >(&#955;</a
+      ><a name="2547"
+      > </a
+      ><a name="2548" href="equality.calculus.html#2548" class="Bound"
+      >_</a
+      ><a name="2549"
+      > </a
+      ><a name="2550" href="equality.calculus.html#2550" class="Bound"
+      >_</a
+      ><a name="2551"
+      > </a
+      ><a name="2552" href="equality.calculus.html#2552" class="Bound"
+      >p</a
+      ><a name="2553"
+      > </a
+      ><a name="2554" class="Symbol"
+      >&#8594;</a
+      ><a name="2555"
+      > </a
+      ><a name="2556" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="2561"
+      > </a
+      ><a name="2562" class="Symbol"
+      >(</a
+      ><a name="2563" href="equality.calculus.html#1450" class="Function"
+      >ap&#931;</a
+      ><a name="2566"
+      > </a
+      ><a name="2567" class="Symbol"
+      >(</a
+      ><a name="2568" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="2571"
+      > </a
+      ><a name="2572" href="equality.calculus.html#2552" class="Bound"
+      >p</a
+      ><a name="2573" class="Symbol"
+      >))</a
+      ><a name="2575"
+      >
+             </a
+      ><a name="2589" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2590"
+      > </a
+      ><a name="2591" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="2594"
+      > </a
+      ><a name="2595" class="Symbol"
+      >(</a
+      ><a name="2596" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="2601"
+      > </a
+      ><a name="2602" class="Symbol"
+      >(</a
+      ><a name="2603" href="equality.calculus.html#1450" class="Function"
+      >ap&#931;</a
+      ><a name="2606"
+      > </a
+      ><a name="2607" href="equality.calculus.html#2552" class="Bound"
+      >p</a
+      ><a name="2608" class="Symbol"
+      >)))</a
+      ><a name="2611"
+      >
+    </a
+      ><a name="2616" class="Symbol"
+      >(&#955;</a
+      ><a name="2618"
+      > </a
+      ><a name="2619" href="equality.calculus.html#2619" class="Bound"
+      >x</a
+      ><a name="2620"
+      > </a
+      ><a name="2621" class="Symbol"
+      >&#8594;</a
+      ><a name="2622"
+      > </a
+      ><a name="2623" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2627" class="Symbol"
+      >)</a
+      ><a name="2628"
+      > </a
+      ><a name="2629" class="Symbol"
+      >_</a
+      ><a name="2630"
+      > </a
+      ><a name="2631" class="Symbol"
+      >_</a
+      ><a name="2632"
+      >
+
+</a
+      ><a name="2634" href="equality.calculus.html#2634" class="Function"
+      >subst-ap</a
+      ><a name="2642"
+      > </a
+      ><a name="2643" class="Symbol"
+      >:</a
+      ><a name="2644"
+      > </a
+      ><a name="2645" class="Symbol"
+      >&#8704;</a
+      ><a name="2646"
+      > </a
+      ><a name="2647" class="Symbol"
+      >{</a
+      ><a name="2648" href="equality.calculus.html#2648" class="Bound"
+      >i</a
+      ><a name="2649"
+      > </a
+      ><a name="2650" href="equality.calculus.html#2650" class="Bound"
+      >j</a
+      ><a name="2651" class="Symbol"
+      >}{</a
+      ><a name="2653" href="equality.calculus.html#2653" class="Bound"
+      >A</a
+      ><a name="2654"
+      > </a
+      ><a name="2655" class="Symbol"
+      >:</a
+      ><a name="2656"
+      > </a
+      ><a name="2657" class="PrimitiveType"
+      >Set</a
+      ><a name="2660"
+      > </a
+      ><a name="2661" href="equality.calculus.html#2648" class="Bound"
+      >i</a
+      ><a name="2662" class="Symbol"
+      >}{</a
+      ><a name="2664" href="equality.calculus.html#2664" class="Bound"
+      >B</a
+      ><a name="2665"
+      > </a
+      ><a name="2666" class="Symbol"
+      >:</a
+      ><a name="2667"
+      > </a
+      ><a name="2668" class="PrimitiveType"
+      >Set</a
+      ><a name="2671"
+      > </a
+      ><a name="2672" href="equality.calculus.html#2650" class="Bound"
+      >j</a
+      ><a name="2673" class="Symbol"
+      >}{</a
+      ><a name="2675" href="equality.calculus.html#2675" class="Bound"
+      >a</a
+      ><a name="2676"
+      > </a
+      ><a name="2677" href="equality.calculus.html#2677" class="Bound"
+      >a'</a
+      ><a name="2679"
+      > </a
+      ><a name="2680" class="Symbol"
+      >:</a
+      ><a name="2681"
+      > </a
+      ><a name="2682" href="equality.calculus.html#2653" class="Bound"
+      >A</a
+      ><a name="2683" class="Symbol"
+      >}</a
+      ><a name="2684"
+      >
+           </a
+      ><a name="2696" class="Symbol"
+      >&#8594;</a
+      ><a name="2697"
+      > </a
+      ><a name="2698" class="Symbol"
+      >(</a
+      ><a name="2699" href="equality.calculus.html#2699" class="Bound"
+      >f</a
+      ><a name="2700"
+      > </a
+      ><a name="2701" class="Symbol"
+      >:</a
+      ><a name="2702"
+      > </a
+      ><a name="2703" href="equality.calculus.html#2653" class="Bound"
+      >A</a
+      ><a name="2704"
+      > </a
+      ><a name="2705" class="Symbol"
+      >&#8594;</a
+      ><a name="2706"
+      > </a
+      ><a name="2707" href="equality.calculus.html#2664" class="Bound"
+      >B</a
+      ><a name="2708" class="Symbol"
+      >)</a
+      ><a name="2709"
+      >
+           </a
+      ><a name="2721" class="Symbol"
+      >&#8594;</a
+      ><a name="2722"
+      > </a
+      ><a name="2723" class="Symbol"
+      >(</a
+      ><a name="2724" href="equality.calculus.html#2724" class="Bound"
+      >p</a
+      ><a name="2725"
+      > </a
+      ><a name="2726" class="Symbol"
+      >:</a
+      ><a name="2727"
+      > </a
+      ><a name="2728" href="equality.calculus.html#2675" class="Bound"
+      >a</a
+      ><a name="2729"
+      > </a
+      ><a name="2730" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2731"
+      > </a
+      ><a name="2732" href="equality.calculus.html#2677" class="Bound"
+      >a'</a
+      ><a name="2734" class="Symbol"
+      >)</a
+      ><a name="2735"
+      >
+           </a
+      ><a name="2747" class="Symbol"
+      >&#8594;</a
+      ><a name="2748"
+      > </a
+      ><a name="2749" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="2751"
+      > </a
+      ><a name="2752" href="equality.calculus.html#2699" class="Bound"
+      >f</a
+      ><a name="2753"
+      > </a
+      ><a name="2754" class="Symbol"
+      >(</a
+      ><a name="2755" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="2758"
+      > </a
+      ><a name="2759" href="equality.calculus.html#2724" class="Bound"
+      >p</a
+      ><a name="2760" class="Symbol"
+      >)</a
+      ><a name="2761"
+      >
+           </a
+      ><a name="2773" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2774"
+      > </a
+      ><a name="2775" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="2780"
+      > </a
+      ><a name="2781" class="Symbol"
+      >(&#955;</a
+      ><a name="2783"
+      > </a
+      ><a name="2784" href="equality.calculus.html#2784" class="Bound"
+      >x</a
+      ><a name="2785"
+      > </a
+      ><a name="2786" class="Symbol"
+      >&#8594;</a
+      ><a name="2787"
+      > </a
+      ><a name="2788" href="equality.calculus.html#2699" class="Bound"
+      >f</a
+      ><a name="2789"
+      > </a
+      ><a name="2790" href="equality.calculus.html#2784" class="Bound"
+      >x</a
+      ><a name="2791"
+      > </a
+      ><a name="2792" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2793"
+      > </a
+      ><a name="2794" href="equality.calculus.html#2699" class="Bound"
+      >f</a
+      ><a name="2795"
+      > </a
+      ><a name="2796" href="equality.calculus.html#2675" class="Bound"
+      >a</a
+      ><a name="2797" class="Symbol"
+      >)</a
+      ><a name="2798"
+      > </a
+      ><a name="2799" href="equality.calculus.html#2724" class="Bound"
+      >p</a
+      ><a name="2800"
+      > </a
+      ><a name="2801" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2805"
+      >
+</a
+      ><a name="2806" href="equality.calculus.html#2634" class="Function"
+      >subst-ap</a
+      ><a name="2814"
+      > </a
+      ><a name="2815" href="equality.calculus.html#2815" class="Bound"
+      >f</a
+      ><a name="2816"
+      > </a
+      ><a name="2817" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2821"
+      > </a
+      ><a name="2822" class="Symbol"
+      >=</a
+      ><a name="2823"
+      > </a
+      ><a name="2824" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2828"
+      >
+
+</a
+      ><a name="2830" href="equality.calculus.html#2830" class="Function"
+      >ap-map-id</a
+      ><a name="2839"
+      > </a
+      ><a name="2840" class="Symbol"
+      >:</a
+      ><a name="2841"
+      > </a
+      ><a name="2842" class="Symbol"
+      >&#8704;</a
+      ><a name="2843"
+      > </a
+      ><a name="2844" class="Symbol"
+      >{</a
+      ><a name="2845" href="equality.calculus.html#2845" class="Bound"
+      >i</a
+      ><a name="2846"
+      > </a
+      ><a name="2847" href="equality.calculus.html#2847" class="Bound"
+      >j</a
+      ><a name="2848" class="Symbol"
+      >}{</a
+      ><a name="2850" href="equality.calculus.html#2850" class="Bound"
+      >X</a
+      ><a name="2851"
+      > </a
+      ><a name="2852" class="Symbol"
+      >:</a
+      ><a name="2853"
+      > </a
+      ><a name="2854" class="PrimitiveType"
+      >Set</a
+      ><a name="2857"
+      > </a
+      ><a name="2858" href="equality.calculus.html#2845" class="Bound"
+      >i</a
+      ><a name="2859" class="Symbol"
+      >}{</a
+      ><a name="2861" href="equality.calculus.html#2861" class="Bound"
+      >Y</a
+      ><a name="2862"
+      > </a
+      ><a name="2863" class="Symbol"
+      >:</a
+      ><a name="2864"
+      > </a
+      ><a name="2865" class="PrimitiveType"
+      >Set</a
+      ><a name="2868"
+      > </a
+      ><a name="2869" href="equality.calculus.html#2847" class="Bound"
+      >j</a
+      ><a name="2870" class="Symbol"
+      >}{</a
+      ><a name="2872" href="equality.calculus.html#2872" class="Bound"
+      >x</a
+      ><a name="2873"
+      > </a
+      ><a name="2874" class="Symbol"
+      >:</a
+      ><a name="2875"
+      > </a
+      ><a name="2876" href="equality.calculus.html#2850" class="Bound"
+      >X</a
+      ><a name="2877" class="Symbol"
+      >}</a
+      ><a name="2878"
+      >
+            </a
+      ><a name="2891" class="Symbol"
+      >&#8594;</a
+      ><a name="2892"
+      > </a
+      ><a name="2893" class="Symbol"
+      >(</a
+      ><a name="2894" href="equality.calculus.html#2894" class="Bound"
+      >f</a
+      ><a name="2895"
+      > </a
+      ><a name="2896" class="Symbol"
+      >:</a
+      ><a name="2897"
+      > </a
+      ><a name="2898" href="equality.calculus.html#2850" class="Bound"
+      >X</a
+      ><a name="2899"
+      > </a
+      ><a name="2900" class="Symbol"
+      >&#8594;</a
+      ><a name="2901"
+      > </a
+      ><a name="2902" href="equality.calculus.html#2861" class="Bound"
+      >Y</a
+      ><a name="2903" class="Symbol"
+      >)</a
+      ><a name="2904"
+      >
+            </a
+      ><a name="2917" class="Symbol"
+      >&#8594;</a
+      ><a name="2918"
+      > </a
+      ><a name="2919" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="2921"
+      > </a
+      ><a name="2922" href="equality.calculus.html#2894" class="Bound"
+      >f</a
+      ><a name="2923"
+      > </a
+      ><a name="2924" class="Symbol"
+      >(</a
+      ><a name="2925" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2929"
+      > </a
+      ><a name="2930" class="Symbol"
+      >{</a
+      ><a name="2931" class="Argument"
+      >x</a
+      ><a name="2932"
+      > </a
+      ><a name="2933" class="Symbol"
+      >=</a
+      ><a name="2934"
+      > </a
+      ><a name="2935" href="equality.calculus.html#2872" class="Bound"
+      >x</a
+      ><a name="2936" class="Symbol"
+      >})</a
+      ><a name="2938"
+      > </a
+      ><a name="2939" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2940"
+      > </a
+      ><a name="2941" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2945"
+      > </a
+      ><a name="2946" class="Symbol"
+      >{</a
+      ><a name="2947" class="Argument"
+      >x</a
+      ><a name="2948"
+      > </a
+      ><a name="2949" class="Symbol"
+      >=</a
+      ><a name="2950"
+      > </a
+      ><a name="2951" href="equality.calculus.html#2894" class="Bound"
+      >f</a
+      ><a name="2952"
+      > </a
+      ><a name="2953" href="equality.calculus.html#2872" class="Bound"
+      >x</a
+      ><a name="2954" class="Symbol"
+      >}</a
+      ><a name="2955"
+      >
+</a
+      ><a name="2956" href="equality.calculus.html#2830" class="Function"
+      >ap-map-id</a
+      ><a name="2965"
+      > </a
+      ><a name="2966" href="equality.calculus.html#2966" class="Bound"
+      >f</a
+      ><a name="2967"
+      > </a
+      ><a name="2968" class="Symbol"
+      >=</a
+      ><a name="2969"
+      > </a
+      ><a name="2970" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2974"
+      >
+
+</a
+      ><a name="2976" href="equality.calculus.html#2976" class="Function"
+      >ap-map-hom</a
+      ><a name="2986"
+      > </a
+      ><a name="2987" class="Symbol"
+      >:</a
+      ><a name="2988"
+      > </a
+      ><a name="2989" class="Symbol"
+      >&#8704;</a
+      ><a name="2990"
+      > </a
+      ><a name="2991" class="Symbol"
+      >{</a
+      ><a name="2992" href="equality.calculus.html#2992" class="Bound"
+      >i</a
+      ><a name="2993"
+      > </a
+      ><a name="2994" href="equality.calculus.html#2994" class="Bound"
+      >j</a
+      ><a name="2995" class="Symbol"
+      >}{</a
+      ><a name="2997" href="equality.calculus.html#2997" class="Bound"
+      >X</a
+      ><a name="2998"
+      > </a
+      ><a name="2999" class="Symbol"
+      >:</a
+      ><a name="3000"
+      > </a
+      ><a name="3001" class="PrimitiveType"
+      >Set</a
+      ><a name="3004"
+      > </a
+      ><a name="3005" href="equality.calculus.html#2992" class="Bound"
+      >i</a
+      ><a name="3006" class="Symbol"
+      >}{</a
+      ><a name="3008" href="equality.calculus.html#3008" class="Bound"
+      >Y</a
+      ><a name="3009"
+      > </a
+      ><a name="3010" class="Symbol"
+      >:</a
+      ><a name="3011"
+      > </a
+      ><a name="3012" class="PrimitiveType"
+      >Set</a
+      ><a name="3015"
+      > </a
+      ><a name="3016" href="equality.calculus.html#2994" class="Bound"
+      >j</a
+      ><a name="3017" class="Symbol"
+      >}{</a
+      ><a name="3019" href="equality.calculus.html#3019" class="Bound"
+      >x</a
+      ><a name="3020"
+      > </a
+      ><a name="3021" href="equality.calculus.html#3021" class="Bound"
+      >y</a
+      ><a name="3022"
+      > </a
+      ><a name="3023" href="equality.calculus.html#3023" class="Bound"
+      >z</a
+      ><a name="3024"
+      > </a
+      ><a name="3025" class="Symbol"
+      >:</a
+      ><a name="3026"
+      > </a
+      ><a name="3027" href="equality.calculus.html#2997" class="Bound"
+      >X</a
+      ><a name="3028" class="Symbol"
+      >}</a
+      ><a name="3029"
+      >
+             </a
+      ><a name="3043" class="Symbol"
+      >&#8594;</a
+      ><a name="3044"
+      > </a
+      ><a name="3045" class="Symbol"
+      >(</a
+      ><a name="3046" href="equality.calculus.html#3046" class="Bound"
+      >f</a
+      ><a name="3047"
+      > </a
+      ><a name="3048" class="Symbol"
+      >:</a
+      ><a name="3049"
+      > </a
+      ><a name="3050" href="equality.calculus.html#2997" class="Bound"
+      >X</a
+      ><a name="3051"
+      > </a
+      ><a name="3052" class="Symbol"
+      >&#8594;</a
+      ><a name="3053"
+      > </a
+      ><a name="3054" href="equality.calculus.html#3008" class="Bound"
+      >Y</a
+      ><a name="3055" class="Symbol"
+      >)(</a
+      ><a name="3057" href="equality.calculus.html#3057" class="Bound"
+      >p</a
+      ><a name="3058"
+      > </a
+      ><a name="3059" class="Symbol"
+      >:</a
+      ><a name="3060"
+      > </a
+      ><a name="3061" href="equality.calculus.html#3019" class="Bound"
+      >x</a
+      ><a name="3062"
+      > </a
+      ><a name="3063" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3064"
+      > </a
+      ><a name="3065" href="equality.calculus.html#3021" class="Bound"
+      >y</a
+      ><a name="3066" class="Symbol"
+      >)(</a
+      ><a name="3068" href="equality.calculus.html#3068" class="Bound"
+      >q</a
+      ><a name="3069"
+      > </a
+      ><a name="3070" class="Symbol"
+      >:</a
+      ><a name="3071"
+      > </a
+      ><a name="3072" href="equality.calculus.html#3021" class="Bound"
+      >y</a
+      ><a name="3073"
+      > </a
+      ><a name="3074" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3075"
+      > </a
+      ><a name="3076" href="equality.calculus.html#3023" class="Bound"
+      >z</a
+      ><a name="3077" class="Symbol"
+      >)</a
+      ><a name="3078"
+      >
+             </a
+      ><a name="3092" class="Symbol"
+      >&#8594;</a
+      ><a name="3093"
+      > </a
+      ><a name="3094" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="3096"
+      > </a
+      ><a name="3097" href="equality.calculus.html#3046" class="Bound"
+      >f</a
+      ><a name="3098"
+      > </a
+      ><a name="3099" class="Symbol"
+      >(</a
+      ><a name="3100" href="equality.calculus.html#3057" class="Bound"
+      >p</a
+      ><a name="3101"
+      > </a
+      ><a name="3102" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3103"
+      > </a
+      ><a name="3104" href="equality.calculus.html#3068" class="Bound"
+      >q</a
+      ><a name="3105" class="Symbol"
+      >)</a
+      ><a name="3106"
+      > </a
+      ><a name="3107" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3108"
+      > </a
+      ><a name="3109" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="3111"
+      > </a
+      ><a name="3112" href="equality.calculus.html#3046" class="Bound"
+      >f</a
+      ><a name="3113"
+      > </a
+      ><a name="3114" href="equality.calculus.html#3057" class="Bound"
+      >p</a
+      ><a name="3115"
+      > </a
+      ><a name="3116" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3117"
+      > </a
+      ><a name="3118" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="3120"
+      > </a
+      ><a name="3121" href="equality.calculus.html#3046" class="Bound"
+      >f</a
+      ><a name="3122"
+      > </a
+      ><a name="3123" href="equality.calculus.html#3068" class="Bound"
+      >q</a
+      ><a name="3124"
+      >
+</a
+      ><a name="3125" href="equality.calculus.html#2976" class="Function"
+      >ap-map-hom</a
+      ><a name="3135"
+      > </a
+      ><a name="3136" href="equality.calculus.html#3136" class="Bound"
+      >f</a
+      ><a name="3137"
+      > </a
+      ><a name="3138" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3142"
+      > </a
+      ><a name="3143" class="Symbol"
+      >_</a
+      ><a name="3144"
+      > </a
+      ><a name="3145" class="Symbol"
+      >=</a
+      ><a name="3146"
+      > </a
+      ><a name="3147" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3151"
+      >
+
+</a
+      ><a name="3153" href="equality.calculus.html#3153" class="Function"
+      >ap-id</a
+      ><a name="3158"
+      > </a
+      ><a name="3159" class="Symbol"
+      >:</a
+      ><a name="3160"
+      > </a
+      ><a name="3161" class="Symbol"
+      >&#8704;</a
+      ><a name="3162"
+      > </a
+      ><a name="3163" class="Symbol"
+      >{</a
+      ><a name="3164" href="equality.calculus.html#3164" class="Bound"
+      >l</a
+      ><a name="3165" class="Symbol"
+      >}</a
+      ><a name="3166"
+      > </a
+      ><a name="3167" class="Symbol"
+      >{</a
+      ><a name="3168" href="equality.calculus.html#3168" class="Bound"
+      >A</a
+      ><a name="3169"
+      > </a
+      ><a name="3170" class="Symbol"
+      >:</a
+      ><a name="3171"
+      > </a
+      ><a name="3172" class="PrimitiveType"
+      >Set</a
+      ><a name="3175"
+      > </a
+      ><a name="3176" href="equality.calculus.html#3164" class="Bound"
+      >l</a
+      ><a name="3177" class="Symbol"
+      >}{</a
+      ><a name="3179" href="equality.calculus.html#3179" class="Bound"
+      >x</a
+      ><a name="3180"
+      > </a
+      ><a name="3181" href="equality.calculus.html#3181" class="Bound"
+      >y</a
+      ><a name="3182"
+      > </a
+      ><a name="3183" class="Symbol"
+      >:</a
+      ><a name="3184"
+      > </a
+      ><a name="3185" href="equality.calculus.html#3168" class="Bound"
+      >A</a
+      ><a name="3186" class="Symbol"
+      >}(</a
+      ><a name="3188" href="equality.calculus.html#3188" class="Bound"
+      >p</a
+      ><a name="3189"
+      > </a
+      ><a name="3190" class="Symbol"
+      >:</a
+      ><a name="3191"
+      > </a
+      ><a name="3192" href="equality.calculus.html#3179" class="Bound"
+      >x</a
+      ><a name="3193"
+      > </a
+      ><a name="3194" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3195"
+      > </a
+      ><a name="3196" href="equality.calculus.html#3181" class="Bound"
+      >y</a
+      ><a name="3197" class="Symbol"
+      >)</a
+      ><a name="3198"
+      >
+        </a
+      ><a name="3207" class="Symbol"
+      >&#8594;</a
+      ><a name="3208"
+      > </a
+      ><a name="3209" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="3211"
+      > </a
+      ><a name="3212" href="function.core.html#1083" class="Function"
+      >id</a
+      ><a name="3214"
+      > </a
+      ><a name="3215" href="equality.calculus.html#3188" class="Bound"
+      >p</a
+      ><a name="3216"
+      > </a
+      ><a name="3217" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3218"
+      > </a
+      ><a name="3219" href="equality.calculus.html#3188" class="Bound"
+      >p</a
+      ><a name="3220"
+      >
+</a
+      ><a name="3221" href="equality.calculus.html#3153" class="Function"
+      >ap-id</a
+      ><a name="3226"
+      > </a
+      ><a name="3227" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3231"
+      > </a
+      ><a name="3232" class="Symbol"
+      >=</a
+      ><a name="3233"
+      > </a
+      ><a name="3234" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3238"
+      >
+
+</a
+      ><a name="3240" href="equality.calculus.html#3240" class="Function"
+      >ap-hom</a
+      ><a name="3246"
+      > </a
+      ><a name="3247" class="Symbol"
+      >:</a
+      ><a name="3248"
+      > </a
+      ><a name="3249" class="Symbol"
+      >&#8704;</a
+      ><a name="3250"
+      > </a
+      ><a name="3251" class="Symbol"
+      >{</a
+      ><a name="3252" href="equality.calculus.html#3252" class="Bound"
+      >l</a
+      ><a name="3253"
+      > </a
+      ><a name="3254" href="equality.calculus.html#3254" class="Bound"
+      >m</a
+      ><a name="3255"
+      > </a
+      ><a name="3256" href="equality.calculus.html#3256" class="Bound"
+      >n</a
+      ><a name="3257" class="Symbol"
+      >}</a
+      ><a name="3258"
+      > </a
+      ><a name="3259" class="Symbol"
+      >{</a
+      ><a name="3260" href="equality.calculus.html#3260" class="Bound"
+      >A</a
+      ><a name="3261"
+      > </a
+      ><a name="3262" class="Symbol"
+      >:</a
+      ><a name="3263"
+      > </a
+      ><a name="3264" class="PrimitiveType"
+      >Set</a
+      ><a name="3267"
+      > </a
+      ><a name="3268" href="equality.calculus.html#3252" class="Bound"
+      >l</a
+      ><a name="3269" class="Symbol"
+      >}{</a
+      ><a name="3271" href="equality.calculus.html#3271" class="Bound"
+      >B</a
+      ><a name="3272"
+      > </a
+      ><a name="3273" class="Symbol"
+      >:</a
+      ><a name="3274"
+      > </a
+      ><a name="3275" class="PrimitiveType"
+      >Set</a
+      ><a name="3278"
+      > </a
+      ><a name="3279" href="equality.calculus.html#3254" class="Bound"
+      >m</a
+      ><a name="3280" class="Symbol"
+      >}{</a
+      ><a name="3282" href="equality.calculus.html#3282" class="Bound"
+      >C</a
+      ><a name="3283"
+      > </a
+      ><a name="3284" class="Symbol"
+      >:</a
+      ><a name="3285"
+      > </a
+      ><a name="3286" class="PrimitiveType"
+      >Set</a
+      ><a name="3289"
+      > </a
+      ><a name="3290" href="equality.calculus.html#3256" class="Bound"
+      >n</a
+      ><a name="3291" class="Symbol"
+      >}</a
+      ><a name="3292"
+      >
+           </a
+      ><a name="3304" class="Symbol"
+      >{</a
+      ><a name="3305" href="equality.calculus.html#3305" class="Bound"
+      >x</a
+      ><a name="3306"
+      > </a
+      ><a name="3307" href="equality.calculus.html#3307" class="Bound"
+      >y</a
+      ><a name="3308"
+      > </a
+      ><a name="3309" class="Symbol"
+      >:</a
+      ><a name="3310"
+      > </a
+      ><a name="3311" href="equality.calculus.html#3260" class="Bound"
+      >A</a
+      ><a name="3312" class="Symbol"
+      >}(</a
+      ><a name="3314" href="equality.calculus.html#3314" class="Bound"
+      >f</a
+      ><a name="3315"
+      > </a
+      ><a name="3316" class="Symbol"
+      >:</a
+      ><a name="3317"
+      > </a
+      ><a name="3318" href="equality.calculus.html#3260" class="Bound"
+      >A</a
+      ><a name="3319"
+      > </a
+      ><a name="3320" class="Symbol"
+      >&#8594;</a
+      ><a name="3321"
+      > </a
+      ><a name="3322" href="equality.calculus.html#3271" class="Bound"
+      >B</a
+      ><a name="3323" class="Symbol"
+      >)(</a
+      ><a name="3325" href="equality.calculus.html#3325" class="Bound"
+      >g</a
+      ><a name="3326"
+      > </a
+      ><a name="3327" class="Symbol"
+      >:</a
+      ><a name="3328"
+      > </a
+      ><a name="3329" href="equality.calculus.html#3271" class="Bound"
+      >B</a
+      ><a name="3330"
+      > </a
+      ><a name="3331" class="Symbol"
+      >&#8594;</a
+      ><a name="3332"
+      > </a
+      ><a name="3333" href="equality.calculus.html#3282" class="Bound"
+      >C</a
+      ><a name="3334" class="Symbol"
+      >)(</a
+      ><a name="3336" href="equality.calculus.html#3336" class="Bound"
+      >p</a
+      ><a name="3337"
+      > </a
+      ><a name="3338" class="Symbol"
+      >:</a
+      ><a name="3339"
+      > </a
+      ><a name="3340" href="equality.calculus.html#3305" class="Bound"
+      >x</a
+      ><a name="3341"
+      > </a
+      ><a name="3342" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3343"
+      > </a
+      ><a name="3344" href="equality.calculus.html#3307" class="Bound"
+      >y</a
+      ><a name="3345" class="Symbol"
+      >)</a
+      ><a name="3346"
+      >
+         </a
+      ><a name="3356" class="Symbol"
+      >&#8594;</a
+      ><a name="3357"
+      > </a
+      ><a name="3358" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="3360"
+      > </a
+      ><a name="3361" href="equality.calculus.html#3325" class="Bound"
+      >g</a
+      ><a name="3362"
+      > </a
+      ><a name="3363" class="Symbol"
+      >(</a
+      ><a name="3364" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="3366"
+      > </a
+      ><a name="3367" href="equality.calculus.html#3314" class="Bound"
+      >f</a
+      ><a name="3368"
+      > </a
+      ><a name="3369" href="equality.calculus.html#3336" class="Bound"
+      >p</a
+      ><a name="3370" class="Symbol"
+      >)</a
+      ><a name="3371"
+      > </a
+      ><a name="3372" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3373"
+      > </a
+      ><a name="3374" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="3376"
+      > </a
+      ><a name="3377" class="Symbol"
+      >(</a
+      ><a name="3378" href="equality.calculus.html#3325" class="Bound"
+      >g</a
+      ><a name="3379"
+      > </a
+      ><a name="3380" href="function.core.html#912" class="Function Operator"
+      >&#8728;</a
+      ><a name="3381"
+      > </a
+      ><a name="3382" href="equality.calculus.html#3314" class="Bound"
+      >f</a
+      ><a name="3383" class="Symbol"
+      >)</a
+      ><a name="3384"
+      > </a
+      ><a name="3385" href="equality.calculus.html#3336" class="Bound"
+      >p</a
+      ><a name="3386"
+      >
+</a
+      ><a name="3387" href="equality.calculus.html#3240" class="Function"
+      >ap-hom</a
+      ><a name="3393"
+      > </a
+      ><a name="3394" href="equality.calculus.html#3394" class="Bound"
+      >f</a
+      ><a name="3395"
+      > </a
+      ><a name="3396" href="equality.calculus.html#3396" class="Bound"
+      >g</a
+      ><a name="3397"
+      > </a
+      ><a name="3398" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3402"
+      > </a
+      ><a name="3403" class="Symbol"
+      >=</a
+      ><a name="3404"
+      > </a
+      ><a name="3405" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3409"
+      >
+
+</a
+      ><a name="3411" href="equality.calculus.html#3411" class="Function"
+      >ap-inv</a
+      ><a name="3417"
+      > </a
+      ><a name="3418" class="Symbol"
+      >:</a
+      ><a name="3419"
+      > </a
+      ><a name="3420" class="Symbol"
+      >&#8704;</a
+      ><a name="3421"
+      > </a
+      ><a name="3422" class="Symbol"
+      >{</a
+      ><a name="3423" href="equality.calculus.html#3423" class="Bound"
+      >i</a
+      ><a name="3424"
+      > </a
+      ><a name="3425" href="equality.calculus.html#3425" class="Bound"
+      >j</a
+      ><a name="3426" class="Symbol"
+      >}</a
+      ><a name="3427"
+      > </a
+      ><a name="3428" class="Symbol"
+      >{</a
+      ><a name="3429" href="equality.calculus.html#3429" class="Bound"
+      >X</a
+      ><a name="3430"
+      > </a
+      ><a name="3431" class="Symbol"
+      >:</a
+      ><a name="3432"
+      > </a
+      ><a name="3433" class="PrimitiveType"
+      >Set</a
+      ><a name="3436"
+      > </a
+      ><a name="3437" href="equality.calculus.html#3423" class="Bound"
+      >i</a
+      ><a name="3438" class="Symbol"
+      >}</a
+      ><a name="3439"
+      > </a
+      ><a name="3440" class="Symbol"
+      >{</a
+      ><a name="3441" href="equality.calculus.html#3441" class="Bound"
+      >Y</a
+      ><a name="3442"
+      > </a
+      ><a name="3443" class="Symbol"
+      >:</a
+      ><a name="3444"
+      > </a
+      ><a name="3445" class="PrimitiveType"
+      >Set</a
+      ><a name="3448"
+      > </a
+      ><a name="3449" href="equality.calculus.html#3425" class="Bound"
+      >j</a
+      ><a name="3450" class="Symbol"
+      >}</a
+      ><a name="3451"
+      >
+         </a
+      ><a name="3461" class="Symbol"
+      >&#8594;</a
+      ><a name="3462"
+      > </a
+      ><a name="3463" class="Symbol"
+      >{</a
+      ><a name="3464" href="equality.calculus.html#3464" class="Bound"
+      >x</a
+      ><a name="3465"
+      > </a
+      ><a name="3466" href="equality.calculus.html#3466" class="Bound"
+      >x'</a
+      ><a name="3468"
+      > </a
+      ><a name="3469" class="Symbol"
+      >:</a
+      ><a name="3470"
+      > </a
+      ><a name="3471" href="equality.calculus.html#3429" class="Bound"
+      >X</a
+      ><a name="3472" class="Symbol"
+      >}</a
+      ><a name="3473"
+      >
+         </a
+      ><a name="3483" class="Symbol"
+      >&#8594;</a
+      ><a name="3484"
+      > </a
+      ><a name="3485" class="Symbol"
+      >(</a
+      ><a name="3486" href="equality.calculus.html#3486" class="Bound"
+      >f</a
+      ><a name="3487"
+      > </a
+      ><a name="3488" class="Symbol"
+      >:</a
+      ><a name="3489"
+      > </a
+      ><a name="3490" href="equality.calculus.html#3429" class="Bound"
+      >X</a
+      ><a name="3491"
+      > </a
+      ><a name="3492" class="Symbol"
+      >&#8594;</a
+      ><a name="3493"
+      > </a
+      ><a name="3494" href="equality.calculus.html#3441" class="Bound"
+      >Y</a
+      ><a name="3495" class="Symbol"
+      >)(</a
+      ><a name="3497" href="equality.calculus.html#3497" class="Bound"
+      >p</a
+      ><a name="3498"
+      > </a
+      ><a name="3499" class="Symbol"
+      >:</a
+      ><a name="3500"
+      > </a
+      ><a name="3501" href="equality.calculus.html#3464" class="Bound"
+      >x</a
+      ><a name="3502"
+      > </a
+      ><a name="3503" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3504"
+      > </a
+      ><a name="3505" href="equality.calculus.html#3466" class="Bound"
+      >x'</a
+      ><a name="3507" class="Symbol"
+      >)</a
+      ><a name="3508"
+      >
+         </a
+      ><a name="3518" class="Symbol"
+      >&#8594;</a
+      ><a name="3519"
+      > </a
+      ><a name="3520" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="3522"
+      > </a
+      ><a name="3523" href="equality.calculus.html#3486" class="Bound"
+      >f</a
+      ><a name="3524"
+      > </a
+      ><a name="3525" class="Symbol"
+      >(</a
+      ><a name="3526" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3529"
+      > </a
+      ><a name="3530" href="equality.calculus.html#3497" class="Bound"
+      >p</a
+      ><a name="3531" class="Symbol"
+      >)</a
+      ><a name="3532"
+      > </a
+      ><a name="3533" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3534"
+      > </a
+      ><a name="3535" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3538"
+      > </a
+      ><a name="3539" class="Symbol"
+      >(</a
+      ><a name="3540" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="3542"
+      > </a
+      ><a name="3543" href="equality.calculus.html#3486" class="Bound"
+      >f</a
+      ><a name="3544"
+      > </a
+      ><a name="3545" href="equality.calculus.html#3497" class="Bound"
+      >p</a
+      ><a name="3546" class="Symbol"
+      >)</a
+      ><a name="3547"
+      >
+</a
+      ><a name="3548" href="equality.calculus.html#3411" class="Function"
+      >ap-inv</a
+      ><a name="3554"
+      > </a
+      ><a name="3555" href="equality.calculus.html#3555" class="Bound"
+      >f</a
+      ><a name="3556"
+      > </a
+      ><a name="3557" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3561"
+      > </a
+      ><a name="3562" class="Symbol"
+      >=</a
+      ><a name="3563"
+      > </a
+      ><a name="3564" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3568"
+      >
+
+</a
+      ><a name="3570" href="equality.calculus.html#3570" class="Function"
+      >double-inverse</a
+      ><a name="3584"
+      > </a
+      ><a name="3585" class="Symbol"
+      >:</a
+      ><a name="3586"
+      > </a
+      ><a name="3587" class="Symbol"
+      >&#8704;</a
+      ><a name="3588"
+      > </a
+      ><a name="3589" class="Symbol"
+      >{</a
+      ><a name="3590" href="equality.calculus.html#3590" class="Bound"
+      >i</a
+      ><a name="3591" class="Symbol"
+      >}</a
+      ><a name="3592"
+      > </a
+      ><a name="3593" class="Symbol"
+      >{</a
+      ><a name="3594" href="equality.calculus.html#3594" class="Bound"
+      >X</a
+      ><a name="3595"
+      > </a
+      ><a name="3596" class="Symbol"
+      >:</a
+      ><a name="3597"
+      > </a
+      ><a name="3598" class="PrimitiveType"
+      >Set</a
+      ><a name="3601"
+      > </a
+      ><a name="3602" href="equality.calculus.html#3590" class="Bound"
+      >i</a
+      ><a name="3603" class="Symbol"
+      >}</a
+      ><a name="3604"
+      > </a
+      ><a name="3605" class="Symbol"
+      >{</a
+      ><a name="3606" href="equality.calculus.html#3606" class="Bound"
+      >x</a
+      ><a name="3607"
+      > </a
+      ><a name="3608" href="equality.calculus.html#3608" class="Bound"
+      >y</a
+      ><a name="3609"
+      > </a
+      ><a name="3610" class="Symbol"
+      >:</a
+      ><a name="3611"
+      > </a
+      ><a name="3612" href="equality.calculus.html#3594" class="Bound"
+      >X</a
+      ><a name="3613" class="Symbol"
+      >}</a
+      ><a name="3614"
+      >
+               </a
+      ><a name="3630" class="Symbol"
+      >(</a
+      ><a name="3631" href="equality.calculus.html#3631" class="Bound"
+      >p</a
+      ><a name="3632"
+      > </a
+      ><a name="3633" class="Symbol"
+      >:</a
+      ><a name="3634"
+      > </a
+      ><a name="3635" href="equality.calculus.html#3606" class="Bound"
+      >x</a
+      ><a name="3636"
+      > </a
+      ><a name="3637" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3638"
+      > </a
+      ><a name="3639" href="equality.calculus.html#3608" class="Bound"
+      >y</a
+      ><a name="3640" class="Symbol"
+      >)</a
+      ><a name="3641"
+      > </a
+      ><a name="3642" class="Symbol"
+      >&#8594;</a
+      ><a name="3643"
+      > </a
+      ><a name="3644" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3647"
+      > </a
+      ><a name="3648" class="Symbol"
+      >(</a
+      ><a name="3649" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3652"
+      > </a
+      ><a name="3653" href="equality.calculus.html#3631" class="Bound"
+      >p</a
+      ><a name="3654" class="Symbol"
+      >)</a
+      ><a name="3655"
+      > </a
+      ><a name="3656" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3657"
+      > </a
+      ><a name="3658" href="equality.calculus.html#3631" class="Bound"
+      >p</a
+      ><a name="3659"
+      >
+</a
+      ><a name="3660" href="equality.calculus.html#3570" class="Function"
+      >double-inverse</a
+      ><a name="3674"
+      > </a
+      ><a name="3675" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3679"
+      > </a
+      ><a name="3680" class="Symbol"
+      >=</a
+      ><a name="3681"
+      > </a
+      ><a name="3682" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3686"
+      >
+
+</a
+      ><a name="3688" href="equality.calculus.html#3688" class="Function"
+      >inverse-comp</a
+      ><a name="3700"
+      > </a
+      ><a name="3701" class="Symbol"
+      >:</a
+      ><a name="3702"
+      > </a
+      ><a name="3703" class="Symbol"
+      >&#8704;</a
+      ><a name="3704"
+      > </a
+      ><a name="3705" class="Symbol"
+      >{</a
+      ><a name="3706" href="equality.calculus.html#3706" class="Bound"
+      >i</a
+      ><a name="3707" class="Symbol"
+      >}</a
+      ><a name="3708"
+      > </a
+      ><a name="3709" class="Symbol"
+      >{</a
+      ><a name="3710" href="equality.calculus.html#3710" class="Bound"
+      >X</a
+      ><a name="3711"
+      > </a
+      ><a name="3712" class="Symbol"
+      >:</a
+      ><a name="3713"
+      > </a
+      ><a name="3714" class="PrimitiveType"
+      >Set</a
+      ><a name="3717"
+      > </a
+      ><a name="3718" href="equality.calculus.html#3706" class="Bound"
+      >i</a
+      ><a name="3719" class="Symbol"
+      >}</a
+      ><a name="3720"
+      > </a
+      ><a name="3721" class="Symbol"
+      >{</a
+      ><a name="3722" href="equality.calculus.html#3722" class="Bound"
+      >x</a
+      ><a name="3723"
+      > </a
+      ><a name="3724" href="equality.calculus.html#3724" class="Bound"
+      >y</a
+      ><a name="3725"
+      > </a
+      ><a name="3726" href="equality.calculus.html#3726" class="Bound"
+      >z</a
+      ><a name="3727"
+      > </a
+      ><a name="3728" class="Symbol"
+      >:</a
+      ><a name="3729"
+      > </a
+      ><a name="3730" href="equality.calculus.html#3710" class="Bound"
+      >X</a
+      ><a name="3731" class="Symbol"
+      >}</a
+      ><a name="3732"
+      >
+               </a
+      ><a name="3748" class="Symbol"
+      >(</a
+      ><a name="3749" href="equality.calculus.html#3749" class="Bound"
+      >p</a
+      ><a name="3750"
+      > </a
+      ><a name="3751" class="Symbol"
+      >:</a
+      ><a name="3752"
+      > </a
+      ><a name="3753" href="equality.calculus.html#3722" class="Bound"
+      >x</a
+      ><a name="3754"
+      > </a
+      ><a name="3755" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3756"
+      > </a
+      ><a name="3757" href="equality.calculus.html#3724" class="Bound"
+      >y</a
+      ><a name="3758" class="Symbol"
+      >)(</a
+      ><a name="3760" href="equality.calculus.html#3760" class="Bound"
+      >q</a
+      ><a name="3761"
+      > </a
+      ><a name="3762" class="Symbol"
+      >:</a
+      ><a name="3763"
+      > </a
+      ><a name="3764" href="equality.calculus.html#3724" class="Bound"
+      >y</a
+      ><a name="3765"
+      > </a
+      ><a name="3766" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3767"
+      > </a
+      ><a name="3768" href="equality.calculus.html#3726" class="Bound"
+      >z</a
+      ><a name="3769" class="Symbol"
+      >)</a
+      ><a name="3770"
+      >
+             </a
+      ><a name="3784" class="Symbol"
+      >&#8594;</a
+      ><a name="3785"
+      > </a
+      ><a name="3786" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3789"
+      > </a
+      ><a name="3790" class="Symbol"
+      >(</a
+      ><a name="3791" href="equality.calculus.html#3749" class="Bound"
+      >p</a
+      ><a name="3792"
+      > </a
+      ><a name="3793" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3794"
+      > </a
+      ><a name="3795" href="equality.calculus.html#3760" class="Bound"
+      >q</a
+      ><a name="3796" class="Symbol"
+      >)</a
+      ><a name="3797"
+      > </a
+      ><a name="3798" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3799"
+      > </a
+      ><a name="3800" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3803"
+      > </a
+      ><a name="3804" href="equality.calculus.html#3760" class="Bound"
+      >q</a
+      ><a name="3805"
+      > </a
+      ><a name="3806" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3807"
+      > </a
+      ><a name="3808" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3811"
+      > </a
+      ><a name="3812" href="equality.calculus.html#3749" class="Bound"
+      >p</a
+      ><a name="3813"
+      >
+</a
+      ><a name="3814" href="equality.calculus.html#3688" class="Function"
+      >inverse-comp</a
+      ><a name="3826"
+      > </a
+      ><a name="3827" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3831"
+      > </a
+      ><a name="3832" href="equality.calculus.html#3832" class="Bound"
+      >q</a
+      ><a name="3833"
+      > </a
+      ><a name="3834" class="Symbol"
+      >=</a
+      ><a name="3835"
+      > </a
+      ><a name="3836" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3839"
+      > </a
+      ><a name="3840" class="Symbol"
+      >(</a
+      ><a name="3841" href="equality.groupoid.html#147" class="Function"
+      >left-unit</a
+      ><a name="3850"
+      > </a
+      ><a name="3851" class="Symbol"
+      >(</a
+      ><a name="3852" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3855"
+      > </a
+      ><a name="3856" href="equality.calculus.html#3832" class="Bound"
+      >q</a
+      ><a name="3857" class="Symbol"
+      >))</a
+      ><a name="3859"
+      >
+
+</a
+      ><a name="3861" href="equality.calculus.html#3861" class="Function"
+      >inverse-unique</a
+      ><a name="3875"
+      > </a
+      ><a name="3876" class="Symbol"
+      >:</a
+      ><a name="3877"
+      > </a
+      ><a name="3878" class="Symbol"
+      >&#8704;</a
+      ><a name="3879"
+      > </a
+      ><a name="3880" class="Symbol"
+      >{</a
+      ><a name="3881" href="equality.calculus.html#3881" class="Bound"
+      >i</a
+      ><a name="3882" class="Symbol"
+      >}</a
+      ><a name="3883"
+      > </a
+      ><a name="3884" class="Symbol"
+      >{</a
+      ><a name="3885" href="equality.calculus.html#3885" class="Bound"
+      >X</a
+      ><a name="3886"
+      > </a
+      ><a name="3887" class="Symbol"
+      >:</a
+      ><a name="3888"
+      > </a
+      ><a name="3889" class="PrimitiveType"
+      >Set</a
+      ><a name="3892"
+      > </a
+      ><a name="3893" href="equality.calculus.html#3881" class="Bound"
+      >i</a
+      ><a name="3894" class="Symbol"
+      >}</a
+      ><a name="3895"
+      > </a
+      ><a name="3896" class="Symbol"
+      >{</a
+      ><a name="3897" href="equality.calculus.html#3897" class="Bound"
+      >x</a
+      ><a name="3898"
+      > </a
+      ><a name="3899" href="equality.calculus.html#3899" class="Bound"
+      >y</a
+      ><a name="3900"
+      > </a
+      ><a name="3901" class="Symbol"
+      >:</a
+      ><a name="3902"
+      > </a
+      ><a name="3903" href="equality.calculus.html#3885" class="Bound"
+      >X</a
+      ><a name="3904" class="Symbol"
+      >}</a
+      ><a name="3905"
+      >
+                 </a
+      ><a name="3923" class="Symbol"
+      >(</a
+      ><a name="3924" href="equality.calculus.html#3924" class="Bound"
+      >p</a
+      ><a name="3925"
+      > </a
+      ><a name="3926" class="Symbol"
+      >:</a
+      ><a name="3927"
+      > </a
+      ><a name="3928" href="equality.calculus.html#3897" class="Bound"
+      >x</a
+      ><a name="3929"
+      > </a
+      ><a name="3930" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3931"
+      > </a
+      ><a name="3932" href="equality.calculus.html#3899" class="Bound"
+      >y</a
+      ><a name="3933" class="Symbol"
+      >)(</a
+      ><a name="3935" href="equality.calculus.html#3935" class="Bound"
+      >q</a
+      ><a name="3936"
+      > </a
+      ><a name="3937" class="Symbol"
+      >:</a
+      ><a name="3938"
+      > </a
+      ><a name="3939" href="equality.calculus.html#3899" class="Bound"
+      >y</a
+      ><a name="3940"
+      > </a
+      ><a name="3941" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3942"
+      > </a
+      ><a name="3943" href="equality.calculus.html#3897" class="Bound"
+      >x</a
+      ><a name="3944" class="Symbol"
+      >)</a
+      ><a name="3945"
+      >
+               </a
+      ><a name="3961" class="Symbol"
+      >&#8594;</a
+      ><a name="3962"
+      > </a
+      ><a name="3963" href="equality.calculus.html#3924" class="Bound"
+      >p</a
+      ><a name="3964"
+      > </a
+      ><a name="3965" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3966"
+      > </a
+      ><a name="3967" href="equality.calculus.html#3935" class="Bound"
+      >q</a
+      ><a name="3968"
+      > </a
+      ><a name="3969" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3970"
+      > </a
+      ><a name="3971" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3975"
+      >
+               </a
+      ><a name="3991" class="Symbol"
+      >&#8594;</a
+      ><a name="3992"
+      > </a
+      ><a name="3993" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3996"
+      > </a
+      ><a name="3997" href="equality.calculus.html#3924" class="Bound"
+      >p</a
+      ><a name="3998"
+      > </a
+      ><a name="3999" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="4000"
+      > </a
+      ><a name="4001" href="equality.calculus.html#3935" class="Bound"
+      >q</a
+      ><a name="4002"
+      >
+</a
+      ><a name="4003" href="equality.calculus.html#3861" class="Function"
+      >inverse-unique</a
+      ><a name="4017"
+      > </a
+      ><a name="4018" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="4022"
+      > </a
+      ><a name="4023" href="equality.calculus.html#4023" class="Bound"
+      >q</a
+      ><a name="4024"
+      > </a
+      ><a name="4025" href="equality.calculus.html#4025" class="Bound"
+      >t</a
+      ><a name="4026"
+      > </a
+      ><a name="4027" class="Symbol"
+      >=</a
+      ><a name="4028"
+      > </a
+      ><a name="4029" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="4032"
+      > </a
+      ><a name="4033" href="equality.calculus.html#4025" class="Bound"
+      >t</a
+      ><a name="4034"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

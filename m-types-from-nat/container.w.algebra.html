@@ -1,0 +1,4681 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >container.w.algebra</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >open</a
+      ><a name="33"
+      > </a
+      ><a name="34" class="Keyword"
+      >import</a
+      ><a name="40"
+      > </a
+      ><a name="41" href="container.core.html#1" class="Module"
+      >container.core</a
+      ><a name="55"
+      >
+
+</a
+      ><a name="57" class="Keyword"
+      >module</a
+      ><a name="63"
+      > </a
+      ><a name="64" href="container.w.algebra.html#1" class="Module"
+      >container.w.algebra</a
+      ><a name="83"
+      >
+  </a
+      ><a name="86" class="Symbol"
+      >{</a
+      ><a name="87" href="container.w.algebra.html#87" class="Bound"
+      >li</a
+      ><a name="89"
+      > </a
+      ><a name="90" href="container.w.algebra.html#90" class="Bound"
+      >la</a
+      ><a name="92"
+      > </a
+      ><a name="93" href="container.w.algebra.html#93" class="Bound"
+      >lb</a
+      ><a name="95" class="Symbol"
+      >}(</a
+      ><a name="97" href="container.w.algebra.html#97" class="Bound"
+      >c</a
+      ><a name="98"
+      > </a
+      ><a name="99" class="Symbol"
+      >:</a
+      ><a name="100"
+      > </a
+      ><a name="101" href="container.core.html#143" class="Record"
+      >Container</a
+      ><a name="110"
+      > </a
+      ><a name="111" href="container.w.algebra.html#87" class="Bound"
+      >li</a
+      ><a name="113"
+      > </a
+      ><a name="114" href="container.w.algebra.html#90" class="Bound"
+      >la</a
+      ><a name="116"
+      > </a
+      ><a name="117" href="container.w.algebra.html#93" class="Bound"
+      >lb</a
+      ><a name="119" class="Symbol"
+      >)</a
+      ><a name="120"
+      > </a
+      ><a name="121" class="Keyword"
+      >where</a
+      ><a name="126"
+      >
+
+</a
+      ><a name="128" class="Keyword"
+      >open</a
+      ><a name="132"
+      > </a
+      ><a name="133" class="Keyword"
+      >import</a
+      ><a name="139"
+      > </a
+      ><a name="140" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="143"
+      >
+</a
+      ><a name="144" class="Keyword"
+      >open</a
+      ><a name="148"
+      > </a
+      ><a name="149" class="Keyword"
+      >import</a
+      ><a name="155"
+      > </a
+      ><a name="156" href="equality.html#1" class="Module"
+      >equality</a
+      ><a name="164"
+      >
+</a
+      ><a name="165" class="Keyword"
+      >open</a
+      ><a name="169"
+      > </a
+      ><a name="170" class="Keyword"
+      >import</a
+      ><a name="176"
+      > </a
+      ><a name="177" href="container.w.core.html#1" class="Module"
+      >container.w.core</a
+      ><a name="193"
+      >
+</a
+      ><a name="194" class="Keyword"
+      >open</a
+      ><a name="198"
+      > </a
+      ><a name="199" class="Keyword"
+      >import</a
+      ><a name="205"
+      > </a
+      ><a name="206" href="function.extensionality.html#1" class="Module"
+      >function.extensionality</a
+      ><a name="229"
+      >
+</a
+      ><a name="230" class="Keyword"
+      >open</a
+      ><a name="234"
+      > </a
+      ><a name="235" class="Keyword"
+      >import</a
+      ><a name="241"
+      > </a
+      ><a name="242" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="262"
+      >
+</a
+      ><a name="263" class="Keyword"
+      >open</a
+      ><a name="267"
+      > </a
+      ><a name="268" class="Keyword"
+      >import</a
+      ><a name="274"
+      > </a
+      ><a name="275" href="hott.level.core.html#1" class="Module"
+      >hott.level.core</a
+      ><a name="290"
+      >
+
+</a
+      ><a name="292" class="Keyword"
+      >open</a
+      ><a name="296"
+      > </a
+      ><a name="297" href="container.core.html#143" class="Module"
+      >Container</a
+      ><a name="306"
+      > </a
+      ><a name="307" href="container.w.algebra.html#97" class="Bound"
+      >c</a
+      ><a name="308"
+      >
+
+</a
+      ><a name="310" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="313"
+      > </a
+      ><a name="314" class="Symbol"
+      >:</a
+      ><a name="315"
+      > </a
+      ><a name="316" class="Symbol"
+      >&#8704;</a
+      ><a name="317"
+      > </a
+      ><a name="318" href="container.w.algebra.html#318" class="Bound"
+      >&#8467;</a
+      ><a name="319"
+      > </a
+      ><a name="320" class="Symbol"
+      >&#8594;</a
+      ><a name="321"
+      > </a
+      ><a name="322" class="PrimitiveType"
+      >Set</a
+      ><a name="325"
+      > </a
+      ><a name="326" class="Symbol"
+      >_</a
+      ><a name="327"
+      >
+</a
+      ><a name="328" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="331"
+      > </a
+      ><a name="332" href="container.w.algebra.html#332" class="Bound"
+      >&#8467;</a
+      ><a name="333"
+      > </a
+      ><a name="334" class="Symbol"
+      >=</a
+      ><a name="335"
+      > </a
+      ><a name="336" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="337"
+      > </a
+      ><a name="338" class="Symbol"
+      >(</a
+      ><a name="339" href="container.core.html#242" class="Function"
+      >I</a
+      ><a name="340"
+      > </a
+      ><a name="341" class="Symbol"
+      >&#8594;</a
+      ><a name="342"
+      > </a
+      ><a name="343" class="PrimitiveType"
+      >Set</a
+      ><a name="346"
+      > </a
+      ><a name="347" href="container.w.algebra.html#332" class="Bound"
+      >&#8467;</a
+      ><a name="348" class="Symbol"
+      >)</a
+      ><a name="349"
+      > </a
+      ><a name="350" class="Symbol"
+      >&#955;</a
+      ><a name="351"
+      > </a
+      ><a name="352" href="container.w.algebra.html#352" class="Bound"
+      >X</a
+      ><a name="353"
+      > </a
+      ><a name="354" class="Symbol"
+      >&#8594;</a
+      ><a name="355"
+      > </a
+      ><a name="356" href="container.core.html#391" class="Function"
+      >F</a
+      ><a name="357"
+      > </a
+      ><a name="358" href="container.w.algebra.html#352" class="Bound"
+      >X</a
+      ><a name="359"
+      > </a
+      ><a name="360" href="container.core.html#987" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="362"
+      > </a
+      ><a name="363" href="container.w.algebra.html#352" class="Bound"
+      >X</a
+      ><a name="364"
+      >
+
+</a
+      ><a name="366" href="container.w.algebra.html#366" class="Function"
+      >carrier</a
+      ><a name="373"
+      > </a
+      ><a name="374" class="Symbol"
+      >:</a
+      ><a name="375"
+      > </a
+      ><a name="376" class="Symbol"
+      >&#8704;</a
+      ><a name="377"
+      > </a
+      ><a name="378" class="Symbol"
+      >{</a
+      ><a name="379" href="container.w.algebra.html#379" class="Bound"
+      >&#8467;</a
+      ><a name="380" class="Symbol"
+      >}</a
+      ><a name="381"
+      > </a
+      ><a name="382" class="Symbol"
+      >&#8594;</a
+      ><a name="383"
+      > </a
+      ><a name="384" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="387"
+      > </a
+      ><a name="388" href="container.w.algebra.html#379" class="Bound"
+      >&#8467;</a
+      ><a name="389"
+      > </a
+      ><a name="390" class="Symbol"
+      >&#8594;</a
+      ><a name="391"
+      > </a
+      ><a name="392" href="container.core.html#242" class="Function"
+      >I</a
+      ><a name="393"
+      > </a
+      ><a name="394" class="Symbol"
+      >&#8594;</a
+      ><a name="395"
+      > </a
+      ><a name="396" class="PrimitiveType"
+      >Set</a
+      ><a name="399"
+      > </a
+      ><a name="400" href="container.w.algebra.html#379" class="Bound"
+      >&#8467;</a
+      ><a name="401"
+      >
+</a
+      ><a name="402" href="container.w.algebra.html#366" class="Function"
+      >carrier</a
+      ><a name="409"
+      > </a
+      ><a name="410" class="Symbol"
+      >(</a
+      ><a name="411" href="container.w.algebra.html#411" class="Bound"
+      >X</a
+      ><a name="412"
+      > </a
+      ><a name="413" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="414"
+      > </a
+      ><a name="415" class="Symbol"
+      >_)</a
+      ><a name="417"
+      > </a
+      ><a name="418" class="Symbol"
+      >=</a
+      ><a name="419"
+      > </a
+      ><a name="420" href="container.w.algebra.html#411" class="Bound"
+      >X</a
+      ><a name="421"
+      >
+
+</a
+      ><a name="423" href="container.w.algebra.html#423" class="Function"
+      >IsMor</a
+      ><a name="428"
+      > </a
+      ><a name="429" class="Symbol"
+      >:</a
+      ><a name="430"
+      > </a
+      ><a name="431" class="Symbol"
+      >&#8704;</a
+      ><a name="432"
+      > </a
+      ><a name="433" class="Symbol"
+      >{</a
+      ><a name="434" href="container.w.algebra.html#434" class="Bound"
+      >&#8467;&#8321;</a
+      ><a name="436"
+      > </a
+      ><a name="437" href="container.w.algebra.html#437" class="Bound"
+      >&#8467;&#8322;</a
+      ><a name="439" class="Symbol"
+      >}(</a
+      ><a name="441" href="container.w.algebra.html#441" class="Bound"
+      >&#120039;</a
+      ><a name="442"
+      > </a
+      ><a name="443" class="Symbol"
+      >:</a
+      ><a name="444"
+      > </a
+      ><a name="445" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="448"
+      > </a
+      ><a name="449" href="container.w.algebra.html#434" class="Bound"
+      >&#8467;&#8321;</a
+      ><a name="451" class="Symbol"
+      >)(</a
+      ><a name="453" href="container.w.algebra.html#453" class="Bound"
+      >&#120040;</a
+      ><a name="454"
+      > </a
+      ><a name="455" class="Symbol"
+      >:</a
+      ><a name="456"
+      > </a
+      ><a name="457" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="460"
+      > </a
+      ><a name="461" href="container.w.algebra.html#437" class="Bound"
+      >&#8467;&#8322;</a
+      ><a name="463" class="Symbol"
+      >)</a
+      ><a name="464"
+      >
+      </a
+      ><a name="471" class="Symbol"
+      >&#8594;</a
+      ><a name="472"
+      > </a
+      ><a name="473" class="Symbol"
+      >(</a
+      ><a name="474" href="container.w.algebra.html#366" class="Function"
+      >carrier</a
+      ><a name="481"
+      > </a
+      ><a name="482" href="container.w.algebra.html#441" class="Bound"
+      >&#120039;</a
+      ><a name="483"
+      > </a
+      ><a name="484" href="container.core.html#987" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="486"
+      > </a
+      ><a name="487" href="container.w.algebra.html#366" class="Function"
+      >carrier</a
+      ><a name="494"
+      > </a
+      ><a name="495" href="container.w.algebra.html#453" class="Bound"
+      >&#120040;</a
+      ><a name="496" class="Symbol"
+      >)</a
+      ><a name="497"
+      > </a
+      ><a name="498" class="Symbol"
+      >&#8594;</a
+      ><a name="499"
+      > </a
+      ><a name="500" class="PrimitiveType"
+      >Set</a
+      ><a name="503"
+      > </a
+      ><a name="504" class="Symbol"
+      >_</a
+      ><a name="505"
+      >
+</a
+      ><a name="506" href="container.w.algebra.html#423" class="Function"
+      >IsMor</a
+      ><a name="511"
+      > </a
+      ><a name="512" class="Symbol"
+      >(</a
+      ><a name="513" href="container.w.algebra.html#513" class="Bound"
+      >X</a
+      ><a name="514"
+      > </a
+      ><a name="515" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="516"
+      > </a
+      ><a name="517" href="container.w.algebra.html#517" class="Bound"
+      >&#952;</a
+      ><a name="518" class="Symbol"
+      >)</a
+      ><a name="519"
+      > </a
+      ><a name="520" class="Symbol"
+      >(</a
+      ><a name="521" href="container.w.algebra.html#521" class="Bound"
+      >Y</a
+      ><a name="522"
+      > </a
+      ><a name="523" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="524"
+      > </a
+      ><a name="525" href="container.w.algebra.html#525" class="Bound"
+      >&#968;</a
+      ><a name="526" class="Symbol"
+      >)</a
+      ><a name="527"
+      > </a
+      ><a name="528" href="container.w.algebra.html#528" class="Bound"
+      >f</a
+      ><a name="529"
+      > </a
+      ><a name="530" class="Symbol"
+      >=</a
+      ><a name="531"
+      > </a
+      ><a name="532" href="container.w.algebra.html#525" class="Bound"
+      >&#968;</a
+      ><a name="533"
+      > </a
+      ><a name="534" href="container.core.html#1206" class="Function Operator"
+      >&#8728;&#8305;</a
+      ><a name="536"
+      > </a
+      ><a name="537" href="container.core.html#1984" class="Function"
+      >imap</a
+      ><a name="541"
+      > </a
+      ><a name="542" href="container.w.algebra.html#528" class="Bound"
+      >f</a
+      ><a name="543"
+      > </a
+      ><a name="544" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="545"
+      > </a
+      ><a name="546" href="container.w.algebra.html#528" class="Bound"
+      >f</a
+      ><a name="547"
+      > </a
+      ><a name="548" href="container.core.html#1206" class="Function Operator"
+      >&#8728;&#8305;</a
+      ><a name="550"
+      > </a
+      ><a name="551" href="container.w.algebra.html#517" class="Bound"
+      >&#952;</a
+      ><a name="552"
+      >
+
+</a
+      ><a name="554" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="557"
+      > </a
+      ><a name="558" class="Symbol"
+      >:</a
+      ><a name="559"
+      > </a
+      ><a name="560" class="Symbol"
+      >&#8704;</a
+      ><a name="561"
+      > </a
+      ><a name="562" class="Symbol"
+      >{</a
+      ><a name="563" href="container.w.algebra.html#563" class="Bound"
+      >&#8467;&#8321;</a
+      ><a name="565"
+      > </a
+      ><a name="566" href="container.w.algebra.html#566" class="Bound"
+      >&#8467;&#8322;</a
+      ><a name="568" class="Symbol"
+      >}</a
+      ><a name="569"
+      > </a
+      ><a name="570" class="Symbol"
+      >&#8594;</a
+      ><a name="571"
+      > </a
+      ><a name="572" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="575"
+      > </a
+      ><a name="576" href="container.w.algebra.html#563" class="Bound"
+      >&#8467;&#8321;</a
+      ><a name="578"
+      > </a
+      ><a name="579" class="Symbol"
+      >&#8594;</a
+      ><a name="580"
+      > </a
+      ><a name="581" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="584"
+      > </a
+      ><a name="585" href="container.w.algebra.html#566" class="Bound"
+      >&#8467;&#8322;</a
+      ><a name="587"
+      > </a
+      ><a name="588" class="Symbol"
+      >&#8594;</a
+      ><a name="589"
+      > </a
+      ><a name="590" class="PrimitiveType"
+      >Set</a
+      ><a name="593"
+      > </a
+      ><a name="594" class="Symbol"
+      >_</a
+      ><a name="595"
+      >
+</a
+      ><a name="596" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="599"
+      > </a
+      ><a name="600" href="container.w.algebra.html#600" class="Bound"
+      >&#120039;</a
+      ><a name="601"
+      > </a
+      ><a name="602" href="container.w.algebra.html#602" class="Bound"
+      >&#120040;</a
+      ><a name="603"
+      > </a
+      ><a name="604" class="Symbol"
+      >=</a
+      ><a name="605"
+      > </a
+      ><a name="606" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="607"
+      > </a
+      ><a name="608" class="Symbol"
+      >(</a
+      ><a name="609" href="container.w.algebra.html#366" class="Function"
+      >carrier</a
+      ><a name="616"
+      > </a
+      ><a name="617" href="container.w.algebra.html#600" class="Bound"
+      >&#120039;</a
+      ><a name="618"
+      > </a
+      ><a name="619" href="container.core.html#987" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="621"
+      > </a
+      ><a name="622" href="container.w.algebra.html#366" class="Function"
+      >carrier</a
+      ><a name="629"
+      > </a
+      ><a name="630" href="container.w.algebra.html#602" class="Bound"
+      >&#120040;</a
+      ><a name="631" class="Symbol"
+      >)</a
+      ><a name="632"
+      > </a
+      ><a name="633" class="Symbol"
+      >(</a
+      ><a name="634" href="container.w.algebra.html#423" class="Function"
+      >IsMor</a
+      ><a name="639"
+      > </a
+      ><a name="640" href="container.w.algebra.html#600" class="Bound"
+      >&#120039;</a
+      ><a name="641"
+      > </a
+      ><a name="642" href="container.w.algebra.html#602" class="Bound"
+      >&#120040;</a
+      ><a name="643" class="Symbol"
+      >)</a
+      ><a name="644"
+      >
+
+</a
+      ><a name="646" href="container.w.algebra.html#646" class="Function"
+      >&#120038;</a
+      ><a name="647"
+      > </a
+      ><a name="648" class="Symbol"
+      >:</a
+      ><a name="649"
+      > </a
+      ><a name="650" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="653"
+      > </a
+      ><a name="654" class="Symbol"
+      >_</a
+      ><a name="655"
+      >
+</a
+      ><a name="656" href="container.w.algebra.html#646" class="Function"
+      >&#120038;</a
+      ><a name="657"
+      > </a
+      ><a name="658" class="Symbol"
+      >=</a
+      ><a name="659"
+      > </a
+      ><a name="660" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="661"
+      > </a
+      ><a name="662" href="container.w.algebra.html#97" class="Bound"
+      >c</a
+      ><a name="663"
+      > </a
+      ><a name="664" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="665"
+      > </a
+      ><a name="666" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="669"
+      > </a
+      ><a name="670" href="container.w.algebra.html#97" class="Bound"
+      >c</a
+      ><a name="671"
+      >
+
+</a
+      ><a name="673" class="Keyword"
+      >module</a
+      ><a name="679"
+      > </a
+      ><a name="680" href="container.w.algebra.html#680" class="Module"
+      >_</a
+      ><a name="681"
+      > </a
+      ><a name="682" class="Symbol"
+      >{</a
+      ><a name="683" href="container.w.algebra.html#683" class="Bound"
+      >&#8467;&#8321;</a
+      ><a name="685"
+      > </a
+      ><a name="686" href="container.w.algebra.html#686" class="Bound"
+      >&#8467;&#8322;</a
+      ><a name="688" class="Symbol"
+      >}(</a
+      ><a name="690" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="691"
+      > </a
+      ><a name="692" class="Symbol"
+      >:</a
+      ><a name="693"
+      > </a
+      ><a name="694" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="697"
+      > </a
+      ><a name="698" href="container.w.algebra.html#683" class="Bound"
+      >&#8467;&#8321;</a
+      ><a name="700" class="Symbol"
+      >)(</a
+      ><a name="702" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="703"
+      > </a
+      ><a name="704" class="Symbol"
+      >:</a
+      ><a name="705"
+      > </a
+      ><a name="706" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="709"
+      > </a
+      ><a name="710" href="container.w.algebra.html#686" class="Bound"
+      >&#8467;&#8322;</a
+      ><a name="712" class="Symbol"
+      >)</a
+      ><a name="713"
+      > </a
+      ><a name="714" class="Keyword"
+      >where</a
+      ><a name="719"
+      >
+  </a
+      ><a name="722" class="Keyword"
+      >private</a
+      ><a name="729"
+      >
+    </a
+      ><a name="734" href="container.w.algebra.html#734" class="Function"
+      >X</a
+      ><a name="735"
+      > </a
+      ><a name="736" class="Symbol"
+      >=</a
+      ><a name="737"
+      > </a
+      ><a name="738" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="743"
+      > </a
+      ><a name="744" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="745" class="Symbol"
+      >;</a
+      ><a name="746"
+      > </a
+      ><a name="747" href="container.w.algebra.html#747" class="Function"
+      >&#952;</a
+      ><a name="748"
+      > </a
+      ><a name="749" class="Symbol"
+      >=</a
+      ><a name="750"
+      > </a
+      ><a name="751" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="756"
+      > </a
+      ><a name="757" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="758"
+      >
+    </a
+      ><a name="763" href="container.w.algebra.html#763" class="Function"
+      >Y</a
+      ><a name="764"
+      > </a
+      ><a name="765" class="Symbol"
+      >=</a
+      ><a name="766"
+      > </a
+      ><a name="767" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="772"
+      > </a
+      ><a name="773" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="774" class="Symbol"
+      >;</a
+      ><a name="775"
+      > </a
+      ><a name="776" href="container.w.algebra.html#776" class="Function"
+      >&#968;</a
+      ><a name="777"
+      > </a
+      ><a name="778" class="Symbol"
+      >=</a
+      ><a name="779"
+      > </a
+      ><a name="780" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="785"
+      > </a
+      ><a name="786" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="787"
+      >
+
+  </a
+      ><a name="791" href="container.w.algebra.html#791" class="Function"
+      >is-mor-transp</a
+      ><a name="804"
+      > </a
+      ><a name="805" class="Symbol"
+      >:</a
+      ><a name="806"
+      > </a
+      ><a name="807" class="Symbol"
+      >{</a
+      ><a name="808" href="container.w.algebra.html#808" class="Bound"
+      >f</a
+      ><a name="809"
+      > </a
+      ><a name="810" href="container.w.algebra.html#810" class="Bound"
+      >g</a
+      ><a name="811"
+      > </a
+      ><a name="812" class="Symbol"
+      >:</a
+      ><a name="813"
+      > </a
+      ><a name="814" href="container.w.algebra.html#734" class="Function"
+      >X</a
+      ><a name="815"
+      > </a
+      ><a name="816" href="container.core.html#987" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="818"
+      > </a
+      ><a name="819" href="container.w.algebra.html#763" class="Function"
+      >Y</a
+      ><a name="820" class="Symbol"
+      >}(</a
+      ><a name="822" href="container.w.algebra.html#822" class="Bound"
+      >p</a
+      ><a name="823"
+      > </a
+      ><a name="824" class="Symbol"
+      >:</a
+      ><a name="825"
+      > </a
+      ><a name="826" href="container.w.algebra.html#808" class="Bound"
+      >f</a
+      ><a name="827"
+      > </a
+      ><a name="828" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="829"
+      > </a
+      ><a name="830" href="container.w.algebra.html#810" class="Bound"
+      >g</a
+      ><a name="831" class="Symbol"
+      >)</a
+      ><a name="832"
+      >
+                </a
+      ><a name="849" class="Symbol"
+      >&#8594;</a
+      ><a name="850"
+      > </a
+      ><a name="851" class="Symbol"
+      >(</a
+      ><a name="852" href="container.w.algebra.html#852" class="Bound"
+      >&#945;</a
+      ><a name="853"
+      > </a
+      ><a name="854" class="Symbol"
+      >:</a
+      ><a name="855"
+      > </a
+      ><a name="856" href="container.w.algebra.html#423" class="Function"
+      >IsMor</a
+      ><a name="861"
+      > </a
+      ><a name="862" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="863"
+      > </a
+      ><a name="864" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="865"
+      > </a
+      ><a name="866" href="container.w.algebra.html#808" class="Bound"
+      >f</a
+      ><a name="867" class="Symbol"
+      >)</a
+      ><a name="868"
+      >
+                </a
+      ><a name="885" class="Symbol"
+      >&#8594;</a
+      ><a name="886"
+      > </a
+      ><a name="887" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="890"
+      > </a
+      ><a name="891" class="Symbol"
+      >(</a
+      ><a name="892" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="894"
+      > </a
+      ><a name="895" class="Symbol"
+      >(&#955;</a
+      ><a name="897"
+      > </a
+      ><a name="898" href="container.w.algebra.html#898" class="Bound"
+      >h</a
+      ><a name="899"
+      > </a
+      ><a name="900" class="Symbol"
+      >&#8594;</a
+      ><a name="901"
+      > </a
+      ><a name="902" href="container.w.algebra.html#776" class="Function"
+      >&#968;</a
+      ><a name="903"
+      > </a
+      ><a name="904" href="container.core.html#1206" class="Function Operator"
+      >&#8728;&#8305;</a
+      ><a name="906"
+      > </a
+      ><a name="907" href="container.core.html#1984" class="Function"
+      >imap</a
+      ><a name="911"
+      > </a
+      ><a name="912" href="container.w.algebra.html#898" class="Bound"
+      >h</a
+      ><a name="913" class="Symbol"
+      >)</a
+      ><a name="914"
+      > </a
+      ><a name="915" href="container.w.algebra.html#822" class="Bound"
+      >p</a
+      ><a name="916" class="Symbol"
+      >)</a
+      ><a name="917"
+      > </a
+      ><a name="918" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="919"
+      > </a
+      ><a name="920" href="container.w.algebra.html#852" class="Bound"
+      >&#945;</a
+      ><a name="921"
+      > </a
+      ><a name="922" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="923"
+      > </a
+      ><a name="924" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="926"
+      > </a
+      ><a name="927" class="Symbol"
+      >(&#955;</a
+      ><a name="929"
+      > </a
+      ><a name="930" href="container.w.algebra.html#930" class="Bound"
+      >h</a
+      ><a name="931"
+      > </a
+      ><a name="932" class="Symbol"
+      >&#8594;</a
+      ><a name="933"
+      > </a
+      ><a name="934" href="container.w.algebra.html#930" class="Bound"
+      >h</a
+      ><a name="935"
+      > </a
+      ><a name="936" href="container.core.html#1206" class="Function Operator"
+      >&#8728;&#8305;</a
+      ><a name="938"
+      > </a
+      ><a name="939" href="container.w.algebra.html#747" class="Function"
+      >&#952;</a
+      ><a name="940" class="Symbol"
+      >)</a
+      ><a name="941"
+      > </a
+      ><a name="942" href="container.w.algebra.html#822" class="Bound"
+      >p</a
+      ><a name="943"
+      >
+                </a
+      ><a name="960" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="961"
+      > </a
+      ><a name="962" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="967"
+      > </a
+      ><a name="968" class="Symbol"
+      >(</a
+      ><a name="969" href="container.w.algebra.html#423" class="Function"
+      >IsMor</a
+      ><a name="974"
+      > </a
+      ><a name="975" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="976"
+      > </a
+      ><a name="977" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="978" class="Symbol"
+      >)</a
+      ><a name="979"
+      > </a
+      ><a name="980" href="container.w.algebra.html#822" class="Bound"
+      >p</a
+      ><a name="981"
+      > </a
+      ><a name="982" href="container.w.algebra.html#852" class="Bound"
+      >&#945;</a
+      ><a name="983"
+      >
+  </a
+      ><a name="986" href="container.w.algebra.html#791" class="Function"
+      >is-mor-transp</a
+      ><a name="999"
+      > </a
+      ><a name="1000" class="Symbol"
+      >{</a
+      ><a name="1001" href="container.w.algebra.html#1001" class="Bound"
+      >f</a
+      ><a name="1002" class="Symbol"
+      >}</a
+      ><a name="1003"
+      > </a
+      ><a name="1004" class="Symbol"
+      >{</a
+      ><a name="1005" class="DottedPattern Symbol"
+      >.</a
+      ><a name="1006" href="container.w.algebra.html#1001" class="DottedPattern Bound"
+      >f</a
+      ><a name="1007" class="Symbol"
+      >}</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1013"
+      > </a
+      ><a name="1014" href="container.w.algebra.html#1014" class="Bound"
+      >&#945;</a
+      ><a name="1015"
+      > </a
+      ><a name="1016" class="Symbol"
+      >=</a
+      ><a name="1017"
+      > </a
+      ><a name="1018" href="equality.groupoid.html#147" class="Function"
+      >left-unit</a
+      ><a name="1027"
+      > </a
+      ><a name="1028" href="container.w.algebra.html#1014" class="Bound"
+      >&#945;</a
+      ><a name="1029"
+      >
+
+  </a
+      ><a name="1033" href="container.w.algebra.html#1033" class="Function"
+      >MorEq</a
+      ><a name="1038"
+      > </a
+      ><a name="1039" class="Symbol"
+      >:</a
+      ><a name="1040"
+      > </a
+      ><a name="1041" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="1044"
+      > </a
+      ><a name="1045" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="1046"
+      > </a
+      ><a name="1047" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="1048"
+      > </a
+      ><a name="1049" class="Symbol"
+      >&#8594;</a
+      ><a name="1050"
+      > </a
+      ><a name="1051" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="1056"
+      > </a
+      ><a name="1057" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="1058"
+      > </a
+      ><a name="1059" class="Symbol"
+      >&#8594;</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" class="PrimitiveType"
+      >Set</a
+      ><a name="1064"
+      > </a
+      ><a name="1065" class="Symbol"
+      >_</a
+      ><a name="1066"
+      >
+  </a
+      ><a name="1069" href="container.w.algebra.html#1033" class="Function"
+      >MorEq</a
+      ><a name="1074"
+      > </a
+      ><a name="1075" class="Symbol"
+      >(</a
+      ><a name="1076" href="container.w.algebra.html#1076" class="Bound"
+      >f</a
+      ><a name="1077"
+      > </a
+      ><a name="1078" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1079"
+      > </a
+      ><a name="1080" href="container.w.algebra.html#1080" class="Bound"
+      >&#945;</a
+      ><a name="1081" class="Symbol"
+      >)</a
+      ><a name="1082"
+      > </a
+      ><a name="1083" class="Symbol"
+      >(</a
+      ><a name="1084" href="container.w.algebra.html#1084" class="Bound"
+      >g</a
+      ><a name="1085"
+      > </a
+      ><a name="1086" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1087"
+      > </a
+      ><a name="1088" href="container.w.algebra.html#1088" class="Bound"
+      >&#946;</a
+      ><a name="1089" class="Symbol"
+      >)</a
+      ><a name="1090"
+      > </a
+      ><a name="1091" class="Symbol"
+      >=</a
+      ><a name="1092"
+      > </a
+      ><a name="1093" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1094"
+      > </a
+      ><a name="1095" class="Symbol"
+      >(</a
+      ><a name="1096" href="container.w.algebra.html#1076" class="Bound"
+      >f</a
+      ><a name="1097"
+      > </a
+      ><a name="1098" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1099"
+      > </a
+      ><a name="1100" href="container.w.algebra.html#1084" class="Bound"
+      >g</a
+      ><a name="1101" class="Symbol"
+      >)</a
+      ><a name="1102"
+      > </a
+      ><a name="1103" class="Symbol"
+      >&#955;</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" href="container.w.algebra.html#1105" class="Bound"
+      >p</a
+      ><a name="1106"
+      >
+    </a
+      ><a name="1111" class="Symbol"
+      >&#8594;</a
+      ><a name="1112"
+      > </a
+      ><a name="1113" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1116"
+      > </a
+      ><a name="1117" class="Symbol"
+      >(</a
+      ><a name="1118" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" class="Symbol"
+      >(&#955;</a
+      ><a name="1123"
+      > </a
+      ><a name="1124" href="container.w.algebra.html#1124" class="Bound"
+      >h</a
+      ><a name="1125"
+      > </a
+      ><a name="1126" class="Symbol"
+      >&#8594;</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" href="container.w.algebra.html#776" class="Function"
+      >&#968;</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" href="container.core.html#1206" class="Function Operator"
+      >&#8728;&#8305;</a
+      ><a name="1132"
+      > </a
+      ><a name="1133" href="container.core.html#1984" class="Function"
+      >imap</a
+      ><a name="1137"
+      > </a
+      ><a name="1138" href="container.w.algebra.html#1124" class="Bound"
+      >h</a
+      ><a name="1139" class="Symbol"
+      >)</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" href="container.w.algebra.html#1105" class="Bound"
+      >p</a
+      ><a name="1142" class="Symbol"
+      >)</a
+      ><a name="1143"
+      > </a
+      ><a name="1144" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1145"
+      > </a
+      ><a name="1146" href="container.w.algebra.html#1080" class="Bound"
+      >&#945;</a
+      ><a name="1147"
+      > </a
+      ><a name="1148" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1149"
+      > </a
+      ><a name="1150" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1152"
+      > </a
+      ><a name="1153" class="Symbol"
+      >(&#955;</a
+      ><a name="1155"
+      > </a
+      ><a name="1156" href="container.w.algebra.html#1156" class="Bound"
+      >h</a
+      ><a name="1157"
+      > </a
+      ><a name="1158" class="Symbol"
+      >&#8594;</a
+      ><a name="1159"
+      > </a
+      ><a name="1160" href="container.w.algebra.html#1156" class="Bound"
+      >h</a
+      ><a name="1161"
+      > </a
+      ><a name="1162" href="container.core.html#1206" class="Function Operator"
+      >&#8728;&#8305;</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" href="container.w.algebra.html#747" class="Function"
+      >&#952;</a
+      ><a name="1166" class="Symbol"
+      >)</a
+      ><a name="1167"
+      > </a
+      ><a name="1168" href="container.w.algebra.html#1105" class="Bound"
+      >p</a
+      ><a name="1169"
+      > </a
+      ><a name="1170" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1171"
+      > </a
+      ><a name="1172" href="container.w.algebra.html#1088" class="Bound"
+      >&#946;</a
+      ><a name="1173"
+      >
+
+  </a
+      ><a name="1177" href="container.w.algebra.html#1177" class="Function"
+      >MorH</a
+      ><a name="1181"
+      > </a
+      ><a name="1182" class="Symbol"
+      >:</a
+      ><a name="1183"
+      > </a
+      ><a name="1184" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="1187"
+      > </a
+      ><a name="1188" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="1191"
+      > </a
+      ><a name="1192" class="Symbol"
+      >&#8594;</a
+      ><a name="1193"
+      > </a
+      ><a name="1194" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="1197"
+      > </a
+      ><a name="1198" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="1199"
+      > </a
+      ><a name="1200" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="1201"
+      > </a
+      ><a name="1202" class="Symbol"
+      >&#8594;</a
+      ><a name="1203"
+      > </a
+      ><a name="1204" class="PrimitiveType"
+      >Set</a
+      ><a name="1207"
+      > </a
+      ><a name="1208" class="Symbol"
+      >_</a
+      ><a name="1209"
+      >
+  </a
+      ><a name="1212" href="container.w.algebra.html#1177" class="Function"
+      >MorH</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" class="Symbol"
+      >(</a
+      ><a name="1218" href="container.w.algebra.html#1218" class="Bound"
+      >f</a
+      ><a name="1219"
+      > </a
+      ><a name="1220" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1221"
+      > </a
+      ><a name="1222" href="container.w.algebra.html#1222" class="Bound"
+      >&#945;</a
+      ><a name="1223" class="Symbol"
+      >)</a
+      ><a name="1224"
+      > </a
+      ><a name="1225" class="Symbol"
+      >(</a
+      ><a name="1226" href="container.w.algebra.html#1226" class="Bound"
+      >g</a
+      ><a name="1227"
+      > </a
+      ><a name="1228" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" href="container.w.algebra.html#1230" class="Bound"
+      >&#946;</a
+      ><a name="1231" class="Symbol"
+      >)</a
+      ><a name="1232"
+      > </a
+      ><a name="1233" class="Symbol"
+      >=</a
+      ><a name="1234"
+      > </a
+      ><a name="1235" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1236"
+      > </a
+      ><a name="1237" class="Symbol"
+      >(&#8704;</a
+      ><a name="1239"
+      > </a
+      ><a name="1240" href="container.w.algebra.html#1240" class="Bound"
+      >i</a
+      ><a name="1241"
+      > </a
+      ><a name="1242" href="container.w.algebra.html#1242" class="Bound"
+      >x</a
+      ><a name="1243"
+      > </a
+      ><a name="1244" class="Symbol"
+      >&#8594;</a
+      ><a name="1245"
+      > </a
+      ><a name="1246" href="container.w.algebra.html#1218" class="Bound"
+      >f</a
+      ><a name="1247"
+      > </a
+      ><a name="1248" href="container.w.algebra.html#1240" class="Bound"
+      >i</a
+      ><a name="1249"
+      > </a
+      ><a name="1250" href="container.w.algebra.html#1242" class="Bound"
+      >x</a
+      ><a name="1251"
+      > </a
+      ><a name="1252" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1253"
+      > </a
+      ><a name="1254" href="container.w.algebra.html#1226" class="Bound"
+      >g</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" href="container.w.algebra.html#1240" class="Bound"
+      >i</a
+      ><a name="1257"
+      > </a
+      ><a name="1258" href="container.w.algebra.html#1242" class="Bound"
+      >x</a
+      ><a name="1259" class="Symbol"
+      >)</a
+      ><a name="1260"
+      > </a
+      ><a name="1261" class="Symbol"
+      >&#955;</a
+      ><a name="1262"
+      > </a
+      ><a name="1263" href="container.w.algebra.html#1263" class="Bound"
+      >p</a
+      ><a name="1264"
+      >
+    </a
+      ><a name="1269" class="Symbol"
+      >&#8594;</a
+      ><a name="1270"
+      > </a
+      ><a name="1271" class="Symbol"
+      >&#8704;</a
+      ><a name="1272"
+      > </a
+      ><a name="1273" href="container.w.algebra.html#1273" class="Bound"
+      >i</a
+      ><a name="1274"
+      > </a
+      ><a name="1275" href="container.w.algebra.html#1275" class="Bound"
+      >x</a
+      ><a name="1276"
+      > </a
+      ><a name="1277" class="Symbol"
+      >&#8594;</a
+      ><a name="1278"
+      > </a
+      ><a name="1279" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1282"
+      > </a
+      ><a name="1283" class="Symbol"
+      >(</a
+      ><a name="1284" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1286"
+      > </a
+      ><a name="1287" class="Symbol"
+      >(</a
+      ><a name="1288" href="container.w.algebra.html#776" class="Function"
+      >&#968;</a
+      ><a name="1289"
+      > </a
+      ><a name="1290" href="container.w.algebra.html#1273" class="Bound"
+      >i</a
+      ><a name="1291" class="Symbol"
+      >)</a
+      ><a name="1292"
+      > </a
+      ><a name="1293" class="Symbol"
+      >(</a
+      ><a name="1294" href="container.core.html#2180" class="Function"
+      >hmap</a
+      ><a name="1298"
+      > </a
+      ><a name="1299" href="container.w.algebra.html#1263" class="Bound"
+      >p</a
+      ><a name="1300"
+      > </a
+      ><a name="1301" href="container.w.algebra.html#1273" class="Bound"
+      >i</a
+      ><a name="1302"
+      > </a
+      ><a name="1303" href="container.w.algebra.html#1275" class="Bound"
+      >x</a
+      ><a name="1304" class="Symbol"
+      >))</a
+      ><a name="1306"
+      > </a
+      ><a name="1307" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1308"
+      > </a
+      ><a name="1309" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="1320"
+      > </a
+      ><a name="1321" href="container.w.algebra.html#1222" class="Bound"
+      >&#945;</a
+      ><a name="1322"
+      > </a
+      ><a name="1323" href="container.w.algebra.html#1273" class="Bound"
+      >i</a
+      ><a name="1324"
+      > </a
+      ><a name="1325" href="container.w.algebra.html#1275" class="Bound"
+      >x</a
+      ><a name="1326"
+      > </a
+      ><a name="1327" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" href="container.w.algebra.html#1263" class="Bound"
+      >p</a
+      ><a name="1330"
+      > </a
+      ><a name="1331" href="container.w.algebra.html#1273" class="Bound"
+      >i</a
+      ><a name="1332"
+      > </a
+      ><a name="1333" class="Symbol"
+      >(</a
+      ><a name="1334" href="container.w.algebra.html#747" class="Function"
+      >&#952;</a
+      ><a name="1335"
+      > </a
+      ><a name="1336" href="container.w.algebra.html#1273" class="Bound"
+      >i</a
+      ><a name="1337"
+      > </a
+      ><a name="1338" href="container.w.algebra.html#1275" class="Bound"
+      >x</a
+      ><a name="1339" class="Symbol"
+      >)</a
+      ><a name="1340"
+      >
+            </a
+      ><a name="1353" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1354"
+      > </a
+      ><a name="1355" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="1366"
+      > </a
+      ><a name="1367" href="container.w.algebra.html#1230" class="Bound"
+      >&#946;</a
+      ><a name="1368"
+      > </a
+      ><a name="1369" href="container.w.algebra.html#1273" class="Bound"
+      >i</a
+      ><a name="1370"
+      > </a
+      ><a name="1371" href="container.w.algebra.html#1275" class="Bound"
+      >x</a
+      ><a name="1372"
+      >
+
+  </a
+      ><a name="1376" href="container.w.algebra.html#1376" class="Function"
+      >mor-eq-h-iso</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" class="Symbol"
+      >:</a
+      ><a name="1390"
+      > </a
+      ><a name="1391" class="Symbol"
+      >(</a
+      ><a name="1392" href="container.w.algebra.html#1392" class="Bound"
+      >f</a
+      ><a name="1393"
+      > </a
+      ><a name="1394" href="container.w.algebra.html#1394" class="Bound"
+      >g</a
+      ><a name="1395"
+      > </a
+      ><a name="1396" class="Symbol"
+      >:</a
+      ><a name="1397"
+      > </a
+      ><a name="1398" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="1401"
+      > </a
+      ><a name="1402" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="1403"
+      > </a
+      ><a name="1404" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="1405" class="Symbol"
+      >)</a
+      ><a name="1406"
+      > </a
+      ><a name="1407" class="Symbol"
+      >&#8594;</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" href="container.w.algebra.html#1033" class="Function"
+      >MorEq</a
+      ><a name="1414"
+      > </a
+      ><a name="1415" href="container.w.algebra.html#1392" class="Bound"
+      >f</a
+      ><a name="1416"
+      > </a
+      ><a name="1417" href="container.w.algebra.html#1394" class="Bound"
+      >g</a
+      ><a name="1418"
+      > </a
+      ><a name="1419" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1420"
+      > </a
+      ><a name="1421" href="container.w.algebra.html#1177" class="Function"
+      >MorH</a
+      ><a name="1425"
+      > </a
+      ><a name="1426" href="container.w.algebra.html#1392" class="Bound"
+      >f</a
+      ><a name="1427"
+      > </a
+      ><a name="1428" href="container.w.algebra.html#1394" class="Bound"
+      >g</a
+      ><a name="1429"
+      >
+  </a
+      ><a name="1432" href="container.w.algebra.html#1376" class="Function"
+      >mor-eq-h-iso</a
+      ><a name="1444"
+      > </a
+      ><a name="1445" class="Symbol"
+      >(</a
+      ><a name="1446" href="container.w.algebra.html#1446" class="Bound"
+      >f</a
+      ><a name="1447"
+      > </a
+      ><a name="1448" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1449"
+      > </a
+      ><a name="1450" href="container.w.algebra.html#1450" class="Bound"
+      >&#945;</a
+      ><a name="1451" class="Symbol"
+      >)</a
+      ><a name="1452"
+      > </a
+      ><a name="1453" class="Symbol"
+      >(</a
+      ><a name="1454" href="container.w.algebra.html#1454" class="Bound"
+      >g</a
+      ><a name="1455"
+      > </a
+      ><a name="1456" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" href="container.w.algebra.html#1458" class="Bound"
+      >&#946;</a
+      ><a name="1459" class="Symbol"
+      >)</a
+      ><a name="1460"
+      > </a
+      ><a name="1461" class="Symbol"
+      >=</a
+      ><a name="1462"
+      > </a
+      ><a name="1463" href="function.isomorphism.utils.html#3347" class="Function"
+      >&#931;-ap-iso</a
+      ><a name="1471"
+      > </a
+      ><a name="1472" class="Symbol"
+      >(</a
+      ><a name="1473" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="1477"
+      > </a
+      ><a name="1478" href="container.core.html#1363" class="Function"
+      >funext-iso&#8305;</a
+      ><a name="1489" class="Symbol"
+      >)</a
+      ><a name="1490"
+      > </a
+      ><a name="1491" class="Symbol"
+      >&#955;</a
+      ><a name="1492"
+      > </a
+      ><a name="1493" href="container.w.algebra.html#1493" class="Bound"
+      >p</a
+      ><a name="1494"
+      > </a
+      ><a name="1495" class="Symbol"
+      >&#8594;</a
+      ><a name="1496"
+      > </a
+      ><a name="1497" href="container.w.algebra.html#1527" class="Function"
+      >lem</a
+      ><a name="1500"
+      > </a
+      ><a name="1501" href="container.w.algebra.html#1446" class="Bound"
+      >f</a
+      ><a name="1502"
+      > </a
+      ><a name="1503" href="container.w.algebra.html#1454" class="Bound"
+      >g</a
+      ><a name="1504"
+      > </a
+      ><a name="1505" href="container.w.algebra.html#1450" class="Bound"
+      >&#945;</a
+      ><a name="1506"
+      > </a
+      ><a name="1507" href="container.w.algebra.html#1458" class="Bound"
+      >&#946;</a
+      ><a name="1508"
+      > </a
+      ><a name="1509" href="container.w.algebra.html#1493" class="Bound"
+      >p</a
+      ><a name="1510"
+      >
+    </a
+      ><a name="1515" class="Keyword"
+      >where</a
+      ><a name="1520"
+      >
+      </a
+      ><a name="1527" href="container.w.algebra.html#1527" class="Function"
+      >lem</a
+      ><a name="1530"
+      > </a
+      ><a name="1531" class="Symbol"
+      >:</a
+      ><a name="1532"
+      > </a
+      ><a name="1533" class="Symbol"
+      >(</a
+      ><a name="1534" href="container.w.algebra.html#1534" class="Bound"
+      >f</a
+      ><a name="1535"
+      > </a
+      ><a name="1536" href="container.w.algebra.html#1536" class="Bound"
+      >g</a
+      ><a name="1537"
+      > </a
+      ><a name="1538" class="Symbol"
+      >:</a
+      ><a name="1539"
+      > </a
+      ><a name="1540" href="container.w.algebra.html#734" class="Function"
+      >X</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" href="container.core.html#987" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="1544"
+      > </a
+      ><a name="1545" href="container.w.algebra.html#763" class="Function"
+      >Y</a
+      ><a name="1546" class="Symbol"
+      >)(</a
+      ><a name="1548" href="container.w.algebra.html#1548" class="Bound"
+      >&#945;</a
+      ><a name="1549"
+      > </a
+      ><a name="1550" class="Symbol"
+      >:</a
+      ><a name="1551"
+      > </a
+      ><a name="1552" href="container.w.algebra.html#423" class="Function"
+      >IsMor</a
+      ><a name="1557"
+      > </a
+      ><a name="1558" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="1559"
+      > </a
+      ><a name="1560" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="1561"
+      > </a
+      ><a name="1562" href="container.w.algebra.html#1534" class="Bound"
+      >f</a
+      ><a name="1563" class="Symbol"
+      >)(</a
+      ><a name="1565" href="container.w.algebra.html#1565" class="Bound"
+      >&#946;</a
+      ><a name="1566"
+      > </a
+      ><a name="1567" class="Symbol"
+      >:</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" href="container.w.algebra.html#423" class="Function"
+      >IsMor</a
+      ><a name="1574"
+      > </a
+      ><a name="1575" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="1576"
+      > </a
+      ><a name="1577" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="1578"
+      > </a
+      ><a name="1579" href="container.w.algebra.html#1536" class="Bound"
+      >g</a
+      ><a name="1580" class="Symbol"
+      >)(</a
+      ><a name="1582" href="container.w.algebra.html#1582" class="Bound"
+      >p</a
+      ><a name="1583"
+      > </a
+      ><a name="1584" class="Symbol"
+      >:</a
+      ><a name="1585"
+      > </a
+      ><a name="1586" href="container.w.algebra.html#1534" class="Bound"
+      >f</a
+      ><a name="1587"
+      > </a
+      ><a name="1588" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1589"
+      > </a
+      ><a name="1590" href="container.w.algebra.html#1536" class="Bound"
+      >g</a
+      ><a name="1591" class="Symbol"
+      >)</a
+      ><a name="1592"
+      >
+          </a
+      ><a name="1603" class="Symbol"
+      >&#8594;</a
+      ><a name="1604"
+      > </a
+      ><a name="1605" class="Symbol"
+      >(</a
+      ><a name="1606" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1609"
+      > </a
+      ><a name="1610" class="Symbol"
+      >(</a
+      ><a name="1611" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1613"
+      > </a
+      ><a name="1614" class="Symbol"
+      >(&#955;</a
+      ><a name="1616"
+      > </a
+      ><a name="1617" href="container.w.algebra.html#1617" class="Bound"
+      >h</a
+      ><a name="1618"
+      > </a
+      ><a name="1619" class="Symbol"
+      >&#8594;</a
+      ><a name="1620"
+      > </a
+      ><a name="1621" href="container.w.algebra.html#776" class="Function"
+      >&#968;</a
+      ><a name="1622"
+      > </a
+      ><a name="1623" href="container.core.html#1206" class="Function Operator"
+      >&#8728;&#8305;</a
+      ><a name="1625"
+      > </a
+      ><a name="1626" href="container.core.html#1984" class="Function"
+      >imap</a
+      ><a name="1630"
+      > </a
+      ><a name="1631" href="container.w.algebra.html#1617" class="Bound"
+      >h</a
+      ><a name="1632" class="Symbol"
+      >)</a
+      ><a name="1633"
+      > </a
+      ><a name="1634" href="container.w.algebra.html#1582" class="Bound"
+      >p</a
+      ><a name="1635" class="Symbol"
+      >)</a
+      ><a name="1636"
+      > </a
+      ><a name="1637" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1638"
+      > </a
+      ><a name="1639" href="container.w.algebra.html#1548" class="Bound"
+      >&#945;</a
+      ><a name="1640"
+      > </a
+      ><a name="1641" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1642"
+      > </a
+      ><a name="1643" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1645"
+      > </a
+      ><a name="1646" class="Symbol"
+      >(&#955;</a
+      ><a name="1648"
+      > </a
+      ><a name="1649" href="container.w.algebra.html#1649" class="Bound"
+      >h</a
+      ><a name="1650"
+      > </a
+      ><a name="1651" class="Symbol"
+      >&#8594;</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" href="container.w.algebra.html#1649" class="Bound"
+      >h</a
+      ><a name="1654"
+      > </a
+      ><a name="1655" href="container.core.html#1206" class="Function Operator"
+      >&#8728;&#8305;</a
+      ><a name="1657"
+      > </a
+      ><a name="1658" href="container.w.algebra.html#747" class="Function"
+      >&#952;</a
+      ><a name="1659" class="Symbol"
+      >)</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" href="container.w.algebra.html#1582" class="Bound"
+      >p</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1664"
+      > </a
+      ><a name="1665" href="container.w.algebra.html#1565" class="Bound"
+      >&#946;</a
+      ><a name="1666" class="Symbol"
+      >)</a
+      ><a name="1667"
+      >
+          </a
+      ><a name="1678" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1679"
+      > </a
+      ><a name="1680" class="Symbol"
+      >(&#8704;</a
+      ><a name="1682"
+      > </a
+      ><a name="1683" href="container.w.algebra.html#1683" class="Bound"
+      >i</a
+      ><a name="1684"
+      > </a
+      ><a name="1685" href="container.w.algebra.html#1685" class="Bound"
+      >x</a
+      ><a name="1686"
+      > </a
+      ><a name="1687" class="Symbol"
+      >&#8594;</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1692"
+      > </a
+      ><a name="1693" class="Symbol"
+      >(</a
+      ><a name="1694" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1696"
+      > </a
+      ><a name="1697" class="Symbol"
+      >(</a
+      ><a name="1698" href="container.w.algebra.html#776" class="Function"
+      >&#968;</a
+      ><a name="1699"
+      > </a
+      ><a name="1700" href="container.w.algebra.html#1683" class="Bound"
+      >i</a
+      ><a name="1701" class="Symbol"
+      >)</a
+      ><a name="1702"
+      > </a
+      ><a name="1703" class="Symbol"
+      >(</a
+      ><a name="1704" href="container.core.html#2180" class="Function"
+      >hmap</a
+      ><a name="1708"
+      > </a
+      ><a name="1709" class="Symbol"
+      >(</a
+      ><a name="1710" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="1721"
+      > </a
+      ><a name="1722" href="container.w.algebra.html#1582" class="Bound"
+      >p</a
+      ><a name="1723" class="Symbol"
+      >)</a
+      ><a name="1724"
+      > </a
+      ><a name="1725" href="container.w.algebra.html#1683" class="Bound"
+      >i</a
+      ><a name="1726"
+      > </a
+      ><a name="1727" href="container.w.algebra.html#1685" class="Bound"
+      >x</a
+      ><a name="1728" class="Symbol"
+      >))</a
+      ><a name="1730"
+      >
+                   </a
+      ><a name="1750" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1751"
+      > </a
+      ><a name="1752" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="1763"
+      > </a
+      ><a name="1764" href="container.w.algebra.html#1548" class="Bound"
+      >&#945;</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" href="container.w.algebra.html#1683" class="Bound"
+      >i</a
+      ><a name="1767"
+      > </a
+      ><a name="1768" href="container.w.algebra.html#1685" class="Bound"
+      >x</a
+      ><a name="1769"
+      >
+                   </a
+      ><a name="1789" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1790"
+      > </a
+      ><a name="1791" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="1802"
+      > </a
+      ><a name="1803" href="container.w.algebra.html#1582" class="Bound"
+      >p</a
+      ><a name="1804"
+      > </a
+      ><a name="1805" href="container.w.algebra.html#1683" class="Bound"
+      >i</a
+      ><a name="1806"
+      > </a
+      ><a name="1807" class="Symbol"
+      >(</a
+      ><a name="1808" href="container.w.algebra.html#747" class="Function"
+      >&#952;</a
+      ><a name="1809"
+      > </a
+      ><a name="1810" href="container.w.algebra.html#1683" class="Bound"
+      >i</a
+      ><a name="1811"
+      > </a
+      ><a name="1812" href="container.w.algebra.html#1685" class="Bound"
+      >x</a
+      ><a name="1813" class="Symbol"
+      >)</a
+      ><a name="1814"
+      >
+                   </a
+      ><a name="1834" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1835"
+      > </a
+      ><a name="1836" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="1847"
+      > </a
+      ><a name="1848" href="container.w.algebra.html#1565" class="Bound"
+      >&#946;</a
+      ><a name="1849"
+      > </a
+      ><a name="1850" href="container.w.algebra.html#1683" class="Bound"
+      >i</a
+      ><a name="1851"
+      > </a
+      ><a name="1852" href="container.w.algebra.html#1685" class="Bound"
+      >x</a
+      ><a name="1853" class="Symbol"
+      >)</a
+      ><a name="1854"
+      >
+      </a
+      ><a name="1861" href="container.w.algebra.html#1527" class="Function"
+      >lem</a
+      ><a name="1864"
+      > </a
+      ><a name="1865" href="container.w.algebra.html#1865" class="Bound"
+      >f</a
+      ><a name="1866"
+      > </a
+      ><a name="1867" class="DottedPattern Symbol"
+      >.</a
+      ><a name="1868" href="container.w.algebra.html#1865" class="DottedPattern Bound"
+      >f</a
+      ><a name="1869"
+      > </a
+      ><a name="1870" href="container.w.algebra.html#1870" class="Bound"
+      >&#945;</a
+      ><a name="1871"
+      > </a
+      ><a name="1872" href="container.w.algebra.html#1872" class="Bound"
+      >&#946;</a
+      ><a name="1873"
+      > </a
+      ><a name="1874" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1878"
+      > </a
+      ><a name="1879" class="Symbol"
+      >=</a
+      ><a name="1880"
+      > </a
+      ><a name="1881" href="function.isomorphism.core.html#1890" class="Function Operator"
+      >begin</a
+      ><a name="1886"
+      >
+          </a
+      ><a name="1897" class="Symbol"
+      >(</a
+      ><a name="1898" href="container.w.algebra.html#1870" class="Bound"
+      >&#945;</a
+      ><a name="1899"
+      > </a
+      ><a name="1900" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1901"
+      > </a
+      ><a name="1902" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1906"
+      > </a
+      ><a name="1907" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1908"
+      > </a
+      ><a name="1909" href="container.w.algebra.html#1872" class="Bound"
+      >&#946;</a
+      ><a name="1910" class="Symbol"
+      >)</a
+      ><a name="1911"
+      >
+        </a
+      ><a name="1920" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="1922"
+      > </a
+      ><a name="1923" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="1927"
+      > </a
+      ><a name="1928" class="Symbol"
+      >(</a
+      ><a name="1929" href="function.isomorphism.utils.html#10622" class="Function"
+      >trans&#8801;-iso</a
+      ><a name="1939"
+      > </a
+      ><a name="1940" class="Symbol"
+      >(</a
+      ><a name="1941" href="equality.groupoid.html#147" class="Function"
+      >left-unit</a
+      ><a name="1950"
+      > </a
+      ><a name="1951" href="container.w.algebra.html#1870" class="Bound"
+      >&#945;</a
+      ><a name="1952" class="Symbol"
+      >))</a
+      ><a name="1954"
+      > </a
+      ><a name="1955" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="1956"
+      >
+          </a
+      ><a name="1967" class="Symbol"
+      >(</a
+      ><a name="1968" href="container.w.algebra.html#1870" class="Bound"
+      >&#945;</a
+      ><a name="1969"
+      > </a
+      ><a name="1970" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1971"
+      > </a
+      ><a name="1972" href="container.w.algebra.html#1872" class="Bound"
+      >&#946;</a
+      ><a name="1973" class="Symbol"
+      >)</a
+      ><a name="1974"
+      >
+        </a
+      ><a name="1983" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="1985"
+      > </a
+      ><a name="1986" href="function.isomorphism.properties.html#1457" class="Function"
+      >iso&#8801;</a
+      ><a name="1990"
+      > </a
+      ><a name="1991" class="Symbol"
+      >(</a
+      ><a name="1992" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="1996"
+      > </a
+      ><a name="1997" href="container.core.html#1363" class="Function"
+      >funext-iso&#8305;</a
+      ><a name="2008" class="Symbol"
+      >)</a
+      ><a name="2009"
+      > </a
+      ><a name="2010" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2011"
+      >
+          </a
+      ><a name="2022" class="Symbol"
+      >(</a
+      ><a name="2023" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="2034"
+      > </a
+      ><a name="2035" href="container.w.algebra.html#1870" class="Bound"
+      >&#945;</a
+      ><a name="2036"
+      > </a
+      ><a name="2037" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2038"
+      > </a
+      ><a name="2039" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="2050"
+      > </a
+      ><a name="2051" href="container.w.algebra.html#1872" class="Bound"
+      >&#946;</a
+      ><a name="2052" class="Symbol"
+      >)</a
+      ><a name="2053"
+      >
+        </a
+      ><a name="2062" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2064"
+      > </a
+      ><a name="2065" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="2069"
+      > </a
+      ><a name="2070" class="Symbol"
+      >((</a
+      ><a name="2072" href="function.isomorphism.utils.html#3926" class="Function"
+      >&#928;-ap-iso</a
+      ><a name="2080"
+      > </a
+      ><a name="2081" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="2086"
+      > </a
+      ><a name="2087" class="Symbol"
+      >&#955;</a
+      ><a name="2088"
+      > </a
+      ><a name="2089" href="container.w.algebra.html#2089" class="Bound"
+      >_</a
+      ><a name="2090"
+      > </a
+      ><a name="2091" class="Symbol"
+      >&#8594;</a
+      ><a name="2092"
+      > </a
+      ><a name="2093" href="function.extensionality.strong.html#1414" class="Function"
+      >strong-funext-iso</a
+      ><a name="2110" class="Symbol"
+      >)</a
+      ><a name="2111"
+      > </a
+      ><a name="2112" href="function.isomorphism.core.html#1555" class="Function Operator"
+      >&#183;&#8773;</a
+      ><a name="2114"
+      > </a
+      ><a name="2115" href="function.extensionality.strong.html#1414" class="Function"
+      >strong-funext-iso</a
+      ><a name="2132" class="Symbol"
+      >)</a
+      ><a name="2133"
+      > </a
+      ><a name="2134" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2135"
+      >
+          </a
+      ><a name="2146" class="Symbol"
+      >(&#8704;</a
+      ><a name="2148"
+      > </a
+      ><a name="2149" href="container.w.algebra.html#2149" class="Bound"
+      >i</a
+      ><a name="2150"
+      > </a
+      ><a name="2151" href="container.w.algebra.html#2151" class="Bound"
+      >x</a
+      ><a name="2152"
+      > </a
+      ><a name="2153" class="Symbol"
+      >&#8594;</a
+      ><a name="2154"
+      > </a
+      ><a name="2155" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="2166"
+      > </a
+      ><a name="2167" href="container.w.algebra.html#1870" class="Bound"
+      >&#945;</a
+      ><a name="2168"
+      > </a
+      ><a name="2169" href="container.w.algebra.html#2149" class="Bound"
+      >i</a
+      ><a name="2170"
+      > </a
+      ><a name="2171" href="container.w.algebra.html#2151" class="Bound"
+      >x</a
+      ><a name="2172"
+      > </a
+      ><a name="2173" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2174"
+      > </a
+      ><a name="2175" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="2186"
+      > </a
+      ><a name="2187" href="container.w.algebra.html#1872" class="Bound"
+      >&#946;</a
+      ><a name="2188"
+      > </a
+      ><a name="2189" href="container.w.algebra.html#2149" class="Bound"
+      >i</a
+      ><a name="2190"
+      > </a
+      ><a name="2191" href="container.w.algebra.html#2151" class="Bound"
+      >x</a
+      ><a name="2192" class="Symbol"
+      >)</a
+      ><a name="2193"
+      >
+        </a
+      ><a name="2202" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2204"
+      > </a
+      ><a name="2205" class="Symbol"
+      >(</a
+      ><a name="2206"
+      > </a
+      ><a name="2207" href="function.isomorphism.utils.html#3926" class="Function"
+      >&#928;-ap-iso</a
+      ><a name="2215"
+      > </a
+      ><a name="2216" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="2221"
+      > </a
+      ><a name="2222" class="Symbol"
+      >&#955;</a
+      ><a name="2223"
+      > </a
+      ><a name="2224" href="container.w.algebra.html#2224" class="Bound"
+      >i</a
+      ><a name="2225"
+      >
+            </a
+      ><a name="2238" class="Symbol"
+      >&#8594;</a
+      ><a name="2239"
+      > </a
+      ><a name="2240" href="function.isomorphism.utils.html#3926" class="Function"
+      >&#928;-ap-iso</a
+      ><a name="2248"
+      > </a
+      ><a name="2249" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="2254"
+      > </a
+      ><a name="2255" class="Symbol"
+      >&#955;</a
+      ><a name="2256"
+      > </a
+      ><a name="2257" href="container.w.algebra.html#2257" class="Bound"
+      >x</a
+      ><a name="2258"
+      >
+            </a
+      ><a name="2271" class="Symbol"
+      >&#8594;</a
+      ><a name="2272"
+      > </a
+      ><a name="2273" href="function.isomorphism.utils.html#10622" class="Function"
+      >trans&#8801;-iso</a
+      ><a name="2283"
+      > </a
+      ><a name="2284" class="Symbol"
+      >(</a
+      ><a name="2285" href="container.w.algebra.html#2564" class="Function"
+      >comp</a
+      ><a name="2289"
+      > </a
+      ><a name="2290" href="container.w.algebra.html#2224" class="Bound"
+      >i</a
+      ><a name="2291"
+      > </a
+      ><a name="2292" href="container.w.algebra.html#2257" class="Bound"
+      >x</a
+      ><a name="2293" class="Symbol"
+      >)</a
+      ><a name="2294"
+      > </a
+      ><a name="2295" class="Symbol"
+      >)</a
+      ><a name="2296"
+      > </a
+      ><a name="2297" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2298"
+      >
+          </a
+      ><a name="2309" class="Symbol"
+      >(&#8704;</a
+      ><a name="2311"
+      > </a
+      ><a name="2312" href="container.w.algebra.html#2312" class="Bound"
+      >i</a
+      ><a name="2313"
+      > </a
+      ><a name="2314" href="container.w.algebra.html#2314" class="Bound"
+      >x</a
+      ><a name="2315"
+      > </a
+      ><a name="2316" class="Symbol"
+      >&#8594;</a
+      ><a name="2317"
+      > </a
+      ><a name="2318" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="2321"
+      > </a
+      ><a name="2322" class="Symbol"
+      >(</a
+      ><a name="2323" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="2325"
+      > </a
+      ><a name="2326" class="Symbol"
+      >(</a
+      ><a name="2327" href="container.w.algebra.html#776" class="Function"
+      >&#968;</a
+      ><a name="2328"
+      > </a
+      ><a name="2329" href="container.w.algebra.html#2312" class="Bound"
+      >i</a
+      ><a name="2330" class="Symbol"
+      >)</a
+      ><a name="2331"
+      > </a
+      ><a name="2332" class="Symbol"
+      >(</a
+      ><a name="2333" href="container.core.html#2180" class="Function"
+      >hmap</a
+      ><a name="2337"
+      > </a
+      ><a name="2338" class="Symbol"
+      >(</a
+      ><a name="2339" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="2350"
+      > </a
+      ><a name="2351" href="container.w.algebra.html#2522" class="Function"
+      >p&#8320;</a
+      ><a name="2353" class="Symbol"
+      >)</a
+      ><a name="2354"
+      > </a
+      ><a name="2355" href="container.w.algebra.html#2312" class="Bound"
+      >i</a
+      ><a name="2356"
+      > </a
+      ><a name="2357" href="container.w.algebra.html#2314" class="Bound"
+      >x</a
+      ><a name="2358" class="Symbol"
+      >))</a
+      ><a name="2360"
+      >
+                 </a
+      ><a name="2378" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="2379"
+      > </a
+      ><a name="2380" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="2391"
+      > </a
+      ><a name="2392" href="container.w.algebra.html#1870" class="Bound"
+      >&#945;</a
+      ><a name="2393"
+      > </a
+      ><a name="2394" href="container.w.algebra.html#2312" class="Bound"
+      >i</a
+      ><a name="2395"
+      > </a
+      ><a name="2396" href="container.w.algebra.html#2314" class="Bound"
+      >x</a
+      ><a name="2397"
+      >
+                 </a
+      ><a name="2415" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="2416"
+      > </a
+      ><a name="2417" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2421"
+      >
+                 </a
+      ><a name="2439" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2440"
+      > </a
+      ><a name="2441" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="2452"
+      > </a
+      ><a name="2453" href="container.w.algebra.html#1872" class="Bound"
+      >&#946;</a
+      ><a name="2454"
+      > </a
+      ><a name="2455" href="container.w.algebra.html#2312" class="Bound"
+      >i</a
+      ><a name="2456"
+      > </a
+      ><a name="2457" href="container.w.algebra.html#2314" class="Bound"
+      >x</a
+      ><a name="2458" class="Symbol"
+      >)</a
+      ><a name="2459"
+      >
+        </a
+      ><a name="2468" href="function.isomorphism.core.html#2283" class="Function Operator"
+      >&#8718;</a
+      ><a name="2469"
+      >
+        </a
+      ><a name="2478" class="Keyword"
+      >where</a
+      ><a name="2483"
+      >
+          </a
+      ><a name="2494" class="Keyword"
+      >open</a
+      ><a name="2498"
+      > </a
+      ><a name="2499" href="function.isomorphism.core.html#1670" class="Module"
+      >&#8773;-Reasoning</a
+      ><a name="2510"
+      >
+
+          </a
+      ><a name="2522" href="container.w.algebra.html#2522" class="Function"
+      >p&#8320;</a
+      ><a name="2524"
+      > </a
+      ><a name="2525" class="Symbol"
+      >:</a
+      ><a name="2526"
+      > </a
+      ><a name="2527" href="container.w.algebra.html#1865" class="Bound"
+      >f</a
+      ><a name="2528"
+      > </a
+      ><a name="2529" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2530"
+      > </a
+      ><a name="2531" href="container.w.algebra.html#1865" class="Bound"
+      >f</a
+      ><a name="2532"
+      >
+          </a
+      ><a name="2543" href="container.w.algebra.html#2522" class="Function"
+      >p&#8320;</a
+      ><a name="2545"
+      > </a
+      ><a name="2546" class="Symbol"
+      >=</a
+      ><a name="2547"
+      > </a
+      ><a name="2548" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2552"
+      >
+
+          </a
+      ><a name="2564" href="container.w.algebra.html#2564" class="Function"
+      >comp</a
+      ><a name="2568"
+      > </a
+      ><a name="2569" class="Symbol"
+      >:</a
+      ><a name="2570"
+      > </a
+      ><a name="2571" class="Symbol"
+      >&#8704;</a
+      ><a name="2572"
+      > </a
+      ><a name="2573" href="container.w.algebra.html#2573" class="Bound"
+      >i</a
+      ><a name="2574"
+      > </a
+      ><a name="2575" href="container.w.algebra.html#2575" class="Bound"
+      >x</a
+      ><a name="2576"
+      > </a
+      ><a name="2577" class="Symbol"
+      >&#8594;</a
+      ><a name="2578"
+      > </a
+      ><a name="2579" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="2582"
+      > </a
+      ><a name="2583" class="Symbol"
+      >(</a
+      ><a name="2584" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="2586"
+      > </a
+      ><a name="2587" class="Symbol"
+      >(</a
+      ><a name="2588" href="container.w.algebra.html#776" class="Function"
+      >&#968;</a
+      ><a name="2589"
+      > </a
+      ><a name="2590" href="container.w.algebra.html#2573" class="Bound"
+      >i</a
+      ><a name="2591" class="Symbol"
+      >)</a
+      ><a name="2592"
+      > </a
+      ><a name="2593" class="Symbol"
+      >(</a
+      ><a name="2594" href="container.core.html#2180" class="Function"
+      >hmap</a
+      ><a name="2598"
+      > </a
+      ><a name="2599" class="Symbol"
+      >(</a
+      ><a name="2600" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="2611"
+      > </a
+      ><a name="2612" class="Symbol"
+      >(</a
+      ><a name="2613" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2617"
+      > </a
+      ><a name="2618" class="Symbol"
+      >{</a
+      ><a name="2619" class="Argument"
+      >x</a
+      ><a name="2620"
+      > </a
+      ><a name="2621" class="Symbol"
+      >=</a
+      ><a name="2622"
+      > </a
+      ><a name="2623" href="container.w.algebra.html#1865" class="Bound"
+      >f</a
+      ><a name="2624" class="Symbol"
+      >}))</a
+      ><a name="2627"
+      > </a
+      ><a name="2628" href="container.w.algebra.html#2573" class="Bound"
+      >i</a
+      ><a name="2629"
+      > </a
+      ><a name="2630" href="container.w.algebra.html#2575" class="Bound"
+      >x</a
+      ><a name="2631" class="Symbol"
+      >))</a
+      ><a name="2633"
+      >
+                       </a
+      ><a name="2657" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="2658"
+      > </a
+      ><a name="2659" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="2670"
+      > </a
+      ><a name="2671" href="container.w.algebra.html#1870" class="Bound"
+      >&#945;</a
+      ><a name="2672"
+      > </a
+      ><a name="2673" href="container.w.algebra.html#2573" class="Bound"
+      >i</a
+      ><a name="2674"
+      > </a
+      ><a name="2675" href="container.w.algebra.html#2575" class="Bound"
+      >x</a
+      ><a name="2676"
+      >
+                       </a
+      ><a name="2700" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="2701"
+      > </a
+      ><a name="2702" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2706"
+      >
+                       </a
+      ><a name="2730" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2731"
+      > </a
+      ><a name="2732" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="2743"
+      > </a
+      ><a name="2744" href="container.w.algebra.html#1870" class="Bound"
+      >&#945;</a
+      ><a name="2745"
+      > </a
+      ><a name="2746" href="container.w.algebra.html#2573" class="Bound"
+      >i</a
+      ><a name="2747"
+      > </a
+      ><a name="2748" href="container.w.algebra.html#2575" class="Bound"
+      >x</a
+      ><a name="2749"
+      >
+          </a
+      ><a name="2760" href="container.w.algebra.html#2564" class="Function"
+      >comp</a
+      ><a name="2764"
+      > </a
+      ><a name="2765" href="container.w.algebra.html#2765" class="Bound"
+      >i</a
+      ><a name="2766"
+      > </a
+      ><a name="2767" href="container.w.algebra.html#2767" class="Bound"
+      >x</a
+      ><a name="2768"
+      > </a
+      ><a name="2769" class="Symbol"
+      >=</a
+      ><a name="2770"
+      > </a
+      ><a name="2771" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="2773"
+      > </a
+      ><a name="2774" class="Symbol"
+      >(&#955;</a
+      ><a name="2776"
+      > </a
+      ><a name="2777" href="container.w.algebra.html#2777" class="Bound"
+      >q</a
+      ><a name="2778"
+      > </a
+      ><a name="2779" class="Symbol"
+      >&#8594;</a
+      ><a name="2780"
+      > </a
+      ><a name="2781" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="2784"
+      > </a
+      ><a name="2785" class="Symbol"
+      >(</a
+      ><a name="2786" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="2788"
+      > </a
+      ><a name="2789" class="Symbol"
+      >(</a
+      ><a name="2790" href="container.w.algebra.html#776" class="Function"
+      >&#968;</a
+      ><a name="2791"
+      > </a
+      ><a name="2792" href="container.w.algebra.html#2765" class="Bound"
+      >i</a
+      ><a name="2793" class="Symbol"
+      >)</a
+      ><a name="2794"
+      > </a
+      ><a name="2795" href="container.w.algebra.html#2777" class="Bound"
+      >q</a
+      ><a name="2796" class="Symbol"
+      >)</a
+      ><a name="2797"
+      > </a
+      ><a name="2798" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="2799"
+      > </a
+      ><a name="2800" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="2811"
+      > </a
+      ><a name="2812" href="container.w.algebra.html#1870" class="Bound"
+      >&#945;</a
+      ><a name="2813"
+      > </a
+      ><a name="2814" href="container.w.algebra.html#2765" class="Bound"
+      >i</a
+      ><a name="2815"
+      > </a
+      ><a name="2816" href="container.w.algebra.html#2767" class="Bound"
+      >x</a
+      ><a name="2817"
+      > </a
+      ><a name="2818" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="2819"
+      > </a
+      ><a name="2820" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2824" class="Symbol"
+      >)</a
+      ><a name="2825"
+      >
+                        </a
+      ><a name="2850" class="Symbol"
+      >(</a
+      ><a name="2851" href="container.core.html#2415" class="Function"
+      >hmap-id</a
+      ><a name="2858"
+      > </a
+      ><a name="2859" href="container.w.algebra.html#1865" class="Bound"
+      >f</a
+      ><a name="2860"
+      > </a
+      ><a name="2861" href="container.w.algebra.html#2765" class="Bound"
+      >i</a
+      ><a name="2862"
+      > </a
+      ><a name="2863" href="container.w.algebra.html#2767" class="Bound"
+      >x</a
+      ><a name="2864" class="Symbol"
+      >)</a
+      ><a name="2865"
+      >
+                   </a
+      ><a name="2885" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="2886"
+      > </a
+      ><a name="2887" href="equality.groupoid.html#147" class="Function"
+      >left-unit</a
+      ><a name="2896"
+      > </a
+      ><a name="2897" class="Symbol"
+      >(</a
+      ><a name="2898" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="2909"
+      > </a
+      ><a name="2910" href="container.w.algebra.html#1870" class="Bound"
+      >&#945;</a
+      ><a name="2911"
+      > </a
+      ><a name="2912" href="container.w.algebra.html#2765" class="Bound"
+      >i</a
+      ><a name="2913"
+      > </a
+      ><a name="2914" href="container.w.algebra.html#2767" class="Bound"
+      >x</a
+      ><a name="2915" class="Symbol"
+      >)</a
+      ><a name="2916"
+      >
+
+  </a
+      ><a name="2920" href="container.w.algebra.html#2920" class="Function"
+      >eq-mor-iso</a
+      ><a name="2930"
+      > </a
+      ><a name="2931" class="Symbol"
+      >:</a
+      ><a name="2932"
+      > </a
+      ><a name="2933" class="Symbol"
+      >{</a
+      ><a name="2934" href="container.w.algebra.html#2934" class="Bound"
+      >f</a
+      ><a name="2935"
+      > </a
+      ><a name="2936" href="container.w.algebra.html#2936" class="Bound"
+      >g</a
+      ><a name="2937"
+      > </a
+      ><a name="2938" class="Symbol"
+      >:</a
+      ><a name="2939"
+      > </a
+      ><a name="2940" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="2943"
+      > </a
+      ><a name="2944" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="2945"
+      > </a
+      ><a name="2946" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="2947" class="Symbol"
+      >}</a
+      ><a name="2948"
+      > </a
+      ><a name="2949" class="Symbol"
+      >&#8594;</a
+      ><a name="2950"
+      > </a
+      ><a name="2951" class="Symbol"
+      >(</a
+      ><a name="2952" href="container.w.algebra.html#2934" class="Bound"
+      >f</a
+      ><a name="2953"
+      > </a
+      ><a name="2954" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2955"
+      > </a
+      ><a name="2956" href="container.w.algebra.html#2936" class="Bound"
+      >g</a
+      ><a name="2957" class="Symbol"
+      >)</a
+      ><a name="2958"
+      > </a
+      ><a name="2959" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="2960"
+      > </a
+      ><a name="2961" href="container.w.algebra.html#1177" class="Function"
+      >MorH</a
+      ><a name="2965"
+      > </a
+      ><a name="2966" href="container.w.algebra.html#2934" class="Bound"
+      >f</a
+      ><a name="2967"
+      > </a
+      ><a name="2968" href="container.w.algebra.html#2936" class="Bound"
+      >g</a
+      ><a name="2969"
+      >
+  </a
+      ><a name="2972" href="container.w.algebra.html#2920" class="Function"
+      >eq-mor-iso</a
+      ><a name="2982"
+      > </a
+      ><a name="2983" class="Symbol"
+      >{</a
+      ><a name="2984" href="container.w.algebra.html#2984" class="Bound"
+      >f</a
+      ><a name="2985"
+      > </a
+      ><a name="2986" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2987"
+      > </a
+      ><a name="2988" href="container.w.algebra.html#2988" class="Bound"
+      >&#945;</a
+      ><a name="2989" class="Symbol"
+      >}</a
+      ><a name="2990"
+      > </a
+      ><a name="2991" class="Symbol"
+      >{</a
+      ><a name="2992" href="container.w.algebra.html#2992" class="Bound"
+      >g</a
+      ><a name="2993"
+      > </a
+      ><a name="2994" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2995"
+      > </a
+      ><a name="2996" href="container.w.algebra.html#2996" class="Bound"
+      >&#946;</a
+      ><a name="2997" class="Symbol"
+      >}</a
+      ><a name="2998"
+      > </a
+      ><a name="2999" class="Symbol"
+      >=</a
+      ><a name="3000"
+      > </a
+      ><a name="3001" href="function.isomorphism.core.html#1890" class="Function Operator"
+      >begin</a
+      ><a name="3006"
+      >
+      </a
+      ><a name="3013" class="Symbol"
+      >((</a
+      ><a name="3015" href="container.w.algebra.html#2984" class="Bound"
+      >f</a
+      ><a name="3016"
+      > </a
+      ><a name="3017" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3018"
+      > </a
+      ><a name="3019" href="container.w.algebra.html#2988" class="Bound"
+      >&#945;</a
+      ><a name="3020" class="Symbol"
+      >)</a
+      ><a name="3021"
+      > </a
+      ><a name="3022" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3023"
+      > </a
+      ><a name="3024" class="Symbol"
+      >(</a
+      ><a name="3025" href="container.w.algebra.html#2992" class="Bound"
+      >g</a
+      ><a name="3026"
+      > </a
+      ><a name="3027" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3028"
+      > </a
+      ><a name="3029" href="container.w.algebra.html#2996" class="Bound"
+      >&#946;</a
+      ><a name="3030" class="Symbol"
+      >))</a
+      ><a name="3032"
+      >
+    </a
+      ><a name="3037" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3039"
+      > </a
+      ><a name="3040" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="3044"
+      > </a
+      ><a name="3045" href="function.isomorphism.utils.html#424" class="Function"
+      >&#931;-split-iso</a
+      ><a name="3056"
+      > </a
+      ><a name="3057" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="3058"
+      >
+      </a
+      ><a name="3065" class="Symbol"
+      >(</a
+      ><a name="3066" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="3067"
+      > </a
+      ><a name="3068" class="Symbol"
+      >(</a
+      ><a name="3069" href="container.w.algebra.html#2984" class="Bound"
+      >f</a
+      ><a name="3070"
+      > </a
+      ><a name="3071" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3072"
+      > </a
+      ><a name="3073" href="container.w.algebra.html#2992" class="Bound"
+      >g</a
+      ><a name="3074" class="Symbol"
+      >)</a
+      ><a name="3075"
+      > </a
+      ><a name="3076" class="Symbol"
+      >&#955;</a
+      ><a name="3077"
+      > </a
+      ><a name="3078" href="container.w.algebra.html#3078" class="Bound"
+      >p</a
+      ><a name="3079"
+      > </a
+      ><a name="3080" class="Symbol"
+      >&#8594;</a
+      ><a name="3081"
+      > </a
+      ><a name="3082" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="3087"
+      > </a
+      ><a name="3088" class="Symbol"
+      >(</a
+      ><a name="3089" href="container.w.algebra.html#423" class="Function"
+      >IsMor</a
+      ><a name="3094"
+      > </a
+      ><a name="3095" href="container.w.algebra.html#690" class="Bound"
+      >&#120039;</a
+      ><a name="3096"
+      > </a
+      ><a name="3097" href="container.w.algebra.html#702" class="Bound"
+      >&#120040;</a
+      ><a name="3098" class="Symbol"
+      >)</a
+      ><a name="3099"
+      > </a
+      ><a name="3100" href="container.w.algebra.html#3078" class="Bound"
+      >p</a
+      ><a name="3101"
+      > </a
+      ><a name="3102" href="container.w.algebra.html#2988" class="Bound"
+      >&#945;</a
+      ><a name="3103"
+      > </a
+      ><a name="3104" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3105"
+      > </a
+      ><a name="3106" href="container.w.algebra.html#2996" class="Bound"
+      >&#946;</a
+      ><a name="3107" class="Symbol"
+      >)</a
+      ><a name="3108"
+      >
+    </a
+      ><a name="3113" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3115"
+      > </a
+      ><a name="3116" class="Symbol"
+      >(</a
+      ><a name="3117" href="function.isomorphism.utils.html#3347" class="Function"
+      >&#931;-ap-iso</a
+      ><a name="3125"
+      > </a
+      ><a name="3126" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="3131"
+      > </a
+      ><a name="3132" class="Symbol"
+      >&#955;</a
+      ><a name="3133"
+      > </a
+      ><a name="3134" href="container.w.algebra.html#3134" class="Bound"
+      >p</a
+      ><a name="3135"
+      > </a
+      ><a name="3136" class="Symbol"
+      >&#8594;</a
+      ><a name="3137"
+      > </a
+      ><a name="3138" href="function.isomorphism.utils.html#10622" class="Function"
+      >trans&#8801;-iso</a
+      ><a name="3148"
+      > </a
+      ><a name="3149" class="Symbol"
+      >(</a
+      ><a name="3150" href="container.w.algebra.html#791" class="Function"
+      >is-mor-transp</a
+      ><a name="3163"
+      > </a
+      ><a name="3164" href="container.w.algebra.html#3134" class="Bound"
+      >p</a
+      ><a name="3165"
+      > </a
+      ><a name="3166" href="container.w.algebra.html#2988" class="Bound"
+      >&#945;</a
+      ><a name="3167" class="Symbol"
+      >))</a
+      ><a name="3169"
+      > </a
+      ><a name="3170" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="3171"
+      >
+      </a
+      ><a name="3178" href="container.w.algebra.html#1033" class="Function"
+      >MorEq</a
+      ><a name="3183"
+      > </a
+      ><a name="3184" class="Symbol"
+      >(</a
+      ><a name="3185" href="container.w.algebra.html#2984" class="Bound"
+      >f</a
+      ><a name="3186"
+      > </a
+      ><a name="3187" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3188"
+      > </a
+      ><a name="3189" href="container.w.algebra.html#2988" class="Bound"
+      >&#945;</a
+      ><a name="3190" class="Symbol"
+      >)</a
+      ><a name="3191"
+      > </a
+      ><a name="3192" class="Symbol"
+      >(</a
+      ><a name="3193" href="container.w.algebra.html#2992" class="Bound"
+      >g</a
+      ><a name="3194"
+      > </a
+      ><a name="3195" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3196"
+      > </a
+      ><a name="3197" href="container.w.algebra.html#2996" class="Bound"
+      >&#946;</a
+      ><a name="3198" class="Symbol"
+      >)</a
+      ><a name="3199"
+      >
+    </a
+      ><a name="3204" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3206"
+      > </a
+      ><a name="3207" href="container.w.algebra.html#1376" class="Function"
+      >mor-eq-h-iso</a
+      ><a name="3219"
+      > </a
+      ><a name="3220" class="Symbol"
+      >_</a
+      ><a name="3221"
+      > </a
+      ><a name="3222" class="Symbol"
+      >_</a
+      ><a name="3223"
+      > </a
+      ><a name="3224" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="3225"
+      >
+      </a
+      ><a name="3232" href="container.w.algebra.html#1177" class="Function"
+      >MorH</a
+      ><a name="3236"
+      > </a
+      ><a name="3237" class="Symbol"
+      >(</a
+      ><a name="3238" href="container.w.algebra.html#2984" class="Bound"
+      >f</a
+      ><a name="3239"
+      > </a
+      ><a name="3240" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3241"
+      > </a
+      ><a name="3242" href="container.w.algebra.html#2988" class="Bound"
+      >&#945;</a
+      ><a name="3243" class="Symbol"
+      >)</a
+      ><a name="3244"
+      > </a
+      ><a name="3245" class="Symbol"
+      >(</a
+      ><a name="3246" href="container.w.algebra.html#2992" class="Bound"
+      >g</a
+      ><a name="3247"
+      > </a
+      ><a name="3248" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3249"
+      > </a
+      ><a name="3250" href="container.w.algebra.html#2996" class="Bound"
+      >&#946;</a
+      ><a name="3251" class="Symbol"
+      >)</a
+      ><a name="3252"
+      >
+    </a
+      ><a name="3257" href="function.isomorphism.core.html#2283" class="Function Operator"
+      >&#8718;</a
+      ><a name="3258"
+      >
+    </a
+      ><a name="3263" class="Keyword"
+      >where</a
+      ><a name="3268"
+      >
+      </a
+      ><a name="3275" class="Keyword"
+      >open</a
+      ><a name="3279"
+      > </a
+      ><a name="3280" href="function.isomorphism.core.html#1670" class="Module"
+      >&#8773;-Reasoning</a
+      ><a name="3291"
+      >
+
+</a
+      ><a name="3293" class="Keyword"
+      >module</a
+      ><a name="3299"
+      > </a
+      ><a name="3300" href="container.w.algebra.html#3300" class="Module"
+      >_</a
+      ><a name="3301"
+      > </a
+      ><a name="3302" class="Symbol"
+      >{</a
+      ><a name="3303" href="container.w.algebra.html#3303" class="Bound"
+      >&#8467;</a
+      ><a name="3304" class="Symbol"
+      >}</a
+      ><a name="3305"
+      > </a
+      ><a name="3306" class="Symbol"
+      >(</a
+      ><a name="3307" href="container.w.algebra.html#3307" class="Bound"
+      >&#120039;</a
+      ><a name="3308"
+      > </a
+      ><a name="3309" class="Symbol"
+      >:</a
+      ><a name="3310"
+      > </a
+      ><a name="3311" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="3314"
+      > </a
+      ><a name="3315" href="container.w.algebra.html#3303" class="Bound"
+      >&#8467;</a
+      ><a name="3316" class="Symbol"
+      >)</a
+      ><a name="3317"
+      > </a
+      ><a name="3318" class="Keyword"
+      >where</a
+      ><a name="3323"
+      >
+  </a
+      ><a name="3326" class="Keyword"
+      >private</a
+      ><a name="3333"
+      >
+    </a
+      ><a name="3338" href="container.w.algebra.html#3338" class="Function"
+      >X</a
+      ><a name="3339"
+      > </a
+      ><a name="3340" class="Symbol"
+      >=</a
+      ><a name="3341"
+      > </a
+      ><a name="3342" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="3347"
+      > </a
+      ><a name="3348" href="container.w.algebra.html#3307" class="Bound"
+      >&#120039;</a
+      ><a name="3349" class="Symbol"
+      >;</a
+      ><a name="3350"
+      > </a
+      ><a name="3351" href="container.w.algebra.html#3351" class="Function"
+      >&#952;</a
+      ><a name="3352"
+      > </a
+      ><a name="3353" class="Symbol"
+      >=</a
+      ><a name="3354"
+      > </a
+      ><a name="3355" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="3360"
+      > </a
+      ><a name="3361" href="container.w.algebra.html#3307" class="Bound"
+      >&#120039;</a
+      ><a name="3362"
+      >
+
+    </a
+      ><a name="3368" href="container.w.algebra.html#3368" class="Function"
+      >lem</a
+      ><a name="3371"
+      > </a
+      ><a name="3372" class="Symbol"
+      >:</a
+      ><a name="3373"
+      > </a
+      ><a name="3374" class="Symbol"
+      >&#8704;</a
+      ><a name="3375"
+      > </a
+      ><a name="3376" class="Symbol"
+      >{</a
+      ><a name="3377" href="container.w.algebra.html#3377" class="Bound"
+      >&#8467;</a
+      ><a name="3378" class="Symbol"
+      >}{</a
+      ><a name="3380" href="container.w.algebra.html#3380" class="Bound"
+      >A</a
+      ><a name="3381"
+      > </a
+      ><a name="3382" class="Symbol"
+      >:</a
+      ><a name="3383"
+      > </a
+      ><a name="3384" class="PrimitiveType"
+      >Set</a
+      ><a name="3387"
+      > </a
+      ><a name="3388" href="container.w.algebra.html#3377" class="Bound"
+      >&#8467;</a
+      ><a name="3389" class="Symbol"
+      >}{</a
+      ><a name="3391" href="container.w.algebra.html#3391" class="Bound"
+      >x</a
+      ><a name="3392"
+      > </a
+      ><a name="3393" href="container.w.algebra.html#3393" class="Bound"
+      >y</a
+      ><a name="3394"
+      > </a
+      ><a name="3395" href="container.w.algebra.html#3395" class="Bound"
+      >z</a
+      ><a name="3396"
+      > </a
+      ><a name="3397" href="container.w.algebra.html#3397" class="Bound"
+      >w</a
+      ><a name="3398"
+      > </a
+      ><a name="3399" class="Symbol"
+      >:</a
+      ><a name="3400"
+      > </a
+      ><a name="3401" href="container.w.algebra.html#3380" class="Bound"
+      >A</a
+      ><a name="3402" class="Symbol"
+      >}</a
+      ><a name="3403"
+      >
+        </a
+      ><a name="3412" class="Symbol"
+      >&#8594;</a
+      ><a name="3413"
+      > </a
+      ><a name="3414" class="Symbol"
+      >(</a
+      ><a name="3415" href="container.w.algebra.html#3415" class="Bound"
+      >p</a
+      ><a name="3416"
+      > </a
+      ><a name="3417" class="Symbol"
+      >:</a
+      ><a name="3418"
+      > </a
+      ><a name="3419" href="container.w.algebra.html#3391" class="Bound"
+      >x</a
+      ><a name="3420"
+      > </a
+      ><a name="3421" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3422"
+      > </a
+      ><a name="3423" href="container.w.algebra.html#3397" class="Bound"
+      >w</a
+      ><a name="3424" class="Symbol"
+      >)</a
+      ><a name="3425"
+      > </a
+      ><a name="3426" class="Symbol"
+      >(</a
+      ><a name="3427" href="container.w.algebra.html#3427" class="Bound"
+      >q</a
+      ><a name="3428"
+      > </a
+      ><a name="3429" class="Symbol"
+      >:</a
+      ><a name="3430"
+      > </a
+      ><a name="3431" href="container.w.algebra.html#3393" class="Bound"
+      >y</a
+      ><a name="3432"
+      > </a
+      ><a name="3433" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3434"
+      > </a
+      ><a name="3435" href="container.w.algebra.html#3391" class="Bound"
+      >x</a
+      ><a name="3436" class="Symbol"
+      >)</a
+      ><a name="3437"
+      > </a
+      ><a name="3438" class="Symbol"
+      >(</a
+      ><a name="3439" href="container.w.algebra.html#3439" class="Bound"
+      >r</a
+      ><a name="3440"
+      > </a
+      ><a name="3441" class="Symbol"
+      >:</a
+      ><a name="3442"
+      > </a
+      ><a name="3443" href="container.w.algebra.html#3393" class="Bound"
+      >y</a
+      ><a name="3444"
+      > </a
+      ><a name="3445" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3446"
+      > </a
+      ><a name="3447" href="container.w.algebra.html#3395" class="Bound"
+      >z</a
+      ><a name="3448" class="Symbol"
+      >)</a
+      ><a name="3449"
+      > </a
+      ><a name="3450" class="Symbol"
+      >(</a
+      ><a name="3451" href="container.w.algebra.html#3451" class="Bound"
+      >s</a
+      ><a name="3452"
+      > </a
+      ><a name="3453" class="Symbol"
+      >:</a
+      ><a name="3454"
+      > </a
+      ><a name="3455" href="container.w.algebra.html#3395" class="Bound"
+      >z</a
+      ><a name="3456"
+      > </a
+      ><a name="3457" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3458"
+      > </a
+      ><a name="3459" href="container.w.algebra.html#3397" class="Bound"
+      >w</a
+      ><a name="3460" class="Symbol"
+      >)</a
+      ><a name="3461"
+      >
+        </a
+      ><a name="3470" class="Symbol"
+      >&#8594;</a
+      ><a name="3471"
+      > </a
+      ><a name="3472" href="container.w.algebra.html#3415" class="Bound"
+      >p</a
+      ><a name="3473"
+      > </a
+      ><a name="3474" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3475"
+      > </a
+      ><a name="3476" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3479"
+      > </a
+      ><a name="3480" href="container.w.algebra.html#3427" class="Bound"
+      >q</a
+      ><a name="3481"
+      > </a
+      ><a name="3482" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3483"
+      > </a
+      ><a name="3484" href="container.w.algebra.html#3439" class="Bound"
+      >r</a
+      ><a name="3485"
+      > </a
+      ><a name="3486" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3487"
+      > </a
+      ><a name="3488" href="container.w.algebra.html#3451" class="Bound"
+      >s</a
+      ><a name="3489"
+      > </a
+      ><a name="3490" class="Symbol"
+      >&#8594;</a
+      ><a name="3491"
+      > </a
+      ><a name="3492" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3495"
+      > </a
+      ><a name="3496" href="container.w.algebra.html#3439" class="Bound"
+      >r</a
+      ><a name="3497"
+      > </a
+      ><a name="3498" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3499"
+      > </a
+      ><a name="3500" href="container.w.algebra.html#3427" class="Bound"
+      >q</a
+      ><a name="3501"
+      > </a
+      ><a name="3502" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3503"
+      > </a
+      ><a name="3504" href="container.w.algebra.html#3415" class="Bound"
+      >p</a
+      ><a name="3505"
+      > </a
+      ><a name="3506" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3507"
+      > </a
+      ><a name="3508" href="container.w.algebra.html#3451" class="Bound"
+      >s</a
+      ><a name="3509"
+      >
+    </a
+      ><a name="3514" href="container.w.algebra.html#3368" class="Function"
+      >lem</a
+      ><a name="3517"
+      > </a
+      ><a name="3518" href="container.w.algebra.html#3518" class="Bound"
+      >p</a
+      ><a name="3519"
+      > </a
+      ><a name="3520" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3524"
+      > </a
+      ><a name="3525" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3529"
+      > </a
+      ><a name="3530" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="3534"
+      > </a
+      ><a name="3535" href="container.w.algebra.html#3535" class="Bound"
+      >&#945;</a
+      ><a name="3536"
+      > </a
+      ><a name="3537" class="Symbol"
+      >=</a
+      ><a name="3538"
+      > </a
+      ><a name="3539" href="container.w.algebra.html#3535" class="Bound"
+      >&#945;</a
+      ><a name="3540"
+      >
+
+  </a
+      ><a name="3544" href="container.w.algebra.html#3544" class="Function"
+      >W-mor-prop</a
+      ><a name="3554"
+      > </a
+      ><a name="3555" class="Symbol"
+      >:</a
+      ><a name="3556"
+      > </a
+      ><a name="3557" class="Symbol"
+      >(</a
+      ><a name="3558" href="container.w.algebra.html#3558" class="Bound"
+      >f</a
+      ><a name="3559"
+      > </a
+      ><a name="3560" href="container.w.algebra.html#3560" class="Bound"
+      >g</a
+      ><a name="3561"
+      > </a
+      ><a name="3562" class="Symbol"
+      >:</a
+      ><a name="3563"
+      > </a
+      ><a name="3564" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="3567"
+      > </a
+      ><a name="3568" href="container.w.algebra.html#646" class="Function"
+      >&#120038;</a
+      ><a name="3569"
+      > </a
+      ><a name="3570" href="container.w.algebra.html#3307" class="Bound"
+      >&#120039;</a
+      ><a name="3571" class="Symbol"
+      >)</a
+      ><a name="3572"
+      > </a
+      ><a name="3573" class="Symbol"
+      >&#8594;</a
+      ><a name="3574"
+      > </a
+      ><a name="3575" href="container.w.algebra.html#3558" class="Bound"
+      >f</a
+      ><a name="3576"
+      > </a
+      ><a name="3577" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3578"
+      > </a
+      ><a name="3579" href="container.w.algebra.html#3560" class="Bound"
+      >g</a
+      ><a name="3580"
+      >
+  </a
+      ><a name="3583" href="container.w.algebra.html#3544" class="Function"
+      >W-mor-prop</a
+      ><a name="3593"
+      > </a
+      ><a name="3594" class="Symbol"
+      >(</a
+      ><a name="3595" href="container.w.algebra.html#3595" class="Bound"
+      >f</a
+      ><a name="3596"
+      > </a
+      ><a name="3597" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3598"
+      > </a
+      ><a name="3599" href="container.w.algebra.html#3599" class="Bound"
+      >&#945;</a
+      ><a name="3600" class="Symbol"
+      >)</a
+      ><a name="3601"
+      > </a
+      ><a name="3602" class="Symbol"
+      >(</a
+      ><a name="3603" href="container.w.algebra.html#3603" class="Bound"
+      >g</a
+      ><a name="3604"
+      > </a
+      ><a name="3605" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3606"
+      > </a
+      ><a name="3607" href="container.w.algebra.html#3607" class="Bound"
+      >&#946;</a
+      ><a name="3608" class="Symbol"
+      >)</a
+      ><a name="3609"
+      > </a
+      ><a name="3610" class="Symbol"
+      >=</a
+      ><a name="3611"
+      > </a
+      ><a name="3612" href="function.isomorphism.core.html#452" class="Function"
+      >invert</a
+      ><a name="3618"
+      > </a
+      ><a name="3619" class="Symbol"
+      >(</a
+      ><a name="3620" href="container.w.algebra.html#2920" class="Function"
+      >eq-mor-iso</a
+      ><a name="3630"
+      > </a
+      ><a name="3631" href="container.w.algebra.html#646" class="Function"
+      >&#120038;</a
+      ><a name="3632"
+      > </a
+      ><a name="3633" href="container.w.algebra.html#3307" class="Bound"
+      >&#120039;</a
+      ><a name="3634" class="Symbol"
+      >)</a
+      ><a name="3635"
+      > </a
+      ><a name="3636" class="Symbol"
+      >(</a
+      ><a name="3637" href="container.w.algebra.html#3662" class="Function"
+      >p</a
+      ><a name="3638"
+      > </a
+      ><a name="3639" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3640"
+      > </a
+      ><a name="3641" href="container.w.algebra.html#3852" class="Function"
+      >p-h</a
+      ><a name="3644" class="Symbol"
+      >)</a
+      ><a name="3645"
+      >
+    </a
+      ><a name="3650" class="Keyword"
+      >where</a
+      ><a name="3655"
+      >
+      </a
+      ><a name="3662" href="container.w.algebra.html#3662" class="Function"
+      >p</a
+      ><a name="3663"
+      > </a
+      ><a name="3664" class="Symbol"
+      >:</a
+      ><a name="3665"
+      > </a
+      ><a name="3666" class="Symbol"
+      >&#8704;</a
+      ><a name="3667"
+      > </a
+      ><a name="3668" href="container.w.algebra.html#3668" class="Bound"
+      >i</a
+      ><a name="3669"
+      > </a
+      ><a name="3670" href="container.w.algebra.html#3670" class="Bound"
+      >x</a
+      ><a name="3671"
+      > </a
+      ><a name="3672" class="Symbol"
+      >&#8594;</a
+      ><a name="3673"
+      > </a
+      ><a name="3674" href="container.w.algebra.html#3595" class="Bound"
+      >f</a
+      ><a name="3675"
+      > </a
+      ><a name="3676" href="container.w.algebra.html#3668" class="Bound"
+      >i</a
+      ><a name="3677"
+      > </a
+      ><a name="3678" href="container.w.algebra.html#3670" class="Bound"
+      >x</a
+      ><a name="3679"
+      > </a
+      ><a name="3680" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3681"
+      > </a
+      ><a name="3682" href="container.w.algebra.html#3603" class="Bound"
+      >g</a
+      ><a name="3683"
+      > </a
+      ><a name="3684" href="container.w.algebra.html#3668" class="Bound"
+      >i</a
+      ><a name="3685"
+      > </a
+      ><a name="3686" href="container.w.algebra.html#3670" class="Bound"
+      >x</a
+      ><a name="3687"
+      >
+      </a
+      ><a name="3694" href="container.w.algebra.html#3662" class="Function"
+      >p</a
+      ><a name="3695"
+      > </a
+      ><a name="3696" href="container.w.algebra.html#3696" class="Bound"
+      >i</a
+      ><a name="3697"
+      > </a
+      ><a name="3698" class="Symbol"
+      >(</a
+      ><a name="3699" href="container.w.core.html#625" class="InductiveConstructor"
+      >sup</a
+      ><a name="3702"
+      > </a
+      ><a name="3703" href="container.w.algebra.html#3703" class="Bound"
+      >a</a
+      ><a name="3704"
+      > </a
+      ><a name="3705" href="container.w.algebra.html#3705" class="Bound"
+      >u</a
+      ><a name="3706" class="Symbol"
+      >)</a
+      ><a name="3707"
+      >
+        </a
+      ><a name="3716" class="Symbol"
+      >=</a
+      ><a name="3717"
+      > </a
+      ><a name="3718" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3721"
+      > </a
+      ><a name="3722" class="Symbol"
+      >(</a
+      ><a name="3723" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="3734"
+      > </a
+      ><a name="3735" href="container.w.algebra.html#3599" class="Bound"
+      >&#945;</a
+      ><a name="3736"
+      > </a
+      ><a name="3737" href="container.w.algebra.html#3696" class="Bound"
+      >i</a
+      ><a name="3738"
+      > </a
+      ><a name="3739" class="Symbol"
+      >(</a
+      ><a name="3740" href="container.w.algebra.html#3703" class="Bound"
+      >a</a
+      ><a name="3741"
+      > </a
+      ><a name="3742" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3743"
+      > </a
+      ><a name="3744" href="container.w.algebra.html#3705" class="Bound"
+      >u</a
+      ><a name="3745" class="Symbol"
+      >))</a
+      ><a name="3747"
+      >
+        </a
+      ><a name="3756" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3757"
+      > </a
+      ><a name="3758" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="3760"
+      > </a
+      ><a name="3761" class="Symbol"
+      >(</a
+      ><a name="3762" href="container.w.algebra.html#3351" class="Function"
+      >&#952;</a
+      ><a name="3763"
+      > </a
+      ><a name="3764" href="container.w.algebra.html#3696" class="Bound"
+      >i</a
+      ><a name="3765" class="Symbol"
+      >)</a
+      ><a name="3766"
+      > </a
+      ><a name="3767" class="Symbol"
+      >(</a
+      ><a name="3768" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="3770"
+      > </a
+      ><a name="3771" class="Symbol"
+      >(</a
+      ><a name="3772" href="sum.html#229" class="InductiveConstructor Operator"
+      >_,_</a
+      ><a name="3775"
+      > </a
+      ><a name="3776" href="container.w.algebra.html#3703" class="Bound"
+      >a</a
+      ><a name="3777" class="Symbol"
+      >)</a
+      ><a name="3778"
+      > </a
+      ><a name="3779" class="Symbol"
+      >(</a
+      ><a name="3780" href="function.extensionality.proof.html#1870" class="Function"
+      >funext</a
+      ><a name="3786"
+      > </a
+      ><a name="3787" class="Symbol"
+      >(&#955;</a
+      ><a name="3789"
+      > </a
+      ><a name="3790" href="container.w.algebra.html#3790" class="Bound"
+      >b</a
+      ><a name="3791"
+      > </a
+      ><a name="3792" class="Symbol"
+      >&#8594;</a
+      ><a name="3793"
+      > </a
+      ><a name="3794" href="container.w.algebra.html#3662" class="Function"
+      >p</a
+      ><a name="3795"
+      > </a
+      ><a name="3796" class="Symbol"
+      >(</a
+      ><a name="3797" href="container.core.html#307" class="Function"
+      >r</a
+      ><a name="3798"
+      > </a
+      ><a name="3799" href="container.w.algebra.html#3790" class="Bound"
+      >b</a
+      ><a name="3800" class="Symbol"
+      >)</a
+      ><a name="3801"
+      > </a
+      ><a name="3802" class="Symbol"
+      >(</a
+      ><a name="3803" href="container.w.algebra.html#3705" class="Bound"
+      >u</a
+      ><a name="3804"
+      > </a
+      ><a name="3805" href="container.w.algebra.html#3790" class="Bound"
+      >b</a
+      ><a name="3806" class="Symbol"
+      >))))</a
+      ><a name="3810"
+      >
+        </a
+      ><a name="3819" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3820"
+      > </a
+      ><a name="3821" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="3832"
+      > </a
+      ><a name="3833" href="container.w.algebra.html#3607" class="Bound"
+      >&#946;</a
+      ><a name="3834"
+      > </a
+      ><a name="3835" href="container.w.algebra.html#3696" class="Bound"
+      >i</a
+      ><a name="3836"
+      > </a
+      ><a name="3837" class="Symbol"
+      >(</a
+      ><a name="3838" href="container.w.algebra.html#3703" class="Bound"
+      >a</a
+      ><a name="3839"
+      > </a
+      ><a name="3840" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3841"
+      > </a
+      ><a name="3842" href="container.w.algebra.html#3705" class="Bound"
+      >u</a
+      ><a name="3843" class="Symbol"
+      >)</a
+      ><a name="3844"
+      >
+
+      </a
+      ><a name="3852" href="container.w.algebra.html#3852" class="Function"
+      >p-h</a
+      ><a name="3855"
+      > </a
+      ><a name="3856" class="Symbol"
+      >:</a
+      ><a name="3857"
+      > </a
+      ><a name="3858" class="Symbol"
+      >&#8704;</a
+      ><a name="3859"
+      > </a
+      ><a name="3860" href="container.w.algebra.html#3860" class="Bound"
+      >i</a
+      ><a name="3861"
+      > </a
+      ><a name="3862" href="container.w.algebra.html#3862" class="Bound"
+      >x</a
+      ><a name="3863"
+      >
+          </a
+      ><a name="3874" class="Symbol"
+      >&#8594;</a
+      ><a name="3875"
+      > </a
+      ><a name="3876" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="3879"
+      > </a
+      ><a name="3880" class="Symbol"
+      >(</a
+      ><a name="3881" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="3883"
+      > </a
+      ><a name="3884" class="Symbol"
+      >(</a
+      ><a name="3885" href="container.w.algebra.html#3351" class="Function"
+      >&#952;</a
+      ><a name="3886"
+      > </a
+      ><a name="3887" href="container.w.algebra.html#3860" class="Bound"
+      >i</a
+      ><a name="3888" class="Symbol"
+      >)</a
+      ><a name="3889"
+      > </a
+      ><a name="3890" class="Symbol"
+      >(</a
+      ><a name="3891" href="container.core.html#2180" class="Function"
+      >hmap</a
+      ><a name="3895"
+      > </a
+      ><a name="3896" href="container.w.algebra.html#3662" class="Function"
+      >p</a
+      ><a name="3897"
+      > </a
+      ><a name="3898" href="container.w.algebra.html#3860" class="Bound"
+      >i</a
+      ><a name="3899"
+      > </a
+      ><a name="3900" href="container.w.algebra.html#3862" class="Bound"
+      >x</a
+      ><a name="3901" class="Symbol"
+      >))</a
+      ><a name="3903"
+      >
+          </a
+      ><a name="3914" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3915"
+      > </a
+      ><a name="3916" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="3927"
+      > </a
+      ><a name="3928" href="container.w.algebra.html#3599" class="Bound"
+      >&#945;</a
+      ><a name="3929"
+      > </a
+      ><a name="3930" href="container.w.algebra.html#3860" class="Bound"
+      >i</a
+      ><a name="3931"
+      > </a
+      ><a name="3932" href="container.w.algebra.html#3862" class="Bound"
+      >x</a
+      ><a name="3933"
+      >
+          </a
+      ><a name="3944" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="3945"
+      > </a
+      ><a name="3946" href="container.w.algebra.html#3662" class="Function"
+      >p</a
+      ><a name="3947"
+      > </a
+      ><a name="3948" href="container.w.algebra.html#3860" class="Bound"
+      >i</a
+      ><a name="3949"
+      > </a
+      ><a name="3950" class="Symbol"
+      >(</a
+      ><a name="3951" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="3954"
+      > </a
+      ><a name="3955" href="container.w.algebra.html#97" class="Bound"
+      >c</a
+      ><a name="3956"
+      > </a
+      ><a name="3957" href="container.w.algebra.html#3860" class="Bound"
+      >i</a
+      ><a name="3958"
+      > </a
+      ><a name="3959" href="container.w.algebra.html#3862" class="Bound"
+      >x</a
+      ><a name="3960" class="Symbol"
+      >)</a
+      ><a name="3961"
+      >
+          </a
+      ><a name="3972" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3973"
+      > </a
+      ><a name="3974" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="3985"
+      > </a
+      ><a name="3986" href="container.w.algebra.html#3607" class="Bound"
+      >&#946;</a
+      ><a name="3987"
+      > </a
+      ><a name="3988" href="container.w.algebra.html#3860" class="Bound"
+      >i</a
+      ><a name="3989"
+      > </a
+      ><a name="3990" href="container.w.algebra.html#3862" class="Bound"
+      >x</a
+      ><a name="3991"
+      >
+      </a
+      ><a name="3998" href="container.w.algebra.html#3852" class="Function"
+      >p-h</a
+      ><a name="4001"
+      > </a
+      ><a name="4002" href="container.w.algebra.html#4002" class="Bound"
+      >i</a
+      ><a name="4003"
+      > </a
+      ><a name="4004" class="Symbol"
+      >(</a
+      ><a name="4005" href="container.w.algebra.html#4005" class="Bound"
+      >a</a
+      ><a name="4006"
+      > </a
+      ><a name="4007" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4008"
+      > </a
+      ><a name="4009" href="container.w.algebra.html#4009" class="Bound"
+      >u</a
+      ><a name="4010" class="Symbol"
+      >)</a
+      ><a name="4011"
+      > </a
+      ><a name="4012" class="Symbol"
+      >=</a
+      ><a name="4013"
+      > </a
+      ><a name="4014" href="container.w.algebra.html#3368" class="Function"
+      >lem</a
+      ><a name="4017"
+      > </a
+      ><a name="4018" class="Symbol"
+      >(</a
+      ><a name="4019" href="container.w.algebra.html#3662" class="Function"
+      >p</a
+      ><a name="4020"
+      > </a
+      ><a name="4021" href="container.w.algebra.html#4002" class="Bound"
+      >i</a
+      ><a name="4022"
+      > </a
+      ><a name="4023" class="Symbol"
+      >(</a
+      ><a name="4024" href="container.w.core.html#625" class="InductiveConstructor"
+      >sup</a
+      ><a name="4027"
+      > </a
+      ><a name="4028" href="container.w.algebra.html#4005" class="Bound"
+      >a</a
+      ><a name="4029"
+      > </a
+      ><a name="4030" href="container.w.algebra.html#4009" class="Bound"
+      >u</a
+      ><a name="4031" class="Symbol"
+      >))</a
+      ><a name="4033"
+      >
+                          </a
+      ><a name="4060" class="Symbol"
+      >(</a
+      ><a name="4061" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="4072"
+      > </a
+      ><a name="4073" href="container.w.algebra.html#3599" class="Bound"
+      >&#945;</a
+      ><a name="4074"
+      > </a
+      ><a name="4075" href="container.w.algebra.html#4002" class="Bound"
+      >i</a
+      ><a name="4076"
+      > </a
+      ><a name="4077" class="Symbol"
+      >(</a
+      ><a name="4078" href="container.w.algebra.html#4005" class="Bound"
+      >a</a
+      ><a name="4079"
+      > </a
+      ><a name="4080" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4081"
+      > </a
+      ><a name="4082" href="container.w.algebra.html#4009" class="Bound"
+      >u</a
+      ><a name="4083" class="Symbol"
+      >))</a
+      ><a name="4085"
+      > </a
+      ><a name="4086" class="Symbol"
+      >_</a
+      ><a name="4087"
+      >
+                          </a
+      ><a name="4114" class="Symbol"
+      >(</a
+      ><a name="4115" href="container.core.html#1619" class="Function"
+      >funext-inv&#8305;</a
+      ><a name="4126"
+      > </a
+      ><a name="4127" href="container.w.algebra.html#3607" class="Bound"
+      >&#946;</a
+      ><a name="4128"
+      > </a
+      ><a name="4129" href="container.w.algebra.html#4002" class="Bound"
+      >i</a
+      ><a name="4130"
+      > </a
+      ><a name="4131" class="Symbol"
+      >(</a
+      ><a name="4132" href="container.w.algebra.html#4005" class="Bound"
+      >a</a
+      ><a name="4133"
+      > </a
+      ><a name="4134" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4135"
+      > </a
+      ><a name="4136" href="container.w.algebra.html#4009" class="Bound"
+      >u</a
+      ><a name="4137" class="Symbol"
+      >))</a
+      ><a name="4139"
+      >
+                          </a
+      ><a name="4166" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="4170"
+      >
+
+  </a
+      ><a name="4174" href="container.w.algebra.html#4174" class="Function"
+      >W-mor</a
+      ><a name="4179"
+      > </a
+      ><a name="4180" class="Symbol"
+      >:</a
+      ><a name="4181"
+      > </a
+      ><a name="4182" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="4185"
+      > </a
+      ><a name="4186" href="container.w.algebra.html#646" class="Function"
+      >&#120038;</a
+      ><a name="4187"
+      > </a
+      ><a name="4188" href="container.w.algebra.html#3307" class="Bound"
+      >&#120039;</a
+      ><a name="4189"
+      >
+  </a
+      ><a name="4192" href="container.w.algebra.html#4174" class="Function"
+      >W-mor</a
+      ><a name="4197"
+      > </a
+      ><a name="4198" class="Symbol"
+      >=</a
+      ><a name="4199"
+      > </a
+      ><a name="4200" href="container.w.core.html#849" class="Function"
+      >fold</a
+      ><a name="4204"
+      > </a
+      ><a name="4205" href="container.w.algebra.html#97" class="Bound"
+      >c</a
+      ><a name="4206"
+      > </a
+      ><a name="4207" href="container.w.algebra.html#3351" class="Function"
+      >&#952;</a
+      ><a name="4208"
+      > </a
+      ><a name="4209" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4210"
+      > </a
+      ><a name="4211" href="container.core.html#1791" class="Function"
+      >funext&#8305;</a
+      ><a name="4218"
+      > </a
+      ><a name="4219" class="Symbol"
+      >(&#955;</a
+      ><a name="4221"
+      > </a
+      ><a name="4222" href="container.w.algebra.html#4222" class="Bound"
+      >i</a
+      ><a name="4223"
+      > </a
+      ><a name="4224" href="container.w.algebra.html#4224" class="Bound"
+      >x</a
+      ><a name="4225"
+      > </a
+      ><a name="4226" class="Symbol"
+      >&#8594;</a
+      ><a name="4227"
+      > </a
+      ><a name="4228" href="container.w.core.html#1005" class="Function"
+      >fold-&#946;</a
+      ><a name="4234"
+      > </a
+      ><a name="4235" href="container.w.algebra.html#97" class="Bound"
+      >c</a
+      ><a name="4236"
+      > </a
+      ><a name="4237" href="container.w.algebra.html#3351" class="Function"
+      >&#952;</a
+      ><a name="4238"
+      > </a
+      ><a name="4239" href="container.w.algebra.html#4224" class="Bound"
+      >x</a
+      ><a name="4240" class="Symbol"
+      >)</a
+      ><a name="4241"
+      >
+
+</a
+      ><a name="4243" href="container.w.algebra.html#4243" class="Function"
+      >W-initial</a
+      ><a name="4252"
+      > </a
+      ><a name="4253" class="Symbol"
+      >:</a
+      ><a name="4254"
+      > </a
+      ><a name="4255" class="Symbol"
+      >&#8704;</a
+      ><a name="4256"
+      > </a
+      ><a name="4257" class="Symbol"
+      >{</a
+      ><a name="4258" href="container.w.algebra.html#4258" class="Bound"
+      >&#8467;</a
+      ><a name="4259" class="Symbol"
+      >}</a
+      ><a name="4260"
+      > </a
+      ><a name="4261" class="Symbol"
+      >(</a
+      ><a name="4262" href="container.w.algebra.html#4262" class="Bound"
+      >&#120039;</a
+      ><a name="4263"
+      > </a
+      ><a name="4264" class="Symbol"
+      >:</a
+      ><a name="4265"
+      > </a
+      ><a name="4266" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="4269"
+      > </a
+      ><a name="4270" href="container.w.algebra.html#4258" class="Bound"
+      >&#8467;</a
+      ><a name="4271" class="Symbol"
+      >)</a
+      ><a name="4272"
+      > </a
+      ><a name="4273" class="Symbol"
+      >&#8594;</a
+      ><a name="4274"
+      > </a
+      ><a name="4275" href="hott.level.core.html#284" class="Function"
+      >contr</a
+      ><a name="4280"
+      > </a
+      ><a name="4281" class="Symbol"
+      >(</a
+      ><a name="4282" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="4285"
+      > </a
+      ><a name="4286" href="container.w.algebra.html#646" class="Function"
+      >&#120038;</a
+      ><a name="4287"
+      > </a
+      ><a name="4288" href="container.w.algebra.html#4262" class="Bound"
+      >&#120039;</a
+      ><a name="4289" class="Symbol"
+      >)</a
+      ><a name="4290"
+      >
+</a
+      ><a name="4291" href="container.w.algebra.html#4243" class="Function"
+      >W-initial</a
+      ><a name="4300"
+      > </a
+      ><a name="4301" href="container.w.algebra.html#4301" class="Bound"
+      >&#120039;</a
+      ><a name="4302"
+      > </a
+      ><a name="4303" class="Symbol"
+      >=</a
+      ><a name="4304"
+      > </a
+      ><a name="4305" href="container.w.algebra.html#4174" class="Function"
+      >W-mor</a
+      ><a name="4310"
+      > </a
+      ><a name="4311" href="container.w.algebra.html#4301" class="Bound"
+      >&#120039;</a
+      ><a name="4312"
+      > </a
+      ><a name="4313" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4314"
+      > </a
+      ><a name="4315" href="container.w.algebra.html#3544" class="Function"
+      >W-mor-prop</a
+      ><a name="4325"
+      > </a
+      ><a name="4326" href="container.w.algebra.html#4301" class="Bound"
+      >&#120039;</a
+      ><a name="4327"
+      > </a
+      ><a name="4328" class="Symbol"
+      >(</a
+      ><a name="4329" href="container.w.algebra.html#4174" class="Function"
+      >W-mor</a
+      ><a name="4334"
+      > </a
+      ><a name="4335" href="container.w.algebra.html#4301" class="Bound"
+      >&#120039;</a
+      ><a name="4336" class="Symbol"
+      >)</a
+      ><a name="4337"
+      >
+
+</a
+      ><a name="4339" class="Comment"
+      >-- special case of the isomorphism above, with better</a
+      ><a name="4392"
+      >
+</a
+      ><a name="4393" class="Comment"
+      >-- computational behaviour</a
+      ><a name="4419"
+      >
+</a
+      ><a name="4420" href="container.w.algebra.html#4420" class="Function"
+      >W-initial-W</a
+      ><a name="4431"
+      > </a
+      ><a name="4432" class="Symbol"
+      >:</a
+      ><a name="4433"
+      > </a
+      ><a name="4434" href="hott.level.core.html#284" class="Function"
+      >contr</a
+      ><a name="4439"
+      > </a
+      ><a name="4440" class="Symbol"
+      >(</a
+      ><a name="4441" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="4444"
+      > </a
+      ><a name="4445" href="container.w.algebra.html#646" class="Function"
+      >&#120038;</a
+      ><a name="4446"
+      > </a
+      ><a name="4447" href="container.w.algebra.html#646" class="Function"
+      >&#120038;</a
+      ><a name="4448" class="Symbol"
+      >)</a
+      ><a name="4449"
+      >
+</a
+      ><a name="4450" href="container.w.algebra.html#4420" class="Function"
+      >W-initial-W</a
+      ><a name="4461"
+      > </a
+      ><a name="4462" class="Symbol"
+      >=</a
+      ><a name="4463"
+      > </a
+      ><a name="4464" href="container.w.algebra.html#4505" class="Function"
+      >id-mor</a
+      ><a name="4470"
+      > </a
+      ><a name="4471" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4472"
+      > </a
+      ><a name="4473" href="container.w.algebra.html#3544" class="Function"
+      >W-mor-prop</a
+      ><a name="4483"
+      > </a
+      ><a name="4484" href="container.w.algebra.html#646" class="Function"
+      >&#120038;</a
+      ><a name="4485"
+      > </a
+      ><a name="4486" href="container.w.algebra.html#4505" class="Function"
+      >id-mor</a
+      ><a name="4492"
+      >
+  </a
+      ><a name="4495" class="Keyword"
+      >where</a
+      ><a name="4500"
+      >
+    </a
+      ><a name="4505" href="container.w.algebra.html#4505" class="Function"
+      >id-mor</a
+      ><a name="4511"
+      > </a
+      ><a name="4512" class="Symbol"
+      >:</a
+      ><a name="4513"
+      > </a
+      ><a name="4514" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="4517"
+      > </a
+      ><a name="4518" href="container.w.algebra.html#646" class="Function"
+      >&#120038;</a
+      ><a name="4519"
+      > </a
+      ><a name="4520" href="container.w.algebra.html#646" class="Function"
+      >&#120038;</a
+      ><a name="4521"
+      >
+    </a
+      ><a name="4526" href="container.w.algebra.html#4505" class="Function"
+      >id-mor</a
+      ><a name="4532"
+      > </a
+      ><a name="4533" class="Symbol"
+      >=</a
+      ><a name="4534"
+      > </a
+      ><a name="4535" class="Symbol"
+      >(&#955;</a
+      ><a name="4537"
+      > </a
+      ><a name="4538" href="container.w.algebra.html#4538" class="Bound"
+      >i</a
+      ><a name="4539"
+      > </a
+      ><a name="4540" href="container.w.algebra.html#4540" class="Bound"
+      >x</a
+      ><a name="4541"
+      > </a
+      ><a name="4542" class="Symbol"
+      >&#8594;</a
+      ><a name="4543"
+      > </a
+      ><a name="4544" href="container.w.algebra.html#4540" class="Bound"
+      >x</a
+      ><a name="4545" class="Symbol"
+      >)</a
+      ><a name="4546"
+      > </a
+      ><a name="4547" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="4548"
+      > </a
+      ><a name="4549" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="4553"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

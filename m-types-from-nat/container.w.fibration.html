@@ -1,0 +1,4221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >container.w.fibration</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >open</a
+      ><a name="33"
+      > </a
+      ><a name="34" class="Keyword"
+      >import</a
+      ><a name="40"
+      > </a
+      ><a name="41" href="container.core.html#1" class="Module"
+      >container.core</a
+      ><a name="55"
+      >
+
+</a
+      ><a name="57" class="Keyword"
+      >module</a
+      ><a name="63"
+      > </a
+      ><a name="64" href="container.w.fibration.html#1" class="Module"
+      >container.w.fibration</a
+      ><a name="85"
+      >
+  </a
+      ><a name="88" class="Symbol"
+      >{</a
+      ><a name="89" href="container.w.fibration.html#89" class="Bound"
+      >li</a
+      ><a name="91"
+      > </a
+      ><a name="92" href="container.w.fibration.html#92" class="Bound"
+      >la</a
+      ><a name="94"
+      > </a
+      ><a name="95" href="container.w.fibration.html#95" class="Bound"
+      >lb</a
+      ><a name="97" class="Symbol"
+      >}(</a
+      ><a name="99" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="100"
+      > </a
+      ><a name="101" class="Symbol"
+      >:</a
+      ><a name="102"
+      > </a
+      ><a name="103" href="container.core.html#143" class="Record"
+      >Container</a
+      ><a name="112"
+      > </a
+      ><a name="113" href="container.w.fibration.html#89" class="Bound"
+      >li</a
+      ><a name="115"
+      > </a
+      ><a name="116" href="container.w.fibration.html#92" class="Bound"
+      >la</a
+      ><a name="118"
+      > </a
+      ><a name="119" href="container.w.fibration.html#95" class="Bound"
+      >lb</a
+      ><a name="121" class="Symbol"
+      >)</a
+      ><a name="122"
+      > </a
+      ><a name="123" class="Keyword"
+      >where</a
+      ><a name="128"
+      >
+
+</a
+      ><a name="130" class="Keyword"
+      >open</a
+      ><a name="134"
+      > </a
+      ><a name="135" class="Keyword"
+      >import</a
+      ><a name="141"
+      > </a
+      ><a name="142" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="145"
+      >
+</a
+      ><a name="146" class="Keyword"
+      >open</a
+      ><a name="150"
+      > </a
+      ><a name="151" class="Keyword"
+      >import</a
+      ><a name="157"
+      > </a
+      ><a name="158" href="equality.html#1" class="Module"
+      >equality</a
+      ><a name="166"
+      >
+</a
+      ><a name="167" class="Keyword"
+      >open</a
+      ><a name="171"
+      > </a
+      ><a name="172" class="Keyword"
+      >import</a
+      ><a name="178"
+      > </a
+      ><a name="179" href="function.html#1" class="Module"
+      >function</a
+      ><a name="187"
+      >
+</a
+      ><a name="188" class="Keyword"
+      >open</a
+      ><a name="192"
+      > </a
+      ><a name="193" class="Keyword"
+      >import</a
+      ><a name="199"
+      > </a
+      ><a name="200" href="container.w.core.html#1" class="Module"
+      >container.w.core</a
+      ><a name="216"
+      >
+</a
+      ><a name="217" class="Keyword"
+      >open</a
+      ><a name="221"
+      > </a
+      ><a name="222" class="Keyword"
+      >import</a
+      ><a name="228"
+      > </a
+      ><a name="229" href="container.w.algebra.html#1" class="Module"
+      >container.w.algebra</a
+      ><a name="248"
+      > </a
+      ><a name="249" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="250"
+      >
+</a
+      ><a name="251" class="Keyword"
+      >open</a
+      ><a name="255"
+      > </a
+      ><a name="256" class="Keyword"
+      >import</a
+      ><a name="262"
+      > </a
+      ><a name="263" href="hott.level.html#1" class="Module"
+      >hott.level</a
+      ><a name="273"
+      >
+
+</a
+      ><a name="275" class="Keyword"
+      >open</a
+      ><a name="279"
+      > </a
+      ><a name="280" href="container.core.html#143" class="Module"
+      >Container</a
+      ><a name="289"
+      > </a
+      ><a name="290" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="291"
+      >
+
+</a
+      ><a name="293" href="container.w.fibration.html#293" class="Function"
+      >AlgFib</a
+      ><a name="299"
+      > </a
+      ><a name="300" class="Symbol"
+      >:</a
+      ><a name="301"
+      > </a
+      ><a name="302" class="Symbol"
+      >&#8704;</a
+      ><a name="303"
+      > </a
+      ><a name="304" href="container.w.fibration.html#304" class="Bound"
+      >&#8467;</a
+      ><a name="305"
+      > </a
+      ><a name="306" class="Symbol"
+      >&#8594;</a
+      ><a name="307"
+      > </a
+      ><a name="308" class="PrimitiveType"
+      >Set</a
+      ><a name="311"
+      > </a
+      ><a name="312" class="Symbol"
+      >_</a
+      ><a name="313"
+      >
+</a
+      ><a name="314" href="container.w.fibration.html#293" class="Function"
+      >AlgFib</a
+      ><a name="320"
+      > </a
+      ><a name="321" href="container.w.fibration.html#321" class="Bound"
+      >&#8467;</a
+      ><a name="322"
+      > </a
+      ><a name="323" class="Symbol"
+      >=</a
+      ><a name="324"
+      > </a
+      ><a name="325" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="326"
+      > </a
+      ><a name="327" class="Symbol"
+      >((</a
+      ><a name="329" href="container.w.fibration.html#329" class="Bound"
+      >i</a
+      ><a name="330"
+      > </a
+      ><a name="331" class="Symbol"
+      >:</a
+      ><a name="332"
+      > </a
+      ><a name="333" href="container.core.html#242" class="Function"
+      >I</a
+      ><a name="334" class="Symbol"
+      >)</a
+      ><a name="335"
+      > </a
+      ><a name="336" class="Symbol"
+      >&#8594;</a
+      ><a name="337"
+      > </a
+      ><a name="338" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="339"
+      > </a
+      ><a name="340" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="341"
+      > </a
+      ><a name="342" href="container.w.fibration.html#329" class="Bound"
+      >i</a
+      ><a name="343"
+      > </a
+      ><a name="344" class="Symbol"
+      >&#8594;</a
+      ><a name="345"
+      > </a
+      ><a name="346" class="PrimitiveType"
+      >Set</a
+      ><a name="349"
+      > </a
+      ><a name="350" href="container.w.fibration.html#321" class="Bound"
+      >&#8467;</a
+      ><a name="351" class="Symbol"
+      >)</a
+      ><a name="352"
+      > </a
+      ><a name="353" class="Symbol"
+      >&#955;</a
+      ><a name="354"
+      > </a
+      ><a name="355" href="container.w.fibration.html#355" class="Bound"
+      >P</a
+      ><a name="356"
+      >
+         </a
+      ><a name="366" class="Symbol"
+      >&#8594;</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="Symbol"
+      >(&#8704;</a
+      ><a name="370"
+      > </a
+      ><a name="371" href="container.w.fibration.html#371" class="Bound"
+      >i</a
+      ><a name="372"
+      > </a
+      ><a name="373" href="container.w.fibration.html#373" class="Bound"
+      >x</a
+      ><a name="374"
+      > </a
+      ><a name="375" class="Symbol"
+      >&#8594;</a
+      ><a name="376"
+      > </a
+      ><a name="377" class="Symbol"
+      >((</a
+      ><a name="379" href="container.w.fibration.html#379" class="Bound"
+      >b</a
+      ><a name="380"
+      > </a
+      ><a name="381" class="Symbol"
+      >:</a
+      ><a name="382"
+      > </a
+      ><a name="383" href="container.core.html#276" class="Function"
+      >B</a
+      ><a name="384"
+      > </a
+      ><a name="385" class="Symbol"
+      >(</a
+      ><a name="386" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="391"
+      > </a
+      ><a name="392" href="container.w.fibration.html#373" class="Bound"
+      >x</a
+      ><a name="393" class="Symbol"
+      >))</a
+      ><a name="395"
+      > </a
+      ><a name="396" class="Symbol"
+      >&#8594;</a
+      ><a name="397"
+      > </a
+      ><a name="398" href="container.w.fibration.html#355" class="Bound"
+      >P</a
+      ><a name="399"
+      > </a
+      ><a name="400" class="Symbol"
+      >(</a
+      ><a name="401" href="container.core.html#307" class="Function"
+      >r</a
+      ><a name="402"
+      > </a
+      ><a name="403" href="container.w.fibration.html#379" class="Bound"
+      >b</a
+      ><a name="404" class="Symbol"
+      >)</a
+      ><a name="405"
+      > </a
+      ><a name="406" class="Symbol"
+      >(</a
+      ><a name="407" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="412"
+      > </a
+      ><a name="413" href="container.w.fibration.html#373" class="Bound"
+      >x</a
+      ><a name="414"
+      > </a
+      ><a name="415" href="container.w.fibration.html#379" class="Bound"
+      >b</a
+      ><a name="416" class="Symbol"
+      >))</a
+      ><a name="418"
+      > </a
+      ><a name="419" class="Symbol"
+      >&#8594;</a
+      ><a name="420"
+      > </a
+      ><a name="421" href="container.w.fibration.html#355" class="Bound"
+      >P</a
+      ><a name="422"
+      > </a
+      ><a name="423" href="container.w.fibration.html#371" class="Bound"
+      >i</a
+      ><a name="424"
+      > </a
+      ><a name="425" class="Symbol"
+      >(</a
+      ><a name="426" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="429"
+      > </a
+      ><a name="430" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="431"
+      > </a
+      ><a name="432" href="container.w.fibration.html#371" class="Bound"
+      >i</a
+      ><a name="433"
+      > </a
+      ><a name="434" href="container.w.fibration.html#373" class="Bound"
+      >x</a
+      ><a name="435" class="Symbol"
+      >))</a
+      ><a name="437"
+      >
+
+</a
+      ><a name="439" href="container.w.fibration.html#439" class="Function"
+      >AlgSection</a
+      ><a name="449"
+      > </a
+      ><a name="450" class="Symbol"
+      >:</a
+      ><a name="451"
+      > </a
+      ><a name="452" class="Symbol"
+      >&#8704;</a
+      ><a name="453"
+      > </a
+      ><a name="454" class="Symbol"
+      >{</a
+      ><a name="455" href="container.w.fibration.html#455" class="Bound"
+      >&#8467;</a
+      ><a name="456" class="Symbol"
+      >}</a
+      ><a name="457"
+      > </a
+      ><a name="458" class="Symbol"
+      >(</a
+      ><a name="459" href="container.w.fibration.html#459" class="Bound"
+      >&#120031;</a
+      ><a name="460"
+      > </a
+      ><a name="461" class="Symbol"
+      >:</a
+      ><a name="462"
+      > </a
+      ><a name="463" href="container.w.fibration.html#293" class="Function"
+      >AlgFib</a
+      ><a name="469"
+      > </a
+      ><a name="470" href="container.w.fibration.html#455" class="Bound"
+      >&#8467;</a
+      ><a name="471" class="Symbol"
+      >)</a
+      ><a name="472"
+      > </a
+      ><a name="473" class="Symbol"
+      >&#8594;</a
+      ><a name="474"
+      > </a
+      ><a name="475" class="PrimitiveType"
+      >Set</a
+      ><a name="478"
+      > </a
+      ><a name="479" class="Symbol"
+      >_</a
+      ><a name="480"
+      >
+</a
+      ><a name="481" href="container.w.fibration.html#439" class="Function"
+      >AlgSection</a
+      ><a name="491"
+      > </a
+      ><a name="492" class="Symbol"
+      >(</a
+      ><a name="493" href="container.w.fibration.html#493" class="Bound"
+      >P</a
+      ><a name="494"
+      > </a
+      ><a name="495" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="496"
+      > </a
+      ><a name="497" href="container.w.fibration.html#497" class="Bound"
+      >&#952;</a
+      ><a name="498" class="Symbol"
+      >)</a
+      ><a name="499"
+      > </a
+      ><a name="500" class="Symbol"
+      >=</a
+      ><a name="501"
+      > </a
+      ><a name="502" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="503"
+      > </a
+      ><a name="504" class="Symbol"
+      >(&#8704;</a
+      ><a name="506"
+      > </a
+      ><a name="507" href="container.w.fibration.html#507" class="Bound"
+      >i</a
+      ><a name="508"
+      > </a
+      ><a name="509" href="container.w.fibration.html#509" class="Bound"
+      >x</a
+      ><a name="510"
+      > </a
+      ><a name="511" class="Symbol"
+      >&#8594;</a
+      ><a name="512"
+      > </a
+      ><a name="513" href="container.w.fibration.html#493" class="Bound"
+      >P</a
+      ><a name="514"
+      > </a
+      ><a name="515" href="container.w.fibration.html#507" class="Bound"
+      >i</a
+      ><a name="516"
+      > </a
+      ><a name="517" href="container.w.fibration.html#509" class="Bound"
+      >x</a
+      ><a name="518" class="Symbol"
+      >)</a
+      ><a name="519"
+      > </a
+      ><a name="520" class="Symbol"
+      >&#955;</a
+      ><a name="521"
+      > </a
+      ><a name="522" href="container.w.fibration.html#522" class="Bound"
+      >f</a
+      ><a name="523"
+      >
+                   </a
+      ><a name="543" class="Symbol"
+      >&#8594;</a
+      ><a name="544"
+      > </a
+      ><a name="545" href="equality.core.html#145" class="Datatype Operator"
+      >_&#8801;_</a
+      ><a name="548"
+      > </a
+      ><a name="549" class="Symbol"
+      >{</a
+      ><a name="550" class="Argument"
+      >A</a
+      ><a name="551"
+      > </a
+      ><a name="552" class="Symbol"
+      >=</a
+      ><a name="553"
+      > </a
+      ><a name="554" class="Symbol"
+      >&#8704;</a
+      ><a name="555"
+      > </a
+      ><a name="556" href="container.w.fibration.html#556" class="Bound"
+      >i</a
+      ><a name="557"
+      > </a
+      ><a name="558" href="container.w.fibration.html#558" class="Bound"
+      >x</a
+      ><a name="559"
+      > </a
+      ><a name="560" class="Symbol"
+      >&#8594;</a
+      ><a name="561"
+      > </a
+      ><a name="562" href="container.w.fibration.html#493" class="Bound"
+      >P</a
+      ><a name="563"
+      > </a
+      ><a name="564" href="container.w.fibration.html#556" class="Bound"
+      >i</a
+      ><a name="565"
+      > </a
+      ><a name="566" class="Symbol"
+      >(</a
+      ><a name="567" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="570"
+      > </a
+      ><a name="571" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="572"
+      > </a
+      ><a name="573" href="container.w.fibration.html#556" class="Bound"
+      >i</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="container.w.fibration.html#558" class="Bound"
+      >x</a
+      ><a name="576" class="Symbol"
+      >)}</a
+      ><a name="578"
+      >
+                     </a
+      ><a name="600" class="Symbol"
+      >(&#955;</a
+      ><a name="602"
+      > </a
+      ><a name="603" href="container.w.fibration.html#603" class="Bound"
+      >i</a
+      ><a name="604"
+      > </a
+      ><a name="605" href="container.w.fibration.html#605" class="Bound"
+      >x</a
+      ><a name="606"
+      > </a
+      ><a name="607" class="Symbol"
+      >&#8594;</a
+      ><a name="608"
+      > </a
+      ><a name="609" href="container.w.fibration.html#497" class="Bound"
+      >&#952;</a
+      ><a name="610"
+      > </a
+      ><a name="611" href="container.w.fibration.html#603" class="Bound"
+      >i</a
+      ><a name="612"
+      > </a
+      ><a name="613" href="container.w.fibration.html#605" class="Bound"
+      >x</a
+      ><a name="614"
+      > </a
+      ><a name="615" class="Symbol"
+      >(&#955;</a
+      ><a name="617"
+      > </a
+      ><a name="618" href="container.w.fibration.html#618" class="Bound"
+      >b</a
+      ><a name="619"
+      > </a
+      ><a name="620" class="Symbol"
+      >&#8594;</a
+      ><a name="621"
+      > </a
+      ><a name="622" href="container.w.fibration.html#522" class="Bound"
+      >f</a
+      ><a name="623"
+      > </a
+      ><a name="624" class="Symbol"
+      >(</a
+      ><a name="625" href="container.core.html#307" class="Function"
+      >r</a
+      ><a name="626"
+      > </a
+      ><a name="627" href="container.w.fibration.html#618" class="Bound"
+      >b</a
+      ><a name="628" class="Symbol"
+      >)</a
+      ><a name="629"
+      > </a
+      ><a name="630" class="Symbol"
+      >(</a
+      ><a name="631" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="636"
+      > </a
+      ><a name="637" href="container.w.fibration.html#605" class="Bound"
+      >x</a
+      ><a name="638"
+      > </a
+      ><a name="639" href="container.w.fibration.html#618" class="Bound"
+      >b</a
+      ><a name="640" class="Symbol"
+      >)))</a
+      ><a name="643"
+      >
+                     </a
+      ><a name="665" class="Symbol"
+      >(&#955;</a
+      ><a name="667"
+      > </a
+      ><a name="668" href="container.w.fibration.html#668" class="Bound"
+      >i</a
+      ><a name="669"
+      > </a
+      ><a name="670" href="container.w.fibration.html#670" class="Bound"
+      >x</a
+      ><a name="671"
+      > </a
+      ><a name="672" class="Symbol"
+      >&#8594;</a
+      ><a name="673"
+      > </a
+      ><a name="674" href="container.w.fibration.html#522" class="Bound"
+      >f</a
+      ><a name="675"
+      > </a
+      ><a name="676" href="container.w.fibration.html#668" class="Bound"
+      >i</a
+      ><a name="677"
+      > </a
+      ><a name="678" class="Symbol"
+      >(</a
+      ><a name="679" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="682"
+      > </a
+      ><a name="683" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="684"
+      > </a
+      ><a name="685" href="container.w.fibration.html#668" class="Bound"
+      >i</a
+      ><a name="686"
+      > </a
+      ><a name="687" href="container.w.fibration.html#670" class="Bound"
+      >x</a
+      ><a name="688" class="Symbol"
+      >))</a
+      ><a name="690"
+      >
+
+</a
+      ><a name="692" href="container.w.fibration.html#692" class="Function"
+      >alg-total</a
+      ><a name="701"
+      > </a
+      ><a name="702" class="Symbol"
+      >:</a
+      ><a name="703"
+      > </a
+      ><a name="704" class="Symbol"
+      >&#8704;</a
+      ><a name="705"
+      > </a
+      ><a name="706" class="Symbol"
+      >{</a
+      ><a name="707" href="container.w.fibration.html#707" class="Bound"
+      >&#8467;</a
+      ><a name="708" class="Symbol"
+      >}</a
+      ><a name="709"
+      > </a
+      ><a name="710" class="Symbol"
+      >&#8594;</a
+      ><a name="711"
+      > </a
+      ><a name="712" href="container.w.fibration.html#293" class="Function"
+      >AlgFib</a
+      ><a name="718"
+      > </a
+      ><a name="719" href="container.w.fibration.html#707" class="Bound"
+      >&#8467;</a
+      ><a name="720"
+      > </a
+      ><a name="721" class="Symbol"
+      >&#8594;</a
+      ><a name="722"
+      > </a
+      ><a name="723" href="container.w.algebra.html#310" class="Function"
+      >Alg</a
+      ><a name="726"
+      > </a
+      ><a name="727" class="Symbol"
+      >_</a
+      ><a name="728"
+      >
+</a
+      ><a name="729" href="container.w.fibration.html#692" class="Function"
+      >alg-total</a
+      ><a name="738"
+      > </a
+      ><a name="739" class="Symbol"
+      >(</a
+      ><a name="740" href="container.w.fibration.html#740" class="Bound"
+      >P</a
+      ><a name="741"
+      > </a
+      ><a name="742" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="743"
+      > </a
+      ><a name="744" href="container.w.fibration.html#744" class="Bound"
+      >&#952;</a
+      ><a name="745" class="Symbol"
+      >)</a
+      ><a name="746"
+      > </a
+      ><a name="747" class="Symbol"
+      >=</a
+      ><a name="748"
+      > </a
+      ><a name="749" href="container.w.fibration.html#767" class="Function"
+      >X</a
+      ><a name="750"
+      > </a
+      ><a name="751" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="752"
+      > </a
+      ><a name="753" href="container.w.fibration.html#812" class="Function"
+      >&#968;</a
+      ><a name="754"
+      >
+  </a
+      ><a name="757" class="Keyword"
+      >where</a
+      ><a name="762"
+      >
+    </a
+      ><a name="767" href="container.w.fibration.html#767" class="Function"
+      >X</a
+      ><a name="768"
+      > </a
+      ><a name="769" class="Symbol"
+      >:</a
+      ><a name="770"
+      > </a
+      ><a name="771" href="container.core.html#242" class="Function"
+      >I</a
+      ><a name="772"
+      > </a
+      ><a name="773" class="Symbol"
+      >&#8594;</a
+      ><a name="774"
+      > </a
+      ><a name="775" class="PrimitiveType"
+      >Set</a
+      ><a name="778"
+      > </a
+      ><a name="779" class="Symbol"
+      >_</a
+      ><a name="780"
+      >
+    </a
+      ><a name="785" href="container.w.fibration.html#767" class="Function"
+      >X</a
+      ><a name="786"
+      > </a
+      ><a name="787" href="container.w.fibration.html#787" class="Bound"
+      >i</a
+      ><a name="788"
+      > </a
+      ><a name="789" class="Symbol"
+      >=</a
+      ><a name="790"
+      > </a
+      ><a name="791" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="792"
+      > </a
+      ><a name="793" class="Symbol"
+      >(</a
+      ><a name="794" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="795"
+      > </a
+      ><a name="796" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="797"
+      > </a
+      ><a name="798" href="container.w.fibration.html#787" class="Bound"
+      >i</a
+      ><a name="799" class="Symbol"
+      >)</a
+      ><a name="800"
+      > </a
+      ><a name="801" class="Symbol"
+      >(</a
+      ><a name="802" href="container.w.fibration.html#740" class="Bound"
+      >P</a
+      ><a name="803"
+      > </a
+      ><a name="804" href="container.w.fibration.html#787" class="Bound"
+      >i</a
+      ><a name="805" class="Symbol"
+      >)</a
+      ><a name="806"
+      >
+
+    </a
+      ><a name="812" href="container.w.fibration.html#812" class="Function"
+      >&#968;</a
+      ><a name="813"
+      > </a
+      ><a name="814" class="Symbol"
+      >:</a
+      ><a name="815"
+      > </a
+      ><a name="816" href="container.core.html#391" class="Function"
+      >F</a
+      ><a name="817"
+      > </a
+      ><a name="818" href="container.w.fibration.html#767" class="Function"
+      >X</a
+      ><a name="819"
+      > </a
+      ><a name="820" href="container.core.html#987" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="822"
+      > </a
+      ><a name="823" href="container.w.fibration.html#767" class="Function"
+      >X</a
+      ><a name="824"
+      >
+    </a
+      ><a name="829" href="container.w.fibration.html#812" class="Function"
+      >&#968;</a
+      ><a name="830"
+      > </a
+      ><a name="831" href="container.w.fibration.html#831" class="Bound"
+      >i</a
+      ><a name="832"
+      > </a
+      ><a name="833" class="Symbol"
+      >(</a
+      ><a name="834" href="container.w.fibration.html#834" class="Bound"
+      >a</a
+      ><a name="835"
+      > </a
+      ><a name="836" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="837"
+      > </a
+      ><a name="838" href="container.w.fibration.html#838" class="Bound"
+      >u</a
+      ><a name="839" class="Symbol"
+      >)</a
+      ><a name="840"
+      > </a
+      ><a name="841" class="Symbol"
+      >=</a
+      ><a name="842"
+      > </a
+      ><a name="843" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="846"
+      > </a
+      ><a name="847" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="848"
+      > </a
+      ><a name="849" href="container.w.fibration.html#831" class="Bound"
+      >i</a
+      ><a name="850"
+      > </a
+      ><a name="851" class="Symbol"
+      >(</a
+      ><a name="852" href="container.w.fibration.html#834" class="Bound"
+      >a</a
+      ><a name="853"
+      > </a
+      ><a name="854" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="855"
+      > </a
+      ><a name="856" class="Symbol"
+      >&#955;</a
+      ><a name="857"
+      > </a
+      ><a name="858" href="container.w.fibration.html#858" class="Bound"
+      >b</a
+      ><a name="859"
+      > </a
+      ><a name="860" class="Symbol"
+      >&#8594;</a
+      ><a name="861"
+      > </a
+      ><a name="862" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="867"
+      > </a
+      ><a name="868" class="Symbol"
+      >(</a
+      ><a name="869" href="container.w.fibration.html#838" class="Bound"
+      >u</a
+      ><a name="870"
+      > </a
+      ><a name="871" href="container.w.fibration.html#858" class="Bound"
+      >b</a
+      ><a name="872" class="Symbol"
+      >))</a
+      ><a name="874"
+      >
+                </a
+      ><a name="891" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="892"
+      > </a
+      ><a name="893" href="container.w.fibration.html#744" class="Bound"
+      >&#952;</a
+      ><a name="894"
+      > </a
+      ><a name="895" href="container.w.fibration.html#831" class="Bound"
+      >i</a
+      ><a name="896"
+      > </a
+      ><a name="897" class="Symbol"
+      >(</a
+      ><a name="898" href="container.w.fibration.html#834" class="Bound"
+      >a</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="901"
+      > </a
+      ><a name="902" class="Symbol"
+      >&#955;</a
+      ><a name="903"
+      > </a
+      ><a name="904" href="container.w.fibration.html#904" class="Bound"
+      >b</a
+      ><a name="905"
+      > </a
+      ><a name="906" class="Symbol"
+      >&#8594;</a
+      ><a name="907"
+      > </a
+      ><a name="908" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="913"
+      > </a
+      ><a name="914" class="Symbol"
+      >(</a
+      ><a name="915" href="container.w.fibration.html#838" class="Bound"
+      >u</a
+      ><a name="916"
+      > </a
+      ><a name="917" href="container.w.fibration.html#904" class="Bound"
+      >b</a
+      ><a name="918" class="Symbol"
+      >))</a
+      ><a name="920"
+      > </a
+      ><a name="921" class="Symbol"
+      >(&#955;</a
+      ><a name="923"
+      > </a
+      ><a name="924" href="container.w.fibration.html#924" class="Bound"
+      >b</a
+      ><a name="925"
+      > </a
+      ><a name="926" class="Symbol"
+      >&#8594;</a
+      ><a name="927"
+      > </a
+      ><a name="928" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="933"
+      > </a
+      ><a name="934" class="Symbol"
+      >(</a
+      ><a name="935" href="container.w.fibration.html#838" class="Bound"
+      >u</a
+      ><a name="936"
+      > </a
+      ><a name="937" href="container.w.fibration.html#924" class="Bound"
+      >b</a
+      ><a name="938" class="Symbol"
+      >))</a
+      ><a name="940"
+      >
+
+</a
+      ><a name="942" class="Keyword"
+      >module</a
+      ><a name="948"
+      > </a
+      ><a name="949" href="container.w.fibration.html#949" class="Module"
+      >_</a
+      ><a name="950"
+      > </a
+      ><a name="951" class="Symbol"
+      >{</a
+      ><a name="952" href="container.w.fibration.html#952" class="Bound"
+      >&#8467;</a
+      ><a name="953" class="Symbol"
+      >}</a
+      ><a name="954"
+      > </a
+      ><a name="955" class="Symbol"
+      >(</a
+      ><a name="956" href="container.w.fibration.html#956" class="Bound"
+      >&#120031;</a
+      ><a name="957"
+      > </a
+      ><a name="958" class="Symbol"
+      >:</a
+      ><a name="959"
+      > </a
+      ><a name="960" href="container.w.fibration.html#293" class="Function"
+      >AlgFib</a
+      ><a name="966"
+      > </a
+      ><a name="967" href="container.w.fibration.html#952" class="Bound"
+      >&#8467;</a
+      ><a name="968" class="Symbol"
+      >)</a
+      ><a name="969"
+      > </a
+      ><a name="970" class="Keyword"
+      >where</a
+      ><a name="975"
+      >
+  </a
+      ><a name="978" class="Keyword"
+      >private</a
+      ><a name="985"
+      > </a
+      ><a name="986" href="container.w.fibration.html#986" class="Function"
+      >&#120039;</a
+      ><a name="987"
+      > </a
+      ><a name="988" class="Symbol"
+      >=</a
+      ><a name="989"
+      > </a
+      ><a name="990" href="container.w.fibration.html#692" class="Function"
+      >alg-total</a
+      ><a name="999"
+      > </a
+      ><a name="1000" href="container.w.fibration.html#956" class="Bound"
+      >&#120031;</a
+      ><a name="1001"
+      >
+  </a
+      ><a name="1004" class="Keyword"
+      >open</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" href="sum.html#159" class="Module"
+      >&#931;</a
+      ><a name="1010"
+      > </a
+      ><a name="1011" href="container.w.fibration.html#956" class="Bound"
+      >&#120031;</a
+      ><a name="1012"
+      > </a
+      ><a name="1013" class="Keyword"
+      >renaming</a
+      ><a name="1021"
+      > </a
+      ><a name="1022" class="Symbol"
+      >(</a
+      ><a name="1023"
+      >proj&#8321; </a
+      ><a name="1029" class="Symbol"
+      >to</a
+      ><a name="1031"
+      > P </a
+      ><a name="1034" class="Symbol"
+      >;</a
+      ><a name="1035"
+      > proj&#8322; </a
+      ><a name="1042" class="Symbol"
+      >to</a
+      ><a name="1044"
+      > &#952;</a
+      ><a name="1046" class="Symbol"
+      >)</a
+      ><a name="1047"
+      >
+  </a
+      ><a name="1050" class="Keyword"
+      >open</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" href="sum.html#159" class="Module"
+      >&#931;</a
+      ><a name="1056"
+      > </a
+      ><a name="1057" class="Symbol"
+      >(</a
+      ><a name="1058" href="container.w.fibration.html#692" class="Function"
+      >alg-total</a
+      ><a name="1067"
+      > </a
+      ><a name="1068" href="container.w.fibration.html#956" class="Bound"
+      >&#120031;</a
+      ><a name="1069" class="Symbol"
+      >)</a
+      ><a name="1070"
+      > </a
+      ><a name="1071" class="Keyword"
+      >renaming</a
+      ><a name="1079"
+      > </a
+      ><a name="1080" class="Symbol"
+      >(</a
+      ><a name="1081"
+      >proj&#8321; </a
+      ><a name="1087" class="Symbol"
+      >to</a
+      ><a name="1089"
+      > X </a
+      ><a name="1092" class="Symbol"
+      >;</a
+      ><a name="1093"
+      > proj&#8322; </a
+      ><a name="1100" class="Symbol"
+      >to</a
+      ><a name="1102"
+      > &#968;</a
+      ><a name="1104" class="Symbol"
+      >)</a
+      ><a name="1105"
+      >
+
+  </a
+      ><a name="1109" href="container.w.fibration.html#1109" class="Function"
+      >section</a
+      ><a name="1116"
+      > </a
+      ><a name="1117" class="Symbol"
+      >:</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" href="container.w.fibration.html#439" class="Function"
+      >AlgSection</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" href="container.w.fibration.html#956" class="Bound"
+      >&#120031;</a
+      ><a name="1131"
+      >
+  </a
+      ><a name="1134" href="container.w.fibration.html#1109" class="Function"
+      >section</a
+      ><a name="1141"
+      > </a
+      ><a name="1142" class="Symbol"
+      >=</a
+      ><a name="1143"
+      > </a
+      ><a name="1144" href="container.w.fibration.html#1170" class="Function"
+      >f&#8320;</a
+      ><a name="1146"
+      > </a
+      ><a name="1147" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1148"
+      > </a
+      ><a name="1149" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1153"
+      >
+    </a
+      ><a name="1158" class="Keyword"
+      >where</a
+      ><a name="1163"
+      >
+      </a
+      ><a name="1170" href="container.w.fibration.html#1170" class="Function"
+      >f&#8320;</a
+      ><a name="1172"
+      > </a
+      ><a name="1173" class="Symbol"
+      >:</a
+      ><a name="1174"
+      > </a
+      ><a name="1175" class="Symbol"
+      >&#8704;</a
+      ><a name="1176"
+      > </a
+      ><a name="1177" href="container.w.fibration.html#1177" class="Bound"
+      >i</a
+      ><a name="1178"
+      > </a
+      ><a name="1179" href="container.w.fibration.html#1179" class="Bound"
+      >x</a
+      ><a name="1180"
+      > </a
+      ><a name="1181" class="Symbol"
+      >&#8594;</a
+      ><a name="1182"
+      > </a
+      ><a name="1183" href="sum.html#245" class="Function"
+      >P</a
+      ><a name="1184"
+      > </a
+      ><a name="1185" href="container.w.fibration.html#1177" class="Bound"
+      >i</a
+      ><a name="1186"
+      > </a
+      ><a name="1187" href="container.w.fibration.html#1179" class="Bound"
+      >x</a
+      ><a name="1188"
+      >
+      </a
+      ><a name="1195" href="container.w.fibration.html#1170" class="Function"
+      >f&#8320;</a
+      ><a name="1197"
+      > </a
+      ><a name="1198" href="container.w.fibration.html#1198" class="Bound"
+      >i</a
+      ><a name="1199"
+      > </a
+      ><a name="1200" class="Symbol"
+      >(</a
+      ><a name="1201" href="container.w.core.html#625" class="InductiveConstructor"
+      >sup</a
+      ><a name="1204"
+      > </a
+      ><a name="1205" href="container.w.fibration.html#1205" class="Bound"
+      >a</a
+      ><a name="1206"
+      > </a
+      ><a name="1207" href="container.w.fibration.html#1207" class="Bound"
+      >u</a
+      ><a name="1208" class="Symbol"
+      >)</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" class="Symbol"
+      >=</a
+      ><a name="1211"
+      > </a
+      ><a name="1212" href="sum.html#259" class="Function"
+      >&#952;</a
+      ><a name="1213"
+      > </a
+      ><a name="1214" href="container.w.fibration.html#1198" class="Bound"
+      >i</a
+      ><a name="1215"
+      > </a
+      ><a name="1216" class="Symbol"
+      >(</a
+      ><a name="1217" href="container.w.fibration.html#1205" class="Bound"
+      >a</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1220"
+      > </a
+      ><a name="1221" href="container.w.fibration.html#1207" class="Bound"
+      >u</a
+      ><a name="1222" class="Symbol"
+      >)</a
+      ><a name="1223"
+      > </a
+      ><a name="1224" class="Symbol"
+      >(&#955;</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" href="container.w.fibration.html#1227" class="Bound"
+      >b</a
+      ><a name="1228"
+      > </a
+      ><a name="1229" class="Symbol"
+      >&#8594;</a
+      ><a name="1230"
+      > </a
+      ><a name="1231" href="container.w.fibration.html#1170" class="Function"
+      >f&#8320;</a
+      ><a name="1233"
+      > </a
+      ><a name="1234" class="Symbol"
+      >(</a
+      ><a name="1235" href="container.core.html#307" class="Function"
+      >r</a
+      ><a name="1236"
+      > </a
+      ><a name="1237" href="container.w.fibration.html#1227" class="Bound"
+      >b</a
+      ><a name="1238" class="Symbol"
+      >)</a
+      ><a name="1239"
+      > </a
+      ><a name="1240" class="Symbol"
+      >(</a
+      ><a name="1241" href="container.w.fibration.html#1207" class="Bound"
+      >u</a
+      ><a name="1242"
+      > </a
+      ><a name="1243" href="container.w.fibration.html#1227" class="Bound"
+      >b</a
+      ><a name="1244" class="Symbol"
+      >))</a
+      ><a name="1246"
+      >
+
+  </a
+      ><a name="1250" class="Keyword"
+      >private</a
+      ><a name="1257"
+      >
+    </a
+      ><a name="1262" href="container.w.fibration.html#1262" class="Function"
+      >split-lem</a
+      ><a name="1271"
+      > </a
+      ><a name="1272" class="Symbol"
+      >:</a
+      ><a name="1273"
+      > </a
+      ><a name="1274" class="Symbol"
+      >&#8704;</a
+      ><a name="1275"
+      > </a
+      ><a name="1276" class="Symbol"
+      >{</a
+      ><a name="1277" href="container.w.fibration.html#1277" class="Bound"
+      >&#8467;'</a
+      ><a name="1279" class="Symbol"
+      >}</a
+      ><a name="1280"
+      > </a
+      ><a name="1281" class="Symbol"
+      >(</a
+      ><a name="1282" href="container.w.fibration.html#1282" class="Bound"
+      >Y</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" class="Symbol"
+      >:</a
+      ><a name="1285"
+      > </a
+      ><a name="1286" href="container.core.html#242" class="Function"
+      >I</a
+      ><a name="1287"
+      > </a
+      ><a name="1288" class="Symbol"
+      >&#8594;</a
+      ><a name="1289"
+      > </a
+      ><a name="1290" class="PrimitiveType"
+      >Set</a
+      ><a name="1293"
+      > </a
+      ><a name="1294" href="container.w.fibration.html#1277" class="Bound"
+      >&#8467;'</a
+      ><a name="1296" class="Symbol"
+      >)</a
+      ><a name="1297"
+      >
+              </a
+      ><a name="1312" class="Symbol"
+      >&#8594;</a
+      ><a name="1313"
+      > </a
+      ><a name="1314" class="Symbol"
+      >(</a
+      ><a name="1315" href="container.w.fibration.html#1282" class="Bound"
+      >Y</a
+      ><a name="1316"
+      > </a
+      ><a name="1317" href="container.core.html#987" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="1319"
+      > </a
+      ><a name="1320" href="sum.html#245" class="Function"
+      >X</a
+      ><a name="1321" class="Symbol"
+      >)</a
+      ><a name="1322"
+      >
+              </a
+      ><a name="1337" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1338"
+      > </a
+      ><a name="1339" class="Symbol"
+      >(</a
+      ><a name="1340"
+      > </a
+      ><a name="1341" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1342"
+      > </a
+      ><a name="1343" class="Symbol"
+      >(</a
+      ><a name="1344" href="container.w.fibration.html#1282" class="Bound"
+      >Y</a
+      ><a name="1345"
+      > </a
+      ><a name="1346" href="container.core.html#987" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="1348"
+      > </a
+      ><a name="1349" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="1350"
+      > </a
+      ><a name="1351" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="1352" class="Symbol"
+      >)</a
+      ><a name="1353"
+      > </a
+      ><a name="1354" class="Symbol"
+      >&#955;</a
+      ><a name="1355"
+      > </a
+      ><a name="1356" href="container.w.fibration.html#1356" class="Bound"
+      >g&#8320;</a
+      ><a name="1358"
+      >
+                </a
+      ><a name="1375" class="Symbol"
+      >&#8594;</a
+      ><a name="1376"
+      > </a
+      ><a name="1377" class="Symbol"
+      >&#8704;</a
+      ><a name="1378"
+      > </a
+      ><a name="1379" href="container.w.fibration.html#1379" class="Bound"
+      >i</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" href="container.w.fibration.html#1381" class="Bound"
+      >x</a
+      ><a name="1382"
+      > </a
+      ><a name="1383" class="Symbol"
+      >&#8594;</a
+      ><a name="1384"
+      > </a
+      ><a name="1385" href="sum.html#245" class="Function"
+      >P</a
+      ><a name="1386"
+      > </a
+      ><a name="1387" href="container.w.fibration.html#1379" class="Bound"
+      >i</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" class="Symbol"
+      >(</a
+      ><a name="1390" href="container.w.fibration.html#1356" class="Bound"
+      >g&#8320;</a
+      ><a name="1392"
+      > </a
+      ><a name="1393" href="container.w.fibration.html#1379" class="Bound"
+      >i</a
+      ><a name="1394"
+      > </a
+      ><a name="1395" href="container.w.fibration.html#1381" class="Bound"
+      >x</a
+      ><a name="1396" class="Symbol"
+      >)</a
+      ><a name="1397"
+      > </a
+      ><a name="1398" class="Symbol"
+      >)</a
+      ><a name="1399"
+      >
+    </a
+      ><a name="1404" href="container.w.fibration.html#1262" class="Function"
+      >split-lem</a
+      ><a name="1413"
+      > </a
+      ><a name="1414" href="container.w.fibration.html#1414" class="Bound"
+      >Y</a
+      ><a name="1415"
+      >
+      </a
+      ><a name="1422" class="Symbol"
+      >=</a
+      ><a name="1423"
+      > </a
+      ><a name="1424" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" class="Symbol"
+      >(</a
+      ><a name="1430" href="function.isomorphism.utils.html#5499" class="Function"
+      >curry-iso</a
+      ><a name="1439"
+      > </a
+      ><a name="1440" class="Symbol"
+      >(&#955;</a
+      ><a name="1442"
+      > </a
+      ><a name="1443" href="container.w.fibration.html#1443" class="Bound"
+      >i</a
+      ><a name="1444"
+      > </a
+      ><a name="1445" href="container.w.fibration.html#1445" class="Bound"
+      >_</a
+      ><a name="1446"
+      > </a
+      ><a name="1447" class="Symbol"
+      >&#8594;</a
+      ><a name="1448"
+      > </a
+      ><a name="1449" href="sum.html#245" class="Function"
+      >X</a
+      ><a name="1450"
+      > </a
+      ><a name="1451" href="container.w.fibration.html#1443" class="Bound"
+      >i</a
+      ><a name="1452" class="Symbol"
+      >))</a
+      ><a name="1454"
+      >
+      </a
+      ><a name="1461" href="function.isomorphism.core.html#1555" class="Function Operator"
+      >&#183;&#8773;</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" href="function.isomorphism.utils.html#5149" class="Function"
+      >&#928;&#931;-swap-iso</a
+      ><a name="1475"
+      >
+      </a
+      ><a name="1482" href="function.isomorphism.core.html#1555" class="Function Operator"
+      >&#183;&#8773;</a
+      ><a name="1484"
+      > </a
+      ><a name="1485" href="function.isomorphism.utils.html#3347" class="Function"
+      >&#931;-ap-iso</a
+      ><a name="1493"
+      > </a
+      ><a name="1494" class="Symbol"
+      >(</a
+      ><a name="1495" href="function.isomorphism.utils.html#5499" class="Function"
+      >curry-iso</a
+      ><a name="1504"
+      > </a
+      ><a name="1505" class="Symbol"
+      >(&#955;</a
+      ><a name="1507"
+      > </a
+      ><a name="1508" href="container.w.fibration.html#1508" class="Bound"
+      >i</a
+      ><a name="1509"
+      > </a
+      ><a name="1510" href="container.w.fibration.html#1510" class="Bound"
+      >_</a
+      ><a name="1511"
+      > </a
+      ><a name="1512" class="Symbol"
+      >&#8594;</a
+      ><a name="1513"
+      > </a
+      ><a name="1514" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="1515"
+      > </a
+      ><a name="1516" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="1517"
+      > </a
+      ><a name="1518" href="container.w.fibration.html#1508" class="Bound"
+      >i</a
+      ><a name="1519" class="Symbol"
+      >))</a
+      ><a name="1521"
+      >
+                  </a
+      ><a name="1540" class="Symbol"
+      >(&#955;</a
+      ><a name="1542"
+      > </a
+      ><a name="1543" href="container.w.fibration.html#1543" class="Bound"
+      >g&#8320;</a
+      ><a name="1545"
+      > </a
+      ><a name="1546" class="Symbol"
+      >&#8594;</a
+      ><a name="1547"
+      > </a
+      ><a name="1548" href="function.isomorphism.utils.html#5499" class="Function"
+      >curry-iso</a
+      ><a name="1557"
+      > </a
+      ><a name="1558" class="Symbol"
+      >(&#955;</a
+      ><a name="1560"
+      > </a
+      ><a name="1561" href="container.w.fibration.html#1561" class="Bound"
+      >i</a
+      ><a name="1562"
+      > </a
+      ><a name="1563" href="container.w.fibration.html#1563" class="Bound"
+      >x</a
+      ><a name="1564"
+      > </a
+      ><a name="1565" class="Symbol"
+      >&#8594;</a
+      ><a name="1566"
+      > </a
+      ><a name="1567" href="sum.html#245" class="Function"
+      >P</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" href="container.w.fibration.html#1561" class="Bound"
+      >i</a
+      ><a name="1570"
+      > </a
+      ><a name="1571" class="Symbol"
+      >(</a
+      ><a name="1572" href="container.w.fibration.html#1543" class="Bound"
+      >g&#8320;</a
+      ><a name="1574"
+      > </a
+      ><a name="1575" class="Symbol"
+      >(</a
+      ><a name="1576" href="container.w.fibration.html#1561" class="Bound"
+      >i</a
+      ><a name="1577"
+      > </a
+      ><a name="1578" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1579"
+      > </a
+      ><a name="1580" href="container.w.fibration.html#1563" class="Bound"
+      >x</a
+      ><a name="1581" class="Symbol"
+      >))))</a
+      ><a name="1585"
+      >
+
+  </a
+      ><a name="1589" href="container.w.fibration.html#1589" class="Function"
+      >section-mor-iso</a
+      ><a name="1604"
+      > </a
+      ><a name="1605" class="Symbol"
+      >:</a
+      ><a name="1606"
+      > </a
+      ><a name="1607" href="container.w.algebra.html#554" class="Function"
+      >Mor</a
+      ><a name="1610"
+      > </a
+      ><a name="1611" href="container.w.algebra.html#646" class="Function"
+      >&#120038;</a
+      ><a name="1612"
+      > </a
+      ><a name="1613" href="container.w.fibration.html#986" class="Function"
+      >&#120039;</a
+      ><a name="1614"
+      > </a
+      ><a name="1615" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1616"
+      > </a
+      ><a name="1617" href="container.w.fibration.html#439" class="Function"
+      >AlgSection</a
+      ><a name="1627"
+      > </a
+      ><a name="1628" href="container.w.fibration.html#956" class="Bound"
+      >&#120031;</a
+      ><a name="1629"
+      >
+  </a
+      ><a name="1632" href="container.w.fibration.html#1589" class="Function"
+      >section-mor-iso</a
+      ><a name="1647"
+      > </a
+      ><a name="1648" class="Symbol"
+      >=</a
+      ><a name="1649"
+      > </a
+      ><a name="1650" href="function.isomorphism.core.html#1890" class="Function Operator"
+      >begin</a
+      ><a name="1655"
+      >
+      </a
+      ><a name="1662" class="Symbol"
+      >(</a
+      ><a name="1663"
+      > </a
+      ><a name="1664" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1665"
+      > </a
+      ><a name="1666" class="Symbol"
+      >(</a
+      ><a name="1667" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="1668"
+      > </a
+      ><a name="1669" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="1670"
+      > </a
+      ><a name="1671" href="container.core.html#987" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="1673"
+      > </a
+      ><a name="1674" href="sum.html#245" class="Function"
+      >X</a
+      ><a name="1675" class="Symbol"
+      >)</a
+      ><a name="1676"
+      > </a
+      ><a name="1677" class="Symbol"
+      >&#955;</a
+      ><a name="1678"
+      > </a
+      ><a name="1679" href="container.w.fibration.html#1679" class="Bound"
+      >f</a
+      ><a name="1680"
+      > </a
+      ><a name="1681" class="Symbol"
+      >&#8594;</a
+      ><a name="1682"
+      > </a
+      ><a name="1683" href="sum.html#259" class="Function"
+      >&#968;</a
+      ><a name="1684"
+      > </a
+      ><a name="1685" href="container.core.html#1206" class="Function Operator"
+      >&#8728;&#8305;</a
+      ><a name="1687"
+      > </a
+      ><a name="1688" href="container.core.html#1984" class="Function"
+      >imap</a
+      ><a name="1692"
+      > </a
+      ><a name="1693" href="container.w.fibration.html#1679" class="Bound"
+      >f</a
+      ><a name="1694"
+      > </a
+      ><a name="1695" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1696"
+      > </a
+      ><a name="1697" href="container.w.fibration.html#1679" class="Bound"
+      >f</a
+      ><a name="1698"
+      > </a
+      ><a name="1699" href="container.core.html#1206" class="Function Operator"
+      >&#8728;&#8305;</a
+      ><a name="1701"
+      > </a
+      ><a name="1702" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="1705"
+      > </a
+      ><a name="1706" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="1707"
+      > </a
+      ><a name="1708" class="Symbol"
+      >)</a
+      ><a name="1709"
+      >
+    </a
+      ><a name="1714" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="1716"
+      > </a
+      ><a name="1717" href="function.isomorphism.utils.html#3347" class="Function"
+      >&#931;-ap-iso</a
+      ><a name="1725"
+      > </a
+      ><a name="1726" class="Symbol"
+      >(</a
+      ><a name="1727" href="container.w.fibration.html#1262" class="Function"
+      >split-lem</a
+      ><a name="1736"
+      > </a
+      ><a name="1737" class="Symbol"
+      >(</a
+      ><a name="1738" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="1741" class="Symbol"
+      >))</a
+      ><a name="1743"
+      > </a
+      ><a name="1744" class="Symbol"
+      >(&#955;</a
+      ><a name="1746"
+      > </a
+      ><a name="1747" href="container.w.fibration.html#1747" class="Bound"
+      >_</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" class="Symbol"
+      >&#8594;</a
+      ><a name="1750"
+      > </a
+      ><a name="1751" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="1756" class="Symbol"
+      >)</a
+      ><a name="1757"
+      > </a
+      ><a name="1758" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="1759"
+      >
+      </a
+      ><a name="1766" class="Symbol"
+      >(</a
+      ><a name="1767"
+      > </a
+      ><a name="1768" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1769"
+      > </a
+      ><a name="1770" class="Symbol"
+      >(</a
+      ><a name="1771" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1772"
+      > </a
+      ><a name="1773" class="Symbol"
+      >(</a
+      ><a name="1774" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="1775"
+      > </a
+      ><a name="1776" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="1777"
+      > </a
+      ><a name="1778" href="container.core.html#987" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="1780"
+      > </a
+      ><a name="1781" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="1782"
+      > </a
+      ><a name="1783" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="1784" class="Symbol"
+      >)</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" class="Symbol"
+      >&#955;</a
+      ><a name="1787"
+      > </a
+      ><a name="1788" href="container.w.fibration.html#1788" class="Bound"
+      >f&#8320;</a
+      ><a name="1790"
+      > </a
+      ><a name="1791" class="Symbol"
+      >&#8594;</a
+      ><a name="1792"
+      > </a
+      ><a name="1793" class="Symbol"
+      >&#8704;</a
+      ><a name="1794"
+      > </a
+      ><a name="1795" href="container.w.fibration.html#1795" class="Bound"
+      >i</a
+      ><a name="1796"
+      > </a
+      ><a name="1797" class="Symbol"
+      >&#8594;</a
+      ><a name="1798"
+      > </a
+      ><a name="1799" class="Symbol"
+      >(</a
+      ><a name="1800" href="container.w.fibration.html#1800" class="Bound"
+      >w</a
+      ><a name="1801"
+      > </a
+      ><a name="1802" class="Symbol"
+      >:</a
+      ><a name="1803"
+      > </a
+      ><a name="1804" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="1805"
+      > </a
+      ><a name="1806" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="1807"
+      > </a
+      ><a name="1808" href="container.w.fibration.html#1795" class="Bound"
+      >i</a
+      ><a name="1809" class="Symbol"
+      >)</a
+      ><a name="1810"
+      > </a
+      ><a name="1811" class="Symbol"
+      >&#8594;</a
+      ><a name="1812"
+      > </a
+      ><a name="1813" href="sum.html#245" class="Function"
+      >P</a
+      ><a name="1814"
+      > </a
+      ><a name="1815" href="container.w.fibration.html#1795" class="Bound"
+      >i</a
+      ><a name="1816"
+      > </a
+      ><a name="1817" class="Symbol"
+      >(</a
+      ><a name="1818" href="container.w.fibration.html#1788" class="Bound"
+      >f&#8320;</a
+      ><a name="1820"
+      > </a
+      ><a name="1821" href="container.w.fibration.html#1795" class="Bound"
+      >i</a
+      ><a name="1822"
+      > </a
+      ><a name="1823" href="container.w.fibration.html#1800" class="Bound"
+      >w</a
+      ><a name="1824" class="Symbol"
+      >))</a
+      ><a name="1826"
+      > </a
+      ><a name="1827" class="Symbol"
+      >&#955;</a
+      ><a name="1828"
+      > </a
+      ><a name="1829" class="Symbol"
+      >{</a
+      ><a name="1830"
+      > </a
+      ><a name="1831" class="Symbol"
+      >(</a
+      ><a name="1832" href="container.w.fibration.html#1832" class="Bound"
+      >f&#8320;</a
+      ><a name="1834"
+      > </a
+      ><a name="1835" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1836"
+      > </a
+      ><a name="1837" href="container.w.fibration.html#1837" class="Bound"
+      >f&#8321;</a
+      ><a name="1839" class="Symbol"
+      >)</a
+      ><a name="1840"
+      >
+        </a
+      ><a name="1849" class="Symbol"
+      >&#8594;</a
+      ><a name="1850"
+      > </a
+      ><a name="1851" href="equality.core.html#145" class="Datatype Operator"
+      >_&#8801;_</a
+      ><a name="1854"
+      > </a
+      ><a name="1855" class="Symbol"
+      >{</a
+      ><a name="1856" class="Argument"
+      >A</a
+      ><a name="1857"
+      > </a
+      ><a name="1858" class="Symbol"
+      >=</a
+      ><a name="1859"
+      > </a
+      ><a name="1860" class="Symbol"
+      >&#8704;</a
+      ><a name="1861"
+      > </a
+      ><a name="1862" href="container.w.fibration.html#1862" class="Bound"
+      >i</a
+      ><a name="1863"
+      > </a
+      ><a name="1864" class="Symbol"
+      >(</a
+      ><a name="1865" href="container.w.fibration.html#1865" class="Bound"
+      >x</a
+      ><a name="1866"
+      > </a
+      ><a name="1867" class="Symbol"
+      >:</a
+      ><a name="1868"
+      > </a
+      ><a name="1869" href="container.core.html#391" class="Function"
+      >F</a
+      ><a name="1870"
+      > </a
+      ><a name="1871" class="Symbol"
+      >(</a
+      ><a name="1872" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="1873"
+      > </a
+      ><a name="1874" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="1875" class="Symbol"
+      >)</a
+      ><a name="1876"
+      > </a
+      ><a name="1877" href="container.w.fibration.html#1862" class="Bound"
+      >i</a
+      ><a name="1878" class="Symbol"
+      >)</a
+      ><a name="1879"
+      > </a
+      ><a name="1880" class="Symbol"
+      >&#8594;</a
+      ><a name="1881"
+      > </a
+      ><a name="1882" href="sum.html#245" class="Function"
+      >X</a
+      ><a name="1883"
+      > </a
+      ><a name="1884" href="container.w.fibration.html#1862" class="Bound"
+      >i</a
+      ><a name="1885" class="Symbol"
+      >}</a
+      ><a name="1886"
+      >
+          </a
+      ><a name="1897" class="Symbol"
+      >(&#955;</a
+      ><a name="1899"
+      > </a
+      ><a name="1900" href="container.w.fibration.html#1900" class="Bound"
+      >i</a
+      ><a name="1901"
+      > </a
+      ><a name="1902" href="container.w.fibration.html#1902" class="Bound"
+      >x</a
+      ><a name="1903"
+      > </a
+      ><a name="1904" class="Symbol"
+      >&#8594;</a
+      ><a name="1905"
+      > </a
+      ><a name="1906" class="Keyword"
+      >let</a
+      ><a name="1909"
+      > </a
+      ><a name="1910" href="container.w.fibration.html#1910" class="Bound"
+      >x'</a
+      ><a name="1912"
+      > </a
+      ><a name="1913" class="Symbol"
+      >=</a
+      ><a name="1914"
+      > </a
+      ><a name="1915" href="container.core.html#1984" class="Function"
+      >imap</a
+      ><a name="1919"
+      > </a
+      ><a name="1920" href="container.w.fibration.html#1832" class="Bound"
+      >f&#8320;</a
+      ><a name="1922"
+      > </a
+      ><a name="1923" href="container.w.fibration.html#1900" class="Bound"
+      >i</a
+      ><a name="1924"
+      > </a
+      ><a name="1925" href="container.w.fibration.html#1902" class="Bound"
+      >x</a
+      ><a name="1926"
+      >
+                    </a
+      ><a name="1947" class="Keyword"
+      >in</a
+      ><a name="1949"
+      > </a
+      ><a name="1950" class="Symbol"
+      >(</a
+      ><a name="1951" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="1954"
+      > </a
+      ><a name="1955" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="1956"
+      > </a
+      ><a name="1957" href="container.w.fibration.html#1900" class="Bound"
+      >i</a
+      ><a name="1958"
+      > </a
+      ><a name="1959" href="container.w.fibration.html#1910" class="Bound"
+      >x'</a
+      ><a name="1961"
+      > </a
+      ><a name="1962" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1963"
+      > </a
+      ><a name="1964" href="sum.html#259" class="Function"
+      >&#952;</a
+      ><a name="1965"
+      > </a
+      ><a name="1966" href="container.w.fibration.html#1900" class="Bound"
+      >i</a
+      ><a name="1967"
+      > </a
+      ><a name="1968" href="container.w.fibration.html#1910" class="Bound"
+      >x'</a
+      ><a name="1970"
+      > </a
+      ><a name="1971" class="Symbol"
+      >(&#955;</a
+      ><a name="1973"
+      > </a
+      ><a name="1974" href="container.w.fibration.html#1974" class="Bound"
+      >b</a
+      ><a name="1975"
+      > </a
+      ><a name="1976" class="Symbol"
+      >&#8594;</a
+      ><a name="1977"
+      > </a
+      ><a name="1978" href="container.w.fibration.html#1837" class="Bound"
+      >f&#8321;</a
+      ><a name="1980"
+      > </a
+      ><a name="1981" class="Symbol"
+      >(</a
+      ><a name="1982" href="container.core.html#307" class="Function"
+      >r</a
+      ><a name="1983"
+      > </a
+      ><a name="1984" href="container.w.fibration.html#1974" class="Bound"
+      >b</a
+      ><a name="1985" class="Symbol"
+      >)</a
+      ><a name="1986"
+      > </a
+      ><a name="1987" class="Symbol"
+      >(</a
+      ><a name="1988" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="1993"
+      > </a
+      ><a name="1994" href="container.w.fibration.html#1902" class="Bound"
+      >x</a
+      ><a name="1995"
+      > </a
+      ><a name="1996" href="container.w.fibration.html#1974" class="Bound"
+      >b</a
+      ><a name="1997" class="Symbol"
+      >))))</a
+      ><a name="2001"
+      >
+          </a
+      ><a name="2012" class="Symbol"
+      >(&#955;</a
+      ><a name="2014"
+      > </a
+      ><a name="2015" href="container.w.fibration.html#2015" class="Bound"
+      >i</a
+      ><a name="2016"
+      > </a
+      ><a name="2017" href="container.w.fibration.html#2017" class="Bound"
+      >x</a
+      ><a name="2018"
+      > </a
+      ><a name="2019" class="Symbol"
+      >&#8594;</a
+      ><a name="2020"
+      > </a
+      ><a name="2021" class="Symbol"
+      >(</a
+      ><a name="2022" href="container.w.fibration.html#1832" class="Bound"
+      >f&#8320;</a
+      ><a name="2024"
+      > </a
+      ><a name="2025" href="container.w.fibration.html#2015" class="Bound"
+      >i</a
+      ><a name="2026"
+      > </a
+      ><a name="2027" class="Symbol"
+      >(</a
+      ><a name="2028" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="2031"
+      > </a
+      ><a name="2032" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2033"
+      > </a
+      ><a name="2034" href="container.w.fibration.html#2015" class="Bound"
+      >i</a
+      ><a name="2035"
+      > </a
+      ><a name="2036" href="container.w.fibration.html#2017" class="Bound"
+      >x</a
+      ><a name="2037" class="Symbol"
+      >)</a
+      ><a name="2038"
+      > </a
+      ><a name="2039" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2040"
+      > </a
+      ><a name="2041" href="container.w.fibration.html#1837" class="Bound"
+      >f&#8321;</a
+      ><a name="2043"
+      > </a
+      ><a name="2044" href="container.w.fibration.html#2015" class="Bound"
+      >i</a
+      ><a name="2045"
+      > </a
+      ><a name="2046" class="Symbol"
+      >(</a
+      ><a name="2047" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="2050"
+      > </a
+      ><a name="2051" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2052"
+      > </a
+      ><a name="2053" href="container.w.fibration.html#2015" class="Bound"
+      >i</a
+      ><a name="2054"
+      > </a
+      ><a name="2055" href="container.w.fibration.html#2017" class="Bound"
+      >x</a
+      ><a name="2056" class="Symbol"
+      >)))</a
+      ><a name="2059"
+      > </a
+      ><a name="2060" class="Symbol"
+      >}</a
+      ><a name="2061"
+      > </a
+      ><a name="2062" class="Symbol"
+      >)</a
+      ><a name="2063"
+      >
+    </a
+      ><a name="2068" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2070"
+      > </a
+      ><a name="2071" class="Symbol"
+      >(</a
+      ><a name="2072"
+      > </a
+      ><a name="2073" href="function.isomorphism.utils.html#3347" class="Function"
+      >&#931;-ap-iso</a
+      ><a name="2081"
+      > </a
+      ><a name="2082" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="2087"
+      > </a
+      ><a name="2088" class="Symbol"
+      >&#955;</a
+      ><a name="2089"
+      > </a
+      ><a name="2090" class="Symbol"
+      >{</a
+      ><a name="2091"
+      > </a
+      ><a name="2092" class="Symbol"
+      >(</a
+      ><a name="2093" href="container.w.fibration.html#2093" class="Bound"
+      >f&#8320;</a
+      ><a name="2095"
+      > </a
+      ><a name="2096" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2097"
+      > </a
+      ><a name="2098" href="container.w.fibration.html#2098" class="Bound"
+      >f&#8321;</a
+      ><a name="2100" class="Symbol"
+      >)</a
+      ><a name="2101"
+      > </a
+      ><a name="2102" class="Symbol"
+      >&#8594;</a
+      ><a name="2103"
+      > </a
+      ><a name="2104" href="function.isomorphism.properties.html#1457" class="Function"
+      >iso&#8801;</a
+      ><a name="2108"
+      > </a
+      ><a name="2109" class="Symbol"
+      >(</a
+      ><a name="2110" href="container.w.fibration.html#1262" class="Function"
+      >split-lem</a
+      ><a name="2119"
+      > </a
+      ><a name="2120" class="Symbol"
+      >(</a
+      ><a name="2121" href="container.core.html#391" class="Function"
+      >F</a
+      ><a name="2122"
+      > </a
+      ><a name="2123" class="Symbol"
+      >(</a
+      ><a name="2124" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="2125"
+      > </a
+      ><a name="2126" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2127" class="Symbol"
+      >)))</a
+      ><a name="2130"
+      >
+                                      </a
+      ><a name="2169" href="function.isomorphism.core.html#1555" class="Function Operator"
+      >&#183;&#8773;</a
+      ><a name="2171"
+      > </a
+      ><a name="2172" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="2176"
+      > </a
+      ><a name="2177" href="function.isomorphism.utils.html#424" class="Function"
+      >&#931;-split-iso</a
+      ><a name="2188"
+      > </a
+      ><a name="2189" class="Symbol"
+      >}</a
+      ><a name="2190"
+      > </a
+      ><a name="2191" class="Symbol"
+      >)</a
+      ><a name="2192"
+      > </a
+      ><a name="2193" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2194"
+      >
+      </a
+      ><a name="2201" class="Symbol"
+      >(</a
+      ><a name="2202"
+      > </a
+      ><a name="2203" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="2204"
+      > </a
+      ><a name="2205" class="Symbol"
+      >(</a
+      ><a name="2206" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="2207"
+      > </a
+      ><a name="2208" class="Symbol"
+      >(</a
+      ><a name="2209" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="2210"
+      > </a
+      ><a name="2211" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2212"
+      > </a
+      ><a name="2213" href="container.core.html#987" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="2215"
+      > </a
+      ><a name="2216" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="2217"
+      > </a
+      ><a name="2218" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2219" class="Symbol"
+      >)</a
+      ><a name="2220"
+      > </a
+      ><a name="2221" class="Symbol"
+      >&#955;</a
+      ><a name="2222"
+      > </a
+      ><a name="2223" href="container.w.fibration.html#2223" class="Bound"
+      >f&#8320;</a
+      ><a name="2225"
+      > </a
+      ><a name="2226" class="Symbol"
+      >&#8594;</a
+      ><a name="2227"
+      > </a
+      ><a name="2228" class="Symbol"
+      >&#8704;</a
+      ><a name="2229"
+      > </a
+      ><a name="2230" href="container.w.fibration.html#2230" class="Bound"
+      >i</a
+      ><a name="2231"
+      > </a
+      ><a name="2232" class="Symbol"
+      >&#8594;</a
+      ><a name="2233"
+      > </a
+      ><a name="2234" class="Symbol"
+      >(</a
+      ><a name="2235" href="container.w.fibration.html#2235" class="Bound"
+      >w</a
+      ><a name="2236"
+      > </a
+      ><a name="2237" class="Symbol"
+      >:</a
+      ><a name="2238"
+      > </a
+      ><a name="2239" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="2240"
+      > </a
+      ><a name="2241" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2242"
+      > </a
+      ><a name="2243" href="container.w.fibration.html#2230" class="Bound"
+      >i</a
+      ><a name="2244" class="Symbol"
+      >)</a
+      ><a name="2245"
+      > </a
+      ><a name="2246" class="Symbol"
+      >&#8594;</a
+      ><a name="2247"
+      > </a
+      ><a name="2248" href="sum.html#245" class="Function"
+      >P</a
+      ><a name="2249"
+      > </a
+      ><a name="2250" href="container.w.fibration.html#2230" class="Bound"
+      >i</a
+      ><a name="2251"
+      > </a
+      ><a name="2252" class="Symbol"
+      >(</a
+      ><a name="2253" href="container.w.fibration.html#2223" class="Bound"
+      >f&#8320;</a
+      ><a name="2255"
+      > </a
+      ><a name="2256" href="container.w.fibration.html#2230" class="Bound"
+      >i</a
+      ><a name="2257"
+      > </a
+      ><a name="2258" href="container.w.fibration.html#2235" class="Bound"
+      >w</a
+      ><a name="2259" class="Symbol"
+      >))</a
+      ><a name="2261"
+      > </a
+      ><a name="2262" class="Symbol"
+      >&#955;</a
+      ><a name="2263"
+      > </a
+      ><a name="2264" class="Symbol"
+      >{</a
+      ><a name="2265"
+      > </a
+      ><a name="2266" class="Symbol"
+      >(</a
+      ><a name="2267" href="container.w.fibration.html#2267" class="Bound"
+      >f&#8320;</a
+      ><a name="2269"
+      > </a
+      ><a name="2270" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2271"
+      > </a
+      ><a name="2272" href="container.w.fibration.html#2272" class="Bound"
+      >f&#8321;</a
+      ><a name="2274" class="Symbol"
+      >)</a
+      ><a name="2275"
+      >
+      </a
+      ><a name="2282" class="Symbol"
+      >&#8594;</a
+      ><a name="2283"
+      > </a
+      ><a name="2284" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="2285"
+      > </a
+      ><a name="2286" class="Symbol"
+      >(</a
+      ><a name="2287"
+      > </a
+      ><a name="2288" href="equality.core.html#145" class="Datatype Operator"
+      >_&#8801;_</a
+      ><a name="2291"
+      > </a
+      ><a name="2292" class="Symbol"
+      >{</a
+      ><a name="2293" class="Argument"
+      >A</a
+      ><a name="2294"
+      > </a
+      ><a name="2295" class="Symbol"
+      >=</a
+      ><a name="2296"
+      > </a
+      ><a name="2297" class="Symbol"
+      >&#8704;</a
+      ><a name="2298"
+      > </a
+      ><a name="2299" href="container.w.fibration.html#2299" class="Bound"
+      >i</a
+      ><a name="2300"
+      > </a
+      ><a name="2301" class="Symbol"
+      >(</a
+      ><a name="2302" href="container.w.fibration.html#2302" class="Bound"
+      >x</a
+      ><a name="2303"
+      > </a
+      ><a name="2304" class="Symbol"
+      >:</a
+      ><a name="2305"
+      > </a
+      ><a name="2306" href="container.core.html#391" class="Function"
+      >F</a
+      ><a name="2307"
+      > </a
+      ><a name="2308" class="Symbol"
+      >(</a
+      ><a name="2309" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="2310"
+      > </a
+      ><a name="2311" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2312" class="Symbol"
+      >)</a
+      ><a name="2313"
+      > </a
+      ><a name="2314" href="container.w.fibration.html#2299" class="Bound"
+      >i</a
+      ><a name="2315" class="Symbol"
+      >)</a
+      ><a name="2316"
+      > </a
+      ><a name="2317" class="Symbol"
+      >&#8594;</a
+      ><a name="2318"
+      > </a
+      ><a name="2319" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="2320"
+      > </a
+      ><a name="2321" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2322"
+      > </a
+      ><a name="2323" href="container.w.fibration.html#2299" class="Bound"
+      >i</a
+      ><a name="2324" class="Symbol"
+      >}</a
+      ><a name="2325"
+      >
+            </a
+      ><a name="2338" class="Symbol"
+      >(&#955;</a
+      ><a name="2340"
+      > </a
+      ><a name="2341" href="container.w.fibration.html#2341" class="Bound"
+      >i</a
+      ><a name="2342"
+      > </a
+      ><a name="2343" href="container.w.fibration.html#2343" class="Bound"
+      >x</a
+      ><a name="2344"
+      > </a
+      ><a name="2345" class="Symbol"
+      >&#8594;</a
+      ><a name="2346"
+      > </a
+      ><a name="2347" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="2350"
+      > </a
+      ><a name="2351" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2352"
+      > </a
+      ><a name="2353" href="container.w.fibration.html#2341" class="Bound"
+      >i</a
+      ><a name="2354"
+      > </a
+      ><a name="2355" class="Symbol"
+      >(</a
+      ><a name="2356" href="container.core.html#1984" class="Function"
+      >imap</a
+      ><a name="2360"
+      > </a
+      ><a name="2361" href="container.w.fibration.html#2267" class="Bound"
+      >f&#8320;</a
+      ><a name="2363"
+      > </a
+      ><a name="2364" href="container.w.fibration.html#2341" class="Bound"
+      >i</a
+      ><a name="2365"
+      > </a
+      ><a name="2366" href="container.w.fibration.html#2343" class="Bound"
+      >x</a
+      ><a name="2367" class="Symbol"
+      >))</a
+      ><a name="2369"
+      >
+            </a
+      ><a name="2382" class="Symbol"
+      >(&#955;</a
+      ><a name="2384"
+      > </a
+      ><a name="2385" href="container.w.fibration.html#2385" class="Bound"
+      >i</a
+      ><a name="2386"
+      > </a
+      ><a name="2387" href="container.w.fibration.html#2387" class="Bound"
+      >x</a
+      ><a name="2388"
+      > </a
+      ><a name="2389" class="Symbol"
+      >&#8594;</a
+      ><a name="2390"
+      > </a
+      ><a name="2391" href="container.w.fibration.html#2267" class="Bound"
+      >f&#8320;</a
+      ><a name="2393"
+      > </a
+      ><a name="2394" href="container.w.fibration.html#2385" class="Bound"
+      >i</a
+      ><a name="2395"
+      > </a
+      ><a name="2396" class="Symbol"
+      >(</a
+      ><a name="2397" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="2400"
+      > </a
+      ><a name="2401" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2402"
+      > </a
+      ><a name="2403" href="container.w.fibration.html#2385" class="Bound"
+      >i</a
+      ><a name="2404"
+      > </a
+      ><a name="2405" href="container.w.fibration.html#2387" class="Bound"
+      >x</a
+      ><a name="2406" class="Symbol"
+      >))</a
+      ><a name="2408"
+      > </a
+      ><a name="2409" class="Symbol"
+      >)</a
+      ><a name="2410"
+      > </a
+      ><a name="2411" class="Symbol"
+      >&#955;</a
+      ><a name="2412"
+      > </a
+      ><a name="2413" href="container.w.fibration.html#2413" class="Bound"
+      >eq</a
+      ><a name="2415"
+      >
+      </a
+      ><a name="2422" class="Symbol"
+      >&#8594;</a
+      ><a name="2423"
+      > </a
+      ><a name="2424" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="2429"
+      > </a
+      ><a name="2430" class="Symbol"
+      >(&#955;</a
+      ><a name="2432"
+      > </a
+      ><a name="2433" href="container.w.fibration.html#2433" class="Bound"
+      >g</a
+      ><a name="2434"
+      > </a
+      ><a name="2435" class="Symbol"
+      >&#8594;</a
+      ><a name="2436"
+      > </a
+      ><a name="2437" class="Symbol"
+      >&#8704;</a
+      ><a name="2438"
+      > </a
+      ><a name="2439" href="container.w.fibration.html#2439" class="Bound"
+      >i</a
+      ><a name="2440"
+      > </a
+      ><a name="2441" class="Symbol"
+      >(</a
+      ><a name="2442" href="container.w.fibration.html#2442" class="Bound"
+      >x</a
+      ><a name="2443"
+      > </a
+      ><a name="2444" class="Symbol"
+      >:</a
+      ><a name="2445"
+      > </a
+      ><a name="2446" href="container.core.html#391" class="Function"
+      >F</a
+      ><a name="2447"
+      > </a
+      ><a name="2448" class="Symbol"
+      >(</a
+      ><a name="2449" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="2450"
+      > </a
+      ><a name="2451" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2452" class="Symbol"
+      >)</a
+      ><a name="2453"
+      > </a
+      ><a name="2454" href="container.w.fibration.html#2439" class="Bound"
+      >i</a
+      ><a name="2455" class="Symbol"
+      >)</a
+      ><a name="2456"
+      > </a
+      ><a name="2457" class="Symbol"
+      >&#8594;</a
+      ><a name="2458"
+      > </a
+      ><a name="2459" href="sum.html#245" class="Function"
+      >P</a
+      ><a name="2460"
+      > </a
+      ><a name="2461" href="container.w.fibration.html#2439" class="Bound"
+      >i</a
+      ><a name="2462"
+      > </a
+      ><a name="2463" class="Symbol"
+      >(</a
+      ><a name="2464" href="container.w.fibration.html#2433" class="Bound"
+      >g</a
+      ><a name="2465"
+      > </a
+      ><a name="2466" href="container.w.fibration.html#2439" class="Bound"
+      >i</a
+      ><a name="2467"
+      > </a
+      ><a name="2468" href="container.w.fibration.html#2442" class="Bound"
+      >x</a
+      ><a name="2469" class="Symbol"
+      >))</a
+      ><a name="2471"
+      > </a
+      ><a name="2472" href="container.w.fibration.html#2413" class="Bound"
+      >eq</a
+      ><a name="2474"
+      >
+            </a
+      ><a name="2487" class="Symbol"
+      >(&#955;</a
+      ><a name="2489"
+      > </a
+      ><a name="2490" href="container.w.fibration.html#2490" class="Bound"
+      >i</a
+      ><a name="2491"
+      > </a
+      ><a name="2492" href="container.w.fibration.html#2492" class="Bound"
+      >x</a
+      ><a name="2493"
+      > </a
+      ><a name="2494" class="Symbol"
+      >&#8594;</a
+      ><a name="2495"
+      > </a
+      ><a name="2496" href="sum.html#259" class="Function"
+      >&#952;</a
+      ><a name="2497"
+      > </a
+      ><a name="2498" href="container.w.fibration.html#2490" class="Bound"
+      >i</a
+      ><a name="2499"
+      > </a
+      ><a name="2500" class="Symbol"
+      >(</a
+      ><a name="2501" href="container.core.html#1984" class="Function"
+      >imap</a
+      ><a name="2505"
+      > </a
+      ><a name="2506" href="container.w.fibration.html#2267" class="Bound"
+      >f&#8320;</a
+      ><a name="2508"
+      > </a
+      ><a name="2509" href="container.w.fibration.html#2490" class="Bound"
+      >i</a
+      ><a name="2510"
+      > </a
+      ><a name="2511" href="container.w.fibration.html#2492" class="Bound"
+      >x</a
+      ><a name="2512" class="Symbol"
+      >)</a
+      ><a name="2513"
+      > </a
+      ><a name="2514" class="Symbol"
+      >(&#955;</a
+      ><a name="2516"
+      > </a
+      ><a name="2517" href="container.w.fibration.html#2517" class="Bound"
+      >b</a
+      ><a name="2518"
+      > </a
+      ><a name="2519" class="Symbol"
+      >&#8594;</a
+      ><a name="2520"
+      > </a
+      ><a name="2521" href="container.w.fibration.html#2272" class="Bound"
+      >f&#8321;</a
+      ><a name="2523"
+      > </a
+      ><a name="2524" class="Symbol"
+      >(</a
+      ><a name="2525" href="container.core.html#307" class="Function"
+      >r</a
+      ><a name="2526"
+      > </a
+      ><a name="2527" href="container.w.fibration.html#2517" class="Bound"
+      >b</a
+      ><a name="2528" class="Symbol"
+      >)</a
+      ><a name="2529"
+      > </a
+      ><a name="2530" class="Symbol"
+      >(</a
+      ><a name="2531" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="2536"
+      > </a
+      ><a name="2537" href="container.w.fibration.html#2492" class="Bound"
+      >x</a
+      ><a name="2538"
+      > </a
+      ><a name="2539" href="container.w.fibration.html#2517" class="Bound"
+      >b</a
+      ><a name="2540" class="Symbol"
+      >)))</a
+      ><a name="2543"
+      >
+          </a
+      ><a name="2554" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2555"
+      > </a
+      ><a name="2556" class="Symbol"
+      >(&#955;</a
+      ><a name="2558"
+      > </a
+      ><a name="2559" href="container.w.fibration.html#2559" class="Bound"
+      >i</a
+      ><a name="2560"
+      > </a
+      ><a name="2561" href="container.w.fibration.html#2561" class="Bound"
+      >x</a
+      ><a name="2562"
+      > </a
+      ><a name="2563" class="Symbol"
+      >&#8594;</a
+      ><a name="2564"
+      > </a
+      ><a name="2565" href="container.w.fibration.html#2272" class="Bound"
+      >f&#8321;</a
+      ><a name="2567"
+      > </a
+      ><a name="2568" href="container.w.fibration.html#2559" class="Bound"
+      >i</a
+      ><a name="2569"
+      > </a
+      ><a name="2570" class="Symbol"
+      >(</a
+      ><a name="2571" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="2574"
+      > </a
+      ><a name="2575" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2576"
+      > </a
+      ><a name="2577" href="container.w.fibration.html#2559" class="Bound"
+      >i</a
+      ><a name="2578"
+      > </a
+      ><a name="2579" href="container.w.fibration.html#2561" class="Bound"
+      >x</a
+      ><a name="2580" class="Symbol"
+      >))</a
+      ><a name="2582"
+      > </a
+      ><a name="2583" class="Symbol"
+      >}</a
+      ><a name="2584"
+      > </a
+      ><a name="2585" class="Symbol"
+      >)</a
+      ><a name="2586"
+      >
+    </a
+      ><a name="2591" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="2593"
+      > </a
+      ><a name="2594" class="Keyword"
+      >record</a
+      ><a name="2600"
+      >
+          </a
+      ><a name="2611" class="Symbol"
+      >{</a
+      ><a name="2612"
+      > </a
+      ><a name="2613" class="Field"
+      >to</a
+      ><a name="2615"
+      > </a
+      ><a name="2616" class="Symbol"
+      >=</a
+      ><a name="2617"
+      > </a
+      ><a name="2618" class="Symbol"
+      >&#955;</a
+      ><a name="2619"
+      > </a
+      ><a name="2620" class="Symbol"
+      >{</a
+      ><a name="2621"
+      > </a
+      ><a name="2622" class="Symbol"
+      >((</a
+      ><a name="2624" href="container.w.fibration.html#2624" class="Bound"
+      >f&#8320;</a
+      ><a name="2626"
+      > </a
+      ><a name="2627" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2628"
+      > </a
+      ><a name="2629" href="container.w.fibration.html#2629" class="Bound"
+      >f&#8321;</a
+      ><a name="2631" class="Symbol"
+      >)</a
+      ><a name="2632"
+      > </a
+      ><a name="2633" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2634"
+      > </a
+      ><a name="2635" class="Symbol"
+      >(</a
+      ><a name="2636" href="container.w.fibration.html#2636" class="Bound"
+      >&#945;&#8320;</a
+      ><a name="2638"
+      > </a
+      ><a name="2639" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2640"
+      > </a
+      ><a name="2641" href="container.w.fibration.html#2641" class="Bound"
+      >&#945;&#8321;</a
+      ><a name="2643" class="Symbol"
+      >))</a
+      ><a name="2645"
+      > </a
+      ><a name="2646" class="Symbol"
+      >&#8594;</a
+      ><a name="2647"
+      > </a
+      ><a name="2648" class="Symbol"
+      >((</a
+      ><a name="2650" href="container.w.fibration.html#2624" class="Bound"
+      >f&#8320;</a
+      ><a name="2652"
+      > </a
+      ><a name="2653" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2654"
+      > </a
+      ><a name="2655" href="container.w.fibration.html#2636" class="Bound"
+      >&#945;&#8320;</a
+      ><a name="2657" class="Symbol"
+      >)</a
+      ><a name="2658"
+      > </a
+      ><a name="2659" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2660"
+      > </a
+      ><a name="2661" class="Symbol"
+      >(</a
+      ><a name="2662" href="container.w.fibration.html#2629" class="Bound"
+      >f&#8321;</a
+      ><a name="2664"
+      > </a
+      ><a name="2665" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2666"
+      > </a
+      ><a name="2667" href="container.w.fibration.html#2641" class="Bound"
+      >&#945;&#8321;</a
+      ><a name="2669" class="Symbol"
+      >))</a
+      ><a name="2671"
+      > </a
+      ><a name="2672" class="Symbol"
+      >}</a
+      ><a name="2673"
+      >
+          </a
+      ><a name="2684" class="Symbol"
+      >;</a
+      ><a name="2685"
+      > </a
+      ><a name="2686" class="Field"
+      >from</a
+      ><a name="2690"
+      > </a
+      ><a name="2691" class="Symbol"
+      >=</a
+      ><a name="2692"
+      > </a
+      ><a name="2693" class="Symbol"
+      >&#955;</a
+      ><a name="2694"
+      > </a
+      ><a name="2695" class="Symbol"
+      >{</a
+      ><a name="2696"
+      > </a
+      ><a name="2697" class="Symbol"
+      >((</a
+      ><a name="2699" href="container.w.fibration.html#2699" class="Bound"
+      >f&#8320;</a
+      ><a name="2701"
+      > </a
+      ><a name="2702" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2703"
+      > </a
+      ><a name="2704" href="container.w.fibration.html#2704" class="Bound"
+      >&#945;&#8320;</a
+      ><a name="2706" class="Symbol"
+      >)</a
+      ><a name="2707"
+      > </a
+      ><a name="2708" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2709"
+      > </a
+      ><a name="2710" class="Symbol"
+      >(</a
+      ><a name="2711" href="container.w.fibration.html#2711" class="Bound"
+      >f&#8321;</a
+      ><a name="2713"
+      > </a
+      ><a name="2714" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2715"
+      > </a
+      ><a name="2716" href="container.w.fibration.html#2716" class="Bound"
+      >&#945;&#8321;</a
+      ><a name="2718" class="Symbol"
+      >))</a
+      ><a name="2720"
+      > </a
+      ><a name="2721" class="Symbol"
+      >&#8594;</a
+      ><a name="2722"
+      > </a
+      ><a name="2723" class="Symbol"
+      >((</a
+      ><a name="2725" href="container.w.fibration.html#2699" class="Bound"
+      >f&#8320;</a
+      ><a name="2727"
+      > </a
+      ><a name="2728" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2729"
+      > </a
+      ><a name="2730" href="container.w.fibration.html#2711" class="Bound"
+      >f&#8321;</a
+      ><a name="2732" class="Symbol"
+      >)</a
+      ><a name="2733"
+      > </a
+      ><a name="2734" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2735"
+      > </a
+      ><a name="2736" class="Symbol"
+      >(</a
+      ><a name="2737" href="container.w.fibration.html#2704" class="Bound"
+      >&#945;&#8320;</a
+      ><a name="2739"
+      > </a
+      ><a name="2740" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2741"
+      > </a
+      ><a name="2742" href="container.w.fibration.html#2716" class="Bound"
+      >&#945;&#8321;</a
+      ><a name="2744" class="Symbol"
+      >))</a
+      ><a name="2746"
+      > </a
+      ><a name="2747" class="Symbol"
+      >}</a
+      ><a name="2748"
+      >
+          </a
+      ><a name="2759" class="Symbol"
+      >;</a
+      ><a name="2760"
+      > </a
+      ><a name="2761" class="Field"
+      >iso&#8321;</a
+      ><a name="2765"
+      > </a
+      ><a name="2766" class="Symbol"
+      >=</a
+      ><a name="2767"
+      > </a
+      ><a name="2768" class="Symbol"
+      >&#955;</a
+      ><a name="2769"
+      > </a
+      ><a name="2770" class="Symbol"
+      >{</a
+      ><a name="2771"
+      > </a
+      ><a name="2772" class="Symbol"
+      >((</a
+      ><a name="2774" href="container.w.fibration.html#2774" class="Bound"
+      >f&#8320;</a
+      ><a name="2776"
+      > </a
+      ><a name="2777" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2778"
+      > </a
+      ><a name="2779" href="container.w.fibration.html#2779" class="Bound"
+      >f&#8321;</a
+      ><a name="2781" class="Symbol"
+      >)</a
+      ><a name="2782"
+      > </a
+      ><a name="2783" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2784"
+      > </a
+      ><a name="2785" class="Symbol"
+      >(</a
+      ><a name="2786" href="container.w.fibration.html#2786" class="Bound"
+      >&#945;&#8320;</a
+      ><a name="2788"
+      > </a
+      ><a name="2789" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2790"
+      > </a
+      ><a name="2791" href="container.w.fibration.html#2791" class="Bound"
+      >&#945;&#8321;</a
+      ><a name="2793" class="Symbol"
+      >))</a
+      ><a name="2795"
+      > </a
+      ><a name="2796" class="Symbol"
+      >&#8594;</a
+      ><a name="2797"
+      > </a
+      ><a name="2798" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2802"
+      > </a
+      ><a name="2803" class="Symbol"
+      >}</a
+      ><a name="2804"
+      >
+          </a
+      ><a name="2815" class="Symbol"
+      >;</a
+      ><a name="2816"
+      > </a
+      ><a name="2817" class="Field"
+      >iso&#8322;</a
+      ><a name="2821"
+      > </a
+      ><a name="2822" class="Symbol"
+      >=</a
+      ><a name="2823"
+      > </a
+      ><a name="2824" class="Symbol"
+      >&#955;</a
+      ><a name="2825"
+      > </a
+      ><a name="2826" class="Symbol"
+      >{</a
+      ><a name="2827"
+      > </a
+      ><a name="2828" class="Symbol"
+      >((</a
+      ><a name="2830" href="container.w.fibration.html#2830" class="Bound"
+      >f&#8320;</a
+      ><a name="2832"
+      > </a
+      ><a name="2833" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2834"
+      > </a
+      ><a name="2835" href="container.w.fibration.html#2835" class="Bound"
+      >&#945;&#8320;</a
+      ><a name="2837" class="Symbol"
+      >)</a
+      ><a name="2838"
+      > </a
+      ><a name="2839" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2840"
+      > </a
+      ><a name="2841" class="Symbol"
+      >(</a
+      ><a name="2842" href="container.w.fibration.html#2842" class="Bound"
+      >f&#8321;</a
+      ><a name="2844"
+      > </a
+      ><a name="2845" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2846"
+      > </a
+      ><a name="2847" href="container.w.fibration.html#2847" class="Bound"
+      >&#945;&#8321;</a
+      ><a name="2849" class="Symbol"
+      >))</a
+      ><a name="2851"
+      > </a
+      ><a name="2852" class="Symbol"
+      >&#8594;</a
+      ><a name="2853"
+      > </a
+      ><a name="2854" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="2858"
+      > </a
+      ><a name="2859" class="Symbol"
+      >}</a
+      ><a name="2860"
+      > </a
+      ><a name="2861" class="Symbol"
+      >}</a
+      ><a name="2862"
+      > </a
+      ><a name="2863" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="2864"
+      >
+      </a
+      ><a name="2871" class="Symbol"
+      >(</a
+      ><a name="2872"
+      > </a
+      ><a name="2873" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="2874"
+      > </a
+      ><a name="2875" class="Symbol"
+      >(</a
+      ><a name="2876"
+      > </a
+      ><a name="2877" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="2878"
+      > </a
+      ><a name="2879" class="Symbol"
+      >(&#8704;</a
+      ><a name="2881"
+      > </a
+      ><a name="2882" href="container.w.fibration.html#2882" class="Bound"
+      >i</a
+      ><a name="2883"
+      > </a
+      ><a name="2884" class="Symbol"
+      >&#8594;</a
+      ><a name="2885"
+      > </a
+      ><a name="2886" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="2887"
+      > </a
+      ><a name="2888" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2889"
+      > </a
+      ><a name="2890" href="container.w.fibration.html#2882" class="Bound"
+      >i</a
+      ><a name="2891"
+      > </a
+      ><a name="2892" class="Symbol"
+      >&#8594;</a
+      ><a name="2893"
+      > </a
+      ><a name="2894" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="2895"
+      > </a
+      ><a name="2896" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2897"
+      > </a
+      ><a name="2898" href="container.w.fibration.html#2882" class="Bound"
+      >i</a
+      ><a name="2899" class="Symbol"
+      >)</a
+      ><a name="2900"
+      > </a
+      ><a name="2901" class="Symbol"
+      >&#955;</a
+      ><a name="2902"
+      > </a
+      ><a name="2903" href="container.w.fibration.html#2903" class="Bound"
+      >f&#8320;</a
+      ><a name="2905"
+      >
+          </a
+      ><a name="2916" class="Symbol"
+      >&#8594;</a
+      ><a name="2917"
+      > </a
+      ><a name="2918" class="Symbol"
+      >(</a
+      ><a name="2919"
+      > </a
+      ><a name="2920" href="equality.core.html#145" class="Datatype Operator"
+      >_&#8801;_</a
+      ><a name="2923"
+      > </a
+      ><a name="2924" class="Symbol"
+      >{</a
+      ><a name="2925" class="Argument"
+      >A</a
+      ><a name="2926"
+      > </a
+      ><a name="2927" class="Symbol"
+      >=</a
+      ><a name="2928"
+      > </a
+      ><a name="2929" class="Symbol"
+      >&#8704;</a
+      ><a name="2930"
+      > </a
+      ><a name="2931" href="container.w.fibration.html#2931" class="Bound"
+      >i</a
+      ><a name="2932"
+      > </a
+      ><a name="2933" class="Symbol"
+      >(</a
+      ><a name="2934" href="container.w.fibration.html#2934" class="Bound"
+      >x</a
+      ><a name="2935"
+      > </a
+      ><a name="2936" class="Symbol"
+      >:</a
+      ><a name="2937"
+      > </a
+      ><a name="2938" href="container.core.html#391" class="Function"
+      >F</a
+      ><a name="2939"
+      > </a
+      ><a name="2940" class="Symbol"
+      >(</a
+      ><a name="2941" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="2942"
+      > </a
+      ><a name="2943" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2944" class="Symbol"
+      >)</a
+      ><a name="2945"
+      > </a
+      ><a name="2946" href="container.w.fibration.html#2931" class="Bound"
+      >i</a
+      ><a name="2947" class="Symbol"
+      >)</a
+      ><a name="2948"
+      > </a
+      ><a name="2949" class="Symbol"
+      >&#8594;</a
+      ><a name="2950"
+      > </a
+      ><a name="2951" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="2952"
+      > </a
+      ><a name="2953" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2954"
+      > </a
+      ><a name="2955" href="container.w.fibration.html#2931" class="Bound"
+      >i</a
+      ><a name="2956" class="Symbol"
+      >}</a
+      ><a name="2957"
+      >
+              </a
+      ><a name="2972" class="Symbol"
+      >(&#955;</a
+      ><a name="2974"
+      > </a
+      ><a name="2975" href="container.w.fibration.html#2975" class="Bound"
+      >i</a
+      ><a name="2976"
+      > </a
+      ><a name="2977" href="container.w.fibration.html#2977" class="Bound"
+      >x</a
+      ><a name="2978"
+      > </a
+      ><a name="2979" class="Symbol"
+      >&#8594;</a
+      ><a name="2980"
+      > </a
+      ><a name="2981" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="2984"
+      > </a
+      ><a name="2985" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="2986"
+      > </a
+      ><a name="2987" href="container.w.fibration.html#2975" class="Bound"
+      >i</a
+      ><a name="2988"
+      > </a
+      ><a name="2989" class="Symbol"
+      >(</a
+      ><a name="2990" href="container.core.html#1984" class="Function"
+      >imap</a
+      ><a name="2994"
+      > </a
+      ><a name="2995" href="container.w.fibration.html#2903" class="Bound"
+      >f&#8320;</a
+      ><a name="2997"
+      > </a
+      ><a name="2998" href="container.w.fibration.html#2975" class="Bound"
+      >i</a
+      ><a name="2999"
+      > </a
+      ><a name="3000" href="container.w.fibration.html#2977" class="Bound"
+      >x</a
+      ><a name="3001" class="Symbol"
+      >))</a
+      ><a name="3003"
+      >
+              </a
+      ><a name="3018" class="Symbol"
+      >(&#955;</a
+      ><a name="3020"
+      > </a
+      ><a name="3021" href="container.w.fibration.html#3021" class="Bound"
+      >i</a
+      ><a name="3022"
+      > </a
+      ><a name="3023" href="container.w.fibration.html#3023" class="Bound"
+      >x</a
+      ><a name="3024"
+      > </a
+      ><a name="3025" class="Symbol"
+      >&#8594;</a
+      ><a name="3026"
+      > </a
+      ><a name="3027" href="container.w.fibration.html#2903" class="Bound"
+      >f&#8320;</a
+      ><a name="3029"
+      > </a
+      ><a name="3030" href="container.w.fibration.html#3021" class="Bound"
+      >i</a
+      ><a name="3031"
+      > </a
+      ><a name="3032" class="Symbol"
+      >(</a
+      ><a name="3033" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="3036"
+      > </a
+      ><a name="3037" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="3038"
+      > </a
+      ><a name="3039" href="container.w.fibration.html#3021" class="Bound"
+      >i</a
+      ><a name="3040"
+      > </a
+      ><a name="3041" href="container.w.fibration.html#3023" class="Bound"
+      >x</a
+      ><a name="3042" class="Symbol"
+      >))</a
+      ><a name="3044"
+      > </a
+      ><a name="3045" class="Symbol"
+      >)</a
+      ><a name="3046"
+      > </a
+      ><a name="3047" class="Symbol"
+      >)</a
+      ><a name="3048"
+      > </a
+      ><a name="3049" class="Symbol"
+      >&#955;</a
+      ><a name="3050"
+      > </a
+      ><a name="3051" class="Symbol"
+      >{</a
+      ><a name="3052"
+      > </a
+      ><a name="3053" class="Symbol"
+      >(</a
+      ><a name="3054" href="container.w.fibration.html#3054" class="Bound"
+      >f&#8320;</a
+      ><a name="3056"
+      > </a
+      ><a name="3057" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="3058"
+      > </a
+      ><a name="3059" href="container.w.fibration.html#3059" class="Bound"
+      >eq</a
+      ><a name="3061" class="Symbol"
+      >)</a
+      ><a name="3062"
+      >
+      </a
+      ><a name="3069" class="Symbol"
+      >&#8594;</a
+      ><a name="3070"
+      > </a
+      ><a name="3071" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="3072"
+      > </a
+      ><a name="3073" class="Symbol"
+      >(&#8704;</a
+      ><a name="3075"
+      > </a
+      ><a name="3076" href="container.w.fibration.html#3076" class="Bound"
+      >i</a
+      ><a name="3077"
+      > </a
+      ><a name="3078" href="container.w.fibration.html#3078" class="Bound"
+      >w</a
+      ><a name="3079"
+      > </a
+      ><a name="3080" class="Symbol"
+      >&#8594;</a
+      ><a name="3081"
+      > </a
+      ><a name="3082" href="sum.html#245" class="Function"
+      >P</a
+      ><a name="3083"
+      > </a
+      ><a name="3084" href="container.w.fibration.html#3076" class="Bound"
+      >i</a
+      ><a name="3085"
+      > </a
+      ><a name="3086" class="Symbol"
+      >(</a
+      ><a name="3087" href="container.w.fibration.html#3054" class="Bound"
+      >f&#8320;</a
+      ><a name="3089"
+      > </a
+      ><a name="3090" href="container.w.fibration.html#3076" class="Bound"
+      >i</a
+      ><a name="3091"
+      > </a
+      ><a name="3092" href="container.w.fibration.html#3078" class="Bound"
+      >w</a
+      ><a name="3093" class="Symbol"
+      >))</a
+      ><a name="3095"
+      > </a
+      ><a name="3096" class="Symbol"
+      >&#955;</a
+      ><a name="3097"
+      > </a
+      ><a name="3098" href="container.w.fibration.html#3098" class="Bound"
+      >f&#8321;</a
+      ><a name="3100"
+      >
+      </a
+      ><a name="3107" class="Symbol"
+      >&#8594;</a
+      ><a name="3108"
+      > </a
+      ><a name="3109" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="3114"
+      > </a
+      ><a name="3115" class="Symbol"
+      >(&#955;</a
+      ><a name="3117"
+      > </a
+      ><a name="3118" href="container.w.fibration.html#3118" class="Bound"
+      >g</a
+      ><a name="3119"
+      > </a
+      ><a name="3120" class="Symbol"
+      >&#8594;</a
+      ><a name="3121"
+      > </a
+      ><a name="3122" class="Symbol"
+      >&#8704;</a
+      ><a name="3123"
+      > </a
+      ><a name="3124" href="container.w.fibration.html#3124" class="Bound"
+      >i</a
+      ><a name="3125"
+      > </a
+      ><a name="3126" class="Symbol"
+      >(</a
+      ><a name="3127" href="container.w.fibration.html#3127" class="Bound"
+      >x</a
+      ><a name="3128"
+      > </a
+      ><a name="3129" class="Symbol"
+      >:</a
+      ><a name="3130"
+      > </a
+      ><a name="3131" href="container.core.html#391" class="Function"
+      >F</a
+      ><a name="3132"
+      > </a
+      ><a name="3133" class="Symbol"
+      >(</a
+      ><a name="3134" href="container.w.core.html#587" class="Datatype"
+      >W</a
+      ><a name="3135"
+      > </a
+      ><a name="3136" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="3137" class="Symbol"
+      >)</a
+      ><a name="3138"
+      > </a
+      ><a name="3139" href="container.w.fibration.html#3124" class="Bound"
+      >i</a
+      ><a name="3140" class="Symbol"
+      >)</a
+      ><a name="3141"
+      > </a
+      ><a name="3142" class="Symbol"
+      >&#8594;</a
+      ><a name="3143"
+      > </a
+      ><a name="3144" href="sum.html#245" class="Function"
+      >P</a
+      ><a name="3145"
+      > </a
+      ><a name="3146" href="container.w.fibration.html#3124" class="Bound"
+      >i</a
+      ><a name="3147"
+      > </a
+      ><a name="3148" class="Symbol"
+      >(</a
+      ><a name="3149" href="container.w.fibration.html#3118" class="Bound"
+      >g</a
+      ><a name="3150"
+      > </a
+      ><a name="3151" href="container.w.fibration.html#3124" class="Bound"
+      >i</a
+      ><a name="3152"
+      > </a
+      ><a name="3153" href="container.w.fibration.html#3127" class="Bound"
+      >x</a
+      ><a name="3154" class="Symbol"
+      >))</a
+      ><a name="3156"
+      > </a
+      ><a name="3157" href="container.w.fibration.html#3059" class="Bound"
+      >eq</a
+      ><a name="3159"
+      >
+            </a
+      ><a name="3172" class="Symbol"
+      >(&#955;</a
+      ><a name="3174"
+      > </a
+      ><a name="3175" href="container.w.fibration.html#3175" class="Bound"
+      >i</a
+      ><a name="3176"
+      > </a
+      ><a name="3177" href="container.w.fibration.html#3177" class="Bound"
+      >x</a
+      ><a name="3178"
+      > </a
+      ><a name="3179" class="Symbol"
+      >&#8594;</a
+      ><a name="3180"
+      > </a
+      ><a name="3181" href="sum.html#259" class="Function"
+      >&#952;</a
+      ><a name="3182"
+      > </a
+      ><a name="3183" href="container.w.fibration.html#3175" class="Bound"
+      >i</a
+      ><a name="3184"
+      > </a
+      ><a name="3185" class="Symbol"
+      >(</a
+      ><a name="3186" href="container.core.html#1984" class="Function"
+      >imap</a
+      ><a name="3190"
+      > </a
+      ><a name="3191" href="container.w.fibration.html#3054" class="Bound"
+      >f&#8320;</a
+      ><a name="3193"
+      > </a
+      ><a name="3194" href="container.w.fibration.html#3175" class="Bound"
+      >i</a
+      ><a name="3195"
+      > </a
+      ><a name="3196" href="container.w.fibration.html#3177" class="Bound"
+      >x</a
+      ><a name="3197" class="Symbol"
+      >)</a
+      ><a name="3198"
+      > </a
+      ><a name="3199" class="Symbol"
+      >(&#955;</a
+      ><a name="3201"
+      > </a
+      ><a name="3202" href="container.w.fibration.html#3202" class="Bound"
+      >b</a
+      ><a name="3203"
+      > </a
+      ><a name="3204" class="Symbol"
+      >&#8594;</a
+      ><a name="3205"
+      > </a
+      ><a name="3206" href="container.w.fibration.html#3098" class="Bound"
+      >f&#8321;</a
+      ><a name="3208"
+      > </a
+      ><a name="3209" class="Symbol"
+      >(</a
+      ><a name="3210" href="container.core.html#307" class="Function"
+      >r</a
+      ><a name="3211"
+      > </a
+      ><a name="3212" href="container.w.fibration.html#3202" class="Bound"
+      >b</a
+      ><a name="3213" class="Symbol"
+      >)</a
+      ><a name="3214"
+      > </a
+      ><a name="3215" class="Symbol"
+      >(</a
+      ><a name="3216" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="3221"
+      > </a
+      ><a name="3222" href="container.w.fibration.html#3177" class="Bound"
+      >x</a
+      ><a name="3223"
+      > </a
+      ><a name="3224" href="container.w.fibration.html#3202" class="Bound"
+      >b</a
+      ><a name="3225" class="Symbol"
+      >)))</a
+      ><a name="3228"
+      >
+          </a
+      ><a name="3239" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3240"
+      > </a
+      ><a name="3241" class="Symbol"
+      >(&#955;</a
+      ><a name="3243"
+      > </a
+      ><a name="3244" href="container.w.fibration.html#3244" class="Bound"
+      >i</a
+      ><a name="3245"
+      > </a
+      ><a name="3246" href="container.w.fibration.html#3246" class="Bound"
+      >x</a
+      ><a name="3247"
+      > </a
+      ><a name="3248" class="Symbol"
+      >&#8594;</a
+      ><a name="3249"
+      > </a
+      ><a name="3250" href="container.w.fibration.html#3098" class="Bound"
+      >f&#8321;</a
+      ><a name="3252"
+      > </a
+      ><a name="3253" href="container.w.fibration.html#3244" class="Bound"
+      >i</a
+      ><a name="3254"
+      > </a
+      ><a name="3255" class="Symbol"
+      >(</a
+      ><a name="3256" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="3259"
+      > </a
+      ><a name="3260" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="3261"
+      > </a
+      ><a name="3262" href="container.w.fibration.html#3244" class="Bound"
+      >i</a
+      ><a name="3263"
+      > </a
+      ><a name="3264" href="container.w.fibration.html#3246" class="Bound"
+      >x</a
+      ><a name="3265" class="Symbol"
+      >))</a
+      ><a name="3267"
+      > </a
+      ><a name="3268" class="Symbol"
+      >}</a
+      ><a name="3269"
+      > </a
+      ><a name="3270" class="Symbol"
+      >)</a
+      ><a name="3271"
+      >
+    </a
+      ><a name="3276" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#8773;&#10216;</a
+      ><a name="3278"
+      > </a
+      ><a name="3279" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="3283"
+      > </a
+      ><a name="3284" class="Symbol"
+      >(</a
+      ><a name="3285"
+      > </a
+      ><a name="3286" href="function.isomorphism.utils.html#3347" class="Function"
+      >&#931;-ap-iso</a
+      ><a name="3294"
+      > </a
+      ><a name="3295" class="Symbol"
+      >(</a
+      ><a name="3296" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="3300"
+      > </a
+      ><a name="3301" class="Symbol"
+      >(</a
+      ><a name="3302" href="function.isomorphism.utils.html#9728" class="Function"
+      >contr-&#8868;-iso</a
+      ><a name="3313"
+      > </a
+      ><a name="3314" href="container.w.algebra.html#4420" class="Function"
+      >W-initial-W</a
+      ><a name="3325" class="Symbol"
+      >))</a
+      ><a name="3327"
+      > </a
+      ><a name="3328" class="Symbol"
+      >&#955;</a
+      ><a name="3329"
+      > </a
+      ><a name="3330" href="container.w.fibration.html#3330" class="Bound"
+      >_</a
+      ><a name="3331"
+      > </a
+      ><a name="3332" class="Symbol"
+      >&#8594;</a
+      ><a name="3333"
+      > </a
+      ><a name="3334" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="3339"
+      > </a
+      ><a name="3340" class="Symbol"
+      >)</a
+      ><a name="3341"
+      > </a
+      ><a name="3342" href="function.isomorphism.core.html#1555" class="Function Operator"
+      >&#183;&#8773;</a
+      ><a name="3344"
+      > </a
+      ><a name="3345" href="function.isomorphism.utils.html#9398" class="Function"
+      >&#215;-left-unit</a
+      ><a name="3356"
+      > </a
+      ><a name="3357" href="function.isomorphism.core.html#1978" class="Function Operator"
+      >&#10217;</a
+      ><a name="3358"
+      >
+      </a
+      ><a name="3365" class="Symbol"
+      >(</a
+      ><a name="3366"
+      > </a
+      ><a name="3367" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="3368"
+      > </a
+      ><a name="3369" class="Symbol"
+      >(&#8704;</a
+      ><a name="3371"
+      > </a
+      ><a name="3372" href="container.w.fibration.html#3372" class="Bound"
+      >i</a
+      ><a name="3373"
+      > </a
+      ><a name="3374" href="container.w.fibration.html#3374" class="Bound"
+      >w</a
+      ><a name="3375"
+      > </a
+      ><a name="3376" class="Symbol"
+      >&#8594;</a
+      ><a name="3377"
+      > </a
+      ><a name="3378" href="sum.html#245" class="Function"
+      >P</a
+      ><a name="3379"
+      > </a
+      ><a name="3380" href="container.w.fibration.html#3372" class="Bound"
+      >i</a
+      ><a name="3381"
+      > </a
+      ><a name="3382" href="container.w.fibration.html#3374" class="Bound"
+      >w</a
+      ><a name="3383" class="Symbol"
+      >)</a
+      ><a name="3384"
+      > </a
+      ><a name="3385" class="Symbol"
+      >&#955;</a
+      ><a name="3386"
+      > </a
+      ><a name="3387" href="container.w.fibration.html#3387" class="Bound"
+      >f&#8321;</a
+      ><a name="3389"
+      >
+      </a
+      ><a name="3396" class="Symbol"
+      >&#8594;</a
+      ><a name="3397"
+      > </a
+      ><a name="3398" class="Symbol"
+      >(&#955;</a
+      ><a name="3400"
+      > </a
+      ><a name="3401" href="container.w.fibration.html#3401" class="Bound"
+      >i</a
+      ><a name="3402"
+      > </a
+      ><a name="3403" href="container.w.fibration.html#3403" class="Bound"
+      >x</a
+      ><a name="3404"
+      > </a
+      ><a name="3405" class="Symbol"
+      >&#8594;</a
+      ><a name="3406"
+      > </a
+      ><a name="3407" href="sum.html#259" class="Function"
+      >&#952;</a
+      ><a name="3408"
+      > </a
+      ><a name="3409" href="container.w.fibration.html#3401" class="Bound"
+      >i</a
+      ><a name="3410"
+      > </a
+      ><a name="3411" href="container.w.fibration.html#3403" class="Bound"
+      >x</a
+      ><a name="3412"
+      > </a
+      ><a name="3413" class="Symbol"
+      >(&#955;</a
+      ><a name="3415"
+      > </a
+      ><a name="3416" href="container.w.fibration.html#3416" class="Bound"
+      >b</a
+      ><a name="3417"
+      > </a
+      ><a name="3418" class="Symbol"
+      >&#8594;</a
+      ><a name="3419"
+      > </a
+      ><a name="3420" href="container.w.fibration.html#3387" class="Bound"
+      >f&#8321;</a
+      ><a name="3422"
+      > </a
+      ><a name="3423" class="Symbol"
+      >(</a
+      ><a name="3424" href="container.core.html#307" class="Function"
+      >r</a
+      ><a name="3425"
+      > </a
+      ><a name="3426" href="container.w.fibration.html#3416" class="Bound"
+      >b</a
+      ><a name="3427" class="Symbol"
+      >)</a
+      ><a name="3428"
+      > </a
+      ><a name="3429" class="Symbol"
+      >(</a
+      ><a name="3430" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="3435"
+      > </a
+      ><a name="3436" href="container.w.fibration.html#3403" class="Bound"
+      >x</a
+      ><a name="3437"
+      > </a
+      ><a name="3438" href="container.w.fibration.html#3416" class="Bound"
+      >b</a
+      ><a name="3439" class="Symbol"
+      >)))</a
+      ><a name="3442"
+      >
+      </a
+      ><a name="3449" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="3450"
+      > </a
+      ><a name="3451" class="Symbol"
+      >(&#955;</a
+      ><a name="3453"
+      > </a
+      ><a name="3454" href="container.w.fibration.html#3454" class="Bound"
+      >i</a
+      ><a name="3455"
+      > </a
+      ><a name="3456" href="container.w.fibration.html#3456" class="Bound"
+      >x</a
+      ><a name="3457"
+      > </a
+      ><a name="3458" class="Symbol"
+      >&#8594;</a
+      ><a name="3459"
+      > </a
+      ><a name="3460" href="container.w.fibration.html#3387" class="Bound"
+      >f&#8321;</a
+      ><a name="3462"
+      > </a
+      ><a name="3463" href="container.w.fibration.html#3454" class="Bound"
+      >i</a
+      ><a name="3464"
+      > </a
+      ><a name="3465" class="Symbol"
+      >(</a
+      ><a name="3466" href="container.w.core.html#701" class="Function"
+      >inW</a
+      ><a name="3469"
+      > </a
+      ><a name="3470" href="container.w.fibration.html#99" class="Bound"
+      >c</a
+      ><a name="3471"
+      > </a
+      ><a name="3472" href="container.w.fibration.html#3454" class="Bound"
+      >i</a
+      ><a name="3473"
+      > </a
+      ><a name="3474" href="container.w.fibration.html#3456" class="Bound"
+      >x</a
+      ><a name="3475" class="Symbol"
+      >))</a
+      ><a name="3477"
+      > </a
+      ><a name="3478" class="Symbol"
+      >)</a
+      ><a name="3479"
+      >
+    </a
+      ><a name="3484" href="function.isomorphism.core.html#2283" class="Function Operator"
+      >&#8718;</a
+      ><a name="3485"
+      >
+    </a
+      ><a name="3490" class="Keyword"
+      >where</a
+      ><a name="3495"
+      >
+      </a
+      ><a name="3502" class="Keyword"
+      >open</a
+      ><a name="3506"
+      > </a
+      ><a name="3507" href="function.isomorphism.core.html#1670" class="Module"
+      >&#8773;-Reasoning</a
+      ><a name="3518"
+      >
+
+  </a
+      ><a name="3522" href="container.w.fibration.html#3522" class="Function"
+      >W-section-contr</a
+      ><a name="3537"
+      > </a
+      ><a name="3538" class="Symbol"
+      >:</a
+      ><a name="3539"
+      > </a
+      ><a name="3540" href="hott.level.core.html#284" class="Function"
+      >contr</a
+      ><a name="3545"
+      > </a
+      ><a name="3546" class="Symbol"
+      >(</a
+      ><a name="3547" href="container.w.fibration.html#439" class="Function"
+      >AlgSection</a
+      ><a name="3557"
+      > </a
+      ><a name="3558" href="container.w.fibration.html#956" class="Bound"
+      >&#120031;</a
+      ><a name="3559" class="Symbol"
+      >)</a
+      ><a name="3560"
+      >
+  </a
+      ><a name="3563" href="container.w.fibration.html#3522" class="Function"
+      >W-section-contr</a
+      ><a name="3578"
+      > </a
+      ><a name="3579" class="Symbol"
+      >=</a
+      ><a name="3580"
+      > </a
+      ><a name="3581" href="hott.level.closure.core.html#2265" class="Function"
+      >iso-level</a
+      ><a name="3590"
+      > </a
+      ><a name="3591" href="container.w.fibration.html#1589" class="Function"
+      >section-mor-iso</a
+      ><a name="3606"
+      > </a
+      ><a name="3607" class="Symbol"
+      >(</a
+      ><a name="3608" href="container.w.algebra.html#4243" class="Function"
+      >W-initial</a
+      ><a name="3617"
+      > </a
+      ><a name="3618" href="container.w.fibration.html#986" class="Function"
+      >&#120039;</a
+      ><a name="3619" class="Symbol"
+      >)</a
+      ><a name="3620"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
