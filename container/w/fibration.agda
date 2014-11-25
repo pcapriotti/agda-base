@@ -94,5 +94,5 @@ module _ {ℓ} (𝓟 : AlgFib ℓ) where
     where
       open ≅-Reasoning
 
-  section-contr : contr (AlgSection 𝓟)
-  section-contr = iso-level section-mor-iso (W-initial 𝓧)
+  W-section-contr : contr (AlgSection 𝓟)
+  W-section-contr = iso-level section-mor-iso (W-initial 𝓧)

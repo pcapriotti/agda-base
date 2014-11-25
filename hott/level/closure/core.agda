@@ -8,7 +8,6 @@ open import function.isomorphism.core
 -- open import function.isomorphism.properties
 open import sum
 open import hott.level.core
-open import hott.level.sets
 open import hott.equivalence.core
 open import hott.univalence
 open import sets.nat.core

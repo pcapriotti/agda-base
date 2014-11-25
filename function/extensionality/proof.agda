@@ -7,13 +7,15 @@ open import equality
 open import function.extensionality.core
 open import hott.univalence
 open import hott.level.core
-open import hott.level.sets
 open import hott.level.closure.core
 open import hott.equivalence.core
 open import sets.unit
 
 top : ∀ {i} → Set i
 top = ↑ _ ⊤
+
+⊤-contr' : ∀ {i} → contr (↑ i ⊤)
+⊤-contr' {i} = lift tt , λ { (lift tt) → refl }
 
 -- this uses definitional η for ⊤
 contr-exp-⊤ : ∀ {i j}{A : Set i} → contr (A → top {j})

@@ -8,6 +8,7 @@ open import equality.core
 open import equality.calculus
 open import equality.reasoning
 open import function.core
+open import function.extensionality.proof
 open import sets.empty
 open import sets.unit
 open import hott.level.core
@@ -16,12 +17,12 @@ open import hott.level.core
 ⊤-contr : contr ⊤
 ⊤-contr = tt , λ { tt → refl }
 
-⊤-contr' : ∀ {i} → contr (↑ i ⊤)
-⊤-contr' {i} = lift tt , λ { (lift tt) → refl }
-
 -- ⊥ is propositional
 ⊥-prop : h 1 ⊥
 ⊥-prop x _ = ⊥-elim x
+
+⊥-initial : ∀ {i} {A : Set i} → contr (⊥ → A)
+⊥-initial = (λ ()) , (λ f → funext λ ())
 
 -- Hedberg's theorem
 hedberg : ∀ {i} {A : Set i}

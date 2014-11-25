@@ -12,6 +12,7 @@ open import function.isomorphism.coherent
 open import function.extensionality.proof
 open import sets.unit
 open import sets.empty
+open import sets.fin.core
 open import hott.level.core
 
 Σ-split-iso : ∀ {i j}{X : Set i}{Y : X → Set j}
@@ -29,6 +30,24 @@ open import hott.level.core
     K = J (λ u v p → unapΣ (apΣ p) ≡ p)
           (λ {(a , b) → refl })
           (a , b) (a' , b')
+
+×-split-iso : ∀ {i j}{X : Set i}{Y : Set j}
+            → {a a' : X}{b b' : Y}
+            → ((a ≡ a') × (b ≡ b'))
+            ≅ ((a , b) ≡ (a' , b'))
+×-split-iso {X = X}{Y} = record
+  { to = λ { (p , q) → ap₂ _,_ p q }
+  ; from = λ { p → (ap proj₁ p , ap proj₂ p) }
+  ; iso₁ = λ { (p , q) → H p q }
+  ; iso₂ = K }
+  where
+    H : {a a' : X}{b b' : Y}(p : a ≡ a')(q : b ≡ b')
+      → (ap proj₁ (ap₂ _,_ p q), ap proj₂ (ap₂ _,_ p q)) ≡ (p , q)
+    H refl refl = refl
+
+    K : {a a' : X}{b b' : Y}(p : (a , b) ≡ (a' , b'))
+      → ap₂ _,_ (ap proj₁ p) (ap proj₂ p) ≡ p
+    K refl = refl
 
 ×-ap-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
              {Y : Set j}{Y' : Set j'}
@@ -181,6 +200,21 @@ impl-iso = record
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
+⊎-Σ-iso : ∀ {i}(X : Fin 2 → Set i)
+        → (X zero ⊎ X (suc zero))
+        ≅ Σ (Fin 2) X
+⊎-Σ-iso X = record
+  { to = λ { (inj₁ x) → zero , x
+           ; (inj₂ x) → suc zero , x }
+  ; from = λ { (zero , x) → inj₁ x
+             ; (suc zero , x) → inj₂ x
+             ; (suc (suc ()) , _) }
+  ; iso₁ = λ { (inj₁ x) → refl
+             ; (inj₂ x) → refl }
+  ; iso₂ = λ { (zero , x) → refl
+             ; (suc zero , x) → refl
+             ; (suc (suc ()) , _) } }
+
 ⊎-ap-iso : ∀ {i j i' j'}
          → {X : Set i}{X' : Set i'}
          → {Y : Set j}{Y' : Set j'}
@@ -224,6 +258,19 @@ impl-iso = record
              ; (inj₂ y , z) → refl }
   ; iso₂ = λ { (inj₁ (x , z)) → refl
              ; (inj₂ (y , z)) → refl } }
+
+⊎-universal : ∀ {i j k}{X : Set i}{Y : Set j}
+            → {Z : X ⊎ Y → Set k}
+            → ((u : X ⊎ Y) → Z u)
+            ≅ (((x : X) → Z (inj₁ x)) × ((y : Y) → Z (inj₂ y)))
+⊎-universal = record
+  { to = λ f → (f ∘' inj₁ , f ∘' inj₂)
+  ; from = λ { (g₁ , g₂) (inj₁ x) → g₁ x
+             ; (g₁ , g₂) (inj₂ y) → g₂ y }
+  ; iso₁ = λ f → funext λ
+      { (inj₁ x) → refl
+      ; (inj₂ x) → refl }
+  ; iso₂ = λ { (g₁ , g₂) → refl } }
 
 ×-left-unit : ∀ {i}{X : Set i} → (⊤ × X) ≅ X
 ×-left-unit = record
