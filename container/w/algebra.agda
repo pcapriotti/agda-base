@@ -110,27 +110,35 @@ module _ {ℓ} (𝓧 : Alg ℓ) where
         → p ≡ sym q · r · s → sym r · q · p ≡ s
     lem p refl refl refl α = α
 
-    W-mor-prop : (f g : Mor 𝓦 𝓧) → f ≡ g
-    W-mor-prop (f , α) (g , β) = invert (eq-mor-iso 𝓦 𝓧) (p , p-h)
-      where
-        p : ∀ i x → f i x ≡ g i x
-        p i (sup a u)
-          = sym (funext-invⁱ α i (a , u))
-          · ap (θ i) (ap (_,_ a) (funext (λ b → p (r b) (u b))))
-          · funext-invⁱ β i (a , u)
+  W-mor-prop : (f g : Mor 𝓦 𝓧) → f ≡ g
+  W-mor-prop (f , α) (g , β) = invert (eq-mor-iso 𝓦 𝓧) (p , p-h)
+    where
+      p : ∀ i x → f i x ≡ g i x
+      p i (sup a u)
+        = sym (funext-invⁱ α i (a , u))
+        · ap (θ i) (ap (_,_ a) (funext (λ b → p (r b) (u b))))
+        · funext-invⁱ β i (a , u)
 
-        p-h : ∀ i x
-            → sym (ap (θ i) (hmap p i x))
-            · funext-invⁱ α i x
-            · p i (inW c i x)
-            ≡ funext-invⁱ β i x
-        p-h i (a , u) = lem (p i (sup a u))
-                            (funext-invⁱ α i (a , u)) _
-                            (funext-invⁱ β i (a , u))
-                            refl
+      p-h : ∀ i x
+          → sym (ap (θ i) (hmap p i x))
+          · funext-invⁱ α i x
+          · p i (inW c i x)
+          ≡ funext-invⁱ β i x
+      p-h i (a , u) = lem (p i (sup a u))
+                          (funext-invⁱ α i (a , u)) _
+                          (funext-invⁱ β i (a , u))
+                          refl
 
-    W-mor : Mor 𝓦 𝓧
-    W-mor = fold c θ , funextⁱ (λ i x → fold-β c θ x)
+  W-mor : Mor 𝓦 𝓧
+  W-mor = fold c θ , funextⁱ (λ i x → fold-β c θ x)
 
-  W-initial : contr (Mor 𝓦 𝓧)
-  W-initial = W-mor , W-mor-prop W-mor
+W-initial : ∀ {ℓ} (𝓧 : Alg ℓ) → contr (Mor 𝓦 𝓧)
+W-initial 𝓧 = W-mor 𝓧 , W-mor-prop 𝓧 (W-mor 𝓧)
+
+-- special case of the isomorphism above, with better
+-- computational behaviour
+W-initial-W : contr (Mor 𝓦 𝓦)
+W-initial-W = id-mor , W-mor-prop 𝓦 id-mor
+  where
+    id-mor : Mor 𝓦 𝓦
+    id-mor = (λ i x → x) , refl
