@@ -1,0 +1,1568 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >function.extensionality.strong</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="function.extensionality.strong.html#1" class="Module"
+      >function.extensionality.strong</a
+      ><a name="66"
+      > </a
+      ><a name="67" class="Keyword"
+      >where</a
+      ><a name="72"
+      >
+
+</a
+      ><a name="74" class="Keyword"
+      >open</a
+      ><a name="78"
+      > </a
+      ><a name="79" class="Keyword"
+      >import</a
+      ><a name="85"
+      > </a
+      ><a name="86" href="level.html#1" class="Module"
+      >level</a
+      ><a name="91"
+      >
+</a
+      ><a name="92" class="Keyword"
+      >open</a
+      ><a name="96"
+      > </a
+      ><a name="97" class="Keyword"
+      >import</a
+      ><a name="103"
+      > </a
+      ><a name="104" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="107"
+      >
+</a
+      ><a name="108" class="Keyword"
+      >open</a
+      ><a name="112"
+      > </a
+      ><a name="113" class="Keyword"
+      >import</a
+      ><a name="119"
+      > </a
+      ><a name="120" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="133"
+      >
+</a
+      ><a name="134" class="Keyword"
+      >open</a
+      ><a name="138"
+      > </a
+      ><a name="139" class="Keyword"
+      >import</a
+      ><a name="145"
+      > </a
+      ><a name="146" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="159"
+      >
+</a
+      ><a name="160" class="Keyword"
+      >open</a
+      ><a name="164"
+      > </a
+      ><a name="165" class="Keyword"
+      >import</a
+      ><a name="171"
+      > </a
+      ><a name="172" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="192"
+      >
+</a
+      ><a name="193" class="Keyword"
+      >open</a
+      ><a name="197"
+      > </a
+      ><a name="198" class="Keyword"
+      >import</a
+      ><a name="204"
+      > </a
+      ><a name="205" href="function.extensionality.core.html#1" class="Module"
+      >function.extensionality.core</a
+      ><a name="233"
+      >
+</a
+      ><a name="234" class="Keyword"
+      >open</a
+      ><a name="238"
+      > </a
+      ><a name="239" class="Keyword"
+      >import</a
+      ><a name="245"
+      > </a
+      ><a name="246" href="function.extensionality.proof.html#1" class="Module"
+      >function.extensionality.proof</a
+      ><a name="275"
+      >
+</a
+      ><a name="276" class="Keyword"
+      >open</a
+      ><a name="280"
+      > </a
+      ><a name="281" class="Keyword"
+      >import</a
+      ><a name="287"
+      > </a
+      ><a name="288" href="hott.level.core.html#1" class="Module"
+      >hott.level.core</a
+      ><a name="303"
+      >
+</a
+      ><a name="304" class="Keyword"
+      >open</a
+      ><a name="308"
+      > </a
+      ><a name="309" class="Keyword"
+      >import</a
+      ><a name="315"
+      > </a
+      ><a name="316" href="hott.level.closure.core.html#1" class="Module"
+      >hott.level.closure.core</a
+      ><a name="339"
+      >
+</a
+      ><a name="340" class="Keyword"
+      >open</a
+      ><a name="344"
+      > </a
+      ><a name="345" class="Keyword"
+      >import</a
+      ><a name="351"
+      > </a
+      ><a name="352" href="hott.equivalence.core.html#1" class="Module"
+      >hott.equivalence.core</a
+      ><a name="373"
+      >
+
+</a
+      ><a name="375" class="Keyword"
+      >private</a
+      ><a name="382"
+      >
+  </a
+      ><a name="385" class="Keyword"
+      >module</a
+      ><a name="391"
+      > </a
+      ><a name="392" href="function.extensionality.strong.html#392" class="Module"
+      >Dummy</a
+      ><a name="397"
+      > </a
+      ><a name="398" class="Symbol"
+      >{</a
+      ><a name="399" href="function.extensionality.strong.html#399" class="Bound"
+      >i</a
+      ><a name="400"
+      > </a
+      ><a name="401" href="function.extensionality.strong.html#401" class="Bound"
+      >j</a
+      ><a name="402" class="Symbol"
+      >}{</a
+      ><a name="404" href="function.extensionality.strong.html#404" class="Bound"
+      >X</a
+      ><a name="405"
+      > </a
+      ><a name="406" class="Symbol"
+      >:</a
+      ><a name="407"
+      > </a
+      ><a name="408" class="PrimitiveType"
+      >Set</a
+      ><a name="411"
+      > </a
+      ><a name="412" href="function.extensionality.strong.html#399" class="Bound"
+      >i</a
+      ><a name="413" class="Symbol"
+      >}{</a
+      ><a name="415" href="function.extensionality.strong.html#415" class="Bound"
+      >Y</a
+      ><a name="416"
+      > </a
+      ><a name="417" class="Symbol"
+      >:</a
+      ><a name="418"
+      > </a
+      ><a name="419" href="function.extensionality.strong.html#404" class="Bound"
+      >X</a
+      ><a name="420"
+      > </a
+      ><a name="421" class="Symbol"
+      >&#8594;</a
+      ><a name="422"
+      > </a
+      ><a name="423" class="PrimitiveType"
+      >Set</a
+      ><a name="426"
+      > </a
+      ><a name="427" href="function.extensionality.strong.html#401" class="Bound"
+      >j</a
+      ><a name="428" class="Symbol"
+      >}</a
+      ><a name="429"
+      > </a
+      ><a name="430" class="Keyword"
+      >where</a
+      ><a name="435"
+      >
+    </a
+      ><a name="440" href="function.extensionality.strong.html#440" class="Function Operator"
+      >_~_</a
+      ><a name="443"
+      > </a
+      ><a name="444" class="Symbol"
+      >:</a
+      ><a name="445"
+      > </a
+      ><a name="446" class="Symbol"
+      >(</a
+      ><a name="447" href="function.extensionality.strong.html#447" class="Bound"
+      >f</a
+      ><a name="448"
+      > </a
+      ><a name="449" href="function.extensionality.strong.html#449" class="Bound"
+      >g</a
+      ><a name="450"
+      > </a
+      ><a name="451" class="Symbol"
+      >:</a
+      ><a name="452"
+      > </a
+      ><a name="453" class="Symbol"
+      >(</a
+      ><a name="454" href="function.extensionality.strong.html#454" class="Bound"
+      >x</a
+      ><a name="455"
+      > </a
+      ><a name="456" class="Symbol"
+      >:</a
+      ><a name="457"
+      > </a
+      ><a name="458" href="function.extensionality.strong.html#404" class="Bound"
+      >X</a
+      ><a name="459" class="Symbol"
+      >)</a
+      ><a name="460"
+      > </a
+      ><a name="461" class="Symbol"
+      >&#8594;</a
+      ><a name="462"
+      > </a
+      ><a name="463" href="function.extensionality.strong.html#415" class="Bound"
+      >Y</a
+      ><a name="464"
+      > </a
+      ><a name="465" href="function.extensionality.strong.html#454" class="Bound"
+      >x</a
+      ><a name="466" class="Symbol"
+      >)</a
+      ><a name="467"
+      > </a
+      ><a name="468" class="Symbol"
+      >&#8594;</a
+      ><a name="469"
+      > </a
+      ><a name="470" class="PrimitiveType"
+      >Set</a
+      ><a name="473"
+      > </a
+      ><a name="474" class="Symbol"
+      >(</a
+      ><a name="475" href="function.extensionality.strong.html#399" class="Bound"
+      >i</a
+      ><a name="476"
+      > </a
+      ><a name="477" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="478"
+      > </a
+      ><a name="479" href="function.extensionality.strong.html#401" class="Bound"
+      >j</a
+      ><a name="480" class="Symbol"
+      >)</a
+      ><a name="481"
+      >
+    </a
+      ><a name="486" href="function.extensionality.strong.html#486" class="Bound"
+      >f</a
+      ><a name="487"
+      > </a
+      ><a name="488" href="function.extensionality.strong.html#440" class="Function Operator"
+      >~</a
+      ><a name="489"
+      > </a
+      ><a name="490" href="function.extensionality.strong.html#490" class="Bound"
+      >g</a
+      ><a name="491"
+      > </a
+      ><a name="492" class="Symbol"
+      >=</a
+      ><a name="493"
+      > </a
+      ><a name="494" class="Symbol"
+      >&#8704;</a
+      ><a name="495"
+      > </a
+      ><a name="496" href="function.extensionality.strong.html#496" class="Bound"
+      >x</a
+      ><a name="497"
+      > </a
+      ><a name="498" class="Symbol"
+      >&#8594;</a
+      ><a name="499"
+      > </a
+      ><a name="500" href="function.extensionality.strong.html#486" class="Bound"
+      >f</a
+      ><a name="501"
+      > </a
+      ><a name="502" href="function.extensionality.strong.html#496" class="Bound"
+      >x</a
+      ><a name="503"
+      > </a
+      ><a name="504" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="505"
+      > </a
+      ><a name="506" href="function.extensionality.strong.html#490" class="Bound"
+      >g</a
+      ><a name="507"
+      > </a
+      ><a name="508" href="function.extensionality.strong.html#496" class="Bound"
+      >x</a
+      ><a name="509"
+      >
+    </a
+      ><a name="514" class="Keyword"
+      >infix</a
+      ><a name="519"
+      > </a
+      ><a name="520" class="Number"
+      >5</a
+      ><a name="521"
+      > _~_
+
+    </a
+      ><a name="531" href="function.extensionality.strong.html#531" class="Function"
+      >R</a
+      ><a name="532"
+      > </a
+      ><a name="533" class="Symbol"
+      >:</a
+      ><a name="534"
+      > </a
+      ><a name="535" class="Symbol"
+      >(</a
+      ><a name="536" href="function.extensionality.strong.html#536" class="Bound"
+      >f</a
+      ><a name="537"
+      > </a
+      ><a name="538" class="Symbol"
+      >:</a
+      ><a name="539"
+      > </a
+      ><a name="540" class="Symbol"
+      >(</a
+      ><a name="541" href="function.extensionality.strong.html#541" class="Bound"
+      >x</a
+      ><a name="542"
+      > </a
+      ><a name="543" class="Symbol"
+      >:</a
+      ><a name="544"
+      > </a
+      ><a name="545" href="function.extensionality.strong.html#404" class="Bound"
+      >X</a
+      ><a name="546" class="Symbol"
+      >)</a
+      ><a name="547"
+      > </a
+      ><a name="548" class="Symbol"
+      >&#8594;</a
+      ><a name="549"
+      > </a
+      ><a name="550" href="function.extensionality.strong.html#415" class="Bound"
+      >Y</a
+      ><a name="551"
+      > </a
+      ><a name="552" href="function.extensionality.strong.html#541" class="Bound"
+      >x</a
+      ><a name="553" class="Symbol"
+      >)</a
+      ><a name="554"
+      > </a
+      ><a name="555" class="Symbol"
+      >&#8594;</a
+      ><a name="556"
+      > </a
+      ><a name="557" href="function.extensionality.strong.html#536" class="Bound"
+      >f</a
+      ><a name="558"
+      > </a
+      ><a name="559" href="function.extensionality.strong.html#440" class="Function Operator"
+      >~</a
+      ><a name="560"
+      > </a
+      ><a name="561" href="function.extensionality.strong.html#536" class="Bound"
+      >f</a
+      ><a name="562"
+      >
+    </a
+      ><a name="567" href="function.extensionality.strong.html#531" class="Function"
+      >R</a
+      ><a name="568"
+      > </a
+      ><a name="569" href="function.extensionality.strong.html#569" class="Bound"
+      >f</a
+      ><a name="570"
+      > </a
+      ><a name="571" href="function.extensionality.strong.html#571" class="Bound"
+      >x</a
+      ><a name="572"
+      > </a
+      ><a name="573" class="Symbol"
+      >=</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="579"
+      >
+
+    </a
+      ><a name="585" href="function.extensionality.strong.html#585" class="Function"
+      >iso&#8321;</a
+      ><a name="589"
+      > </a
+      ><a name="590" class="Symbol"
+      >:</a
+      ><a name="591"
+      > </a
+      ><a name="592" class="Symbol"
+      >{</a
+      ><a name="593" href="function.extensionality.strong.html#593" class="Bound"
+      >f</a
+      ><a name="594"
+      > </a
+      ><a name="595" href="function.extensionality.strong.html#595" class="Bound"
+      >g</a
+      ><a name="596"
+      > </a
+      ><a name="597" class="Symbol"
+      >:</a
+      ><a name="598"
+      > </a
+      ><a name="599" class="Symbol"
+      >(</a
+      ><a name="600" href="function.extensionality.strong.html#600" class="Bound"
+      >x</a
+      ><a name="601"
+      > </a
+      ><a name="602" class="Symbol"
+      >:</a
+      ><a name="603"
+      > </a
+      ><a name="604" href="function.extensionality.strong.html#404" class="Bound"
+      >X</a
+      ><a name="605" class="Symbol"
+      >)</a
+      ><a name="606"
+      > </a
+      ><a name="607" class="Symbol"
+      >&#8594;</a
+      ><a name="608"
+      > </a
+      ><a name="609" href="function.extensionality.strong.html#415" class="Bound"
+      >Y</a
+      ><a name="610"
+      > </a
+      ><a name="611" href="function.extensionality.strong.html#600" class="Bound"
+      >x</a
+      ><a name="612" class="Symbol"
+      >}</a
+      ><a name="613"
+      > </a
+      ><a name="614" class="Symbol"
+      >(</a
+      ><a name="615" href="function.extensionality.strong.html#615" class="Bound"
+      >p</a
+      ><a name="616"
+      > </a
+      ><a name="617" class="Symbol"
+      >:</a
+      ><a name="618"
+      > </a
+      ><a name="619" href="function.extensionality.strong.html#593" class="Bound"
+      >f</a
+      ><a name="620"
+      > </a
+      ><a name="621" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="622"
+      > </a
+      ><a name="623" href="function.extensionality.strong.html#595" class="Bound"
+      >g</a
+      ><a name="624" class="Symbol"
+      >)</a
+      ><a name="625"
+      >
+         </a
+      ><a name="635" class="Symbol"
+      >&#8594;</a
+      ><a name="636"
+      > </a
+      ><a name="637" href="function.extensionality.proof.html#1870" class="Function"
+      >funext</a
+      ><a name="643"
+      > </a
+      ><a name="644" class="Symbol"
+      >(</a
+      ><a name="645" href="function.extensionality.core.html#705" class="Function"
+      >funext-inv</a
+      ><a name="655"
+      > </a
+      ><a name="656" href="function.extensionality.strong.html#615" class="Bound"
+      >p</a
+      ><a name="657" class="Symbol"
+      >)</a
+      ><a name="658"
+      > </a
+      ><a name="659" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="660"
+      > </a
+      ><a name="661" href="function.extensionality.strong.html#615" class="Bound"
+      >p</a
+      ><a name="662"
+      >
+    </a
+      ><a name="667" href="function.extensionality.strong.html#585" class="Function"
+      >iso&#8321;</a
+      ><a name="671"
+      > </a
+      ><a name="672" class="Symbol"
+      >{</a
+      ><a name="673" href="function.extensionality.strong.html#673" class="Bound"
+      >f</a
+      ><a name="674" class="Symbol"
+      >}</a
+      ><a name="675"
+      > </a
+      ><a name="676" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="680"
+      > </a
+      ><a name="681" class="Symbol"
+      >=</a
+      ><a name="682"
+      > </a
+      ><a name="683" href="function.extensionality.proof.html#1964" class="Function"
+      >funext-id</a
+      ><a name="692"
+      > </a
+      ><a name="693" href="function.extensionality.strong.html#673" class="Bound"
+      >f</a
+      ><a name="694"
+      >
+
+    </a
+      ><a name="700" href="function.extensionality.strong.html#700" class="Function"
+      >iso&#8322;</a
+      ><a name="704"
+      > </a
+      ><a name="705" class="Symbol"
+      >:</a
+      ><a name="706"
+      > </a
+      ><a name="707" class="Symbol"
+      >(</a
+      ><a name="708" href="function.extensionality.strong.html#708" class="Bound"
+      >f</a
+      ><a name="709"
+      > </a
+      ><a name="710" href="function.extensionality.strong.html#710" class="Bound"
+      >g</a
+      ><a name="711"
+      > </a
+      ><a name="712" class="Symbol"
+      >:</a
+      ><a name="713"
+      > </a
+      ><a name="714" class="Symbol"
+      >(</a
+      ><a name="715" href="function.extensionality.strong.html#715" class="Bound"
+      >x</a
+      ><a name="716"
+      > </a
+      ><a name="717" class="Symbol"
+      >:</a
+      ><a name="718"
+      > </a
+      ><a name="719" href="function.extensionality.strong.html#404" class="Bound"
+      >X</a
+      ><a name="720" class="Symbol"
+      >)</a
+      ><a name="721"
+      > </a
+      ><a name="722" class="Symbol"
+      >&#8594;</a
+      ><a name="723"
+      > </a
+      ><a name="724" href="function.extensionality.strong.html#415" class="Bound"
+      >Y</a
+      ><a name="725"
+      > </a
+      ><a name="726" href="function.extensionality.strong.html#715" class="Bound"
+      >x</a
+      ><a name="727" class="Symbol"
+      >)</a
+      ><a name="728"
+      > </a
+      ><a name="729" class="Symbol"
+      >(</a
+      ><a name="730" href="function.extensionality.strong.html#730" class="Bound"
+      >h</a
+      ><a name="731"
+      > </a
+      ><a name="732" class="Symbol"
+      >:</a
+      ><a name="733"
+      > </a
+      ><a name="734" href="function.extensionality.strong.html#708" class="Bound"
+      >f</a
+      ><a name="735"
+      > </a
+      ><a name="736" href="function.extensionality.strong.html#440" class="Function Operator"
+      >~</a
+      ><a name="737"
+      > </a
+      ><a name="738" href="function.extensionality.strong.html#710" class="Bound"
+      >g</a
+      ><a name="739" class="Symbol"
+      >)</a
+      ><a name="740"
+      >
+         </a
+      ><a name="750" class="Symbol"
+      >&#8594;</a
+      ><a name="751"
+      > </a
+      ><a name="752" href="function.extensionality.core.html#705" class="Function"
+      >funext-inv</a
+      ><a name="762"
+      > </a
+      ><a name="763" class="Symbol"
+      >(</a
+      ><a name="764" href="function.extensionality.proof.html#1870" class="Function"
+      >funext</a
+      ><a name="770"
+      > </a
+      ><a name="771" href="function.extensionality.strong.html#730" class="Bound"
+      >h</a
+      ><a name="772" class="Symbol"
+      >)</a
+      ><a name="773"
+      > </a
+      ><a name="774" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="775"
+      > </a
+      ><a name="776" href="function.extensionality.strong.html#730" class="Bound"
+      >h</a
+      ><a name="777"
+      >
+    </a
+      ><a name="782" href="function.extensionality.strong.html#700" class="Function"
+      >iso&#8322;</a
+      ><a name="786"
+      > </a
+      ><a name="787" href="function.extensionality.strong.html#787" class="Bound"
+      >f</a
+      ><a name="788"
+      > </a
+      ><a name="789" href="function.extensionality.strong.html#789" class="Bound"
+      >g</a
+      ><a name="790"
+      > </a
+      ><a name="791" href="function.extensionality.strong.html#791" class="Bound"
+      >h</a
+      ><a name="792"
+      > </a
+      ><a name="793" class="Symbol"
+      >=</a
+      ><a name="794"
+      > </a
+      ><a name="795" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="800"
+      > </a
+      ><a name="801" class="Symbol"
+      >(&#955;</a
+      ><a name="803"
+      > </a
+      ><a name="804" class="Symbol"
+      >{(</a
+      ><a name="806" href="function.extensionality.strong.html#806" class="Bound"
+      >g</a
+      ><a name="807"
+      > </a
+      ><a name="808" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="809"
+      > </a
+      ><a name="810" href="function.extensionality.strong.html#810" class="Bound"
+      >h</a
+      ><a name="811" class="Symbol"
+      >)</a
+      ><a name="812"
+      > </a
+      ><a name="813" class="Symbol"
+      >&#8594;</a
+      ><a name="814"
+      > </a
+      ><a name="815" href="function.extensionality.core.html#705" class="Function"
+      >funext-inv</a
+      ><a name="825"
+      > </a
+      ><a name="826" class="Symbol"
+      >(</a
+      ><a name="827" href="function.extensionality.proof.html#1870" class="Function"
+      >funext</a
+      ><a name="833"
+      > </a
+      ><a name="834" href="function.extensionality.strong.html#810" class="Bound"
+      >h</a
+      ><a name="835" class="Symbol"
+      >)</a
+      ><a name="836"
+      > </a
+      ><a name="837" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="838"
+      > </a
+      ><a name="839" href="function.extensionality.strong.html#810" class="Bound"
+      >h</a
+      ><a name="840" class="Symbol"
+      >})</a
+      ><a name="842"
+      >
+                       </a
+      ><a name="866" class="Symbol"
+      >(</a
+      ><a name="867" href="function.extensionality.strong.html#1221" class="Function"
+      >e-contr'</a
+      ><a name="875"
+      > </a
+      ><a name="876" class="Symbol"
+      >(</a
+      ><a name="877" href="function.extensionality.strong.html#789" class="Bound"
+      >g</a
+      ><a name="878"
+      > </a
+      ><a name="879" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="880"
+      > </a
+      ><a name="881" href="function.extensionality.strong.html#791" class="Bound"
+      >h</a
+      ><a name="882" class="Symbol"
+      >))</a
+      ><a name="884"
+      >
+                       </a
+      ><a name="908" href="function.extensionality.strong.html#1317" class="Function"
+      >strong-id</a
+      ><a name="917"
+      >
+      </a
+      ><a name="924" class="Keyword"
+      >where</a
+      ><a name="929"
+      >
+        </a
+      ><a name="938" href="function.extensionality.strong.html#938" class="Function"
+      >E</a
+      ><a name="939"
+      > </a
+      ><a name="940" class="Symbol"
+      >:</a
+      ><a name="941"
+      > </a
+      ><a name="942" class="PrimitiveType"
+      >Set</a
+      ><a name="945"
+      > </a
+      ><a name="946" class="Symbol"
+      >(</a
+      ><a name="947" href="function.extensionality.strong.html#399" class="Bound"
+      >i</a
+      ><a name="948"
+      > </a
+      ><a name="949" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="950"
+      > </a
+      ><a name="951" href="function.extensionality.strong.html#401" class="Bound"
+      >j</a
+      ><a name="952" class="Symbol"
+      >)</a
+      ><a name="953"
+      >
+        </a
+      ><a name="962" href="function.extensionality.strong.html#938" class="Function"
+      >E</a
+      ><a name="963"
+      > </a
+      ><a name="964" class="Symbol"
+      >=</a
+      ><a name="965"
+      > </a
+      ><a name="966" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="967"
+      > </a
+      ><a name="968" class="Symbol"
+      >((</a
+      ><a name="970" href="function.extensionality.strong.html#970" class="Bound"
+      >x</a
+      ><a name="971"
+      > </a
+      ><a name="972" class="Symbol"
+      >:</a
+      ><a name="973"
+      > </a
+      ><a name="974" href="function.extensionality.strong.html#404" class="Bound"
+      >X</a
+      ><a name="975" class="Symbol"
+      >)</a
+      ><a name="976"
+      > </a
+      ><a name="977" class="Symbol"
+      >&#8594;</a
+      ><a name="978"
+      > </a
+      ><a name="979" href="function.extensionality.strong.html#415" class="Bound"
+      >Y</a
+      ><a name="980"
+      > </a
+      ><a name="981" href="function.extensionality.strong.html#970" class="Bound"
+      >x</a
+      ><a name="982" class="Symbol"
+      >)</a
+      ><a name="983"
+      > </a
+      ><a name="984" class="Symbol"
+      >&#955;</a
+      ><a name="985"
+      > </a
+      ><a name="986" href="function.extensionality.strong.html#986" class="Bound"
+      >g</a
+      ><a name="987"
+      > </a
+      ><a name="988" class="Symbol"
+      >&#8594;</a
+      ><a name="989"
+      > </a
+      ><a name="990" href="function.extensionality.strong.html#787" class="Bound"
+      >f</a
+      ><a name="991"
+      > </a
+      ><a name="992" href="function.extensionality.strong.html#440" class="Function Operator"
+      >~</a
+      ><a name="993"
+      > </a
+      ><a name="994" href="function.extensionality.strong.html#986" class="Bound"
+      >g</a
+      ><a name="995"
+      >
+
+        </a
+      ><a name="1005" href="function.extensionality.strong.html#1005" class="Function"
+      >e-contr</a
+      ><a name="1012"
+      > </a
+      ><a name="1013" class="Symbol"
+      >:</a
+      ><a name="1014"
+      > </a
+      ><a name="1015" href="hott.level.core.html#284" class="Function"
+      >contr</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" href="function.extensionality.strong.html#938" class="Function"
+      >E</a
+      ><a name="1022"
+      >
+        </a
+      ><a name="1031" href="function.extensionality.strong.html#1005" class="Function"
+      >e-contr</a
+      ><a name="1038"
+      > </a
+      ><a name="1039" class="Symbol"
+      >=</a
+      ><a name="1040"
+      > </a
+      ><a name="1041" href="hott.level.closure.core.html#1542" class="Function"
+      >retract-level</a
+      ><a name="1054"
+      >
+          </a
+      ><a name="1065" class="Symbol"
+      >(&#955;</a
+      ><a name="1067"
+      > </a
+      ><a name="1068" href="function.extensionality.strong.html#1068" class="Bound"
+      >u</a
+      ><a name="1069"
+      > </a
+      ><a name="1070" class="Symbol"
+      >&#8594;</a
+      ><a name="1071"
+      > </a
+      ><a name="1072" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1077"
+      > </a
+      ><a name="1078" href="function.core.html#144" class="Function Operator"
+      >&#8728;'</a
+      ><a name="1080"
+      > </a
+      ><a name="1081" href="function.extensionality.strong.html#1068" class="Bound"
+      >u</a
+      ><a name="1082"
+      > </a
+      ><a name="1083" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1084"
+      > </a
+      ><a name="1085" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="1090"
+      > </a
+      ><a name="1091" href="function.core.html#144" class="Function Operator"
+      >&#8728;'</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" href="function.extensionality.strong.html#1068" class="Bound"
+      >u</a
+      ><a name="1095" class="Symbol"
+      >)</a
+      ><a name="1096"
+      >
+          </a
+      ><a name="1107" class="Symbol"
+      >(&#955;</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" class="Symbol"
+      >{(</a
+      ><a name="1112" href="function.extensionality.strong.html#1112" class="Bound"
+      >g</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" href="function.extensionality.strong.html#1116" class="Bound"
+      >h</a
+      ><a name="1117" class="Symbol"
+      >)</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" href="function.extensionality.strong.html#1119" class="Bound"
+      >x</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" class="Symbol"
+      >&#8594;</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" href="function.extensionality.strong.html#1112" class="Bound"
+      >g</a
+      ><a name="1124"
+      > </a
+      ><a name="1125" href="function.extensionality.strong.html#1119" class="Bound"
+      >x</a
+      ><a name="1126"
+      > </a
+      ><a name="1127" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1128"
+      > </a
+      ><a name="1129" href="function.extensionality.strong.html#1116" class="Bound"
+      >h</a
+      ><a name="1130"
+      > </a
+      ><a name="1131" href="function.extensionality.strong.html#1119" class="Bound"
+      >x</a
+      ><a name="1132" class="Symbol"
+      >})</a
+      ><a name="1134"
+      >
+          </a
+      ><a name="1145" class="Symbol"
+      >(&#955;</a
+      ><a name="1147"
+      > </a
+      ><a name="1148" class="Symbol"
+      >{(</a
+      ><a name="1150" href="function.extensionality.strong.html#1150" class="Bound"
+      >g</a
+      ><a name="1151"
+      > </a
+      ><a name="1152" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1153"
+      > </a
+      ><a name="1154" href="function.extensionality.strong.html#1154" class="Bound"
+      >h</a
+      ><a name="1155" class="Symbol"
+      >)</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" class="Symbol"
+      >&#8594;</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1163" class="Symbol"
+      >})</a
+      ><a name="1165"
+      >
+          </a
+      ><a name="1176" class="Symbol"
+      >(</a
+      ><a name="1177" href="function.extensionality.proof.html#1125" class="Function"
+      >&#928;-contr</a
+      ><a name="1184"
+      > </a
+      ><a name="1185" class="Symbol"
+      >(&#955;</a
+      ><a name="1187"
+      > </a
+      ><a name="1188" href="function.extensionality.strong.html#1188" class="Bound"
+      >x</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" class="Symbol"
+      >&#8594;</a
+      ><a name="1191"
+      > </a
+      ><a name="1192" href="hott.level.core.html#1319" class="Function"
+      >singl-contr</a
+      ><a name="1203"
+      > </a
+      ><a name="1204" class="Symbol"
+      >(</a
+      ><a name="1205" href="function.extensionality.strong.html#787" class="Bound"
+      >f</a
+      ><a name="1206"
+      > </a
+      ><a name="1207" href="function.extensionality.strong.html#1188" class="Bound"
+      >x</a
+      ><a name="1208" class="Symbol"
+      >)))</a
+      ><a name="1211"
+      >
+
+        </a
+      ><a name="1221" href="function.extensionality.strong.html#1221" class="Function"
+      >e-contr'</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" class="Symbol"
+      >:</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" class="Symbol"
+      >(</a
+      ><a name="1233" href="function.extensionality.strong.html#1233" class="Bound"
+      >u</a
+      ><a name="1234"
+      > </a
+      ><a name="1235" class="Symbol"
+      >:</a
+      ><a name="1236"
+      > </a
+      ><a name="1237" href="function.extensionality.strong.html#938" class="Function"
+      >E</a
+      ><a name="1238" class="Symbol"
+      >)</a
+      ><a name="1239"
+      > </a
+      ><a name="1240" class="Symbol"
+      >&#8594;</a
+      ><a name="1241"
+      > </a
+      ><a name="1242" class="Symbol"
+      >(</a
+      ><a name="1243" href="function.extensionality.strong.html#787" class="Bound"
+      >f</a
+      ><a name="1244"
+      > </a
+      ><a name="1245" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1246"
+      > </a
+      ><a name="1247" href="function.extensionality.strong.html#531" class="Function"
+      >R</a
+      ><a name="1248"
+      > </a
+      ><a name="1249" href="function.extensionality.strong.html#787" class="Bound"
+      >f</a
+      ><a name="1250" class="Symbol"
+      >)</a
+      ><a name="1251"
+      > </a
+      ><a name="1252" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1253"
+      > </a
+      ><a name="1254" href="function.extensionality.strong.html#1233" class="Bound"
+      >u</a
+      ><a name="1255"
+      >
+        </a
+      ><a name="1264" href="function.extensionality.strong.html#1221" class="Function"
+      >e-contr'</a
+      ><a name="1272"
+      > </a
+      ><a name="1273" href="function.extensionality.strong.html#1273" class="Bound"
+      >u</a
+      ><a name="1274"
+      > </a
+      ><a name="1275" class="Symbol"
+      >=</a
+      ><a name="1276"
+      > </a
+      ><a name="1277" href="hott.level.core.html#705" class="Function"
+      >contr&#8658;prop</a
+      ><a name="1287"
+      > </a
+      ><a name="1288" href="function.extensionality.strong.html#1005" class="Function"
+      >e-contr</a
+      ><a name="1295"
+      > </a
+      ><a name="1296" class="Symbol"
+      >(</a
+      ><a name="1297" href="function.extensionality.strong.html#787" class="Bound"
+      >f</a
+      ><a name="1298"
+      > </a
+      ><a name="1299" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1300"
+      > </a
+      ><a name="1301" href="function.extensionality.strong.html#531" class="Function"
+      >R</a
+      ><a name="1302"
+      > </a
+      ><a name="1303" href="function.extensionality.strong.html#787" class="Bound"
+      >f</a
+      ><a name="1304" class="Symbol"
+      >)</a
+      ><a name="1305"
+      > </a
+      ><a name="1306" href="function.extensionality.strong.html#1273" class="Bound"
+      >u</a
+      ><a name="1307"
+      >
+
+        </a
+      ><a name="1317" href="function.extensionality.strong.html#1317" class="Function"
+      >strong-id</a
+      ><a name="1326"
+      > </a
+      ><a name="1327" class="Symbol"
+      >:</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" href="function.extensionality.core.html#705" class="Function"
+      >funext-inv</a
+      ><a name="1339"
+      > </a
+      ><a name="1340" class="Symbol"
+      >(</a
+      ><a name="1341" href="function.extensionality.proof.html#1870" class="Function"
+      >funext</a
+      ><a name="1347"
+      > </a
+      ><a name="1348" class="Symbol"
+      >(</a
+      ><a name="1349" href="function.extensionality.strong.html#531" class="Function"
+      >R</a
+      ><a name="1350"
+      > </a
+      ><a name="1351" href="function.extensionality.strong.html#787" class="Bound"
+      >f</a
+      ><a name="1352" class="Symbol"
+      >))</a
+      ><a name="1354"
+      > </a
+      ><a name="1355" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1356"
+      > </a
+      ><a name="1357" href="function.extensionality.strong.html#531" class="Function"
+      >R</a
+      ><a name="1358"
+      > </a
+      ><a name="1359" href="function.extensionality.strong.html#787" class="Bound"
+      >f</a
+      ><a name="1360"
+      >
+        </a
+      ><a name="1369" href="function.extensionality.strong.html#1317" class="Function"
+      >strong-id</a
+      ><a name="1378"
+      > </a
+      ><a name="1379" class="Symbol"
+      >=</a
+      ><a name="1380"
+      > </a
+      ><a name="1381" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1383"
+      > </a
+      ><a name="1384" href="function.extensionality.core.html#705" class="Function"
+      >funext-inv</a
+      ><a name="1394"
+      > </a
+      ><a name="1395" class="Symbol"
+      >(</a
+      ><a name="1396" href="function.extensionality.proof.html#1964" class="Function"
+      >funext-id</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" href="function.extensionality.strong.html#787" class="Bound"
+      >f</a
+      ><a name="1407" class="Symbol"
+      >)</a
+      ><a name="1408"
+      >
+
+    </a
+      ><a name="1414" href="function.extensionality.strong.html#1414" class="Function"
+      >strong-funext-iso</a
+      ><a name="1431"
+      > </a
+      ><a name="1432" class="Symbol"
+      >:</a
+      ><a name="1433"
+      > </a
+      ><a name="1434" class="Symbol"
+      >{</a
+      ><a name="1435" href="function.extensionality.strong.html#1435" class="Bound"
+      >f</a
+      ><a name="1436"
+      > </a
+      ><a name="1437" href="function.extensionality.strong.html#1437" class="Bound"
+      >g</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" class="Symbol"
+      >:</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" class="Symbol"
+      >(</a
+      ><a name="1442" href="function.extensionality.strong.html#1442" class="Bound"
+      >x</a
+      ><a name="1443"
+      > </a
+      ><a name="1444" class="Symbol"
+      >:</a
+      ><a name="1445"
+      > </a
+      ><a name="1446" href="function.extensionality.strong.html#404" class="Bound"
+      >X</a
+      ><a name="1447" class="Symbol"
+      >)</a
+      ><a name="1448"
+      > </a
+      ><a name="1449" class="Symbol"
+      >&#8594;</a
+      ><a name="1450"
+      > </a
+      ><a name="1451" href="function.extensionality.strong.html#415" class="Bound"
+      >Y</a
+      ><a name="1452"
+      > </a
+      ><a name="1453" href="function.extensionality.strong.html#1442" class="Bound"
+      >x</a
+      ><a name="1454" class="Symbol"
+      >}</a
+      ><a name="1455"
+      >
+                   </a
+      ><a name="1475" class="Symbol"
+      >&#8594;</a
+      ><a name="1476"
+      > </a
+      ><a name="1477" class="Symbol"
+      >(</a
+      ><a name="1478" href="function.extensionality.strong.html#1435" class="Bound"
+      >f</a
+      ><a name="1479"
+      > </a
+      ><a name="1480" href="function.extensionality.strong.html#440" class="Function Operator"
+      >~</a
+      ><a name="1481"
+      > </a
+      ><a name="1482" href="function.extensionality.strong.html#1437" class="Bound"
+      >g</a
+      ><a name="1483" class="Symbol"
+      >)</a
+      ><a name="1484"
+      > </a
+      ><a name="1485" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1486"
+      > </a
+      ><a name="1487" class="Symbol"
+      >(</a
+      ><a name="1488" href="function.extensionality.strong.html#1435" class="Bound"
+      >f</a
+      ><a name="1489"
+      > </a
+      ><a name="1490" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1491"
+      > </a
+      ><a name="1492" href="function.extensionality.strong.html#1437" class="Bound"
+      >g</a
+      ><a name="1493" class="Symbol"
+      >)</a
+      ><a name="1494"
+      >
+    </a
+      ><a name="1499" href="function.extensionality.strong.html#1414" class="Function"
+      >strong-funext-iso</a
+      ><a name="1516"
+      > </a
+      ><a name="1517" class="Symbol"
+      >{</a
+      ><a name="1518" href="function.extensionality.strong.html#1518" class="Bound"
+      >f</a
+      ><a name="1519" class="Symbol"
+      >}{</a
+      ><a name="1521" href="function.extensionality.strong.html#1521" class="Bound"
+      >g</a
+      ><a name="1522" class="Symbol"
+      >}</a
+      ><a name="1523"
+      > </a
+      ><a name="1524" class="Symbol"
+      >=</a
+      ><a name="1525"
+      > </a
+      ><a name="1526" href="function.isomorphism.core.html#421" class="InductiveConstructor"
+      >iso</a
+      ><a name="1529"
+      > </a
+      ><a name="1530" href="function.extensionality.proof.html#1870" class="Function"
+      >funext</a
+      ><a name="1536"
+      > </a
+      ><a name="1537" href="function.extensionality.core.html#705" class="Function"
+      >funext-inv</a
+      ><a name="1547"
+      > </a
+      ><a name="1548" class="Symbol"
+      >(</a
+      ><a name="1549" href="function.extensionality.strong.html#700" class="Function"
+      >iso&#8322;</a
+      ><a name="1553"
+      > </a
+      ><a name="1554" href="function.extensionality.strong.html#1518" class="Bound"
+      >f</a
+      ><a name="1555"
+      > </a
+      ><a name="1556" href="function.extensionality.strong.html#1521" class="Bound"
+      >g</a
+      ><a name="1557" class="Symbol"
+      >)</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" href="function.extensionality.strong.html#585" class="Function"
+      >iso&#8321;</a
+      ><a name="1563"
+      >
+
+    </a
+      ><a name="1569" href="function.extensionality.strong.html#1569" class="Function"
+      >strong-funext</a
+      ><a name="1582"
+      > </a
+      ><a name="1583" class="Symbol"
+      >:</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" class="Symbol"
+      >{</a
+      ><a name="1586" href="function.extensionality.strong.html#1586" class="Bound"
+      >f</a
+      ><a name="1587"
+      > </a
+      ><a name="1588" href="function.extensionality.strong.html#1588" class="Bound"
+      >g</a
+      ><a name="1589"
+      > </a
+      ><a name="1590" class="Symbol"
+      >:</a
+      ><a name="1591"
+      > </a
+      ><a name="1592" class="Symbol"
+      >(</a
+      ><a name="1593" href="function.extensionality.strong.html#1593" class="Bound"
+      >x</a
+      ><a name="1594"
+      > </a
+      ><a name="1595" class="Symbol"
+      >:</a
+      ><a name="1596"
+      > </a
+      ><a name="1597" href="function.extensionality.strong.html#404" class="Bound"
+      >X</a
+      ><a name="1598" class="Symbol"
+      >)</a
+      ><a name="1599"
+      > </a
+      ><a name="1600" class="Symbol"
+      >&#8594;</a
+      ><a name="1601"
+      > </a
+      ><a name="1602" href="function.extensionality.strong.html#415" class="Bound"
+      >Y</a
+      ><a name="1603"
+      > </a
+      ><a name="1604" href="function.extensionality.strong.html#1593" class="Bound"
+      >x</a
+      ><a name="1605" class="Symbol"
+      >}</a
+      ><a name="1606"
+      > </a
+      ><a name="1607" class="Symbol"
+      >&#8594;</a
+      ><a name="1608"
+      > </a
+      ><a name="1609" class="Symbol"
+      >(</a
+      ><a name="1610" href="function.extensionality.strong.html#1586" class="Bound"
+      >f</a
+      ><a name="1611"
+      > </a
+      ><a name="1612" href="function.extensionality.strong.html#440" class="Function Operator"
+      >~</a
+      ><a name="1613"
+      > </a
+      ><a name="1614" href="function.extensionality.strong.html#1588" class="Bound"
+      >g</a
+      ><a name="1615" class="Symbol"
+      >)</a
+      ><a name="1616"
+      > </a
+      ><a name="1617" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1618"
+      > </a
+      ><a name="1619" class="Symbol"
+      >(</a
+      ><a name="1620" href="function.extensionality.strong.html#1586" class="Bound"
+      >f</a
+      ><a name="1621"
+      > </a
+      ><a name="1622" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1623"
+      > </a
+      ><a name="1624" href="function.extensionality.strong.html#1588" class="Bound"
+      >g</a
+      ><a name="1625" class="Symbol"
+      >)</a
+      ><a name="1626"
+      >
+    </a
+      ><a name="1631" href="function.extensionality.strong.html#1569" class="Function"
+      >strong-funext</a
+      ><a name="1644"
+      > </a
+      ><a name="1645" class="Symbol"
+      >=</a
+      ><a name="1646"
+      > </a
+      ><a name="1647" href="function.isomorphism.univalence.html#235" class="Function"
+      >&#8773;&#8658;&#8801;</a
+      ><a name="1650"
+      > </a
+      ><a name="1651" href="function.extensionality.strong.html#1414" class="Function"
+      >strong-funext-iso</a
+      ><a name="1668"
+      >
+
+</a
+      ><a name="1670" class="Keyword"
+      >open</a
+      ><a name="1674"
+      > </a
+      ><a name="1675" href="function.extensionality.strong.html#392" class="Module"
+      >Dummy</a
+      ><a name="1680"
+      > </a
+      ><a name="1681" class="Keyword"
+      >public</a
+      ><a name="1687"
+      > </a
+      ><a name="1688" class="Keyword"
+      >using</a
+      ><a name="1693"
+      > </a
+      ><a name="1694" class="Symbol"
+      >(</a
+      ><a name="1695"
+      >strong-funext</a
+      ><a name="1708" class="Symbol"
+      >;</a
+      ><a name="1709"
+      > strong-funext-iso</a
+      ><a name="1727" class="Symbol"
+      >)</a
+      ><a name="1728"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
