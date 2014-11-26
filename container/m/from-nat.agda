@@ -142,3 +142,40 @@ private
       ∎
       where
         open ≅-Reasoning
+
+  module Limit-shift {ℓ} (X : ℕ → Set ℓ)
+                         (π : (n : ℕ) → X (suc n) → X n) where
+    open Limit X π
+
+    X' : ℕ → Set ℓ
+    X' n = X (suc n)
+
+    π' : (n : ℕ) → X' (suc n) → X' n
+    π' n = π (suc n)
+
+    open Limit X' π' using ()
+      renaming (L to L')
+
+    shift-iso : L ≅ L'
+    shift-iso = begin
+        ( Σ ((n : ℕ) → X n) λ x
+        → ∀ n → π n (x (suc n)) ≡ x n )
+      ≅⟨ (Σ-ap-iso ℕ-elim-shift λ _ → ℕ-elim-shift) ⟩
+        ( Σ (X 0 × ((n : ℕ) → X (suc n))) λ { (x₀ , y)
+        → ((π 0 (y 0) ≡ x₀) × (∀ n → π (suc n) (y (suc n)) ≡ y n)) } )
+      ≅⟨ record
+           { to = λ { ((x₀ , y) , (q₀ , q)) → (y , (x₀ , q₀) , q) }
+           ; from = λ { (y , (x₀ , q₀) , q) → ((x₀ , y) , (q₀ , q)) }
+           ; iso₁ = λ { ((x₀ , y) , (q₀ , q)) → refl }
+           ; iso₂ = λ { (y , (x₀ , q₀) , q) → refl } } ⟩
+        ( Σ ((n : ℕ) → X (suc n)) λ y
+        → Σ (singleton (π 0 (y 0))) λ _
+        → (∀ n → π (suc n) (y (suc n)) ≡ y n) )
+      ≅⟨ ( Σ-ap-iso refl≅ λ y
+         → (Σ-ap-iso (contr-⊤-iso (singl-contr _)) λ _ → refl≅)
+         ·≅ ×-left-unit ) ⟩
+        ( Σ ((n : ℕ) → X (suc n)) λ x
+        → ∀ n → π (suc n) (x (suc n)) ≡ x n )
+      ∎
+      where
+        open ≅-Reasoning

@@ -16,13 +16,6 @@ open import sets.finite.core
 ℕ-not-finite : ¬ (IsFinite ℕ)
 ℕ-not-finite (n , fℕ) = suc-fixpoint (sym (Fin-inj iso-suc))
   where
-    isoℕ : ℕ ≅ (⊤ ⊎ ℕ)
-    isoℕ = record
-      { to = λ { zero → inj₁ tt ; (suc n) → inj₂ n }
-      ; from = λ { (inj₁ _) → zero ; (inj₂ n) → suc n }
-      ; iso₁ = λ { zero → refl ; (suc n) → refl }
-      ; iso₂ = λ { (inj₁ _) → refl ; (inj₂ n) → refl } }
-
     iso-suc : Fin n ≅ Fin (suc n)
     iso-suc = sym≅ fℕ
            ·≅ isoℕ

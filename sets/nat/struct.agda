@@ -22,6 +22,13 @@ open import hott.level
 
 open Container ℕ-c
 
+ℕ-algebra-iso : (⊤ ⊎ ℕ) ≅ ℕ
+ℕ-algebra-iso = record
+  { to = λ { (inj₁ _) → zero ; (inj₂ n) → suc n }
+  ; from = λ { zero → inj₁ tt ; (suc n) → inj₂ n }
+  ; iso₁ = λ { (inj₁ _) → refl ; (inj₂ n) → refl }
+  ; iso₂ = λ { zero → refl ; (suc n) → refl } }
+
 private
   inℕ : F (λ _ → ℕ) tt → ℕ
   inℕ (zero , u) = 0
@@ -128,3 +135,18 @@ private
 ℕ-initial-simple {X = X} x₀
   = ((λ _ → x₀) , refl , λ _ → refl)
   , (λ u → contr⇒prop (ℕ-initial (λ _ → X) x₀ (λ _ x → x)) _ u)
+
+ℕ-elim-shift : ∀ {i}{X : ℕ → Set i}
+             → ((n : ℕ) → X n)
+             ≅ ( (X 0) × ((n : ℕ) → X (suc n)) )
+ℕ-elim-shift {i}{X} = begin
+    ((n : ℕ) → X n)
+  ≅⟨ (Π-ap-iso (sym≅ ℕ-algebra-iso) λ _ → refl≅) ⟩
+    ((n : ⊤ ⊎ ℕ) → X (apply ℕ-algebra-iso n))
+  ≅⟨ ⊎-universal ⟩
+    ((⊤ → X 0) × ((n : ℕ) → X (suc n)))
+  ≅⟨ ×-ap-iso Π-left-unit refl≅ ⟩
+    (X 0 × ((n : ℕ) → X (suc n)))
+  ∎
+  where
+    open ≅-Reasoning
