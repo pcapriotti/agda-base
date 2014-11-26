@@ -26,13 +26,6 @@ record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
                   → Π-ap-iso refl≅ λ b
                   → isom (r b)
 
-  test : ∀ {lx ly}{X : I → Set lx}{Y : I → Set ly}
-       → (isom : ∀ i → X i ≅ Y i)
-       → ∀ i (a : A i) (u : (b : B a) → X (r b))
-       → apply (F-ap-iso isom i) (a , u)
-       ≡ (a , λ b → apply (isom (r b)) (u b))
-  test isom i a u = refl
-
   -- homsets in the slice category
   _→ⁱ_ : ∀ {lx ly} → (I → Set lx) → (I → Set ly) → Set _
   X →ⁱ Y = (i : I) → X i → Y i

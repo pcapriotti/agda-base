@@ -48,11 +48,6 @@ private
     β (sup (suc (suc ())) u)
 
 private
-  inℕ-comm : _≡_ {A = F (W ℕ-c) tt → ℕ}
-              (λ x → inℕ (imap (λ _ → invert ℕ-struct-iso) tt x))
-              (λ x → invert ℕ-struct-iso (inW ℕ-c tt x))
-  inℕ-comm = refl
-
   F-struct-iso : ∀ {i}(X : ⊤ → Set i) → F X tt ≅ (⊤ ⊎ X tt)
   F-struct-iso X = begin
       ( Σ (A tt) λ a → B a → X tt )
@@ -125,3 +120,11 @@ private
       ∎
       where
         open ≅-Reasoning
+
+ℕ-initial-simple : ∀ {i} {X : Set i} (x₀ : X)
+                 → contr ( Σ (ℕ → X) λ x
+                         → (x₀ ≡ x 0)
+                         × (∀ n → x n ≡ x (suc n)) )
+ℕ-initial-simple {X = X} x₀
+  = ((λ _ → x₀) , refl , λ _ → refl)
+  , (λ u → contr⇒prop (ℕ-initial (λ _ → X) x₀ (λ _ x → x)) _ u)
