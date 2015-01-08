@@ -23,6 +23,25 @@ module Limit {i} (X : ℕ → Set i)
   β : (n : ℕ) → ∀ x → π n (p (suc n) x) ≡ p n x
   β n (x , q) = q n
 
+module Limit-univ {i j}{Z : Set i}
+                  (X : Z → ℕ → Set j)
+                  (π : (z : Z)(n : ℕ) → X z (suc n) → X z n) where
+  open module WithZ (z : Z) = Limit (X z) (π z)
+
+  univ-iso : ( Σ ((n : ℕ)(z : Z) → X z n) λ u
+             → ∀ n z → π z n (u (suc n) z) ≡ u n z )
+           ≅ ((z : Z) → L z)
+  univ-iso = begin
+      ( Σ ((n : ℕ)(z : Z) → X z n) λ u
+      → ∀ n z → π z n (u (suc n) z) ≡ u n z )
+    ≅⟨ (Σ-ap-iso Π-comm-iso λ u → Π-comm-iso) ⟩
+      ( Σ ((z : Z)(n : ℕ) → X z n) λ u
+      → ∀ z n → π z n (u z (suc n)) ≡ u z n )
+    ≅⟨ sym≅ ΠΣ-swap-iso ⟩
+      ((z : Z) → L z)
+    ∎
+    where open ≅-Reasoning
+
 module Limit-op {i} (X : ℕ → Set i)
                     (ρ : (n : ℕ) → X n → X (suc n)) where
   L : Set _
@@ -73,6 +92,46 @@ module Limit-op-simple {i} (X : Set i) where
   lim-contr : L.L ≅ X
   lim-contr = L.lim-contr' ℕ-initial-simple
 
+module Limit-univⁱ
+         {ℓ li}(I : Set li)
+         (X : ℕ → I → Set ℓ)
+         (π : ∀ n → X (suc n) →ⁱ X n) where
+
+  open module WithI (i : I) = Limit (λ n → X n i) (λ n → π n i)
+
+  module _ {ℓ'}{Z : I → Set ℓ'} where
+    private
+      IZ = Σ I Z
+
+      XZ : IZ → ℕ → Set _
+      XZ (i , _) n = X n i
+
+      πZ : (iz : IZ)(n : ℕ) → XZ iz (suc n) → XZ iz n
+      πZ (i , _) n = π n i
+
+    univ-iso : ( Σ ((n : ℕ) → Z →ⁱ X n) λ f
+               → (∀ n → π n ∘ⁱ f (suc n) ≡ f n) )
+             ≅ (Z →ⁱ L)
+    univ-iso = begin
+       ( Σ ((n : ℕ)(i : I) → Z i → X n i) λ f
+       → ∀ n → (λ i z → π n i (f (suc n) i z)) ≡ f n )
+     ≅⟨ ( Σ-ap-iso refl≅ λ f → Π-ap-iso refl≅ λ n → sym≅ funext-isoⁱ ) ⟩
+        ( Σ ((n : ℕ)(i : I) → Z i → X n i) λ f
+        → ∀ n i z → π n i (f (suc n) i z) ≡ f n i z )
+     ≅⟨ ( Σ-ap-iso ( Π-ap-iso refl≅ λ n
+                   → sym≅ (curry-iso (λ i z → X n i))) λ f
+         → Π-ap-iso refl≅ λ n
+         → sym≅ (curry-iso (λ i z → π n i (f (suc n) i z) ≡ f n i z)) ) ⟩
+       ( Σ ((n : ℕ)(iz : IZ) → XZ iz n) λ f
+       → (∀ n iz → πZ iz n (f (suc n) iz) ≡ f n iz) )
+     ≅⟨ Limit-univ.univ-iso XZ πZ ⟩
+       ((iz : IZ) → L (proj₁ iz))
+     ≅⟨ curry-iso (λ i z → L i) ⟩
+       (Z →ⁱ L)
+     ∎
+     where
+       open ≅-Reasoning
+
 module F-Limit {ℓ li la lb} (c : Container li la lb)
                (X : Container.I c → ℕ → Set ℓ)
                (π : ∀ i → (n : ℕ) → X i (suc n) → X i n) where
@@ -88,25 +147,6 @@ module F-Limit {ℓ li la lb} (c : Container li la lb)
 
     open module WithI' (i : I) = Limit (X' i) (π' i)
       using () renaming (L to L')
-
-  private
-    lim-univ-iso : ∀ i (a : A i)
-                 → ( Σ ((n : ℕ) → (b : B a) → X (r b) n) λ u
-                   → ∀ n → (λ b → π (r b) n (u (suc n) b)) ≡ u n )
-                 ≅ ((b : B a) → L (r b))
-    lim-univ-iso i a = begin
-        ( Σ ((n : ℕ) (b : B a) → X (r b) n) λ u
-        → ∀ n → (λ b → π (r b) n (u (suc n) b)) ≡ u n )
-      ≅⟨ ( Σ-ap-iso refl≅ λ u → Π-ap-iso refl≅ λ n → sym≅ strong-funext-iso ) ⟩
-        ( Σ ((n : ℕ) (b : B a) → X (r b) n) λ u
-        → ∀ n b → π (r b) n (u (suc n) b) ≡ u n b )
-      ≅⟨ (Σ-ap-iso Π-comm-iso λ u → Π-comm-iso) ⟩
-        ( Σ ((b : B a) (n : ℕ) → X (r b) n) λ u
-        → ∀ b n → π (r b) n (u b (suc n)) ≡ u b n )
-      ≅⟨ sym≅ ΠΣ-swap-iso ⟩
-        ((b : B a) → L (r b))
-      ∎
-      where open ≅-Reasoning
 
   lim-iso : ∀ i → L' i ≅ F L i
   lim-iso i = begin
@@ -136,7 +176,15 @@ module F-Limit {ℓ li la lb} (c : Container li la lb)
       ( Σ (A i) λ a
       → Σ ((n : ℕ) → (b : B a) → X (r b) n) λ u
       → ∀ n → (λ b → π (r b) n (u (suc n) b)) ≡ u n )
-    ≅⟨ (Σ-ap-iso refl≅ λ a → lim-univ-iso i a) ⟩
+    ≅⟨ ( Σ-ap-iso refl≅ λ a
+        → Σ-ap-iso refl≅ λ u
+        → Π-ap-iso refl≅ λ n
+        → sym≅ strong-funext-iso ) ⟩
+      ( Σ (A i) λ a
+      → Σ ((n : ℕ) → (b : B a) → X (r b) n) λ u
+      → ∀ n b → π (r b) n (u (suc n) b) ≡ u n b )
+    ≅⟨ ( Σ-ap-iso refl≅ λ a
+       → Limit-univ.univ-iso (λ b n → X (r b) n) (λ b n → π (r b) n) ) ⟩
       F L i
     ∎
     where

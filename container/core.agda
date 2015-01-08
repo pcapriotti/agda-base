@@ -7,25 +7,7 @@ open import sum
 open import equality
 open import function
 
-record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
-  constructor container
-  field
-    I : Set li
-    A : I → Set la
-    B : {i : I} → A i → Set lb
-    r : {i : I}{a : A i} → B a → I
-
-  -- functor associated to this indexed container
-  F : ∀ {lx} → (I → Set lx) → I → Set _
-  F X i = Σ (A i) λ a → (b : B a) → X (r b)
-
-  F-ap-iso : ∀ {lx ly}{X : I → Set lx}{Y : I → Set ly}
-           → (∀ i → X i ≅ Y i)
-           → ∀ i → F X i ≅ F Y i
-  F-ap-iso isom i = Σ-ap-iso refl≅ λ a
-                  → Π-ap-iso refl≅ λ b
-                  → isom (r b)
-
+module _ {li}{I : Set li} where
   -- homsets in the slice category
   _→ⁱ_ : ∀ {lx ly} → (I → Set lx) → (I → Set ly) → Set _
   X →ⁱ Y = (i : I) → X i → Y i
@@ -38,6 +20,7 @@ record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
   _∘ⁱ_ : ∀ {lx ly lz} {X : I → Set lx}{Y : I → Set ly}{Z : I → Set lz}
        → (Y →ⁱ Z) → (X →ⁱ Y) → (X →ⁱ Z)
   (f ∘ⁱ g) i = f i ∘ g i
+  infixl 9 _∘ⁱ_
 
   -- extensionality
   funext-isoⁱ : ∀ {lx ly} {X : I → Set lx}{Y : I → Set ly}
@@ -57,6 +40,25 @@ record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
           → {f g : X →ⁱ Y}
           → (∀ i x → f i x ≡ g i x) → f ≡ g
   funextⁱ = apply funext-isoⁱ
+
+record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
+  constructor container
+  field
+    I : Set li
+    A : I → Set la
+    B : {i : I} → A i → Set lb
+    r : {i : I}{a : A i} → B a → I
+
+  -- functor associated to this indexed container
+  F : ∀ {lx} → (I → Set lx) → I → Set _
+  F X i = Σ (A i) λ a → (b : B a) → X (r b)
+
+  F-ap-iso : ∀ {lx ly}{X : I → Set lx}{Y : I → Set ly}
+           → (∀ i → X i ≅ Y i)
+           → ∀ i → F X i ≅ F Y i
+  F-ap-iso isom i = Σ-ap-iso refl≅ λ a
+                  → Π-ap-iso refl≅ λ b
+                  → isom (r b)
 
   -- morphism map for the functor F
   imap : ∀ {lx ly}
