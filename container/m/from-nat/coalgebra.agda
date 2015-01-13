@@ -56,7 +56,7 @@ module _ {li la lb} (c : Container li la lb) where
     private
       Z = proj₁ 𝓩; θ = proj₂ 𝓩
 
-    lim-coalg-iso : Mor 𝓩 𝓛 ≅ (∀ i → Z i → X i 0)
+    lim-coalg-iso : Mor 𝓩 𝓛 ≅ ⊤
     lim-coalg-iso = begin
         ( Σ (Z →ⁱ L) λ f → outL ∘ⁱ f ≡ imap f ∘ⁱ θ )
       ≅⟨ {!!} ⟩
@@ -69,7 +69,7 @@ module _ {li la lb} (c : Container li la lb) where
         ( Σ Cone λ c → apply isom c ≡ apply isom (Φ c) )
       ≅⟨ sym≅ (Σ-ap-iso refl≅ λ c → iso≡ isom ) ⟩
         ( Σ Cone λ c → c ≡ Φ c )
-      ≅⟨ (Σ-ap-iso refl≅ λ { (u , q) → trans≡-iso' (Φ-β u q) }) ⟩
+      ≅⟨ ( Σ-ap-iso refl≅ λ _ → refl≅ ) ⟩
         ( Σ Cone λ { (u , q) → (u , q) ≡ (Φ₀ u , Φ₁ u q) } )
       ≅⟨ (Σ-ap-iso refl≅ λ { (u , q) → sym≅ Σ-split-iso }) ⟩
         ( Σ Cone λ { (u , q) → Σ (u ≡ Φ₀ u) λ p → subst Cone₁ p q ≡ Φ₁ u q } )
@@ -79,15 +79,12 @@ module _ {li la lb} (c : Container li la lb) where
       ≅⟨ {!!} ⟩
         ( Σ (Σ Cone₀ λ u → u ≡ Φ₀ u) λ { (u , p)
         → Σ (Cone₁ u) λ q → subst Cone₁ p q ≡ Φ₁ u q } )
-      ≅⟨ {!!} ⟩
-        ( Σ ⊤ λ _
-        → Σ (Cone₁ u₀) λ q
-        → subst Cone₁ (funext p₀) q ≡ Φ₁ u₀ q )
-      ≅⟨ {!!} ⟩
+      ≅⟨ sym≅ ( Σ-ap-iso (sym≅ (contr-⊤-iso Fix₀-contr)) λ _ → refl≅ )
+         ·≅ ×-left-unit ⟩
         ( Σ (Cone₁ u₀) λ q
         → subst Cone₁ (funext p₀) q ≡ Φ₁ u₀ q )
       ≅⟨ {!!} ⟩
-        (∀ i → Z i → X i 0)
+        ⊤
       ∎
       where
         open ≅-Reasoning
@@ -104,60 +101,85 @@ module _ {li la lb} (c : Container li la lb) where
         isom : Cone ≅ (Z →ⁱ L)
         isom = Limit-univⁱ.univ-iso I Xⁱ πⁱ
 
+        step : ∀ {ly}{Y : I → Set ly} → (Z →ⁱ Y) → (Z →ⁱ F Y)
+        step v = imap v ∘ⁱ θ
+
+        Φ₀ : Cone₀ → Cone₀
+        Φ₀ u 0 = λ _ _ → lift tt
+        Φ₀ u (suc n) = step (u n)
+
+        Φ₁ : (u : Cone₀) → Cone₁ u → Cone₁ (Φ₀ u)
+        Φ₁ u q zero = refl
+        Φ₁ u q (suc n) = ap step (q n)
+
+        Φ : Cone → Cone
+        Φ (u , q) = (Φ₀ u , Φ₁ u q)
+
+        u₀ : Cone₀
+        u₀ zero = λ _ _ → lift tt
+        u₀ (suc n) = step (u₀ n)
+
+        p₀ : ∀ n → u₀ n ≡ Φ₀ u₀ n
+        p₀ zero = refl
+        p₀ (suc n) = refl
+
+        Fix₀ : Set (ℓ ⊔ la ⊔ lb ⊔ li)
+        Fix₀ = Σ Cone₀ λ u → u ≡ Φ₀ u
+
+        Fix₁ : Fix₀ → Set (ℓ ⊔ la ⊔ lb ⊔ li)
+        Fix₁ (u , p) = Σ (Cone₁ u) λ q → subst Cone₁ p q ≡ Φ₁ u q
+
+        Fix₀-center : Fix₀
+        Fix₀-center = u₀ , funext p₀
+
+        Fix₀-iso : Fix₀ ≅ (∀ i → Z i → X i 0)
+        Fix₀-iso = begin
+            ( Σ Cone₀ λ u → u ≡ Φ₀ u )
+          ≅⟨ {!!} ⟩
+            ( Σ Cone₀ λ u → ∀ n → u n ≡ Φ₀ u n )
+          ≅⟨ {!!} ⟩
+            ( Σ Cone₀ λ u → (u 0 ≡ λ _ _ → lift tt)
+                          × (∀ n → u (suc n) ≡ step (u n)) )
+          ≅⟨ {!!} ⟩
+            ( Σ Cone₀ λ u → ∀ n → u (suc n) ≡ step (u n) )
+          ≅⟨ Limit-op.lim-contr (λ n → Z →ⁱ Xⁱ n) (λ n → step) ⟩
+            (∀ i → Z i → X i 0)
+          ∎
+
+        Fix₀-contr : contr Fix₀
+        Fix₀-contr = Fix₀-center , contr⇒prop
+          (iso-level (sym≅ Fix₀-iso)
+                     (Π-level λ _ → Π-level λ _ → ↑-level _ ⊤-contr)) _
+
+        Fix₁-iso : Fix₁ Fix₀-center ≅ ⊤
+        Fix₁-iso = begin
+            ( Σ (Cone₁ u₀) λ q → subst Cone₁ (funext p₀) q ≡ Φ₁ u₀ q )
+          ≅⟨ {!!} ⟩
+            ( Σ (Cone₁ u₀) λ q → ∀ n → subst Cone₁ (funext p₀) q n ≡ Φ₁ u₀ q n )
+          ≅⟨ {!!} ⟩
+            ( Σ (Cone₁ u₀) λ q → ∀ n
+            → subst₂ (P n) (p₀ (suc n)) (p₀ n) (q n) ≡ Φ₁ u₀ q n )
+          ≅⟨ {!!} ⟩
+            ( Σ (Cone₁ u₀) λ q
+            → (q 0 ≡ Φ₁ u₀ q 0)
+            × (∀ n → q (suc n) ≡ Φ₁ u₀ q (suc n)) )
+          ≅⟨ {!!} ⟩
+            ( Σ (Cone₁ u₀) λ q
+            → ∀ n → q (suc n) ≡ ap step (q n) )
+          ≅⟨ Limit-op.lim-contr (λ n → πⁱ n ∘ⁱ u₀ (suc n) ≡ u₀ n) (λ n → ap step) ⟩
+            ( πⁱ 0 ∘ⁱ u₀ 1 ≡ u₀ 0 )
+          ≅⟨ {!!} ⟩
+            ⊤
+          ∎
+          where
+            P = λ m x y → πⁱ m ∘ⁱ x ≡ y
+
         abstract
           Ψ : (Z →ⁱ L) → (Z →ⁱ L)
-          Ψ f = inL ∘ⁱ imap f ∘ⁱ θ
-
-          step : ∀ {ly}{Y : I → Set ly} → (Z →ⁱ Y) → (Z →ⁱ F Y)
-          step v = imap v ∘ⁱ θ
-
-          Φ₀ : Cone₀ → Cone₀
-          Φ₀ u 0 = λ _ _ → lift tt
-          Φ₀ u (suc n) = step (u n)
-
-          Φ₁ : (u : Cone₀) → Cone₁ u → Cone₁ (Φ₀ u)
-          Φ₁ u q zero = refl
-          Φ₁ u q (suc n) = ap step (q n)
-
-          Φ : Cone → Cone
-          Φ (u , q) = (Φ₀ u , Φ₁ u q)
+          Ψ f = inL ∘ⁱ step f
 
           Φ-Ψ-comm : (c : Cone) → Ψ (apply isom c) ≡ apply isom (Φ c)
           Φ-Ψ-comm c = {!!}
 
-          Φ-β : (u : Cone₀)(q : Cone₁ u) → Φ (u , q) ≡ (Φ₀ u , Φ₁ u q)
-          Φ-β u q = refl
-
-          u₀ : Cone₀
-          u₀ zero = λ _ _ → lift tt
-          u₀ (suc n) = step (u₀ n)
-
-          p₀ : ∀ n → u₀ n ≡ Φ₀ u₀ n
-          p₀ zero = refl
-          p₀ (suc n) = refl
-
-          Φ₀-fix-center : Σ Cone₀ λ u → u ≡ Φ₀ u
-          Φ₀-fix-center = u₀ , funext p₀
-
-          Φ₀-fix-iso : (Σ Cone₀ λ u → u ≡ Φ₀ u) ≅ (∀ i → Z i → X i 0)
-          Φ₀-fix-iso = begin
-              ( Σ Cone₀ λ u → u ≡ Φ₀ u )
-            ≅⟨ {!!} ⟩
-              ( Σ Cone₀ λ u → ∀ n → u n ≡ Φ₀ u n )
-            ≅⟨ {!!} ⟩
-              ( Σ Cone₀ λ u → (u 0 ≡ λ _ _ → lift tt)
-                            × (∀ n → u (suc n) ≡ step (u n)) )
-            ≅⟨ {!!} ⟩
-              ( Σ Cone₀ λ u → ∀ n → u (suc n) ≡ step (u n) )
-            ≅⟨ Limit-op.lim-contr (λ n → Z →ⁱ Xⁱ n) (λ n → step) ⟩
-              (∀ i → Z i → X i 0)
-            ∎
-
-          Φ₀-fix-contr : contr (Σ Cone₀ λ u → u ≡ Φ₀ u)
-          Φ₀-fix-contr = Φ₀-fix-center , contr⇒prop
-            (iso-level (sym≅ Φ₀-fix-iso)
-                       (Π-level λ _ → Π-level λ _ → ↑-level _ ⊤-contr)) _
-
     lim-terminal : contr (Mor 𝓩 𝓛)
-    lim-terminal = iso-level (sym≅ lim-coalg-iso)
-      (Π-level λ _ → Π-level λ _ → ↑-level _ ⊤-contr)
+    lim-terminal = iso-level (sym≅ lim-coalg-iso) ⊤-contr
