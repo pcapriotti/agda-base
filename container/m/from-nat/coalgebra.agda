@@ -40,14 +40,18 @@ module _ {li la lb} (c : Container li la lb) where
   βⁱ : (n : ℕ) → πⁱ n ∘ⁱ pⁱ (suc n) ≡ pⁱ n
   βⁱ n = funextⁱ (λ i → β i n)
 
-  outL-iso : ∀ i → L i ≅ F L i
-  outL-iso i = shift-iso i ·≅ lim-iso i
+  abstract
+    outL-iso : ∀ i → L i ≅ F L i
+    outL-iso i = shift-iso i ·≅ lim-iso i
 
   inL : F L →ⁱ L
   inL i = invert (outL-iso i)
 
   outL : L →ⁱ F L
   outL i = apply (outL-iso i)
+
+  in-out : inL ∘ⁱ outL ≡ idⁱ
+  in-out = funext λ i → funext λ x → _≅_.iso₁ (outL-iso i) x
 
   𝓛 : Coalg _
   𝓛 = L , outL
@@ -60,12 +64,14 @@ module _ {li la lb} (c : Container li la lb) where
     lim-coalg-iso = begin
         ( Σ (Z →ⁱ L) λ f → outL ∘ⁱ f ≡ imap f ∘ⁱ θ )
       ≅⟨ {!!} ⟩
-        ( Σ (Z →ⁱ L) λ f → inL ∘ⁱ outL ∘ⁱ f ≡ inL ∘ⁱ imap f ∘ⁱ θ )
-      ≅⟨ {!!} ⟩
+        ( Σ (Z →ⁱ L) λ f → inL ∘ⁱ outL ∘ⁱ f ≡ inL ∘ⁱ step f )
+      ≅⟨ Ψ-lem ⟩
+        ( Σ (Z →ⁱ L) λ f → inL ∘ⁱ outL ∘ⁱ f ≡ Ψ f  )
+      ≅⟨ ( Σ-ap-iso refl≅ λ f → trans≡-iso (ap (λ h₁ → h₁ ∘ⁱ f) (sym in-out)) ) ⟩
         ( Σ (Z →ⁱ L) λ f → f ≡ Ψ f )
       ≅⟨ sym≅ (Σ-ap-iso isom λ _ → refl≅) ⟩
         ( Σ Cone λ c → apply isom c ≡ Ψ (apply isom c) )
-      ≅⟨ {!!} ⟩
+      ≅⟨ ( Σ-ap-iso refl≅ λ c → trans≡-iso' (Φ-Ψ-comm c) ) ⟩
         ( Σ Cone λ c → apply isom c ≡ apply isom (Φ c) )
       ≅⟨ sym≅ (Σ-ap-iso refl≅ λ c → iso≡ isom ) ⟩
         ( Σ Cone λ c → c ≡ Φ c )
@@ -174,12 +180,15 @@ module _ {li la lb} (c : Container li la lb) where
           where
             P = λ m x y → πⁱ m ∘ⁱ x ≡ y
 
-        abstract
-          Ψ : (Z →ⁱ L) → (Z →ⁱ L)
-          Ψ f = inL ∘ⁱ step f
+        Ψ : (Z →ⁱ L) → (Z →ⁱ L)
+        Ψ f = inL ∘ⁱ step f
 
-          Φ-Ψ-comm : (c : Cone) → Ψ (apply isom c) ≡ apply isom (Φ c)
-          Φ-Ψ-comm c = {!!}
+        Ψ-lem : ( Σ (Z →ⁱ L) λ f → inL ∘ⁱ outL ∘ⁱ f ≡ inL ∘ⁱ step f)
+              ≅ ( Σ (Z →ⁱ L) λ f → inL ∘ⁱ outL ∘ⁱ f ≡ Ψ f )
+        Ψ-lem = Σ-ap-iso refl≅ λ f → refl≅
+
+        Φ-Ψ-comm : (c : Cone) → Ψ (apply isom c) ≡ apply isom (Φ c)
+        Φ-Ψ-comm c = {!!}
 
     lim-terminal : contr (Mor 𝓩 𝓛)
     lim-terminal = iso-level (sym≅ lim-coalg-iso) ⊤-contr
