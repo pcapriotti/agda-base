@@ -63,8 +63,8 @@ module _ {li la lb} (c : Container li la lb) where
 
     lim-coalg-iso : Mor 𝓩 𝓛 ≅ ⊤
     lim-coalg-iso = begin
-        ( Σ (Z →ⁱ L) λ f → outL ∘ⁱ f ≡ imap f ∘ⁱ θ )
-      ≅⟨ {!!} ⟩
+        ( Σ (Z →ⁱ L) λ f → outL ∘ⁱ f ≡ step f )
+      ≅⟨ Σ-ap-iso refl≅ eq-lem ⟩
         ( Σ (Z →ⁱ L) λ f → inL ∘ⁱ outL ∘ⁱ f ≡ inL ∘ⁱ step f )
       ≅⟨ Ψ-lem ⟩
         ( Σ (Z →ⁱ L) λ f → inL ∘ⁱ outL ∘ⁱ f ≡ Ψ f  )
@@ -176,13 +176,14 @@ module _ {li la lb} (c : Container li la lb) where
             ( Σ (Cone₁ u₀) λ q
             → (q 0 ≡ Φ₁ u₀ q 0)
             × (∀ n → q (suc n) ≡ Φ₁ u₀ q (suc n)) )
-          ≅⟨ ( Σ-ap-iso refl≅ λ q → ×-ap-iso (contr-⊤-iso (h↑ {!!} _ _)) refl≅
+          ≅⟨ ( Σ-ap-iso refl≅ λ q → ×-ap-iso (contr-⊤-iso (h↑ (h↑ Z→X₀-contr _ _) _ _))
+                                             refl≅
                                   ·≅ ×-left-unit ) ⟩
             ( Σ (Cone₁ u₀) λ q
             → ∀ n → q (suc n) ≡ ap step (q n) )
           ≅⟨ Limit-op.lim-contr (λ n → πⁱ n ∘ⁱ u₀ (suc n) ≡ u₀ n) (λ n → ap step) ⟩
             ( πⁱ 0 ∘ⁱ u₀ 1 ≡ u₀ 0 )
-          ≅⟨ {!!} ⟩
+          ≅⟨ contr-⊤-iso (h↑ Z→X₀-contr _ _) ⟩
             ⊤
           ∎
           where
@@ -209,6 +210,12 @@ module _ {li la lb} (c : Container li la lb) where
 
         Φ-Ψ-comm : (c : Cone) → Ψ (apply isom c) ≡ apply isom (Φ c)
         Φ-Ψ-comm c = {!!}
+
+        eq-lem : (f : Z →ⁱ L) → (outL ∘ⁱ f ≡ step f)
+                              ≅ (inL ∘ⁱ outL ∘ⁱ f ≡ inL ∘ⁱ step f)
+        eq-lem f = iso≡ ( Π-ap-iso refl≅ λ i
+                        → Π-ap-iso refl≅ λ _
+                        → sym≅ (outL-iso i) )
 
     lim-terminal : contr (Mor 𝓩 𝓛)
     lim-terminal = iso-level (sym≅ lim-coalg-iso) ⊤-contr
