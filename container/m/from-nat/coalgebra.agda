@@ -54,6 +54,16 @@ module _ {li la lb} (c : Container li la lb) where
   in-out : inL ∘ⁱ outL ≡ idⁱ
   in-out = funext λ i → funext λ x → _≅_.iso₁ (outL-iso i) x
 
+  abstract
+    outL-lem₀ : ∀ n i x → p i (suc n) (inL i x) ≡ imap (pⁱ n) i x
+    outL-lem₀ = {!!}
+
+    outL-lem₁ : ∀ n i x → β i (suc n) (inL i x)
+              ≡ ap (π i (suc n)) (outL-lem₀ (suc n) i x)
+              · funext-invⁱ (ap imap (βⁱ n)) i x
+              · sym (outL-lem₀ n i x)
+    outL-lem₁ = {!!}
+
   𝓛 : Coalg _
   𝓛 = L , outL
 
