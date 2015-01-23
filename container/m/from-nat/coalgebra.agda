@@ -41,6 +41,12 @@ module _ {li la lb} (c : Container li la lb) where
   βⁱ : (n : ℕ) → πⁱ n ∘ⁱ pⁱ (suc n) ≡ pⁱ n
   βⁱ n = funextⁱ (λ i → β i n)
 
+  γ : (i : I)(n : ℕ)(l : L i) → Σ (X i (suc n)) λ x → π i n x ≡ p i n l
+  γ i n l = p i (suc n) l , β i n l
+
+  imap-γ : (i : I)(n : ℕ)(y : F L i) → Σ (X i (suc (suc n))) λ x → π i (suc n) x ≡ imap (pⁱ n) i y
+  imap-γ i n y = imap (pⁱ (suc n)) i y , funext-invⁱ (ap imap (βⁱ n)) i y
+
   abstract
     outL-iso : ∀ i → L i ≅ F L i
     outL-iso i = shift-iso i ·≅ lim-iso i
@@ -63,6 +69,9 @@ module _ {li la lb} (c : Container li la lb) where
               · funext-invⁱ (ap imap (βⁱ n)) i x
               · sym (outL-lem₀ n i x)
     outL-lem₁ = {!!}
+
+    outL-lem : ∀ n i x → γ i (suc n) (inL i x) ≡ {!imap-γ i n x!}
+    outL-lem n i x = {!!}
 
   𝓛 : Coalg _
   𝓛 = L , outL
@@ -105,8 +114,6 @@ module _ {li la lb} (c : Container li la lb) where
         ⊤
       ∎
       where
-        open ≅-Reasoning
-
         X₀-contr : ∀ i → contr (X i 0)
         X₀-contr i = ↑-level _ ⊤-contr
 
@@ -135,6 +142,9 @@ module _ {li la lb} (c : Container li la lb) where
         Φ₁ : (u : Cone₀) → Cone₁ u → Cone₁ (Φ₀ u)
         Φ₁ u q zero = refl
         Φ₁ u q (suc n) = ap step (q n)
+
+        Φ₁' : (c : Cone) → Cone₁ (Φ₀ (proj₁ c))
+        Φ₁' (u , q) = Φ₁ u q
 
         Φ : Cone → Cone
         Φ (u , q) = (Φ₀ u , Φ₁ u q)
@@ -168,6 +178,7 @@ module _ {li la lb} (c : Container li la lb) where
           ≅⟨ Limit-op.lim-contr (λ n → Z →ⁱ Xⁱ n) (λ n → step) ⟩
             (∀ i → Z i → X i 0)
           ∎
+          where open ≅-Reasoning
 
         Fix₀-contr : contr Fix₀
         Fix₀-contr = Fix₀-center , contr⇒prop
@@ -211,12 +222,21 @@ module _ {li la lb} (c : Container li la lb) where
                                 · ap (λ p → subst₂ (P n) (p (suc n)) (p n) (q n))
                                      (_≅_.iso₁ strong-funext-iso p)
 
+            open ≅-Reasoning
+
         Ψ : (Z →ⁱ L) → (Z →ⁱ L)
         Ψ f = inL ∘ⁱ step f
 
         Ψ-lem : ( Σ (Z →ⁱ L) λ f → inL ∘ⁱ outL ∘ⁱ f ≡ inL ∘ⁱ step f)
               ≅ ( Σ (Z →ⁱ L) λ f → inL ∘ⁱ outL ∘ⁱ f ≡ Ψ f )
         Ψ-lem = Σ-ap-iso refl≅ λ f → refl≅
+
+        Φ-Ψ-comm₀ : (f : Z →ⁱ L) → ∀ n → pⁱ n ∘ⁱ Ψ f ≡ Φ₀ (proj₁ (invert isom f)) n
+        Φ-Ψ-comm₀ f 0 = h1⇒prop (h↑ Z→X₀-contr) _ _
+        Φ-Ψ-comm₀ f (suc n) = ap (λ z → z ∘ⁱ imap f ∘ⁱ θ) (funextⁱ (outL-lem₀ n))
+
+        Φ-Ψ-comm₁ : (f : Z →ⁱ L) → ∀ n i z → β i n (Ψ f i z) ≡ {!Φ₁' (invert isom f) n!}
+        Φ-Ψ-comm₁ = {!!}
 
         Φ-Ψ-comm : (c : Cone) → Ψ (apply isom c) ≡ apply isom (Φ c)
         Φ-Ψ-comm c = {!!}
@@ -226,6 +246,8 @@ module _ {li la lb} (c : Container li la lb) where
         eq-lem f = iso≡ ( Π-ap-iso refl≅ λ i
                         → Π-ap-iso refl≅ λ _
                         → sym≅ (outL-iso i) )
+
+        open ≅-Reasoning
 
     lim-terminal : contr (Mor 𝓩 𝓛)
     lim-terminal = iso-level (sym≅ lim-coalg-iso) ⊤-contr
