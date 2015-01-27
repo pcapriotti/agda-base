@@ -31,16 +31,11 @@ module Limit-univ {i j}{Z : Set i}
   univ-iso : ( Σ ((n : ℕ)(z : Z) → X z n) λ u
              → ∀ n z → π z n (u (suc n) z) ≡ u n z )
            ≅ ((z : Z) → L z)
-  univ-iso = begin
-      ( Σ ((n : ℕ)(z : Z) → X z n) λ u
-      → ∀ n z → π z n (u (suc n) z) ≡ u n z )
-    ≅⟨ (Σ-ap-iso Π-comm-iso λ u → Π-comm-iso) ⟩
-      ( Σ ((z : Z)(n : ℕ) → X z n) λ u
-      → ∀ z n → π z n (u z (suc n)) ≡ u z n )
-    ≅⟨ sym≅ ΠΣ-swap-iso ⟩
-      ((z : Z) → L z)
-    ∎
-    where open ≅-Reasoning
+  univ-iso = record
+    { to = λ { (u , q) z → (λ n → u n z) , (λ n → q n z) }
+    ; from = λ f → (λ n z → p z n (f z)) , (λ n z → β z n (f z))
+    ; iso₁ = λ { (u , q) → refl }
+    ; iso₂ = λ f → refl }
 
 module Limit-op {i} (X : ℕ → Set i)
                     (ρ : (n : ℕ) → X n → X (suc n)) where
@@ -115,15 +110,17 @@ module Limit-univⁱ
     univ-iso = begin
        ( Σ ((n : ℕ)(i : I) → Z i → X n i) λ f
        → ∀ n → (λ i z → π n i (f (suc n) i z)) ≡ f n )
-     ≅⟨ ( Σ-ap-iso refl≅ λ f → Π-ap-iso refl≅ λ n → sym≅ funext-isoⁱ ) ⟩
+     ≅⟨ sym≅ ( Σ-ap-iso refl≅ λ f → Π-ap-iso refl≅ λ n → funext-isoⁱ ) ⟩
         ( Σ ((n : ℕ)(i : I) → Z i → X n i) λ f
         → ∀ n i z → π n i (f (suc n) i z) ≡ f n i z )
-     ≅⟨ ( Σ-ap-iso ( Π-ap-iso refl≅ λ n
-                   → sym≅ (curry-iso (λ i z → X n i))) λ f
-         → Π-ap-iso refl≅ λ n
-         → sym≅ (curry-iso (λ i z → π n i (f (suc n) i z) ≡ f n i z)) ) ⟩
-       ( Σ ((n : ℕ)(iz : IZ) → XZ iz n) λ f
-       → (∀ n iz → πZ iz n (f (suc n) iz) ≡ f n iz) )
+     ≅⟨ record { to = λ { (u , q) → (λ { n (i , z) → u n i z })
+                                  , (λ { n (i , z) → q n i z }) }
+               ; from = λ { (u , q) → (λ { n i z → u n (i , z) })
+                                    , (λ { n i z → q n (i , z) }) }
+               ; iso₁ = λ { (u , q) → refl }
+               ; iso₂ = λ { (u , q) → refl } } ⟩
+        ( Σ ((n : ℕ)(iz : IZ) → XZ iz n) λ f
+        → (∀ n iz → πZ iz n (f (suc n) iz) ≡ f n iz) )
      ≅⟨ Limit-univ.univ-iso XZ πZ ⟩
        ((iz : IZ) → L (proj₁ iz))
      ≅⟨ curry-iso (λ i z → L i) ⟩
