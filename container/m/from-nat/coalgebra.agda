@@ -41,12 +41,6 @@ module _ {li la lb} (c : Container li la lb) where
   βⁱ : (n : ℕ) → πⁱ n ∘ⁱ pⁱ (suc n) ≡ pⁱ n
   βⁱ n = funextⁱ (λ i → β i n)
 
-  γ : (i : I)(n : ℕ)(l : L i) → Σ (X i (suc n)) λ x → π i n x ≡ p i n l
-  γ i n l = p i (suc n) l , β i n l
-
-  imap-γ : (i : I)(n : ℕ)(y : F L i) → Σ (X i (suc (suc n))) λ x → π i (suc n) x ≡ imap (pⁱ n) i y
-  imap-γ i n y = imap (pⁱ (suc n)) i y , funext-invⁱ (ap imap (βⁱ n)) i y
-
   abstract
     outL-iso : ∀ i → L i ≅ F L i
     outL-iso i = shift-iso i ·≅ lim-iso i
@@ -69,9 +63,6 @@ module _ {li la lb} (c : Container li la lb) where
               · funext-invⁱ (ap imap (βⁱ n)) i x
               · sym (outL-lem₀ n i x)
     outL-lem₁ = {!!}
-
-    outL-lem : ∀ n i x → γ i (suc n) (inL i x) ≡ {!imap-γ i n x!}
-    outL-lem n i x = {!!}
 
   𝓛 : Coalg _
   𝓛 = L , outL
@@ -129,6 +120,17 @@ module _ {li la lb} (c : Container li la lb) where
         Cone : Set _
         Cone = Σ Cone₀ Cone₁
 
+        Cone-eq : {c₁ c₂ : Cone}
+                → (p : (n : ℕ)(i : I)(z : Z i)
+                     → proj₁ c₁ n i z ≡ proj₁ c₂ n i z)
+                → ( (n : ℕ)(i : I)(z : Z i)
+                  → funext-invⁱ (proj₂ c₁ n) i z
+                  ≡ ap (π i n) (p (suc n) i z)
+                  · funext-invⁱ (proj₂ c₂ n) i z
+                  · sym (p n i z) )
+                → c₁ ≡ c₂
+        Cone-eq = {!!}
+
         isom : Cone ≅ (Z →ⁱ L)
         isom = Limit-univⁱ.univ-iso I Xⁱ πⁱ
 
@@ -138,6 +140,9 @@ module _ {li la lb} (c : Container li la lb) where
         Φ₀ : Cone₀ → Cone₀
         Φ₀ u 0 = λ _ _ → lift tt
         Φ₀ u (suc n) = step (u n)
+
+        Φ₀' : Cone → Cone₀
+        Φ₀' (u , q) = Φ₀ u
 
         Φ₁ : (u : Cone₀) → Cone₁ u → Cone₁ (Φ₀ u)
         Φ₁ u q zero = refl
@@ -231,15 +236,73 @@ module _ {li la lb} (c : Container li la lb) where
               ≅ ( Σ (Z →ⁱ L) λ f → inL ∘ⁱ outL ∘ⁱ f ≡ Ψ f )
         Ψ-lem = Σ-ap-iso refl≅ λ f → refl≅
 
-        Φ-Ψ-comm₀ : (f : Z →ⁱ L) → ∀ n → pⁱ n ∘ⁱ Ψ f ≡ Φ₀ (proj₁ (invert isom f)) n
-        Φ-Ψ-comm₀ f 0 = h1⇒prop (h↑ Z→X₀-contr) _ _
-        Φ-Ψ-comm₀ f (suc n) = ap (λ z → z ∘ⁱ imap f ∘ⁱ θ) (funextⁱ (outL-lem₀ n))
+        Φ-Ψ-comm₀ : (f : Z →ⁱ L) → ∀ n i z
+                  → p i n (Ψ f i z)
+                  ≡ Φ₀' (invert isom f) n i z
+        Φ-Ψ-comm₀ f 0 i z = {!!}
+        Φ-Ψ-comm₀ f (suc n) i z = outL-lem₀ n i (imap f i (θ i z))
 
-        Φ-Ψ-comm₁ : (f : Z →ⁱ L) → ∀ n i z → β i n (Ψ f i z) ≡ {!Φ₁' (invert isom f) n!}
-        Φ-Ψ-comm₁ = {!!}
+        Φ-Ψ-comm₁' : (f : Z →ⁱ L) → ∀ n i z
+                    → β i n (Ψ f i z)
+                    ≡ ap (π i n) (Φ-Ψ-comm₀ f (suc n) i z)
+                    · funext-invⁱ (Φ₁' (invert isom f) n) i z
+                    · sym (Φ-Ψ-comm₀ f n i z)
+        Φ-Ψ-comm₁' f 0 i z = {!!}
+        Φ-Ψ-comm₁' f (suc n) i z = begin
+            β i (suc n) (Ψ f i z)
+          ≡⟨ refl ⟩
+            β i (suc n) (inL i (imap f i (θ i z)))
+          ≡⟨ outL-lem₁ n i (imap f i (θ i z)) ⟩
+            ( ap (π i (suc n)) (Φ-Ψ-comm₀ f (suc (suc n)) i z)
+            · funext-invⁱ (ap imap (βⁱ n)) i (imap f i (θ i z))
+            · sym (Φ-Ψ-comm₀ f (suc n) i z) )
+          ≡⟨ ap (λ ω → ap (π i (suc n)) (Φ-Ψ-comm₀ f (suc (suc n)) i z)
+                       · ω
+                       · sym (Φ-Ψ-comm₀ f (suc n) i z))
+                (lem (λ i x → β i n x) i z) ⟩
+            ( ap (π i (suc n)) (Φ-Ψ-comm₀ f (suc (suc n)) i z)
+            · funext-invⁱ (ap step (funextⁱ (λ i z → β i n (f i z)))) i z
+            · sym (Φ-Ψ-comm₀ f (suc n) i z) )
+          ∎
+          where
+            open ≡-Reasoning
+
+            lem : {u v : L →ⁱ Xⁱ n}(ω : (i : I)(x : L i) → u i x ≡ v i x)(i : I)(z : Z i)
+                → funext-invⁱ (ap imap (funextⁱ ω)) i (imap f i (θ i z))
+                ≡ funext-invⁱ (ap step (funextⁱ (λ i z → ω i (f i z)))) i z
+            lem = {!!}
+
+            lem' : {u v : L →ⁱ Xⁱ n}(ω : u ≡ v)(i : I)(z : Z i)
+                 → funext-invⁱ (ap imap ω) i (imap f i (θ i z))
+                 ≡ funext-invⁱ (ap step (funextⁱ (λ i z → funext-invⁱ ω i (f i z)))) i z
+            lem' refl i z = ap (λ ω → funext-invⁱ (ap step ω) i z) (sym (_≅_.iso₂ funext-isoⁱ refl))
+
+        Φ-Ψ-comm₁ : (f : Z →ⁱ L) → ∀ n i z
+                   → funext-invⁱ (funextⁱ λ i z → β i n (Ψ f i z)) i z
+                   ≡ ap (π i n) (Φ-Ψ-comm₀ f (suc n) i z)
+                   · funext-invⁱ (Φ₁' (invert isom f) n) i z
+                   · sym (Φ-Ψ-comm₀ f n i z)
+        Φ-Ψ-comm₁ f n i z = ap (λ h → h i z)
+                                (_≅_.iso₁ funext-isoⁱ (λ i z → β i n (Ψ f i z)))
+                          · Φ-Ψ-comm₁' f n i z
+
+        Φ-Ψ-comm' : (f : Z →ⁱ L) → invert isom (Ψ f) ≡ Φ (invert isom f)
+        Φ-Ψ-comm' f = Cone-eq (Φ-Ψ-comm₀ f) (Φ-Ψ-comm₁ f)
 
         Φ-Ψ-comm : (c : Cone) → Ψ (apply isom c) ≡ apply isom (Φ c)
-        Φ-Ψ-comm c = {!!}
+        Φ-Ψ-comm c = sym (_≅_.iso₂ isom (Ψ (apply isom c)))
+                   · ap (apply isom)
+                        (Φ-Ψ-comm' (apply isom c) · ap Φ (_≅_.iso₁ isom c))
+
+        cone-comp₀ : (f : Z →ⁱ L)(n : ℕ)(i : I)(z : Z i)
+                   → proj₁ (invert isom (Ψ f)) n i z
+                   ≡ p i n (Ψ f i z)
+        cone-comp₀ f n i z = refl
+
+        cone-comp₁ : (f : Z →ⁱ L)(n : ℕ)
+                   → proj₂ (invert isom (Ψ f)) n
+                   ≡ funextⁱ (λ i z → β i n (Ψ f i z))
+        cone-comp₁ f n = refl
 
         eq-lem : (f : Z →ⁱ L) → (outL ∘ⁱ f ≡ step f)
                               ≅ (inL ∘ⁱ outL ∘ⁱ f ≡ inL ∘ⁱ step f)
