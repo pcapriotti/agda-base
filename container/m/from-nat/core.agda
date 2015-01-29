@@ -147,67 +147,71 @@ module F-Limit {ℓ li la lb} (c : Container li la lb)
                         ; p to p'
                         ; β to β' )
 
-  abstract
-    lim-iso : ∀ i → F L i ≅ L' i
-    lim-iso i = begin
-        F L i
-      ≅⟨ ( Σ-ap-iso refl≅ λ a
-         → sym≅ (Limit-univ.univ-iso (λ b n → X (r b) n) (λ b n → π (r b) n)) ) ⟩
-        ( Σ (A i) λ a
-        → Σ ((n : ℕ) → (b : B a) → X (r b) n) λ u
-        → ∀ n b → π (r b) n (u (suc n) b) ≡ u n b )
-      ≅⟨ ( Σ-ap-iso refl≅ λ a
-          → Σ-ap-iso refl≅ λ u
-          → Π-ap-iso refl≅ λ n
-          → strong-funext-iso ) ⟩
-        ( Σ (A i) λ a
-        → Σ ((n : ℕ) → (b : B a) → X (r b) n) λ u
-        → ∀ n → (λ b → π (r b) n (u (suc n) b)) ≡ u n )
-      ≅⟨ ( Σ-ap-iso (sym≅ (Limit-op-simple.lim-contr (A i))) λ a → refl≅ ) ⟩
-        ( Σ (Σ (ℕ → A i) λ a → ∀ n → a (suc n) ≡ a n) λ { (a , q)
-        → Σ ((n : ℕ) → (b : B (a n)) → X (r b) n) λ u
-        → ∀ n → subst (λ a → (b : B a) → X (r b) n) (q n)
-                  (λ b → π (r b) n (u (suc n) b)) ≡ u n } )
-      ≅⟨ record
-           { to = λ { ((a , q) , u , z) → ((a , u) , q , z) }
-           ; from = λ { ((a , u) , q , z) → ((a , q) , u , z) }
-           ; iso₁ = λ { ((a , q) , u , z) → refl }
-           ; iso₂ = λ { ((a , u) , q , z) → refl } } ⟩
-        ( Σ (Σ (ℕ → A i) λ a → ((n : ℕ) → (b : B (a n)) → X (r b) n)) λ { (a , u)
-        → Σ (∀ n → a (suc n) ≡ a n) λ q
-        → ∀ n → subst (λ a → (b : B a) → X (r b) n) (q n)
-                  (λ b → π (r b) n (u (suc n) b)) ≡ u n } )
-      ≅⟨ ( Σ-ap-iso refl≅ λ { (a , u) → sym≅ ΠΣ-swap-iso } ) ⟩
-        ( Σ (Σ (ℕ → A i) λ a → ((n : ℕ) → (b : B (a n)) → X (r b) n)) λ { (a , u)
-        → ∀ n
-        → Σ (a (suc n) ≡ a n) λ q
-        → subst (λ a → (b : B a) → X (r b) n) q
+  lim-iso : ∀ i → F L i ≅ L' i
+  lim-iso i = begin
+      F L i
+    ≅⟨ ( Σ-ap-iso refl≅ λ a
+       → sym≅ (Limit-univ.univ-iso (λ b n → X (r b) n) (λ b n → π (r b) n)) ) ⟩
+      ( Σ (A i) λ a
+      → Σ ((n : ℕ) → (b : B a) → X (r b) n) λ u
+      → ∀ n b → π (r b) n (u (suc n) b) ≡ u n b )
+    ≅⟨ ( Σ-ap-iso refl≅ λ a
+        → Σ-ap-iso refl≅ λ u
+        → Π-ap-iso refl≅ λ n
+        → strong-funext-iso ) ⟩
+      ( Σ (A i) λ a
+      → Σ ((n : ℕ) → (b : B a) → X (r b) n) λ u
+      → ∀ n → (λ b → π (r b) n (u (suc n) b)) ≡ u n )
+    ≅⟨ ( Σ-ap-iso (sym≅ (Limit-op-simple.lim-contr (A i))) λ a → refl≅ ) ⟩
+      ( Σ (Σ (ℕ → A i) λ a → ∀ n → a (suc n) ≡ a n) λ { (a , q)
+      → Σ ((n : ℕ) → (b : B (a n)) → X (r b) n) λ u
+      → ∀ n → subst (λ a → (b : B a) → X (r b) n) (q n)
                 (λ b → π (r b) n (u (suc n) b)) ≡ u n } )
-      ≅⟨ ( Σ-ap-iso refl≅ λ { (a , u)
-              → Π-ap-iso refl≅ λ n
-              → Σ-split-iso } ) ⟩
-        ( Σ (Σ (ℕ → A i) λ a → ((n : ℕ) → (b : B (a n)) → X (r b) n)) λ { (a , u)
-        → ∀ n
-        → _≡_ { A = Σ (A i) λ a → (b : B a) → X (r b) n }
-               (a (suc n) , λ b → π (r b) n (u (suc n) b))
-               (a n , u n) } )
-      ≅⟨ ( Σ-ap-iso (sym≅ ΠΣ-swap-iso) λ w → Π-ap-iso refl≅ λ n → refl≅ ) ⟩
-        ( Σ ((n : ℕ) → F (λ i → X i n) i) λ w
-        → (∀ n → imap (λ i → π i n) i (w (suc n)) ≡ w n) )
-      ∎
-      where
-        open ≅-Reasoning
+    ≅⟨ record
+         { to = λ { ((a , q) , u , z) → ((a , u) , q , z) }
+         ; from = λ { ((a , u) , q , z) → ((a , q) , u , z) }
+         ; iso₁ = λ { ((a , q) , u , z) → refl }
+         ; iso₂ = λ { ((a , u) , q , z) → refl } } ⟩
+      ( Σ (Σ (ℕ → A i) λ a → ((n : ℕ) → (b : B (a n)) → X (r b) n)) λ { (a , u)
+      → Σ (∀ n → a (suc n) ≡ a n) λ q
+      → ∀ n → subst (λ a → (b : B a) → X (r b) n) (q n)
+                (λ b → π (r b) n (u (suc n) b)) ≡ u n } )
+    ≅⟨ ( Σ-ap-iso refl≅ λ { (a , u) → sym≅ ΠΣ-swap-iso } ) ⟩
+      ( Σ (Σ (ℕ → A i) λ a → ((n : ℕ) → (b : B (a n)) → X (r b) n)) λ { (a , u)
+      → ∀ n
+      → Σ (a (suc n) ≡ a n) λ q
+      → subst (λ a → (b : B a) → X (r b) n) q
+              (λ b → π (r b) n (u (suc n) b)) ≡ u n } )
+    ≅⟨ ( Σ-ap-iso refl≅ λ { (a , u)
+            → Π-ap-iso refl≅ λ n
+            → Σ-split-iso } ) ⟩
+      ( Σ (Σ (ℕ → A i) λ a → ((n : ℕ) → (b : B (a n)) → X (r b) n)) λ { (a , u)
+      → ∀ n
+      → _≡_ { A = Σ (A i) λ a → (b : B a) → X (r b) n }
+             (a (suc n) , λ b → π (r b) n (u (suc n) b))
+             (a n , u n) } )
+    ≅⟨ ( Σ-ap-iso (sym≅ ΠΣ-swap-iso) λ w → Π-ap-iso refl≅ λ n → refl≅ ) ⟩
+      ( Σ ((n : ℕ) → F (λ i → X i n) i) λ w
+      → (∀ n → imap (λ i → π i n) i (w (suc n)) ≡ w n) )
+    ∎
+    where
+      open ≅-Reasoning
 
-    lim-iso-comp : (i : I)(n : ℕ)(x : F L i)
-                 → apply (lim-iso i) x
-                 ≡ (λ n → (imap (λ i → p i n) i x))
-                 , (λ n → unapΣ (refl , funext λ b → proj₂ (proj₂ x b) n))
-    lim-iso-comp i n x = refl
+  lim-iso-comp : (i : I)(n : ℕ)(x : F L i)
+               → apply (lim-iso i) x
+               ≡ (λ n → (imap (λ i → p i n) i x))
+               , (λ n → unapΣ (refl , funext λ b → proj₂ (proj₂ x b) n))
+  lim-iso-comp i n x = refl
 
-    lim-iso-lem₀ : (i : I)(n : ℕ)(x : F L i)
-                 → p' i n (apply (lim-iso i) x)
-                 ≡ imap (λ i → p i n) i x
-    lim-iso-lem₀ i n x = refl
+  lim-iso-lem₀ : (i : I)(n : ℕ)(x : F L i)
+               → p' i n (apply (lim-iso i) x)
+               ≡ imap (λ i → p i n) i x
+  lim-iso-lem₀ i n x = refl
+
+--    lim-iso-lem₁ : (i : I)(n : ℕ)(x : F L i)
+--                 → β' i n (apply (lim-iso i) x)
+--                 ≡ {!!}
+--    lim-iso-lem₁ i n x = refl
 
 module Limit-shift {ℓ} (X : ℕ → Set ℓ)
                        (π : (n : ℕ) → X (suc n) → X n) where
@@ -222,35 +226,37 @@ module Limit-shift {ℓ} (X : ℕ → Set ℓ)
   open Limit X' π' using ()
     renaming (L to L' ; p to p' ; β to β')
 
-  abstract
-    shift-iso : L' ≅ L
-    shift-iso = begin
-        ( Σ ((n : ℕ) → X (suc n)) λ x
-        → ∀ n → π (suc n) (x (suc n)) ≡ x n )
-      ≅⟨ ( Σ-ap-iso refl≅ λ y
-         → sym≅ ×-left-unit
-         ·≅ (Σ-ap-iso (sym≅ (contr-⊤-iso (singl-contr _))) λ _ → refl≅) ) ⟩
-        ( Σ ((n : ℕ) → X (suc n)) λ y
-        → Σ (singleton (π 0 (y 0))) λ _
-        → (∀ n → π (suc n) (y (suc n)) ≡ y n) )
-      ≅⟨ record
-           { to = λ { (y , (x₀ , q₀) , q) → ((x₀ , y) , (q₀ , q)) }
-           ; from = λ { ((x₀ , y) , (q₀ , q)) → (y , (x₀ , q₀) , q) }
-           ; iso₁ = λ { (y , (x₀ , q₀) , q) → refl }
-           ; iso₂ = λ { ((x₀ , y) , (q₀ , q)) → refl } } ⟩
-        ( Σ (X 0 × ((n : ℕ) → X (suc n))) λ { (x₀ , y)
-        → ((π 0 (y 0) ≡ x₀) × (∀ n → π (suc n) (y (suc n)) ≡ y n)) } )
-      ≅⟨ (Σ-ap-iso (sym≅ ℕ-elim-shift) λ _ → (sym≅ ℕ-elim-shift)) ⟩
-        ( Σ ((n : ℕ) → X n) λ x
-        → ∀ n → π n (x (suc n)) ≡ x n )
-      ∎
-      where
-        open ≅-Reasoning
+  shift-iso : L' ≅ L
+  shift-iso = begin
+      ( Σ ((n : ℕ) → X (suc n)) λ x
+      → ∀ n → π (suc n) (x (suc n)) ≡ x n )
+    ≅⟨ ( Σ-ap-iso refl≅ λ y
+       → sym≅ ×-left-unit
+       ·≅ (Σ-ap-iso (sym≅ (contr-⊤-iso (singl-contr _))) λ _ → refl≅) ) ⟩
+      ( Σ ((n : ℕ) → X (suc n)) λ y
+      → Σ (singleton (π 0 (y 0))) λ _
+      → (∀ n → π (suc n) (y (suc n)) ≡ y n) )
+    ≅⟨ record
+         { to = λ { (y , (x₀ , q₀) , q) → ((x₀ , y) , (q₀ , q)) }
+         ; from = λ { ((x₀ , y) , (q₀ , q)) → (y , (x₀ , q₀) , q) }
+         ; iso₁ = λ { (y , (x₀ , q₀) , q) → refl }
+         ; iso₂ = λ { ((x₀ , y) , (q₀ , q)) → refl } } ⟩
+      ( Σ (X 0 × ((n : ℕ) → X (suc n))) λ { (x₀ , y)
+      → ((π 0 (y 0) ≡ x₀) × (∀ n → π (suc n) (y (suc n)) ≡ y n)) } )
+    ≅⟨ (Σ-ap-iso (sym≅ ℕ-elim-shift) λ _ → (sym≅ ℕ-elim-shift)) ⟩
+      ( Σ ((n : ℕ) → X n) λ x
+      → ∀ n → π n (x (suc n)) ≡ x n )
+    ∎
+    where
+      open ≅-Reasoning
 
-    shift-iso-comp : (x : L')
-                   → apply shift-iso x
-                   ≡ ( invert ℕ-elim-shift
-                       ( π 0 (p' 0 x) , λ n → p' n x) )
-                   , invert ℕ-elim-shift
-                       ( refl , (λ n → β' n x) )
-    shift-iso-comp x = refl
+  shift-iso-comp : (x : L')
+                 → apply shift-iso x
+                 ≡ ( invert ℕ-elim-shift
+                     ( π 0 (p' 0 x) , λ n → p' n x) )
+                 , invert ℕ-elim-shift
+                     ( refl , (λ n → β' n x) )
+  shift-iso-comp x = refl
+
+  shift-iso-lem₀ : (n : ℕ)(x : L') → p (suc n) (apply shift-iso x) ≡ p' n x
+  shift-iso-lem₀ n x = refl

@@ -41,27 +41,54 @@ module _ {li la lb} (c : Container li la lb) where
   βⁱ : (n : ℕ) → πⁱ n ∘ⁱ pⁱ (suc n) ≡ pⁱ n
   βⁱ n = funextⁱ (λ i → β i n)
 
-  outL-iso : ∀ i → L i ≅ F L i
-  outL-iso i = sym≅ (lim-iso i ·≅ shift-iso i)
+  abstract
+    outL-iso : ∀ i → F L i ≅ L i
+    outL-iso i = lim-iso i ·≅ shift-iso i
+
+    outL-lem₀ : (n : ℕ)(i : I)(x : F L i)
+              → p i (suc n) (apply (outL-iso i) x) ≡ imap (pⁱ n) i x
+    outL-lem₀ n i x = refl
+
+    outL-lem₁' : (n : ℕ)(i : I)(x : F L i)
+               → β i (suc n) (apply (outL-iso i) x)
+               ≡ subst₂ (λ w₁ w₀ → π i (suc n) w₁ ≡ w₀)
+                        (sym (outL-lem₀ (suc n) i x))
+                        (sym (outL-lem₀ n i x))
+                        (unapΣ (refl , funext λ b → proj₂ (proj₂ x b) n ))
+    outL-lem₁' n i x = refl
 
   inL : F L →ⁱ L
-  inL i = invert (outL-iso i)
+  inL i = apply (outL-iso i)
 
   outL : L →ⁱ F L
-  outL i = apply (outL-iso i)
+  outL i = invert (outL-iso i)
 
   in-out : inL ∘ⁱ outL ≡ idⁱ
-  in-out = funext λ i → funext λ x → _≅_.iso₁ (outL-iso i) x
+  in-out = funext λ i → funext λ x → _≅_.iso₂ (outL-iso i) x
 
-  abstract
-    outL-lem₀ : ∀ n i x → p i (suc n) (inL i x) ≡ imap (pⁱ n) i x
-    outL-lem₀ = {!!}
+  outL-lem₁ : (n : ℕ)(i : I)(x : F L i)
+            → β i (suc n) (apply (outL-iso i) x)
+            ≡ ap (π i (suc n)) (outL-lem₀ (suc n) i x)
+            · funext-invⁱ (ap imap (βⁱ n)) i x
+            · sym (outL-lem₀ n i x)
+  outL-lem₁ n i x = outL-lem₁' n i x
+                  · subst-lem (outL-lem₀ (suc n) i x) (outL-lem₀ n i x)
+                              (unapΣ (refl , funext (λ b → proj₂ (proj₂ x b) n)))
+                  · ap (λ w → ap (π i (suc n)) (outL-lem₀ (suc n) i x) · w
+                            · sym (outL-lem₀ n i x)) funext-lem
+    where
+      funext-lem : unapΣ (refl , funext λ b → proj₂ (proj₂ x b) n)
+                 ≡ funext-invⁱ (ap imap (βⁱ n)) i x
+      funext-lem = {!!}
 
-    outL-lem₁ : ∀ n i x → β i (suc n) (inL i x)
-              ≡ ap (π i (suc n)) (outL-lem₀ (suc n) i x)
-              · funext-invⁱ (ap imap (βⁱ n)) i x
-              · sym (outL-lem₀ n i x)
-    outL-lem₁ = {!!}
+      P : X i (suc (suc n)) → X i (suc n) → Set _
+      P y x = π i (suc n) y ≡ x
+
+      subst-lem : {y₁ y₂ : X i (suc (suc n))}{x₁ x₂ : X i (suc n)}
+                → (p : y₁ ≡ y₂)(q : x₁ ≡ x₂)
+                → (z : P y₂ x₂)
+                → subst₂ P (sym p) (sym q) z ≡ ap (π i (suc n)) p · z · sym q
+      subst-lem refl refl refl = refl
 
   𝓛 : Coalg _
   𝓛 = L , outL
@@ -307,7 +334,7 @@ module _ {li la lb} (c : Container li la lb) where
                               ≅ (inL ∘ⁱ outL ∘ⁱ f ≡ inL ∘ⁱ step f)
         eq-lem f = iso≡ ( Π-ap-iso refl≅ λ i
                         → Π-ap-iso refl≅ λ _
-                        → sym≅ (outL-iso i) )
+                        → outL-iso i )
 
         open ≅-Reasoning
 
