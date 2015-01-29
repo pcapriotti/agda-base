@@ -41,9 +41,8 @@ module _ {li la lb} (c : Container li la lb) where
   βⁱ : (n : ℕ) → πⁱ n ∘ⁱ pⁱ (suc n) ≡ pⁱ n
   βⁱ n = funextⁱ (λ i → β i n)
 
-  abstract
-    outL-iso : ∀ i → L i ≅ F L i
-    outL-iso i = shift-iso i ·≅ lim-iso i
+  outL-iso : ∀ i → L i ≅ F L i
+  outL-iso i = sym≅ (lim-iso i ·≅ shift-iso i)
 
   inL : F L →ⁱ L
   inL i = invert (outL-iso i)
