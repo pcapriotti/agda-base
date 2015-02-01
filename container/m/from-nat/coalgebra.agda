@@ -10,6 +10,7 @@ open import sets.nat.struct
 open import sets.unit
 open import container.core
 open import container.m.from-nat.core
+open import container.m.from-nat.cone
 open import hott.level
 
 module _ {li la lb} (c : Container li la lb) where
@@ -131,34 +132,13 @@ module _ {li la lb} (c : Container li la lb) where
         ⊤
       ∎
       where
+        open cones c Xⁱ πⁱ 𝓩
+
         X₀-contr : ∀ i → contr (X i 0)
         X₀-contr i = ↑-level _ ⊤-contr
 
         Z→X₀-contr : contr (Z →ⁱ Xⁱ 0)
         Z→X₀-contr = Π-level λ i → Π-level λ _ → X₀-contr i
-
-        Cone₀ : Set _
-        Cone₀ = (n : ℕ) → Z →ⁱ Xⁱ n
-
-        Cone₁ : Cone₀ → Set _
-        Cone₁ u = (n : ℕ) → πⁱ n ∘ⁱ u (suc n) ≡ u n
-
-        Cone : Set _
-        Cone = Σ Cone₀ Cone₁
-
-        Cone-eq : {c₁ c₂ : Cone}
-                → (p : (n : ℕ)(i : I)(z : Z i)
-                     → proj₁ c₁ n i z ≡ proj₁ c₂ n i z)
-                → ( (n : ℕ)(i : I)(z : Z i)
-                  → funext-invⁱ (proj₂ c₁ n) i z
-                  ≡ ap (π i n) (p (suc n) i z)
-                  · funext-invⁱ (proj₂ c₂ n) i z
-                  · sym (p n i z) )
-                → c₁ ≡ c₂
-        Cone-eq = {!!}
-
-        isom : Cone ≅ (Z →ⁱ L)
-        isom = Limit-univⁱ.univ-iso I Xⁱ πⁱ
 
         step : ∀ {ly}{Y : I → Set ly} → (Z →ⁱ Y) → (Z →ⁱ F Y)
         step v = imap v ∘ⁱ θ

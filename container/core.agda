@@ -23,21 +23,21 @@ module _ {li}{I : Set li} where
   infixl 9 _∘ⁱ_
 
   -- extensionality
-  funext-isoⁱ : ∀ {lx ly} {X : I → Set lx}{Y : I → Set ly}
-              → {f g : X →ⁱ Y}
+  funext-isoⁱ : ∀ {lx ly} {X : I → Set lx}{Y : (i : I) → X i → Set ly}
+              → {f g : (i : I)(x : X i) → Y i x}
               → (∀ i x → f i x ≡ g i x)
               ≅ (f ≡ g)
   funext-isoⁱ {f = f}{g = g}
     = (Π-ap-iso refl≅ λ i → strong-funext-iso)
     ·≅ strong-funext-iso
 
-  funext-invⁱ : ∀ {lx ly} {X : I → Set lx}{Y : I → Set ly}
-              → {f g : X →ⁱ Y}
+  funext-invⁱ : ∀ {lx ly} {X : I → Set lx}{Y : (i : I) → X i → Set ly}
+              → {f g : (i : I)(x : X i) → Y i x}
               → f ≡ g → ∀ i x → f i x ≡ g i x
   funext-invⁱ = invert funext-isoⁱ
 
-  funextⁱ : ∀ {lx ly} {X : I → Set lx}{Y : I → Set ly}
-          → {f g : X →ⁱ Y}
+  funextⁱ : ∀ {lx ly} {X : I → Set lx}{Y : (i : I) → X i → Set ly}
+          → {f g : (i : I)(x : X i) → Y i x}
           → (∀ i x → f i x ≡ g i x) → f ≡ g
   funextⁱ = apply funext-isoⁱ
 
