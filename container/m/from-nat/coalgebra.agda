@@ -15,7 +15,7 @@ open import hott.level
 
 module _ {li la lb} (c : Container li la lb) where
   open Container c
-  open import container.m.coalgebra c
+  open import container.m.coalgebra c hiding (_≅_; module _≅_)
 
   Xⁱ : ℕ → I → Set (la ⊔ lb)
   Xⁱ zero = λ _ → ↑ _ ⊤
@@ -92,7 +92,7 @@ module _ {li la lb} (c : Container li la lb) where
     private
       Z = proj₁ 𝓩; θ = proj₂ 𝓩
 
-    lim-coalg-iso : Mor 𝓩 𝓛 ≅ ⊤
+    lim-coalg-iso : 𝓩 ⇒ 𝓛 ≅ ⊤
     lim-coalg-iso = begin
         ( Σ (Z →ⁱ L) λ f → outL ∘ⁱ f ≡ step f )
       ≅⟨ Σ-ap-iso refl≅ eq-lem ⟩
@@ -318,5 +318,5 @@ module _ {li la lb} (c : Container li la lb) where
 
         open ≅-Reasoning
 
-    lim-terminal : contr (Mor 𝓩 𝓛)
+    lim-terminal : contr (𝓩 ⇒ 𝓛)
     lim-terminal = iso-level (sym≅ lim-coalg-iso) ⊤-contr
