@@ -197,22 +197,6 @@ module F-Limit {ℓ li la lb} (c : Container li la lb)
     where
       open ≅-Reasoning
 
-  lim-iso-comp : (i : I)(n : ℕ)(x : F L i)
-               → apply (lim-iso i) x
-               ≡ (λ n → (imap (λ i → p i n) i x))
-               , (λ n → unapΣ (refl , funext λ b → proj₂ (proj₂ x b) n))
-  lim-iso-comp i n x = refl
-
-  lim-iso-lem₀ : (i : I)(n : ℕ)(x : F L i)
-               → p' i n (apply (lim-iso i) x)
-               ≡ imap (λ i → p i n) i x
-  lim-iso-lem₀ i n x = refl
-
---    lim-iso-lem₁ : (i : I)(n : ℕ)(x : F L i)
---                 → β' i n (apply (lim-iso i) x)
---                 ≡ {!!}
---    lim-iso-lem₁ i n x = refl
-
 module Limit-shift {ℓ} (X : ℕ → Set ℓ)
                        (π : (n : ℕ) → X (suc n) → X n) where
   open Limit X π
@@ -249,14 +233,3 @@ module Limit-shift {ℓ} (X : ℕ → Set ℓ)
     ∎
     where
       open ≅-Reasoning
-
-  shift-iso-comp : (x : L')
-                 → apply shift-iso x
-                 ≡ ( invert ℕ-elim-shift
-                     ( π 0 (p' 0 x) , λ n → p' n x) )
-                 , invert ℕ-elim-shift
-                     ( refl , (λ n → β' n x) )
-  shift-iso-comp x = refl
-
-  shift-iso-lem₀ : (n : ℕ)(x : L') → p (suc n) (apply shift-iso x) ≡ p' n x
-  shift-iso-lem₀ n x = refl
