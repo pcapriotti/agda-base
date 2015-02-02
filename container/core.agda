@@ -7,6 +7,40 @@ open import sum
 open import equality
 open import function
 
+module _ {li}{I : Set li} where
+  -- homsets in the slice category
+  _→ⁱ_ : ∀ {lx ly} → (I → Set lx) → (I → Set ly) → Set _
+  X →ⁱ Y = (i : I) → X i → Y i
+
+  -- identity of the slice category
+  idⁱ : ∀ {lx}{X : I → Set lx} → X →ⁱ X
+  idⁱ i x = x
+
+  -- composition in the slice category
+  _∘ⁱ_ : ∀ {lx ly lz} {X : I → Set lx}{Y : I → Set ly}{Z : I → Set lz}
+       → (Y →ⁱ Z) → (X →ⁱ Y) → (X →ⁱ Z)
+  (f ∘ⁱ g) i = f i ∘ g i
+  infixl 9 _∘ⁱ_
+
+  -- extensionality
+  funext-isoⁱ : ∀ {lx ly} {X : I → Set lx}{Y : (i : I) → X i → Set ly}
+              → {f g : (i : I)(x : X i) → Y i x}
+              → (∀ i x → f i x ≡ g i x)
+              ≅ (f ≡ g)
+  funext-isoⁱ {f = f}{g = g}
+    = (Π-ap-iso refl≅ λ i → strong-funext-iso)
+    ·≅ strong-funext-iso
+
+  funext-invⁱ : ∀ {lx ly} {X : I → Set lx}{Y : (i : I) → X i → Set ly}
+              → {f g : (i : I)(x : X i) → Y i x}
+              → f ≡ g → ∀ i x → f i x ≡ g i x
+  funext-invⁱ = invert funext-isoⁱ
+
+  funextⁱ : ∀ {lx ly} {X : I → Set lx}{Y : (i : I) → X i → Set ly}
+          → {f g : (i : I)(x : X i) → Y i x}
+          → (∀ i x → f i x ≡ g i x) → f ≡ g
+  funextⁱ = apply funext-isoⁱ
+
 record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
   constructor container
   field
@@ -25,45 +59,6 @@ record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
   F-ap-iso isom i = Σ-ap-iso refl≅ λ a
                   → Π-ap-iso refl≅ λ b
                   → isom (r b)
-
-  test : ∀ {lx ly}{X : I → Set lx}{Y : I → Set ly}
-       → (isom : ∀ i → X i ≅ Y i)
-       → ∀ i (a : A i) (u : (b : B a) → X (r b))
-       → apply (F-ap-iso isom i) (a , u)
-       ≡ (a , λ b → apply (isom (r b)) (u b))
-  test isom i a u = refl
-
-  -- homsets in the slice category
-  _→ⁱ_ : ∀ {lx ly} → (I → Set lx) → (I → Set ly) → Set _
-  X →ⁱ Y = (i : I) → X i → Y i
-
-  -- identity of the slice category
-  idⁱ : ∀ {lx}{X : I → Set lx} → X →ⁱ X
-  idⁱ i x = x
-
-  -- composition in the slice category
-  _∘ⁱ_ : ∀ {lx ly lz} {X : I → Set lx}{Y : I → Set ly}{Z : I → Set lz}
-       → (Y →ⁱ Z) → (X →ⁱ Y) → (X →ⁱ Z)
-  (f ∘ⁱ g) i = f i ∘ g i
-
-  -- extensionality
-  funext-isoⁱ : ∀ {lx ly} {X : I → Set lx}{Y : I → Set ly}
-              → {f g : X →ⁱ Y}
-              → (∀ i x → f i x ≡ g i x)
-              ≅ (f ≡ g)
-  funext-isoⁱ {f = f}{g = g}
-    = (Π-ap-iso refl≅ λ i → strong-funext-iso)
-    ·≅ strong-funext-iso
-
-  funext-invⁱ : ∀ {lx ly} {X : I → Set lx}{Y : I → Set ly}
-              → {f g : X →ⁱ Y}
-              → f ≡ g → ∀ i x → f i x ≡ g i x
-  funext-invⁱ = invert funext-isoⁱ
-
-  funextⁱ : ∀ {lx ly} {X : I → Set lx}{Y : I → Set ly}
-          → {f g : X →ⁱ Y}
-          → (∀ i x → f i x ≡ g i x) → f ≡ g
-  funextⁱ = apply funext-isoⁱ
 
   -- morphism map for the functor F
   imap : ∀ {lx ly}
