@@ -1,0 +1,629 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >container.m.coalgebra</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >open</a
+      ><a name="33"
+      > </a
+      ><a name="34" class="Keyword"
+      >import</a
+      ><a name="40"
+      > </a
+      ><a name="41" href="container.core.html#1" class="Module"
+      >container.core</a
+      ><a name="55"
+      >
+
+</a
+      ><a name="57" class="Keyword"
+      >module</a
+      ><a name="63"
+      > </a
+      ><a name="64" href="container.m.coalgebra.html#1" class="Module"
+      >container.m.coalgebra</a
+      ><a name="85"
+      > </a
+      ><a name="86" class="Symbol"
+      >{</a
+      ><a name="87" href="container.m.coalgebra.html#87" class="Bound"
+      >li</a
+      ><a name="89"
+      > </a
+      ><a name="90" href="container.m.coalgebra.html#90" class="Bound"
+      >la</a
+      ><a name="92"
+      > </a
+      ><a name="93" href="container.m.coalgebra.html#93" class="Bound"
+      >lb</a
+      ><a name="95" class="Symbol"
+      >}</a
+      ><a name="96"
+      >
+  </a
+      ><a name="99" class="Symbol"
+      >(</a
+      ><a name="100" href="container.m.coalgebra.html#100" class="Bound"
+      >c</a
+      ><a name="101"
+      > </a
+      ><a name="102" class="Symbol"
+      >:</a
+      ><a name="103"
+      > </a
+      ><a name="104" href="container.core.html#1277" class="Record"
+      >Container</a
+      ><a name="113"
+      > </a
+      ><a name="114" href="container.m.coalgebra.html#87" class="Bound"
+      >li</a
+      ><a name="116"
+      > </a
+      ><a name="117" href="container.m.coalgebra.html#90" class="Bound"
+      >la</a
+      ><a name="119"
+      > </a
+      ><a name="120" href="container.m.coalgebra.html#93" class="Bound"
+      >lb</a
+      ><a name="122" class="Symbol"
+      >)</a
+      ><a name="123"
+      > </a
+      ><a name="124" class="Keyword"
+      >where</a
+      ><a name="129"
+      >
+
+</a
+      ><a name="131" class="Keyword"
+      >open</a
+      ><a name="135"
+      > </a
+      ><a name="136" class="Keyword"
+      >import</a
+      ><a name="142"
+      > </a
+      ><a name="143" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="146"
+      >
+</a
+      ><a name="147" class="Keyword"
+      >open</a
+      ><a name="151"
+      > </a
+      ><a name="152" class="Keyword"
+      >import</a
+      ><a name="158"
+      > </a
+      ><a name="159" href="equality.html#1" class="Module"
+      >equality</a
+      ><a name="167"
+      >
+</a
+      ><a name="168" class="Keyword"
+      >open</a
+      ><a name="172"
+      > </a
+      ><a name="173" class="Keyword"
+      >import</a
+      ><a name="179"
+      > </a
+      ><a name="180" href="hott.level.html#1" class="Module"
+      >hott.level</a
+      ><a name="190"
+      >
+
+</a
+      ><a name="192" class="Keyword"
+      >open</a
+      ><a name="196"
+      > </a
+      ><a name="197" href="container.core.html#1277" class="Module"
+      >Container</a
+      ><a name="206"
+      > </a
+      ><a name="207" href="container.m.coalgebra.html#100" class="Bound"
+      >c</a
+      ><a name="208"
+      >
+
+</a
+      ><a name="210" href="container.m.coalgebra.html#210" class="Function"
+      >Coalg</a
+      ><a name="215"
+      > </a
+      ><a name="216" class="Symbol"
+      >:</a
+      ><a name="217"
+      > </a
+      ><a name="218" class="Symbol"
+      >&#8704;</a
+      ><a name="219"
+      > </a
+      ><a name="220" href="container.m.coalgebra.html#220" class="Bound"
+      >&#8467;</a
+      ><a name="221"
+      > </a
+      ><a name="222" class="Symbol"
+      >&#8594;</a
+      ><a name="223"
+      > </a
+      ><a name="224" class="PrimitiveType"
+      >Set</a
+      ><a name="227"
+      > </a
+      ><a name="228" class="Symbol"
+      >_</a
+      ><a name="229"
+      >
+</a
+      ><a name="230" href="container.m.coalgebra.html#210" class="Function"
+      >Coalg</a
+      ><a name="235"
+      > </a
+      ><a name="236" href="container.m.coalgebra.html#236" class="Bound"
+      >&#8467;</a
+      ><a name="237"
+      > </a
+      ><a name="238" class="Symbol"
+      >=</a
+      ><a name="239"
+      > </a
+      ><a name="240" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="241"
+      > </a
+      ><a name="242" class="Symbol"
+      >(</a
+      ><a name="243" href="container.core.html#1376" class="Function"
+      >I</a
+      ><a name="244"
+      > </a
+      ><a name="245" class="Symbol"
+      >&#8594;</a
+      ><a name="246"
+      > </a
+      ><a name="247" class="PrimitiveType"
+      >Set</a
+      ><a name="250"
+      > </a
+      ><a name="251" href="container.m.coalgebra.html#236" class="Bound"
+      >&#8467;</a
+      ><a name="252" class="Symbol"
+      >)</a
+      ><a name="253"
+      > </a
+      ><a name="254" class="Symbol"
+      >&#955;</a
+      ><a name="255"
+      > </a
+      ><a name="256" href="container.m.coalgebra.html#256" class="Bound"
+      >X</a
+      ><a name="257"
+      > </a
+      ><a name="258" class="Symbol"
+      >&#8594;</a
+      ><a name="259"
+      > </a
+      ><a name="260" href="container.m.coalgebra.html#256" class="Bound"
+      >X</a
+      ><a name="261"
+      > </a
+      ><a name="262" href="container.core.html#205" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="264"
+      > </a
+      ><a name="265" href="container.core.html#1525" class="Function"
+      >F</a
+      ><a name="266"
+      > </a
+      ><a name="267" href="container.m.coalgebra.html#256" class="Bound"
+      >X</a
+      ><a name="268"
+      >
+
+</a
+      ><a name="270" href="container.m.coalgebra.html#270" class="Function"
+      >carrier</a
+      ><a name="277"
+      > </a
+      ><a name="278" class="Symbol"
+      >:</a
+      ><a name="279"
+      > </a
+      ><a name="280" class="Symbol"
+      >&#8704;</a
+      ><a name="281"
+      > </a
+      ><a name="282" class="Symbol"
+      >{</a
+      ><a name="283" href="container.m.coalgebra.html#283" class="Bound"
+      >&#8467;</a
+      ><a name="284" class="Symbol"
+      >}</a
+      ><a name="285"
+      > </a
+      ><a name="286" class="Symbol"
+      >&#8594;</a
+      ><a name="287"
+      > </a
+      ><a name="288" href="container.m.coalgebra.html#210" class="Function"
+      >Coalg</a
+      ><a name="293"
+      > </a
+      ><a name="294" href="container.m.coalgebra.html#283" class="Bound"
+      >&#8467;</a
+      ><a name="295"
+      > </a
+      ><a name="296" class="Symbol"
+      >&#8594;</a
+      ><a name="297"
+      > </a
+      ><a name="298" href="container.core.html#1376" class="Function"
+      >I</a
+      ><a name="299"
+      > </a
+      ><a name="300" class="Symbol"
+      >&#8594;</a
+      ><a name="301"
+      > </a
+      ><a name="302" class="PrimitiveType"
+      >Set</a
+      ><a name="305"
+      > </a
+      ><a name="306" href="container.m.coalgebra.html#283" class="Bound"
+      >&#8467;</a
+      ><a name="307"
+      >
+</a
+      ><a name="308" href="container.m.coalgebra.html#270" class="Function"
+      >carrier</a
+      ><a name="315"
+      > </a
+      ><a name="316" class="Symbol"
+      >(</a
+      ><a name="317" href="container.m.coalgebra.html#317" class="Bound"
+      >X</a
+      ><a name="318"
+      > </a
+      ><a name="319" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="320"
+      > </a
+      ><a name="321" class="Symbol"
+      >_)</a
+      ><a name="323"
+      > </a
+      ><a name="324" class="Symbol"
+      >=</a
+      ><a name="325"
+      > </a
+      ><a name="326" href="container.m.coalgebra.html#317" class="Bound"
+      >X</a
+      ><a name="327"
+      >
+
+</a
+      ><a name="329" href="container.m.coalgebra.html#329" class="Function"
+      >IsMor</a
+      ><a name="334"
+      > </a
+      ><a name="335" class="Symbol"
+      >:</a
+      ><a name="336"
+      > </a
+      ><a name="337" class="Symbol"
+      >&#8704;</a
+      ><a name="338"
+      > </a
+      ><a name="339" class="Symbol"
+      >{</a
+      ><a name="340" href="container.m.coalgebra.html#340" class="Bound"
+      >&#8467;&#8321;</a
+      ><a name="342"
+      > </a
+      ><a name="343" href="container.m.coalgebra.html#343" class="Bound"
+      >&#8467;&#8322;</a
+      ><a name="345" class="Symbol"
+      >}(</a
+      ><a name="347" href="container.m.coalgebra.html#347" class="Bound"
+      >&#120039;</a
+      ><a name="348"
+      > </a
+      ><a name="349" class="Symbol"
+      >:</a
+      ><a name="350"
+      > </a
+      ><a name="351" href="container.m.coalgebra.html#210" class="Function"
+      >Coalg</a
+      ><a name="356"
+      > </a
+      ><a name="357" href="container.m.coalgebra.html#340" class="Bound"
+      >&#8467;&#8321;</a
+      ><a name="359" class="Symbol"
+      >)(</a
+      ><a name="361" href="container.m.coalgebra.html#361" class="Bound"
+      >&#120040;</a
+      ><a name="362"
+      > </a
+      ><a name="363" class="Symbol"
+      >:</a
+      ><a name="364"
+      > </a
+      ><a name="365" href="container.m.coalgebra.html#210" class="Function"
+      >Coalg</a
+      ><a name="370"
+      > </a
+      ><a name="371" href="container.m.coalgebra.html#343" class="Bound"
+      >&#8467;&#8322;</a
+      ><a name="373" class="Symbol"
+      >)</a
+      ><a name="374"
+      >
+      </a
+      ><a name="381" class="Symbol"
+      >&#8594;</a
+      ><a name="382"
+      > </a
+      ><a name="383" class="Symbol"
+      >(</a
+      ><a name="384" href="container.m.coalgebra.html#270" class="Function"
+      >carrier</a
+      ><a name="391"
+      > </a
+      ><a name="392" href="container.m.coalgebra.html#347" class="Bound"
+      >&#120039;</a
+      ><a name="393"
+      > </a
+      ><a name="394" href="container.core.html#205" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="396"
+      > </a
+      ><a name="397" href="container.m.coalgebra.html#270" class="Function"
+      >carrier</a
+      ><a name="404"
+      > </a
+      ><a name="405" href="container.m.coalgebra.html#361" class="Bound"
+      >&#120040;</a
+      ><a name="406" class="Symbol"
+      >)</a
+      ><a name="407"
+      > </a
+      ><a name="408" class="Symbol"
+      >&#8594;</a
+      ><a name="409"
+      > </a
+      ><a name="410" class="PrimitiveType"
+      >Set</a
+      ><a name="413"
+      > </a
+      ><a name="414" class="Symbol"
+      >_</a
+      ><a name="415"
+      >
+</a
+      ><a name="416" href="container.m.coalgebra.html#329" class="Function"
+      >IsMor</a
+      ><a name="421"
+      > </a
+      ><a name="422" class="Symbol"
+      >(</a
+      ><a name="423" href="container.m.coalgebra.html#423" class="Bound"
+      >X</a
+      ><a name="424"
+      > </a
+      ><a name="425" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="426"
+      > </a
+      ><a name="427" href="container.m.coalgebra.html#427" class="Bound"
+      >&#952;</a
+      ><a name="428" class="Symbol"
+      >)</a
+      ><a name="429"
+      > </a
+      ><a name="430" class="Symbol"
+      >(</a
+      ><a name="431" href="container.m.coalgebra.html#431" class="Bound"
+      >Y</a
+      ><a name="432"
+      > </a
+      ><a name="433" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="434"
+      > </a
+      ><a name="435" href="container.m.coalgebra.html#435" class="Bound"
+      >&#968;</a
+      ><a name="436" class="Symbol"
+      >)</a
+      ><a name="437"
+      > </a
+      ><a name="438" href="container.m.coalgebra.html#438" class="Bound"
+      >f</a
+      ><a name="439"
+      > </a
+      ><a name="440" class="Symbol"
+      >=</a
+      ><a name="441"
+      > </a
+      ><a name="442" href="container.m.coalgebra.html#435" class="Bound"
+      >&#968;</a
+      ><a name="443"
+      > </a
+      ><a name="444" href="container.core.html#424" class="Function Operator"
+      >&#8728;&#8305;</a
+      ><a name="446"
+      > </a
+      ><a name="447" href="container.m.coalgebra.html#438" class="Bound"
+      >f</a
+      ><a name="448"
+      > </a
+      ><a name="449" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="450"
+      > </a
+      ><a name="451" href="container.core.html#1875" class="Function"
+      >imap</a
+      ><a name="455"
+      > </a
+      ><a name="456" href="container.m.coalgebra.html#438" class="Bound"
+      >f</a
+      ><a name="457"
+      > </a
+      ><a name="458" href="container.core.html#424" class="Function Operator"
+      >&#8728;&#8305;</a
+      ><a name="460"
+      > </a
+      ><a name="461" href="container.m.coalgebra.html#427" class="Bound"
+      >&#952;</a
+      ><a name="462"
+      >
+
+</a
+      ><a name="464" href="container.m.coalgebra.html#464" class="Function"
+      >Mor</a
+      ><a name="467"
+      > </a
+      ><a name="468" class="Symbol"
+      >:</a
+      ><a name="469"
+      > </a
+      ><a name="470" class="Symbol"
+      >&#8704;</a
+      ><a name="471"
+      > </a
+      ><a name="472" class="Symbol"
+      >{</a
+      ><a name="473" href="container.m.coalgebra.html#473" class="Bound"
+      >&#8467;&#8321;</a
+      ><a name="475"
+      > </a
+      ><a name="476" href="container.m.coalgebra.html#476" class="Bound"
+      >&#8467;&#8322;</a
+      ><a name="478" class="Symbol"
+      >}</a
+      ><a name="479"
+      > </a
+      ><a name="480" class="Symbol"
+      >&#8594;</a
+      ><a name="481"
+      > </a
+      ><a name="482" href="container.m.coalgebra.html#210" class="Function"
+      >Coalg</a
+      ><a name="487"
+      > </a
+      ><a name="488" href="container.m.coalgebra.html#473" class="Bound"
+      >&#8467;&#8321;</a
+      ><a name="490"
+      > </a
+      ><a name="491" class="Symbol"
+      >&#8594;</a
+      ><a name="492"
+      > </a
+      ><a name="493" href="container.m.coalgebra.html#210" class="Function"
+      >Coalg</a
+      ><a name="498"
+      > </a
+      ><a name="499" href="container.m.coalgebra.html#476" class="Bound"
+      >&#8467;&#8322;</a
+      ><a name="501"
+      > </a
+      ><a name="502" class="Symbol"
+      >&#8594;</a
+      ><a name="503"
+      > </a
+      ><a name="504" class="PrimitiveType"
+      >Set</a
+      ><a name="507"
+      > </a
+      ><a name="508" class="Symbol"
+      >_</a
+      ><a name="509"
+      >
+</a
+      ><a name="510" href="container.m.coalgebra.html#464" class="Function"
+      >Mor</a
+      ><a name="513"
+      > </a
+      ><a name="514" href="container.m.coalgebra.html#514" class="Bound"
+      >&#120039;</a
+      ><a name="515"
+      > </a
+      ><a name="516" href="container.m.coalgebra.html#516" class="Bound"
+      >&#120040;</a
+      ><a name="517"
+      > </a
+      ><a name="518" class="Symbol"
+      >=</a
+      ><a name="519"
+      > </a
+      ><a name="520" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="521"
+      > </a
+      ><a name="522" class="Symbol"
+      >(</a
+      ><a name="523" href="container.m.coalgebra.html#270" class="Function"
+      >carrier</a
+      ><a name="530"
+      > </a
+      ><a name="531" href="container.m.coalgebra.html#514" class="Bound"
+      >&#120039;</a
+      ><a name="532"
+      > </a
+      ><a name="533" href="container.core.html#205" class="Function Operator"
+      >&#8594;&#8305;</a
+      ><a name="535"
+      > </a
+      ><a name="536" href="container.m.coalgebra.html#270" class="Function"
+      >carrier</a
+      ><a name="543"
+      > </a
+      ><a name="544" href="container.m.coalgebra.html#516" class="Bound"
+      >&#120040;</a
+      ><a name="545" class="Symbol"
+      >)</a
+      ><a name="546"
+      > </a
+      ><a name="547" class="Symbol"
+      >(</a
+      ><a name="548" href="container.m.coalgebra.html#329" class="Function"
+      >IsMor</a
+      ><a name="553"
+      > </a
+      ><a name="554" href="container.m.coalgebra.html#514" class="Bound"
+      >&#120039;</a
+      ><a name="555"
+      > </a
+      ><a name="556" href="container.m.coalgebra.html#516" class="Bound"
+      >&#120040;</a
+      ><a name="557" class="Symbol"
+      >)</a
+      ><a name="558"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
