@@ -14,7 +14,7 @@ open import hott.level
 
 module _ {li la lb} (c : Container li la lb) where
   open Container c
-  open import container.m.coalgebra c
+  open import container.m.coalgebra c hiding (_≅_; module _≅_)
 
   module _ (Xⁱ : ℕ → I → Set (la ⊔ lb))
            (πⁱ : ∀ n → Xⁱ (suc n) →ⁱ Xⁱ n) where
