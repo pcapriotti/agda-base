@@ -70,18 +70,12 @@ module _ {li la lb} (c : Container li la lb) where
   outL-lem₁ : (n : ℕ)(i : I)(x : F L i)
             → β i (suc n) (apply (outL-iso i) x)
             ≡ ap (π i (suc n)) (outL-lem₀ (suc n) i x)
-            · funext-invⁱ (ap imap (βⁱ n)) i x
+            · unapΣ (refl , funext λ b → proj₂ (proj₂ x b) n)
             · sym (outL-lem₀ n i x)
   outL-lem₁ n i x = outL-lem₁' n i x
                   · subst-lem (outL-lem₀ (suc n) i x) (outL-lem₀ n i x)
                               (unapΣ (refl , funext (λ b → proj₂ (proj₂ x b) n)))
-                  · ap (λ w → ap (π i (suc n)) (outL-lem₀ (suc n) i x) · w
-                            · sym (outL-lem₀ n i x)) funext-lem
     where
-      funext-lem : unapΣ (refl , funext λ b → proj₂ (proj₂ x b) n)
-                 ≡ funext-invⁱ (ap imap (βⁱ n)) i x
-      funext-lem = {!!}
-
       P : X i (suc (suc n)) → X i (suc n) → Set _
       P y x = π i (suc n) y ≡ x
 
@@ -245,7 +239,7 @@ module _ {li la lb} (c : Container li la lb) where
         Φ-Ψ-comm₀ : (f : Z →ⁱ L) → ∀ n i z
                   → p i n (Ψ f i z)
                   ≡ Φ₀' (invert isom f) n i z
-        Φ-Ψ-comm₀ f 0 i z = {!!}
+        Φ-Ψ-comm₀ f 0 i z = h1⇒prop (h↑ (X₀-contr i)) _ _
         Φ-Ψ-comm₀ f (suc n) i z = outL-lem₀ n i (imap f i (θ i z))
 
         Φ-Ψ-comm₁' : (f : Z →ⁱ L) → ∀ n i z
@@ -253,18 +247,15 @@ module _ {li la lb} (c : Container li la lb) where
                     ≡ ap (π i n) (Φ-Ψ-comm₀ f (suc n) i z)
                     · funext-invⁱ (Φ₁' (invert isom f) n) i z
                     · sym (Φ-Ψ-comm₀ f n i z)
-        Φ-Ψ-comm₁' f 0 i z = {!!}
+        Φ-Ψ-comm₁' f 0 i z = h1⇒prop (h↑ (h↑ (X₀-contr i)) _ _) _ _
         Φ-Ψ-comm₁' f (suc n) i z = begin
-            β i (suc n) (Ψ f i z)
-          ≡⟨ refl ⟩
             β i (suc n) (inL i (imap f i (θ i z)))
           ≡⟨ outL-lem₁ n i (imap f i (θ i z)) ⟩
             ( ap (π i (suc n)) (Φ-Ψ-comm₀ f (suc (suc n)) i z)
-            · funext-invⁱ (ap imap (βⁱ n)) i (imap f i (θ i z))
+            · unapΣ (refl , funext λ b → β (r b) n (proj₂ (imap f i (θ i z)) b))
             · sym (Φ-Ψ-comm₀ f (suc n) i z) )
           ≡⟨ ap (λ ω → ap (π i (suc n)) (Φ-Ψ-comm₀ f (suc (suc n)) i z)
-                       · ω
-                       · sym (Φ-Ψ-comm₀ f (suc n) i z))
+                     · ω · sym (Φ-Ψ-comm₀ f (suc n) i z))
                 (lem (λ i x → β i n x) i z) ⟩
             ( ap (π i (suc n)) (Φ-Ψ-comm₀ f (suc (suc n)) i z)
             · funext-invⁱ (ap step (funextⁱ (λ i z → β i n (f i z)))) i z
@@ -273,15 +264,24 @@ module _ {li la lb} (c : Container li la lb) where
           where
             open ≡-Reasoning
 
-            lem : {u v : L →ⁱ Xⁱ n}(ω : (i : I)(x : L i) → u i x ≡ v i x)(i : I)(z : Z i)
-                → funext-invⁱ (ap imap (funextⁱ ω)) i (imap f i (θ i z))
-                ≡ funext-invⁱ (ap step (funextⁱ (λ i z → ω i (f i z)))) i z
-            lem = {!!}
-
             lem' : {u v : L →ⁱ Xⁱ n}(ω : u ≡ v)(i : I)(z : Z i)
-                 → funext-invⁱ (ap imap ω) i (imap f i (θ i z))
+                 → unapΣ (refl , funext λ b → funext-invⁱ ω (r b) (proj₂ (imap f i (θ i z)) b))
                  ≡ funext-invⁱ (ap step (funextⁱ (λ i z → funext-invⁱ ω i (f i z)))) i z
-            lem' refl i z = ap (λ ω → funext-invⁱ (ap step ω) i z) (sym (_≅_.iso₂ funext-isoⁱ refl))
+            lem' refl i z = begin
+                unapΣ (refl , funext λ b → refl)
+              ≡⟨ ap (λ ω → unapΣ (refl , ω)) (_≅_.iso₂ strong-funext-iso refl) ⟩
+                refl
+              ≡⟨ sym (ap (λ ω → funext-invⁱ (ap step ω) i z)
+                         (_≅_.iso₂ funext-isoⁱ refl)) ⟩
+               funext-invⁱ (ap step (funextⁱ (λ i z → refl))) i z
+              ∎
+              where
+                open ≡-Reasoning
+
+            lem : {u v : L →ⁱ Xⁱ n}(ω : (i : I)(x : L i) → u i x ≡ v i x)(i : I)(z : Z i)
+                → unapΣ (refl , funext λ b → ω (r b) (proj₂ (imap f i (θ i z)) b))
+                ≡ funext-invⁱ (ap step (funextⁱ (λ i z → ω i (f i z)))) i z
+            lem {u}{v} = invert (Π-ap-iso funext-isoⁱ λ ω → refl≅) lem'
 
         Φ-Ψ-comm₁ : (f : Z →ⁱ L) → ∀ n i z
                    → funext-invⁱ (funextⁱ λ i z → β i n (Ψ f i z)) i z
