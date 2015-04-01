@@ -8,7 +8,8 @@ open import sets.nat.ordering.leq.core
 open import sets.nat.ordering.lt.core
 
 _≤?_ : (n m : ℕ) → Dec (n ≤ m)
-n ≤? m with compare n m
-... | lt p = yes (<⇒≤ p)
-... | eq p = yes (≡⇒≤ p)
-... | gt p = no (λ q → suc≰ (trans≤ p q))
+0 ≤? m = yes z≤n
+suc n ≤? 0 = no λ ()
+suc n ≤? suc m with n ≤? m
+suc n ≤? suc m | yes p = yes (s≤s p)
+suc n ≤? suc m | no u = no λ p → u (ap-pred-≤ p)
