@@ -30,19 +30,11 @@ fib Y = proj₁
 fib-iso : ∀ {i j}{X : Set i}{Y : X → Set j}
         → (x : X)
         → fib Y ⁻¹ x ≅ Y x
-fib-iso {X = X}{Y = Y} x = begin
-    fib Y ⁻¹ x
-  ≅⟨ record { to = λ { ((x , y) , p) → (x , p) , y }
-            ; from = λ { ((x , p) , y) → ((x , y) , p) }
-            ; iso₁ = λ _ → refl
-            ; iso₂ = λ _ → refl } ⟩
-    ( Σ (singleton' x) λ { (x' , _) → Y x' } )
-  ≅⟨ Σ-ap-iso' (contr-⊤-iso (singl-contr' x)) (λ _ → refl≅) ⟩
-    ( ⊤ × Y x )
-  ≅⟨ ×-left-unit ⟩
-    Y x
-  ∎
-  where open ≅-Reasoning
+fib-iso {X = X}{Y = Y} x₀ = record
+  { to = λ { ((x , y) , p) → subst Y p y }
+  ; from = λ y → ((x₀ , y) , refl)
+  ; iso₁ = λ { ((.x₀ , y) , refl) → refl }
+  ; iso₂ = λ y → refl }
 
 total-iso : ∀ {i j}{X : Set i}{Y : Set j}(p : Y → X)
           → (Σ X (_⁻¹_ p)) ≅ Y
