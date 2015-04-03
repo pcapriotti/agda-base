@@ -8,3 +8,4 @@ open import function.isomorphism.lift public
 open import function.isomorphism.utils public
 open import function.isomorphism.univalence public
 open import function.isomorphism.remove public
+open import function.isomorphism.two-out-of-six public

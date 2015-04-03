@@ -4,10 +4,12 @@ module hott.equivalence.biinvertible where
 open import sum
 open import equality
 open import function.core
-open import function.isomorphism
+open import function.isomorphism.core
+open import function.isomorphism.utils
 open import function.overloading
 open import function.extensionality
-open import hott.level
+open import hott.level.core
+open import hott.level.closure
 open import hott.equivalence.core
 open import hott.equivalence.alternative
 open import sets.unit

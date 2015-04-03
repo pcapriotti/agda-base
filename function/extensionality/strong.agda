@@ -5,7 +5,8 @@ open import level
 open import sum
 open import function.core
 open import equality.core
-open import function.isomorphism
+open import function.isomorphism.core
+open import function.isomorphism.univalence
 open import function.extensionality.core
 open import function.extensionality.proof
 open import hott.level.core

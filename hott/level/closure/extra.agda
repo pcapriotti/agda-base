@@ -9,7 +9,9 @@ open import equality.core
 open import equality.calculus
 open import function.core using (_∘_; const)
 open import function.extensionality
-open import function.isomorphism
+open import function.isomorphism.core
+open import function.isomorphism.lift
+open import function.isomorphism.utils
 open import sets.bool
 open import sets.unit
 open import sets.nat.core

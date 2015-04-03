@@ -2,7 +2,7 @@
 module function.extensionality.computation where
 
 open import equality
-open import function.isomorphism
+open import function.isomorphism.core
 open import function.core
 open import function.extensionality.core
 open import function.extensionality.proof

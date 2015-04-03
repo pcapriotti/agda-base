@@ -8,7 +8,7 @@ open import function.extensionality.strong public
 open import function.extensionality.computation public
 
 open import equality.core
-open import function.isomorphism
+open import function.isomorphism.utils
 open import function.overloading
 
 -- extensionality for functions of implicit arguments
