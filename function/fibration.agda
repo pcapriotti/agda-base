@@ -32,14 +32,10 @@ fib-iso : ∀ {i j}{X : Set i}{Y : X → Set j}
         → fib Y ⁻¹ x ≅ Y x
 fib-iso {X = X}{Y = Y} x = begin
     fib Y ⁻¹ x
-  ≅⟨ refl≅ ⟩
-    ( Σ (Σ X Y) λ { (x' , y)
-    → x' ≡ x } )
-  ≅⟨ Σ-assoc-iso ⟩
-    ( Σ X λ x' → Y x' × x' ≡ x )
-  ≅⟨ (Σ-ap-iso refl≅ λ x' → ×-comm) ⟩
-    ( Σ X λ x' → x' ≡ x × Y x' )
-  ≅⟨ sym≅ Σ-assoc-iso ⟩
+  ≅⟨ record { to = λ { ((x , y) , p) → (x , p) , y }
+            ; from = λ { ((x , p) , y) → ((x , y) , p) }
+            ; iso₁ = λ _ → refl
+            ; iso₂ = λ _ → refl } ⟩
     ( Σ (singleton' x) λ { (x' , _) → Y x' } )
   ≅⟨ Σ-ap-iso' (contr-⊤-iso (singl-contr' x)) (λ _ → refl≅) ⟩
     ( ⊤ × Y x )
