@@ -10,13 +10,13 @@ open import hott.equivalence.core
 open import hott.truncation
 
 surjective : ∀ {i j}{A : Set i}{B : Set j} → (A → B) → Set _
-surjective f = ∀ b → ∥ f ⁻¹ b ∥
+surjective f = ∀ b → Trunc 1 (f ⁻¹ b)
 
 retr⇒surj : ∀ {i j}{A : Set i}{B : Set j}
           → (f : A → B)
           → retraction f
           → surjective f
-retr⇒surj f retr b = η (retr b)
+retr⇒surj f retr b = [ retr b ]
 
 inj+surj⇒eq : ∀ {i j}{A : Set i}{B : Set j}
             → h 2 A → h 2 B
@@ -30,4 +30,4 @@ inj+surj⇒eq {A = A}{B = B} hA hB f inj surj b = retr-f b , propFib b (retr-f b
     propFib b (a , p) (a' , p') = unapΣ (inj (p · sym p') , h1⇒prop (hB (f a') b) _ _)
 
     retr-f : retraction f
-    retr-f b = Trunc-elim (prop⇒h1 (propFib b)) (λ x → x) (surj b)
+    retr-f b = Trunc-elim 1 _ _ (prop⇒h1 (propFib b)) (λ x → x) (surj b)
