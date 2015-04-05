@@ -44,9 +44,9 @@ HProp i = Σ (Set i) (h 1)
 HSet : ∀ i → Set (lsuc i)
 HSet i = Σ (Set i) (h 2)
 
--- Types by h-level (shifted by 2)
+-- Types by h-level
 Type : ∀ i → ℕ → Set (lsuc i)
-Type i n = Σ (Set i) (h (suc (suc n)))
+Type i n = Σ (Set i) (h n)
 
 _⁻¹_ : ∀ {i k} {X : Set i} {Y : Set k} → (X → Y) → Y → Set (i ⊔ k)
 f ⁻¹ y = Σ _ λ x → f x ≡ y

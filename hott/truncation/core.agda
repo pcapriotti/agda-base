@@ -67,9 +67,13 @@ Trunc-elim : ∀ {i j} n (X : Set i)(Y : Set j) → h n Y
            → (X → Y) → (Trunc n X → Y)
 Trunc-elim n X Y hY = invert (Trunc-elim-iso n X Y hY)
 
+Trunc-elim-β : ∀ {i j} n (X : Set i)(Y : Set j)(hY : h n Y)
+             → (f : X → Y)(x : X)
+             → Trunc-elim n X Y hY f [ x ] ≡ f x
+Trunc-elim-β n X Y hY f x = funext-inv (_≅_.iso₂ (Trunc-elim-iso n X Y hY) f) x
+
 module _ {i j} n {X : Set i} (Y : Trunc n X → Set j)
-         (hY : (x : Trunc n X) → h n (Y x))
-         (d : (x : X) → Y ([ x ])) where
+         (hY : (x : Trunc n X) → h n (Y x)) where
 
   private
     Z : Set _
@@ -94,11 +98,12 @@ module _ {i j} n {X : Set i} (Y : Trunc n X → Set j)
         (Trunc-univ n X (Trunc n X) (Trunc-level n))
         (proj₂ (≅⇒≈ τ))
 
-    sec-iso : Sec₂ (λ x → x) ≅ Sec₂ [_]
-    sec-iso = ψ (λ x → x)
+  Trunc-dep-iso : Sec₂ (λ x → x) ≅ Sec₂ [_]
+  Trunc-dep-iso = ψ (λ x → x)
 
-  Trunc-dep-elim : (x : Trunc n X) → Y x
-  Trunc-dep-elim = invert sec-iso d
+  Trunc-dep-elim : ((x : X) → Y [ x ]) → (x : Trunc n X) → Y x
+  Trunc-dep-elim = invert Trunc-dep-iso
 
-  Trunc-dep-elim-β : (x : X) → Trunc-dep-elim [ x ] ≡ d x
-  Trunc-dep-elim-β = funext-inv (_≅_.iso₂ sec-iso d)
+  Trunc-dep-elim-β : (d : ((x : X) → Y [ x ]))
+                   → (x : X) → Trunc-dep-elim d [ x ] ≡ d x
+  Trunc-dep-elim-β d = funext-inv (_≅_.iso₂ Trunc-dep-iso d)
