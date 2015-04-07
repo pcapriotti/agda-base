@@ -42,15 +42,15 @@ private
         lem = apply pmap-eq (apΣ-proj , refl)
 
 
-  loop-sum : ∀ {i}{j}{A : Set i}{B : A → Set j}(n : ℕ)
-           → (hB : (a : A) → h n (B a))
-           → {a₀ : A}{b₀ : B a₀}
-           → Ω n {Σ A B} (a₀ , b₀) ≅ Ω n a₀
-  loop-sum n hB {a₀}{b₀} = ≈⇒≅ (mapΩ n proj₁ , subst weak-equiv eq we)
-    where
-      abstract
-        we : weak-equiv (apply (loop-sum' n hB {a₀}{b₀}))
-        we = proj₂ (≅⇒≈ (loop-sum' n hB))
+loop-sum : ∀ {i}{j}{A : Set i}{B : A → Set j}(n : ℕ)
+         → (hB : (a : A) → h n (B a))
+         → {a₀ : A}{b₀ : B a₀}
+         → Ω n {Σ A B} (a₀ , b₀) ≅ Ω n a₀
+loop-sum n hB {a₀}{b₀} = ≈⇒≅ (mapΩ n proj₁ , subst weak-equiv eq we)
+  where
+    abstract
+      we : weak-equiv (apply (loop-sum' n hB {a₀}{b₀}))
+      we = proj₂ (≅⇒≈ (loop-sum' n hB))
 
-        eq : apply (loop-sum' n hB {a₀}{b₀}) ≡ mapΩ n proj₁
-        eq = funext (loop-sum-β n hB)
+      eq : apply (loop-sum' n hB {a₀}{b₀}) ≡ mapΩ n proj₁
+      eq = funext (loop-sum-β n hB)
