@@ -10,6 +10,7 @@ open import function.overloading
 open import function.isomorphism.core
 open import function.isomorphism.coherent
 open import function.extensionality.proof
+open import sets.nat.core
 open import sets.unit
 open import sets.empty
 open import sets.fin.core

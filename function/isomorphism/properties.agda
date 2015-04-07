@@ -20,6 +20,7 @@ open import function.isomorphism.two-out-of-six
 open import hott.equivalence.core
 open import hott.equivalence.alternative
 open import hott.level.core
+open import hott.loop.core
 open import sets.unit
 
 iso-adjunction : ∀ {i j}{X : Set i}{Y : Set j}
@@ -74,6 +75,34 @@ iso≡ isom {x}{x'} = two-out-of-six.f-iso
   (ap (apply isom))
   (iso≡-lem isom x x')
   (iso≡-lem (sym≅ isom) (apply isom x) (apply isom x'))
+
+private
+  abstract
+    Ω-iso' : ∀ {i j}{X : Set i}{Y : Set j}(n : ℕ)
+           → (φ : X ≅ Y)(x : X)
+           → Ω n x ≅ Ω n (apply φ x)
+    Ω-iso' {X = X}{Y = Y} zero φ x = φ
+    Ω-iso' (suc n) φ x = Ω-iso' n (iso≡ φ) refl
+
+    Ω-iso-β : ∀ {i j}{X : Set i}{Y : Set j}(n : ℕ)
+            → (φ : X ≅ Y)(x : X)
+            → (p : Ω n x)
+            → apply (Ω-iso' n φ x) p ≡ mapΩ n (apply φ) p
+    Ω-iso-β zero φ x p = refl
+    Ω-iso-β (suc n) φ x p = Ω-iso-β n (iso≡ φ) refl p
+
+Ω-iso : ∀ {i j}{X : Set i}{Y : Set j}(n : ℕ)
+      → (φ : X ≅ Y)(x : X)
+      → Ω n x ≅ Ω n (apply φ x)
+Ω-iso n φ x = ≈⇒≅ ( (λ p → mapΩ n (apply φ) p)
+                  , subst weak-equiv eq we)
+  where
+    abstract
+      we : weak-equiv (apply (Ω-iso' n φ x))
+      we = proj₂ (≅⇒≈ (Ω-iso' n φ x))
+
+      eq : apply (Ω-iso' n φ x) ≡ mapΩ n (apply φ)
+      eq = funext (Ω-iso-β n φ x)
 
 abstract
   subtype-eq : ∀ {i j k}{A : Set i}{P : A → Set j}
