@@ -9,6 +9,7 @@ open import function.core
 open import function.overloading
 open import function.isomorphism.core
 open import function.isomorphism.coherent
+open import function.isomorphism.dependent
 open import function.extensionality.proof
 open import sets.nat.core
 open import sets.unit
@@ -110,6 +111,18 @@ open import hott.level.core
           → Σ X Y ≅ Σ X' Y'
 Σ-ap-iso' {X = X}{X'}{Y}{Y'} isom isom'
   = sym≅ (Σ-ap-iso (sym≅ isom) (λ x → sym≅ (isom' x)))
+
+Π-ap-iso-dep : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
+             → {Y : X → Set j}{Y' : X' → Set j'}
+             → (φ : X ≅ X')
+             → (ψ : Dep≅ φ Y Y')
+             → ((x : X) → Y x)
+             ≅ ((x' : X') → Y' x')
+Π-ap-iso-dep φ ψ = record
+  { to = λ u x' → Dep≅.to ψ (u (invert φ x'))
+  ; from = λ u' x → Dep≅.from ψ (u' (apply φ x))
+  ; iso₁ = λ u → funext λ x → {!Dep≅.iso₁ ψ x (u x)!}
+  ; iso₂ = {!!} }
 
 Π-ap-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
              {Y : X → Set j}{Y' : X' → Set j'}
