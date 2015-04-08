@@ -23,6 +23,7 @@ open import hott.equivalence.core
   using (weak-equiv; _≈_)
 open import hott.univalence
 open import sets.empty
+open import sets.unit
 
 abstract
   -- Π preserves h-levels
@@ -109,6 +110,16 @@ abstract
   weak-equiv-h1 f = Π-level λ y
                   → contr-h1 _
 
+  equiv-level : ∀ {i j n}{X : Set i}{Y : Set j}
+              → h n X → h n Y
+              → h n (X ≈ Y)
+  equiv-level {n = 0} hX hY = Σ-level (Π-level (λ _ → hY)) λ f
+    → (λ y → Σ-level hX λ x → h↑ hY _ _)
+    , (λ w → h1⇒prop (weak-equiv-h1 f) _ _)
+  equiv-level {n = suc n } hX hY
+    = Σ-level (Π-level λ _ → hY) λ f
+    → h! (weak-equiv-h1 f)
+
   ⊎-h1 : ∀ {i j}{A : Set i}{B : Set j}
        → h 1 A → h 1 B → ¬ (A × B)
        → h 1 (A ⊎ B)
@@ -137,3 +148,20 @@ abstract
 
   ¬-h1 : ∀ {i}{X : Set i} → h 1 (¬ X)
   ¬-h1 = Π-level λ _ → ⊥-prop
+
+  type-level : ∀ {i n} → h (suc n) (Type i n)
+  type-level {i}{n} (X , hX) (Y , hY) = iso-level uni-iso' (equiv-level hX hY)
+    where
+      uni-iso' : (X ≈ Y) ≅ ((X , hX) ≡ (Y , hY))
+      uni-iso' = begin
+          (X ≈ Y)
+        ≅⟨ sym≅ uni-iso ⟩
+          (X ≡ Y)
+        ≅⟨ sym≅ ×-right-unit ⟩
+          ((X ≡ Y) × ⊤)
+        ≅⟨ ( Σ-ap-iso refl≅ λ q → sym≅ (contr-⊤-iso (hn-h1 n Y _ _)) ) ⟩
+          ( Σ (X ≡ Y) λ q → subst (h n) q hX ≡ hY )
+        ≅⟨ Σ-split-iso ⟩
+          ((X , hX) ≡ (Y , hY))
+        ∎
+        where open ≅-Reasoning

@@ -7,14 +7,10 @@ open import function.isomorphism
 open import function.overloading
 open import sets.nat
 open import hott.level.core
+open import hott.level.closure
 open import hott.truncation.core
 
 private
-
-  J-extend : ∀ {i j}{X : Set i}{Y : X → X → Set j}
-           → ((x : X) → Y x x)
-           → ({x y : X} → x ≡ y → Y x y)
-  J-extend f refl = f _
 
   module _ {i}{X : Set i}(n-1 : ℕ) where
     n : ℕ
@@ -28,23 +24,17 @@ private
         ((c c' : Trunc n X) → Z c c')
       ≅⟨ (Π-ap-iso refl≅ λ c → Trunc-dep-iso n (Z c) (hZ c)) ⟩
         ((c : Trunc n X)(y : X) → Z c [ y ])
-      ≅⟨ Trunc-dep-iso n (λ c → (y : X) → Z c [ y ]) {!!} ⟩
+      ≅⟨ Trunc-dep-iso n (λ c → (y : X) → Z c [ y ]) (λ c → Π-level λ y → hZ c [ y ]) ⟩
         ((x y : X) → Z [ x ] [ y ])
       ∎
       where open ≅-Reasoning
 
     trunc-eq-iso : ( Σ (Trunc n X → Trunc n X → Type i (n-1)) λ P
-                   → Σ ((c : Trunc n X) → proj₁ (P c c)) λ r
-                   → Σ ((c c' : Trunc n X) → proj₁ (P c c') → c ≡ c') λ f
-                   → ((c : Trunc n X) → f c c (r c) ≡ refl) )
+                   → ((c : Trunc n X) → proj₁ (P c c)) )
                  ≅ ( Σ (X → X → Type i (n-1)) λ P
-                   → Σ ((x : X) → proj₁ (P x x)) λ r
-                   → Σ ((x y : X) → proj₁ (P x y) → _≡_ {A = Trunc n X} [ x ] [ y ]) λ f
-                   → ((x : X) → f x x (r x) ≡ refl) )
-    trunc-eq-iso = Σ-ap-iso (Trunc-dep-iso₂ (λ _ _ → Type i (n-1)) {!!}) λ P
-                 → Σ-ap-iso (Trunc-dep-iso n (λ c → proj₁ (P c c)) {!!}) λ r
-                 → Σ-ap-iso (Trunc-dep-iso₂ (λ c c' → proj₁ (P c c') → c ≡ c') {!!}) λ f
-                 → Trunc-dep-iso n (λ c → f c c (r c) ≡ refl) {!!}
+                   → ((x : X) → proj₁ (P x x)) )
+    trunc-eq-iso = Σ-ap-iso (Trunc-dep-iso₂ (λ _ _ → Type i (n-1)) (λ _ _ → type-level)) λ P
+                 → Trunc-dep-iso n (λ c → proj₁ (P c c)) λ c → h↑ (proj₂ (P c c))
 
     P₀ : X → X → Type _ (n-1)
     P₀ x y = Trunc (n-1) (x ≡ y) , Trunc-level n-1
@@ -52,52 +42,71 @@ private
     r₀ : (x : X) → proj₁ (P₀ x x)
     r₀ x = [ refl ]
 
-    trunc-eq-iso₂ : ( Σ ((x y : X) → proj₁ (P₀ x y) → _≡_ {A = Trunc n X} [ x ] [ y ]) λ f
-                    → ((x : X) → f x x [ refl ] ≡ refl) )
-                  ≅ ( Σ ((x y : X) → x ≡ y → _≡_ {A = Trunc n X} [ x ] [ y ]) λ f
-                    → ((x : X) → f x x refl ≡ refl) )
-    trunc-eq-iso₂ = Σ-ap-iso ( Π-ap-iso refl≅ λ x
-                             → Π-ap-iso refl≅ λ y
-                             → Trunc-elim-iso n-1 (x ≡ y) _ {!!}) λ f
-                  → Π-ap-iso refl≅ λ x → refl≅
-
-    f₁ : (x y : X) → x ≡ y → _≡_ {A = Trunc n X} [ x ] [ y ]
-    f₁ x .x refl = refl
-
-    ρ₁ : (x : X) → f₁ x x refl ≡ refl
-    ρ₁ x = refl
-
-    trunc-eq-data₂ = invert trunc-eq-iso₂ (f₁ , ρ₁)
-
-    f₀ : (x y : X) → proj₁ (P₀ x y) → _≡_ {A = Trunc n X} [ x ] [ y ]
-    f₀ = proj₁ trunc-eq-data₂
-
-    ρ₀ : (x : X) → f₀ x x [ refl ] ≡ refl
-    ρ₀ = proj₂ trunc-eq-data₂
-
-    trunc-eq-data : Σ (Trunc n X → Trunc n X → Type i (n-1)) λ P
-                  → Σ ((c : Trunc n X) → proj₁ (P c c)) λ r
-                  → Σ ((c c' : Trunc n X) → proj₁ (P c c') → c ≡ c') λ f
-                  → ((c : Trunc n X) → f c c (r c) ≡ refl)
-    trunc-eq-data = invert trunc-eq-iso (P₀ , r₀ , f₀ , ρ₀)
+    P-data : Σ (Trunc n X → Trunc n X → Type i (n-1)) λ P
+             → ((c : Trunc n X) → proj₁ (P c c))
+    P-data = _≅_.from trunc-eq-iso (P₀ , r₀)
 
     P : Trunc n X → Trunc n X → Type i (n-1)
-    P = proj₁ trunc-eq-data
+    P = proj₁ P-data
+
+    P-β : (x y : X) → P [ x ] [ y ] ≡ P₀ x y
+    P-β = {!!}
 
     r : (c : Trunc n X) → proj₁ (P c c)
-    r = proj₁ (proj₂ trunc-eq-data)
+    r = proj₂ P-data
 
-    f : {c c' : Trunc n X} → proj₁ (P c c') → c ≡ c'
-    f = proj₁ (proj₂ (proj₂ trunc-eq-data)) _ _
+    abstract
+      P-elim-iso : (Z : Trunc n X → Trunc n X → Type i (n-1))
+                 → ((c c' : Trunc n X) → proj₁ (P c c') → proj₁ (Z c c'))
+                 ≅ ((c : Trunc n X) → proj₁ (Z c c))
+      P-elim-iso Z = begin
+          ((c c' : Trunc n X) → proj₁ (P c c') → proj₁ (Z c c'))
+        ≅⟨ Trunc-dep-iso₂ (λ c c' → proj₁ (P c c') → proj₁ (Z c c'))
+                          (λ c c' → Π-level λ p → h↑ (proj₂ (Z c c'))) ⟩
+          ((x y : X) → proj₁ (P [ x ] [ y ]) → proj₁ (Z [ x ] [ y ]))
+        ≅⟨ ( Π-ap-iso refl≅ λ x
+           → Π-ap-iso refl≅ λ y
+           → Π-ap-iso (≡⇒≅ (ap proj₁ (P-β x y))) λ _
+           → refl≅ ) ⟩
+          ((x y : X) → Trunc (n-1) (x ≡ y) → proj₁ (Z [ x ] [ y ]))
+        ≅⟨ ( Π-ap-iso refl≅ λ x
+           → Π-ap-iso refl≅ λ y
+           → Trunc-elim-iso (n-1) (x ≡ y) _ (proj₂ (Z [ x ] [ y ])) ) ⟩
+          ((x y : X) → x ≡ y → proj₁ (Z [ x ] [ y ]))
+        ≅⟨ ( Π-ap-iso refl≅ λ x → sym≅ J-iso ) ⟩
+          ((x : X) → proj₁ (Z [ x ] [ x ]))
+        ≅⟨ sym≅ (Trunc-dep-iso n (λ c → proj₁ (Z c c)) (λ c → h↑ (proj₂ (Z c c)))) ⟩
+          ((c : Trunc n X) → proj₁ (Z c c))
+        ∎
+        where open ≅-Reasoning
 
-    ρ : (c : Trunc n X) → f (r c) ≡ refl
-    ρ = proj₂ (proj₂ (proj₂ trunc-eq-data))
+      P-elim-dep-iso : (Z : (c c' : Trunc n X) → proj₁ (P c c') → Type i (n-1))
+                     → ((c c' : Trunc n X) (p : proj₁ (P c c')) → proj₁ (Z c c' p))
+                     ≅ ((c : Trunc n X) → proj₁ (Z c c (r c)))
+      P-elim-dep-iso = {!!}
 
-    g : {c c' : Trunc n X} → c ≡ c' → proj₁ (P c c')
-    g {c} refl = r c
+    Eq : Trunc n X → Trunc n X → Type i (n-1)
+    Eq c c' = (c ≡ c') , Trunc-level n c c'
 
-    β : (c c' : Trunc n X)(p : c ≡ c') → f (g p) ≡ p
-    β c .c refl = ρ c
+    abstract
+      f₀ : (c c' : Trunc n X) → proj₁ (P c c') → c ≡ c'
+      f₀ = _≅_.from (P-elim-iso Eq) (λ _ → refl)
 
-    α : (c c' : Trunc n X)(u : proj₁ (P c c')) → g (f u) ≡ u
-    α = {!!}
+    abstract
+      f : (c c' : Trunc n X) → proj₁ (P c c') → c ≡ c'
+      f c c' p = f₀ c c' p · sym (f₀ c' c' (r c'))
+
+      f-β : (c : Trunc n X) → f c c (r c) ≡ refl
+      f-β c = left-inverse (f₀ c c (r c))
+
+    g : (c c' : Trunc n X) → c ≡ c' → proj₁ (P c c')
+    g c .c refl = r c
+
+    α : (c c' : Trunc n X)(p : proj₁ (P c c')) → g c c' (f c c' p) ≡ p
+    α = _≅_.from (P-elim-dep-iso Z) λ c → ap (g c c) (f-β c)
+      where
+        Z : (c c' : Trunc n X) → proj₁ (P c c') → Type i (n-1)
+        Z c c' p = (g c c' (f c c' p) ≡ p) , h↑ (proj₂ (P c c')) _ _
+
+    β : (c c' : Trunc n X)(q : c ≡ c') → f c c' (g c c' q) ≡ q
+    β c .c refl = f-β c
