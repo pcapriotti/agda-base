@@ -7,7 +7,7 @@ open import equality
 open import function.isomorphism.core
 open import hott.level.core
 open import hott.equivalence.core
-open import hott.truncation
+open import hott.truncation.core
 
 surjective : ∀ {i j}{A : Set i}{B : Set j} → (A → B) → Set _
 surjective f = ∀ b → Trunc 1 (f ⁻¹ b)

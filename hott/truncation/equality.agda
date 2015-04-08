@@ -12,8 +12,8 @@ open import hott.level.core
 open import hott.level.closure
 open import hott.truncation.core
 
-private
-  module _ {i}{X : Set i}(n-1 : ℕ) where
+module _ {i}{X : Set i}(n-1 : ℕ) where
+  private
     n : ℕ
     n = suc n-1
 
@@ -30,10 +30,10 @@ private
       ∎
       where open ≅-Reasoning
 
-    abstract
-      P₀ : X → X → Type i (n-1)
-      P₀ x y = Trunc (n-1) (x ≡ y) , Trunc-level n-1
+    P₀ : X → X → Type i (n-1)
+    P₀ x y = Trunc (n-1) (x ≡ y) , Trunc-level n-1
 
+    abstract
       r₀ : (x : X) → proj₁ (P₀ x x)
       r₀ x = [ refl ]
 
@@ -113,3 +113,6 @@ private
 
     β : (c c' : Trunc n X)(q : c ≡ c') → f c c' (g c c' q) ≡ q
     β c .c refl = f-β c
+
+  trunc-equality : {x y : X} → _≡_ {A = Trunc n X} [ x ] [ y ] → Trunc (n-1) (x ≡ y)
+  trunc-equality {x}{y} p = subst (λ Z → Z) (ap proj₁ (P-β x y)) (g [ x ] [ y ] p)
