@@ -61,6 +61,18 @@ open import hott.level.core
   ; iso₁ = λ { (x , y) → pair≡ (_≅_.iso₁ isom x) (_≅_.iso₁ isom' y) }
   ; iso₂ = λ { (x' , y') → pair≡ (_≅_.iso₂ isom x') (_≅_.iso₂ isom' y') } }
 
+→-ap-iso : ∀ {i i' j j'}{X : Set i}{X' : Set i'}
+             {Y : Set j}{Y' : Set j'}
+           → X ≅ X' → Y ≅ Y'
+           → (X → Y) ≅ (X' → Y')
+→-ap-iso φ ψ = record
+  { to = λ u x' → apply≅ ψ (u (invert≅ φ x'))
+  ; from = λ u' x → invert≅ ψ (u' (apply≅ φ x))
+  ; iso₁ = λ u → funext λ x → ap (invert≅ ψ ∘ apply≅ ψ ∘ u) (_≅_.iso₁ φ x)
+                            · _≅_.iso₁ ψ (u x)
+  ; iso₂ = λ u' → funext λ x' → ap (apply≅ ψ ∘ invert≅ ψ ∘ u') (_≅_.iso₂ φ x')
+                              · _≅_.iso₂ ψ (u' x') }
+
 Σ-ap-iso₂ : ∀ {i j j'}{X : Set i}
           → {Y : X → Set j}{Y' : X → Set j'}
           → ((x : X) → Y x ≅ Y' x)
