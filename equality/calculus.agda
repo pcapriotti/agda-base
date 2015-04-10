@@ -44,16 +44,17 @@ subst-const-ap : ∀ {i j} {A : Set i}{X : Set j}
                  → ap' f p ≡ subst-const p (f a) · ap f p
 subst-const-ap f refl = refl
 
+apΣ₂ : ∀ {i j}{A : Set i}{B : A → Set j}{x x' : Σ A B}
+     → (p : x ≡ x')
+     → subst B (ap proj₁ p) (proj₂ x) ≡ proj₂ x'
+apΣ₂ refl = refl
+
 apΣ : ∀ {i j}{A : Set i}{B : A → Set j}
         {x x' : Σ A B}
      → (p : x ≡ x')
      → Σ (proj₁ x ≡ proj₁ x') λ q
      → subst B q (proj₂ x) ≡ proj₂ x'
-apΣ {B = B} p =
-  J (λ x x' p → Σ (proj₁ x ≡ proj₁ x') λ q
-              → subst B q (proj₂ x) ≡ proj₂ x')
-    (λ x → refl , refl)
-    _ _ p
+apΣ p = (ap proj₁ p , apΣ₂ p)
 
 unapΣ : ∀ {i j}{A : Set i}{B : A → Set j}
           {a a' : A}{b : B a}{b' : B a'}
@@ -66,15 +67,6 @@ pair≡ : ∀ {i j}{A : Set i}{B : Set j}
         → (a ≡ a') → (b ≡ b')
         → (a , b) ≡ (a' , b')
 pair≡ refl refl = refl
-
-apΣ-proj : ∀ {i j}{A : Set i}{B : A → Set j}
-             {a a' : A}{b : B a}{b' : B a'}
-             (p : (a , b) ≡ (a' , b'))
-           → proj₁ (apΣ p)
-           ≡ ap proj₁ p
-apΣ-proj =
-  J (λ _ _ p → proj₁ (apΣ p) ≡ ap proj₁ p)
-    (λ x → refl) _ _
 
 apΣ-sym : ∀ {i j}{A : Set i}{B : A → Set j}
             {a a' : A}{b : B a}{b' : B a'}

@@ -39,7 +39,7 @@ private
             → _≡_ {A = PMap (_≡_ {A = Σ A B} (a₀ , b₀) (a₀ , b₀) , refl) ((a₀ ≡ a₀) , refl)}
               (proj₁ ∘ apΣ , refl)
               (ap proj₁ , refl)
-        lem = apply pmap-eq (apΣ-proj , refl)
+        lem = apply pmap-eq ((λ _ → refl) , refl)
 
 
 loop-sum : ∀ {i}{j}{A : Set i}{B : A → Set j}(n : ℕ)
