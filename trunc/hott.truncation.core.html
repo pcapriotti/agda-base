@@ -1,0 +1,3358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >hott.truncation.core</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="hott.truncation.core.html#1" class="Module"
+      >hott.truncation.core</a
+      ><a name="56"
+      > </a
+      ><a name="57" class="Keyword"
+      >where</a
+      ><a name="62"
+      >
+
+</a
+      ><a name="64" class="Keyword"
+      >open</a
+      ><a name="68"
+      > </a
+      ><a name="69" class="Keyword"
+      >import</a
+      ><a name="75"
+      > </a
+      ><a name="76" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="79"
+      >
+</a
+      ><a name="80" class="Keyword"
+      >open</a
+      ><a name="84"
+      > </a
+      ><a name="85" class="Keyword"
+      >import</a
+      ><a name="91"
+      > </a
+      ><a name="92" href="equality.html#1" class="Module"
+      >equality</a
+      ><a name="100"
+      >
+</a
+      ><a name="101" class="Keyword"
+      >open</a
+      ><a name="105"
+      > </a
+      ><a name="106" class="Keyword"
+      >import</a
+      ><a name="112"
+      > </a
+      ><a name="113" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="126"
+      >
+</a
+      ><a name="127" class="Keyword"
+      >open</a
+      ><a name="131"
+      > </a
+      ><a name="132" class="Keyword"
+      >import</a
+      ><a name="138"
+      > </a
+      ><a name="139" href="function.fibration.html#1" class="Module"
+      >function.fibration</a
+      ><a name="157"
+      >
+</a
+      ><a name="158" class="Keyword"
+      >open</a
+      ><a name="162"
+      > </a
+      ><a name="163" class="Keyword"
+      >import</a
+      ><a name="169"
+      > </a
+      ><a name="170" href="function.extensionality.html#1" class="Module"
+      >function.extensionality</a
+      ><a name="193"
+      >
+</a
+      ><a name="194" class="Keyword"
+      >open</a
+      ><a name="198"
+      > </a
+      ><a name="199" class="Keyword"
+      >import</a
+      ><a name="205"
+      > </a
+      ><a name="206" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="226"
+      >
+</a
+      ><a name="227" class="Keyword"
+      >open</a
+      ><a name="231"
+      > </a
+      ><a name="232" class="Keyword"
+      >import</a
+      ><a name="238"
+      > </a
+      ><a name="239" href="sets.nat.core.html#1" class="Module"
+      >sets.nat.core</a
+      ><a name="252"
+      >
+</a
+      ><a name="253" class="Keyword"
+      >open</a
+      ><a name="257"
+      > </a
+      ><a name="258" class="Keyword"
+      >import</a
+      ><a name="264"
+      > </a
+      ><a name="265" href="hott.equivalence.html#1" class="Module"
+      >hott.equivalence</a
+      ><a name="281"
+      >
+</a
+      ><a name="282" class="Keyword"
+      >open</a
+      ><a name="286"
+      > </a
+      ><a name="287" class="Keyword"
+      >import</a
+      ><a name="293"
+      > </a
+      ><a name="294" href="hott.level.core.html#1" class="Module"
+      >hott.level.core</a
+      ><a name="309"
+      >
+</a
+      ><a name="310" class="Keyword"
+      >open</a
+      ><a name="314"
+      > </a
+      ><a name="315" class="Keyword"
+      >import</a
+      ><a name="321"
+      > </a
+      ><a name="322" href="hott.level.closure.html#1" class="Module"
+      >hott.level.closure</a
+      ><a name="340"
+      >
+
+</a
+      ><a name="342" class="Keyword"
+      >module</a
+      ><a name="348"
+      > </a
+      ><a name="349" href="hott.truncation.core.html#349" class="Module"
+      >_</a
+      ><a name="350"
+      > </a
+      ><a name="351" class="Symbol"
+      >{</a
+      ><a name="352" href="hott.truncation.core.html#352" class="Bound"
+      >i</a
+      ><a name="353"
+      > </a
+      ><a name="354" href="hott.truncation.core.html#354" class="Bound"
+      >j</a
+      ><a name="355"
+      > </a
+      ><a name="356" href="hott.truncation.core.html#356" class="Bound"
+      >i'</a
+      ><a name="358"
+      > </a
+      ><a name="359" href="hott.truncation.core.html#359" class="Bound"
+      >j'</a
+      ><a name="361" class="Symbol"
+      >}{</a
+      ><a name="363" href="hott.truncation.core.html#363" class="Bound"
+      >A</a
+      ><a name="364"
+      > </a
+      ><a name="365" class="Symbol"
+      >:</a
+      ><a name="366"
+      > </a
+      ><a name="367" class="PrimitiveType"
+      >Set</a
+      ><a name="370"
+      > </a
+      ><a name="371" href="hott.truncation.core.html#352" class="Bound"
+      >i</a
+      ><a name="372" class="Symbol"
+      >}{</a
+      ><a name="374" href="hott.truncation.core.html#374" class="Bound"
+      >A'</a
+      ><a name="376"
+      > </a
+      ><a name="377" class="Symbol"
+      >:</a
+      ><a name="378"
+      > </a
+      ><a name="379" class="PrimitiveType"
+      >Set</a
+      ><a name="382"
+      > </a
+      ><a name="383" href="hott.truncation.core.html#356" class="Bound"
+      >i'</a
+      ><a name="385" class="Symbol"
+      >}</a
+      ><a name="386"
+      >
+         </a
+      ><a name="396" class="Symbol"
+      >{</a
+      ><a name="397" href="hott.truncation.core.html#397" class="Bound"
+      >B</a
+      ><a name="398"
+      > </a
+      ><a name="399" class="Symbol"
+      >:</a
+      ><a name="400"
+      > </a
+      ><a name="401" href="hott.truncation.core.html#363" class="Bound"
+      >A</a
+      ><a name="402"
+      > </a
+      ><a name="403" class="Symbol"
+      >&#8594;</a
+      ><a name="404"
+      > </a
+      ><a name="405" class="PrimitiveType"
+      >Set</a
+      ><a name="408"
+      > </a
+      ><a name="409" href="hott.truncation.core.html#354" class="Bound"
+      >j</a
+      ><a name="410" class="Symbol"
+      >}{</a
+      ><a name="412" href="hott.truncation.core.html#412" class="Bound"
+      >B'</a
+      ><a name="414"
+      > </a
+      ><a name="415" class="Symbol"
+      >:</a
+      ><a name="416"
+      > </a
+      ><a name="417" href="hott.truncation.core.html#374" class="Bound"
+      >A'</a
+      ><a name="419"
+      > </a
+      ><a name="420" class="Symbol"
+      >&#8594;</a
+      ><a name="421"
+      > </a
+      ><a name="422" class="PrimitiveType"
+      >Set</a
+      ><a name="425"
+      > </a
+      ><a name="426" href="hott.truncation.core.html#359" class="Bound"
+      >j'</a
+      ><a name="428" class="Symbol"
+      >}</a
+      ><a name="429"
+      >
+         </a
+      ><a name="439" class="Symbol"
+      >(</a
+      ><a name="440" href="hott.truncation.core.html#440" class="Bound"
+      >f</a
+      ><a name="441"
+      > </a
+      ><a name="442" class="Symbol"
+      >:</a
+      ><a name="443"
+      > </a
+      ><a name="444" href="hott.truncation.core.html#363" class="Bound"
+      >A</a
+      ><a name="445"
+      > </a
+      ><a name="446" class="Symbol"
+      >&#8594;</a
+      ><a name="447"
+      > </a
+      ><a name="448" href="hott.truncation.core.html#374" class="Bound"
+      >A'</a
+      ><a name="450" class="Symbol"
+      >)</a
+      ><a name="451"
+      >
+         </a
+      ><a name="461" class="Symbol"
+      >(</a
+      ><a name="462" href="hott.truncation.core.html#462" class="Bound"
+      >g</a
+      ><a name="463"
+      > </a
+      ><a name="464" class="Symbol"
+      >:</a
+      ><a name="465"
+      > </a
+      ><a name="466" class="Symbol"
+      >(</a
+      ><a name="467" href="hott.truncation.core.html#467" class="Bound"
+      >a</a
+      ><a name="468"
+      > </a
+      ><a name="469" class="Symbol"
+      >:</a
+      ><a name="470"
+      > </a
+      ><a name="471" href="hott.truncation.core.html#363" class="Bound"
+      >A</a
+      ><a name="472" class="Symbol"
+      >)</a
+      ><a name="473"
+      > </a
+      ><a name="474" class="Symbol"
+      >&#8594;</a
+      ><a name="475"
+      > </a
+      ><a name="476" href="hott.truncation.core.html#397" class="Bound"
+      >B</a
+      ><a name="477"
+      > </a
+      ><a name="478" href="hott.truncation.core.html#467" class="Bound"
+      >a</a
+      ><a name="479"
+      > </a
+      ><a name="480" class="Symbol"
+      >&#8594;</a
+      ><a name="481"
+      > </a
+      ><a name="482" href="hott.truncation.core.html#412" class="Bound"
+      >B'</a
+      ><a name="484"
+      > </a
+      ><a name="485" class="Symbol"
+      >(</a
+      ><a name="486" href="hott.truncation.core.html#440" class="Bound"
+      >f</a
+      ><a name="487"
+      > </a
+      ><a name="488" href="hott.truncation.core.html#467" class="Bound"
+      >a</a
+      ><a name="489" class="Symbol"
+      >))</a
+      ><a name="491"
+      > </a
+      ><a name="492" class="Keyword"
+      >where</a
+      ><a name="497"
+      >
+  </a
+      ><a name="500" class="Keyword"
+      >private</a
+      ><a name="507"
+      >
+    </a
+      ><a name="512" href="hott.truncation.core.html#512" class="Function"
+      >E</a
+      ><a name="513"
+      > </a
+      ><a name="514" href="hott.truncation.core.html#514" class="Function"
+      >E'</a
+      ><a name="516"
+      > </a
+      ><a name="517" class="Symbol"
+      >:</a
+      ><a name="518"
+      > </a
+      ><a name="519" class="PrimitiveType"
+      >Set</a
+      ><a name="522"
+      > </a
+      ><a name="523" class="Symbol"
+      >_</a
+      ><a name="524"
+      >
+    </a
+      ><a name="529" href="hott.truncation.core.html#512" class="Function"
+      >E</a
+      ><a name="530"
+      > </a
+      ><a name="531" class="Symbol"
+      >=</a
+      ><a name="532"
+      > </a
+      ><a name="533" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="534"
+      > </a
+      ><a name="535" href="hott.truncation.core.html#363" class="Bound"
+      >A</a
+      ><a name="536"
+      > </a
+      ><a name="537" href="hott.truncation.core.html#397" class="Bound"
+      >B</a
+      ><a name="538"
+      >
+    </a
+      ><a name="543" href="hott.truncation.core.html#514" class="Function"
+      >E'</a
+      ><a name="545"
+      > </a
+      ><a name="546" class="Symbol"
+      >=</a
+      ><a name="547"
+      > </a
+      ><a name="548" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="549"
+      > </a
+      ><a name="550" href="hott.truncation.core.html#374" class="Bound"
+      >A'</a
+      ><a name="552"
+      > </a
+      ><a name="553" href="hott.truncation.core.html#412" class="Bound"
+      >B'</a
+      ><a name="555"
+      >
+
+    </a
+      ><a name="561" href="hott.truncation.core.html#561" class="Function"
+      >p</a
+      ><a name="562"
+      > </a
+      ><a name="563" class="Symbol"
+      >:</a
+      ><a name="564"
+      > </a
+      ><a name="565" href="hott.truncation.core.html#512" class="Function"
+      >E</a
+      ><a name="566"
+      > </a
+      ><a name="567" class="Symbol"
+      >&#8594;</a
+      ><a name="568"
+      > </a
+      ><a name="569" href="hott.truncation.core.html#363" class="Bound"
+      >A</a
+      ><a name="570"
+      >
+    </a
+      ><a name="575" href="hott.truncation.core.html#561" class="Function"
+      >p</a
+      ><a name="576"
+      > </a
+      ><a name="577" class="Symbol"
+      >=</a
+      ><a name="578"
+      > </a
+      ><a name="579" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="584"
+      >
+
+    </a
+      ><a name="590" href="hott.truncation.core.html#590" class="Function"
+      >p'</a
+      ><a name="592"
+      > </a
+      ><a name="593" class="Symbol"
+      >:</a
+      ><a name="594"
+      > </a
+      ><a name="595" href="hott.truncation.core.html#514" class="Function"
+      >E'</a
+      ><a name="597"
+      > </a
+      ><a name="598" class="Symbol"
+      >&#8594;</a
+      ><a name="599"
+      > </a
+      ><a name="600" href="hott.truncation.core.html#374" class="Bound"
+      >A'</a
+      ><a name="602"
+      >
+    </a
+      ><a name="607" href="hott.truncation.core.html#590" class="Function"
+      >p'</a
+      ><a name="609"
+      > </a
+      ><a name="610" class="Symbol"
+      >=</a
+      ><a name="611"
+      > </a
+      ><a name="612" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="617"
+      >
+
+    </a
+      ><a name="623" href="hott.truncation.core.html#623" class="Function"
+      >t</a
+      ><a name="624"
+      > </a
+      ><a name="625" class="Symbol"
+      >:</a
+      ><a name="626"
+      > </a
+      ><a name="627" href="hott.truncation.core.html#512" class="Function"
+      >E</a
+      ><a name="628"
+      > </a
+      ><a name="629" class="Symbol"
+      >&#8594;</a
+      ><a name="630"
+      > </a
+      ><a name="631" href="hott.truncation.core.html#514" class="Function"
+      >E'</a
+      ><a name="633"
+      >
+    </a
+      ><a name="638" href="hott.truncation.core.html#623" class="Function"
+      >t</a
+      ><a name="639"
+      > </a
+      ><a name="640" class="Symbol"
+      >(</a
+      ><a name="641" href="hott.truncation.core.html#641" class="Bound"
+      >a</a
+      ><a name="642"
+      > </a
+      ><a name="643" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="644"
+      > </a
+      ><a name="645" href="hott.truncation.core.html#645" class="Bound"
+      >b</a
+      ><a name="646" class="Symbol"
+      >)</a
+      ><a name="647"
+      > </a
+      ><a name="648" class="Symbol"
+      >=</a
+      ><a name="649"
+      > </a
+      ><a name="650" class="Symbol"
+      >(</a
+      ><a name="651" href="hott.truncation.core.html#440" class="Bound"
+      >f</a
+      ><a name="652"
+      > </a
+      ><a name="653" href="hott.truncation.core.html#641" class="Bound"
+      >a</a
+      ><a name="654"
+      > </a
+      ><a name="655" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="656"
+      > </a
+      ><a name="657" href="hott.truncation.core.html#462" class="Bound"
+      >g</a
+      ><a name="658"
+      > </a
+      ><a name="659" href="hott.truncation.core.html#641" class="Bound"
+      >a</a
+      ><a name="660"
+      > </a
+      ><a name="661" href="hott.truncation.core.html#645" class="Bound"
+      >b</a
+      ><a name="662" class="Symbol"
+      >)</a
+      ><a name="663"
+      >
+
+  </a
+      ><a name="667" class="Keyword"
+      >module</a
+      ><a name="673"
+      > </a
+      ><a name="674" href="hott.truncation.core.html#674" class="Module"
+      >_</a
+      ><a name="675"
+      > </a
+      ><a name="676" class="Symbol"
+      >(</a
+      ><a name="677" href="hott.truncation.core.html#677" class="Bound"
+      >f-equiv</a
+      ><a name="684"
+      > </a
+      ><a name="685" class="Symbol"
+      >:</a
+      ><a name="686"
+      > </a
+      ><a name="687" href="hott.equivalence.core.html#434" class="Function"
+      >weak-equiv</a
+      ><a name="697"
+      > </a
+      ><a name="698" href="hott.truncation.core.html#440" class="Bound"
+      >f</a
+      ><a name="699" class="Symbol"
+      >)</a
+      ><a name="700"
+      >
+           </a
+      ><a name="712" class="Symbol"
+      >(</a
+      ><a name="713" href="hott.truncation.core.html#713" class="Bound"
+      >t-equiv</a
+      ><a name="720"
+      > </a
+      ><a name="721" class="Symbol"
+      >:</a
+      ><a name="722"
+      > </a
+      ><a name="723" href="hott.equivalence.core.html#434" class="Function"
+      >weak-equiv</a
+      ><a name="733"
+      > </a
+      ><a name="734" href="hott.truncation.core.html#623" class="Function"
+      >t</a
+      ><a name="735" class="Symbol"
+      >)</a
+      ><a name="736"
+      > </a
+      ><a name="737" class="Keyword"
+      >where</a
+      ><a name="742"
+      >
+
+    </a
+      ><a name="748" class="Keyword"
+      >private</a
+      ><a name="755"
+      >
+      </a
+      ><a name="762" href="hott.truncation.core.html#762" class="Function"
+      >&#966;</a
+      ><a name="763"
+      > </a
+      ><a name="764" class="Symbol"
+      >:</a
+      ><a name="765"
+      > </a
+      ><a name="766" href="hott.truncation.core.html#363" class="Bound"
+      >A</a
+      ><a name="767"
+      > </a
+      ><a name="768" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="769"
+      > </a
+      ><a name="770" href="hott.truncation.core.html#374" class="Bound"
+      >A'</a
+      ><a name="772"
+      >
+      </a
+      ><a name="779" href="hott.truncation.core.html#762" class="Function"
+      >&#966;</a
+      ><a name="780"
+      > </a
+      ><a name="781" class="Symbol"
+      >=</a
+      ><a name="782"
+      > </a
+      ><a name="783" href="hott.equivalence.core.html#739" class="Function"
+      >&#8776;&#8658;&#8773;</a
+      ><a name="786"
+      > </a
+      ><a name="787" class="Symbol"
+      >(</a
+      ><a name="788" href="hott.truncation.core.html#440" class="Bound"
+      >f</a
+      ><a name="789"
+      > </a
+      ><a name="790" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="791"
+      > </a
+      ><a name="792" href="hott.truncation.core.html#677" class="Bound"
+      >f-equiv</a
+      ><a name="799" class="Symbol"
+      >)</a
+      ><a name="800"
+      >
+
+      </a
+      ><a name="808" href="hott.truncation.core.html#808" class="Function"
+      >&#964;</a
+      ><a name="809"
+      > </a
+      ><a name="810" class="Symbol"
+      >:</a
+      ><a name="811"
+      > </a
+      ><a name="812" href="hott.truncation.core.html#512" class="Function"
+      >E</a
+      ><a name="813"
+      > </a
+      ><a name="814" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="815"
+      > </a
+      ><a name="816" href="hott.truncation.core.html#514" class="Function"
+      >E'</a
+      ><a name="818"
+      >
+      </a
+      ><a name="825" href="hott.truncation.core.html#808" class="Function"
+      >&#964;</a
+      ><a name="826"
+      > </a
+      ><a name="827" class="Symbol"
+      >=</a
+      ><a name="828"
+      > </a
+      ><a name="829" href="hott.equivalence.core.html#739" class="Function"
+      >&#8776;&#8658;&#8773;</a
+      ><a name="832"
+      > </a
+      ><a name="833" class="Symbol"
+      >(</a
+      ><a name="834" href="hott.truncation.core.html#623" class="Function"
+      >t</a
+      ><a name="835"
+      > </a
+      ><a name="836" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="837"
+      > </a
+      ><a name="838" href="hott.truncation.core.html#713" class="Bound"
+      >t-equiv</a
+      ><a name="845" class="Symbol"
+      >)</a
+      ><a name="846"
+      >
+
+      </a
+      ><a name="854" href="hott.truncation.core.html#854" class="Function"
+      >lem</a
+      ><a name="857"
+      > </a
+      ><a name="858" class="Symbol"
+      >:</a
+      ><a name="859"
+      > </a
+      ><a name="860" class="Symbol"
+      >(</a
+      ><a name="861" href="hott.truncation.core.html#861" class="Bound"
+      >a</a
+      ><a name="862"
+      > </a
+      ><a name="863" class="Symbol"
+      >:</a
+      ><a name="864"
+      > </a
+      ><a name="865" href="hott.truncation.core.html#363" class="Bound"
+      >A</a
+      ><a name="866" class="Symbol"
+      >)(</a
+      ><a name="868" href="hott.truncation.core.html#868" class="Bound"
+      >e</a
+      ><a name="869"
+      > </a
+      ><a name="870" class="Symbol"
+      >:</a
+      ><a name="871"
+      > </a
+      ><a name="872" href="hott.truncation.core.html#512" class="Function"
+      >E</a
+      ><a name="873" class="Symbol"
+      >)</a
+      ><a name="874"
+      > </a
+      ><a name="875" class="Symbol"
+      >&#8594;</a
+      ><a name="876"
+      > </a
+      ><a name="877" class="Symbol"
+      >(</a
+      ><a name="878" href="hott.truncation.core.html#561" class="Function"
+      >p</a
+      ><a name="879"
+      > </a
+      ><a name="880" href="hott.truncation.core.html#868" class="Bound"
+      >e</a
+      ><a name="881"
+      > </a
+      ><a name="882" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="883"
+      > </a
+      ><a name="884" href="hott.truncation.core.html#861" class="Bound"
+      >a</a
+      ><a name="885" class="Symbol"
+      >)</a
+      ><a name="886"
+      > </a
+      ><a name="887" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="888"
+      > </a
+      ><a name="889" class="Symbol"
+      >(</a
+      ><a name="890" href="hott.truncation.core.html#590" class="Function"
+      >p'</a
+      ><a name="892"
+      > </a
+      ><a name="893" class="Symbol"
+      >(</a
+      ><a name="894" href="hott.truncation.core.html#623" class="Function"
+      >t</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="hott.truncation.core.html#868" class="Bound"
+      >e</a
+      ><a name="897" class="Symbol"
+      >)</a
+      ><a name="898"
+      > </a
+      ><a name="899" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="900"
+      > </a
+      ><a name="901" href="hott.truncation.core.html#440" class="Bound"
+      >f</a
+      ><a name="902"
+      > </a
+      ><a name="903" href="hott.truncation.core.html#861" class="Bound"
+      >a</a
+      ><a name="904" class="Symbol"
+      >)</a
+      ><a name="905"
+      >
+      </a
+      ><a name="912" href="hott.truncation.core.html#854" class="Function"
+      >lem</a
+      ><a name="915"
+      > </a
+      ><a name="916" href="hott.truncation.core.html#916" class="Bound"
+      >a</a
+      ><a name="917"
+      > </a
+      ><a name="918" href="hott.truncation.core.html#918" class="Bound"
+      >e</a
+      ><a name="919"
+      > </a
+      ><a name="920" class="Symbol"
+      >=</a
+      ><a name="921"
+      > </a
+      ><a name="922" href="function.isomorphism.properties.html#2268" class="Function"
+      >iso&#8801;</a
+      ><a name="926"
+      > </a
+      ><a name="927" href="hott.truncation.core.html#762" class="Function"
+      >&#966;</a
+      ><a name="928"
+      >
+
+    </a
+      ><a name="934" href="hott.truncation.core.html#934" class="Function"
+      >fib-equiv</a
+      ><a name="943"
+      > </a
+      ><a name="944" class="Symbol"
+      >:</a
+      ><a name="945"
+      > </a
+      ><a name="946" class="Symbol"
+      >(</a
+      ><a name="947" href="hott.truncation.core.html#947" class="Bound"
+      >a</a
+      ><a name="948"
+      > </a
+      ><a name="949" class="Symbol"
+      >:</a
+      ><a name="950"
+      > </a
+      ><a name="951" href="hott.truncation.core.html#363" class="Bound"
+      >A</a
+      ><a name="952" class="Symbol"
+      >)</a
+      ><a name="953"
+      > </a
+      ><a name="954" class="Symbol"
+      >&#8594;</a
+      ><a name="955"
+      > </a
+      ><a name="956" href="hott.truncation.core.html#397" class="Bound"
+      >B</a
+      ><a name="957"
+      > </a
+      ><a name="958" href="hott.truncation.core.html#947" class="Bound"
+      >a</a
+      ><a name="959"
+      > </a
+      ><a name="960" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="961"
+      > </a
+      ><a name="962" href="hott.truncation.core.html#412" class="Bound"
+      >B'</a
+      ><a name="964"
+      > </a
+      ><a name="965" class="Symbol"
+      >(</a
+      ><a name="966" href="hott.truncation.core.html#440" class="Bound"
+      >f</a
+      ><a name="967"
+      > </a
+      ><a name="968" href="hott.truncation.core.html#947" class="Bound"
+      >a</a
+      ><a name="969" class="Symbol"
+      >)</a
+      ><a name="970"
+      >
+    </a
+      ><a name="975" href="hott.truncation.core.html#934" class="Function"
+      >fib-equiv</a
+      ><a name="984"
+      > </a
+      ><a name="985" href="hott.truncation.core.html#985" class="Bound"
+      >a</a
+      ><a name="986"
+      > </a
+      ><a name="987" class="Symbol"
+      >=</a
+      ><a name="988"
+      > </a
+      ><a name="989" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="993"
+      > </a
+      ><a name="994" class="Symbol"
+      >(</a
+      ><a name="995" href="function.fibration.html#766" class="Function"
+      >fib-iso</a
+      ><a name="1002"
+      > </a
+      ><a name="1003" href="hott.truncation.core.html#985" class="Bound"
+      >a</a
+      ><a name="1004" class="Symbol"
+      >)</a
+      ><a name="1005"
+      > </a
+      ><a name="1006" href="function.isomorphism.core.html#1555" class="Function Operator"
+      >&#183;&#8773;</a
+      ><a name="1008"
+      > </a
+      ><a name="1009" href="function.isomorphism.utils.html#3893" class="Function"
+      >&#931;-ap-iso</a
+      ><a name="1017"
+      > </a
+      ><a name="1018" href="hott.truncation.core.html#808" class="Function"
+      >&#964;</a
+      ><a name="1019"
+      > </a
+      ><a name="1020" class="Symbol"
+      >(</a
+      ><a name="1021" href="hott.truncation.core.html#854" class="Function"
+      >lem</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" href="hott.truncation.core.html#985" class="Bound"
+      >a</a
+      ><a name="1026" class="Symbol"
+      >)</a
+      ><a name="1027"
+      > </a
+      ><a name="1028" href="function.isomorphism.core.html#1555" class="Function Operator"
+      >&#183;&#8773;</a
+      ><a name="1030"
+      > </a
+      ><a name="1031" href="function.fibration.html#766" class="Function"
+      >fib-iso</a
+      ><a name="1038"
+      > </a
+      ><a name="1039" class="Symbol"
+      >(</a
+      ><a name="1040" href="hott.truncation.core.html#440" class="Bound"
+      >f</a
+      ><a name="1041"
+      > </a
+      ><a name="1042" href="hott.truncation.core.html#985" class="Bound"
+      >a</a
+      ><a name="1043" class="Symbol"
+      >)</a
+      ><a name="1044"
+      >
+
+</a
+      ><a name="1046" class="Keyword"
+      >postulate</a
+      ><a name="1055"
+      >
+  </a
+      ><a name="1058" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="1063"
+      > </a
+      ><a name="1064" class="Symbol"
+      >:</a
+      ><a name="1065"
+      > </a
+      ><a name="1066" class="Symbol"
+      >&#8704;</a
+      ><a name="1067"
+      > </a
+      ><a name="1068" class="Symbol"
+      >{</a
+      ><a name="1069" href="hott.truncation.core.html#1069" class="Bound"
+      >i</a
+      ><a name="1070" class="Symbol"
+      >}</a
+      ><a name="1071"
+      > </a
+      ><a name="1072" class="Symbol"
+      >&#8594;</a
+      ><a name="1073"
+      > </a
+      ><a name="1074" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" class="Symbol"
+      >&#8594;</a
+      ><a name="1077"
+      > </a
+      ><a name="1078" class="PrimitiveType"
+      >Set</a
+      ><a name="1081"
+      > </a
+      ><a name="1082" href="hott.truncation.core.html#1069" class="Bound"
+      >i</a
+      ><a name="1083"
+      > </a
+      ><a name="1084" class="Symbol"
+      >&#8594;</a
+      ><a name="1085"
+      > </a
+      ><a name="1086" class="PrimitiveType"
+      >Set</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" href="hott.truncation.core.html#1069" class="Bound"
+      >i</a
+      ><a name="1091"
+      >
+  </a
+      ><a name="1094" href="hott.truncation.core.html#1094" class="Postulate"
+      >Trunc-level</a
+      ><a name="1105"
+      > </a
+      ><a name="1106" class="Symbol"
+      >:</a
+      ><a name="1107"
+      > </a
+      ><a name="1108" class="Symbol"
+      >&#8704;</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" class="Symbol"
+      >{</a
+      ><a name="1111" href="hott.truncation.core.html#1111" class="Bound"
+      >i</a
+      ><a name="1112" class="Symbol"
+      >}</a
+      ><a name="1113"
+      > </a
+      ><a name="1114" href="hott.truncation.core.html#1114" class="Bound"
+      >n</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" class="Symbol"
+      >{</a
+      ><a name="1117" href="hott.truncation.core.html#1117" class="Bound"
+      >X</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" class="Symbol"
+      >:</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" class="PrimitiveType"
+      >Set</a
+      ><a name="1124"
+      > </a
+      ><a name="1125" href="hott.truncation.core.html#1111" class="Bound"
+      >i</a
+      ><a name="1126" class="Symbol"
+      >}</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" class="Symbol"
+      >&#8594;</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" href="hott.truncation.core.html#1114" class="Bound"
+      >n</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" class="Symbol"
+      >(</a
+      ><a name="1135" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" href="hott.truncation.core.html#1114" class="Bound"
+      >n</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" href="hott.truncation.core.html#1117" class="Bound"
+      >X</a
+      ><a name="1144" class="Symbol"
+      >)</a
+      ><a name="1145"
+      >
+  </a
+      ><a name="1148" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >[_]</a
+      ><a name="1151"
+      > </a
+      ><a name="1152" class="Symbol"
+      >:</a
+      ><a name="1153"
+      > </a
+      ><a name="1154" class="Symbol"
+      >&#8704;</a
+      ><a name="1155"
+      > </a
+      ><a name="1156" class="Symbol"
+      >{</a
+      ><a name="1157" href="hott.truncation.core.html#1157" class="Bound"
+      >i</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" href="hott.truncation.core.html#1159" class="Bound"
+      >n</a
+      ><a name="1160" class="Symbol"
+      >}</a
+      ><a name="1161"
+      > </a
+      ><a name="1162" class="Symbol"
+      >{</a
+      ><a name="1163" href="hott.truncation.core.html#1163" class="Bound"
+      >X</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" class="Symbol"
+      >:</a
+      ><a name="1166"
+      > </a
+      ><a name="1167" class="PrimitiveType"
+      >Set</a
+      ><a name="1170"
+      > </a
+      ><a name="1171" href="hott.truncation.core.html#1157" class="Bound"
+      >i</a
+      ><a name="1172" class="Symbol"
+      >}</a
+      ><a name="1173"
+      > </a
+      ><a name="1174" class="Symbol"
+      >&#8594;</a
+      ><a name="1175"
+      > </a
+      ><a name="1176" href="hott.truncation.core.html#1163" class="Bound"
+      >X</a
+      ><a name="1177"
+      > </a
+      ><a name="1178" class="Symbol"
+      >&#8594;</a
+      ><a name="1179"
+      > </a
+      ><a name="1180" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="1185"
+      > </a
+      ><a name="1186" href="hott.truncation.core.html#1159" class="Bound"
+      >n</a
+      ><a name="1187"
+      > </a
+      ><a name="1188" href="hott.truncation.core.html#1163" class="Bound"
+      >X</a
+      ><a name="1189"
+      >
+
+</a
+      ><a name="1191" href="hott.truncation.core.html#1191" class="Function"
+      >Trunc-ext</a
+      ><a name="1200"
+      > </a
+      ><a name="1201" class="Symbol"
+      >:</a
+      ><a name="1202"
+      > </a
+      ><a name="1203" class="Symbol"
+      >&#8704;</a
+      ><a name="1204"
+      > </a
+      ><a name="1205" class="Symbol"
+      >{</a
+      ><a name="1206" href="hott.truncation.core.html#1206" class="Bound"
+      >i</a
+      ><a name="1207"
+      > </a
+      ><a name="1208" href="hott.truncation.core.html#1208" class="Bound"
+      >j</a
+      ><a name="1209" class="Symbol"
+      >}</a
+      ><a name="1210"
+      > </a
+      ><a name="1211" href="hott.truncation.core.html#1211" class="Bound"
+      >n</a
+      ><a name="1212"
+      > </a
+      ><a name="1213" class="Symbol"
+      >(</a
+      ><a name="1214" href="hott.truncation.core.html#1214" class="Bound"
+      >X</a
+      ><a name="1215"
+      > </a
+      ><a name="1216" class="Symbol"
+      >:</a
+      ><a name="1217"
+      > </a
+      ><a name="1218" class="PrimitiveType"
+      >Set</a
+      ><a name="1221"
+      > </a
+      ><a name="1222" href="hott.truncation.core.html#1206" class="Bound"
+      >i</a
+      ><a name="1223" class="Symbol"
+      >)(</a
+      ><a name="1225" href="hott.truncation.core.html#1225" class="Bound"
+      >Y</a
+      ><a name="1226"
+      > </a
+      ><a name="1227" class="Symbol"
+      >:</a
+      ><a name="1228"
+      > </a
+      ><a name="1229" class="PrimitiveType"
+      >Set</a
+      ><a name="1232"
+      > </a
+      ><a name="1233" href="hott.truncation.core.html#1208" class="Bound"
+      >j</a
+      ><a name="1234" class="Symbol"
+      >)</a
+      ><a name="1235"
+      >
+          </a
+      ><a name="1246" class="Symbol"
+      >&#8594;</a
+      ><a name="1247"
+      > </a
+      ><a name="1248" class="Symbol"
+      >(</a
+      ><a name="1249" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="1254"
+      > </a
+      ><a name="1255" href="hott.truncation.core.html#1211" class="Bound"
+      >n</a
+      ><a name="1256"
+      > </a
+      ><a name="1257" href="hott.truncation.core.html#1214" class="Bound"
+      >X</a
+      ><a name="1258"
+      > </a
+      ><a name="1259" class="Symbol"
+      >&#8594;</a
+      ><a name="1260"
+      > </a
+      ><a name="1261" href="hott.truncation.core.html#1225" class="Bound"
+      >Y</a
+      ><a name="1262" class="Symbol"
+      >)</a
+      ><a name="1263"
+      > </a
+      ><a name="1264" class="Symbol"
+      >&#8594;</a
+      ><a name="1265"
+      > </a
+      ><a name="1266" href="hott.truncation.core.html#1214" class="Bound"
+      >X</a
+      ><a name="1267"
+      > </a
+      ><a name="1268" class="Symbol"
+      >&#8594;</a
+      ><a name="1269"
+      > </a
+      ><a name="1270" href="hott.truncation.core.html#1225" class="Bound"
+      >Y</a
+      ><a name="1271"
+      >
+</a
+      ><a name="1272" href="hott.truncation.core.html#1191" class="Function"
+      >Trunc-ext</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="hott.truncation.core.html#1282" class="Bound"
+      >n</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" href="hott.truncation.core.html#1284" class="Bound"
+      >X</a
+      ><a name="1285"
+      > </a
+      ><a name="1286" href="hott.truncation.core.html#1286" class="Bound"
+      >Y</a
+      ><a name="1287"
+      > </a
+      ><a name="1288" href="hott.truncation.core.html#1288" class="Bound"
+      >f</a
+      ><a name="1289"
+      > </a
+      ><a name="1290" href="hott.truncation.core.html#1290" class="Bound"
+      >x</a
+      ><a name="1291"
+      > </a
+      ><a name="1292" class="Symbol"
+      >=</a
+      ><a name="1293"
+      > </a
+      ><a name="1294" href="hott.truncation.core.html#1288" class="Bound"
+      >f</a
+      ><a name="1295"
+      > </a
+      ><a name="1296" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >[</a
+      ><a name="1297"
+      > </a
+      ><a name="1298" href="hott.truncation.core.html#1290" class="Bound"
+      >x</a
+      ><a name="1299"
+      > </a
+      ><a name="1300" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >]</a
+      ><a name="1301"
+      >
+
+</a
+      ><a name="1303" class="Keyword"
+      >postulate</a
+      ><a name="1312"
+      >
+  </a
+      ><a name="1315" href="hott.truncation.core.html#1315" class="Postulate"
+      >Trunc-univ</a
+      ><a name="1325"
+      > </a
+      ><a name="1326" class="Symbol"
+      >:</a
+      ><a name="1327"
+      > </a
+      ><a name="1328" class="Symbol"
+      >&#8704;</a
+      ><a name="1329"
+      > </a
+      ><a name="1330" class="Symbol"
+      >{</a
+      ><a name="1331" href="hott.truncation.core.html#1331" class="Bound"
+      >i</a
+      ><a name="1332"
+      > </a
+      ><a name="1333" href="hott.truncation.core.html#1333" class="Bound"
+      >j</a
+      ><a name="1334" class="Symbol"
+      >}</a
+      ><a name="1335"
+      > </a
+      ><a name="1336" href="hott.truncation.core.html#1336" class="Bound"
+      >n</a
+      ><a name="1337"
+      > </a
+      ><a name="1338" class="Symbol"
+      >(</a
+      ><a name="1339" href="hott.truncation.core.html#1339" class="Bound"
+      >X</a
+      ><a name="1340"
+      > </a
+      ><a name="1341" class="Symbol"
+      >:</a
+      ><a name="1342"
+      > </a
+      ><a name="1343" class="PrimitiveType"
+      >Set</a
+      ><a name="1346"
+      > </a
+      ><a name="1347" href="hott.truncation.core.html#1331" class="Bound"
+      >i</a
+      ><a name="1348" class="Symbol"
+      >)(</a
+      ><a name="1350" href="hott.truncation.core.html#1350" class="Bound"
+      >Y</a
+      ><a name="1351"
+      > </a
+      ><a name="1352" class="Symbol"
+      >:</a
+      ><a name="1353"
+      > </a
+      ><a name="1354" class="PrimitiveType"
+      >Set</a
+      ><a name="1357"
+      > </a
+      ><a name="1358" href="hott.truncation.core.html#1333" class="Bound"
+      >j</a
+      ><a name="1359" class="Symbol"
+      >)</a
+      ><a name="1360"
+      > </a
+      ><a name="1361" class="Symbol"
+      >&#8594;</a
+      ><a name="1362"
+      > </a
+      ><a name="1363" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="1364"
+      > </a
+      ><a name="1365" href="hott.truncation.core.html#1336" class="Bound"
+      >n</a
+      ><a name="1366"
+      > </a
+      ><a name="1367" href="hott.truncation.core.html#1350" class="Bound"
+      >Y</a
+      ><a name="1368"
+      >
+             </a
+      ><a name="1382" class="Symbol"
+      >&#8594;</a
+      ><a name="1383"
+      > </a
+      ><a name="1384" href="hott.equivalence.core.html#434" class="Function"
+      >weak-equiv</a
+      ><a name="1394"
+      > </a
+      ><a name="1395" class="Symbol"
+      >(</a
+      ><a name="1396" href="hott.truncation.core.html#1191" class="Function"
+      >Trunc-ext</a
+      ><a name="1405"
+      > </a
+      ><a name="1406" href="hott.truncation.core.html#1336" class="Bound"
+      >n</a
+      ><a name="1407"
+      > </a
+      ><a name="1408" href="hott.truncation.core.html#1339" class="Bound"
+      >X</a
+      ><a name="1409"
+      > </a
+      ><a name="1410" href="hott.truncation.core.html#1350" class="Bound"
+      >Y</a
+      ><a name="1411" class="Symbol"
+      >)</a
+      ><a name="1412"
+      >
+
+</a
+      ><a name="1414" href="hott.truncation.core.html#1414" class="Function"
+      >Trunc-elim-iso</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" class="Symbol"
+      >:</a
+      ><a name="1430"
+      > </a
+      ><a name="1431" class="Symbol"
+      >&#8704;</a
+      ><a name="1432"
+      > </a
+      ><a name="1433" class="Symbol"
+      >{</a
+      ><a name="1434" href="hott.truncation.core.html#1434" class="Bound"
+      >i</a
+      ><a name="1435"
+      > </a
+      ><a name="1436" href="hott.truncation.core.html#1436" class="Bound"
+      >j</a
+      ><a name="1437" class="Symbol"
+      >}</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" href="hott.truncation.core.html#1439" class="Bound"
+      >n</a
+      ><a name="1440"
+      > </a
+      ><a name="1441" class="Symbol"
+      >(</a
+      ><a name="1442" href="hott.truncation.core.html#1442" class="Bound"
+      >X</a
+      ><a name="1443"
+      > </a
+      ><a name="1444" class="Symbol"
+      >:</a
+      ><a name="1445"
+      > </a
+      ><a name="1446" class="PrimitiveType"
+      >Set</a
+      ><a name="1449"
+      > </a
+      ><a name="1450" href="hott.truncation.core.html#1434" class="Bound"
+      >i</a
+      ><a name="1451" class="Symbol"
+      >)(</a
+      ><a name="1453" href="hott.truncation.core.html#1453" class="Bound"
+      >Y</a
+      ><a name="1454"
+      > </a
+      ><a name="1455" class="Symbol"
+      >:</a
+      ><a name="1456"
+      > </a
+      ><a name="1457" class="PrimitiveType"
+      >Set</a
+      ><a name="1460"
+      > </a
+      ><a name="1461" href="hott.truncation.core.html#1436" class="Bound"
+      >j</a
+      ><a name="1462" class="Symbol"
+      >)</a
+      ><a name="1463"
+      > </a
+      ><a name="1464" class="Symbol"
+      >&#8594;</a
+      ><a name="1465"
+      > </a
+      ><a name="1466" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="1467"
+      > </a
+      ><a name="1468" href="hott.truncation.core.html#1439" class="Bound"
+      >n</a
+      ><a name="1469"
+      > </a
+      ><a name="1470" href="hott.truncation.core.html#1453" class="Bound"
+      >Y</a
+      ><a name="1471"
+      >
+               </a
+      ><a name="1487" class="Symbol"
+      >&#8594;</a
+      ><a name="1488"
+      > </a
+      ><a name="1489" class="Symbol"
+      >(</a
+      ><a name="1490" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="1495"
+      > </a
+      ><a name="1496" href="hott.truncation.core.html#1439" class="Bound"
+      >n</a
+      ><a name="1497"
+      > </a
+      ><a name="1498" href="hott.truncation.core.html#1442" class="Bound"
+      >X</a
+      ><a name="1499"
+      > </a
+      ><a name="1500" class="Symbol"
+      >&#8594;</a
+      ><a name="1501"
+      > </a
+      ><a name="1502" href="hott.truncation.core.html#1453" class="Bound"
+      >Y</a
+      ><a name="1503" class="Symbol"
+      >)</a
+      ><a name="1504"
+      > </a
+      ><a name="1505" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1506"
+      > </a
+      ><a name="1507" class="Symbol"
+      >(</a
+      ><a name="1508" href="hott.truncation.core.html#1442" class="Bound"
+      >X</a
+      ><a name="1509"
+      > </a
+      ><a name="1510" class="Symbol"
+      >&#8594;</a
+      ><a name="1511"
+      > </a
+      ><a name="1512" href="hott.truncation.core.html#1453" class="Bound"
+      >Y</a
+      ><a name="1513" class="Symbol"
+      >)</a
+      ><a name="1514"
+      >
+</a
+      ><a name="1515" href="hott.truncation.core.html#1414" class="Function"
+      >Trunc-elim-iso</a
+      ><a name="1529"
+      > </a
+      ><a name="1530" href="hott.truncation.core.html#1530" class="Bound"
+      >n</a
+      ><a name="1531"
+      > </a
+      ><a name="1532" href="hott.truncation.core.html#1532" class="Bound"
+      >X</a
+      ><a name="1533"
+      > </a
+      ><a name="1534" href="hott.truncation.core.html#1534" class="Bound"
+      >Y</a
+      ><a name="1535"
+      > </a
+      ><a name="1536" href="hott.truncation.core.html#1536" class="Bound"
+      >hY</a
+      ><a name="1538"
+      > </a
+      ><a name="1539" class="Symbol"
+      >=</a
+      ><a name="1540"
+      > </a
+      ><a name="1541" href="hott.equivalence.core.html#739" class="Function"
+      >&#8776;&#8658;&#8773;</a
+      ><a name="1544"
+      > </a
+      ><a name="1545" class="Symbol"
+      >(</a
+      ><a name="1546" href="hott.truncation.core.html#1191" class="Function"
+      >Trunc-ext</a
+      ><a name="1555"
+      > </a
+      ><a name="1556" href="hott.truncation.core.html#1530" class="Bound"
+      >n</a
+      ><a name="1557"
+      > </a
+      ><a name="1558" href="hott.truncation.core.html#1532" class="Bound"
+      >X</a
+      ><a name="1559"
+      > </a
+      ><a name="1560" href="hott.truncation.core.html#1534" class="Bound"
+      >Y</a
+      ><a name="1561"
+      > </a
+      ><a name="1562" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1563"
+      > </a
+      ><a name="1564" href="hott.truncation.core.html#1315" class="Postulate"
+      >Trunc-univ</a
+      ><a name="1574"
+      > </a
+      ><a name="1575" href="hott.truncation.core.html#1530" class="Bound"
+      >n</a
+      ><a name="1576"
+      > </a
+      ><a name="1577" href="hott.truncation.core.html#1532" class="Bound"
+      >X</a
+      ><a name="1578"
+      > </a
+      ><a name="1579" href="hott.truncation.core.html#1534" class="Bound"
+      >Y</a
+      ><a name="1580"
+      > </a
+      ><a name="1581" href="hott.truncation.core.html#1536" class="Bound"
+      >hY</a
+      ><a name="1583" class="Symbol"
+      >)</a
+      ><a name="1584"
+      >
+
+</a
+      ><a name="1586" href="hott.truncation.core.html#1586" class="Function"
+      >Trunc-elim</a
+      ><a name="1596"
+      > </a
+      ><a name="1597" class="Symbol"
+      >:</a
+      ><a name="1598"
+      > </a
+      ><a name="1599" class="Symbol"
+      >&#8704;</a
+      ><a name="1600"
+      > </a
+      ><a name="1601" class="Symbol"
+      >{</a
+      ><a name="1602" href="hott.truncation.core.html#1602" class="Bound"
+      >i</a
+      ><a name="1603"
+      > </a
+      ><a name="1604" href="hott.truncation.core.html#1604" class="Bound"
+      >j</a
+      ><a name="1605" class="Symbol"
+      >}</a
+      ><a name="1606"
+      > </a
+      ><a name="1607" href="hott.truncation.core.html#1607" class="Bound"
+      >n</a
+      ><a name="1608"
+      > </a
+      ><a name="1609" class="Symbol"
+      >(</a
+      ><a name="1610" href="hott.truncation.core.html#1610" class="Bound"
+      >X</a
+      ><a name="1611"
+      > </a
+      ><a name="1612" class="Symbol"
+      >:</a
+      ><a name="1613"
+      > </a
+      ><a name="1614" class="PrimitiveType"
+      >Set</a
+      ><a name="1617"
+      > </a
+      ><a name="1618" href="hott.truncation.core.html#1602" class="Bound"
+      >i</a
+      ><a name="1619" class="Symbol"
+      >)(</a
+      ><a name="1621" href="hott.truncation.core.html#1621" class="Bound"
+      >Y</a
+      ><a name="1622"
+      > </a
+      ><a name="1623" class="Symbol"
+      >:</a
+      ><a name="1624"
+      > </a
+      ><a name="1625" class="PrimitiveType"
+      >Set</a
+      ><a name="1628"
+      > </a
+      ><a name="1629" href="hott.truncation.core.html#1604" class="Bound"
+      >j</a
+      ><a name="1630" class="Symbol"
+      >)</a
+      ><a name="1631"
+      > </a
+      ><a name="1632" class="Symbol"
+      >&#8594;</a
+      ><a name="1633"
+      > </a
+      ><a name="1634" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="1635"
+      > </a
+      ><a name="1636" href="hott.truncation.core.html#1607" class="Bound"
+      >n</a
+      ><a name="1637"
+      > </a
+      ><a name="1638" href="hott.truncation.core.html#1621" class="Bound"
+      >Y</a
+      ><a name="1639"
+      >
+           </a
+      ><a name="1651" class="Symbol"
+      >&#8594;</a
+      ><a name="1652"
+      > </a
+      ><a name="1653" class="Symbol"
+      >(</a
+      ><a name="1654" href="hott.truncation.core.html#1610" class="Bound"
+      >X</a
+      ><a name="1655"
+      > </a
+      ><a name="1656" class="Symbol"
+      >&#8594;</a
+      ><a name="1657"
+      > </a
+      ><a name="1658" href="hott.truncation.core.html#1621" class="Bound"
+      >Y</a
+      ><a name="1659" class="Symbol"
+      >)</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" class="Symbol"
+      >&#8594;</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" class="Symbol"
+      >(</a
+      ><a name="1664" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="1669"
+      > </a
+      ><a name="1670" href="hott.truncation.core.html#1607" class="Bound"
+      >n</a
+      ><a name="1671"
+      > </a
+      ><a name="1672" href="hott.truncation.core.html#1610" class="Bound"
+      >X</a
+      ><a name="1673"
+      > </a
+      ><a name="1674" class="Symbol"
+      >&#8594;</a
+      ><a name="1675"
+      > </a
+      ><a name="1676" href="hott.truncation.core.html#1621" class="Bound"
+      >Y</a
+      ><a name="1677" class="Symbol"
+      >)</a
+      ><a name="1678"
+      >
+</a
+      ><a name="1679" href="hott.truncation.core.html#1586" class="Function"
+      >Trunc-elim</a
+      ><a name="1689"
+      > </a
+      ><a name="1690" href="hott.truncation.core.html#1690" class="Bound"
+      >n</a
+      ><a name="1691"
+      > </a
+      ><a name="1692" href="hott.truncation.core.html#1692" class="Bound"
+      >X</a
+      ><a name="1693"
+      > </a
+      ><a name="1694" href="hott.truncation.core.html#1694" class="Bound"
+      >Y</a
+      ><a name="1695"
+      > </a
+      ><a name="1696" href="hott.truncation.core.html#1696" class="Bound"
+      >hY</a
+      ><a name="1698"
+      > </a
+      ><a name="1699" class="Symbol"
+      >=</a
+      ><a name="1700"
+      > </a
+      ><a name="1701" href="function.isomorphism.core.html#452" class="Function"
+      >invert</a
+      ><a name="1707"
+      > </a
+      ><a name="1708" class="Symbol"
+      >(</a
+      ><a name="1709" href="hott.truncation.core.html#1414" class="Function"
+      >Trunc-elim-iso</a
+      ><a name="1723"
+      > </a
+      ><a name="1724" href="hott.truncation.core.html#1690" class="Bound"
+      >n</a
+      ><a name="1725"
+      > </a
+      ><a name="1726" href="hott.truncation.core.html#1692" class="Bound"
+      >X</a
+      ><a name="1727"
+      > </a
+      ><a name="1728" href="hott.truncation.core.html#1694" class="Bound"
+      >Y</a
+      ><a name="1729"
+      > </a
+      ><a name="1730" href="hott.truncation.core.html#1696" class="Bound"
+      >hY</a
+      ><a name="1732" class="Symbol"
+      >)</a
+      ><a name="1733"
+      >
+
+</a
+      ><a name="1735" href="hott.truncation.core.html#1735" class="Function"
+      >Trunc-elim-&#946;</a
+      ><a name="1747"
+      > </a
+      ><a name="1748" class="Symbol"
+      >:</a
+      ><a name="1749"
+      > </a
+      ><a name="1750" class="Symbol"
+      >&#8704;</a
+      ><a name="1751"
+      > </a
+      ><a name="1752" class="Symbol"
+      >{</a
+      ><a name="1753" href="hott.truncation.core.html#1753" class="Bound"
+      >i</a
+      ><a name="1754"
+      > </a
+      ><a name="1755" href="hott.truncation.core.html#1755" class="Bound"
+      >j</a
+      ><a name="1756" class="Symbol"
+      >}</a
+      ><a name="1757"
+      > </a
+      ><a name="1758" href="hott.truncation.core.html#1758" class="Bound"
+      >n</a
+      ><a name="1759"
+      > </a
+      ><a name="1760" class="Symbol"
+      >(</a
+      ><a name="1761" href="hott.truncation.core.html#1761" class="Bound"
+      >X</a
+      ><a name="1762"
+      > </a
+      ><a name="1763" class="Symbol"
+      >:</a
+      ><a name="1764"
+      > </a
+      ><a name="1765" class="PrimitiveType"
+      >Set</a
+      ><a name="1768"
+      > </a
+      ><a name="1769" href="hott.truncation.core.html#1753" class="Bound"
+      >i</a
+      ><a name="1770" class="Symbol"
+      >)(</a
+      ><a name="1772" href="hott.truncation.core.html#1772" class="Bound"
+      >Y</a
+      ><a name="1773"
+      > </a
+      ><a name="1774" class="Symbol"
+      >:</a
+      ><a name="1775"
+      > </a
+      ><a name="1776" class="PrimitiveType"
+      >Set</a
+      ><a name="1779"
+      > </a
+      ><a name="1780" href="hott.truncation.core.html#1755" class="Bound"
+      >j</a
+      ><a name="1781" class="Symbol"
+      >)(</a
+      ><a name="1783" href="hott.truncation.core.html#1783" class="Bound"
+      >hY</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" class="Symbol"
+      >:</a
+      ><a name="1787"
+      > </a
+      ><a name="1788" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="1789"
+      > </a
+      ><a name="1790" href="hott.truncation.core.html#1758" class="Bound"
+      >n</a
+      ><a name="1791"
+      > </a
+      ><a name="1792" href="hott.truncation.core.html#1772" class="Bound"
+      >Y</a
+      ><a name="1793" class="Symbol"
+      >)</a
+      ><a name="1794"
+      >
+             </a
+      ><a name="1808" class="Symbol"
+      >&#8594;</a
+      ><a name="1809"
+      > </a
+      ><a name="1810" class="Symbol"
+      >(</a
+      ><a name="1811" href="hott.truncation.core.html#1811" class="Bound"
+      >f</a
+      ><a name="1812"
+      > </a
+      ><a name="1813" class="Symbol"
+      >:</a
+      ><a name="1814"
+      > </a
+      ><a name="1815" href="hott.truncation.core.html#1761" class="Bound"
+      >X</a
+      ><a name="1816"
+      > </a
+      ><a name="1817" class="Symbol"
+      >&#8594;</a
+      ><a name="1818"
+      > </a
+      ><a name="1819" href="hott.truncation.core.html#1772" class="Bound"
+      >Y</a
+      ><a name="1820" class="Symbol"
+      >)(</a
+      ><a name="1822" href="hott.truncation.core.html#1822" class="Bound"
+      >x</a
+      ><a name="1823"
+      > </a
+      ><a name="1824" class="Symbol"
+      >:</a
+      ><a name="1825"
+      > </a
+      ><a name="1826" href="hott.truncation.core.html#1761" class="Bound"
+      >X</a
+      ><a name="1827" class="Symbol"
+      >)</a
+      ><a name="1828"
+      >
+             </a
+      ><a name="1842" class="Symbol"
+      >&#8594;</a
+      ><a name="1843"
+      > </a
+      ><a name="1844" href="hott.truncation.core.html#1586" class="Function"
+      >Trunc-elim</a
+      ><a name="1854"
+      > </a
+      ><a name="1855" href="hott.truncation.core.html#1758" class="Bound"
+      >n</a
+      ><a name="1856"
+      > </a
+      ><a name="1857" href="hott.truncation.core.html#1761" class="Bound"
+      >X</a
+      ><a name="1858"
+      > </a
+      ><a name="1859" href="hott.truncation.core.html#1772" class="Bound"
+      >Y</a
+      ><a name="1860"
+      > </a
+      ><a name="1861" href="hott.truncation.core.html#1783" class="Bound"
+      >hY</a
+      ><a name="1863"
+      > </a
+      ><a name="1864" href="hott.truncation.core.html#1811" class="Bound"
+      >f</a
+      ><a name="1865"
+      > </a
+      ><a name="1866" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >[</a
+      ><a name="1867"
+      > </a
+      ><a name="1868" href="hott.truncation.core.html#1822" class="Bound"
+      >x</a
+      ><a name="1869"
+      > </a
+      ><a name="1870" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >]</a
+      ><a name="1871"
+      > </a
+      ><a name="1872" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1873"
+      > </a
+      ><a name="1874" href="hott.truncation.core.html#1811" class="Bound"
+      >f</a
+      ><a name="1875"
+      > </a
+      ><a name="1876" href="hott.truncation.core.html#1822" class="Bound"
+      >x</a
+      ><a name="1877"
+      >
+</a
+      ><a name="1878" href="hott.truncation.core.html#1735" class="Function"
+      >Trunc-elim-&#946;</a
+      ><a name="1890"
+      > </a
+      ><a name="1891" href="hott.truncation.core.html#1891" class="Bound"
+      >n</a
+      ><a name="1892"
+      > </a
+      ><a name="1893" href="hott.truncation.core.html#1893" class="Bound"
+      >X</a
+      ><a name="1894"
+      > </a
+      ><a name="1895" href="hott.truncation.core.html#1895" class="Bound"
+      >Y</a
+      ><a name="1896"
+      > </a
+      ><a name="1897" href="hott.truncation.core.html#1897" class="Bound"
+      >hY</a
+      ><a name="1899"
+      > </a
+      ><a name="1900" href="hott.truncation.core.html#1900" class="Bound"
+      >f</a
+      ><a name="1901"
+      > </a
+      ><a name="1902" href="hott.truncation.core.html#1902" class="Bound"
+      >x</a
+      ><a name="1903"
+      > </a
+      ><a name="1904" class="Symbol"
+      >=</a
+      ><a name="1905"
+      > </a
+      ><a name="1906" href="function.extensionality.core.html#705" class="Function"
+      >funext-inv</a
+      ><a name="1916"
+      > </a
+      ><a name="1917" class="Symbol"
+      >(</a
+      ><a name="1918" href="function.isomorphism.core.html#506" class="Field"
+      >_&#8773;_.iso&#8322;</a
+      ><a name="1926"
+      > </a
+      ><a name="1927" class="Symbol"
+      >(</a
+      ><a name="1928" href="hott.truncation.core.html#1414" class="Function"
+      >Trunc-elim-iso</a
+      ><a name="1942"
+      > </a
+      ><a name="1943" href="hott.truncation.core.html#1891" class="Bound"
+      >n</a
+      ><a name="1944"
+      > </a
+      ><a name="1945" href="hott.truncation.core.html#1893" class="Bound"
+      >X</a
+      ><a name="1946"
+      > </a
+      ><a name="1947" href="hott.truncation.core.html#1895" class="Bound"
+      >Y</a
+      ><a name="1948"
+      > </a
+      ><a name="1949" href="hott.truncation.core.html#1897" class="Bound"
+      >hY</a
+      ><a name="1951" class="Symbol"
+      >)</a
+      ><a name="1952"
+      > </a
+      ><a name="1953" href="hott.truncation.core.html#1900" class="Bound"
+      >f</a
+      ><a name="1954" class="Symbol"
+      >)</a
+      ><a name="1955"
+      > </a
+      ><a name="1956" href="hott.truncation.core.html#1902" class="Bound"
+      >x</a
+      ><a name="1957"
+      >
+
+</a
+      ><a name="1959" class="Keyword"
+      >module</a
+      ><a name="1965"
+      > </a
+      ><a name="1966" href="hott.truncation.core.html#1966" class="Module"
+      >_</a
+      ><a name="1967"
+      > </a
+      ><a name="1968" class="Symbol"
+      >{</a
+      ><a name="1969" href="hott.truncation.core.html#1969" class="Bound"
+      >i</a
+      ><a name="1970"
+      > </a
+      ><a name="1971" href="hott.truncation.core.html#1971" class="Bound"
+      >j</a
+      ><a name="1972" class="Symbol"
+      >}</a
+      ><a name="1973"
+      > </a
+      ><a name="1974" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="1975"
+      > </a
+      ><a name="1976" class="Symbol"
+      >{</a
+      ><a name="1977" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="1978"
+      > </a
+      ><a name="1979" class="Symbol"
+      >:</a
+      ><a name="1980"
+      > </a
+      ><a name="1981" class="PrimitiveType"
+      >Set</a
+      ><a name="1984"
+      > </a
+      ><a name="1985" href="hott.truncation.core.html#1969" class="Bound"
+      >i</a
+      ><a name="1986" class="Symbol"
+      >}</a
+      ><a name="1987"
+      > </a
+      ><a name="1988" class="Symbol"
+      >(</a
+      ><a name="1989" href="hott.truncation.core.html#1989" class="Bound"
+      >Y</a
+      ><a name="1990"
+      > </a
+      ><a name="1991" class="Symbol"
+      >:</a
+      ><a name="1992"
+      > </a
+      ><a name="1993" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="1998"
+      > </a
+      ><a name="1999" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2000"
+      > </a
+      ><a name="2001" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2002"
+      > </a
+      ><a name="2003" class="Symbol"
+      >&#8594;</a
+      ><a name="2004"
+      > </a
+      ><a name="2005" class="PrimitiveType"
+      >Set</a
+      ><a name="2008"
+      > </a
+      ><a name="2009" href="hott.truncation.core.html#1971" class="Bound"
+      >j</a
+      ><a name="2010" class="Symbol"
+      >)</a
+      ><a name="2011"
+      >
+         </a
+      ><a name="2021" class="Symbol"
+      >(</a
+      ><a name="2022" href="hott.truncation.core.html#2022" class="Bound"
+      >hY</a
+      ><a name="2024"
+      > </a
+      ><a name="2025" class="Symbol"
+      >:</a
+      ><a name="2026"
+      > </a
+      ><a name="2027" class="Symbol"
+      >(</a
+      ><a name="2028" href="hott.truncation.core.html#2028" class="Bound"
+      >x</a
+      ><a name="2029"
+      > </a
+      ><a name="2030" class="Symbol"
+      >:</a
+      ><a name="2031"
+      > </a
+      ><a name="2032" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2037"
+      > </a
+      ><a name="2038" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2039"
+      > </a
+      ><a name="2040" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2041" class="Symbol"
+      >)</a
+      ><a name="2042"
+      > </a
+      ><a name="2043" class="Symbol"
+      >&#8594;</a
+      ><a name="2044"
+      > </a
+      ><a name="2045" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="2046"
+      > </a
+      ><a name="2047" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2048"
+      > </a
+      ><a name="2049" class="Symbol"
+      >(</a
+      ><a name="2050" href="hott.truncation.core.html#1989" class="Bound"
+      >Y</a
+      ><a name="2051"
+      > </a
+      ><a name="2052" href="hott.truncation.core.html#2028" class="Bound"
+      >x</a
+      ><a name="2053" class="Symbol"
+      >))</a
+      ><a name="2055"
+      > </a
+      ><a name="2056" class="Keyword"
+      >where</a
+      ><a name="2061"
+      >
+
+  </a
+      ><a name="2065" class="Keyword"
+      >private</a
+      ><a name="2072"
+      >
+    </a
+      ><a name="2077" href="hott.truncation.core.html#2077" class="Function"
+      >Z</a
+      ><a name="2078"
+      > </a
+      ><a name="2079" class="Symbol"
+      >:</a
+      ><a name="2080"
+      > </a
+      ><a name="2081" class="PrimitiveType"
+      >Set</a
+      ><a name="2084"
+      > </a
+      ><a name="2085" class="Symbol"
+      >_</a
+      ><a name="2086"
+      >
+    </a
+      ><a name="2091" href="hott.truncation.core.html#2077" class="Function"
+      >Z</a
+      ><a name="2092"
+      > </a
+      ><a name="2093" class="Symbol"
+      >=</a
+      ><a name="2094"
+      > </a
+      ><a name="2095" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="2096"
+      > </a
+      ><a name="2097" class="Symbol"
+      >(</a
+      ><a name="2098" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2103"
+      > </a
+      ><a name="2104" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2105"
+      > </a
+      ><a name="2106" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2107" class="Symbol"
+      >)</a
+      ><a name="2108"
+      > </a
+      ><a name="2109" href="hott.truncation.core.html#1989" class="Bound"
+      >Y</a
+      ><a name="2110"
+      >
+
+    </a
+      ><a name="2116" href="hott.truncation.core.html#2116" class="Function"
+      >hZ</a
+      ><a name="2118"
+      > </a
+      ><a name="2119" class="Symbol"
+      >:</a
+      ><a name="2120"
+      > </a
+      ><a name="2121" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="2122"
+      > </a
+      ><a name="2123" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2124"
+      > </a
+      ><a name="2125" href="hott.truncation.core.html#2077" class="Function"
+      >Z</a
+      ><a name="2126"
+      >
+    </a
+      ><a name="2131" href="hott.truncation.core.html#2116" class="Function"
+      >hZ</a
+      ><a name="2133"
+      > </a
+      ><a name="2134" class="Symbol"
+      >=</a
+      ><a name="2135"
+      > </a
+      ><a name="2136" href="hott.level.closure.extra.html#1075" class="Function"
+      >&#931;-level</a
+      ><a name="2143"
+      > </a
+      ><a name="2144" class="Symbol"
+      >(</a
+      ><a name="2145" href="hott.truncation.core.html#1094" class="Postulate"
+      >Trunc-level</a
+      ><a name="2156"
+      > </a
+      ><a name="2157" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2158" class="Symbol"
+      >)</a
+      ><a name="2159"
+      > </a
+      ><a name="2160" href="hott.truncation.core.html#2022" class="Bound"
+      >hY</a
+      ><a name="2162"
+      >
+
+    </a
+      ><a name="2168" href="hott.truncation.core.html#2168" class="Function"
+      >Sec&#8322;</a
+      ><a name="2172"
+      > </a
+      ><a name="2173" class="Symbol"
+      >:</a
+      ><a name="2174"
+      > </a
+      ><a name="2175" class="Symbol"
+      >&#8704;</a
+      ><a name="2176"
+      > </a
+      ><a name="2177" class="Symbol"
+      >{</a
+      ><a name="2178" href="hott.truncation.core.html#2178" class="Bound"
+      >k</a
+      ><a name="2179" class="Symbol"
+      >}{</a
+      ><a name="2181" href="hott.truncation.core.html#2181" class="Bound"
+      >A</a
+      ><a name="2182"
+      > </a
+      ><a name="2183" class="Symbol"
+      >:</a
+      ><a name="2184"
+      > </a
+      ><a name="2185" class="PrimitiveType"
+      >Set</a
+      ><a name="2188"
+      > </a
+      ><a name="2189" href="hott.truncation.core.html#2178" class="Bound"
+      >k</a
+      ><a name="2190" class="Symbol"
+      >}</a
+      ><a name="2191"
+      > </a
+      ><a name="2192" class="Symbol"
+      >&#8594;</a
+      ><a name="2193"
+      > </a
+      ><a name="2194" class="Symbol"
+      >(</a
+      ><a name="2195" href="hott.truncation.core.html#2181" class="Bound"
+      >A</a
+      ><a name="2196"
+      > </a
+      ><a name="2197" class="Symbol"
+      >&#8594;</a
+      ><a name="2198"
+      > </a
+      ><a name="2199" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2204"
+      > </a
+      ><a name="2205" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2206"
+      > </a
+      ><a name="2207" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2208" class="Symbol"
+      >)</a
+      ><a name="2209"
+      > </a
+      ><a name="2210" class="Symbol"
+      >&#8594;</a
+      ><a name="2211"
+      > </a
+      ><a name="2212" class="PrimitiveType"
+      >Set</a
+      ><a name="2215"
+      > </a
+      ><a name="2216" class="Symbol"
+      >_</a
+      ><a name="2217"
+      >
+    </a
+      ><a name="2222" href="hott.truncation.core.html#2168" class="Function"
+      >Sec&#8322;</a
+      ><a name="2226"
+      > </a
+      ><a name="2227" class="Symbol"
+      >{</a
+      ><a name="2228" class="Argument"
+      >A</a
+      ><a name="2229"
+      > </a
+      ><a name="2230" class="Symbol"
+      >=</a
+      ><a name="2231"
+      > </a
+      ><a name="2232" href="hott.truncation.core.html#2232" class="Bound"
+      >A</a
+      ><a name="2233" class="Symbol"
+      >}</a
+      ><a name="2234"
+      > </a
+      ><a name="2235" href="hott.truncation.core.html#2235" class="Bound"
+      >r</a
+      ><a name="2236"
+      > </a
+      ><a name="2237" class="Symbol"
+      >=</a
+      ><a name="2238"
+      > </a
+      ><a name="2239" class="Symbol"
+      >(</a
+      ><a name="2240" href="hott.truncation.core.html#2240" class="Bound"
+      >x</a
+      ><a name="2241"
+      > </a
+      ><a name="2242" class="Symbol"
+      >:</a
+      ><a name="2243"
+      > </a
+      ><a name="2244" href="hott.truncation.core.html#2232" class="Bound"
+      >A</a
+      ><a name="2245" class="Symbol"
+      >)</a
+      ><a name="2246"
+      > </a
+      ><a name="2247" class="Symbol"
+      >&#8594;</a
+      ><a name="2248"
+      > </a
+      ><a name="2249" href="hott.truncation.core.html#1989" class="Bound"
+      >Y</a
+      ><a name="2250"
+      > </a
+      ><a name="2251" class="Symbol"
+      >(</a
+      ><a name="2252" href="hott.truncation.core.html#2235" class="Bound"
+      >r</a
+      ><a name="2253"
+      > </a
+      ><a name="2254" href="hott.truncation.core.html#2240" class="Bound"
+      >x</a
+      ><a name="2255" class="Symbol"
+      >)</a
+      ><a name="2256"
+      >
+
+    </a
+      ><a name="2262" href="hott.truncation.core.html#2262" class="Function"
+      >Sec</a
+      ><a name="2265"
+      > </a
+      ><a name="2266" class="Symbol"
+      >:</a
+      ><a name="2267"
+      > </a
+      ><a name="2268" class="Symbol"
+      >&#8704;</a
+      ><a name="2269"
+      > </a
+      ><a name="2270" class="Symbol"
+      >{</a
+      ><a name="2271" href="hott.truncation.core.html#2271" class="Bound"
+      >k</a
+      ><a name="2272" class="Symbol"
+      >}</a
+      ><a name="2273"
+      > </a
+      ><a name="2274" class="Symbol"
+      >&#8594;</a
+      ><a name="2275"
+      > </a
+      ><a name="2276" class="PrimitiveType"
+      >Set</a
+      ><a name="2279"
+      > </a
+      ><a name="2280" href="hott.truncation.core.html#2271" class="Bound"
+      >k</a
+      ><a name="2281"
+      > </a
+      ><a name="2282" class="Symbol"
+      >&#8594;</a
+      ><a name="2283"
+      > </a
+      ><a name="2284" class="PrimitiveType"
+      >Set</a
+      ><a name="2287"
+      > </a
+      ><a name="2288" class="Symbol"
+      >_</a
+      ><a name="2289"
+      >
+    </a
+      ><a name="2294" href="hott.truncation.core.html#2262" class="Function"
+      >Sec</a
+      ><a name="2297"
+      > </a
+      ><a name="2298" href="hott.truncation.core.html#2298" class="Bound"
+      >A</a
+      ><a name="2299"
+      > </a
+      ><a name="2300" class="Symbol"
+      >=</a
+      ><a name="2301"
+      > </a
+      ><a name="2302" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="2303"
+      > </a
+      ><a name="2304" class="Symbol"
+      >(</a
+      ><a name="2305" href="hott.truncation.core.html#2298" class="Bound"
+      >A</a
+      ><a name="2306"
+      > </a
+      ><a name="2307" class="Symbol"
+      >&#8594;</a
+      ><a name="2308"
+      > </a
+      ><a name="2309" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2314"
+      > </a
+      ><a name="2315" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2316"
+      > </a
+      ><a name="2317" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2318" class="Symbol"
+      >)</a
+      ><a name="2319"
+      > </a
+      ><a name="2320" href="hott.truncation.core.html#2168" class="Function"
+      >Sec&#8322;</a
+      ><a name="2324"
+      >
+
+    </a
+      ><a name="2330" href="hott.truncation.core.html#2330" class="Function"
+      >&#964;</a
+      ><a name="2331"
+      > </a
+      ><a name="2332" class="Symbol"
+      >:</a
+      ><a name="2333"
+      > </a
+      ><a name="2334" href="hott.truncation.core.html#2262" class="Function"
+      >Sec</a
+      ><a name="2337"
+      > </a
+      ><a name="2338" class="Symbol"
+      >(</a
+      ><a name="2339" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2344"
+      > </a
+      ><a name="2345" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2346"
+      > </a
+      ><a name="2347" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2348" class="Symbol"
+      >)</a
+      ><a name="2349"
+      > </a
+      ><a name="2350" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="2351"
+      > </a
+      ><a name="2352" href="hott.truncation.core.html#2262" class="Function"
+      >Sec</a
+      ><a name="2355"
+      > </a
+      ><a name="2356" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2357"
+      >
+    </a
+      ><a name="2362" href="hott.truncation.core.html#2330" class="Function"
+      >&#964;</a
+      ><a name="2363"
+      > </a
+      ><a name="2364" class="Symbol"
+      >=</a
+      ><a name="2365"
+      > </a
+      ><a name="2366" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="2370"
+      > </a
+      ><a name="2371" href="function.isomorphism.utils.html#5695" class="Function"
+      >&#928;&#931;-swap-iso</a
+      ><a name="2382"
+      > </a
+      ><a name="2383" href="function.isomorphism.core.html#1555" class="Function Operator"
+      >&#183;&#8773;</a
+      ><a name="2385"
+      > </a
+      ><a name="2386" href="hott.truncation.core.html#1414" class="Function"
+      >Trunc-elim-iso</a
+      ><a name="2400"
+      > </a
+      ><a name="2401" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2402"
+      > </a
+      ><a name="2403" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2404"
+      > </a
+      ><a name="2405" href="hott.truncation.core.html#2077" class="Function"
+      >Z</a
+      ><a name="2406"
+      > </a
+      ><a name="2407" href="hott.truncation.core.html#2116" class="Function"
+      >hZ</a
+      ><a name="2409"
+      > </a
+      ><a name="2410" href="function.isomorphism.core.html#1555" class="Function Operator"
+      >&#183;&#8773;</a
+      ><a name="2412"
+      > </a
+      ><a name="2413" href="function.isomorphism.utils.html#5695" class="Function"
+      >&#928;&#931;-swap-iso</a
+      ><a name="2424"
+      >
+
+    </a
+      ><a name="2430" href="hott.truncation.core.html#2430" class="Function"
+      >&#968;</a
+      ><a name="2431"
+      > </a
+      ><a name="2432" class="Symbol"
+      >:</a
+      ><a name="2433"
+      > </a
+      ><a name="2434" class="Symbol"
+      >(</a
+      ><a name="2435" href="hott.truncation.core.html#2435" class="Bound"
+      >r</a
+      ><a name="2436"
+      > </a
+      ><a name="2437" class="Symbol"
+      >:</a
+      ><a name="2438"
+      > </a
+      ><a name="2439" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2444"
+      > </a
+      ><a name="2445" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2446"
+      > </a
+      ><a name="2447" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2448"
+      > </a
+      ><a name="2449" class="Symbol"
+      >&#8594;</a
+      ><a name="2450"
+      > </a
+      ><a name="2451" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2456"
+      > </a
+      ><a name="2457" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2458"
+      > </a
+      ><a name="2459" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2460" class="Symbol"
+      >)</a
+      ><a name="2461"
+      >
+      </a
+      ><a name="2468" class="Symbol"
+      >&#8594;</a
+      ><a name="2469"
+      > </a
+      ><a name="2470" class="Symbol"
+      >(</a
+      ><a name="2471" href="hott.truncation.core.html#2168" class="Function"
+      >Sec&#8322;</a
+      ><a name="2475"
+      > </a
+      ><a name="2476" href="hott.truncation.core.html#2435" class="Bound"
+      >r</a
+      ><a name="2477" class="Symbol"
+      >)</a
+      ><a name="2478"
+      > </a
+      ><a name="2479" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="2480"
+      > </a
+      ><a name="2481" href="hott.truncation.core.html#2168" class="Function"
+      >Sec&#8322;</a
+      ><a name="2485"
+      > </a
+      ><a name="2486" class="Symbol"
+      >(</a
+      ><a name="2487" href="hott.truncation.core.html#2435" class="Bound"
+      >r</a
+      ><a name="2488"
+      > </a
+      ><a name="2489" href="function.core.html#912" class="Function Operator"
+      >&#8728;</a
+      ><a name="2490"
+      > </a
+      ><a name="2491" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >[_]</a
+      ><a name="2494" class="Symbol"
+      >)</a
+      ><a name="2495"
+      >
+    </a
+      ><a name="2500" href="hott.truncation.core.html#2430" class="Function"
+      >&#968;</a
+      ><a name="2501"
+      > </a
+      ><a name="2502" class="Symbol"
+      >=</a
+      ><a name="2503"
+      > </a
+      ><a name="2504" href="hott.truncation.core.html#934" class="Function"
+      >fib-equiv</a
+      ><a name="2513"
+      > </a
+      ><a name="2514" class="Symbol"
+      >{</a
+      ><a name="2515" class="Argument"
+      >A</a
+      ><a name="2516"
+      > </a
+      ><a name="2517" class="Symbol"
+      >=</a
+      ><a name="2518"
+      > </a
+      ><a name="2519" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2524"
+      > </a
+      ><a name="2525" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2526"
+      > </a
+      ><a name="2527" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2528"
+      > </a
+      ><a name="2529" class="Symbol"
+      >&#8594;</a
+      ><a name="2530"
+      > </a
+      ><a name="2531" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2536"
+      > </a
+      ><a name="2537" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2538"
+      > </a
+      ><a name="2539" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2540" class="Symbol"
+      >}{</a
+      ><a name="2542" class="Argument"
+      >A'</a
+      ><a name="2544"
+      > </a
+      ><a name="2545" class="Symbol"
+      >=</a
+      ><a name="2546"
+      > </a
+      ><a name="2547" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2548"
+      > </a
+      ><a name="2549" class="Symbol"
+      >&#8594;</a
+      ><a name="2550"
+      > </a
+      ><a name="2551" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2556"
+      > </a
+      ><a name="2557" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2558"
+      > </a
+      ><a name="2559" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2560" class="Symbol"
+      >}{</a
+      ><a name="2562" class="Argument"
+      >B</a
+      ><a name="2563"
+      > </a
+      ><a name="2564" class="Symbol"
+      >=</a
+      ><a name="2565"
+      > </a
+      ><a name="2566" href="hott.truncation.core.html#2168" class="Function"
+      >Sec&#8322;</a
+      ><a name="2570" class="Symbol"
+      >}</a
+      ><a name="2571"
+      > </a
+      ><a name="2572" class="Symbol"
+      >{</a
+      ><a name="2573" class="Argument"
+      >B'</a
+      ><a name="2575"
+      > </a
+      ><a name="2576" class="Symbol"
+      >=</a
+      ><a name="2577"
+      > </a
+      ><a name="2578" href="hott.truncation.core.html#2168" class="Function"
+      >Sec&#8322;</a
+      ><a name="2582" class="Symbol"
+      >}</a
+      ><a name="2583"
+      >
+        </a
+      ><a name="2592" class="Symbol"
+      >(</a
+      ><a name="2593" href="hott.truncation.core.html#1191" class="Function"
+      >Trunc-ext</a
+      ><a name="2602"
+      > </a
+      ><a name="2603" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2604"
+      > </a
+      ><a name="2605" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2606"
+      > </a
+      ><a name="2607" class="Symbol"
+      >(</a
+      ><a name="2608" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2613"
+      > </a
+      ><a name="2614" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2615"
+      > </a
+      ><a name="2616" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2617" class="Symbol"
+      >))</a
+      ><a name="2619"
+      > </a
+      ><a name="2620" class="Symbol"
+      >(&#955;</a
+      ><a name="2622"
+      > </a
+      ><a name="2623" href="hott.truncation.core.html#2623" class="Bound"
+      >r</a
+      ><a name="2624"
+      > </a
+      ><a name="2625" href="hott.truncation.core.html#2625" class="Bound"
+      >g</a
+      ><a name="2626"
+      > </a
+      ><a name="2627" href="hott.truncation.core.html#2627" class="Bound"
+      >x</a
+      ><a name="2628"
+      > </a
+      ><a name="2629" class="Symbol"
+      >&#8594;</a
+      ><a name="2630"
+      > </a
+      ><a name="2631" href="hott.truncation.core.html#2625" class="Bound"
+      >g</a
+      ><a name="2632"
+      > </a
+      ><a name="2633" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >[</a
+      ><a name="2634"
+      > </a
+      ><a name="2635" href="hott.truncation.core.html#2627" class="Bound"
+      >x</a
+      ><a name="2636"
+      > </a
+      ><a name="2637" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >]</a
+      ><a name="2638" class="Symbol"
+      >)</a
+      ><a name="2639"
+      >
+        </a
+      ><a name="2648" class="Symbol"
+      >(</a
+      ><a name="2649" href="hott.truncation.core.html#1315" class="Postulate"
+      >Trunc-univ</a
+      ><a name="2659"
+      > </a
+      ><a name="2660" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2661"
+      > </a
+      ><a name="2662" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2663"
+      > </a
+      ><a name="2664" class="Symbol"
+      >(</a
+      ><a name="2665" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2670"
+      > </a
+      ><a name="2671" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2672"
+      > </a
+      ><a name="2673" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2674" class="Symbol"
+      >)</a
+      ><a name="2675"
+      > </a
+      ><a name="2676" class="Symbol"
+      >(</a
+      ><a name="2677" href="hott.truncation.core.html#1094" class="Postulate"
+      >Trunc-level</a
+      ><a name="2688"
+      > </a
+      ><a name="2689" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2690" class="Symbol"
+      >))</a
+      ><a name="2692"
+      >
+        </a
+      ><a name="2701" class="Symbol"
+      >(</a
+      ><a name="2702" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="2707"
+      > </a
+      ><a name="2708" class="Symbol"
+      >(</a
+      ><a name="2709" href="hott.equivalence.alternative.html#3991" class="Function"
+      >&#8773;&#8658;&#8776;</a
+      ><a name="2712"
+      > </a
+      ><a name="2713" href="hott.truncation.core.html#2330" class="Function"
+      >&#964;</a
+      ><a name="2714" class="Symbol"
+      >))</a
+      ><a name="2716"
+      >
+
+  </a
+      ><a name="2720" href="hott.truncation.core.html#2720" class="Function"
+      >Trunc-dep-iso</a
+      ><a name="2733"
+      > </a
+      ><a name="2734" class="Symbol"
+      >:</a
+      ><a name="2735"
+      > </a
+      ><a name="2736" href="hott.truncation.core.html#2168" class="Function"
+      >Sec&#8322;</a
+      ><a name="2740"
+      > </a
+      ><a name="2741" class="Symbol"
+      >(&#955;</a
+      ><a name="2743"
+      > </a
+      ><a name="2744" href="hott.truncation.core.html#2744" class="Bound"
+      >x</a
+      ><a name="2745"
+      > </a
+      ><a name="2746" class="Symbol"
+      >&#8594;</a
+      ><a name="2747"
+      > </a
+      ><a name="2748" href="hott.truncation.core.html#2744" class="Bound"
+      >x</a
+      ><a name="2749" class="Symbol"
+      >)</a
+      ><a name="2750"
+      > </a
+      ><a name="2751" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="2752"
+      > </a
+      ><a name="2753" href="hott.truncation.core.html#2168" class="Function"
+      >Sec&#8322;</a
+      ><a name="2757"
+      > </a
+      ><a name="2758" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >[_]</a
+      ><a name="2761"
+      >
+  </a
+      ><a name="2764" href="hott.truncation.core.html#2720" class="Function"
+      >Trunc-dep-iso</a
+      ><a name="2777"
+      > </a
+      ><a name="2778" class="Symbol"
+      >=</a
+      ><a name="2779"
+      > </a
+      ><a name="2780" href="hott.truncation.core.html#2430" class="Function"
+      >&#968;</a
+      ><a name="2781"
+      > </a
+      ><a name="2782" class="Symbol"
+      >(&#955;</a
+      ><a name="2784"
+      > </a
+      ><a name="2785" href="hott.truncation.core.html#2785" class="Bound"
+      >x</a
+      ><a name="2786"
+      > </a
+      ><a name="2787" class="Symbol"
+      >&#8594;</a
+      ><a name="2788"
+      > </a
+      ><a name="2789" href="hott.truncation.core.html#2785" class="Bound"
+      >x</a
+      ><a name="2790" class="Symbol"
+      >)</a
+      ><a name="2791"
+      >
+
+  </a
+      ><a name="2795" href="hott.truncation.core.html#2795" class="Function"
+      >Trunc-dep-elim</a
+      ><a name="2809"
+      > </a
+      ><a name="2810" class="Symbol"
+      >:</a
+      ><a name="2811"
+      > </a
+      ><a name="2812" class="Symbol"
+      >((</a
+      ><a name="2814" href="hott.truncation.core.html#2814" class="Bound"
+      >x</a
+      ><a name="2815"
+      > </a
+      ><a name="2816" class="Symbol"
+      >:</a
+      ><a name="2817"
+      > </a
+      ><a name="2818" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2819" class="Symbol"
+      >)</a
+      ><a name="2820"
+      > </a
+      ><a name="2821" class="Symbol"
+      >&#8594;</a
+      ><a name="2822"
+      > </a
+      ><a name="2823" href="hott.truncation.core.html#1989" class="Bound"
+      >Y</a
+      ><a name="2824"
+      > </a
+      ><a name="2825" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >[</a
+      ><a name="2826"
+      > </a
+      ><a name="2827" href="hott.truncation.core.html#2814" class="Bound"
+      >x</a
+      ><a name="2828"
+      > </a
+      ><a name="2829" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >]</a
+      ><a name="2830" class="Symbol"
+      >)</a
+      ><a name="2831"
+      > </a
+      ><a name="2832" class="Symbol"
+      >&#8594;</a
+      ><a name="2833"
+      > </a
+      ><a name="2834" class="Symbol"
+      >(</a
+      ><a name="2835" href="hott.truncation.core.html#2835" class="Bound"
+      >x</a
+      ><a name="2836"
+      > </a
+      ><a name="2837" class="Symbol"
+      >:</a
+      ><a name="2838"
+      > </a
+      ><a name="2839" href="hott.truncation.core.html#1058" class="Postulate"
+      >Trunc</a
+      ><a name="2844"
+      > </a
+      ><a name="2845" href="hott.truncation.core.html#1974" class="Bound"
+      >n</a
+      ><a name="2846"
+      > </a
+      ><a name="2847" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2848" class="Symbol"
+      >)</a
+      ><a name="2849"
+      > </a
+      ><a name="2850" class="Symbol"
+      >&#8594;</a
+      ><a name="2851"
+      > </a
+      ><a name="2852" href="hott.truncation.core.html#1989" class="Bound"
+      >Y</a
+      ><a name="2853"
+      > </a
+      ><a name="2854" href="hott.truncation.core.html#2835" class="Bound"
+      >x</a
+      ><a name="2855"
+      >
+  </a
+      ><a name="2858" href="hott.truncation.core.html#2795" class="Function"
+      >Trunc-dep-elim</a
+      ><a name="2872"
+      > </a
+      ><a name="2873" class="Symbol"
+      >=</a
+      ><a name="2874"
+      > </a
+      ><a name="2875" href="function.isomorphism.core.html#452" class="Function"
+      >invert</a
+      ><a name="2881"
+      > </a
+      ><a name="2882" href="hott.truncation.core.html#2720" class="Function"
+      >Trunc-dep-iso</a
+      ><a name="2895"
+      >
+
+  </a
+      ><a name="2899" href="hott.truncation.core.html#2899" class="Function"
+      >Trunc-dep-elim-&#946;</a
+      ><a name="2915"
+      > </a
+      ><a name="2916" class="Symbol"
+      >:</a
+      ><a name="2917"
+      > </a
+      ><a name="2918" class="Symbol"
+      >(</a
+      ><a name="2919" href="hott.truncation.core.html#2919" class="Bound"
+      >d</a
+      ><a name="2920"
+      > </a
+      ><a name="2921" class="Symbol"
+      >:</a
+      ><a name="2922"
+      > </a
+      ><a name="2923" class="Symbol"
+      >((</a
+      ><a name="2925" href="hott.truncation.core.html#2925" class="Bound"
+      >x</a
+      ><a name="2926"
+      > </a
+      ><a name="2927" class="Symbol"
+      >:</a
+      ><a name="2928"
+      > </a
+      ><a name="2929" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2930" class="Symbol"
+      >)</a
+      ><a name="2931"
+      > </a
+      ><a name="2932" class="Symbol"
+      >&#8594;</a
+      ><a name="2933"
+      > </a
+      ><a name="2934" href="hott.truncation.core.html#1989" class="Bound"
+      >Y</a
+      ><a name="2935"
+      > </a
+      ><a name="2936" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >[</a
+      ><a name="2937"
+      > </a
+      ><a name="2938" href="hott.truncation.core.html#2925" class="Bound"
+      >x</a
+      ><a name="2939"
+      > </a
+      ><a name="2940" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >]</a
+      ><a name="2941" class="Symbol"
+      >))</a
+      ><a name="2943"
+      >
+                   </a
+      ><a name="2963" class="Symbol"
+      >&#8594;</a
+      ><a name="2964"
+      > </a
+      ><a name="2965" class="Symbol"
+      >(</a
+      ><a name="2966" href="hott.truncation.core.html#2966" class="Bound"
+      >x</a
+      ><a name="2967"
+      > </a
+      ><a name="2968" class="Symbol"
+      >:</a
+      ><a name="2969"
+      > </a
+      ><a name="2970" href="hott.truncation.core.html#1977" class="Bound"
+      >X</a
+      ><a name="2971" class="Symbol"
+      >)</a
+      ><a name="2972"
+      > </a
+      ><a name="2973" class="Symbol"
+      >&#8594;</a
+      ><a name="2974"
+      > </a
+      ><a name="2975" href="hott.truncation.core.html#2795" class="Function"
+      >Trunc-dep-elim</a
+      ><a name="2989"
+      > </a
+      ><a name="2990" href="hott.truncation.core.html#2919" class="Bound"
+      >d</a
+      ><a name="2991"
+      > </a
+      ><a name="2992" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >[</a
+      ><a name="2993"
+      > </a
+      ><a name="2994" href="hott.truncation.core.html#2966" class="Bound"
+      >x</a
+      ><a name="2995"
+      > </a
+      ><a name="2996" href="hott.truncation.core.html#1148" class="Postulate Operator"
+      >]</a
+      ><a name="2997"
+      > </a
+      ><a name="2998" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="2999"
+      > </a
+      ><a name="3000" href="hott.truncation.core.html#2919" class="Bound"
+      >d</a
+      ><a name="3001"
+      > </a
+      ><a name="3002" href="hott.truncation.core.html#2966" class="Bound"
+      >x</a
+      ><a name="3003"
+      >
+  </a
+      ><a name="3006" href="hott.truncation.core.html#2899" class="Function"
+      >Trunc-dep-elim-&#946;</a
+      ><a name="3022"
+      > </a
+      ><a name="3023" href="hott.truncation.core.html#3023" class="Bound"
+      >d</a
+      ><a name="3024"
+      > </a
+      ><a name="3025" class="Symbol"
+      >=</a
+      ><a name="3026"
+      > </a
+      ><a name="3027" href="function.extensionality.core.html#705" class="Function"
+      >funext-inv</a
+      ><a name="3037"
+      > </a
+      ><a name="3038" class="Symbol"
+      >(</a
+      ><a name="3039" href="function.isomorphism.core.html#506" class="Field"
+      >_&#8773;_.iso&#8322;</a
+      ><a name="3047"
+      > </a
+      ><a name="3048" href="hott.truncation.core.html#2720" class="Function"
+      >Trunc-dep-iso</a
+      ><a name="3061"
+      > </a
+      ><a name="3062" href="hott.truncation.core.html#3023" class="Bound"
+      >d</a
+      ><a name="3063" class="Symbol"
+      >)</a
+      ><a name="3064"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

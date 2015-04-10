@@ -1,0 +1,1238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >hott.equivalence.core</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="hott.equivalence.core.html#1" class="Module"
+      >hott.equivalence.core</a
+      ><a name="57"
+      > </a
+      ><a name="58" class="Keyword"
+      >where</a
+      ><a name="63"
+      >
+
+</a
+      ><a name="65" class="Keyword"
+      >open</a
+      ><a name="69"
+      > </a
+      ><a name="70" class="Keyword"
+      >import</a
+      ><a name="76"
+      > </a
+      ><a name="77" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="90"
+      > </a
+      ><a name="91" class="Keyword"
+      >using</a
+      ><a name="96"
+      > </a
+      ><a name="97" class="Symbol"
+      >(</a
+      ><a name="98"
+      >_&#8801;_ </a
+      ><a name="102" class="Symbol"
+      >;</a
+      ><a name="103"
+      > refl </a
+      ><a name="109" class="Symbol"
+      >;</a
+      ><a name="110"
+      > ap</a
+      ><a name="113" class="Symbol"
+      >)</a
+      ><a name="114"
+      >
+</a
+      ><a name="115" class="Keyword"
+      >open</a
+      ><a name="119"
+      > </a
+      ><a name="120" class="Keyword"
+      >import</a
+      ><a name="126"
+      > </a
+      ><a name="127" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="130"
+      > </a
+      ><a name="131" class="Keyword"
+      >using</a
+      ><a name="136"
+      > </a
+      ><a name="137" class="Symbol"
+      >(</a
+      ><a name="138"
+      >&#931; </a
+      ><a name="140" class="Symbol"
+      >;</a
+      ><a name="141"
+      > proj&#8321; </a
+      ><a name="148" class="Symbol"
+      >;</a
+      ><a name="149"
+      > proj&#8322; </a
+      ><a name="156" class="Symbol"
+      >;</a
+      ><a name="157"
+      > _,_</a
+      ><a name="161" class="Symbol"
+      >)</a
+      ><a name="162"
+      >
+</a
+      ><a name="163" class="Keyword"
+      >open</a
+      ><a name="167"
+      > </a
+      ><a name="168" class="Keyword"
+      >import</a
+      ><a name="174"
+      > </a
+      ><a name="175" href="level.html#1" class="Module"
+      >level</a
+      ><a name="180"
+      > </a
+      ><a name="181" class="Keyword"
+      >using</a
+      ><a name="186"
+      > </a
+      ><a name="187" class="Symbol"
+      >(</a
+      ><a name="188"
+      >_&#8852;_</a
+      ><a name="191" class="Symbol"
+      >)</a
+      ><a name="192"
+      >
+</a
+      ><a name="193" class="Keyword"
+      >open</a
+      ><a name="197"
+      > </a
+      ><a name="198" class="Keyword"
+      >import</a
+      ><a name="204"
+      > </a
+      ><a name="205" href="hott.level.core.html#1" class="Module"
+      >hott.level.core</a
+      ><a name="220"
+      > </a
+      ><a name="221" class="Keyword"
+      >using</a
+      ><a name="226"
+      > </a
+      ><a name="227" class="Symbol"
+      >(</a
+      ><a name="228"
+      >contr </a
+      ><a name="234" class="Symbol"
+      >;</a
+      ><a name="235"
+      > prop </a
+      ><a name="241" class="Symbol"
+      >;</a
+      ><a name="242"
+      > _&#8315;&#185;_</a
+      ><a name="247" class="Symbol"
+      >)</a
+      ><a name="248"
+      >
+</a
+      ><a name="249" class="Keyword"
+      >open</a
+      ><a name="253"
+      > </a
+      ><a name="254" class="Keyword"
+      >import</a
+      ><a name="260"
+      > </a
+      ><a name="261" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="274"
+      > </a
+      ><a name="275" class="Keyword"
+      >using</a
+      ><a name="280"
+      > </a
+      ><a name="281" class="Symbol"
+      >(</a
+      ><a name="282"
+      >_$_</a
+      ><a name="285" class="Symbol"
+      >)</a
+      ><a name="286"
+      >
+</a
+      ><a name="287" class="Keyword"
+      >open</a
+      ><a name="291"
+      > </a
+      ><a name="292" class="Keyword"
+      >import</a
+      ><a name="298"
+      > </a
+      ><a name="299" href="function.isomorphism.core.html#1" class="Module"
+      >function.isomorphism.core</a
+      ><a name="324"
+      > </a
+      ><a name="325" class="Keyword"
+      >using</a
+      ><a name="330"
+      > </a
+      ><a name="331" class="Symbol"
+      >(</a
+      ><a name="332"
+      >_&#8773;_ </a
+      ><a name="336" class="Symbol"
+      >;</a
+      ><a name="337"
+      > iso</a
+      ><a name="341" class="Symbol"
+      >)</a
+      ><a name="342"
+      >
+
+</a
+      ><a name="344" class="Comment"
+      >-- a function is a weak equivalence, if the inverse images of all points are contractible</a
+      ><a name="433"
+      >
+</a
+      ><a name="434" href="hott.equivalence.core.html#434" class="Function"
+      >weak-equiv</a
+      ><a name="444"
+      > </a
+      ><a name="445" class="Symbol"
+      >:</a
+      ><a name="446"
+      > </a
+      ><a name="447" class="Symbol"
+      >&#8704;</a
+      ><a name="448"
+      > </a
+      ><a name="449" class="Symbol"
+      >{</a
+      ><a name="450" href="hott.equivalence.core.html#450" class="Bound"
+      >i</a
+      ><a name="451"
+      > </a
+      ><a name="452" href="hott.equivalence.core.html#452" class="Bound"
+      >k</a
+      ><a name="453" class="Symbol"
+      >}</a
+      ><a name="454"
+      > </a
+      ><a name="455" class="Symbol"
+      >{</a
+      ><a name="456" href="hott.equivalence.core.html#456" class="Bound"
+      >X</a
+      ><a name="457"
+      > </a
+      ><a name="458" class="Symbol"
+      >:</a
+      ><a name="459"
+      > </a
+      ><a name="460" class="PrimitiveType"
+      >Set</a
+      ><a name="463"
+      > </a
+      ><a name="464" href="hott.equivalence.core.html#450" class="Bound"
+      >i</a
+      ><a name="465" class="Symbol"
+      >}</a
+      ><a name="466"
+      > </a
+      ><a name="467" class="Symbol"
+      >{</a
+      ><a name="468" href="hott.equivalence.core.html#468" class="Bound"
+      >Y</a
+      ><a name="469"
+      > </a
+      ><a name="470" class="Symbol"
+      >:</a
+      ><a name="471"
+      > </a
+      ><a name="472" class="PrimitiveType"
+      >Set</a
+      ><a name="475"
+      > </a
+      ><a name="476" href="hott.equivalence.core.html#452" class="Bound"
+      >k</a
+      ><a name="477" class="Symbol"
+      >}</a
+      ><a name="478"
+      > </a
+      ><a name="479" class="Symbol"
+      >(</a
+      ><a name="480" href="hott.equivalence.core.html#480" class="Bound"
+      >f</a
+      ><a name="481"
+      > </a
+      ><a name="482" class="Symbol"
+      >:</a
+      ><a name="483"
+      > </a
+      ><a name="484" href="hott.equivalence.core.html#456" class="Bound"
+      >X</a
+      ><a name="485"
+      > </a
+      ><a name="486" class="Symbol"
+      >&#8594;</a
+      ><a name="487"
+      > </a
+      ><a name="488" href="hott.equivalence.core.html#468" class="Bound"
+      >Y</a
+      ><a name="489" class="Symbol"
+      >)</a
+      ><a name="490"
+      > </a
+      ><a name="491" class="Symbol"
+      >&#8594;</a
+      ><a name="492"
+      > </a
+      ><a name="493" class="PrimitiveType"
+      >Set</a
+      ><a name="496"
+      > </a
+      ><a name="497" class="Symbol"
+      >(</a
+      ><a name="498" href="hott.equivalence.core.html#450" class="Bound"
+      >i</a
+      ><a name="499"
+      > </a
+      ><a name="500" href="Agda.Primitive.html#626" class="Primitive Operator"
+      >&#8852;</a
+      ><a name="501"
+      > </a
+      ><a name="502" href="hott.equivalence.core.html#452" class="Bound"
+      >k</a
+      ><a name="503" class="Symbol"
+      >)</a
+      ><a name="504"
+      >
+</a
+      ><a name="505" href="hott.equivalence.core.html#434" class="Function"
+      >weak-equiv</a
+      ><a name="515"
+      > </a
+      ><a name="516" class="Symbol"
+      >{_}</a
+      ><a name="519"
+      > </a
+      ><a name="520" class="Symbol"
+      >{_}</a
+      ><a name="523"
+      > </a
+      ><a name="524" class="Symbol"
+      >{</a
+      ><a name="525" href="hott.equivalence.core.html#525" class="Bound"
+      >X</a
+      ><a name="526" class="Symbol"
+      >}</a
+      ><a name="527"
+      > </a
+      ><a name="528" class="Symbol"
+      >{</a
+      ><a name="529" href="hott.equivalence.core.html#529" class="Bound"
+      >Y</a
+      ><a name="530" class="Symbol"
+      >}</a
+      ><a name="531"
+      > </a
+      ><a name="532" href="hott.equivalence.core.html#532" class="Bound"
+      >f</a
+      ><a name="533"
+      > </a
+      ><a name="534" class="Symbol"
+      >=</a
+      ><a name="535"
+      > </a
+      ><a name="536" class="Symbol"
+      >(</a
+      ><a name="537" href="hott.equivalence.core.html#537" class="Bound"
+      >y</a
+      ><a name="538"
+      > </a
+      ><a name="539" class="Symbol"
+      >:</a
+      ><a name="540"
+      > </a
+      ><a name="541" href="hott.equivalence.core.html#529" class="Bound"
+      >Y</a
+      ><a name="542" class="Symbol"
+      >)</a
+      ><a name="543"
+      > </a
+      ><a name="544" class="Symbol"
+      >&#8594;</a
+      ><a name="545"
+      > </a
+      ><a name="546" href="hott.level.core.html#284" class="Function"
+      >contr</a
+      ><a name="551"
+      > </a
+      ><a name="552" href="function.core.html#400" class="Function Operator"
+      >$</a
+      ><a name="553"
+      > </a
+      ><a name="554" href="hott.equivalence.core.html#532" class="Bound"
+      >f</a
+      ><a name="555"
+      > </a
+      ><a name="556" href="hott.level.core.html#1166" class="Function Operator"
+      >&#8315;&#185;</a
+      ><a name="558"
+      > </a
+      ><a name="559" href="hott.equivalence.core.html#537" class="Bound"
+      >y</a
+      ><a name="560"
+      >
+
+</a
+      ><a name="562" class="Comment"
+      >-- weak equivalences</a
+      ><a name="582"
+      >
+</a
+      ><a name="583" href="hott.equivalence.core.html#583" class="Function Operator"
+      >_&#8776;_</a
+      ><a name="586"
+      > </a
+      ><a name="587" class="Symbol"
+      >:</a
+      ><a name="588"
+      > </a
+      ><a name="589" class="Symbol"
+      >&#8704;</a
+      ><a name="590"
+      > </a
+      ><a name="591" class="Symbol"
+      >{</a
+      ><a name="592" href="hott.equivalence.core.html#592" class="Bound"
+      >i</a
+      ><a name="593"
+      > </a
+      ><a name="594" href="hott.equivalence.core.html#594" class="Bound"
+      >j</a
+      ><a name="595" class="Symbol"
+      >}</a
+      ><a name="596"
+      > </a
+      ><a name="597" class="Symbol"
+      >(</a
+      ><a name="598" href="hott.equivalence.core.html#598" class="Bound"
+      >X</a
+      ><a name="599"
+      > </a
+      ><a name="600" class="Symbol"
+      >:</a
+      ><a name="601"
+      > </a
+      ><a name="602" class="PrimitiveType"
+      >Set</a
+      ><a name="605"
+      > </a
+      ><a name="606" href="hott.equivalence.core.html#592" class="Bound"
+      >i</a
+      ><a name="607" class="Symbol"
+      >)</a
+      ><a name="608"
+      > </a
+      ><a name="609" class="Symbol"
+      >(</a
+      ><a name="610" href="hott.equivalence.core.html#610" class="Bound"
+      >Y</a
+      ><a name="611"
+      > </a
+      ><a name="612" class="Symbol"
+      >:</a
+      ><a name="613"
+      > </a
+      ><a name="614" class="PrimitiveType"
+      >Set</a
+      ><a name="617"
+      > </a
+      ><a name="618" href="hott.equivalence.core.html#594" class="Bound"
+      >j</a
+      ><a name="619" class="Symbol"
+      >)</a
+      ><a name="620"
+      > </a
+      ><a name="621" class="Symbol"
+      >&#8594;</a
+      ><a name="622"
+      > </a
+      ><a name="623" class="PrimitiveType"
+      >Set</a
+      ><a name="626"
+      > </a
+      ><a name="627" class="Symbol"
+      >_</a
+      ><a name="628"
+      >
+</a
+      ><a name="629" href="hott.equivalence.core.html#629" class="Bound"
+      >X</a
+      ><a name="630"
+      > </a
+      ><a name="631" href="hott.equivalence.core.html#583" class="Function Operator"
+      >&#8776;</a
+      ><a name="632"
+      > </a
+      ><a name="633" href="hott.equivalence.core.html#633" class="Bound"
+      >Y</a
+      ><a name="634"
+      > </a
+      ><a name="635" class="Symbol"
+      >=</a
+      ><a name="636"
+      > </a
+      ><a name="637" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="638"
+      > </a
+      ><a name="639" class="Symbol"
+      >(</a
+      ><a name="640" href="hott.equivalence.core.html#629" class="Bound"
+      >X</a
+      ><a name="641"
+      > </a
+      ><a name="642" class="Symbol"
+      >&#8594;</a
+      ><a name="643"
+      > </a
+      ><a name="644" href="hott.equivalence.core.html#633" class="Bound"
+      >Y</a
+      ><a name="645" class="Symbol"
+      >)</a
+      ><a name="646"
+      > </a
+      ><a name="647" class="Symbol"
+      >&#955;</a
+      ><a name="648"
+      > </a
+      ><a name="649" href="hott.equivalence.core.html#649" class="Bound"
+      >f</a
+      ><a name="650"
+      > </a
+      ><a name="651" class="Symbol"
+      >&#8594;</a
+      ><a name="652"
+      > </a
+      ><a name="653" href="hott.equivalence.core.html#434" class="Function"
+      >weak-equiv</a
+      ><a name="663"
+      > </a
+      ><a name="664" href="hott.equivalence.core.html#649" class="Bound"
+      >f</a
+      ><a name="665"
+      >
+
+</a
+      ><a name="667" href="hott.equivalence.core.html#667" class="Function"
+      >apply&#8776;</a
+      ><a name="673"
+      > </a
+      ><a name="674" class="Symbol"
+      >:</a
+      ><a name="675"
+      > </a
+      ><a name="676" class="Symbol"
+      >&#8704;</a
+      ><a name="677"
+      > </a
+      ><a name="678" class="Symbol"
+      >{</a
+      ><a name="679" href="hott.equivalence.core.html#679" class="Bound"
+      >i</a
+      ><a name="680"
+      > </a
+      ><a name="681" href="hott.equivalence.core.html#681" class="Bound"
+      >j</a
+      ><a name="682" class="Symbol"
+      >}</a
+      ><a name="683"
+      > </a
+      ><a name="684" class="Symbol"
+      >{</a
+      ><a name="685" href="hott.equivalence.core.html#685" class="Bound"
+      >X</a
+      ><a name="686"
+      > </a
+      ><a name="687" class="Symbol"
+      >:</a
+      ><a name="688"
+      > </a
+      ><a name="689" class="PrimitiveType"
+      >Set</a
+      ><a name="692"
+      > </a
+      ><a name="693" href="hott.equivalence.core.html#679" class="Bound"
+      >i</a
+      ><a name="694" class="Symbol"
+      >}{</a
+      ><a name="696" href="hott.equivalence.core.html#696" class="Bound"
+      >Y</a
+      ><a name="697"
+      > </a
+      ><a name="698" class="Symbol"
+      >:</a
+      ><a name="699"
+      > </a
+      ><a name="700" class="PrimitiveType"
+      >Set</a
+      ><a name="703"
+      > </a
+      ><a name="704" href="hott.equivalence.core.html#681" class="Bound"
+      >j</a
+      ><a name="705" class="Symbol"
+      >}</a
+      ><a name="706"
+      > </a
+      ><a name="707" class="Symbol"
+      >&#8594;</a
+      ><a name="708"
+      > </a
+      ><a name="709" href="hott.equivalence.core.html#685" class="Bound"
+      >X</a
+      ><a name="710"
+      > </a
+      ><a name="711" href="hott.equivalence.core.html#583" class="Function Operator"
+      >&#8776;</a
+      ><a name="712"
+      > </a
+      ><a name="713" href="hott.equivalence.core.html#696" class="Bound"
+      >Y</a
+      ><a name="714"
+      > </a
+      ><a name="715" class="Symbol"
+      >&#8594;</a
+      ><a name="716"
+      > </a
+      ><a name="717" href="hott.equivalence.core.html#685" class="Bound"
+      >X</a
+      ><a name="718"
+      > </a
+      ><a name="719" class="Symbol"
+      >&#8594;</a
+      ><a name="720"
+      > </a
+      ><a name="721" href="hott.equivalence.core.html#696" class="Bound"
+      >Y</a
+      ><a name="722"
+      >
+</a
+      ><a name="723" href="hott.equivalence.core.html#667" class="Function"
+      >apply&#8776;</a
+      ><a name="729"
+      > </a
+      ><a name="730" class="Symbol"
+      >=</a
+      ><a name="731"
+      > </a
+      ><a name="732" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="737"
+      >
+
+</a
+      ><a name="739" href="hott.equivalence.core.html#739" class="Function"
+      >&#8776;&#8658;&#8773;</a
+      ><a name="742"
+      > </a
+      ><a name="743" class="Symbol"
+      >:</a
+      ><a name="744"
+      > </a
+      ><a name="745" class="Symbol"
+      >&#8704;</a
+      ><a name="746"
+      > </a
+      ><a name="747" class="Symbol"
+      >{</a
+      ><a name="748" href="hott.equivalence.core.html#748" class="Bound"
+      >i</a
+      ><a name="749"
+      > </a
+      ><a name="750" href="hott.equivalence.core.html#750" class="Bound"
+      >j</a
+      ><a name="751" class="Symbol"
+      >}</a
+      ><a name="752"
+      > </a
+      ><a name="753" class="Symbol"
+      >{</a
+      ><a name="754" href="hott.equivalence.core.html#754" class="Bound"
+      >X</a
+      ><a name="755"
+      > </a
+      ><a name="756" class="Symbol"
+      >:</a
+      ><a name="757"
+      > </a
+      ><a name="758" class="PrimitiveType"
+      >Set</a
+      ><a name="761"
+      > </a
+      ><a name="762" href="hott.equivalence.core.html#748" class="Bound"
+      >i</a
+      ><a name="763" class="Symbol"
+      >}</a
+      ><a name="764"
+      > </a
+      ><a name="765" class="Symbol"
+      >{</a
+      ><a name="766" href="hott.equivalence.core.html#766" class="Bound"
+      >Y</a
+      ><a name="767"
+      > </a
+      ><a name="768" class="Symbol"
+      >:</a
+      ><a name="769"
+      > </a
+      ><a name="770" class="PrimitiveType"
+      >Set</a
+      ><a name="773"
+      > </a
+      ><a name="774" href="hott.equivalence.core.html#750" class="Bound"
+      >j</a
+      ><a name="775" class="Symbol"
+      >}</a
+      ><a name="776"
+      > </a
+      ><a name="777" class="Symbol"
+      >&#8594;</a
+      ><a name="778"
+      > </a
+      ><a name="779" href="hott.equivalence.core.html#754" class="Bound"
+      >X</a
+      ><a name="780"
+      > </a
+      ><a name="781" href="hott.equivalence.core.html#583" class="Function Operator"
+      >&#8776;</a
+      ><a name="782"
+      > </a
+      ><a name="783" href="hott.equivalence.core.html#766" class="Bound"
+      >Y</a
+      ><a name="784"
+      > </a
+      ><a name="785" class="Symbol"
+      >&#8594;</a
+      ><a name="786"
+      > </a
+      ><a name="787" href="hott.equivalence.core.html#754" class="Bound"
+      >X</a
+      ><a name="788"
+      > </a
+      ><a name="789" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="790"
+      > </a
+      ><a name="791" href="hott.equivalence.core.html#766" class="Bound"
+      >Y</a
+      ><a name="792"
+      >
+</a
+      ><a name="793" href="hott.equivalence.core.html#739" class="Function"
+      >&#8776;&#8658;&#8773;</a
+      ><a name="796"
+      > </a
+      ><a name="797" class="Symbol"
+      >{</a
+      ><a name="798" class="Argument"
+      >X</a
+      ><a name="799"
+      > </a
+      ><a name="800" class="Symbol"
+      >=</a
+      ><a name="801"
+      > </a
+      ><a name="802" href="hott.equivalence.core.html#802" class="Bound"
+      >X</a
+      ><a name="803" class="Symbol"
+      >}{</a
+      ><a name="805" href="hott.equivalence.core.html#805" class="Bound"
+      >Y</a
+      ><a name="806" class="Symbol"
+      >}</a
+      ><a name="807"
+      > </a
+      ><a name="808" class="Symbol"
+      >(</a
+      ><a name="809" href="hott.equivalence.core.html#809" class="Bound"
+      >f</a
+      ><a name="810"
+      > </a
+      ><a name="811" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="812"
+      > </a
+      ><a name="813" href="hott.equivalence.core.html#813" class="Bound"
+      >we</a
+      ><a name="815" class="Symbol"
+      >)</a
+      ><a name="816"
+      > </a
+      ><a name="817" class="Symbol"
+      >=</a
+      ><a name="818"
+      > </a
+      ><a name="819" href="function.isomorphism.core.html#421" class="InductiveConstructor"
+      >iso</a
+      ><a name="822"
+      > </a
+      ><a name="823" href="hott.equivalence.core.html#809" class="Bound"
+      >f</a
+      ><a name="824"
+      > </a
+      ><a name="825" href="hott.equivalence.core.html#849" class="Function"
+      >g</a
+      ><a name="826"
+      > </a
+      ><a name="827" href="hott.equivalence.core.html#895" class="Function"
+      >iso&#8321;</a
+      ><a name="831"
+      > </a
+      ><a name="832" href="hott.equivalence.core.html#981" class="Function"
+      >iso&#8322;</a
+      ><a name="836"
+      >
+  </a
+      ><a name="839" class="Keyword"
+      >where</a
+      ><a name="844"
+      >
+    </a
+      ><a name="849" href="hott.equivalence.core.html#849" class="Function"
+      >g</a
+      ><a name="850"
+      > </a
+      ><a name="851" class="Symbol"
+      >:</a
+      ><a name="852"
+      > </a
+      ><a name="853" href="hott.equivalence.core.html#805" class="Bound"
+      >Y</a
+      ><a name="854"
+      > </a
+      ><a name="855" class="Symbol"
+      >&#8594;</a
+      ><a name="856"
+      > </a
+      ><a name="857" href="hott.equivalence.core.html#802" class="Bound"
+      >X</a
+      ><a name="858"
+      >
+    </a
+      ><a name="863" href="hott.equivalence.core.html#849" class="Function"
+      >g</a
+      ><a name="864"
+      > </a
+      ><a name="865" href="hott.equivalence.core.html#865" class="Bound"
+      >y</a
+      ><a name="866"
+      > </a
+      ><a name="867" class="Symbol"
+      >=</a
+      ><a name="868"
+      > </a
+      ><a name="869" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="874"
+      > </a
+      ><a name="875" class="Symbol"
+      >(</a
+      ><a name="876" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="881"
+      > </a
+      ><a name="882" class="Symbol"
+      >(</a
+      ><a name="883" href="hott.equivalence.core.html#813" class="Bound"
+      >we</a
+      ><a name="885"
+      > </a
+      ><a name="886" href="hott.equivalence.core.html#865" class="Bound"
+      >y</a
+      ><a name="887" class="Symbol"
+      >))</a
+      ><a name="889"
+      >
+
+    </a
+      ><a name="895" href="hott.equivalence.core.html#895" class="Function"
+      >iso&#8321;</a
+      ><a name="899"
+      > </a
+      ><a name="900" class="Symbol"
+      >:</a
+      ><a name="901"
+      > </a
+      ><a name="902" class="Symbol"
+      >(</a
+      ><a name="903" href="hott.equivalence.core.html#903" class="Bound"
+      >x</a
+      ><a name="904"
+      > </a
+      ><a name="905" class="Symbol"
+      >:</a
+      ><a name="906"
+      > </a
+      ><a name="907" href="hott.equivalence.core.html#802" class="Bound"
+      >X</a
+      ><a name="908" class="Symbol"
+      >)</a
+      ><a name="909"
+      > </a
+      ><a name="910" class="Symbol"
+      >&#8594;</a
+      ><a name="911"
+      > </a
+      ><a name="912" href="hott.equivalence.core.html#849" class="Function"
+      >g</a
+      ><a name="913"
+      > </a
+      ><a name="914" class="Symbol"
+      >(</a
+      ><a name="915" href="hott.equivalence.core.html#809" class="Bound"
+      >f</a
+      ><a name="916"
+      > </a
+      ><a name="917" href="hott.equivalence.core.html#903" class="Bound"
+      >x</a
+      ><a name="918" class="Symbol"
+      >)</a
+      ><a name="919"
+      > </a
+      ><a name="920" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="921"
+      > </a
+      ><a name="922" href="hott.equivalence.core.html#903" class="Bound"
+      >x</a
+      ><a name="923"
+      >
+    </a
+      ><a name="928" href="hott.equivalence.core.html#895" class="Function"
+      >iso&#8321;</a
+      ><a name="932"
+      > </a
+      ><a name="933" href="hott.equivalence.core.html#933" class="Bound"
+      >x</a
+      ><a name="934"
+      > </a
+      ><a name="935" class="Symbol"
+      >=</a
+      ><a name="936"
+      > </a
+      ><a name="937" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="939"
+      > </a
+      ><a name="940" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="945"
+      > </a
+      ><a name="946" class="Symbol"
+      >(</a
+      ><a name="947" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="952"
+      > </a
+      ><a name="953" class="Symbol"
+      >(</a
+      ><a name="954" href="hott.equivalence.core.html#813" class="Bound"
+      >we</a
+      ><a name="956"
+      > </a
+      ><a name="957" class="Symbol"
+      >(</a
+      ><a name="958" href="hott.equivalence.core.html#809" class="Bound"
+      >f</a
+      ><a name="959"
+      > </a
+      ><a name="960" href="hott.equivalence.core.html#933" class="Bound"
+      >x</a
+      ><a name="961" class="Symbol"
+      >))</a
+      ><a name="963"
+      > </a
+      ><a name="964" class="Symbol"
+      >(</a
+      ><a name="965" href="hott.equivalence.core.html#933" class="Bound"
+      >x</a
+      ><a name="966"
+      > </a
+      ><a name="967" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="968"
+      > </a
+      ><a name="969" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="973" class="Symbol"
+      >))</a
+      ><a name="975"
+      >
+
+    </a
+      ><a name="981" href="hott.equivalence.core.html#981" class="Function"
+      >iso&#8322;</a
+      ><a name="985"
+      > </a
+      ><a name="986" class="Symbol"
+      >:</a
+      ><a name="987"
+      > </a
+      ><a name="988" class="Symbol"
+      >(</a
+      ><a name="989" href="hott.equivalence.core.html#989" class="Bound"
+      >y</a
+      ><a name="990"
+      > </a
+      ><a name="991" class="Symbol"
+      >:</a
+      ><a name="992"
+      > </a
+      ><a name="993" href="hott.equivalence.core.html#805" class="Bound"
+      >Y</a
+      ><a name="994" class="Symbol"
+      >)</a
+      ><a name="995"
+      > </a
+      ><a name="996" class="Symbol"
+      >&#8594;</a
+      ><a name="997"
+      > </a
+      ><a name="998" href="hott.equivalence.core.html#809" class="Bound"
+      >f</a
+      ><a name="999"
+      > </a
+      ><a name="1000" class="Symbol"
+      >(</a
+      ><a name="1001" href="hott.equivalence.core.html#849" class="Function"
+      >g</a
+      ><a name="1002"
+      > </a
+      ><a name="1003" href="hott.equivalence.core.html#989" class="Bound"
+      >y</a
+      ><a name="1004" class="Symbol"
+      >)</a
+      ><a name="1005"
+      > </a
+      ><a name="1006" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1007"
+      > </a
+      ><a name="1008" href="hott.equivalence.core.html#989" class="Bound"
+      >y</a
+      ><a name="1009"
+      >
+    </a
+      ><a name="1014" href="hott.equivalence.core.html#981" class="Function"
+      >iso&#8322;</a
+      ><a name="1018"
+      > </a
+      ><a name="1019" href="hott.equivalence.core.html#1019" class="Bound"
+      >y</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" class="Symbol"
+      >=</a
+      ><a name="1022"
+      > </a
+      ><a name="1023" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="1028"
+      > </a
+      ><a name="1029" class="Symbol"
+      >(</a
+      ><a name="1030" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1035"
+      > </a
+      ><a name="1036" class="Symbol"
+      >(</a
+      ><a name="1037" href="hott.equivalence.core.html#813" class="Bound"
+      >we</a
+      ><a name="1039"
+      > </a
+      ><a name="1040" href="hott.equivalence.core.html#1019" class="Bound"
+      >y</a
+      ><a name="1041" class="Symbol"
+      >))</a
+      ><a name="1043"
+      >
+
+</a
+      ><a name="1045" href="hott.equivalence.core.html#1045" class="Function"
+      >invert&#8776;</a
+      ><a name="1052"
+      > </a
+      ><a name="1053" class="Symbol"
+      >:</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" class="Symbol"
+      >&#8704;</a
+      ><a name="1056"
+      > </a
+      ><a name="1057" class="Symbol"
+      >{</a
+      ><a name="1058" href="hott.equivalence.core.html#1058" class="Bound"
+      >i</a
+      ><a name="1059"
+      > </a
+      ><a name="1060" href="hott.equivalence.core.html#1060" class="Bound"
+      >j</a
+      ><a name="1061" class="Symbol"
+      >}</a
+      ><a name="1062"
+      > </a
+      ><a name="1063" class="Symbol"
+      >{</a
+      ><a name="1064" href="hott.equivalence.core.html#1064" class="Bound"
+      >X</a
+      ><a name="1065"
+      > </a
+      ><a name="1066" class="Symbol"
+      >:</a
+      ><a name="1067"
+      > </a
+      ><a name="1068" class="PrimitiveType"
+      >Set</a
+      ><a name="1071"
+      > </a
+      ><a name="1072" href="hott.equivalence.core.html#1058" class="Bound"
+      >i</a
+      ><a name="1073" class="Symbol"
+      >}{</a
+      ><a name="1075" href="hott.equivalence.core.html#1075" class="Bound"
+      >Y</a
+      ><a name="1076"
+      > </a
+      ><a name="1077" class="Symbol"
+      >:</a
+      ><a name="1078"
+      > </a
+      ><a name="1079" class="PrimitiveType"
+      >Set</a
+      ><a name="1082"
+      > </a
+      ><a name="1083" href="hott.equivalence.core.html#1060" class="Bound"
+      >j</a
+      ><a name="1084" class="Symbol"
+      >}</a
+      ><a name="1085"
+      > </a
+      ><a name="1086" class="Symbol"
+      >&#8594;</a
+      ><a name="1087"
+      > </a
+      ><a name="1088" href="hott.equivalence.core.html#1064" class="Bound"
+      >X</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" href="hott.equivalence.core.html#583" class="Function Operator"
+      >&#8776;</a
+      ><a name="1091"
+      > </a
+      ><a name="1092" href="hott.equivalence.core.html#1075" class="Bound"
+      >Y</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" class="Symbol"
+      >&#8594;</a
+      ><a name="1095"
+      > </a
+      ><a name="1096" href="hott.equivalence.core.html#1075" class="Bound"
+      >Y</a
+      ><a name="1097"
+      > </a
+      ><a name="1098" class="Symbol"
+      >&#8594;</a
+      ><a name="1099"
+      > </a
+      ><a name="1100" href="hott.equivalence.core.html#1064" class="Bound"
+      >X</a
+      ><a name="1101"
+      >
+</a
+      ><a name="1102" href="hott.equivalence.core.html#1045" class="Function"
+      >invert&#8776;</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" class="Symbol"
+      >(_</a
+      ><a name="1112"
+      > </a
+      ><a name="1113" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1114"
+      > </a
+      ><a name="1115" href="hott.equivalence.core.html#1115" class="Bound"
+      >we</a
+      ><a name="1117" class="Symbol"
+      >)</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" href="hott.equivalence.core.html#1119" class="Bound"
+      >y</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" class="Symbol"
+      >=</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1128"
+      > </a
+      ><a name="1129" class="Symbol"
+      >(</a
+      ><a name="1130" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1135"
+      > </a
+      ><a name="1136" class="Symbol"
+      >(</a
+      ><a name="1137" href="hott.equivalence.core.html#1115" class="Bound"
+      >we</a
+      ><a name="1139"
+      > </a
+      ><a name="1140" href="hott.equivalence.core.html#1119" class="Bound"
+      >y</a
+      ><a name="1141" class="Symbol"
+      >))</a
+      ><a name="1143"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
