@@ -7,7 +7,8 @@ open import function
 open import hott.equivalence
 open import hott.level
 open import hott.loop
-open import hott.truncation
+open import hott.truncation.core
+open import hott.truncation.equality
 open import hott.univalence
 open import sets.nat
 open import sets.unit
