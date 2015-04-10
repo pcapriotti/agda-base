@@ -45,3 +45,8 @@ mapΩ-hom : ∀ {i j k} n {X : Set i}{Y : Set j}{Z : Set k}
          → (f : X → Y)(g : Y → Z){x : X}(p : Ω n x)
          → mapΩ n g (mapΩ n f p) ≡ mapΩ n (g ∘ f) p
 mapΩ-hom n f g = proj₁ (invert pmap-eq (mapΩP-hom n (f , refl) (g , refl)))
+
+mapΩ-refl : ∀ {i j} n {X : Set i}{Y : Set j}
+          → (f : X → Y){x : X}
+          → mapΩ n f (refl' n x) ≡ refl' n (f x)
+mapΩ-refl n f = proj₂ (mapΩP n (f , refl))
