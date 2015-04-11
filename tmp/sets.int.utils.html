@@ -1,0 +1,2051 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >sets.int.utils</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="sets.int.utils.html#1" class="Module"
+      >sets.int.utils</a
+      ><a name="51"
+      > </a
+      ><a name="52" class="Keyword"
+      >where</a
+      ><a name="57"
+      >
+
+</a
+      ><a name="59" class="Keyword"
+      >open</a
+      ><a name="63"
+      > </a
+      ><a name="64" class="Keyword"
+      >import</a
+      ><a name="70"
+      > </a
+      ><a name="71" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="74"
+      >
+</a
+      ><a name="75" class="Keyword"
+      >open</a
+      ><a name="79"
+      > </a
+      ><a name="80" class="Keyword"
+      >import</a
+      ><a name="86"
+      > </a
+      ><a name="87" href="equality.html#1" class="Module"
+      >equality</a
+      ><a name="95"
+      >
+</a
+      ><a name="96" class="Keyword"
+      >open</a
+      ><a name="100"
+      > </a
+      ><a name="101" class="Keyword"
+      >import</a
+      ><a name="107"
+      > </a
+      ><a name="108" href="function.html#1" class="Module"
+      >function</a
+      ><a name="116"
+      >
+</a
+      ><a name="117" class="Keyword"
+      >open</a
+      ><a name="121"
+      > </a
+      ><a name="122" class="Keyword"
+      >import</a
+      ><a name="128"
+      > </a
+      ><a name="129" href="sets.nat.core.html#1" class="Module"
+      >sets.nat.core</a
+      ><a name="142"
+      >
+</a
+      ><a name="143" class="Keyword"
+      >open</a
+      ><a name="147"
+      > </a
+      ><a name="148" class="Keyword"
+      >import</a
+      ><a name="154"
+      > </a
+      ><a name="155" href="sets.int.definition.html#1" class="Module"
+      >sets.int.definition</a
+      ><a name="174"
+      >
+</a
+      ><a name="175" class="Keyword"
+      >open</a
+      ><a name="179"
+      > </a
+      ><a name="180" class="Keyword"
+      >import</a
+      ><a name="186"
+      > </a
+      ><a name="187" href="hott.level.html#1" class="Module"
+      >hott.level</a
+      ><a name="197"
+      >
+
+</a
+      ><a name="199" class="Keyword"
+      >module</a
+      ><a name="205"
+      > </a
+      ><a name="206" href="sets.int.utils.html#206" class="Module"
+      >_</a
+      ><a name="207"
+      > </a
+      ><a name="208" class="Symbol"
+      >{</a
+      ><a name="209" href="sets.int.utils.html#209" class="Bound"
+      >i</a
+      ><a name="210" class="Symbol"
+      >}{</a
+      ><a name="212" href="sets.int.utils.html#212" class="Bound"
+      >X</a
+      ><a name="213"
+      > </a
+      ><a name="214" class="Symbol"
+      >:</a
+      ><a name="215"
+      > </a
+      ><a name="216" class="PrimitiveType"
+      >Set</a
+      ><a name="219"
+      > </a
+      ><a name="220" href="sets.int.utils.html#209" class="Bound"
+      >i</a
+      ><a name="221" class="Symbol"
+      >}(</a
+      ><a name="223" href="sets.int.utils.html#223" class="Bound"
+      >hX</a
+      ><a name="225"
+      > </a
+      ><a name="226" class="Symbol"
+      >:</a
+      ><a name="227"
+      > </a
+      ><a name="228" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="229"
+      > </a
+      ><a name="230" class="Number"
+      >2</a
+      ><a name="231"
+      > </a
+      ><a name="232" href="sets.int.utils.html#212" class="Bound"
+      >X</a
+      ><a name="233" class="Symbol"
+      >)</a
+      ><a name="234"
+      >
+  </a
+      ><a name="237" class="Symbol"
+      >(</a
+      ><a name="238" href="sets.int.utils.html#238" class="Bound"
+      >f</a
+      ><a name="239"
+      > </a
+      ><a name="240" class="Symbol"
+      >:</a
+      ><a name="241"
+      > </a
+      ><a name="242" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="243"
+      > </a
+      ><a name="244" class="Symbol"
+      >&#8594;</a
+      ><a name="245"
+      > </a
+      ><a name="246" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="247"
+      > </a
+      ><a name="248" class="Symbol"
+      >&#8594;</a
+      ><a name="249"
+      > </a
+      ><a name="250" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="251"
+      > </a
+      ><a name="252" class="Symbol"
+      >&#8594;</a
+      ><a name="253"
+      > </a
+      ><a name="254" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="255"
+      > </a
+      ><a name="256" class="Symbol"
+      >&#8594;</a
+      ><a name="257"
+      > </a
+      ><a name="258" href="sets.int.utils.html#212" class="Bound"
+      >X</a
+      ><a name="259" class="Symbol"
+      >)</a
+      ><a name="260"
+      >
+  </a
+      ><a name="263" class="Symbol"
+      >(</a
+      ><a name="264" href="sets.int.utils.html#264" class="Bound"
+      >u</a
+      ><a name="265"
+      > </a
+      ><a name="266" class="Symbol"
+      >:</a
+      ><a name="267"
+      > </a
+      ><a name="268" class="Symbol"
+      >&#8704;</a
+      ><a name="269"
+      > </a
+      ><a name="270" href="sets.int.utils.html#270" class="Bound"
+      >n</a
+      ><a name="271"
+      > </a
+      ><a name="272" href="sets.int.utils.html#272" class="Bound"
+      >n'</a
+      ><a name="274"
+      > </a
+      ><a name="275" href="sets.int.utils.html#275" class="Bound"
+      >d</a
+      ><a name="276"
+      > </a
+      ><a name="277" href="sets.int.utils.html#277" class="Bound"
+      >m</a
+      ><a name="278"
+      > </a
+      ><a name="279" href="sets.int.utils.html#279" class="Bound"
+      >m'</a
+      ><a name="281"
+      > </a
+      ><a name="282" href="sets.int.utils.html#282" class="Bound"
+      >e</a
+      ><a name="283"
+      > </a
+      ><a name="284" class="Symbol"
+      >&#8594;</a
+      ><a name="285"
+      > </a
+      ><a name="286" href="sets.int.utils.html#238" class="Bound"
+      >f</a
+      ><a name="287"
+      > </a
+      ><a name="288" href="sets.int.utils.html#270" class="Bound"
+      >n</a
+      ><a name="289"
+      > </a
+      ><a name="290" href="sets.int.utils.html#272" class="Bound"
+      >n'</a
+      ><a name="292"
+      > </a
+      ><a name="293" href="sets.int.utils.html#277" class="Bound"
+      >m</a
+      ><a name="294"
+      > </a
+      ><a name="295" href="sets.int.utils.html#279" class="Bound"
+      >m'</a
+      ><a name="297"
+      > </a
+      ><a name="298" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="299"
+      > </a
+      ><a name="300" href="sets.int.utils.html#238" class="Bound"
+      >f</a
+      ><a name="301"
+      > </a
+      ><a name="302" class="Symbol"
+      >(</a
+      ><a name="303" href="sets.int.utils.html#275" class="Bound"
+      >d</a
+      ><a name="304"
+      > </a
+      ><a name="305" href="sets.nat.core.html#350" class="Function Operator"
+      >+</a
+      ><a name="306"
+      > </a
+      ><a name="307" href="sets.int.utils.html#270" class="Bound"
+      >n</a
+      ><a name="308" class="Symbol"
+      >)</a
+      ><a name="309"
+      > </a
+      ><a name="310" class="Symbol"
+      >(</a
+      ><a name="311" href="sets.int.utils.html#275" class="Bound"
+      >d</a
+      ><a name="312"
+      > </a
+      ><a name="313" href="sets.nat.core.html#350" class="Function Operator"
+      >+</a
+      ><a name="314"
+      > </a
+      ><a name="315" href="sets.int.utils.html#272" class="Bound"
+      >n'</a
+      ><a name="317" class="Symbol"
+      >)</a
+      ><a name="318"
+      > </a
+      ><a name="319" class="Symbol"
+      >(</a
+      ><a name="320" href="sets.int.utils.html#282" class="Bound"
+      >e</a
+      ><a name="321"
+      > </a
+      ><a name="322" href="sets.nat.core.html#350" class="Function Operator"
+      >+</a
+      ><a name="323"
+      > </a
+      ><a name="324" href="sets.int.utils.html#277" class="Bound"
+      >m</a
+      ><a name="325" class="Symbol"
+      >)</a
+      ><a name="326"
+      > </a
+      ><a name="327" class="Symbol"
+      >(</a
+      ><a name="328" href="sets.int.utils.html#282" class="Bound"
+      >e</a
+      ><a name="329"
+      > </a
+      ><a name="330" href="sets.nat.core.html#350" class="Function Operator"
+      >+</a
+      ><a name="331"
+      > </a
+      ><a name="332" href="sets.int.utils.html#279" class="Bound"
+      >m'</a
+      ><a name="334" class="Symbol"
+      >))</a
+      ><a name="336"
+      > </a
+      ><a name="337" class="Keyword"
+      >where</a
+      ><a name="342"
+      >
+
+  </a
+      ><a name="346" class="Keyword"
+      >private</a
+      ><a name="353"
+      >
+    </a
+      ><a name="358" href="sets.int.utils.html#358" class="Function"
+      >g</a
+      ><a name="359"
+      > </a
+      ><a name="360" class="Symbol"
+      >:</a
+      ><a name="361"
+      > </a
+      ><a name="362" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="363"
+      > </a
+      ><a name="364" class="Symbol"
+      >&#8594;</a
+      ><a name="365"
+      > </a
+      ><a name="366" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="Symbol"
+      >&#8594;</a
+      ><a name="369"
+      > </a
+      ><a name="370" href="sets.int.definition.html#225" class="Function"
+      >&#8484;</a
+      ><a name="371"
+      > </a
+      ><a name="372" class="Symbol"
+      >&#8594;</a
+      ><a name="373"
+      > </a
+      ><a name="374" href="sets.int.utils.html#212" class="Bound"
+      >X</a
+      ><a name="375"
+      >
+    </a
+      ><a name="380" href="sets.int.utils.html#358" class="Function"
+      >g</a
+      ><a name="381"
+      > </a
+      ><a name="382" href="sets.int.utils.html#382" class="Bound"
+      >n</a
+      ><a name="383"
+      > </a
+      ><a name="384" href="sets.int.utils.html#384" class="Bound"
+      >n'</a
+      ><a name="386"
+      > </a
+      ><a name="387" class="Symbol"
+      >=</a
+      ><a name="388"
+      > </a
+      ><a name="389" href="sets.int.definition.html#1725" class="Function"
+      >elim-&#8484;</a
+      ><a name="395"
+      > </a
+      ><a name="396" href="sets.int.utils.html#223" class="Bound"
+      >hX</a
+      ><a name="398"
+      > </a
+      ><a name="399" class="Symbol"
+      >(</a
+      ><a name="400" href="sets.int.utils.html#238" class="Bound"
+      >f</a
+      ><a name="401"
+      > </a
+      ><a name="402" href="sets.int.utils.html#382" class="Bound"
+      >n</a
+      ><a name="403"
+      > </a
+      ><a name="404" href="sets.int.utils.html#384" class="Bound"
+      >n'</a
+      ><a name="406"
+      > </a
+      ><a name="407" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="408"
+      > </a
+      ><a name="409" href="sets.int.utils.html#264" class="Bound"
+      >u</a
+      ><a name="410"
+      > </a
+      ><a name="411" href="sets.int.utils.html#382" class="Bound"
+      >n</a
+      ><a name="412"
+      > </a
+      ><a name="413" href="sets.int.utils.html#384" class="Bound"
+      >n'</a
+      ><a name="415"
+      > </a
+      ><a name="416" class="Number"
+      >0</a
+      ><a name="417" class="Symbol"
+      >)</a
+      ><a name="418"
+      >
+
+    </a
+      ><a name="424" href="sets.int.utils.html#424" class="Function"
+      >lem</a
+      ><a name="427"
+      > </a
+      ><a name="428" class="Symbol"
+      >:</a
+      ><a name="429"
+      > </a
+      ><a name="430" class="Symbol"
+      >(</a
+      ><a name="431" href="sets.int.utils.html#431" class="Bound"
+      >n</a
+      ><a name="432"
+      > </a
+      ><a name="433" href="sets.int.utils.html#433" class="Bound"
+      >n'</a
+      ><a name="435"
+      > </a
+      ><a name="436" href="sets.int.utils.html#436" class="Bound"
+      >d</a
+      ><a name="437"
+      > </a
+      ><a name="438" href="sets.int.utils.html#438" class="Bound"
+      >m</a
+      ><a name="439"
+      > </a
+      ><a name="440" href="sets.int.utils.html#440" class="Bound"
+      >m'</a
+      ><a name="442"
+      > </a
+      ><a name="443" class="Symbol"
+      >:</a
+      ><a name="444"
+      > </a
+      ><a name="445" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="446" class="Symbol"
+      >)</a
+      ><a name="447"
+      > </a
+      ><a name="448" class="Symbol"
+      >&#8594;</a
+      ><a name="449"
+      > </a
+      ><a name="450" href="sets.int.utils.html#358" class="Function"
+      >g</a
+      ><a name="451"
+      > </a
+      ><a name="452" href="sets.int.utils.html#431" class="Bound"
+      >n</a
+      ><a name="453"
+      > </a
+      ><a name="454" href="sets.int.utils.html#433" class="Bound"
+      >n'</a
+      ><a name="456"
+      > </a
+      ><a name="457" class="Symbol"
+      >(</a
+      ><a name="458" href="sets.int.utils.html#438" class="Bound"
+      >m</a
+      ><a name="459"
+      > </a
+      ><a name="460" href="sets.int.definition.html#240" class="Function Operator"
+      >[-]</a
+      ><a name="463"
+      > </a
+      ><a name="464" href="sets.int.utils.html#440" class="Bound"
+      >m'</a
+      ><a name="466" class="Symbol"
+      >)</a
+      ><a name="467"
+      > </a
+      ><a name="468" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="469"
+      > </a
+      ><a name="470" href="sets.int.utils.html#358" class="Function"
+      >g</a
+      ><a name="471"
+      > </a
+      ><a name="472" class="Symbol"
+      >(</a
+      ><a name="473" href="sets.int.utils.html#436" class="Bound"
+      >d</a
+      ><a name="474"
+      > </a
+      ><a name="475" href="sets.nat.core.html#350" class="Function Operator"
+      >+</a
+      ><a name="476"
+      > </a
+      ><a name="477" href="sets.int.utils.html#431" class="Bound"
+      >n</a
+      ><a name="478" class="Symbol"
+      >)</a
+      ><a name="479"
+      > </a
+      ><a name="480" class="Symbol"
+      >(</a
+      ><a name="481" href="sets.int.utils.html#436" class="Bound"
+      >d</a
+      ><a name="482"
+      > </a
+      ><a name="483" href="sets.nat.core.html#350" class="Function Operator"
+      >+</a
+      ><a name="484"
+      > </a
+      ><a name="485" href="sets.int.utils.html#433" class="Bound"
+      >n'</a
+      ><a name="487" class="Symbol"
+      >)</a
+      ><a name="488"
+      > </a
+      ><a name="489" class="Symbol"
+      >(</a
+      ><a name="490" href="sets.int.utils.html#438" class="Bound"
+      >m</a
+      ><a name="491"
+      > </a
+      ><a name="492" href="sets.int.definition.html#240" class="Function Operator"
+      >[-]</a
+      ><a name="495"
+      > </a
+      ><a name="496" href="sets.int.utils.html#440" class="Bound"
+      >m'</a
+      ><a name="498" class="Symbol"
+      >)</a
+      ><a name="499"
+      >
+    </a
+      ><a name="504" href="sets.int.utils.html#424" class="Function"
+      >lem</a
+      ><a name="507"
+      > </a
+      ><a name="508" href="sets.int.utils.html#508" class="Bound"
+      >n</a
+      ><a name="509"
+      > </a
+      ><a name="510" href="sets.int.utils.html#510" class="Bound"
+      >n'</a
+      ><a name="512"
+      > </a
+      ><a name="513" href="sets.int.utils.html#513" class="Bound"
+      >d</a
+      ><a name="514"
+      > </a
+      ><a name="515" href="sets.int.utils.html#515" class="Bound"
+      >m</a
+      ><a name="516"
+      > </a
+      ><a name="517" href="sets.int.utils.html#517" class="Bound"
+      >m'</a
+      ><a name="519"
+      > </a
+      ><a name="520" class="Symbol"
+      >=</a
+      ><a name="521"
+      > </a
+      ><a name="522" href="sets.int.utils.html#264" class="Bound"
+      >u</a
+      ><a name="523"
+      > </a
+      ><a name="524" href="sets.int.utils.html#508" class="Bound"
+      >n</a
+      ><a name="525"
+      > </a
+      ><a name="526" href="sets.int.utils.html#510" class="Bound"
+      >n'</a
+      ><a name="528"
+      > </a
+      ><a name="529" href="sets.int.utils.html#513" class="Bound"
+      >d</a
+      ><a name="530"
+      > </a
+      ><a name="531" href="sets.int.utils.html#515" class="Bound"
+      >m</a
+      ><a name="532"
+      > </a
+      ><a name="533" href="sets.int.utils.html#517" class="Bound"
+      >m'</a
+      ><a name="535"
+      > </a
+      ><a name="536" class="Number"
+      >0</a
+      ><a name="537"
+      >
+
+    </a
+      ><a name="543" href="sets.int.utils.html#543" class="Function"
+      >v</a
+      ><a name="544"
+      > </a
+      ><a name="545" class="Symbol"
+      >:</a
+      ><a name="546"
+      > </a
+      ><a name="547" class="Symbol"
+      >(</a
+      ><a name="548" href="sets.int.utils.html#548" class="Bound"
+      >n</a
+      ><a name="549"
+      > </a
+      ><a name="550" href="sets.int.utils.html#550" class="Bound"
+      >n'</a
+      ><a name="552"
+      > </a
+      ><a name="553" href="sets.int.utils.html#553" class="Bound"
+      >d</a
+      ><a name="554"
+      > </a
+      ><a name="555" class="Symbol"
+      >:</a
+      ><a name="556"
+      > </a
+      ><a name="557" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="558" class="Symbol"
+      >)</a
+      ><a name="559"
+      > </a
+      ><a name="560" class="Symbol"
+      >&#8594;</a
+      ><a name="561"
+      > </a
+      ><a name="562" href="sets.int.utils.html#358" class="Function"
+      >g</a
+      ><a name="563"
+      > </a
+      ><a name="564" href="sets.int.utils.html#548" class="Bound"
+      >n</a
+      ><a name="565"
+      > </a
+      ><a name="566" href="sets.int.utils.html#550" class="Bound"
+      >n'</a
+      ><a name="568"
+      > </a
+      ><a name="569" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="570"
+      > </a
+      ><a name="571" href="sets.int.utils.html#358" class="Function"
+      >g</a
+      ><a name="572"
+      > </a
+      ><a name="573" class="Symbol"
+      >(</a
+      ><a name="574" href="sets.int.utils.html#553" class="Bound"
+      >d</a
+      ><a name="575"
+      > </a
+      ><a name="576" href="sets.nat.core.html#350" class="Function Operator"
+      >+</a
+      ><a name="577"
+      > </a
+      ><a name="578" href="sets.int.utils.html#548" class="Bound"
+      >n</a
+      ><a name="579" class="Symbol"
+      >)</a
+      ><a name="580"
+      > </a
+      ><a name="581" class="Symbol"
+      >(</a
+      ><a name="582" href="sets.int.utils.html#553" class="Bound"
+      >d</a
+      ><a name="583"
+      > </a
+      ><a name="584" href="sets.nat.core.html#350" class="Function Operator"
+      >+</a
+      ><a name="585"
+      > </a
+      ><a name="586" href="sets.int.utils.html#550" class="Bound"
+      >n'</a
+      ><a name="588" class="Symbol"
+      >)</a
+      ><a name="589"
+      >
+    </a
+      ><a name="594" href="sets.int.utils.html#543" class="Function"
+      >v</a
+      ><a name="595"
+      > </a
+      ><a name="596" href="sets.int.utils.html#596" class="Bound"
+      >n</a
+      ><a name="597"
+      > </a
+      ><a name="598" href="sets.int.utils.html#598" class="Bound"
+      >n'</a
+      ><a name="600"
+      > </a
+      ><a name="601" href="sets.int.utils.html#601" class="Bound"
+      >d</a
+      ><a name="602"
+      > </a
+      ><a name="603" class="Symbol"
+      >=</a
+      ><a name="604"
+      > </a
+      ><a name="605" href="function.extensionality.proof.html#1870" class="Function"
+      >funext</a
+      ><a name="611"
+      > </a
+      ><a name="612" class="Symbol"
+      >&#955;</a
+      ><a name="613"
+      > </a
+      ><a name="614" href="sets.int.utils.html#614" class="Bound"
+      >m</a
+      ><a name="615"
+      > </a
+      ><a name="616" class="Symbol"
+      >&#8594;</a
+      ><a name="617"
+      > </a
+      ><a name="618" href="sets.int.definition.html#2178" class="Function"
+      >elim-prop-&#8484;</a
+      ><a name="629"
+      >
+      </a
+      ><a name="636" class="Symbol"
+      >(&#955;</a
+      ><a name="638"
+      > </a
+      ><a name="639" href="sets.int.utils.html#639" class="Bound"
+      >m</a
+      ><a name="640"
+      > </a
+      ><a name="641" class="Symbol"
+      >&#8594;</a
+      ><a name="642"
+      > </a
+      ><a name="643" href="sets.int.utils.html#223" class="Bound"
+      >hX</a
+      ><a name="645"
+      > </a
+      ><a name="646" class="Symbol"
+      >(</a
+      ><a name="647" href="sets.int.utils.html#358" class="Function"
+      >g</a
+      ><a name="648"
+      > </a
+      ><a name="649" href="sets.int.utils.html#596" class="Bound"
+      >n</a
+      ><a name="650"
+      > </a
+      ><a name="651" href="sets.int.utils.html#598" class="Bound"
+      >n'</a
+      ><a name="653"
+      > </a
+      ><a name="654" href="sets.int.utils.html#639" class="Bound"
+      >m</a
+      ><a name="655" class="Symbol"
+      >)</a
+      ><a name="656"
+      > </a
+      ><a name="657" class="Symbol"
+      >(</a
+      ><a name="658" href="sets.int.utils.html#358" class="Function"
+      >g</a
+      ><a name="659"
+      > </a
+      ><a name="660" class="Symbol"
+      >(</a
+      ><a name="661" href="sets.int.utils.html#601" class="Bound"
+      >d</a
+      ><a name="662"
+      > </a
+      ><a name="663" href="sets.nat.core.html#350" class="Function Operator"
+      >+</a
+      ><a name="664"
+      > </a
+      ><a name="665" href="sets.int.utils.html#596" class="Bound"
+      >n</a
+      ><a name="666" class="Symbol"
+      >)</a
+      ><a name="667"
+      > </a
+      ><a name="668" class="Symbol"
+      >(</a
+      ><a name="669" href="sets.int.utils.html#601" class="Bound"
+      >d</a
+      ><a name="670"
+      > </a
+      ><a name="671" href="sets.nat.core.html#350" class="Function Operator"
+      >+</a
+      ><a name="672"
+      > </a
+      ><a name="673" href="sets.int.utils.html#598" class="Bound"
+      >n'</a
+      ><a name="675" class="Symbol"
+      >)</a
+      ><a name="676"
+      > </a
+      ><a name="677" href="sets.int.utils.html#639" class="Bound"
+      >m</a
+      ><a name="678" class="Symbol"
+      >))</a
+      ><a name="680"
+      >
+      </a
+      ><a name="687" class="Symbol"
+      >(</a
+      ><a name="688" href="sets.int.utils.html#424" class="Function"
+      >lem</a
+      ><a name="691"
+      > </a
+      ><a name="692" href="sets.int.utils.html#596" class="Bound"
+      >n</a
+      ><a name="693"
+      > </a
+      ><a name="694" href="sets.int.utils.html#598" class="Bound"
+      >n'</a
+      ><a name="696"
+      > </a
+      ><a name="697" href="sets.int.utils.html#601" class="Bound"
+      >d</a
+      ><a name="698" class="Symbol"
+      >)</a
+      ><a name="699"
+      > </a
+      ><a name="700" href="sets.int.utils.html#614" class="Bound"
+      >m</a
+      ><a name="701"
+      >
+
+    </a
+      ><a name="707" href="sets.int.utils.html#707" class="Function"
+      >hX'</a
+      ><a name="710"
+      > </a
+      ><a name="711" class="Symbol"
+      >:</a
+      ><a name="712"
+      > </a
+      ><a name="713" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="714"
+      > </a
+      ><a name="715" class="Number"
+      >2</a
+      ><a name="716"
+      > </a
+      ><a name="717" class="Symbol"
+      >(</a
+      ><a name="718" href="sets.int.definition.html#225" class="Function"
+      >&#8484;</a
+      ><a name="719"
+      > </a
+      ><a name="720" class="Symbol"
+      >&#8594;</a
+      ><a name="721"
+      > </a
+      ><a name="722" href="sets.int.utils.html#212" class="Bound"
+      >X</a
+      ><a name="723" class="Symbol"
+      >)</a
+      ><a name="724"
+      >
+    </a
+      ><a name="729" href="sets.int.utils.html#707" class="Function"
+      >hX'</a
+      ><a name="732"
+      > </a
+      ><a name="733" class="Symbol"
+      >=</a
+      ><a name="734"
+      > </a
+      ><a name="735" href="hott.level.closure.extra.html#766" class="Function"
+      >&#928;-level</a
+      ><a name="742"
+      > </a
+      ><a name="743" class="Symbol"
+      >&#955;</a
+      ><a name="744"
+      > </a
+      ><a name="745" href="sets.int.utils.html#745" class="Bound"
+      >_</a
+      ><a name="746"
+      > </a
+      ><a name="747" class="Symbol"
+      >&#8594;</a
+      ><a name="748"
+      > </a
+      ><a name="749" href="sets.int.utils.html#223" class="Bound"
+      >hX</a
+      ><a name="751"
+      >
+
+  </a
+      ><a name="755" href="sets.int.utils.html#755" class="Function"
+      >elim&#8322;-&#8484;</a
+      ><a name="762"
+      > </a
+      ><a name="763" class="Symbol"
+      >:</a
+      ><a name="764"
+      > </a
+      ><a name="765" href="sets.int.definition.html#225" class="Function"
+      >&#8484;</a
+      ><a name="766"
+      > </a
+      ><a name="767" class="Symbol"
+      >&#8594;</a
+      ><a name="768"
+      > </a
+      ><a name="769" href="sets.int.definition.html#225" class="Function"
+      >&#8484;</a
+      ><a name="770"
+      > </a
+      ><a name="771" class="Symbol"
+      >&#8594;</a
+      ><a name="772"
+      > </a
+      ><a name="773" href="sets.int.utils.html#212" class="Bound"
+      >X</a
+      ><a name="774"
+      >
+  </a
+      ><a name="777" href="sets.int.utils.html#755" class="Function"
+      >elim&#8322;-&#8484;</a
+      ><a name="784"
+      > </a
+      ><a name="785" class="Symbol"
+      >=</a
+      ><a name="786"
+      > </a
+      ><a name="787" href="sets.int.definition.html#1725" class="Function"
+      >elim-&#8484;</a
+      ><a name="793"
+      > </a
+      ><a name="794" href="sets.int.utils.html#707" class="Function"
+      >hX'</a
+      ><a name="797"
+      > </a
+      ><a name="798" class="Symbol"
+      >(</a
+      ><a name="799" href="sets.int.utils.html#358" class="Function"
+      >g</a
+      ><a name="800"
+      > </a
+      ><a name="801" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="802"
+      > </a
+      ><a name="803" href="sets.int.utils.html#543" class="Function"
+      >v</a
+      ><a name="804" class="Symbol"
+      >)</a
+      ><a name="805"
+      >
+
+</a
+      ><a name="807" href="sets.int.utils.html#807" class="Function"
+      >elim&#8322;-prop-&#8484;</a
+      ><a name="819"
+      > </a
+      ><a name="820" class="Symbol"
+      >:</a
+      ><a name="821"
+      > </a
+      ><a name="822" class="Symbol"
+      >&#8704;</a
+      ><a name="823"
+      > </a
+      ><a name="824" class="Symbol"
+      >{</a
+      ><a name="825" href="sets.int.utils.html#825" class="Bound"
+      >i</a
+      ><a name="826" class="Symbol"
+      >}{</a
+      ><a name="828" href="sets.int.utils.html#828" class="Bound"
+      >X</a
+      ><a name="829"
+      > </a
+      ><a name="830" class="Symbol"
+      >:</a
+      ><a name="831"
+      > </a
+      ><a name="832" href="sets.int.definition.html#225" class="Function"
+      >&#8484;</a
+      ><a name="833"
+      > </a
+      ><a name="834" class="Symbol"
+      >&#8594;</a
+      ><a name="835"
+      > </a
+      ><a name="836" href="sets.int.definition.html#225" class="Function"
+      >&#8484;</a
+      ><a name="837"
+      > </a
+      ><a name="838" class="Symbol"
+      >&#8594;</a
+      ><a name="839"
+      > </a
+      ><a name="840" class="PrimitiveType"
+      >Set</a
+      ><a name="843"
+      > </a
+      ><a name="844" href="sets.int.utils.html#825" class="Bound"
+      >i</a
+      ><a name="845" class="Symbol"
+      >}</a
+      ><a name="846"
+      > </a
+      ><a name="847" class="Symbol"
+      >&#8594;</a
+      ><a name="848"
+      > </a
+      ><a name="849" class="Symbol"
+      >(&#8704;</a
+      ><a name="851"
+      > </a
+      ><a name="852" href="sets.int.utils.html#852" class="Bound"
+      >n</a
+      ><a name="853"
+      > </a
+      ><a name="854" href="sets.int.utils.html#854" class="Bound"
+      >m</a
+      ><a name="855"
+      > </a
+      ><a name="856" class="Symbol"
+      >&#8594;</a
+      ><a name="857"
+      > </a
+      ><a name="858" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="859"
+      > </a
+      ><a name="860" class="Number"
+      >1</a
+      ><a name="861"
+      > </a
+      ><a name="862" class="Symbol"
+      >(</a
+      ><a name="863" href="sets.int.utils.html#828" class="Bound"
+      >X</a
+      ><a name="864"
+      > </a
+      ><a name="865" href="sets.int.utils.html#852" class="Bound"
+      >n</a
+      ><a name="866"
+      > </a
+      ><a name="867" href="sets.int.utils.html#854" class="Bound"
+      >m</a
+      ><a name="868" class="Symbol"
+      >))</a
+      ><a name="870"
+      >
+             </a
+      ><a name="884" class="Symbol"
+      >&#8594;</a
+      ><a name="885"
+      > </a
+      ><a name="886" class="Symbol"
+      >((</a
+      ><a name="888" href="sets.int.utils.html#888" class="Bound"
+      >n</a
+      ><a name="889"
+      > </a
+      ><a name="890" href="sets.int.utils.html#890" class="Bound"
+      >n'</a
+      ><a name="892"
+      > </a
+      ><a name="893" href="sets.int.utils.html#893" class="Bound"
+      >m</a
+      ><a name="894"
+      > </a
+      ><a name="895" href="sets.int.utils.html#895" class="Bound"
+      >m'</a
+      ><a name="897"
+      > </a
+      ><a name="898" class="Symbol"
+      >:</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="901" class="Symbol"
+      >)</a
+      ><a name="902"
+      > </a
+      ><a name="903" class="Symbol"
+      >&#8594;</a
+      ><a name="904"
+      > </a
+      ><a name="905" href="sets.int.utils.html#828" class="Bound"
+      >X</a
+      ><a name="906"
+      > </a
+      ><a name="907" class="Symbol"
+      >(</a
+      ><a name="908" href="sets.int.utils.html#888" class="Bound"
+      >n</a
+      ><a name="909"
+      > </a
+      ><a name="910" href="sets.int.definition.html#240" class="Function Operator"
+      >[-]</a
+      ><a name="913"
+      > </a
+      ><a name="914" href="sets.int.utils.html#890" class="Bound"
+      >n'</a
+      ><a name="916" class="Symbol"
+      >)</a
+      ><a name="917"
+      > </a
+      ><a name="918" class="Symbol"
+      >(</a
+      ><a name="919" href="sets.int.utils.html#893" class="Bound"
+      >m</a
+      ><a name="920"
+      > </a
+      ><a name="921" href="sets.int.definition.html#240" class="Function Operator"
+      >[-]</a
+      ><a name="924"
+      > </a
+      ><a name="925" href="sets.int.utils.html#895" class="Bound"
+      >m'</a
+      ><a name="927" class="Symbol"
+      >))</a
+      ><a name="929"
+      >
+             </a
+      ><a name="943" class="Symbol"
+      >&#8594;</a
+      ><a name="944"
+      > </a
+      ><a name="945" class="Symbol"
+      >&#8704;</a
+      ><a name="946"
+      > </a
+      ><a name="947" href="sets.int.utils.html#947" class="Bound"
+      >n</a
+      ><a name="948"
+      > </a
+      ><a name="949" href="sets.int.utils.html#949" class="Bound"
+      >m</a
+      ><a name="950"
+      > </a
+      ><a name="951" class="Symbol"
+      >&#8594;</a
+      ><a name="952"
+      > </a
+      ><a name="953" href="sets.int.utils.html#828" class="Bound"
+      >X</a
+      ><a name="954"
+      > </a
+      ><a name="955" href="sets.int.utils.html#947" class="Bound"
+      >n</a
+      ><a name="956"
+      > </a
+      ><a name="957" href="sets.int.utils.html#949" class="Bound"
+      >m</a
+      ><a name="958"
+      >
+</a
+      ><a name="959" href="sets.int.utils.html#807" class="Function"
+      >elim&#8322;-prop-&#8484;</a
+      ><a name="971"
+      > </a
+      ><a name="972" class="Symbol"
+      >{</a
+      ><a name="973" href="sets.int.utils.html#973" class="Bound"
+      >i</a
+      ><a name="974" class="Symbol"
+      >}{</a
+      ><a name="976" href="sets.int.utils.html#976" class="Bound"
+      >X</a
+      ><a name="977" class="Symbol"
+      >}</a
+      ><a name="978"
+      > </a
+      ><a name="979" href="sets.int.utils.html#979" class="Bound"
+      >hX</a
+      ><a name="981"
+      > </a
+      ><a name="982" href="sets.int.utils.html#982" class="Bound"
+      >f</a
+      ><a name="983"
+      > </a
+      ><a name="984" class="Symbol"
+      >=</a
+      ><a name="985"
+      > </a
+      ><a name="986" href="sets.int.definition.html#2178" class="Function"
+      >elim-prop-&#8484;</a
+      ><a name="997"
+      > </a
+      ><a name="998" href="sets.int.utils.html#1109" class="Function"
+      >hX'</a
+      ><a name="1001"
+      > </a
+      ><a name="1002" href="sets.int.utils.html#1016" class="Function"
+      >g</a
+      ><a name="1003"
+      >
+  </a
+      ><a name="1006" class="Keyword"
+      >where</a
+      ><a name="1011"
+      >
+    </a
+      ><a name="1016" href="sets.int.utils.html#1016" class="Function"
+      >g</a
+      ><a name="1017"
+      > </a
+      ><a name="1018" class="Symbol"
+      >:</a
+      ><a name="1019"
+      > </a
+      ><a name="1020" class="Symbol"
+      >(</a
+      ><a name="1021" href="sets.int.utils.html#1021" class="Bound"
+      >n</a
+      ><a name="1022"
+      > </a
+      ><a name="1023" href="sets.int.utils.html#1023" class="Bound"
+      >n'</a
+      ><a name="1025"
+      > </a
+      ><a name="1026" class="Symbol"
+      >:</a
+      ><a name="1027"
+      > </a
+      ><a name="1028" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="1029" class="Symbol"
+      >)</a
+      ><a name="1030"
+      > </a
+      ><a name="1031" class="Symbol"
+      >&#8594;</a
+      ><a name="1032"
+      > </a
+      ><a name="1033" class="Symbol"
+      >&#8704;</a
+      ><a name="1034"
+      > </a
+      ><a name="1035" href="sets.int.utils.html#1035" class="Bound"
+      >m</a
+      ><a name="1036"
+      > </a
+      ><a name="1037" class="Symbol"
+      >&#8594;</a
+      ><a name="1038"
+      > </a
+      ><a name="1039" href="sets.int.utils.html#976" class="Bound"
+      >X</a
+      ><a name="1040"
+      > </a
+      ><a name="1041" class="Symbol"
+      >(</a
+      ><a name="1042" href="sets.int.utils.html#1021" class="Bound"
+      >n</a
+      ><a name="1043"
+      > </a
+      ><a name="1044" href="sets.int.definition.html#240" class="Function Operator"
+      >[-]</a
+      ><a name="1047"
+      > </a
+      ><a name="1048" href="sets.int.utils.html#1023" class="Bound"
+      >n'</a
+      ><a name="1050" class="Symbol"
+      >)</a
+      ><a name="1051"
+      > </a
+      ><a name="1052" href="sets.int.utils.html#1035" class="Bound"
+      >m</a
+      ><a name="1053"
+      >
+    </a
+      ><a name="1058" href="sets.int.utils.html#1016" class="Function"
+      >g</a
+      ><a name="1059"
+      > </a
+      ><a name="1060" href="sets.int.utils.html#1060" class="Bound"
+      >n</a
+      ><a name="1061"
+      > </a
+      ><a name="1062" href="sets.int.utils.html#1062" class="Bound"
+      >n'</a
+      ><a name="1064"
+      > </a
+      ><a name="1065" class="Symbol"
+      >=</a
+      ><a name="1066"
+      > </a
+      ><a name="1067" href="sets.int.definition.html#2178" class="Function"
+      >elim-prop-&#8484;</a
+      ><a name="1078"
+      > </a
+      ><a name="1079" class="Symbol"
+      >(</a
+      ><a name="1080" href="sets.int.utils.html#979" class="Bound"
+      >hX</a
+      ><a name="1082"
+      > </a
+      ><a name="1083" class="Symbol"
+      >(</a
+      ><a name="1084" href="sets.int.utils.html#1060" class="Bound"
+      >n</a
+      ><a name="1085"
+      > </a
+      ><a name="1086" href="sets.int.definition.html#240" class="Function Operator"
+      >[-]</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" href="sets.int.utils.html#1062" class="Bound"
+      >n'</a
+      ><a name="1092" class="Symbol"
+      >))</a
+      ><a name="1094"
+      > </a
+      ><a name="1095" class="Symbol"
+      >(</a
+      ><a name="1096" href="sets.int.utils.html#982" class="Bound"
+      >f</a
+      ><a name="1097"
+      > </a
+      ><a name="1098" href="sets.int.utils.html#1060" class="Bound"
+      >n</a
+      ><a name="1099"
+      > </a
+      ><a name="1100" href="sets.int.utils.html#1062" class="Bound"
+      >n'</a
+      ><a name="1102" class="Symbol"
+      >)</a
+      ><a name="1103"
+      >
+
+    </a
+      ><a name="1109" href="sets.int.utils.html#1109" class="Function"
+      >hX'</a
+      ><a name="1112"
+      > </a
+      ><a name="1113" class="Symbol"
+      >:</a
+      ><a name="1114"
+      > </a
+      ><a name="1115" class="Symbol"
+      >&#8704;</a
+      ><a name="1116"
+      > </a
+      ><a name="1117" href="sets.int.utils.html#1117" class="Bound"
+      >n</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" class="Symbol"
+      >&#8594;</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" class="Number"
+      >1</a
+      ><a name="1124"
+      > </a
+      ><a name="1125" class="Symbol"
+      >(&#8704;</a
+      ><a name="1127"
+      > </a
+      ><a name="1128" href="sets.int.utils.html#1128" class="Bound"
+      >m</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" class="Symbol"
+      >&#8594;</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" href="sets.int.utils.html#976" class="Bound"
+      >X</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" href="sets.int.utils.html#1117" class="Bound"
+      >n</a
+      ><a name="1135"
+      > </a
+      ><a name="1136" href="sets.int.utils.html#1128" class="Bound"
+      >m</a
+      ><a name="1137" class="Symbol"
+      >)</a
+      ><a name="1138"
+      >
+    </a
+      ><a name="1143" href="sets.int.utils.html#1109" class="Function"
+      >hX'</a
+      ><a name="1146"
+      > </a
+      ><a name="1147" href="sets.int.utils.html#1147" class="Bound"
+      >n</a
+      ><a name="1148"
+      > </a
+      ><a name="1149" class="Symbol"
+      >=</a
+      ><a name="1150"
+      > </a
+      ><a name="1151" href="hott.level.closure.extra.html#766" class="Function"
+      >&#928;-level</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" class="Symbol"
+      >&#955;</a
+      ><a name="1160"
+      > </a
+      ><a name="1161" href="sets.int.utils.html#1161" class="Bound"
+      >m</a
+      ><a name="1162"
+      > </a
+      ><a name="1163" class="Symbol"
+      >&#8594;</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" href="sets.int.utils.html#979" class="Bound"
+      >hX</a
+      ><a name="1167"
+      > </a
+      ><a name="1168" href="sets.int.utils.html#1147" class="Bound"
+      >n</a
+      ><a name="1169"
+      > </a
+      ><a name="1170" href="sets.int.utils.html#1161" class="Bound"
+      >m</a
+      ><a name="1171"
+      >
+
+</a
+      ><a name="1173" href="sets.int.utils.html#1173" class="Function"
+      >elim&#8323;-prop-&#8484;</a
+      ><a name="1185"
+      > </a
+      ><a name="1186" class="Symbol"
+      >:</a
+      ><a name="1187"
+      > </a
+      ><a name="1188" class="Symbol"
+      >&#8704;</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" class="Symbol"
+      >{</a
+      ><a name="1191" href="sets.int.utils.html#1191" class="Bound"
+      >i</a
+      ><a name="1192" class="Symbol"
+      >}{</a
+      ><a name="1194" href="sets.int.utils.html#1194" class="Bound"
+      >X</a
+      ><a name="1195"
+      > </a
+      ><a name="1196" class="Symbol"
+      >:</a
+      ><a name="1197"
+      > </a
+      ><a name="1198" href="sets.int.definition.html#225" class="Function"
+      >&#8484;</a
+      ><a name="1199"
+      > </a
+      ><a name="1200" class="Symbol"
+      >&#8594;</a
+      ><a name="1201"
+      > </a
+      ><a name="1202" href="sets.int.definition.html#225" class="Function"
+      >&#8484;</a
+      ><a name="1203"
+      > </a
+      ><a name="1204" class="Symbol"
+      >&#8594;</a
+      ><a name="1205"
+      > </a
+      ><a name="1206" href="sets.int.definition.html#225" class="Function"
+      >&#8484;</a
+      ><a name="1207"
+      > </a
+      ><a name="1208" class="Symbol"
+      >&#8594;</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" class="PrimitiveType"
+      >Set</a
+      ><a name="1213"
+      > </a
+      ><a name="1214" href="sets.int.utils.html#1191" class="Bound"
+      >i</a
+      ><a name="1215" class="Symbol"
+      >}</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" class="Symbol"
+      >&#8594;</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" class="Symbol"
+      >(&#8704;</a
+      ><a name="1221"
+      > </a
+      ><a name="1222" href="sets.int.utils.html#1222" class="Bound"
+      >n</a
+      ><a name="1223"
+      > </a
+      ><a name="1224" href="sets.int.utils.html#1224" class="Bound"
+      >m</a
+      ><a name="1225"
+      > </a
+      ><a name="1226" href="sets.int.utils.html#1226" class="Bound"
+      >p</a
+      ><a name="1227"
+      > </a
+      ><a name="1228" class="Symbol"
+      >&#8594;</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="1231"
+      > </a
+      ><a name="1232" class="Number"
+      >1</a
+      ><a name="1233"
+      > </a
+      ><a name="1234" class="Symbol"
+      >(</a
+      ><a name="1235" href="sets.int.utils.html#1194" class="Bound"
+      >X</a
+      ><a name="1236"
+      > </a
+      ><a name="1237" href="sets.int.utils.html#1222" class="Bound"
+      >n</a
+      ><a name="1238"
+      > </a
+      ><a name="1239" href="sets.int.utils.html#1224" class="Bound"
+      >m</a
+      ><a name="1240"
+      > </a
+      ><a name="1241" href="sets.int.utils.html#1226" class="Bound"
+      >p</a
+      ><a name="1242" class="Symbol"
+      >))</a
+      ><a name="1244"
+      >
+             </a
+      ><a name="1258" class="Symbol"
+      >&#8594;</a
+      ><a name="1259"
+      > </a
+      ><a name="1260" class="Symbol"
+      >((</a
+      ><a name="1262" href="sets.int.utils.html#1262" class="Bound"
+      >n</a
+      ><a name="1263"
+      > </a
+      ><a name="1264" href="sets.int.utils.html#1264" class="Bound"
+      >n'</a
+      ><a name="1266"
+      > </a
+      ><a name="1267" href="sets.int.utils.html#1267" class="Bound"
+      >m</a
+      ><a name="1268"
+      > </a
+      ><a name="1269" href="sets.int.utils.html#1269" class="Bound"
+      >m'</a
+      ><a name="1271"
+      > </a
+      ><a name="1272" href="sets.int.utils.html#1272" class="Bound"
+      >p</a
+      ><a name="1273"
+      > </a
+      ><a name="1274" href="sets.int.utils.html#1274" class="Bound"
+      >p'</a
+      ><a name="1276"
+      > </a
+      ><a name="1277" class="Symbol"
+      >:</a
+      ><a name="1278"
+      > </a
+      ><a name="1279" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="1280" class="Symbol"
+      >)</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" class="Symbol"
+      >&#8594;</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" href="sets.int.utils.html#1194" class="Bound"
+      >X</a
+      ><a name="1285"
+      > </a
+      ><a name="1286" class="Symbol"
+      >(</a
+      ><a name="1287" href="sets.int.utils.html#1262" class="Bound"
+      >n</a
+      ><a name="1288"
+      > </a
+      ><a name="1289" href="sets.int.definition.html#240" class="Function Operator"
+      >[-]</a
+      ><a name="1292"
+      > </a
+      ><a name="1293" href="sets.int.utils.html#1264" class="Bound"
+      >n'</a
+      ><a name="1295" class="Symbol"
+      >)</a
+      ><a name="1296"
+      > </a
+      ><a name="1297" class="Symbol"
+      >(</a
+      ><a name="1298" href="sets.int.utils.html#1267" class="Bound"
+      >m</a
+      ><a name="1299"
+      > </a
+      ><a name="1300" href="sets.int.definition.html#240" class="Function Operator"
+      >[-]</a
+      ><a name="1303"
+      > </a
+      ><a name="1304" href="sets.int.utils.html#1269" class="Bound"
+      >m'</a
+      ><a name="1306" class="Symbol"
+      >)</a
+      ><a name="1307"
+      > </a
+      ><a name="1308" class="Symbol"
+      >(</a
+      ><a name="1309" href="sets.int.utils.html#1272" class="Bound"
+      >p</a
+      ><a name="1310"
+      > </a
+      ><a name="1311" href="sets.int.definition.html#240" class="Function Operator"
+      >[-]</a
+      ><a name="1314"
+      > </a
+      ><a name="1315" href="sets.int.utils.html#1274" class="Bound"
+      >p'</a
+      ><a name="1317" class="Symbol"
+      >))</a
+      ><a name="1319"
+      >
+             </a
+      ><a name="1333" class="Symbol"
+      >&#8594;</a
+      ><a name="1334"
+      > </a
+      ><a name="1335" class="Symbol"
+      >&#8704;</a
+      ><a name="1336"
+      > </a
+      ><a name="1337" href="sets.int.utils.html#1337" class="Bound"
+      >n</a
+      ><a name="1338"
+      > </a
+      ><a name="1339" href="sets.int.utils.html#1339" class="Bound"
+      >m</a
+      ><a name="1340"
+      > </a
+      ><a name="1341" href="sets.int.utils.html#1341" class="Bound"
+      >p</a
+      ><a name="1342"
+      > </a
+      ><a name="1343" class="Symbol"
+      >&#8594;</a
+      ><a name="1344"
+      > </a
+      ><a name="1345" href="sets.int.utils.html#1194" class="Bound"
+      >X</a
+      ><a name="1346"
+      > </a
+      ><a name="1347" href="sets.int.utils.html#1337" class="Bound"
+      >n</a
+      ><a name="1348"
+      > </a
+      ><a name="1349" href="sets.int.utils.html#1339" class="Bound"
+      >m</a
+      ><a name="1350"
+      > </a
+      ><a name="1351" href="sets.int.utils.html#1341" class="Bound"
+      >p</a
+      ><a name="1352"
+      >
+</a
+      ><a name="1353" href="sets.int.utils.html#1173" class="Function"
+      >elim&#8323;-prop-&#8484;</a
+      ><a name="1365"
+      > </a
+      ><a name="1366" class="Symbol"
+      >{</a
+      ><a name="1367" href="sets.int.utils.html#1367" class="Bound"
+      >i</a
+      ><a name="1368" class="Symbol"
+      >}{</a
+      ><a name="1370" href="sets.int.utils.html#1370" class="Bound"
+      >X</a
+      ><a name="1371" class="Symbol"
+      >}</a
+      ><a name="1372"
+      > </a
+      ><a name="1373" href="sets.int.utils.html#1373" class="Bound"
+      >hX</a
+      ><a name="1375"
+      > </a
+      ><a name="1376" href="sets.int.utils.html#1376" class="Bound"
+      >f</a
+      ><a name="1377"
+      > </a
+      ><a name="1378" class="Symbol"
+      >=</a
+      ><a name="1379"
+      > </a
+      ><a name="1380" href="sets.int.definition.html#2178" class="Function"
+      >elim-prop-&#8484;</a
+      ><a name="1391"
+      > </a
+      ><a name="1392" href="sets.int.utils.html#1508" class="Function"
+      >hX'</a
+      ><a name="1395"
+      > </a
+      ><a name="1396" href="sets.int.utils.html#1410" class="Function"
+      >g</a
+      ><a name="1397"
+      >
+  </a
+      ><a name="1400" class="Keyword"
+      >where</a
+      ><a name="1405"
+      >
+    </a
+      ><a name="1410" href="sets.int.utils.html#1410" class="Function"
+      >g</a
+      ><a name="1411"
+      > </a
+      ><a name="1412" class="Symbol"
+      >:</a
+      ><a name="1413"
+      > </a
+      ><a name="1414" class="Symbol"
+      >(</a
+      ><a name="1415" href="sets.int.utils.html#1415" class="Bound"
+      >n</a
+      ><a name="1416"
+      > </a
+      ><a name="1417" href="sets.int.utils.html#1417" class="Bound"
+      >n'</a
+      ><a name="1419"
+      > </a
+      ><a name="1420" class="Symbol"
+      >:</a
+      ><a name="1421"
+      > </a
+      ><a name="1422" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="1423" class="Symbol"
+      >)</a
+      ><a name="1424"
+      > </a
+      ><a name="1425" class="Symbol"
+      >&#8594;</a
+      ><a name="1426"
+      > </a
+      ><a name="1427" class="Symbol"
+      >&#8704;</a
+      ><a name="1428"
+      > </a
+      ><a name="1429" href="sets.int.utils.html#1429" class="Bound"
+      >m</a
+      ><a name="1430"
+      > </a
+      ><a name="1431" href="sets.int.utils.html#1431" class="Bound"
+      >p</a
+      ><a name="1432"
+      > </a
+      ><a name="1433" class="Symbol"
+      >&#8594;</a
+      ><a name="1434"
+      > </a
+      ><a name="1435" href="sets.int.utils.html#1370" class="Bound"
+      >X</a
+      ><a name="1436"
+      > </a
+      ><a name="1437" class="Symbol"
+      >(</a
+      ><a name="1438" href="sets.int.utils.html#1415" class="Bound"
+      >n</a
+      ><a name="1439"
+      > </a
+      ><a name="1440" href="sets.int.definition.html#240" class="Function Operator"
+      >[-]</a
+      ><a name="1443"
+      > </a
+      ><a name="1444" href="sets.int.utils.html#1417" class="Bound"
+      >n'</a
+      ><a name="1446" class="Symbol"
+      >)</a
+      ><a name="1447"
+      > </a
+      ><a name="1448" href="sets.int.utils.html#1429" class="Bound"
+      >m</a
+      ><a name="1449"
+      > </a
+      ><a name="1450" href="sets.int.utils.html#1431" class="Bound"
+      >p</a
+      ><a name="1451"
+      >
+    </a
+      ><a name="1456" href="sets.int.utils.html#1410" class="Function"
+      >g</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" href="sets.int.utils.html#1458" class="Bound"
+      >n</a
+      ><a name="1459"
+      > </a
+      ><a name="1460" href="sets.int.utils.html#1460" class="Bound"
+      >n'</a
+      ><a name="1462"
+      > </a
+      ><a name="1463" class="Symbol"
+      >=</a
+      ><a name="1464"
+      > </a
+      ><a name="1465" href="sets.int.utils.html#807" class="Function"
+      >elim&#8322;-prop-&#8484;</a
+      ><a name="1477"
+      > </a
+      ><a name="1478" class="Symbol"
+      >(</a
+      ><a name="1479" href="sets.int.utils.html#1373" class="Bound"
+      >hX</a
+      ><a name="1481"
+      > </a
+      ><a name="1482" class="Symbol"
+      >(</a
+      ><a name="1483" href="sets.int.utils.html#1458" class="Bound"
+      >n</a
+      ><a name="1484"
+      > </a
+      ><a name="1485" href="sets.int.definition.html#240" class="Function Operator"
+      >[-]</a
+      ><a name="1488"
+      > </a
+      ><a name="1489" href="sets.int.utils.html#1460" class="Bound"
+      >n'</a
+      ><a name="1491" class="Symbol"
+      >))</a
+      ><a name="1493"
+      > </a
+      ><a name="1494" class="Symbol"
+      >(</a
+      ><a name="1495" href="sets.int.utils.html#1376" class="Bound"
+      >f</a
+      ><a name="1496"
+      > </a
+      ><a name="1497" href="sets.int.utils.html#1458" class="Bound"
+      >n</a
+      ><a name="1498"
+      > </a
+      ><a name="1499" href="sets.int.utils.html#1460" class="Bound"
+      >n'</a
+      ><a name="1501" class="Symbol"
+      >)</a
+      ><a name="1502"
+      >
+
+    </a
+      ><a name="1508" href="sets.int.utils.html#1508" class="Function"
+      >hX'</a
+      ><a name="1511"
+      > </a
+      ><a name="1512" class="Symbol"
+      >:</a
+      ><a name="1513"
+      > </a
+      ><a name="1514" class="Symbol"
+      >&#8704;</a
+      ><a name="1515"
+      > </a
+      ><a name="1516" href="sets.int.utils.html#1516" class="Bound"
+      >n</a
+      ><a name="1517"
+      > </a
+      ><a name="1518" class="Symbol"
+      >&#8594;</a
+      ><a name="1519"
+      > </a
+      ><a name="1520" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="1521"
+      > </a
+      ><a name="1522" class="Number"
+      >1</a
+      ><a name="1523"
+      > </a
+      ><a name="1524" class="Symbol"
+      >(&#8704;</a
+      ><a name="1526"
+      > </a
+      ><a name="1527" href="sets.int.utils.html#1527" class="Bound"
+      >m</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" href="sets.int.utils.html#1529" class="Bound"
+      >p</a
+      ><a name="1530"
+      > </a
+      ><a name="1531" class="Symbol"
+      >&#8594;</a
+      ><a name="1532"
+      > </a
+      ><a name="1533" href="sets.int.utils.html#1370" class="Bound"
+      >X</a
+      ><a name="1534"
+      > </a
+      ><a name="1535" href="sets.int.utils.html#1516" class="Bound"
+      >n</a
+      ><a name="1536"
+      > </a
+      ><a name="1537" href="sets.int.utils.html#1527" class="Bound"
+      >m</a
+      ><a name="1538"
+      > </a
+      ><a name="1539" href="sets.int.utils.html#1529" class="Bound"
+      >p</a
+      ><a name="1540" class="Symbol"
+      >)</a
+      ><a name="1541"
+      >
+    </a
+      ><a name="1546" href="sets.int.utils.html#1508" class="Function"
+      >hX'</a
+      ><a name="1549"
+      > </a
+      ><a name="1550" href="sets.int.utils.html#1550" class="Bound"
+      >n</a
+      ><a name="1551"
+      > </a
+      ><a name="1552" class="Symbol"
+      >=</a
+      ><a name="1553"
+      > </a
+      ><a name="1554" href="hott.level.closure.extra.html#766" class="Function"
+      >&#928;-level</a
+      ><a name="1561"
+      > </a
+      ><a name="1562" class="Symbol"
+      >&#955;</a
+      ><a name="1563"
+      > </a
+      ><a name="1564" href="sets.int.utils.html#1564" class="Bound"
+      >m</a
+      ><a name="1565"
+      > </a
+      ><a name="1566" class="Symbol"
+      >&#8594;</a
+      ><a name="1567"
+      > </a
+      ><a name="1568" href="hott.level.closure.extra.html#766" class="Function"
+      >&#928;-level</a
+      ><a name="1575"
+      > </a
+      ><a name="1576" class="Symbol"
+      >&#955;</a
+      ><a name="1577"
+      > </a
+      ><a name="1578" href="sets.int.utils.html#1578" class="Bound"
+      >p</a
+      ><a name="1579"
+      > </a
+      ><a name="1580" class="Symbol"
+      >&#8594;</a
+      ><a name="1581"
+      > </a
+      ><a name="1582" href="sets.int.utils.html#1373" class="Bound"
+      >hX</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" href="sets.int.utils.html#1550" class="Bound"
+      >n</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" href="sets.int.utils.html#1564" class="Bound"
+      >m</a
+      ><a name="1588"
+      > </a
+      ><a name="1589" href="sets.int.utils.html#1578" class="Bound"
+      >p</a
+      ><a name="1590"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

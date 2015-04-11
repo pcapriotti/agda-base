@@ -1,0 +1,1021 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >sets.nat.ordering.leq.core</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="sets.nat.ordering.leq.core.html#1" class="Module"
+      >sets.nat.ordering.leq.core</a
+      ><a name="62"
+      > </a
+      ><a name="63" class="Keyword"
+      >where</a
+      ><a name="68"
+      >
+
+</a
+      ><a name="70" class="Keyword"
+      >open</a
+      ><a name="74"
+      > </a
+      ><a name="75" class="Keyword"
+      >import</a
+      ><a name="81"
+      > </a
+      ><a name="82" href="decidable.html#1" class="Module"
+      >decidable</a
+      ><a name="91"
+      >
+</a
+      ><a name="92" class="Keyword"
+      >open</a
+      ><a name="96"
+      > </a
+      ><a name="97" class="Keyword"
+      >import</a
+      ><a name="103"
+      > </a
+      ><a name="104" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="117"
+      >
+</a
+      ><a name="118" class="Keyword"
+      >open</a
+      ><a name="122"
+      > </a
+      ><a name="123" class="Keyword"
+      >import</a
+      ><a name="129"
+      > </a
+      ><a name="130" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="143"
+      >
+</a
+      ><a name="144" class="Keyword"
+      >open</a
+      ><a name="148"
+      > </a
+      ><a name="149" class="Keyword"
+      >import</a
+      ><a name="155"
+      > </a
+      ><a name="156" href="sets.nat.core.html#1" class="Module"
+      >sets.nat.core</a
+      ><a name="169"
+      >
+</a
+      ><a name="170" class="Keyword"
+      >open</a
+      ><a name="174"
+      > </a
+      ><a name="175" class="Keyword"
+      >import</a
+      ><a name="181"
+      > </a
+      ><a name="182" href="sets.empty.html#1" class="Module"
+      >sets.empty</a
+      ><a name="192"
+      >
+
+</a
+      ><a name="194" class="Keyword"
+      >data</a
+      ><a name="198"
+      > </a
+      ><a name="199" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >_&#8804;_</a
+      ><a name="202"
+      > </a
+      ><a name="203" class="Symbol"
+      >:</a
+      ><a name="204"
+      > </a
+      ><a name="205" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="206"
+      > </a
+      ><a name="207" class="Symbol"
+      >&#8594;</a
+      ><a name="208"
+      > </a
+      ><a name="209" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="210"
+      > </a
+      ><a name="211" class="Symbol"
+      >&#8594;</a
+      ><a name="212"
+      > </a
+      ><a name="213" class="PrimitiveType"
+      >Set</a
+      ><a name="216"
+      > </a
+      ><a name="217" class="Keyword"
+      >where</a
+      ><a name="222"
+      >
+  </a
+      ><a name="225" href="sets.nat.ordering.leq.core.html#225" class="InductiveConstructor"
+      >z&#8804;n</a
+      ><a name="228"
+      > </a
+      ><a name="229" class="Symbol"
+      >:</a
+      ><a name="230"
+      > </a
+      ><a name="231" class="Symbol"
+      >&#8704;</a
+      ><a name="232"
+      > </a
+      ><a name="233" class="Symbol"
+      >{</a
+      ><a name="234" href="sets.nat.ordering.leq.core.html#234" class="Bound"
+      >n</a
+      ><a name="235" class="Symbol"
+      >}</a
+      ><a name="236"
+      > </a
+      ><a name="237" class="Symbol"
+      >&#8594;</a
+      ><a name="238"
+      > </a
+      ><a name="239" href="sets.nat.core.html#244" class="InductiveConstructor"
+      >zero</a
+      ><a name="243"
+      > </a
+      ><a name="244" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="245"
+      > </a
+      ><a name="246" href="sets.nat.ordering.leq.core.html#234" class="Bound"
+      >n</a
+      ><a name="247"
+      >
+  </a
+      ><a name="250" href="sets.nat.ordering.leq.core.html#250" class="InductiveConstructor"
+      >s&#8804;s</a
+      ><a name="253"
+      > </a
+      ><a name="254" class="Symbol"
+      >:</a
+      ><a name="255"
+      > </a
+      ><a name="256" class="Symbol"
+      >&#8704;</a
+      ><a name="257"
+      > </a
+      ><a name="258" class="Symbol"
+      >{</a
+      ><a name="259" href="sets.nat.ordering.leq.core.html#259" class="Bound"
+      >m</a
+      ><a name="260"
+      > </a
+      ><a name="261" href="sets.nat.ordering.leq.core.html#261" class="Bound"
+      >n</a
+      ><a name="262" class="Symbol"
+      >}</a
+      ><a name="263"
+      > </a
+      ><a name="264" class="Symbol"
+      >(</a
+      ><a name="265" href="sets.nat.ordering.leq.core.html#265" class="Bound"
+      >p</a
+      ><a name="266"
+      > </a
+      ><a name="267" class="Symbol"
+      >:</a
+      ><a name="268"
+      > </a
+      ><a name="269" href="sets.nat.ordering.leq.core.html#259" class="Bound"
+      >m</a
+      ><a name="270"
+      > </a
+      ><a name="271" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="272"
+      > </a
+      ><a name="273" href="sets.nat.ordering.leq.core.html#261" class="Bound"
+      >n</a
+      ><a name="274" class="Symbol"
+      >)</a
+      ><a name="275"
+      > </a
+      ><a name="276" class="Symbol"
+      >&#8594;</a
+      ><a name="277"
+      > </a
+      ><a name="278" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="281"
+      > </a
+      ><a name="282" href="sets.nat.ordering.leq.core.html#259" class="Bound"
+      >m</a
+      ><a name="283"
+      > </a
+      ><a name="284" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="285"
+      > </a
+      ><a name="286" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="289"
+      > </a
+      ><a name="290" href="sets.nat.ordering.leq.core.html#261" class="Bound"
+      >n</a
+      ><a name="291"
+      >
+
+</a
+      ><a name="293" href="sets.nat.ordering.leq.core.html#293" class="Function"
+      >ap-pred-&#8804;</a
+      ><a name="302"
+      > </a
+      ><a name="303" class="Symbol"
+      >:</a
+      ><a name="304"
+      > </a
+      ><a name="305" class="Symbol"
+      >&#8704;</a
+      ><a name="306"
+      > </a
+      ><a name="307" class="Symbol"
+      >{</a
+      ><a name="308" href="sets.nat.ordering.leq.core.html#308" class="Bound"
+      >n</a
+      ><a name="309"
+      > </a
+      ><a name="310" href="sets.nat.ordering.leq.core.html#310" class="Bound"
+      >m</a
+      ><a name="311" class="Symbol"
+      >}</a
+      ><a name="312"
+      > </a
+      ><a name="313" class="Symbol"
+      >&#8594;</a
+      ><a name="314"
+      > </a
+      ><a name="315" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="318"
+      > </a
+      ><a name="319" href="sets.nat.ordering.leq.core.html#308" class="Bound"
+      >n</a
+      ><a name="320"
+      > </a
+      ><a name="321" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="322"
+      > </a
+      ><a name="323" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="326"
+      > </a
+      ><a name="327" href="sets.nat.ordering.leq.core.html#310" class="Bound"
+      >m</a
+      ><a name="328"
+      > </a
+      ><a name="329" class="Symbol"
+      >&#8594;</a
+      ><a name="330"
+      > </a
+      ><a name="331" href="sets.nat.ordering.leq.core.html#308" class="Bound"
+      >n</a
+      ><a name="332"
+      > </a
+      ><a name="333" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="334"
+      > </a
+      ><a name="335" href="sets.nat.ordering.leq.core.html#310" class="Bound"
+      >m</a
+      ><a name="336"
+      >
+</a
+      ><a name="337" href="sets.nat.ordering.leq.core.html#293" class="Function"
+      >ap-pred-&#8804;</a
+      ><a name="346"
+      > </a
+      ><a name="347" class="Symbol"
+      >(</a
+      ><a name="348" href="sets.nat.ordering.leq.core.html#250" class="InductiveConstructor"
+      >s&#8804;s</a
+      ><a name="351"
+      > </a
+      ><a name="352" href="sets.nat.ordering.leq.core.html#352" class="Bound"
+      >p</a
+      ><a name="353" class="Symbol"
+      >)</a
+      ><a name="354"
+      > </a
+      ><a name="355" class="Symbol"
+      >=</a
+      ><a name="356"
+      > </a
+      ><a name="357" href="sets.nat.ordering.leq.core.html#352" class="Bound"
+      >p</a
+      ><a name="358"
+      >
+
+</a
+      ><a name="360" href="sets.nat.ordering.leq.core.html#360" class="Function"
+      >refl&#8804;</a
+      ><a name="365"
+      > </a
+      ><a name="366" class="Symbol"
+      >:</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="Symbol"
+      >{</a
+      ><a name="369" href="sets.nat.ordering.leq.core.html#369" class="Bound"
+      >n</a
+      ><a name="370"
+      > </a
+      ><a name="371" class="Symbol"
+      >:</a
+      ><a name="372"
+      > </a
+      ><a name="373" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="374" class="Symbol"
+      >}</a
+      ><a name="375"
+      > </a
+      ><a name="376" class="Symbol"
+      >&#8594;</a
+      ><a name="377"
+      > </a
+      ><a name="378" href="sets.nat.ordering.leq.core.html#369" class="Bound"
+      >n</a
+      ><a name="379"
+      > </a
+      ><a name="380" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="381"
+      > </a
+      ><a name="382" href="sets.nat.ordering.leq.core.html#369" class="Bound"
+      >n</a
+      ><a name="383"
+      >
+</a
+      ><a name="384" href="sets.nat.ordering.leq.core.html#360" class="Function"
+      >refl&#8804;</a
+      ><a name="389"
+      > </a
+      ><a name="390" class="Symbol"
+      >{</a
+      ><a name="391" class="Number"
+      >0</a
+      ><a name="392" class="Symbol"
+      >}</a
+      ><a name="393"
+      > </a
+      ><a name="394" class="Symbol"
+      >=</a
+      ><a name="395"
+      > </a
+      ><a name="396" href="sets.nat.ordering.leq.core.html#225" class="InductiveConstructor"
+      >z&#8804;n</a
+      ><a name="399"
+      >
+</a
+      ><a name="400" href="sets.nat.ordering.leq.core.html#360" class="Function"
+      >refl&#8804;</a
+      ><a name="405"
+      > </a
+      ><a name="406" class="Symbol"
+      >{</a
+      ><a name="407" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="410"
+      > </a
+      ><a name="411" href="sets.nat.ordering.leq.core.html#411" class="Bound"
+      >n</a
+      ><a name="412" class="Symbol"
+      >}</a
+      ><a name="413"
+      > </a
+      ><a name="414" class="Symbol"
+      >=</a
+      ><a name="415"
+      > </a
+      ><a name="416" href="sets.nat.ordering.leq.core.html#250" class="InductiveConstructor"
+      >s&#8804;s</a
+      ><a name="419"
+      > </a
+      ><a name="420" href="sets.nat.ordering.leq.core.html#360" class="Function"
+      >refl&#8804;</a
+      ><a name="425"
+      >
+
+</a
+      ><a name="427" href="sets.nat.ordering.leq.core.html#427" class="Function"
+      >&#8801;&#8658;&#8804;</a
+      ><a name="430"
+      > </a
+      ><a name="431" class="Symbol"
+      >:</a
+      ><a name="432"
+      > </a
+      ><a name="433" class="Symbol"
+      >{</a
+      ><a name="434" href="sets.nat.ordering.leq.core.html#434" class="Bound"
+      >n</a
+      ><a name="435"
+      > </a
+      ><a name="436" href="sets.nat.ordering.leq.core.html#436" class="Bound"
+      >m</a
+      ><a name="437"
+      > </a
+      ><a name="438" class="Symbol"
+      >:</a
+      ><a name="439"
+      > </a
+      ><a name="440" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="441" class="Symbol"
+      >}</a
+      ><a name="442"
+      > </a
+      ><a name="443" class="Symbol"
+      >&#8594;</a
+      ><a name="444"
+      > </a
+      ><a name="445" href="sets.nat.ordering.leq.core.html#434" class="Bound"
+      >n</a
+      ><a name="446"
+      > </a
+      ><a name="447" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="448"
+      > </a
+      ><a name="449" href="sets.nat.ordering.leq.core.html#436" class="Bound"
+      >m</a
+      ><a name="450"
+      > </a
+      ><a name="451" class="Symbol"
+      >&#8594;</a
+      ><a name="452"
+      > </a
+      ><a name="453" href="sets.nat.ordering.leq.core.html#434" class="Bound"
+      >n</a
+      ><a name="454"
+      > </a
+      ><a name="455" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="456"
+      > </a
+      ><a name="457" href="sets.nat.ordering.leq.core.html#436" class="Bound"
+      >m</a
+      ><a name="458"
+      >
+</a
+      ><a name="459" href="sets.nat.ordering.leq.core.html#427" class="Function"
+      >&#8801;&#8658;&#8804;</a
+      ><a name="462"
+      > </a
+      ><a name="463" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="467"
+      > </a
+      ><a name="468" class="Symbol"
+      >=</a
+      ><a name="469"
+      > </a
+      ><a name="470" href="sets.nat.ordering.leq.core.html#360" class="Function"
+      >refl&#8804;</a
+      ><a name="475"
+      >
+
+</a
+      ><a name="477" href="sets.nat.ordering.leq.core.html#477" class="Function"
+      >suc&#8804;</a
+      ><a name="481"
+      > </a
+      ><a name="482" class="Symbol"
+      >:</a
+      ><a name="483"
+      > </a
+      ><a name="484" class="Symbol"
+      >&#8704;</a
+      ><a name="485"
+      > </a
+      ><a name="486" class="Symbol"
+      >{</a
+      ><a name="487" href="sets.nat.ordering.leq.core.html#487" class="Bound"
+      >n</a
+      ><a name="488" class="Symbol"
+      >}</a
+      ><a name="489"
+      > </a
+      ><a name="490" class="Symbol"
+      >&#8594;</a
+      ><a name="491"
+      > </a
+      ><a name="492" href="sets.nat.ordering.leq.core.html#487" class="Bound"
+      >n</a
+      ><a name="493"
+      > </a
+      ><a name="494" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="495"
+      > </a
+      ><a name="496" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="499"
+      > </a
+      ><a name="500" href="sets.nat.ordering.leq.core.html#487" class="Bound"
+      >n</a
+      ><a name="501"
+      >
+</a
+      ><a name="502" href="sets.nat.ordering.leq.core.html#477" class="Function"
+      >suc&#8804;</a
+      ><a name="506"
+      > </a
+      ><a name="507" class="Symbol"
+      >{</a
+      ><a name="508" class="Number"
+      >0</a
+      ><a name="509" class="Symbol"
+      >}</a
+      ><a name="510"
+      > </a
+      ><a name="511" class="Symbol"
+      >=</a
+      ><a name="512"
+      > </a
+      ><a name="513" href="sets.nat.ordering.leq.core.html#225" class="InductiveConstructor"
+      >z&#8804;n</a
+      ><a name="516"
+      >
+</a
+      ><a name="517" href="sets.nat.ordering.leq.core.html#477" class="Function"
+      >suc&#8804;</a
+      ><a name="521"
+      > </a
+      ><a name="522" class="Symbol"
+      >{</a
+      ><a name="523" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="526"
+      > </a
+      ><a name="527" href="sets.nat.ordering.leq.core.html#527" class="Bound"
+      >n</a
+      ><a name="528" class="Symbol"
+      >}</a
+      ><a name="529"
+      > </a
+      ><a name="530" class="Symbol"
+      >=</a
+      ><a name="531"
+      > </a
+      ><a name="532" href="sets.nat.ordering.leq.core.html#250" class="InductiveConstructor"
+      >s&#8804;s</a
+      ><a name="535"
+      > </a
+      ><a name="536" href="sets.nat.ordering.leq.core.html#477" class="Function"
+      >suc&#8804;</a
+      ><a name="540"
+      >
+
+</a
+      ><a name="542" href="sets.nat.ordering.leq.core.html#542" class="Function"
+      >suc&#8816;</a
+      ><a name="546"
+      > </a
+      ><a name="547" class="Symbol"
+      >:</a
+      ><a name="548"
+      > </a
+      ><a name="549" class="Symbol"
+      >&#8704;</a
+      ><a name="550"
+      > </a
+      ><a name="551" class="Symbol"
+      >{</a
+      ><a name="552" href="sets.nat.ordering.leq.core.html#552" class="Bound"
+      >n</a
+      ><a name="553" class="Symbol"
+      >}</a
+      ><a name="554"
+      > </a
+      ><a name="555" class="Symbol"
+      >&#8594;</a
+      ><a name="556"
+      > </a
+      ><a name="557" href="sets.empty.html#149" class="Function Operator"
+      >&#172;</a
+      ><a name="558"
+      > </a
+      ><a name="559" class="Symbol"
+      >(</a
+      ><a name="560" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="563"
+      > </a
+      ><a name="564" href="sets.nat.ordering.leq.core.html#552" class="Bound"
+      >n</a
+      ><a name="565"
+      > </a
+      ><a name="566" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="567"
+      > </a
+      ><a name="568" href="sets.nat.ordering.leq.core.html#552" class="Bound"
+      >n</a
+      ><a name="569" class="Symbol"
+      >)</a
+      ><a name="570"
+      >
+</a
+      ><a name="571" href="sets.nat.ordering.leq.core.html#542" class="Function"
+      >suc&#8816;</a
+      ><a name="575"
+      > </a
+      ><a name="576" class="Symbol"
+      >{</a
+      ><a name="577" href="sets.nat.core.html#244" class="InductiveConstructor"
+      >zero</a
+      ><a name="581" class="Symbol"
+      >}</a
+      ><a name="582"
+      > </a
+      ><a name="583" class="Symbol"
+      >()</a
+      ><a name="585"
+      >
+</a
+      ><a name="586" href="sets.nat.ordering.leq.core.html#542" class="Function"
+      >suc&#8816;</a
+      ><a name="590"
+      > </a
+      ><a name="591" class="Symbol"
+      >{</a
+      ><a name="592" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="595"
+      > </a
+      ><a name="596" href="sets.nat.ordering.leq.core.html#596" class="Bound"
+      >n</a
+      ><a name="597" class="Symbol"
+      >}</a
+      ><a name="598"
+      > </a
+      ><a name="599" href="sets.nat.ordering.leq.core.html#599" class="Bound"
+      >p</a
+      ><a name="600"
+      > </a
+      ><a name="601" class="Symbol"
+      >=</a
+      ><a name="602"
+      > </a
+      ><a name="603" href="sets.nat.ordering.leq.core.html#542" class="Function"
+      >suc&#8816;</a
+      ><a name="607"
+      > </a
+      ><a name="608" class="Symbol"
+      >(</a
+      ><a name="609" href="sets.nat.ordering.leq.core.html#293" class="Function"
+      >ap-pred-&#8804;</a
+      ><a name="618"
+      > </a
+      ><a name="619" href="sets.nat.ordering.leq.core.html#599" class="Bound"
+      >p</a
+      ><a name="620" class="Symbol"
+      >)</a
+      ><a name="621"
+      >
+
+</a
+      ><a name="623" href="sets.nat.ordering.leq.core.html#623" class="Function"
+      >trans&#8804;</a
+      ><a name="629"
+      > </a
+      ><a name="630" class="Symbol"
+      >:</a
+      ><a name="631"
+      > </a
+      ><a name="632" class="Symbol"
+      >&#8704;</a
+      ><a name="633"
+      > </a
+      ><a name="634" class="Symbol"
+      >{</a
+      ><a name="635" href="sets.nat.ordering.leq.core.html#635" class="Bound"
+      >n</a
+      ><a name="636"
+      > </a
+      ><a name="637" href="sets.nat.ordering.leq.core.html#637" class="Bound"
+      >m</a
+      ><a name="638"
+      > </a
+      ><a name="639" href="sets.nat.ordering.leq.core.html#639" class="Bound"
+      >p</a
+      ><a name="640" class="Symbol"
+      >}</a
+      ><a name="641"
+      > </a
+      ><a name="642" class="Symbol"
+      >&#8594;</a
+      ><a name="643"
+      > </a
+      ><a name="644" href="sets.nat.ordering.leq.core.html#635" class="Bound"
+      >n</a
+      ><a name="645"
+      > </a
+      ><a name="646" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="647"
+      > </a
+      ><a name="648" href="sets.nat.ordering.leq.core.html#637" class="Bound"
+      >m</a
+      ><a name="649"
+      > </a
+      ><a name="650" class="Symbol"
+      >&#8594;</a
+      ><a name="651"
+      > </a
+      ><a name="652" href="sets.nat.ordering.leq.core.html#637" class="Bound"
+      >m</a
+      ><a name="653"
+      > </a
+      ><a name="654" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="655"
+      > </a
+      ><a name="656" href="sets.nat.ordering.leq.core.html#639" class="Bound"
+      >p</a
+      ><a name="657"
+      > </a
+      ><a name="658" class="Symbol"
+      >&#8594;</a
+      ><a name="659"
+      > </a
+      ><a name="660" href="sets.nat.ordering.leq.core.html#635" class="Bound"
+      >n</a
+      ><a name="661"
+      > </a
+      ><a name="662" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="663"
+      > </a
+      ><a name="664" href="sets.nat.ordering.leq.core.html#639" class="Bound"
+      >p</a
+      ><a name="665"
+      >
+</a
+      ><a name="666" href="sets.nat.ordering.leq.core.html#623" class="Function"
+      >trans&#8804;</a
+      ><a name="672"
+      > </a
+      ><a name="673" href="sets.nat.ordering.leq.core.html#225" class="InductiveConstructor"
+      >z&#8804;n</a
+      ><a name="676"
+      > </a
+      ><a name="677" href="sets.nat.ordering.leq.core.html#677" class="Bound"
+      >q</a
+      ><a name="678"
+      > </a
+      ><a name="679" class="Symbol"
+      >=</a
+      ><a name="680"
+      > </a
+      ><a name="681" href="sets.nat.ordering.leq.core.html#225" class="InductiveConstructor"
+      >z&#8804;n</a
+      ><a name="684"
+      >
+</a
+      ><a name="685" href="sets.nat.ordering.leq.core.html#623" class="Function"
+      >trans&#8804;</a
+      ><a name="691"
+      > </a
+      ><a name="692" class="Symbol"
+      >(</a
+      ><a name="693" href="sets.nat.ordering.leq.core.html#250" class="InductiveConstructor"
+      >s&#8804;s</a
+      ><a name="696"
+      > </a
+      ><a name="697" href="sets.nat.ordering.leq.core.html#697" class="Bound"
+      >p</a
+      ><a name="698" class="Symbol"
+      >)</a
+      ><a name="699"
+      > </a
+      ><a name="700" class="Symbol"
+      >(</a
+      ><a name="701" href="sets.nat.ordering.leq.core.html#250" class="InductiveConstructor"
+      >s&#8804;s</a
+      ><a name="704"
+      > </a
+      ><a name="705" href="sets.nat.ordering.leq.core.html#705" class="Bound"
+      >q</a
+      ><a name="706" class="Symbol"
+      >)</a
+      ><a name="707"
+      > </a
+      ><a name="708" class="Symbol"
+      >=</a
+      ><a name="709"
+      > </a
+      ><a name="710" href="sets.nat.ordering.leq.core.html#250" class="InductiveConstructor"
+      >s&#8804;s</a
+      ><a name="713"
+      > </a
+      ><a name="714" class="Symbol"
+      >(</a
+      ><a name="715" href="sets.nat.ordering.leq.core.html#623" class="Function"
+      >trans&#8804;</a
+      ><a name="721"
+      > </a
+      ><a name="722" href="sets.nat.ordering.leq.core.html#697" class="Bound"
+      >p</a
+      ><a name="723"
+      > </a
+      ><a name="724" href="sets.nat.ordering.leq.core.html#705" class="Bound"
+      >q</a
+      ><a name="725" class="Symbol"
+      >)</a
+      ><a name="726"
+      >
+
+</a
+      ><a name="728" href="sets.nat.ordering.leq.core.html#728" class="Function"
+      >antisym&#8804;</a
+      ><a name="736"
+      > </a
+      ><a name="737" class="Symbol"
+      >:</a
+      ><a name="738"
+      > </a
+      ><a name="739" class="Symbol"
+      >&#8704;</a
+      ><a name="740"
+      > </a
+      ><a name="741" class="Symbol"
+      >{</a
+      ><a name="742" href="sets.nat.ordering.leq.core.html#742" class="Bound"
+      >n</a
+      ><a name="743"
+      > </a
+      ><a name="744" href="sets.nat.ordering.leq.core.html#744" class="Bound"
+      >m</a
+      ><a name="745" class="Symbol"
+      >}</a
+      ><a name="746"
+      > </a
+      ><a name="747" class="Symbol"
+      >&#8594;</a
+      ><a name="748"
+      > </a
+      ><a name="749" href="sets.nat.ordering.leq.core.html#742" class="Bound"
+      >n</a
+      ><a name="750"
+      > </a
+      ><a name="751" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="752"
+      > </a
+      ><a name="753" href="sets.nat.ordering.leq.core.html#744" class="Bound"
+      >m</a
+      ><a name="754"
+      > </a
+      ><a name="755" class="Symbol"
+      >&#8594;</a
+      ><a name="756"
+      > </a
+      ><a name="757" href="sets.nat.ordering.leq.core.html#744" class="Bound"
+      >m</a
+      ><a name="758"
+      > </a
+      ><a name="759" href="sets.nat.ordering.leq.core.html#199" class="Datatype Operator"
+      >&#8804;</a
+      ><a name="760"
+      > </a
+      ><a name="761" href="sets.nat.ordering.leq.core.html#742" class="Bound"
+      >n</a
+      ><a name="762"
+      > </a
+      ><a name="763" class="Symbol"
+      >&#8594;</a
+      ><a name="764"
+      > </a
+      ><a name="765" href="sets.nat.ordering.leq.core.html#742" class="Bound"
+      >n</a
+      ><a name="766"
+      > </a
+      ><a name="767" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="768"
+      > </a
+      ><a name="769" href="sets.nat.ordering.leq.core.html#744" class="Bound"
+      >m</a
+      ><a name="770"
+      >
+</a
+      ><a name="771" href="sets.nat.ordering.leq.core.html#728" class="Function"
+      >antisym&#8804;</a
+      ><a name="779"
+      > </a
+      ><a name="780" href="sets.nat.ordering.leq.core.html#225" class="InductiveConstructor"
+      >z&#8804;n</a
+      ><a name="783"
+      > </a
+      ><a name="784" href="sets.nat.ordering.leq.core.html#225" class="InductiveConstructor"
+      >z&#8804;n</a
+      ><a name="787"
+      > </a
+      ><a name="788" class="Symbol"
+      >=</a
+      ><a name="789"
+      > </a
+      ><a name="790" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="794"
+      >
+</a
+      ><a name="795" href="sets.nat.ordering.leq.core.html#728" class="Function"
+      >antisym&#8804;</a
+      ><a name="803"
+      > </a
+      ><a name="804" class="Symbol"
+      >(</a
+      ><a name="805" href="sets.nat.ordering.leq.core.html#250" class="InductiveConstructor"
+      >s&#8804;s</a
+      ><a name="808"
+      > </a
+      ><a name="809" href="sets.nat.ordering.leq.core.html#809" class="Bound"
+      >p</a
+      ><a name="810" class="Symbol"
+      >)</a
+      ><a name="811"
+      > </a
+      ><a name="812" class="Symbol"
+      >(</a
+      ><a name="813" href="sets.nat.ordering.leq.core.html#250" class="InductiveConstructor"
+      >s&#8804;s</a
+      ><a name="816"
+      > </a
+      ><a name="817" href="sets.nat.ordering.leq.core.html#817" class="Bound"
+      >q</a
+      ><a name="818" class="Symbol"
+      >)</a
+      ><a name="819"
+      > </a
+      ><a name="820" class="Symbol"
+      >=</a
+      ><a name="821"
+      > </a
+      ><a name="822" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="824"
+      > </a
+      ><a name="825" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="828"
+      > </a
+      ><a name="829" class="Symbol"
+      >(</a
+      ><a name="830" href="sets.nat.ordering.leq.core.html#728" class="Function"
+      >antisym&#8804;</a
+      ><a name="838"
+      > </a
+      ><a name="839" href="sets.nat.ordering.leq.core.html#809" class="Bound"
+      >p</a
+      ><a name="840"
+      > </a
+      ><a name="841" href="sets.nat.ordering.leq.core.html#817" class="Bound"
+      >q</a
+      ><a name="842" class="Symbol"
+      >)</a
+      ><a name="843"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
