@@ -1,0 +1,1612 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >hott.level.sets</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="hott.level.sets.html#1" class="Module"
+      >hott.level.sets</a
+      ><a name="51"
+      > </a
+      ><a name="52" class="Keyword"
+      >where</a
+      ><a name="57"
+      >
+
+</a
+      ><a name="59" class="Keyword"
+      >open</a
+      ><a name="63"
+      > </a
+      ><a name="64" class="Keyword"
+      >import</a
+      ><a name="70"
+      > </a
+      ><a name="71" href="level.html#1" class="Module"
+      >level</a
+      ><a name="76"
+      >
+</a
+      ><a name="77" class="Keyword"
+      >open</a
+      ><a name="81"
+      > </a
+      ><a name="82" class="Keyword"
+      >import</a
+      ><a name="88"
+      > </a
+      ><a name="89" href="decidable.html#1" class="Module"
+      >decidable</a
+      ><a name="98"
+      >
+</a
+      ><a name="99" class="Keyword"
+      >open</a
+      ><a name="103"
+      > </a
+      ><a name="104" class="Keyword"
+      >import</a
+      ><a name="110"
+      > </a
+      ><a name="111" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="114"
+      >
+</a
+      ><a name="115" class="Keyword"
+      >open</a
+      ><a name="119"
+      > </a
+      ><a name="120" class="Keyword"
+      >import</a
+      ><a name="126"
+      > </a
+      ><a name="127" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="140"
+      >
+</a
+      ><a name="141" class="Keyword"
+      >open</a
+      ><a name="145"
+      > </a
+      ><a name="146" class="Keyword"
+      >import</a
+      ><a name="152"
+      > </a
+      ><a name="153" href="equality.calculus.html#1" class="Module"
+      >equality.calculus</a
+      ><a name="170"
+      >
+</a
+      ><a name="171" class="Keyword"
+      >open</a
+      ><a name="175"
+      > </a
+      ><a name="176" class="Keyword"
+      >import</a
+      ><a name="182"
+      > </a
+      ><a name="183" href="equality.reasoning.html#1" class="Module"
+      >equality.reasoning</a
+      ><a name="201"
+      >
+</a
+      ><a name="202" class="Keyword"
+      >open</a
+      ><a name="206"
+      > </a
+      ><a name="207" class="Keyword"
+      >import</a
+      ><a name="213"
+      > </a
+      ><a name="214" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="227"
+      >
+</a
+      ><a name="228" class="Keyword"
+      >open</a
+      ><a name="232"
+      > </a
+      ><a name="233" class="Keyword"
+      >import</a
+      ><a name="239"
+      > </a
+      ><a name="240" href="function.extensionality.proof.html#1" class="Module"
+      >function.extensionality.proof</a
+      ><a name="269"
+      >
+</a
+      ><a name="270" class="Keyword"
+      >open</a
+      ><a name="274"
+      > </a
+      ><a name="275" class="Keyword"
+      >import</a
+      ><a name="281"
+      > </a
+      ><a name="282" href="sets.empty.html#1" class="Module"
+      >sets.empty</a
+      ><a name="292"
+      >
+</a
+      ><a name="293" class="Keyword"
+      >open</a
+      ><a name="297"
+      > </a
+      ><a name="298" class="Keyword"
+      >import</a
+      ><a name="304"
+      > </a
+      ><a name="305" href="sets.unit.html#1" class="Module"
+      >sets.unit</a
+      ><a name="314"
+      >
+</a
+      ><a name="315" class="Keyword"
+      >open</a
+      ><a name="319"
+      > </a
+      ><a name="320" class="Keyword"
+      >import</a
+      ><a name="326"
+      > </a
+      ><a name="327" href="hott.level.core.html#1" class="Module"
+      >hott.level.core</a
+      ><a name="342"
+      >
+
+</a
+      ><a name="344" class="Comment"
+      >-- &#8868; is contractible</a
+      ><a name="364"
+      >
+</a
+      ><a name="365" href="hott.level.sets.html#365" class="Function"
+      >&#8868;-contr</a
+      ><a name="372"
+      > </a
+      ><a name="373" class="Symbol"
+      >:</a
+      ><a name="374"
+      > </a
+      ><a name="375" href="hott.level.core.html#284" class="Function"
+      >contr</a
+      ><a name="380"
+      > </a
+      ><a name="381" href="sets.unit.html#62" class="Record"
+      >&#8868;</a
+      ><a name="382"
+      >
+</a
+      ><a name="383" href="hott.level.sets.html#365" class="Function"
+      >&#8868;-contr</a
+      ><a name="390"
+      > </a
+      ><a name="391" class="Symbol"
+      >=</a
+      ><a name="392"
+      > </a
+      ><a name="393" href="sets.unit.html#90" class="InductiveConstructor"
+      >tt</a
+      ><a name="395"
+      > </a
+      ><a name="396" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="397"
+      > </a
+      ><a name="398" class="Symbol"
+      >&#955;</a
+      ><a name="399"
+      > </a
+      ><a name="400" class="Symbol"
+      >{</a
+      ><a name="401"
+      > </a
+      ><a name="402" href="sets.unit.html#90" class="InductiveConstructor"
+      >tt</a
+      ><a name="404"
+      > </a
+      ><a name="405" class="Symbol"
+      >&#8594;</a
+      ><a name="406"
+      > </a
+      ><a name="407" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="411"
+      > </a
+      ><a name="412" class="Symbol"
+      >}</a
+      ><a name="413"
+      >
+
+</a
+      ><a name="415" class="Comment"
+      >-- &#8869; is propositional</a
+      ><a name="436"
+      >
+</a
+      ><a name="437" href="hott.level.sets.html#437" class="Function"
+      >&#8869;-prop</a
+      ><a name="443"
+      > </a
+      ><a name="444" class="Symbol"
+      >:</a
+      ><a name="445"
+      > </a
+      ><a name="446" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="447"
+      > </a
+      ><a name="448" class="Number"
+      >1</a
+      ><a name="449"
+      > </a
+      ><a name="450" href="sets.empty.html#89" class="Datatype"
+      >&#8869;</a
+      ><a name="451"
+      >
+</a
+      ><a name="452" href="hott.level.sets.html#437" class="Function"
+      >&#8869;-prop</a
+      ><a name="458"
+      > </a
+      ><a name="459" href="hott.level.sets.html#459" class="Bound"
+      >x</a
+      ><a name="460"
+      > </a
+      ><a name="461" class="Symbol"
+      >_</a
+      ><a name="462"
+      > </a
+      ><a name="463" class="Symbol"
+      >=</a
+      ><a name="464"
+      > </a
+      ><a name="465" href="sets.empty.html#104" class="Function"
+      >&#8869;-elim</a
+      ><a name="471"
+      > </a
+      ><a name="472" href="hott.level.sets.html#459" class="Bound"
+      >x</a
+      ><a name="473"
+      >
+
+</a
+      ><a name="475" href="hott.level.sets.html#475" class="Function"
+      >&#8869;-initial</a
+      ><a name="484"
+      > </a
+      ><a name="485" class="Symbol"
+      >:</a
+      ><a name="486"
+      > </a
+      ><a name="487" class="Symbol"
+      >&#8704;</a
+      ><a name="488"
+      > </a
+      ><a name="489" class="Symbol"
+      >{</a
+      ><a name="490" href="hott.level.sets.html#490" class="Bound"
+      >i</a
+      ><a name="491" class="Symbol"
+      >}</a
+      ><a name="492"
+      > </a
+      ><a name="493" class="Symbol"
+      >{</a
+      ><a name="494" href="hott.level.sets.html#494" class="Bound"
+      >A</a
+      ><a name="495"
+      > </a
+      ><a name="496" class="Symbol"
+      >:</a
+      ><a name="497"
+      > </a
+      ><a name="498" class="PrimitiveType"
+      >Set</a
+      ><a name="501"
+      > </a
+      ><a name="502" href="hott.level.sets.html#490" class="Bound"
+      >i</a
+      ><a name="503" class="Symbol"
+      >}</a
+      ><a name="504"
+      > </a
+      ><a name="505" class="Symbol"
+      >&#8594;</a
+      ><a name="506"
+      > </a
+      ><a name="507" href="hott.level.core.html#284" class="Function"
+      >contr</a
+      ><a name="512"
+      > </a
+      ><a name="513" class="Symbol"
+      >(</a
+      ><a name="514" href="sets.empty.html#89" class="Datatype"
+      >&#8869;</a
+      ><a name="515"
+      > </a
+      ><a name="516" class="Symbol"
+      >&#8594;</a
+      ><a name="517"
+      > </a
+      ><a name="518" href="hott.level.sets.html#494" class="Bound"
+      >A</a
+      ><a name="519" class="Symbol"
+      >)</a
+      ><a name="520"
+      >
+</a
+      ><a name="521" href="hott.level.sets.html#475" class="Function"
+      >&#8869;-initial</a
+      ><a name="530"
+      > </a
+      ><a name="531" class="Symbol"
+      >=</a
+      ><a name="532"
+      > </a
+      ><a name="533" class="Symbol"
+      >(&#955;</a
+      ><a name="535"
+      > </a
+      ><a name="536" class="Symbol"
+      >())</a
+      ><a name="539"
+      > </a
+      ><a name="540" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="541"
+      > </a
+      ><a name="542" class="Symbol"
+      >(&#955;</a
+      ><a name="544"
+      > </a
+      ><a name="545" href="hott.level.sets.html#545" class="Bound"
+      >f</a
+      ><a name="546"
+      > </a
+      ><a name="547" class="Symbol"
+      >&#8594;</a
+      ><a name="548"
+      > </a
+      ><a name="549" href="function.extensionality.proof.html#1870" class="Function"
+      >funext</a
+      ><a name="555"
+      > </a
+      ><a name="556" class="Symbol"
+      >&#955;</a
+      ><a name="557"
+      > </a
+      ><a name="558" class="Symbol"
+      >())</a
+      ><a name="561"
+      >
+
+</a
+      ><a name="563" class="Comment"
+      >-- Hedberg's theorem</a
+      ><a name="583"
+      >
+</a
+      ><a name="584" href="hott.level.sets.html#584" class="Function"
+      >hedberg</a
+      ><a name="591"
+      > </a
+      ><a name="592" class="Symbol"
+      >:</a
+      ><a name="593"
+      > </a
+      ><a name="594" class="Symbol"
+      >&#8704;</a
+      ><a name="595"
+      > </a
+      ><a name="596" class="Symbol"
+      >{</a
+      ><a name="597" href="hott.level.sets.html#597" class="Bound"
+      >i</a
+      ><a name="598" class="Symbol"
+      >}</a
+      ><a name="599"
+      > </a
+      ><a name="600" class="Symbol"
+      >{</a
+      ><a name="601" href="hott.level.sets.html#601" class="Bound"
+      >A</a
+      ><a name="602"
+      > </a
+      ><a name="603" class="Symbol"
+      >:</a
+      ><a name="604"
+      > </a
+      ><a name="605" class="PrimitiveType"
+      >Set</a
+      ><a name="608"
+      > </a
+      ><a name="609" href="hott.level.sets.html#597" class="Bound"
+      >i</a
+      ><a name="610" class="Symbol"
+      >}</a
+      ><a name="611"
+      >
+        </a
+      ><a name="620" class="Symbol"
+      >&#8594;</a
+      ><a name="621"
+      > </a
+      ><a name="622" class="Symbol"
+      >((</a
+      ><a name="624" href="hott.level.sets.html#624" class="Bound"
+      >x</a
+      ><a name="625"
+      > </a
+      ><a name="626" href="hott.level.sets.html#626" class="Bound"
+      >y</a
+      ><a name="627"
+      > </a
+      ><a name="628" class="Symbol"
+      >:</a
+      ><a name="629"
+      > </a
+      ><a name="630" href="hott.level.sets.html#601" class="Bound"
+      >A</a
+      ><a name="631" class="Symbol"
+      >)</a
+      ><a name="632"
+      > </a
+      ><a name="633" class="Symbol"
+      >&#8594;</a
+      ><a name="634"
+      > </a
+      ><a name="635" href="decidable.html#191" class="Datatype"
+      >Dec</a
+      ><a name="638"
+      > </a
+      ><a name="639" class="Symbol"
+      >(</a
+      ><a name="640" href="hott.level.sets.html#624" class="Bound"
+      >x</a
+      ><a name="641"
+      > </a
+      ><a name="642" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="643"
+      > </a
+      ><a name="644" href="hott.level.sets.html#626" class="Bound"
+      >y</a
+      ><a name="645" class="Symbol"
+      >))</a
+      ><a name="647"
+      >
+        </a
+      ><a name="656" class="Symbol"
+      >&#8594;</a
+      ><a name="657"
+      > </a
+      ><a name="658" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="659"
+      > </a
+      ><a name="660" class="Number"
+      >2</a
+      ><a name="661"
+      > </a
+      ><a name="662" href="hott.level.sets.html#601" class="Bound"
+      >A</a
+      ><a name="663"
+      >
+</a
+      ><a name="664" href="hott.level.sets.html#584" class="Function"
+      >hedberg</a
+      ><a name="671"
+      > </a
+      ><a name="672" class="Symbol"
+      >{</a
+      ><a name="673" class="Argument"
+      >A</a
+      ><a name="674"
+      > </a
+      ><a name="675" class="Symbol"
+      >=</a
+      ><a name="676"
+      > </a
+      ><a name="677" href="hott.level.sets.html#677" class="Bound"
+      >A</a
+      ><a name="678" class="Symbol"
+      >}</a
+      ><a name="679"
+      > </a
+      ><a name="680" href="hott.level.sets.html#680" class="Bound"
+      >dec</a
+      ><a name="683"
+      > </a
+      ><a name="684" href="hott.level.sets.html#684" class="Bound"
+      >x</a
+      ><a name="685"
+      > </a
+      ><a name="686" href="hott.level.sets.html#686" class="Bound"
+      >y</a
+      ><a name="687"
+      > </a
+      ><a name="688" class="Symbol"
+      >=</a
+      ><a name="689"
+      > </a
+      ><a name="690" href="hott.level.core.html#466" class="Function"
+      >prop&#8658;h1</a
+      ><a name="697"
+      > </a
+      ><a name="698" href="hott.level.sets.html#1231" class="Function"
+      >&#8801;-prop</a
+      ><a name="704"
+      >
+  </a
+      ><a name="707" class="Keyword"
+      >where</a
+      ><a name="712"
+      >
+    </a
+      ><a name="717" class="Keyword"
+      >open</a
+      ><a name="721"
+      > </a
+      ><a name="722" href="equality.reasoning.html#96" class="Module"
+      >&#8801;-Reasoning</a
+      ><a name="733"
+      >
+
+    </a
+      ><a name="739" href="hott.level.sets.html#739" class="Function"
+      >canonical</a
+      ><a name="748"
+      > </a
+      ><a name="749" class="Symbol"
+      >:</a
+      ><a name="750"
+      > </a
+      ><a name="751" class="Symbol"
+      >{</a
+      ><a name="752" href="hott.level.sets.html#752" class="Bound"
+      >x</a
+      ><a name="753"
+      > </a
+      ><a name="754" href="hott.level.sets.html#754" class="Bound"
+      >y</a
+      ><a name="755"
+      > </a
+      ><a name="756" class="Symbol"
+      >:</a
+      ><a name="757"
+      > </a
+      ><a name="758" href="hott.level.sets.html#677" class="Bound"
+      >A</a
+      ><a name="759" class="Symbol"
+      >}</a
+      ><a name="760"
+      > </a
+      ><a name="761" class="Symbol"
+      >&#8594;</a
+      ><a name="762"
+      > </a
+      ><a name="763" href="hott.level.sets.html#752" class="Bound"
+      >x</a
+      ><a name="764"
+      > </a
+      ><a name="765" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="766"
+      > </a
+      ><a name="767" href="hott.level.sets.html#754" class="Bound"
+      >y</a
+      ><a name="768"
+      > </a
+      ><a name="769" class="Symbol"
+      >&#8594;</a
+      ><a name="770"
+      > </a
+      ><a name="771" href="hott.level.sets.html#752" class="Bound"
+      >x</a
+      ><a name="772"
+      > </a
+      ><a name="773" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="774"
+      > </a
+      ><a name="775" href="hott.level.sets.html#754" class="Bound"
+      >y</a
+      ><a name="776"
+      >
+    </a
+      ><a name="781" href="hott.level.sets.html#739" class="Function"
+      >canonical</a
+      ><a name="790"
+      > </a
+      ><a name="791" class="Symbol"
+      >{</a
+      ><a name="792" href="hott.level.sets.html#792" class="Bound"
+      >x</a
+      ><a name="793" class="Symbol"
+      >}</a
+      ><a name="794"
+      > </a
+      ><a name="795" class="Symbol"
+      >{</a
+      ><a name="796" href="hott.level.sets.html#796" class="Bound"
+      >y</a
+      ><a name="797" class="Symbol"
+      >}</a
+      ><a name="798"
+      > </a
+      ><a name="799" href="hott.level.sets.html#799" class="Bound"
+      >p</a
+      ><a name="800"
+      > </a
+      ><a name="801" class="Keyword"
+      >with</a
+      ><a name="805"
+      > </a
+      ><a name="806" href="hott.level.sets.html#680" class="Bound"
+      >dec</a
+      ><a name="809"
+      > </a
+      ><a name="810" href="hott.level.sets.html#792" class="Bound"
+      >x</a
+      ><a name="811"
+      > </a
+      ><a name="812" href="hott.level.sets.html#796" class="Bound"
+      >y</a
+      ><a name="813"
+      >
+    </a
+      ><a name="818" class="Symbol"
+      >...</a
+      ><a name="821"
+      > </a
+      ><a name="822" class="Symbol"
+      >|</a
+      ><a name="823"
+      > </a
+      ><a name="824" href="decidable.html#227" class="InductiveConstructor"
+      >yes</a
+      ><a name="827"
+      > </a
+      ><a name="828" href="hott.level.sets.html#828" class="Bound"
+      >q</a
+      ><a name="829"
+      > </a
+      ><a name="830" class="Symbol"
+      >=</a
+      ><a name="831"
+      > </a
+      ><a name="832" href="hott.level.sets.html#828" class="Bound"
+      >q</a
+      ><a name="833"
+      >
+    </a
+      ><a name="838" class="Symbol"
+      >...</a
+      ><a name="841"
+      > </a
+      ><a name="842" class="Symbol"
+      >|</a
+      ><a name="843"
+      > </a
+      ><a name="844" href="decidable.html#254" class="InductiveConstructor"
+      >no</a
+      ><a name="846"
+      > </a
+      ><a name="847" class="Symbol"
+      >_</a
+      ><a name="848"
+      > </a
+      ><a name="849" class="Symbol"
+      >=</a
+      ><a name="850"
+      > </a
+      ><a name="851" href="hott.level.sets.html#799" class="Bound"
+      >p</a
+      ><a name="852"
+      >
+
+    </a
+      ><a name="858" href="hott.level.sets.html#858" class="Function"
+      >canonical-const</a
+      ><a name="873"
+      > </a
+      ><a name="874" class="Symbol"
+      >:</a
+      ><a name="875"
+      > </a
+      ><a name="876" class="Symbol"
+      >{</a
+      ><a name="877" href="hott.level.sets.html#877" class="Bound"
+      >x</a
+      ><a name="878"
+      > </a
+      ><a name="879" href="hott.level.sets.html#879" class="Bound"
+      >y</a
+      ><a name="880"
+      > </a
+      ><a name="881" class="Symbol"
+      >:</a
+      ><a name="882"
+      > </a
+      ><a name="883" href="hott.level.sets.html#677" class="Bound"
+      >A</a
+      ><a name="884" class="Symbol"
+      >}</a
+      ><a name="885"
+      >
+                    </a
+      ><a name="906" class="Symbol"
+      >&#8594;</a
+      ><a name="907"
+      > </a
+      ><a name="908" class="Symbol"
+      >(</a
+      ><a name="909" href="hott.level.sets.html#909" class="Bound"
+      >p</a
+      ><a name="910"
+      > </a
+      ><a name="911" href="hott.level.sets.html#911" class="Bound"
+      >q</a
+      ><a name="912"
+      > </a
+      ><a name="913" class="Symbol"
+      >:</a
+      ><a name="914"
+      > </a
+      ><a name="915" href="hott.level.sets.html#877" class="Bound"
+      >x</a
+      ><a name="916"
+      > </a
+      ><a name="917" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="918"
+      > </a
+      ><a name="919" href="hott.level.sets.html#879" class="Bound"
+      >y</a
+      ><a name="920" class="Symbol"
+      >)</a
+      ><a name="921"
+      >
+                    </a
+      ><a name="942" class="Symbol"
+      >&#8594;</a
+      ><a name="943"
+      > </a
+      ><a name="944" href="hott.level.sets.html#739" class="Function"
+      >canonical</a
+      ><a name="953"
+      > </a
+      ><a name="954" href="hott.level.sets.html#909" class="Bound"
+      >p</a
+      ><a name="955"
+      > </a
+      ><a name="956" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="957"
+      > </a
+      ><a name="958" href="hott.level.sets.html#739" class="Function"
+      >canonical</a
+      ><a name="967"
+      > </a
+      ><a name="968" href="hott.level.sets.html#911" class="Bound"
+      >q</a
+      ><a name="969"
+      >
+    </a
+      ><a name="974" href="hott.level.sets.html#858" class="Function"
+      >canonical-const</a
+      ><a name="989"
+      > </a
+      ><a name="990" class="Symbol"
+      >{</a
+      ><a name="991" href="hott.level.sets.html#991" class="Bound"
+      >x</a
+      ><a name="992" class="Symbol"
+      >}</a
+      ><a name="993"
+      > </a
+      ><a name="994" class="Symbol"
+      >{</a
+      ><a name="995" href="hott.level.sets.html#995" class="Bound"
+      >y</a
+      ><a name="996" class="Symbol"
+      >}</a
+      ><a name="997"
+      > </a
+      ><a name="998" href="hott.level.sets.html#998" class="Bound"
+      >p</a
+      ><a name="999"
+      > </a
+      ><a name="1000" href="hott.level.sets.html#1000" class="Bound"
+      >q</a
+      ><a name="1001"
+      > </a
+      ><a name="1002" class="Keyword"
+      >with</a
+      ><a name="1006"
+      > </a
+      ><a name="1007" href="hott.level.sets.html#680" class="Bound"
+      >dec</a
+      ><a name="1010"
+      > </a
+      ><a name="1011" href="hott.level.sets.html#991" class="Bound"
+      >x</a
+      ><a name="1012"
+      > </a
+      ><a name="1013" href="hott.level.sets.html#995" class="Bound"
+      >y</a
+      ><a name="1014"
+      >
+    </a
+      ><a name="1019" class="Symbol"
+      >...</a
+      ><a name="1022"
+      > </a
+      ><a name="1023" class="Symbol"
+      >|</a
+      ><a name="1024"
+      > </a
+      ><a name="1025" href="decidable.html#227" class="InductiveConstructor"
+      >yes</a
+      ><a name="1028"
+      > </a
+      ><a name="1029" class="Symbol"
+      >_</a
+      ><a name="1030"
+      > </a
+      ><a name="1031" class="Symbol"
+      >=</a
+      ><a name="1032"
+      > </a
+      ><a name="1033" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1037"
+      >
+    </a
+      ><a name="1042" class="Symbol"
+      >...</a
+      ><a name="1045"
+      > </a
+      ><a name="1046" class="Symbol"
+      >|</a
+      ><a name="1047"
+      > </a
+      ><a name="1048" href="decidable.html#254" class="InductiveConstructor"
+      >no</a
+      ><a name="1050"
+      > </a
+      ><a name="1051" href="hott.level.sets.html#1051" class="Bound"
+      >f</a
+      ><a name="1052"
+      > </a
+      ><a name="1053" class="Symbol"
+      >=</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" href="sets.empty.html#104" class="Function"
+      >&#8869;-elim</a
+      ><a name="1061"
+      > </a
+      ><a name="1062" class="Symbol"
+      >(</a
+      ><a name="1063" href="hott.level.sets.html#1051" class="Bound"
+      >f</a
+      ><a name="1064"
+      > </a
+      ><a name="1065" href="hott.level.sets.html#998" class="Bound"
+      >p</a
+      ><a name="1066" class="Symbol"
+      >)</a
+      ><a name="1067"
+      >
+
+    </a
+      ><a name="1073" href="hott.level.sets.html#1073" class="Function"
+      >canonical-inv</a
+      ><a name="1086"
+      > </a
+      ><a name="1087" class="Symbol"
+      >:</a
+      ><a name="1088"
+      > </a
+      ><a name="1089" class="Symbol"
+      >{</a
+      ><a name="1090" href="hott.level.sets.html#1090" class="Bound"
+      >x</a
+      ><a name="1091"
+      > </a
+      ><a name="1092" href="hott.level.sets.html#1092" class="Bound"
+      >y</a
+      ><a name="1093"
+      > </a
+      ><a name="1094" class="Symbol"
+      >:</a
+      ><a name="1095"
+      > </a
+      ><a name="1096" href="hott.level.sets.html#677" class="Bound"
+      >A</a
+      ><a name="1097" class="Symbol"
+      >}(</a
+      ><a name="1099" href="hott.level.sets.html#1099" class="Bound"
+      >p</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" class="Symbol"
+      >:</a
+      ><a name="1102"
+      > </a
+      ><a name="1103" href="hott.level.sets.html#1090" class="Bound"
+      >x</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1106"
+      > </a
+      ><a name="1107" href="hott.level.sets.html#1092" class="Bound"
+      >y</a
+      ><a name="1108" class="Symbol"
+      >)</a
+      ><a name="1109"
+      >
+                  </a
+      ><a name="1128" class="Symbol"
+      >&#8594;</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" href="hott.level.sets.html#739" class="Function"
+      >canonical</a
+      ><a name="1139"
+      > </a
+      ><a name="1140" href="hott.level.sets.html#1099" class="Bound"
+      >p</a
+      ><a name="1141"
+      > </a
+      ><a name="1142" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1143"
+      > </a
+      ><a name="1144" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1147"
+      > </a
+      ><a name="1148" class="Symbol"
+      >(</a
+      ><a name="1149" href="hott.level.sets.html#739" class="Function"
+      >canonical</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1163" class="Symbol"
+      >)</a
+      ><a name="1164"
+      > </a
+      ><a name="1165" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1166"
+      > </a
+      ><a name="1167" href="hott.level.sets.html#1099" class="Bound"
+      >p</a
+      ><a name="1168"
+      >
+    </a
+      ><a name="1173" href="hott.level.sets.html#1073" class="Function"
+      >canonical-inv</a
+      ><a name="1186"
+      > </a
+      ><a name="1187" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1191"
+      > </a
+      ><a name="1192" class="Symbol"
+      >=</a
+      ><a name="1193"
+      > </a
+      ><a name="1194" href="equality.groupoid.html#538" class="Function"
+      >left-inverse</a
+      ><a name="1206"
+      > </a
+      ><a name="1207" class="Symbol"
+      >(</a
+      ><a name="1208" href="hott.level.sets.html#739" class="Function"
+      >canonical</a
+      ><a name="1217"
+      > </a
+      ><a name="1218" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1222" class="Symbol"
+      >)</a
+      ><a name="1223"
+      >
+  
+    </a
+      ><a name="1231" href="hott.level.sets.html#1231" class="Function"
+      >&#8801;-prop</a
+      ><a name="1237"
+      > </a
+      ><a name="1238" class="Symbol"
+      >:</a
+      ><a name="1239"
+      > </a
+      ><a name="1240" class="Symbol"
+      >{</a
+      ><a name="1241" href="hott.level.sets.html#1241" class="Bound"
+      >x</a
+      ><a name="1242"
+      > </a
+      ><a name="1243" href="hott.level.sets.html#1243" class="Bound"
+      >y</a
+      ><a name="1244"
+      > </a
+      ><a name="1245" class="Symbol"
+      >:</a
+      ><a name="1246"
+      > </a
+      ><a name="1247" href="hott.level.sets.html#677" class="Bound"
+      >A</a
+      ><a name="1248" class="Symbol"
+      >}(</a
+      ><a name="1250" href="hott.level.sets.html#1250" class="Bound"
+      >p</a
+      ><a name="1251"
+      > </a
+      ><a name="1252" href="hott.level.sets.html#1252" class="Bound"
+      >q</a
+      ><a name="1253"
+      > </a
+      ><a name="1254" class="Symbol"
+      >:</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" href="hott.level.sets.html#1241" class="Bound"
+      >x</a
+      ><a name="1257"
+      > </a
+      ><a name="1258" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1259"
+      > </a
+      ><a name="1260" href="hott.level.sets.html#1243" class="Bound"
+      >y</a
+      ><a name="1261" class="Symbol"
+      >)</a
+      ><a name="1262"
+      > </a
+      ><a name="1263" class="Symbol"
+      >&#8594;</a
+      ><a name="1264"
+      > </a
+      ><a name="1265" href="hott.level.sets.html#1250" class="Bound"
+      >p</a
+      ><a name="1266"
+      > </a
+      ><a name="1267" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1268"
+      > </a
+      ><a name="1269" href="hott.level.sets.html#1252" class="Bound"
+      >q</a
+      ><a name="1270"
+      >
+    </a
+      ><a name="1275" href="hott.level.sets.html#1231" class="Function"
+      >&#8801;-prop</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" href="hott.level.sets.html#1282" class="Bound"
+      >p</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" href="hott.level.sets.html#1284" class="Bound"
+      >q</a
+      ><a name="1285"
+      > </a
+      ><a name="1286" class="Symbol"
+      >=</a
+      ><a name="1287"
+      > </a
+      ><a name="1288" href="equality.reasoning.html#423" class="Function Operator"
+      >begin</a
+      ><a name="1293"
+      >
+        </a
+      ><a name="1302" href="hott.level.sets.html#1282" class="Bound"
+      >p</a
+      ><a name="1303"
+      >
+      </a
+      ><a name="1310" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1312"
+      > </a
+      ><a name="1313" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1316"
+      > </a
+      ><a name="1317" class="Symbol"
+      >(</a
+      ><a name="1318" href="hott.level.sets.html#1073" class="Function"
+      >canonical-inv</a
+      ><a name="1331"
+      > </a
+      ><a name="1332" href="hott.level.sets.html#1282" class="Bound"
+      >p</a
+      ><a name="1333" class="Symbol"
+      >)</a
+      ><a name="1334"
+      > </a
+      ><a name="1335" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1336"
+      >
+        </a
+      ><a name="1345" href="hott.level.sets.html#739" class="Function"
+      >canonical</a
+      ><a name="1354"
+      > </a
+      ><a name="1355" href="hott.level.sets.html#1282" class="Bound"
+      >p</a
+      ><a name="1356"
+      > </a
+      ><a name="1357" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1358"
+      > </a
+      ><a name="1359" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1362"
+      > </a
+      ><a name="1363" class="Symbol"
+      >(</a
+      ><a name="1364" href="hott.level.sets.html#739" class="Function"
+      >canonical</a
+      ><a name="1373"
+      > </a
+      ><a name="1374" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1378" class="Symbol"
+      >)</a
+      ><a name="1379"
+      >
+      </a
+      ><a name="1386" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1391"
+      > </a
+      ><a name="1392" class="Symbol"
+      >(&#955;</a
+      ><a name="1394"
+      > </a
+      ><a name="1395" href="hott.level.sets.html#1395" class="Bound"
+      >z</a
+      ><a name="1396"
+      > </a
+      ><a name="1397" class="Symbol"
+      >&#8594;</a
+      ><a name="1398"
+      > </a
+      ><a name="1399" href="hott.level.sets.html#1395" class="Bound"
+      >z</a
+      ><a name="1400"
+      > </a
+      ><a name="1401" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1402"
+      > </a
+      ><a name="1403" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1406"
+      > </a
+      ><a name="1407" class="Symbol"
+      >(</a
+      ><a name="1408" href="hott.level.sets.html#739" class="Function"
+      >canonical</a
+      ><a name="1417"
+      > </a
+      ><a name="1418" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1422" class="Symbol"
+      >))</a
+      ><a name="1424"
+      >
+              </a
+      ><a name="1439" class="Symbol"
+      >(</a
+      ><a name="1440" href="hott.level.sets.html#858" class="Function"
+      >canonical-const</a
+      ><a name="1455"
+      > </a
+      ><a name="1456" href="hott.level.sets.html#1282" class="Bound"
+      >p</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" href="hott.level.sets.html#1284" class="Bound"
+      >q</a
+      ><a name="1459" class="Symbol"
+      >)</a
+      ><a name="1460"
+      > </a
+      ><a name="1461" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1462"
+      >
+        </a
+      ><a name="1471" href="hott.level.sets.html#739" class="Function"
+      >canonical</a
+      ><a name="1480"
+      > </a
+      ><a name="1481" href="hott.level.sets.html#1284" class="Bound"
+      >q</a
+      ><a name="1482"
+      > </a
+      ><a name="1483" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1484"
+      > </a
+      ><a name="1485" href="equality.core.html#207" class="Function"
+      >sym</a
+      ><a name="1488"
+      > </a
+      ><a name="1489" class="Symbol"
+      >(</a
+      ><a name="1490" href="hott.level.sets.html#739" class="Function"
+      >canonical</a
+      ><a name="1499"
+      > </a
+      ><a name="1500" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1504" class="Symbol"
+      >)</a
+      ><a name="1505"
+      >
+      </a
+      ><a name="1512" href="equality.reasoning.html#489" class="Function Operator"
+      >&#8801;&#10216;</a
+      ><a name="1514"
+      > </a
+      ><a name="1515" href="hott.level.sets.html#1073" class="Function"
+      >canonical-inv</a
+      ><a name="1528"
+      > </a
+      ><a name="1529" href="hott.level.sets.html#1284" class="Bound"
+      >q</a
+      ><a name="1530"
+      > </a
+      ><a name="1531" href="equality.reasoning.html#489" class="Function Operator"
+      >&#10217;</a
+      ><a name="1532"
+      >
+        </a
+      ><a name="1541" href="hott.level.sets.html#1284" class="Bound"
+      >q</a
+      ><a name="1542"
+      >
+      </a
+      ><a name="1549" href="equality.reasoning.html#590" class="Function Operator"
+      >&#8718;</a
+      ><a name="1550"
+      >
+
+</a
+      ><a name="1552" class="Comment"
+      >-- Bool is a set</a
+      ><a name="1568"
+      >
+</a
+      ><a name="1569" class="Keyword"
+      >private</a
+      ><a name="1576"
+      >
+  </a
+      ><a name="1579" class="Keyword"
+      >module</a
+      ><a name="1585"
+      > </a
+      ><a name="1586" href="hott.level.sets.html#1586" class="Module"
+      >BoolSet</a
+      ><a name="1593"
+      > </a
+      ><a name="1594" class="Keyword"
+      >where</a
+      ><a name="1599"
+      >
+    </a
+      ><a name="1604" class="Keyword"
+      >open</a
+      ><a name="1608"
+      > </a
+      ><a name="1609" class="Keyword"
+      >import</a
+      ><a name="1615"
+      > </a
+      ><a name="1616" href="sets.bool.html#1" class="Module"
+      >sets.bool</a
+      ><a name="1625"
+      >
+    </a
+      ><a name="1630" href="hott.level.sets.html#1630" class="Function"
+      >bool-set</a
+      ><a name="1638"
+      > </a
+      ><a name="1639" class="Symbol"
+      >:</a
+      ><a name="1640"
+      > </a
+      ><a name="1641" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="1642"
+      > </a
+      ><a name="1643" class="Number"
+      >2</a
+      ><a name="1644"
+      > </a
+      ><a name="1645" href="sets.bool.html#321" class="Datatype"
+      >Bool</a
+      ><a name="1649"
+      >
+    </a
+      ><a name="1654" href="hott.level.sets.html#1630" class="Function"
+      >bool-set</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" class="Symbol"
+      >=</a
+      ><a name="1664"
+      > </a
+      ><a name="1665" href="hott.level.sets.html#584" class="Function"
+      >hedberg</a
+      ><a name="1672"
+      > </a
+      ><a name="1673" href="sets.bool.html#746" class="Function Operator"
+      >_&#8799;_</a
+      ><a name="1676"
+      >
+</a
+      ><a name="1677" class="Keyword"
+      >open</a
+      ><a name="1681"
+      > </a
+      ><a name="1682" href="hott.level.sets.html#1586" class="Module"
+      >BoolSet</a
+      ><a name="1689"
+      > </a
+      ><a name="1690" class="Keyword"
+      >public</a
+      ><a name="1696"
+      >
+
+</a
+      ><a name="1698" class="Comment"
+      >-- Nat is a set</a
+      ><a name="1713"
+      >
+</a
+      ><a name="1714" class="Keyword"
+      >private</a
+      ><a name="1721"
+      >
+  </a
+      ><a name="1724" class="Keyword"
+      >module</a
+      ><a name="1730"
+      > </a
+      ><a name="1731" href="hott.level.sets.html#1731" class="Module"
+      >NatSet</a
+      ><a name="1737"
+      > </a
+      ><a name="1738" class="Keyword"
+      >where</a
+      ><a name="1743"
+      >
+    </a
+      ><a name="1748" class="Keyword"
+      >open</a
+      ><a name="1752"
+      > </a
+      ><a name="1753" class="Keyword"
+      >import</a
+      ><a name="1759"
+      > </a
+      ><a name="1760" href="sets.nat.core.html#1" class="Module"
+      >sets.nat.core</a
+      ><a name="1773"
+      >
+    </a
+      ><a name="1778" href="hott.level.sets.html#1778" class="Function"
+      >nat-set</a
+      ><a name="1785"
+      > </a
+      ><a name="1786" class="Symbol"
+      >:</a
+      ><a name="1787"
+      > </a
+      ><a name="1788" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="1789"
+      > </a
+      ><a name="1790" class="Number"
+      >2</a
+      ><a name="1791"
+      > </a
+      ><a name="1792" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="1793"
+      >
+    </a
+      ><a name="1798" href="hott.level.sets.html#1778" class="Function"
+      >nat-set</a
+      ><a name="1805"
+      > </a
+      ><a name="1806" class="Symbol"
+      >=</a
+      ><a name="1807"
+      > </a
+      ><a name="1808" href="hott.level.sets.html#584" class="Function"
+      >hedberg</a
+      ><a name="1815"
+      > </a
+      ><a name="1816" href="sets.nat.core.html#553" class="Function Operator"
+      >_&#8799;_</a
+      ><a name="1819"
+      >
+</a
+      ><a name="1820" class="Keyword"
+      >open</a
+      ><a name="1824"
+      > </a
+      ><a name="1825" href="hott.level.sets.html#1731" class="Module"
+      >NatSet</a
+      ><a name="1831"
+      > </a
+      ><a name="1832" class="Keyword"
+      >public</a
+      ><a name="1838"
+      >
+
+</a
+      ><a name="1840" class="Comment"
+      >-- Fin is a set</a
+      ><a name="1855"
+      >
+</a
+      ><a name="1856" class="Keyword"
+      >private</a
+      ><a name="1863"
+      >
+  </a
+      ><a name="1866" class="Keyword"
+      >module</a
+      ><a name="1872"
+      > </a
+      ><a name="1873" href="hott.level.sets.html#1873" class="Module"
+      >FinSet</a
+      ><a name="1879"
+      > </a
+      ><a name="1880" class="Keyword"
+      >where</a
+      ><a name="1885"
+      >
+    </a
+      ><a name="1890" class="Keyword"
+      >open</a
+      ><a name="1894"
+      > </a
+      ><a name="1895" class="Keyword"
+      >import</a
+      ><a name="1901"
+      > </a
+      ><a name="1902" href="sets.fin.core.html#1" class="Module"
+      >sets.fin.core</a
+      ><a name="1915"
+      >
+    </a
+      ><a name="1920" href="hott.level.sets.html#1920" class="Function"
+      >fin-set</a
+      ><a name="1927"
+      > </a
+      ><a name="1928" class="Symbol"
+      >:</a
+      ><a name="1929"
+      > </a
+      ><a name="1930" class="Symbol"
+      >&#8704;</a
+      ><a name="1931"
+      > </a
+      ><a name="1932" href="hott.level.sets.html#1932" class="Bound"
+      >n</a
+      ><a name="1933"
+      > </a
+      ><a name="1934" class="Symbol"
+      >&#8594;</a
+      ><a name="1935"
+      > </a
+      ><a name="1936" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="1937"
+      > </a
+      ><a name="1938" class="Number"
+      >2</a
+      ><a name="1939"
+      > </a
+      ><a name="1940" class="Symbol"
+      >(</a
+      ><a name="1941" href="sets.fin.core.html#205" class="Datatype"
+      >Fin</a
+      ><a name="1944"
+      > </a
+      ><a name="1945" href="hott.level.sets.html#1932" class="Bound"
+      >n</a
+      ><a name="1946" class="Symbol"
+      >)</a
+      ><a name="1947"
+      >
+    </a
+      ><a name="1952" href="hott.level.sets.html#1920" class="Function"
+      >fin-set</a
+      ><a name="1959"
+      > </a
+      ><a name="1960" href="hott.level.sets.html#1960" class="Bound"
+      >n</a
+      ><a name="1961"
+      > </a
+      ><a name="1962" class="Symbol"
+      >=</a
+      ><a name="1963"
+      > </a
+      ><a name="1964" href="hott.level.sets.html#584" class="Function"
+      >hedberg</a
+      ><a name="1971"
+      > </a
+      ><a name="1972" href="sets.fin.core.html#752" class="Function Operator"
+      >_&#8799;_</a
+      ><a name="1975"
+      >
+</a
+      ><a name="1976" class="Keyword"
+      >open</a
+      ><a name="1980"
+      > </a
+      ><a name="1981" href="hott.level.sets.html#1873" class="Module"
+      >FinSet</a
+      ><a name="1987"
+      > </a
+      ><a name="1988" class="Keyword"
+      >public</a
+      ><a name="1994"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

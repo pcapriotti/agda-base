@@ -1,0 +1,1987 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >hott.loop.properties</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="hott.loop.properties.html#1" class="Module"
+      >hott.loop.properties</a
+      ><a name="56"
+      > </a
+      ><a name="57" class="Keyword"
+      >where</a
+      ><a name="62"
+      >
+
+</a
+      ><a name="64" class="Keyword"
+      >open</a
+      ><a name="68"
+      > </a
+      ><a name="69" class="Keyword"
+      >import</a
+      ><a name="75"
+      > </a
+      ><a name="76" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="79"
+      >
+</a
+      ><a name="80" class="Keyword"
+      >open</a
+      ><a name="84"
+      > </a
+      ><a name="85" class="Keyword"
+      >import</a
+      ><a name="91"
+      > </a
+      ><a name="92" href="equality.html#1" class="Module"
+      >equality</a
+      ><a name="100"
+      >
+</a
+      ><a name="101" class="Keyword"
+      >open</a
+      ><a name="105"
+      > </a
+      ><a name="106" class="Keyword"
+      >import</a
+      ><a name="112"
+      > </a
+      ><a name="113" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="126"
+      >
+</a
+      ><a name="127" class="Keyword"
+      >open</a
+      ><a name="131"
+      > </a
+      ><a name="132" class="Keyword"
+      >import</a
+      ><a name="138"
+      > </a
+      ><a name="139" href="function.extensionality.html#1" class="Module"
+      >function.extensionality</a
+      ><a name="162"
+      >
+</a
+      ><a name="163" class="Keyword"
+      >open</a
+      ><a name="167"
+      > </a
+      ><a name="168" class="Keyword"
+      >import</a
+      ><a name="174"
+      > </a
+      ><a name="175" href="function.isomorphism.core.html#1" class="Module"
+      >function.isomorphism.core</a
+      ><a name="200"
+      >
+</a
+      ><a name="201" class="Keyword"
+      >open</a
+      ><a name="205"
+      > </a
+      ><a name="206" class="Keyword"
+      >import</a
+      ><a name="212"
+      > </a
+      ><a name="213" href="function.overloading.html#1" class="Module"
+      >function.overloading</a
+      ><a name="233"
+      >
+</a
+      ><a name="234" class="Keyword"
+      >open</a
+      ><a name="238"
+      > </a
+      ><a name="239" class="Keyword"
+      >import</a
+      ><a name="245"
+      > </a
+      ><a name="246" href="pointed.html#1" class="Module"
+      >pointed</a
+      ><a name="253"
+      >
+</a
+      ><a name="254" class="Keyword"
+      >open</a
+      ><a name="258"
+      > </a
+      ><a name="259" class="Keyword"
+      >import</a
+      ><a name="265"
+      > </a
+      ><a name="266" href="sets.nat.core.html#1" class="Module"
+      >sets.nat.core</a
+      ><a name="279"
+      >
+</a
+      ><a name="280" class="Keyword"
+      >open</a
+      ><a name="284"
+      > </a
+      ><a name="285" class="Keyword"
+      >import</a
+      ><a name="291"
+      > </a
+      ><a name="292" href="hott.loop.core.html#1" class="Module"
+      >hott.loop.core</a
+      ><a name="306"
+      >
+
+</a
+      ><a name="308" href="hott.loop.properties.html#308" class="Function"
+      >map&#937;&#8321;-const</a
+      ><a name="319"
+      > </a
+      ><a name="320" class="Symbol"
+      >:</a
+      ><a name="321"
+      > </a
+      ><a name="322" class="Symbol"
+      >&#8704;</a
+      ><a name="323"
+      > </a
+      ><a name="324" class="Symbol"
+      >{</a
+      ><a name="325" href="hott.loop.properties.html#325" class="Bound"
+      >i</a
+      ><a name="326"
+      > </a
+      ><a name="327" href="hott.loop.properties.html#327" class="Bound"
+      >j</a
+      ><a name="328" class="Symbol"
+      >}{</a
+      ><a name="330" href="hott.loop.properties.html#330" class="Bound"
+      >&#120039;</a
+      ><a name="331"
+      > </a
+      ><a name="332" class="Symbol"
+      >:</a
+      ><a name="333"
+      > </a
+      ><a name="334" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="338"
+      > </a
+      ><a name="339" href="hott.loop.properties.html#325" class="Bound"
+      >i</a
+      ><a name="340" class="Symbol"
+      >}{</a
+      ><a name="342" href="hott.loop.properties.html#342" class="Bound"
+      >&#120040;</a
+      ><a name="343"
+      > </a
+      ><a name="344" class="Symbol"
+      >:</a
+      ><a name="345"
+      > </a
+      ><a name="346" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="350"
+      > </a
+      ><a name="351" href="hott.loop.properties.html#327" class="Bound"
+      >j</a
+      ><a name="352" class="Symbol"
+      >}</a
+      ><a name="353"
+      >
+            </a
+      ><a name="366" class="Symbol"
+      >&#8594;</a
+      ><a name="367"
+      > </a
+      ><a name="368" href="hott.loop.core.html#531" class="Function"
+      >map&#937;&#8321;</a
+      ><a name="373"
+      > </a
+      ><a name="374" class="Symbol"
+      >(</a
+      ><a name="375" href="hott.loop.core.html#911" class="Function"
+      >constP</a
+      ><a name="381"
+      > </a
+      ><a name="382" href="hott.loop.properties.html#330" class="Bound"
+      >&#120039;</a
+      ><a name="383"
+      > </a
+      ><a name="384" href="hott.loop.properties.html#342" class="Bound"
+      >&#120040;</a
+      ><a name="385" class="Symbol"
+      >)</a
+      ><a name="386"
+      > </a
+      ><a name="387" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="388"
+      > </a
+      ><a name="389" href="hott.loop.core.html#911" class="Function"
+      >constP</a
+      ><a name="395"
+      > </a
+      ><a name="396" class="Symbol"
+      >_</a
+      ><a name="397"
+      > </a
+      ><a name="398" class="Symbol"
+      >_</a
+      ><a name="399"
+      >
+</a
+      ><a name="400" href="hott.loop.properties.html#308" class="Function"
+      >map&#937;&#8321;-const</a
+      ><a name="411"
+      > </a
+      ><a name="412" class="Symbol"
+      >=</a
+      ><a name="413"
+      > </a
+      ><a name="414" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="419"
+      > </a
+      ><a name="420" href="pointed.equality.html#241" class="Function"
+      >pmap-eq</a
+      ><a name="427"
+      > </a
+      ><a name="428" class="Symbol"
+      >(</a
+      ><a name="429" href="hott.loop.properties.html#460" class="Function"
+      >ap-const</a
+      ><a name="437"
+      > </a
+      ><a name="438" class="Symbol"
+      >_</a
+      ><a name="439"
+      > </a
+      ><a name="440" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="441"
+      > </a
+      ><a name="442" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="446" class="Symbol"
+      >)</a
+      ><a name="447"
+      >
+  </a
+      ><a name="450" class="Keyword"
+      >where</a
+      ><a name="455"
+      >
+    </a
+      ><a name="460" href="hott.loop.properties.html#460" class="Function"
+      >ap-const</a
+      ><a name="468"
+      > </a
+      ><a name="469" class="Symbol"
+      >:</a
+      ><a name="470"
+      > </a
+      ><a name="471" class="Symbol"
+      >&#8704;</a
+      ><a name="472"
+      > </a
+      ><a name="473" class="Symbol"
+      >{</a
+      ><a name="474" href="hott.loop.properties.html#474" class="Bound"
+      >i</a
+      ><a name="475"
+      > </a
+      ><a name="476" href="hott.loop.properties.html#476" class="Bound"
+      >j</a
+      ><a name="477" class="Symbol"
+      >}{</a
+      ><a name="479" href="hott.loop.properties.html#479" class="Bound"
+      >X</a
+      ><a name="480"
+      > </a
+      ><a name="481" class="Symbol"
+      >:</a
+      ><a name="482"
+      > </a
+      ><a name="483" class="PrimitiveType"
+      >Set</a
+      ><a name="486"
+      > </a
+      ><a name="487" href="hott.loop.properties.html#474" class="Bound"
+      >i</a
+      ><a name="488" class="Symbol"
+      >}{</a
+      ><a name="490" href="hott.loop.properties.html#490" class="Bound"
+      >Y</a
+      ><a name="491"
+      > </a
+      ><a name="492" class="Symbol"
+      >:</a
+      ><a name="493"
+      > </a
+      ><a name="494" class="PrimitiveType"
+      >Set</a
+      ><a name="497"
+      > </a
+      ><a name="498" href="hott.loop.properties.html#476" class="Bound"
+      >j</a
+      ><a name="499" class="Symbol"
+      >}(</a
+      ><a name="501" href="hott.loop.properties.html#501" class="Bound"
+      >y</a
+      ><a name="502"
+      > </a
+      ><a name="503" class="Symbol"
+      >:</a
+      ><a name="504"
+      > </a
+      ><a name="505" href="hott.loop.properties.html#490" class="Bound"
+      >Y</a
+      ><a name="506" class="Symbol"
+      >)</a
+      ><a name="507"
+      >
+             </a
+      ><a name="521" class="Symbol"
+      >&#8594;</a
+      ><a name="522"
+      > </a
+      ><a name="523" class="Symbol"
+      >{</a
+      ><a name="524" href="hott.loop.properties.html#524" class="Bound"
+      >x</a
+      ><a name="525"
+      > </a
+      ><a name="526" href="hott.loop.properties.html#526" class="Bound"
+      >x'</a
+      ><a name="528"
+      > </a
+      ><a name="529" class="Symbol"
+      >:</a
+      ><a name="530"
+      > </a
+      ><a name="531" href="hott.loop.properties.html#479" class="Bound"
+      >X</a
+      ><a name="532" class="Symbol"
+      >}(</a
+      ><a name="534" href="hott.loop.properties.html#534" class="Bound"
+      >p</a
+      ><a name="535"
+      > </a
+      ><a name="536" class="Symbol"
+      >:</a
+      ><a name="537"
+      > </a
+      ><a name="538" href="hott.loop.properties.html#524" class="Bound"
+      >x</a
+      ><a name="539"
+      > </a
+      ><a name="540" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="541"
+      > </a
+      ><a name="542" href="hott.loop.properties.html#526" class="Bound"
+      >x'</a
+      ><a name="544" class="Symbol"
+      >)</a
+      ><a name="545"
+      > </a
+      ><a name="546" class="Symbol"
+      >&#8594;</a
+      ><a name="547"
+      > </a
+      ><a name="548" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="550"
+      > </a
+      ><a name="551" class="Symbol"
+      >(&#955;</a
+      ><a name="553"
+      > </a
+      ><a name="554" href="hott.loop.properties.html#554" class="Bound"
+      >_</a
+      ><a name="555"
+      > </a
+      ><a name="556" class="Symbol"
+      >&#8594;</a
+      ><a name="557"
+      > </a
+      ><a name="558" href="hott.loop.properties.html#501" class="Bound"
+      >y</a
+      ><a name="559" class="Symbol"
+      >)</a
+      ><a name="560"
+      > </a
+      ><a name="561" href="hott.loop.properties.html#534" class="Bound"
+      >p</a
+      ><a name="562"
+      > </a
+      ><a name="563" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="564"
+      > </a
+      ><a name="565" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="569"
+      >
+    </a
+      ><a name="574" href="hott.loop.properties.html#460" class="Function"
+      >ap-const</a
+      ><a name="582"
+      > </a
+      ><a name="583" href="hott.loop.properties.html#583" class="Bound"
+      >y</a
+      ><a name="584"
+      > </a
+      ><a name="585" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="589"
+      > </a
+      ><a name="590" class="Symbol"
+      >=</a
+      ><a name="591"
+      > </a
+      ><a name="592" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="596"
+      >
+
+</a
+      ><a name="598" href="hott.loop.properties.html#598" class="Function"
+      >map&#937;P-const</a
+      ><a name="609"
+      > </a
+      ><a name="610" class="Symbol"
+      >:</a
+      ><a name="611"
+      > </a
+      ><a name="612" class="Symbol"
+      >&#8704;</a
+      ><a name="613"
+      > </a
+      ><a name="614" class="Symbol"
+      >{</a
+      ><a name="615" href="hott.loop.properties.html#615" class="Bound"
+      >i</a
+      ><a name="616"
+      > </a
+      ><a name="617" href="hott.loop.properties.html#617" class="Bound"
+      >j</a
+      ><a name="618" class="Symbol"
+      >}</a
+      ><a name="619"
+      > </a
+      ><a name="620" href="hott.loop.properties.html#620" class="Bound"
+      >n</a
+      ><a name="621"
+      > </a
+      ><a name="622" class="Symbol"
+      >&#8594;</a
+      ><a name="623"
+      > </a
+      ><a name="624" class="Symbol"
+      >{</a
+      ><a name="625" href="hott.loop.properties.html#625" class="Bound"
+      >&#120039;</a
+      ><a name="626"
+      > </a
+      ><a name="627" class="Symbol"
+      >:</a
+      ><a name="628"
+      > </a
+      ><a name="629" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="633"
+      > </a
+      ><a name="634" href="hott.loop.properties.html#615" class="Bound"
+      >i</a
+      ><a name="635" class="Symbol"
+      >}{</a
+      ><a name="637" href="hott.loop.properties.html#637" class="Bound"
+      >&#120040;</a
+      ><a name="638"
+      > </a
+      ><a name="639" class="Symbol"
+      >:</a
+      ><a name="640"
+      > </a
+      ><a name="641" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="645"
+      > </a
+      ><a name="646" href="hott.loop.properties.html#617" class="Bound"
+      >j</a
+      ><a name="647" class="Symbol"
+      >}</a
+      ><a name="648"
+      >
+            </a
+      ><a name="661" class="Symbol"
+      >&#8594;</a
+      ><a name="662"
+      > </a
+      ><a name="663" href="hott.loop.core.html#643" class="Function"
+      >map&#937;P</a
+      ><a name="668"
+      > </a
+      ><a name="669" href="hott.loop.properties.html#620" class="Bound"
+      >n</a
+      ><a name="670"
+      > </a
+      ><a name="671" class="Symbol"
+      >(</a
+      ><a name="672" href="hott.loop.core.html#911" class="Function"
+      >constP</a
+      ><a name="678"
+      > </a
+      ><a name="679" href="hott.loop.properties.html#625" class="Bound"
+      >&#120039;</a
+      ><a name="680"
+      > </a
+      ><a name="681" href="hott.loop.properties.html#637" class="Bound"
+      >&#120040;</a
+      ><a name="682" class="Symbol"
+      >)</a
+      ><a name="683"
+      > </a
+      ><a name="684" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="685"
+      > </a
+      ><a name="686" href="hott.loop.core.html#911" class="Function"
+      >constP</a
+      ><a name="692"
+      > </a
+      ><a name="693" class="Symbol"
+      >_</a
+      ><a name="694"
+      > </a
+      ><a name="695" class="Symbol"
+      >_</a
+      ><a name="696"
+      >
+</a
+      ><a name="697" href="hott.loop.properties.html#598" class="Function"
+      >map&#937;P-const</a
+      ><a name="708"
+      > </a
+      ><a name="709" href="sets.nat.core.html#244" class="InductiveConstructor"
+      >zero</a
+      ><a name="713"
+      > </a
+      ><a name="714" class="Symbol"
+      >=</a
+      ><a name="715"
+      > </a
+      ><a name="716" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="720"
+      >
+</a
+      ><a name="721" href="hott.loop.properties.html#598" class="Function"
+      >map&#937;P-const</a
+      ><a name="732"
+      > </a
+      ><a name="733" class="Symbol"
+      >(</a
+      ><a name="734" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="737"
+      > </a
+      ><a name="738" href="hott.loop.properties.html#738" class="Bound"
+      >n</a
+      ><a name="739" class="Symbol"
+      >)</a
+      ><a name="740"
+      > </a
+      ><a name="741" class="Symbol"
+      >=</a
+      ><a name="742"
+      > </a
+      ><a name="743" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="745"
+      > </a
+      ><a name="746" class="Symbol"
+      >(</a
+      ><a name="747" href="hott.loop.core.html#643" class="Function"
+      >map&#937;P</a
+      ><a name="752"
+      > </a
+      ><a name="753" href="hott.loop.properties.html#738" class="Bound"
+      >n</a
+      ><a name="754" class="Symbol"
+      >)</a
+      ><a name="755"
+      > </a
+      ><a name="756" href="hott.loop.properties.html#308" class="Function"
+      >map&#937;&#8321;-const</a
+      ><a name="767"
+      > </a
+      ><a name="768" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="769"
+      > </a
+      ><a name="770" href="hott.loop.properties.html#598" class="Function"
+      >map&#937;P-const</a
+      ><a name="781"
+      > </a
+      ><a name="782" href="hott.loop.properties.html#738" class="Bound"
+      >n</a
+      ><a name="783"
+      >
+
+</a
+      ><a name="785" href="hott.loop.properties.html#785" class="Function"
+      >map&#937;-const</a
+      ><a name="795"
+      > </a
+      ><a name="796" class="Symbol"
+      >:</a
+      ><a name="797"
+      > </a
+      ><a name="798" class="Symbol"
+      >&#8704;</a
+      ><a name="799"
+      > </a
+      ><a name="800" class="Symbol"
+      >{</a
+      ><a name="801" href="hott.loop.properties.html#801" class="Bound"
+      >i</a
+      ><a name="802"
+      > </a
+      ><a name="803" href="hott.loop.properties.html#803" class="Bound"
+      >j</a
+      ><a name="804" class="Symbol"
+      >}</a
+      ><a name="805"
+      > </a
+      ><a name="806" href="hott.loop.properties.html#806" class="Bound"
+      >n</a
+      ><a name="807"
+      > </a
+      ><a name="808" class="Symbol"
+      >&#8594;</a
+      ><a name="809"
+      > </a
+      ><a name="810" class="Symbol"
+      >{</a
+      ><a name="811" href="hott.loop.properties.html#811" class="Bound"
+      >X</a
+      ><a name="812"
+      > </a
+      ><a name="813" class="Symbol"
+      >:</a
+      ><a name="814"
+      > </a
+      ><a name="815" class="PrimitiveType"
+      >Set</a
+      ><a name="818"
+      > </a
+      ><a name="819" href="hott.loop.properties.html#801" class="Bound"
+      >i</a
+      ><a name="820" class="Symbol"
+      >}{</a
+      ><a name="822" href="hott.loop.properties.html#822" class="Bound"
+      >Y</a
+      ><a name="823"
+      > </a
+      ><a name="824" class="Symbol"
+      >:</a
+      ><a name="825"
+      > </a
+      ><a name="826" class="PrimitiveType"
+      >Set</a
+      ><a name="829"
+      > </a
+      ><a name="830" href="hott.loop.properties.html#803" class="Bound"
+      >j</a
+      ><a name="831" class="Symbol"
+      >}(</a
+      ><a name="833" href="hott.loop.properties.html#833" class="Bound"
+      >y</a
+      ><a name="834"
+      > </a
+      ><a name="835" class="Symbol"
+      >:</a
+      ><a name="836"
+      > </a
+      ><a name="837" href="hott.loop.properties.html#822" class="Bound"
+      >Y</a
+      ><a name="838" class="Symbol"
+      >)</a
+      ><a name="839"
+      >
+           </a
+      ><a name="851" class="Symbol"
+      >&#8594;</a
+      ><a name="852"
+      > </a
+      ><a name="853" class="Symbol"
+      >(</a
+      ><a name="854" href="hott.loop.properties.html#854" class="Bound"
+      >x</a
+      ><a name="855"
+      > </a
+      ><a name="856" class="Symbol"
+      >:</a
+      ><a name="857"
+      > </a
+      ><a name="858" href="hott.loop.properties.html#811" class="Bound"
+      >X</a
+      ><a name="859" class="Symbol"
+      >)</a
+      ><a name="860"
+      > </a
+      ><a name="861" class="Symbol"
+      >(</a
+      ><a name="862" href="hott.loop.properties.html#862" class="Bound"
+      >p</a
+      ><a name="863"
+      > </a
+      ><a name="864" class="Symbol"
+      >:</a
+      ><a name="865"
+      > </a
+      ><a name="866" href="hott.loop.core.html#376" class="Function"
+      >&#937;</a
+      ><a name="867"
+      > </a
+      ><a name="868" href="hott.loop.properties.html#806" class="Bound"
+      >n</a
+      ><a name="869"
+      > </a
+      ><a name="870" href="hott.loop.properties.html#854" class="Bound"
+      >x</a
+      ><a name="871" class="Symbol"
+      >)</a
+      ><a name="872"
+      >
+           </a
+      ><a name="884" class="Symbol"
+      >&#8594;</a
+      ><a name="885"
+      > </a
+      ><a name="886" href="hott.loop.core.html#784" class="Function"
+      >map&#937;</a
+      ><a name="890"
+      > </a
+      ><a name="891" href="hott.loop.properties.html#806" class="Bound"
+      >n</a
+      ><a name="892"
+      > </a
+      ><a name="893" class="Symbol"
+      >(&#955;</a
+      ><a name="895"
+      > </a
+      ><a name="896" href="hott.loop.properties.html#896" class="Bound"
+      >_</a
+      ><a name="897"
+      > </a
+      ><a name="898" class="Symbol"
+      >&#8594;</a
+      ><a name="899"
+      > </a
+      ><a name="900" href="hott.loop.properties.html#833" class="Bound"
+      >y</a
+      ><a name="901" class="Symbol"
+      >)</a
+      ><a name="902"
+      > </a
+      ><a name="903" href="hott.loop.properties.html#862" class="Bound"
+      >p</a
+      ><a name="904"
+      > </a
+      ><a name="905" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="906"
+      > </a
+      ><a name="907" href="hott.loop.core.html#450" class="Function"
+      >refl'</a
+      ><a name="912"
+      > </a
+      ><a name="913" href="hott.loop.properties.html#806" class="Bound"
+      >n</a
+      ><a name="914"
+      > </a
+      ><a name="915" href="hott.loop.properties.html#833" class="Bound"
+      >y</a
+      ><a name="916"
+      >
+</a
+      ><a name="917" href="hott.loop.properties.html#785" class="Function"
+      >map&#937;-const</a
+      ><a name="927"
+      > </a
+      ><a name="928" href="hott.loop.properties.html#928" class="Bound"
+      >n</a
+      ><a name="929"
+      > </a
+      ><a name="930" href="hott.loop.properties.html#930" class="Bound"
+      >y</a
+      ><a name="931"
+      > </a
+      ><a name="932" href="hott.loop.properties.html#932" class="Bound"
+      >x</a
+      ><a name="933"
+      > </a
+      ><a name="934" href="hott.loop.properties.html#934" class="Bound"
+      >p</a
+      ><a name="935"
+      > </a
+      ><a name="936" class="Symbol"
+      >=</a
+      ><a name="937"
+      > </a
+      ><a name="938" href="function.extensionality.core.html#705" class="Function"
+      >funext-inv</a
+      ><a name="948"
+      > </a
+      ><a name="949" class="Symbol"
+      >(</a
+      ><a name="950" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="952"
+      > </a
+      ><a name="953" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="958"
+      > </a
+      ><a name="959" class="Symbol"
+      >(</a
+      ><a name="960" href="hott.loop.properties.html#598" class="Function"
+      >map&#937;P-const</a
+      ><a name="971"
+      > </a
+      ><a name="972" href="hott.loop.properties.html#928" class="Bound"
+      >n</a
+      ><a name="973" class="Symbol"
+      >))</a
+      ><a name="975"
+      > </a
+      ><a name="976" href="hott.loop.properties.html#934" class="Bound"
+      >p</a
+      ><a name="977"
+      >
+
+</a
+      ><a name="979" href="hott.loop.properties.html#979" class="Function"
+      >map&#937;&#8321;-hom</a
+      ><a name="988"
+      > </a
+      ><a name="989" class="Symbol"
+      >:</a
+      ><a name="990"
+      > </a
+      ><a name="991" class="Symbol"
+      >&#8704;</a
+      ><a name="992"
+      > </a
+      ><a name="993" class="Symbol"
+      >{</a
+      ><a name="994" href="hott.loop.properties.html#994" class="Bound"
+      >i</a
+      ><a name="995"
+      > </a
+      ><a name="996" href="hott.loop.properties.html#996" class="Bound"
+      >j</a
+      ><a name="997"
+      > </a
+      ><a name="998" href="hott.loop.properties.html#998" class="Bound"
+      >k</a
+      ><a name="999" class="Symbol"
+      >}{</a
+      ><a name="1001" href="hott.loop.properties.html#1001" class="Bound"
+      >&#120039;</a
+      ><a name="1002"
+      > </a
+      ><a name="1003" class="Symbol"
+      >:</a
+      ><a name="1004"
+      > </a
+      ><a name="1005" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="1009"
+      > </a
+      ><a name="1010" href="hott.loop.properties.html#994" class="Bound"
+      >i</a
+      ><a name="1011" class="Symbol"
+      >}{</a
+      ><a name="1013" href="hott.loop.properties.html#1013" class="Bound"
+      >&#120040;</a
+      ><a name="1014"
+      > </a
+      ><a name="1015" class="Symbol"
+      >:</a
+      ><a name="1016"
+      > </a
+      ><a name="1017" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="1021"
+      > </a
+      ><a name="1022" href="hott.loop.properties.html#996" class="Bound"
+      >j</a
+      ><a name="1023" class="Symbol"
+      >}{</a
+      ><a name="1025" href="hott.loop.properties.html#1025" class="Bound"
+      >&#120041;</a
+      ><a name="1026"
+      > </a
+      ><a name="1027" class="Symbol"
+      >:</a
+      ><a name="1028"
+      > </a
+      ><a name="1029" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="1033"
+      > </a
+      ><a name="1034" href="hott.loop.properties.html#998" class="Bound"
+      >k</a
+      ><a name="1035" class="Symbol"
+      >}</a
+      ><a name="1036"
+      >
+          </a
+      ><a name="1047" class="Symbol"
+      >&#8594;</a
+      ><a name="1048"
+      > </a
+      ><a name="1049" class="Symbol"
+      >(</a
+      ><a name="1050" href="hott.loop.properties.html#1050" class="Bound"
+      >f</a
+      ><a name="1051"
+      > </a
+      ><a name="1052" class="Symbol"
+      >:</a
+      ><a name="1053"
+      > </a
+      ><a name="1054" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="1058"
+      > </a
+      ><a name="1059" href="hott.loop.properties.html#1001" class="Bound"
+      >&#120039;</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" href="hott.loop.properties.html#1013" class="Bound"
+      >&#120040;</a
+      ><a name="1062" class="Symbol"
+      >)(</a
+      ><a name="1064" href="hott.loop.properties.html#1064" class="Bound"
+      >g</a
+      ><a name="1065"
+      > </a
+      ><a name="1066" class="Symbol"
+      >:</a
+      ><a name="1067"
+      > </a
+      ><a name="1068" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="1072"
+      > </a
+      ><a name="1073" href="hott.loop.properties.html#1013" class="Bound"
+      >&#120040;</a
+      ><a name="1074"
+      > </a
+      ><a name="1075" href="hott.loop.properties.html#1025" class="Bound"
+      >&#120041;</a
+      ><a name="1076" class="Symbol"
+      >)</a
+      ><a name="1077"
+      >
+          </a
+      ><a name="1088" class="Symbol"
+      >&#8594;</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" href="hott.loop.core.html#531" class="Function"
+      >map&#937;&#8321;</a
+      ><a name="1095"
+      > </a
+      ><a name="1096" href="hott.loop.properties.html#1064" class="Bound"
+      >g</a
+      ><a name="1097"
+      > </a
+      ><a name="1098" href="function.core.html#912" class="Function Operator"
+      >&#8728;</a
+      ><a name="1099"
+      > </a
+      ><a name="1100" href="hott.loop.core.html#531" class="Function"
+      >map&#937;&#8321;</a
+      ><a name="1105"
+      > </a
+      ><a name="1106" href="hott.loop.properties.html#1050" class="Bound"
+      >f</a
+      ><a name="1107"
+      > </a
+      ><a name="1108" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1109"
+      > </a
+      ><a name="1110" href="hott.loop.core.html#531" class="Function"
+      >map&#937;&#8321;</a
+      ><a name="1115"
+      > </a
+      ><a name="1116" class="Symbol"
+      >(</a
+      ><a name="1117" href="hott.loop.properties.html#1064" class="Bound"
+      >g</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" href="function.core.html#912" class="Function Operator"
+      >&#8728;</a
+      ><a name="1120"
+      > </a
+      ><a name="1121" href="hott.loop.properties.html#1050" class="Bound"
+      >f</a
+      ><a name="1122" class="Symbol"
+      >)</a
+      ><a name="1123"
+      >
+</a
+      ><a name="1124" href="hott.loop.properties.html#979" class="Function"
+      >map&#937;&#8321;-hom</a
+      ><a name="1133"
+      > </a
+      ><a name="1134" class="Symbol"
+      >(</a
+      ><a name="1135" href="hott.loop.properties.html#1135" class="Bound"
+      >f</a
+      ><a name="1136"
+      > </a
+      ><a name="1137" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1138"
+      > </a
+      ><a name="1139" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1143" class="Symbol"
+      >)</a
+      ><a name="1144"
+      > </a
+      ><a name="1145" class="Symbol"
+      >(</a
+      ><a name="1146" href="hott.loop.properties.html#1146" class="Bound"
+      >g</a
+      ><a name="1147"
+      > </a
+      ><a name="1148" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1149"
+      > </a
+      ><a name="1150" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1154" class="Symbol"
+      >)</a
+      ><a name="1155"
+      > </a
+      ><a name="1156" class="Symbol"
+      >=</a
+      ><a name="1157"
+      > </a
+      ><a name="1158" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="1163"
+      > </a
+      ><a name="1164" href="pointed.equality.html#241" class="Function"
+      >pmap-eq</a
+      ><a name="1171"
+      > </a
+      ><a name="1172" class="Symbol"
+      >(</a
+      ><a name="1173" href="equality.calculus.html#3016" class="Function"
+      >ap-hom</a
+      ><a name="1179"
+      > </a
+      ><a name="1180" href="hott.loop.properties.html#1135" class="Bound"
+      >f</a
+      ><a name="1181"
+      > </a
+      ><a name="1182" href="hott.loop.properties.html#1146" class="Bound"
+      >g</a
+      ><a name="1183"
+      > </a
+      ><a name="1184" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1185"
+      > </a
+      ><a name="1186" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1190" class="Symbol"
+      >)</a
+      ><a name="1191"
+      >
+
+</a
+      ><a name="1193" href="hott.loop.properties.html#1193" class="Function"
+      >map&#937;P-hom</a
+      ><a name="1202"
+      > </a
+      ><a name="1203" class="Symbol"
+      >:</a
+      ><a name="1204"
+      > </a
+      ><a name="1205" class="Symbol"
+      >&#8704;</a
+      ><a name="1206"
+      > </a
+      ><a name="1207" class="Symbol"
+      >{</a
+      ><a name="1208" href="hott.loop.properties.html#1208" class="Bound"
+      >i</a
+      ><a name="1209"
+      > </a
+      ><a name="1210" href="hott.loop.properties.html#1210" class="Bound"
+      >j</a
+      ><a name="1211"
+      > </a
+      ><a name="1212" href="hott.loop.properties.html#1212" class="Bound"
+      >k</a
+      ><a name="1213" class="Symbol"
+      >}</a
+      ><a name="1214"
+      > </a
+      ><a name="1215" href="hott.loop.properties.html#1215" class="Bound"
+      >n</a
+      ><a name="1216"
+      > </a
+      ><a name="1217" class="Symbol"
+      >&#8594;</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" class="Symbol"
+      >{</a
+      ><a name="1220" href="hott.loop.properties.html#1220" class="Bound"
+      >&#120039;</a
+      ><a name="1221"
+      > </a
+      ><a name="1222" class="Symbol"
+      >:</a
+      ><a name="1223"
+      > </a
+      ><a name="1224" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="1228"
+      > </a
+      ><a name="1229" href="hott.loop.properties.html#1208" class="Bound"
+      >i</a
+      ><a name="1230" class="Symbol"
+      >}{</a
+      ><a name="1232" href="hott.loop.properties.html#1232" class="Bound"
+      >&#120040;</a
+      ><a name="1233"
+      > </a
+      ><a name="1234" class="Symbol"
+      >:</a
+      ><a name="1235"
+      > </a
+      ><a name="1236" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="1240"
+      > </a
+      ><a name="1241" href="hott.loop.properties.html#1210" class="Bound"
+      >j</a
+      ><a name="1242" class="Symbol"
+      >}{</a
+      ><a name="1244" href="hott.loop.properties.html#1244" class="Bound"
+      >&#120041;</a
+      ><a name="1245"
+      > </a
+      ><a name="1246" class="Symbol"
+      >:</a
+      ><a name="1247"
+      > </a
+      ><a name="1248" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="1252"
+      > </a
+      ><a name="1253" href="hott.loop.properties.html#1212" class="Bound"
+      >k</a
+      ><a name="1254" class="Symbol"
+      >}</a
+      ><a name="1255"
+      >
+          </a
+      ><a name="1266" class="Symbol"
+      >&#8594;</a
+      ><a name="1267"
+      > </a
+      ><a name="1268" class="Symbol"
+      >(</a
+      ><a name="1269" href="hott.loop.properties.html#1269" class="Bound"
+      >f</a
+      ><a name="1270"
+      > </a
+      ><a name="1271" class="Symbol"
+      >:</a
+      ><a name="1272"
+      > </a
+      ><a name="1273" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="1277"
+      > </a
+      ><a name="1278" href="hott.loop.properties.html#1220" class="Bound"
+      >&#120039;</a
+      ><a name="1279"
+      > </a
+      ><a name="1280" href="hott.loop.properties.html#1232" class="Bound"
+      >&#120040;</a
+      ><a name="1281" class="Symbol"
+      >)(</a
+      ><a name="1283" href="hott.loop.properties.html#1283" class="Bound"
+      >g</a
+      ><a name="1284"
+      > </a
+      ><a name="1285" class="Symbol"
+      >:</a
+      ><a name="1286"
+      > </a
+      ><a name="1287" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="1291"
+      > </a
+      ><a name="1292" href="hott.loop.properties.html#1232" class="Bound"
+      >&#120040;</a
+      ><a name="1293"
+      > </a
+      ><a name="1294" href="hott.loop.properties.html#1244" class="Bound"
+      >&#120041;</a
+      ><a name="1295" class="Symbol"
+      >)</a
+      ><a name="1296"
+      >
+          </a
+      ><a name="1307" class="Symbol"
+      >&#8594;</a
+      ><a name="1308"
+      > </a
+      ><a name="1309" href="hott.loop.core.html#643" class="Function"
+      >map&#937;P</a
+      ><a name="1314"
+      > </a
+      ><a name="1315" href="hott.loop.properties.html#1215" class="Bound"
+      >n</a
+      ><a name="1316"
+      > </a
+      ><a name="1317" href="hott.loop.properties.html#1283" class="Bound"
+      >g</a
+      ><a name="1318"
+      > </a
+      ><a name="1319" href="function.core.html#912" class="Function Operator"
+      >&#8728;</a
+      ><a name="1320"
+      > </a
+      ><a name="1321" href="hott.loop.core.html#643" class="Function"
+      >map&#937;P</a
+      ><a name="1326"
+      > </a
+      ><a name="1327" href="hott.loop.properties.html#1215" class="Bound"
+      >n</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" href="hott.loop.properties.html#1269" class="Bound"
+      >f</a
+      ><a name="1330"
+      > </a
+      ><a name="1331" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1332"
+      > </a
+      ><a name="1333" href="hott.loop.core.html#643" class="Function"
+      >map&#937;P</a
+      ><a name="1338"
+      > </a
+      ><a name="1339" href="hott.loop.properties.html#1215" class="Bound"
+      >n</a
+      ><a name="1340"
+      > </a
+      ><a name="1341" class="Symbol"
+      >(</a
+      ><a name="1342" href="hott.loop.properties.html#1283" class="Bound"
+      >g</a
+      ><a name="1343"
+      > </a
+      ><a name="1344" href="function.core.html#912" class="Function Operator"
+      >&#8728;</a
+      ><a name="1345"
+      > </a
+      ><a name="1346" href="hott.loop.properties.html#1269" class="Bound"
+      >f</a
+      ><a name="1347" class="Symbol"
+      >)</a
+      ><a name="1348"
+      >
+</a
+      ><a name="1349" href="hott.loop.properties.html#1193" class="Function"
+      >map&#937;P-hom</a
+      ><a name="1358"
+      > </a
+      ><a name="1359" href="sets.nat.core.html#244" class="InductiveConstructor"
+      >zero</a
+      ><a name="1363"
+      > </a
+      ><a name="1364" href="hott.loop.properties.html#1364" class="Bound"
+      >f</a
+      ><a name="1365"
+      > </a
+      ><a name="1366" href="hott.loop.properties.html#1366" class="Bound"
+      >g</a
+      ><a name="1367"
+      > </a
+      ><a name="1368" class="Symbol"
+      >=</a
+      ><a name="1369"
+      > </a
+      ><a name="1370" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1374"
+      >
+</a
+      ><a name="1375" href="hott.loop.properties.html#1193" class="Function"
+      >map&#937;P-hom</a
+      ><a name="1384"
+      > </a
+      ><a name="1385" class="Symbol"
+      >(</a
+      ><a name="1386" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="1389"
+      > </a
+      ><a name="1390" href="hott.loop.properties.html#1390" class="Bound"
+      >n</a
+      ><a name="1391" class="Symbol"
+      >)</a
+      ><a name="1392"
+      > </a
+      ><a name="1393" href="hott.loop.properties.html#1393" class="Bound"
+      >f</a
+      ><a name="1394"
+      > </a
+      ><a name="1395" href="hott.loop.properties.html#1395" class="Bound"
+      >g</a
+      ><a name="1396"
+      > </a
+      ><a name="1397" class="Symbol"
+      >=</a
+      ><a name="1398"
+      > </a
+      ><a name="1399" href="hott.loop.properties.html#1193" class="Function"
+      >map&#937;P-hom</a
+      ><a name="1408"
+      > </a
+      ><a name="1409" href="hott.loop.properties.html#1390" class="Bound"
+      >n</a
+      ><a name="1410"
+      > </a
+      ><a name="1411" class="Symbol"
+      >(</a
+      ><a name="1412" href="hott.loop.core.html#531" class="Function"
+      >map&#937;&#8321;</a
+      ><a name="1417"
+      > </a
+      ><a name="1418" href="hott.loop.properties.html#1393" class="Bound"
+      >f</a
+      ><a name="1419" class="Symbol"
+      >)</a
+      ><a name="1420"
+      > </a
+      ><a name="1421" class="Symbol"
+      >(</a
+      ><a name="1422" href="hott.loop.core.html#531" class="Function"
+      >map&#937;&#8321;</a
+      ><a name="1427"
+      > </a
+      ><a name="1428" href="hott.loop.properties.html#1395" class="Bound"
+      >g</a
+      ><a name="1429" class="Symbol"
+      >)</a
+      ><a name="1430"
+      >
+                      </a
+      ><a name="1453" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1454"
+      > </a
+      ><a name="1455" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" class="Symbol"
+      >(</a
+      ><a name="1459" href="hott.loop.core.html#643" class="Function"
+      >map&#937;P</a
+      ><a name="1464"
+      > </a
+      ><a name="1465" href="hott.loop.properties.html#1390" class="Bound"
+      >n</a
+      ><a name="1466" class="Symbol"
+      >)</a
+      ><a name="1467"
+      > </a
+      ><a name="1468" class="Symbol"
+      >(</a
+      ><a name="1469" href="hott.loop.properties.html#979" class="Function"
+      >map&#937;&#8321;-hom</a
+      ><a name="1478"
+      > </a
+      ><a name="1479" href="hott.loop.properties.html#1393" class="Bound"
+      >f</a
+      ><a name="1480"
+      > </a
+      ><a name="1481" href="hott.loop.properties.html#1395" class="Bound"
+      >g</a
+      ><a name="1482" class="Symbol"
+      >)</a
+      ><a name="1483"
+      >
+
+</a
+      ><a name="1485" href="hott.loop.properties.html#1485" class="Function"
+      >map&#937;-hom</a
+      ><a name="1493"
+      > </a
+      ><a name="1494" class="Symbol"
+      >:</a
+      ><a name="1495"
+      > </a
+      ><a name="1496" class="Symbol"
+      >&#8704;</a
+      ><a name="1497"
+      > </a
+      ><a name="1498" class="Symbol"
+      >{</a
+      ><a name="1499" href="hott.loop.properties.html#1499" class="Bound"
+      >i</a
+      ><a name="1500"
+      > </a
+      ><a name="1501" href="hott.loop.properties.html#1501" class="Bound"
+      >j</a
+      ><a name="1502"
+      > </a
+      ><a name="1503" href="hott.loop.properties.html#1503" class="Bound"
+      >k</a
+      ><a name="1504" class="Symbol"
+      >}</a
+      ><a name="1505"
+      > </a
+      ><a name="1506" href="hott.loop.properties.html#1506" class="Bound"
+      >n</a
+      ><a name="1507"
+      > </a
+      ><a name="1508" class="Symbol"
+      >{</a
+      ><a name="1509" href="hott.loop.properties.html#1509" class="Bound"
+      >X</a
+      ><a name="1510"
+      > </a
+      ><a name="1511" class="Symbol"
+      >:</a
+      ><a name="1512"
+      > </a
+      ><a name="1513" class="PrimitiveType"
+      >Set</a
+      ><a name="1516"
+      > </a
+      ><a name="1517" href="hott.loop.properties.html#1499" class="Bound"
+      >i</a
+      ><a name="1518" class="Symbol"
+      >}{</a
+      ><a name="1520" href="hott.loop.properties.html#1520" class="Bound"
+      >Y</a
+      ><a name="1521"
+      > </a
+      ><a name="1522" class="Symbol"
+      >:</a
+      ><a name="1523"
+      > </a
+      ><a name="1524" class="PrimitiveType"
+      >Set</a
+      ><a name="1527"
+      > </a
+      ><a name="1528" href="hott.loop.properties.html#1501" class="Bound"
+      >j</a
+      ><a name="1529" class="Symbol"
+      >}{</a
+      ><a name="1531" href="hott.loop.properties.html#1531" class="Bound"
+      >Z</a
+      ><a name="1532"
+      > </a
+      ><a name="1533" class="Symbol"
+      >:</a
+      ><a name="1534"
+      > </a
+      ><a name="1535" class="PrimitiveType"
+      >Set</a
+      ><a name="1538"
+      > </a
+      ><a name="1539" href="hott.loop.properties.html#1503" class="Bound"
+      >k</a
+      ><a name="1540" class="Symbol"
+      >}</a
+      ><a name="1541"
+      >
+         </a
+      ><a name="1551" class="Symbol"
+      >&#8594;</a
+      ><a name="1552"
+      > </a
+      ><a name="1553" class="Symbol"
+      >(</a
+      ><a name="1554" href="hott.loop.properties.html#1554" class="Bound"
+      >f</a
+      ><a name="1555"
+      > </a
+      ><a name="1556" class="Symbol"
+      >:</a
+      ><a name="1557"
+      > </a
+      ><a name="1558" href="hott.loop.properties.html#1509" class="Bound"
+      >X</a
+      ><a name="1559"
+      > </a
+      ><a name="1560" class="Symbol"
+      >&#8594;</a
+      ><a name="1561"
+      > </a
+      ><a name="1562" href="hott.loop.properties.html#1520" class="Bound"
+      >Y</a
+      ><a name="1563" class="Symbol"
+      >)(</a
+      ><a name="1565" href="hott.loop.properties.html#1565" class="Bound"
+      >g</a
+      ><a name="1566"
+      > </a
+      ><a name="1567" class="Symbol"
+      >:</a
+      ><a name="1568"
+      > </a
+      ><a name="1569" href="hott.loop.properties.html#1520" class="Bound"
+      >Y</a
+      ><a name="1570"
+      > </a
+      ><a name="1571" class="Symbol"
+      >&#8594;</a
+      ><a name="1572"
+      > </a
+      ><a name="1573" href="hott.loop.properties.html#1531" class="Bound"
+      >Z</a
+      ><a name="1574" class="Symbol"
+      >){</a
+      ><a name="1576" href="hott.loop.properties.html#1576" class="Bound"
+      >x</a
+      ><a name="1577"
+      > </a
+      ><a name="1578" class="Symbol"
+      >:</a
+      ><a name="1579"
+      > </a
+      ><a name="1580" href="hott.loop.properties.html#1509" class="Bound"
+      >X</a
+      ><a name="1581" class="Symbol"
+      >}(</a
+      ><a name="1583" href="hott.loop.properties.html#1583" class="Bound"
+      >p</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" class="Symbol"
+      >:</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" href="hott.loop.core.html#376" class="Function"
+      >&#937;</a
+      ><a name="1588"
+      > </a
+      ><a name="1589" href="hott.loop.properties.html#1506" class="Bound"
+      >n</a
+      ><a name="1590"
+      > </a
+      ><a name="1591" href="hott.loop.properties.html#1576" class="Bound"
+      >x</a
+      ><a name="1592" class="Symbol"
+      >)</a
+      ><a name="1593"
+      >
+         </a
+      ><a name="1603" class="Symbol"
+      >&#8594;</a
+      ><a name="1604"
+      > </a
+      ><a name="1605" href="hott.loop.core.html#784" class="Function"
+      >map&#937;</a
+      ><a name="1609"
+      > </a
+      ><a name="1610" href="hott.loop.properties.html#1506" class="Bound"
+      >n</a
+      ><a name="1611"
+      > </a
+      ><a name="1612" href="hott.loop.properties.html#1565" class="Bound"
+      >g</a
+      ><a name="1613"
+      > </a
+      ><a name="1614" class="Symbol"
+      >(</a
+      ><a name="1615" href="hott.loop.core.html#784" class="Function"
+      >map&#937;</a
+      ><a name="1619"
+      > </a
+      ><a name="1620" href="hott.loop.properties.html#1506" class="Bound"
+      >n</a
+      ><a name="1621"
+      > </a
+      ><a name="1622" href="hott.loop.properties.html#1554" class="Bound"
+      >f</a
+      ><a name="1623"
+      > </a
+      ><a name="1624" href="hott.loop.properties.html#1583" class="Bound"
+      >p</a
+      ><a name="1625" class="Symbol"
+      >)</a
+      ><a name="1626"
+      > </a
+      ><a name="1627" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1628"
+      > </a
+      ><a name="1629" href="hott.loop.core.html#784" class="Function"
+      >map&#937;</a
+      ><a name="1633"
+      > </a
+      ><a name="1634" href="hott.loop.properties.html#1506" class="Bound"
+      >n</a
+      ><a name="1635"
+      > </a
+      ><a name="1636" class="Symbol"
+      >(</a
+      ><a name="1637" href="hott.loop.properties.html#1565" class="Bound"
+      >g</a
+      ><a name="1638"
+      > </a
+      ><a name="1639" href="function.core.html#912" class="Function Operator"
+      >&#8728;</a
+      ><a name="1640"
+      > </a
+      ><a name="1641" href="hott.loop.properties.html#1554" class="Bound"
+      >f</a
+      ><a name="1642" class="Symbol"
+      >)</a
+      ><a name="1643"
+      > </a
+      ><a name="1644" href="hott.loop.properties.html#1583" class="Bound"
+      >p</a
+      ><a name="1645"
+      >
+</a
+      ><a name="1646" href="hott.loop.properties.html#1485" class="Function"
+      >map&#937;-hom</a
+      ><a name="1654"
+      > </a
+      ><a name="1655" href="hott.loop.properties.html#1655" class="Bound"
+      >n</a
+      ><a name="1656"
+      > </a
+      ><a name="1657" href="hott.loop.properties.html#1657" class="Bound"
+      >f</a
+      ><a name="1658"
+      > </a
+      ><a name="1659" href="hott.loop.properties.html#1659" class="Bound"
+      >g</a
+      ><a name="1660"
+      > </a
+      ><a name="1661" class="Symbol"
+      >=</a
+      ><a name="1662"
+      > </a
+      ><a name="1663" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1668"
+      > </a
+      ><a name="1669" class="Symbol"
+      >(</a
+      ><a name="1670" href="function.isomorphism.core.html#452" class="Function"
+      >invert</a
+      ><a name="1676"
+      > </a
+      ><a name="1677" href="pointed.equality.html#241" class="Function"
+      >pmap-eq</a
+      ><a name="1684"
+      > </a
+      ><a name="1685" class="Symbol"
+      >(</a
+      ><a name="1686" href="hott.loop.properties.html#1193" class="Function"
+      >map&#937;P-hom</a
+      ><a name="1695"
+      > </a
+      ><a name="1696" href="hott.loop.properties.html#1655" class="Bound"
+      >n</a
+      ><a name="1697"
+      > </a
+      ><a name="1698" class="Symbol"
+      >(</a
+      ><a name="1699" href="hott.loop.properties.html#1657" class="Bound"
+      >f</a
+      ><a name="1700"
+      > </a
+      ><a name="1701" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1702"
+      > </a
+      ><a name="1703" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1707" class="Symbol"
+      >)</a
+      ><a name="1708"
+      > </a
+      ><a name="1709" class="Symbol"
+      >(</a
+      ><a name="1710" href="hott.loop.properties.html#1659" class="Bound"
+      >g</a
+      ><a name="1711"
+      > </a
+      ><a name="1712" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1713"
+      > </a
+      ><a name="1714" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1718" class="Symbol"
+      >)))</a
+      ><a name="1721"
+      >
+
+</a
+      ><a name="1723" href="hott.loop.properties.html#1723" class="Function"
+      >map&#937;-refl</a
+      ><a name="1732"
+      > </a
+      ><a name="1733" class="Symbol"
+      >:</a
+      ><a name="1734"
+      > </a
+      ><a name="1735" class="Symbol"
+      >&#8704;</a
+      ><a name="1736"
+      > </a
+      ><a name="1737" class="Symbol"
+      >{</a
+      ><a name="1738" href="hott.loop.properties.html#1738" class="Bound"
+      >i</a
+      ><a name="1739"
+      > </a
+      ><a name="1740" href="hott.loop.properties.html#1740" class="Bound"
+      >j</a
+      ><a name="1741" class="Symbol"
+      >}</a
+      ><a name="1742"
+      > </a
+      ><a name="1743" href="hott.loop.properties.html#1743" class="Bound"
+      >n</a
+      ><a name="1744"
+      > </a
+      ><a name="1745" class="Symbol"
+      >{</a
+      ><a name="1746" href="hott.loop.properties.html#1746" class="Bound"
+      >X</a
+      ><a name="1747"
+      > </a
+      ><a name="1748" class="Symbol"
+      >:</a
+      ><a name="1749"
+      > </a
+      ><a name="1750" class="PrimitiveType"
+      >Set</a
+      ><a name="1753"
+      > </a
+      ><a name="1754" href="hott.loop.properties.html#1738" class="Bound"
+      >i</a
+      ><a name="1755" class="Symbol"
+      >}{</a
+      ><a name="1757" href="hott.loop.properties.html#1757" class="Bound"
+      >Y</a
+      ><a name="1758"
+      > </a
+      ><a name="1759" class="Symbol"
+      >:</a
+      ><a name="1760"
+      > </a
+      ><a name="1761" class="PrimitiveType"
+      >Set</a
+      ><a name="1764"
+      > </a
+      ><a name="1765" href="hott.loop.properties.html#1740" class="Bound"
+      >j</a
+      ><a name="1766" class="Symbol"
+      >}</a
+      ><a name="1767"
+      >
+          </a
+      ><a name="1778" class="Symbol"
+      >&#8594;</a
+      ><a name="1779"
+      > </a
+      ><a name="1780" class="Symbol"
+      >(</a
+      ><a name="1781" href="hott.loop.properties.html#1781" class="Bound"
+      >f</a
+      ><a name="1782"
+      > </a
+      ><a name="1783" class="Symbol"
+      >:</a
+      ><a name="1784"
+      > </a
+      ><a name="1785" href="hott.loop.properties.html#1746" class="Bound"
+      >X</a
+      ><a name="1786"
+      > </a
+      ><a name="1787" class="Symbol"
+      >&#8594;</a
+      ><a name="1788"
+      > </a
+      ><a name="1789" href="hott.loop.properties.html#1757" class="Bound"
+      >Y</a
+      ><a name="1790" class="Symbol"
+      >){</a
+      ><a name="1792" href="hott.loop.properties.html#1792" class="Bound"
+      >x</a
+      ><a name="1793"
+      > </a
+      ><a name="1794" class="Symbol"
+      >:</a
+      ><a name="1795"
+      > </a
+      ><a name="1796" href="hott.loop.properties.html#1746" class="Bound"
+      >X</a
+      ><a name="1797" class="Symbol"
+      >}</a
+      ><a name="1798"
+      >
+          </a
+      ><a name="1809" class="Symbol"
+      >&#8594;</a
+      ><a name="1810"
+      > </a
+      ><a name="1811" href="hott.loop.core.html#784" class="Function"
+      >map&#937;</a
+      ><a name="1815"
+      > </a
+      ><a name="1816" href="hott.loop.properties.html#1743" class="Bound"
+      >n</a
+      ><a name="1817"
+      > </a
+      ><a name="1818" href="hott.loop.properties.html#1781" class="Bound"
+      >f</a
+      ><a name="1819"
+      > </a
+      ><a name="1820" class="Symbol"
+      >(</a
+      ><a name="1821" href="hott.loop.core.html#450" class="Function"
+      >refl'</a
+      ><a name="1826"
+      > </a
+      ><a name="1827" href="hott.loop.properties.html#1743" class="Bound"
+      >n</a
+      ><a name="1828"
+      > </a
+      ><a name="1829" href="hott.loop.properties.html#1792" class="Bound"
+      >x</a
+      ><a name="1830" class="Symbol"
+      >)</a
+      ><a name="1831"
+      > </a
+      ><a name="1832" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1833"
+      > </a
+      ><a name="1834" href="hott.loop.core.html#450" class="Function"
+      >refl'</a
+      ><a name="1839"
+      > </a
+      ><a name="1840" href="hott.loop.properties.html#1743" class="Bound"
+      >n</a
+      ><a name="1841"
+      > </a
+      ><a name="1842" class="Symbol"
+      >(</a
+      ><a name="1843" href="hott.loop.properties.html#1781" class="Bound"
+      >f</a
+      ><a name="1844"
+      > </a
+      ><a name="1845" href="hott.loop.properties.html#1792" class="Bound"
+      >x</a
+      ><a name="1846" class="Symbol"
+      >)</a
+      ><a name="1847"
+      >
+</a
+      ><a name="1848" href="hott.loop.properties.html#1723" class="Function"
+      >map&#937;-refl</a
+      ><a name="1857"
+      > </a
+      ><a name="1858" href="hott.loop.properties.html#1858" class="Bound"
+      >n</a
+      ><a name="1859"
+      > </a
+      ><a name="1860" href="hott.loop.properties.html#1860" class="Bound"
+      >f</a
+      ><a name="1861"
+      > </a
+      ><a name="1862" class="Symbol"
+      >=</a
+      ><a name="1863"
+      > </a
+      ><a name="1864" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="1869"
+      > </a
+      ><a name="1870" class="Symbol"
+      >(</a
+      ><a name="1871" href="hott.loop.core.html#643" class="Function"
+      >map&#937;P</a
+      ><a name="1876"
+      > </a
+      ><a name="1877" href="hott.loop.properties.html#1858" class="Bound"
+      >n</a
+      ><a name="1878"
+      > </a
+      ><a name="1879" class="Symbol"
+      >(</a
+      ><a name="1880" href="hott.loop.properties.html#1860" class="Bound"
+      >f</a
+      ><a name="1881"
+      > </a
+      ><a name="1882" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1883"
+      > </a
+      ><a name="1884" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1888" class="Symbol"
+      >))</a
+      ><a name="1890"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>

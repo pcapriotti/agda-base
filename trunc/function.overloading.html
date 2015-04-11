@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >function.overloading</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+
+</a
+      ><a name="30" class="Keyword"
+      >module</a
+      ><a name="36"
+      > </a
+      ><a name="37" href="function.overloading.html#1" class="Module"
+      >function.overloading</a
+      ><a name="57"
+      > </a
+      ><a name="58" class="Symbol"
+      >{</a
+      ><a name="59" href="function.overloading.html#59" class="Bound"
+      >i</a
+      ><a name="60"
+      > </a
+      ><a name="61" href="function.overloading.html#61" class="Bound"
+      >j</a
+      ><a name="62" class="Symbol"
+      >}{</a
+      ><a name="64" href="function.overloading.html#64" class="Bound"
+      >X</a
+      ><a name="65"
+      > </a
+      ><a name="66" class="Symbol"
+      >:</a
+      ><a name="67"
+      > </a
+      ><a name="68" class="PrimitiveType"
+      >Set</a
+      ><a name="71"
+      > </a
+      ><a name="72" href="function.overloading.html#59" class="Bound"
+      >i</a
+      ><a name="73" class="Symbol"
+      >}{</a
+      ><a name="75" href="function.overloading.html#75" class="Bound"
+      >Y</a
+      ><a name="76"
+      > </a
+      ><a name="77" class="Symbol"
+      >:</a
+      ><a name="78"
+      > </a
+      ><a name="79" class="PrimitiveType"
+      >Set</a
+      ><a name="82"
+      > </a
+      ><a name="83" href="function.overloading.html#61" class="Bound"
+      >j</a
+      ><a name="84" class="Symbol"
+      >}</a
+      ><a name="85"
+      > </a
+      ><a name="86" class="Keyword"
+      >where</a
+      ><a name="91"
+      >
+
+</a
+      ><a name="93" class="Keyword"
+      >open</a
+      ><a name="97"
+      > </a
+      ><a name="98" class="Keyword"
+      >import</a
+      ><a name="104"
+      > </a
+      ><a name="105" href="level.html#1" class="Module"
+      >level</a
+      ><a name="110"
+      >
+</a
+      ><a name="111" class="Keyword"
+      >open</a
+      ><a name="115"
+      > </a
+      ><a name="116" class="Keyword"
+      >import</a
+      ><a name="122"
+      > </a
+      ><a name="123" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="126"
+      >
+</a
+      ><a name="127" class="Keyword"
+      >open</a
+      ><a name="131"
+      > </a
+      ><a name="132" class="Keyword"
+      >import</a
+      ><a name="138"
+      > </a
+      ><a name="139" href="overloading.core.html#1" class="Module"
+      >overloading.core</a
+      ><a name="155"
+      >
+
+</a
+      ><a name="157" href="function.overloading.html#157" class="Function"
+      >fun-is-fun</a
+      ><a name="167"
+      > </a
+      ><a name="168" class="Symbol"
+      >:</a
+      ><a name="169"
+      > </a
+      ><a name="170" href="overloading.core.html#6103" class="Record"
+      >Coercion</a
+      ><a name="178"
+      > </a
+      ><a name="179" class="Symbol"
+      >(</a
+      ><a name="180" href="function.overloading.html#64" class="Bound"
+      >X</a
+      ><a name="181"
+      > </a
+      ><a name="182" class="Symbol"
+      >&#8594;</a
+      ><a name="183"
+      > </a
+      ><a name="184" href="function.overloading.html#75" class="Bound"
+      >Y</a
+      ><a name="185" class="Symbol"
+      >)</a
+      ><a name="186"
+      > </a
+      ><a name="187" class="Symbol"
+      >(</a
+      ><a name="188" href="function.overloading.html#64" class="Bound"
+      >X</a
+      ><a name="189"
+      > </a
+      ><a name="190" class="Symbol"
+      >&#8594;</a
+      ><a name="191"
+      > </a
+      ><a name="192" href="function.overloading.html#75" class="Bound"
+      >Y</a
+      ><a name="193" class="Symbol"
+      >)</a
+      ><a name="194"
+      >
+</a
+      ><a name="195" href="function.overloading.html#157" class="Function"
+      >fun-is-fun</a
+      ><a name="205"
+      > </a
+      ><a name="206" class="Symbol"
+      >=</a
+      ><a name="207"
+      > </a
+      ><a name="208" href="overloading.core.html#6520" class="Function"
+      >coerce-self</a
+      ><a name="219"
+      > </a
+      ><a name="220" class="Symbol"
+      >_</a
+      ><a name="221"
+      >
+
+</a
+      ><a name="223" class="Keyword"
+      >private</a
+      ><a name="230"
+      >
+  </a
+      ><a name="233" class="Keyword"
+      >module</a
+      ><a name="239"
+      > </a
+      ><a name="240" href="function.overloading.html#240" class="Module"
+      >fun-methods</a
+      ><a name="251"
+      > </a
+      ><a name="252" class="Symbol"
+      >{</a
+      ><a name="253" href="function.overloading.html#253" class="Bound"
+      >k</a
+      ><a name="254" class="Symbol"
+      >}{</a
+      ><a name="256" href="function.overloading.html#256" class="Bound"
+      >Source</a
+      ><a name="262"
+      > </a
+      ><a name="263" class="Symbol"
+      >:</a
+      ><a name="264"
+      > </a
+      ><a name="265" class="PrimitiveType"
+      >Set</a
+      ><a name="268"
+      > </a
+      ><a name="269" href="function.overloading.html#253" class="Bound"
+      >k</a
+      ><a name="270" class="Symbol"
+      >}</a
+      ><a name="271"
+      >
+                     </a
+      ><a name="293" class="Symbol"
+      >&#10627;</a
+      ><a name="294"
+      > </a
+      ><a name="295" href="function.overloading.html#295" class="Bound"
+      >c</a
+      ><a name="296"
+      > </a
+      ><a name="297" class="Symbol"
+      >:</a
+      ><a name="298"
+      > </a
+      ><a name="299" href="overloading.core.html#6103" class="Record"
+      >Coercion</a
+      ><a name="307"
+      > </a
+      ><a name="308" href="function.overloading.html#256" class="Bound"
+      >Source</a
+      ><a name="314"
+      > </a
+      ><a name="315" class="Symbol"
+      >(</a
+      ><a name="316" href="function.overloading.html#64" class="Bound"
+      >X</a
+      ><a name="317"
+      > </a
+      ><a name="318" class="Symbol"
+      >&#8594;</a
+      ><a name="319"
+      > </a
+      ><a name="320" href="function.overloading.html#75" class="Bound"
+      >Y</a
+      ><a name="321" class="Symbol"
+      >)</a
+      ><a name="322"
+      > </a
+      ><a name="323" class="Symbol"
+      >&#10628;</a
+      ><a name="324"
+      > </a
+      ><a name="325" class="Keyword"
+      >where</a
+      ><a name="330"
+      >
+    </a
+      ><a name="335" class="Keyword"
+      >open</a
+      ><a name="339"
+      > </a
+      ><a name="340" href="overloading.core.html#6103" class="Module"
+      >Coercion</a
+      ><a name="348"
+      > </a
+      ><a name="349" href="function.overloading.html#295" class="Bound"
+      >c</a
+      ><a name="350"
+      > </a
+      ><a name="351" class="Keyword"
+      >public</a
+      ><a name="357"
+      > </a
+      ><a name="358" class="Keyword"
+      >using</a
+      ><a name="363"
+      > </a
+      ><a name="364" class="Symbol"
+      >()</a
+      ><a name="366"
+      >
+      </a
+      ><a name="373" class="Keyword"
+      >renaming</a
+      ><a name="381"
+      > </a
+      ><a name="382" class="Symbol"
+      >(</a
+      ><a name="383"
+      >coerce </a
+      ><a name="390" class="Symbol"
+      >to</a
+      ><a name="392"
+      > apply</a
+      ><a name="398" class="Symbol"
+      >)</a
+      ><a name="399"
+      >
+</a
+      ><a name="400" class="Keyword"
+      >open</a
+      ><a name="404"
+      > </a
+      ><a name="405" href="function.overloading.html#240" class="Module"
+      >fun-methods</a
+      ><a name="416"
+      > </a
+      ><a name="417" class="Keyword"
+      >public</a
+      ><a name="423"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
