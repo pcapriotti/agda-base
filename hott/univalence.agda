@@ -31,26 +31,23 @@ Univalence i = {X Y : Set i} → weak-equiv $ ≡⇒≈ {X = X} {Y = Y}
 
 postulate univalence : ∀ {i} → Univalence i
 
-private
-  module Properties {i} {X Y : Set i} where
-    uni-equiv : (X ≡ Y) ≈ (X ≈ Y)
-    uni-equiv = ≡⇒≈ , univalence
+module _ {i} {X Y : Set i} where
+  uni-equiv : (X ≡ Y) ≈ (X ≈ Y)
+  uni-equiv = ≡⇒≈ , univalence
 
-    uni-iso : (X ≡ Y) ≅ (X ≈ Y)
-    uni-iso = ≈⇒≅ uni-equiv
-    open _≅_ uni-iso public using ()
-      renaming (from to ≈⇒≡)
+  uni-iso : (X ≡ Y) ≅ (X ≈ Y)
+  uni-iso = ≈⇒≅ uni-equiv
+  open _≅_ uni-iso public using ()
+    renaming (from to ≈⇒≡)
 
-    uni-coherence : (f : X ≈ Y) → coerce (≈⇒≡ f) ≡ proj₁ f
-    uni-coherence f = begin
-        coerce (≈⇒≡ f)
-      ≡⟨ refl ⟩
-        proj₁ (≡⇒≈ (≈⇒≡ f))
-      ≡⟨ ap proj₁ (iso₂ f) ⟩
-        proj₁ f
-      ∎
-      where
-        open ≡-Reasoning
-        open _≅_ uni-iso using (iso₂)
-
-open Properties public
+  uni-coherence : (f : X ≈ Y) → coerce (≈⇒≡ f) ≡ proj₁ f
+  uni-coherence f = begin
+      coerce (≈⇒≡ f)
+    ≡⟨ refl ⟩
+      proj₁ (≡⇒≈ (≈⇒≡ f))
+    ≡⟨ ap proj₁ (iso₂ f) ⟩
+      proj₁ f
+    ∎
+    where
+      open ≡-Reasoning
+      open _≅_ uni-iso using (iso₂)

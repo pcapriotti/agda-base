@@ -26,6 +26,9 @@ import sets
 -- Decidable predicates
 import decidable
 
+-- Pointed types and maps
+import pointed
+
 -- Functions, isomorphisms and properties thereof
 import function
 
