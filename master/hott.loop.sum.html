@@ -1,0 +1,1861 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >hott.loop.sum</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="hott.loop.sum.html#1" class="Module"
+      >hott.loop.sum</a
+      ><a name="49"
+      > </a
+      ><a name="50" class="Keyword"
+      >where</a
+      ><a name="55"
+      >
+
+</a
+      ><a name="57" class="Keyword"
+      >open</a
+      ><a name="61"
+      > </a
+      ><a name="62" class="Keyword"
+      >import</a
+      ><a name="68"
+      > </a
+      ><a name="69" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="72"
+      >
+</a
+      ><a name="73" class="Keyword"
+      >open</a
+      ><a name="77"
+      > </a
+      ><a name="78" class="Keyword"
+      >import</a
+      ><a name="84"
+      > </a
+      ><a name="85" href="equality.html#1" class="Module"
+      >equality</a
+      ><a name="93"
+      >
+</a
+      ><a name="94" class="Keyword"
+      >open</a
+      ><a name="98"
+      > </a
+      ><a name="99" class="Keyword"
+      >import</a
+      ><a name="105"
+      > </a
+      ><a name="106" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="119"
+      >
+</a
+      ><a name="120" class="Keyword"
+      >open</a
+      ><a name="124"
+      > </a
+      ><a name="125" class="Keyword"
+      >import</a
+      ><a name="131"
+      > </a
+      ><a name="132" href="function.extensionality.html#1" class="Module"
+      >function.extensionality</a
+      ><a name="155"
+      >
+</a
+      ><a name="156" class="Keyword"
+      >open</a
+      ><a name="160"
+      > </a
+      ><a name="161" class="Keyword"
+      >import</a
+      ><a name="167"
+      > </a
+      ><a name="168" href="function.isomorphism.html#1" class="Module"
+      >function.isomorphism</a
+      ><a name="188"
+      >
+</a
+      ><a name="189" class="Keyword"
+      >open</a
+      ><a name="193"
+      > </a
+      ><a name="194" class="Keyword"
+      >import</a
+      ><a name="200"
+      > </a
+      ><a name="201" href="function.overloading.html#1" class="Module"
+      >function.overloading</a
+      ><a name="221"
+      >
+</a
+      ><a name="222" class="Keyword"
+      >open</a
+      ><a name="226"
+      > </a
+      ><a name="227" class="Keyword"
+      >import</a
+      ><a name="233"
+      > </a
+      ><a name="234" href="sets.nat.html#1" class="Module"
+      >sets.nat</a
+      ><a name="242"
+      >
+</a
+      ><a name="243" class="Keyword"
+      >open</a
+      ><a name="247"
+      > </a
+      ><a name="248" class="Keyword"
+      >import</a
+      ><a name="254"
+      > </a
+      ><a name="255" href="pointed.html#1" class="Module"
+      >pointed</a
+      ><a name="262"
+      >
+</a
+      ><a name="263" class="Keyword"
+      >open</a
+      ><a name="267"
+      > </a
+      ><a name="268" class="Keyword"
+      >import</a
+      ><a name="274"
+      > </a
+      ><a name="275" href="hott.equivalence.html#1" class="Module"
+      >hott.equivalence</a
+      ><a name="291"
+      >
+</a
+      ><a name="292" class="Keyword"
+      >open</a
+      ><a name="296"
+      > </a
+      ><a name="297" class="Keyword"
+      >import</a
+      ><a name="303"
+      > </a
+      ><a name="304" href="hott.level.core.html#1" class="Module"
+      >hott.level.core</a
+      ><a name="319"
+      >
+</a
+      ><a name="320" class="Keyword"
+      >open</a
+      ><a name="324"
+      > </a
+      ><a name="325" class="Keyword"
+      >import</a
+      ><a name="331"
+      > </a
+      ><a name="332" href="hott.loop.core.html#1" class="Module"
+      >hott.loop.core</a
+      ><a name="346"
+      >
+</a
+      ><a name="347" class="Keyword"
+      >open</a
+      ><a name="351"
+      > </a
+      ><a name="352" class="Keyword"
+      >import</a
+      ><a name="358"
+      > </a
+      ><a name="359" href="hott.loop.properties.html#1" class="Module"
+      >hott.loop.properties</a
+      ><a name="379"
+      >
+
+</a
+      ><a name="381" class="Keyword"
+      >private</a
+      ><a name="388"
+      >
+  </a
+      ><a name="391" class="Keyword"
+      >abstract</a
+      ><a name="399"
+      >
+    </a
+      ><a name="404" href="hott.loop.sum.html#404" class="Function"
+      >loop-sum'</a
+      ><a name="413"
+      > </a
+      ><a name="414" class="Symbol"
+      >:</a
+      ><a name="415"
+      > </a
+      ><a name="416" class="Symbol"
+      >&#8704;</a
+      ><a name="417"
+      > </a
+      ><a name="418" class="Symbol"
+      >{</a
+      ><a name="419" href="hott.loop.sum.html#419" class="Bound"
+      >i</a
+      ><a name="420" class="Symbol"
+      >}{</a
+      ><a name="422" href="hott.loop.sum.html#422" class="Bound"
+      >j</a
+      ><a name="423" class="Symbol"
+      >}{</a
+      ><a name="425" href="hott.loop.sum.html#425" class="Bound"
+      >A</a
+      ><a name="426"
+      > </a
+      ><a name="427" class="Symbol"
+      >:</a
+      ><a name="428"
+      > </a
+      ><a name="429" class="PrimitiveType"
+      >Set</a
+      ><a name="432"
+      > </a
+      ><a name="433" href="hott.loop.sum.html#419" class="Bound"
+      >i</a
+      ><a name="434" class="Symbol"
+      >}{</a
+      ><a name="436" href="hott.loop.sum.html#436" class="Bound"
+      >B</a
+      ><a name="437"
+      > </a
+      ><a name="438" class="Symbol"
+      >:</a
+      ><a name="439"
+      > </a
+      ><a name="440" href="hott.loop.sum.html#425" class="Bound"
+      >A</a
+      ><a name="441"
+      > </a
+      ><a name="442" class="Symbol"
+      >&#8594;</a
+      ><a name="443"
+      > </a
+      ><a name="444" class="PrimitiveType"
+      >Set</a
+      ><a name="447"
+      > </a
+      ><a name="448" href="hott.loop.sum.html#422" class="Bound"
+      >j</a
+      ><a name="449" class="Symbol"
+      >}(</a
+      ><a name="451" href="hott.loop.sum.html#451" class="Bound"
+      >n</a
+      ><a name="452"
+      > </a
+      ><a name="453" class="Symbol"
+      >:</a
+      ><a name="454"
+      > </a
+      ><a name="455" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="456" class="Symbol"
+      >)</a
+      ><a name="457"
+      >
+              </a
+      ><a name="472" class="Symbol"
+      >&#8594;</a
+      ><a name="473"
+      > </a
+      ><a name="474" class="Symbol"
+      >(</a
+      ><a name="475" href="hott.loop.sum.html#475" class="Bound"
+      >hB</a
+      ><a name="477"
+      > </a
+      ><a name="478" class="Symbol"
+      >:</a
+      ><a name="479"
+      > </a
+      ><a name="480" class="Symbol"
+      >(</a
+      ><a name="481" href="hott.loop.sum.html#481" class="Bound"
+      >a</a
+      ><a name="482"
+      > </a
+      ><a name="483" class="Symbol"
+      >:</a
+      ><a name="484"
+      > </a
+      ><a name="485" href="hott.loop.sum.html#425" class="Bound"
+      >A</a
+      ><a name="486" class="Symbol"
+      >)</a
+      ><a name="487"
+      > </a
+      ><a name="488" class="Symbol"
+      >&#8594;</a
+      ><a name="489"
+      > </a
+      ><a name="490" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="491"
+      > </a
+      ><a name="492" href="hott.loop.sum.html#451" class="Bound"
+      >n</a
+      ><a name="493"
+      > </a
+      ><a name="494" class="Symbol"
+      >(</a
+      ><a name="495" href="hott.loop.sum.html#436" class="Bound"
+      >B</a
+      ><a name="496"
+      > </a
+      ><a name="497" href="hott.loop.sum.html#481" class="Bound"
+      >a</a
+      ><a name="498" class="Symbol"
+      >))</a
+      ><a name="500"
+      >
+              </a
+      ><a name="515" class="Symbol"
+      >&#8594;</a
+      ><a name="516"
+      > </a
+      ><a name="517" class="Symbol"
+      >{</a
+      ><a name="518" href="hott.loop.sum.html#518" class="Bound"
+      >a&#8320;</a
+      ><a name="520"
+      > </a
+      ><a name="521" class="Symbol"
+      >:</a
+      ><a name="522"
+      > </a
+      ><a name="523" href="hott.loop.sum.html#425" class="Bound"
+      >A</a
+      ><a name="524" class="Symbol"
+      >}{</a
+      ><a name="526" href="hott.loop.sum.html#526" class="Bound"
+      >b&#8320;</a
+      ><a name="528"
+      > </a
+      ><a name="529" class="Symbol"
+      >:</a
+      ><a name="530"
+      > </a
+      ><a name="531" href="hott.loop.sum.html#436" class="Bound"
+      >B</a
+      ><a name="532"
+      > </a
+      ><a name="533" href="hott.loop.sum.html#518" class="Bound"
+      >a&#8320;</a
+      ><a name="535" class="Symbol"
+      >}</a
+      ><a name="536"
+      >
+              </a
+      ><a name="551" class="Symbol"
+      >&#8594;</a
+      ><a name="552"
+      > </a
+      ><a name="553" href="hott.loop.core.html#376" class="Function"
+      >&#937;</a
+      ><a name="554"
+      > </a
+      ><a name="555" href="hott.loop.sum.html#451" class="Bound"
+      >n</a
+      ><a name="556"
+      > </a
+      ><a name="557" class="Symbol"
+      >{</a
+      ><a name="558" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="559"
+      > </a
+      ><a name="560" href="hott.loop.sum.html#425" class="Bound"
+      >A</a
+      ><a name="561"
+      > </a
+      ><a name="562" href="hott.loop.sum.html#436" class="Bound"
+      >B</a
+      ><a name="563" class="Symbol"
+      >}</a
+      ><a name="564"
+      > </a
+      ><a name="565" class="Symbol"
+      >(</a
+      ><a name="566" href="hott.loop.sum.html#518" class="Bound"
+      >a&#8320;</a
+      ><a name="568"
+      > </a
+      ><a name="569" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="570"
+      > </a
+      ><a name="571" href="hott.loop.sum.html#526" class="Bound"
+      >b&#8320;</a
+      ><a name="573" class="Symbol"
+      >)</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="576"
+      > </a
+      ><a name="577" href="hott.loop.core.html#376" class="Function"
+      >&#937;</a
+      ><a name="578"
+      > </a
+      ><a name="579" href="hott.loop.sum.html#451" class="Bound"
+      >n</a
+      ><a name="580"
+      > </a
+      ><a name="581" href="hott.loop.sum.html#518" class="Bound"
+      >a&#8320;</a
+      ><a name="583"
+      >
+    </a
+      ><a name="588" href="hott.loop.sum.html#404" class="Function"
+      >loop-sum'</a
+      ><a name="597"
+      > </a
+      ><a name="598" class="Number"
+      >0</a
+      ><a name="599"
+      > </a
+      ><a name="600" href="hott.loop.sum.html#600" class="Bound"
+      >hB</a
+      ><a name="602"
+      > </a
+      ><a name="603" class="Symbol"
+      >{</a
+      ><a name="604" href="hott.loop.sum.html#604" class="Bound"
+      >a&#8320;</a
+      ><a name="606" class="Symbol"
+      >}{</a
+      ><a name="608" href="hott.loop.sum.html#608" class="Bound"
+      >b&#8320;</a
+      ><a name="610" class="Symbol"
+      >}</a
+      ><a name="611"
+      > </a
+      ><a name="612" class="Symbol"
+      >=</a
+      ><a name="613"
+      > </a
+      ><a name="614" href="function.isomorphism.utils.html#3893" class="Function"
+      >&#931;-ap-iso</a
+      ><a name="622"
+      > </a
+      ><a name="623" href="function.isomorphism.core.html#928" class="Function"
+      >refl&#8773;</a
+      ><a name="628"
+      > </a
+      ><a name="629" class="Symbol"
+      >(&#955;</a
+      ><a name="631"
+      > </a
+      ><a name="632" href="hott.loop.sum.html#632" class="Bound"
+      >a</a
+      ><a name="633"
+      > </a
+      ><a name="634" class="Symbol"
+      >&#8594;</a
+      ><a name="635"
+      > </a
+      ><a name="636" href="function.isomorphism.utils.html#10274" class="Function"
+      >contr-&#8868;-iso</a
+      ><a name="647"
+      > </a
+      ><a name="648" class="Symbol"
+      >(</a
+      ><a name="649" href="hott.loop.sum.html#600" class="Bound"
+      >hB</a
+      ><a name="651"
+      > </a
+      ><a name="652" href="hott.loop.sum.html#632" class="Bound"
+      >a</a
+      ><a name="653" class="Symbol"
+      >))</a
+      ><a name="655"
+      > </a
+      ><a name="656" href="function.isomorphism.core.html#1555" class="Function Operator"
+      >&#183;&#8773;</a
+      ><a name="658"
+      > </a
+      ><a name="659" href="function.isomorphism.utils.html#10108" class="Function"
+      >&#215;-right-unit</a
+      ><a name="671"
+      >
+    </a
+      ><a name="676" href="hott.loop.sum.html#404" class="Function"
+      >loop-sum'</a
+      ><a name="685"
+      > </a
+      ><a name="686" class="Symbol"
+      >{</a
+      ><a name="687" class="Argument"
+      >A</a
+      ><a name="688"
+      > </a
+      ><a name="689" class="Symbol"
+      >=</a
+      ><a name="690"
+      > </a
+      ><a name="691" href="hott.loop.sum.html#691" class="Bound"
+      >A</a
+      ><a name="692" class="Symbol"
+      >}{</a
+      ><a name="694" class="Argument"
+      >B</a
+      ><a name="695"
+      > </a
+      ><a name="696" class="Symbol"
+      >=</a
+      ><a name="697"
+      > </a
+      ><a name="698" href="hott.loop.sum.html#698" class="Bound"
+      >B</a
+      ><a name="699" class="Symbol"
+      >}</a
+      ><a name="700"
+      > </a
+      ><a name="701" class="Symbol"
+      >(</a
+      ><a name="702" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="705"
+      > </a
+      ><a name="706" href="hott.loop.sum.html#706" class="Bound"
+      >n</a
+      ><a name="707" class="Symbol"
+      >)</a
+      ><a name="708"
+      > </a
+      ><a name="709" href="hott.loop.sum.html#709" class="Bound"
+      >hB</a
+      ><a name="711"
+      > </a
+      ><a name="712" class="Symbol"
+      >{</a
+      ><a name="713" href="hott.loop.sum.html#713" class="Bound"
+      >a&#8320;</a
+      ><a name="715" class="Symbol"
+      >}{</a
+      ><a name="717" href="hott.loop.sum.html#717" class="Bound"
+      >b&#8320;</a
+      ><a name="719" class="Symbol"
+      >}</a
+      ><a name="720"
+      > </a
+      ><a name="721" class="Symbol"
+      >=</a
+      ><a name="722"
+      > </a
+      ><a name="723" href="function.isomorphism.properties.html#3060" class="Function"
+      >&#937;-iso</a
+      ><a name="728"
+      > </a
+      ><a name="729" href="hott.loop.sum.html#706" class="Bound"
+      >n</a
+      ><a name="730"
+      > </a
+      ><a name="731" class="Symbol"
+      >(</a
+      ><a name="732" href="function.isomorphism.core.html#1065" class="Function"
+      >sym&#8773;</a
+      ><a name="736"
+      > </a
+      ><a name="737" href="function.isomorphism.utils.html#450" class="Function"
+      >&#931;-split-iso</a
+      ><a name="748" class="Symbol"
+      >)</a
+      ><a name="749"
+      > </a
+      ><a name="750" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="754"
+      >
+                                                </a
+      ><a name="803" href="function.isomorphism.core.html#1555" class="Function Operator"
+      >&#183;&#8773;</a
+      ><a name="805"
+      > </a
+      ><a name="806" href="hott.loop.sum.html#404" class="Function"
+      >loop-sum'</a
+      ><a name="815"
+      > </a
+      ><a name="816" href="hott.loop.sum.html#706" class="Bound"
+      >n</a
+      ><a name="817"
+      > </a
+      ><a name="818" class="Symbol"
+      >&#955;</a
+      ><a name="819"
+      > </a
+      ><a name="820" href="hott.loop.sum.html#820" class="Bound"
+      >p</a
+      ><a name="821"
+      > </a
+      ><a name="822" class="Symbol"
+      >&#8594;</a
+      ><a name="823"
+      > </a
+      ><a name="824" href="hott.loop.sum.html#709" class="Bound"
+      >hB</a
+      ><a name="826"
+      > </a
+      ><a name="827" class="Symbol"
+      >_</a
+      ><a name="828"
+      > </a
+      ><a name="829" class="Symbol"
+      >_</a
+      ><a name="830"
+      > </a
+      ><a name="831" class="Symbol"
+      >_</a
+      ><a name="832"
+      >
+
+    </a
+      ><a name="838" href="hott.loop.sum.html#838" class="Function"
+      >loop-sum-&#946;</a
+      ><a name="848"
+      > </a
+      ><a name="849" class="Symbol"
+      >:</a
+      ><a name="850"
+      > </a
+      ><a name="851" class="Symbol"
+      >&#8704;</a
+      ><a name="852"
+      > </a
+      ><a name="853" class="Symbol"
+      >{</a
+      ><a name="854" href="hott.loop.sum.html#854" class="Bound"
+      >i</a
+      ><a name="855" class="Symbol"
+      >}{</a
+      ><a name="857" href="hott.loop.sum.html#857" class="Bound"
+      >j</a
+      ><a name="858" class="Symbol"
+      >}{</a
+      ><a name="860" href="hott.loop.sum.html#860" class="Bound"
+      >A</a
+      ><a name="861"
+      > </a
+      ><a name="862" class="Symbol"
+      >:</a
+      ><a name="863"
+      > </a
+      ><a name="864" class="PrimitiveType"
+      >Set</a
+      ><a name="867"
+      > </a
+      ><a name="868" href="hott.loop.sum.html#854" class="Bound"
+      >i</a
+      ><a name="869" class="Symbol"
+      >}{</a
+      ><a name="871" href="hott.loop.sum.html#871" class="Bound"
+      >B</a
+      ><a name="872"
+      > </a
+      ><a name="873" class="Symbol"
+      >:</a
+      ><a name="874"
+      > </a
+      ><a name="875" href="hott.loop.sum.html#860" class="Bound"
+      >A</a
+      ><a name="876"
+      > </a
+      ><a name="877" class="Symbol"
+      >&#8594;</a
+      ><a name="878"
+      > </a
+      ><a name="879" class="PrimitiveType"
+      >Set</a
+      ><a name="882"
+      > </a
+      ><a name="883" href="hott.loop.sum.html#857" class="Bound"
+      >j</a
+      ><a name="884" class="Symbol"
+      >}(</a
+      ><a name="886" href="hott.loop.sum.html#886" class="Bound"
+      >n</a
+      ><a name="887"
+      > </a
+      ><a name="888" class="Symbol"
+      >:</a
+      ><a name="889"
+      > </a
+      ><a name="890" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="891" class="Symbol"
+      >)</a
+      ><a name="892"
+      >
+               </a
+      ><a name="908" class="Symbol"
+      >&#8594;</a
+      ><a name="909"
+      > </a
+      ><a name="910" class="Symbol"
+      >(</a
+      ><a name="911" href="hott.loop.sum.html#911" class="Bound"
+      >hB</a
+      ><a name="913"
+      > </a
+      ><a name="914" class="Symbol"
+      >:</a
+      ><a name="915"
+      > </a
+      ><a name="916" class="Symbol"
+      >(</a
+      ><a name="917" href="hott.loop.sum.html#917" class="Bound"
+      >a</a
+      ><a name="918"
+      > </a
+      ><a name="919" class="Symbol"
+      >:</a
+      ><a name="920"
+      > </a
+      ><a name="921" href="hott.loop.sum.html#860" class="Bound"
+      >A</a
+      ><a name="922" class="Symbol"
+      >)</a
+      ><a name="923"
+      > </a
+      ><a name="924" class="Symbol"
+      >&#8594;</a
+      ><a name="925"
+      > </a
+      ><a name="926" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="927"
+      > </a
+      ><a name="928" href="hott.loop.sum.html#886" class="Bound"
+      >n</a
+      ><a name="929"
+      > </a
+      ><a name="930" class="Symbol"
+      >(</a
+      ><a name="931" href="hott.loop.sum.html#871" class="Bound"
+      >B</a
+      ><a name="932"
+      > </a
+      ><a name="933" href="hott.loop.sum.html#917" class="Bound"
+      >a</a
+      ><a name="934" class="Symbol"
+      >))</a
+      ><a name="936"
+      >
+               </a
+      ><a name="952" class="Symbol"
+      >&#8594;</a
+      ><a name="953"
+      > </a
+      ><a name="954" class="Symbol"
+      >{</a
+      ><a name="955" href="hott.loop.sum.html#955" class="Bound"
+      >a&#8320;</a
+      ><a name="957"
+      > </a
+      ><a name="958" class="Symbol"
+      >:</a
+      ><a name="959"
+      > </a
+      ><a name="960" href="hott.loop.sum.html#860" class="Bound"
+      >A</a
+      ><a name="961" class="Symbol"
+      >}{</a
+      ><a name="963" href="hott.loop.sum.html#963" class="Bound"
+      >b&#8320;</a
+      ><a name="965"
+      > </a
+      ><a name="966" class="Symbol"
+      >:</a
+      ><a name="967"
+      > </a
+      ><a name="968" href="hott.loop.sum.html#871" class="Bound"
+      >B</a
+      ><a name="969"
+      > </a
+      ><a name="970" href="hott.loop.sum.html#955" class="Bound"
+      >a&#8320;</a
+      ><a name="972" class="Symbol"
+      >}</a
+      ><a name="973"
+      >
+               </a
+      ><a name="989" class="Symbol"
+      >&#8594;</a
+      ><a name="990"
+      > </a
+      ><a name="991" class="Symbol"
+      >(</a
+      ><a name="992" href="hott.loop.sum.html#992" class="Bound"
+      >p</a
+      ><a name="993"
+      > </a
+      ><a name="994" class="Symbol"
+      >:</a
+      ><a name="995"
+      > </a
+      ><a name="996" href="hott.loop.core.html#376" class="Function"
+      >&#937;</a
+      ><a name="997"
+      > </a
+      ><a name="998" href="hott.loop.sum.html#886" class="Bound"
+      >n</a
+      ><a name="999"
+      > </a
+      ><a name="1000" class="Symbol"
+      >{</a
+      ><a name="1001" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1002"
+      > </a
+      ><a name="1003" href="hott.loop.sum.html#860" class="Bound"
+      >A</a
+      ><a name="1004"
+      > </a
+      ><a name="1005" href="hott.loop.sum.html#871" class="Bound"
+      >B</a
+      ><a name="1006" class="Symbol"
+      >}</a
+      ><a name="1007"
+      > </a
+      ><a name="1008" class="Symbol"
+      >(</a
+      ><a name="1009" href="hott.loop.sum.html#955" class="Bound"
+      >a&#8320;</a
+      ><a name="1011"
+      > </a
+      ><a name="1012" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1013"
+      > </a
+      ><a name="1014" href="hott.loop.sum.html#963" class="Bound"
+      >b&#8320;</a
+      ><a name="1016" class="Symbol"
+      >))</a
+      ><a name="1018"
+      >
+               </a
+      ><a name="1034" class="Symbol"
+      >&#8594;</a
+      ><a name="1035"
+      > </a
+      ><a name="1036" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="1041"
+      > </a
+      ><a name="1042" class="Symbol"
+      >(</a
+      ><a name="1043" href="hott.loop.sum.html#404" class="Function"
+      >loop-sum'</a
+      ><a name="1052"
+      > </a
+      ><a name="1053" href="hott.loop.sum.html#886" class="Bound"
+      >n</a
+      ><a name="1054"
+      > </a
+      ><a name="1055" href="hott.loop.sum.html#911" class="Bound"
+      >hB</a
+      ><a name="1057" class="Symbol"
+      >)</a
+      ><a name="1058"
+      > </a
+      ><a name="1059" href="hott.loop.sum.html#992" class="Bound"
+      >p</a
+      ><a name="1060"
+      > </a
+      ><a name="1061" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1062"
+      > </a
+      ><a name="1063" href="hott.loop.core.html#784" class="Function"
+      >map&#937;</a
+      ><a name="1067"
+      > </a
+      ><a name="1068" href="hott.loop.sum.html#886" class="Bound"
+      >n</a
+      ><a name="1069"
+      > </a
+      ><a name="1070" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" href="hott.loop.sum.html#992" class="Bound"
+      >p</a
+      ><a name="1077"
+      >
+    </a
+      ><a name="1082" href="hott.loop.sum.html#838" class="Function"
+      >loop-sum-&#946;</a
+      ><a name="1092"
+      > </a
+      ><a name="1093" href="sets.nat.core.html#244" class="InductiveConstructor"
+      >zero</a
+      ><a name="1097"
+      > </a
+      ><a name="1098" href="hott.loop.sum.html#1098" class="Bound"
+      >hB</a
+      ><a name="1100"
+      > </a
+      ><a name="1101" href="hott.loop.sum.html#1101" class="Bound"
+      >p</a
+      ><a name="1102"
+      > </a
+      ><a name="1103" class="Symbol"
+      >=</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1109"
+      >
+    </a
+      ><a name="1114" href="hott.loop.sum.html#838" class="Function"
+      >loop-sum-&#946;</a
+      ><a name="1124"
+      > </a
+      ><a name="1125" class="Symbol"
+      >(</a
+      ><a name="1126" href="sets.nat.core.html#255" class="InductiveConstructor"
+      >suc</a
+      ><a name="1129"
+      > </a
+      ><a name="1130" href="hott.loop.sum.html#1130" class="Bound"
+      >n</a
+      ><a name="1131" class="Symbol"
+      >)</a
+      ><a name="1132"
+      > </a
+      ><a name="1133" href="hott.loop.sum.html#1133" class="Bound"
+      >hB</a
+      ><a name="1135"
+      > </a
+      ><a name="1136" href="hott.loop.sum.html#1136" class="Bound"
+      >p</a
+      ><a name="1137"
+      >
+      </a
+      ><a name="1144" class="Symbol"
+      >=</a
+      ><a name="1145"
+      > </a
+      ><a name="1146" href="hott.loop.sum.html#838" class="Function"
+      >loop-sum-&#946;</a
+      ><a name="1156"
+      > </a
+      ><a name="1157" href="hott.loop.sum.html#1130" class="Bound"
+      >n</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" class="Symbol"
+      >_</a
+      ><a name="1160"
+      > </a
+      ><a name="1161" class="Symbol"
+      >(</a
+      ><a name="1162" href="hott.loop.core.html#784" class="Function"
+      >map&#937;</a
+      ><a name="1166"
+      > </a
+      ><a name="1167" href="hott.loop.sum.html#1130" class="Bound"
+      >n</a
+      ><a name="1168"
+      > </a
+      ><a name="1169" href="equality.calculus.html#1592" class="Function"
+      >ap&#931;</a
+      ><a name="1172"
+      > </a
+      ><a name="1173" href="hott.loop.sum.html#1136" class="Bound"
+      >p</a
+      ><a name="1174" class="Symbol"
+      >)</a
+      ><a name="1175"
+      >
+      </a
+      ><a name="1182" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1183"
+      > </a
+      ><a name="1184" href="hott.loop.properties.html#1485" class="Function"
+      >map&#937;-hom</a
+      ><a name="1192"
+      > </a
+      ><a name="1193" href="hott.loop.sum.html#1130" class="Bound"
+      >n</a
+      ><a name="1194"
+      > </a
+      ><a name="1195" href="equality.calculus.html#1592" class="Function"
+      >ap&#931;</a
+      ><a name="1198"
+      > </a
+      ><a name="1199" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1204"
+      > </a
+      ><a name="1205" href="hott.loop.sum.html#1136" class="Bound"
+      >p</a
+      ><a name="1206"
+      >
+      </a
+      ><a name="1213" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="1214"
+      > </a
+      ><a name="1215" href="function.extensionality.core.html#705" class="Function"
+      >funext-inv</a
+      ><a name="1225"
+      > </a
+      ><a name="1226" class="Symbol"
+      >(</a
+      ><a name="1227" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1229"
+      > </a
+      ><a name="1230" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1235"
+      > </a
+      ><a name="1236" class="Symbol"
+      >(</a
+      ><a name="1237" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1239"
+      > </a
+      ><a name="1240" class="Symbol"
+      >(</a
+      ><a name="1241" href="hott.loop.core.html#643" class="Function"
+      >map&#937;P</a
+      ><a name="1246"
+      > </a
+      ><a name="1247" href="hott.loop.sum.html#1130" class="Bound"
+      >n</a
+      ><a name="1248" class="Symbol"
+      >)</a
+      ><a name="1249"
+      > </a
+      ><a name="1250" href="hott.loop.sum.html#1278" class="Function"
+      >lem</a
+      ><a name="1253" class="Symbol"
+      >))</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" href="hott.loop.sum.html#1136" class="Bound"
+      >p</a
+      ><a name="1257"
+      >
+      </a
+      ><a name="1264" class="Keyword"
+      >where</a
+      ><a name="1269"
+      >
+        </a
+      ><a name="1278" href="hott.loop.sum.html#1278" class="Function"
+      >lem</a
+      ><a name="1281"
+      > </a
+      ><a name="1282" class="Symbol"
+      >:</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" class="Symbol"
+      >&#8704;</a
+      ><a name="1285"
+      > </a
+      ><a name="1286" class="Symbol"
+      >{</a
+      ><a name="1287" href="hott.loop.sum.html#1287" class="Bound"
+      >i</a
+      ><a name="1288" class="Symbol"
+      >}{</a
+      ><a name="1290" href="hott.loop.sum.html#1290" class="Bound"
+      >j</a
+      ><a name="1291" class="Symbol"
+      >}{</a
+      ><a name="1293" href="hott.loop.sum.html#1293" class="Bound"
+      >A</a
+      ><a name="1294"
+      > </a
+      ><a name="1295" class="Symbol"
+      >:</a
+      ><a name="1296"
+      > </a
+      ><a name="1297" class="PrimitiveType"
+      >Set</a
+      ><a name="1300"
+      > </a
+      ><a name="1301" href="hott.loop.sum.html#1287" class="Bound"
+      >i</a
+      ><a name="1302" class="Symbol"
+      >}{</a
+      ><a name="1304" href="hott.loop.sum.html#1304" class="Bound"
+      >B</a
+      ><a name="1305"
+      > </a
+      ><a name="1306" class="Symbol"
+      >:</a
+      ><a name="1307"
+      > </a
+      ><a name="1308" href="hott.loop.sum.html#1293" class="Bound"
+      >A</a
+      ><a name="1309"
+      > </a
+      ><a name="1310" class="Symbol"
+      >&#8594;</a
+      ><a name="1311"
+      > </a
+      ><a name="1312" class="PrimitiveType"
+      >Set</a
+      ><a name="1315"
+      > </a
+      ><a name="1316" href="hott.loop.sum.html#1290" class="Bound"
+      >j</a
+      ><a name="1317" class="Symbol"
+      >}{</a
+      ><a name="1319" href="hott.loop.sum.html#1319" class="Bound"
+      >a&#8320;</a
+      ><a name="1321"
+      > </a
+      ><a name="1322" class="Symbol"
+      >:</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" href="hott.loop.sum.html#1293" class="Bound"
+      >A</a
+      ><a name="1325" class="Symbol"
+      >}{</a
+      ><a name="1327" href="hott.loop.sum.html#1327" class="Bound"
+      >b&#8320;</a
+      ><a name="1329"
+      > </a
+      ><a name="1330" class="Symbol"
+      >:</a
+      ><a name="1331"
+      > </a
+      ><a name="1332" href="hott.loop.sum.html#1304" class="Bound"
+      >B</a
+      ><a name="1333"
+      > </a
+      ><a name="1334" href="hott.loop.sum.html#1319" class="Bound"
+      >a&#8320;</a
+      ><a name="1336" class="Symbol"
+      >}</a
+      ><a name="1337"
+      >
+            </a
+      ><a name="1350" class="Symbol"
+      >&#8594;</a
+      ><a name="1351"
+      > </a
+      ><a name="1352" href="equality.core.html#145" class="Datatype Operator"
+      >_&#8801;_</a
+      ><a name="1355"
+      > </a
+      ><a name="1356" class="Symbol"
+      >{</a
+      ><a name="1357" class="Argument"
+      >A</a
+      ><a name="1358"
+      > </a
+      ><a name="1359" class="Symbol"
+      >=</a
+      ><a name="1360"
+      > </a
+      ><a name="1361" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="1365"
+      > </a
+      ><a name="1366" class="Symbol"
+      >(</a
+      ><a name="1367" href="equality.core.html#145" class="Datatype Operator"
+      >_&#8801;_</a
+      ><a name="1370"
+      > </a
+      ><a name="1371" class="Symbol"
+      >{</a
+      ><a name="1372" class="Argument"
+      >A</a
+      ><a name="1373"
+      > </a
+      ><a name="1374" class="Symbol"
+      >=</a
+      ><a name="1375"
+      > </a
+      ><a name="1376" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1377"
+      > </a
+      ><a name="1378" href="hott.loop.sum.html#1293" class="Bound"
+      >A</a
+      ><a name="1379"
+      > </a
+      ><a name="1380" href="hott.loop.sum.html#1304" class="Bound"
+      >B</a
+      ><a name="1381" class="Symbol"
+      >}</a
+      ><a name="1382"
+      > </a
+      ><a name="1383" class="Symbol"
+      >(</a
+      ><a name="1384" href="hott.loop.sum.html#1319" class="Bound"
+      >a&#8320;</a
+      ><a name="1386"
+      > </a
+      ><a name="1387" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1388"
+      > </a
+      ><a name="1389" href="hott.loop.sum.html#1327" class="Bound"
+      >b&#8320;</a
+      ><a name="1391" class="Symbol"
+      >)</a
+      ><a name="1392"
+      > </a
+      ><a name="1393" class="Symbol"
+      >(</a
+      ><a name="1394" href="hott.loop.sum.html#1319" class="Bound"
+      >a&#8320;</a
+      ><a name="1396"
+      > </a
+      ><a name="1397" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1398"
+      > </a
+      ><a name="1399" href="hott.loop.sum.html#1327" class="Bound"
+      >b&#8320;</a
+      ><a name="1401" class="Symbol"
+      >)</a
+      ><a name="1402"
+      > </a
+      ><a name="1403" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1404"
+      > </a
+      ><a name="1405" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1409" class="Symbol"
+      >)</a
+      ><a name="1410"
+      > </a
+      ><a name="1411" class="Symbol"
+      >((</a
+      ><a name="1413" href="hott.loop.sum.html#1319" class="Bound"
+      >a&#8320;</a
+      ><a name="1415"
+      > </a
+      ><a name="1416" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1417"
+      > </a
+      ><a name="1418" href="hott.loop.sum.html#1319" class="Bound"
+      >a&#8320;</a
+      ><a name="1420" class="Symbol"
+      >)</a
+      ><a name="1421"
+      > </a
+      ><a name="1422" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1423"
+      > </a
+      ><a name="1424" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1428" class="Symbol"
+      >)}</a
+      ><a name="1430"
+      >
+              </a
+      ><a name="1445" class="Symbol"
+      >(</a
+      ><a name="1446" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1451"
+      > </a
+      ><a name="1452" href="function.core.html#912" class="Function Operator"
+      >&#8728;</a
+      ><a name="1453"
+      > </a
+      ><a name="1454" href="equality.calculus.html#1592" class="Function"
+      >ap&#931;</a
+      ><a name="1457"
+      > </a
+      ><a name="1458" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1459"
+      > </a
+      ><a name="1460" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1464" class="Symbol"
+      >)</a
+      ><a name="1465"
+      >
+              </a
+      ><a name="1480" class="Symbol"
+      >(</a
+      ><a name="1481" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="1483"
+      > </a
+      ><a name="1484" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1489"
+      > </a
+      ><a name="1490" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1491"
+      > </a
+      ><a name="1492" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1496" class="Symbol"
+      >)</a
+      ><a name="1497"
+      >
+        </a
+      ><a name="1506" href="hott.loop.sum.html#1278" class="Function"
+      >lem</a
+      ><a name="1509"
+      > </a
+      ><a name="1510" class="Symbol"
+      >=</a
+      ><a name="1511"
+      > </a
+      ><a name="1512" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="1517"
+      > </a
+      ><a name="1518" href="pointed.equality.html#241" class="Function"
+      >pmap-eq</a
+      ><a name="1525"
+      > </a
+      ><a name="1526" class="Symbol"
+      >((&#955;</a
+      ><a name="1529"
+      > </a
+      ><a name="1530" href="hott.loop.sum.html#1530" class="Bound"
+      >_</a
+      ><a name="1531"
+      > </a
+      ><a name="1532" class="Symbol"
+      >&#8594;</a
+      ><a name="1533"
+      > </a
+      ><a name="1534" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1538" class="Symbol"
+      >)</a
+      ><a name="1539"
+      > </a
+      ><a name="1540" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" href="equality.core.html#193" class="InductiveConstructor"
+      >refl</a
+      ><a name="1546" class="Symbol"
+      >)</a
+      ><a name="1547"
+      >
+
+
+</a
+      ><a name="1550" href="hott.loop.sum.html#1550" class="Function"
+      >loop-sum</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" class="Symbol"
+      >:</a
+      ><a name="1560"
+      > </a
+      ><a name="1561" class="Symbol"
+      >&#8704;</a
+      ><a name="1562"
+      > </a
+      ><a name="1563" class="Symbol"
+      >{</a
+      ><a name="1564" href="hott.loop.sum.html#1564" class="Bound"
+      >i</a
+      ><a name="1565" class="Symbol"
+      >}{</a
+      ><a name="1567" href="hott.loop.sum.html#1567" class="Bound"
+      >j</a
+      ><a name="1568" class="Symbol"
+      >}{</a
+      ><a name="1570" href="hott.loop.sum.html#1570" class="Bound"
+      >A</a
+      ><a name="1571"
+      > </a
+      ><a name="1572" class="Symbol"
+      >:</a
+      ><a name="1573"
+      > </a
+      ><a name="1574" class="PrimitiveType"
+      >Set</a
+      ><a name="1577"
+      > </a
+      ><a name="1578" href="hott.loop.sum.html#1564" class="Bound"
+      >i</a
+      ><a name="1579" class="Symbol"
+      >}{</a
+      ><a name="1581" href="hott.loop.sum.html#1581" class="Bound"
+      >B</a
+      ><a name="1582"
+      > </a
+      ><a name="1583" class="Symbol"
+      >:</a
+      ><a name="1584"
+      > </a
+      ><a name="1585" href="hott.loop.sum.html#1570" class="Bound"
+      >A</a
+      ><a name="1586"
+      > </a
+      ><a name="1587" class="Symbol"
+      >&#8594;</a
+      ><a name="1588"
+      > </a
+      ><a name="1589" class="PrimitiveType"
+      >Set</a
+      ><a name="1592"
+      > </a
+      ><a name="1593" href="hott.loop.sum.html#1567" class="Bound"
+      >j</a
+      ><a name="1594" class="Symbol"
+      >}(</a
+      ><a name="1596" href="hott.loop.sum.html#1596" class="Bound"
+      >n</a
+      ><a name="1597"
+      > </a
+      ><a name="1598" class="Symbol"
+      >:</a
+      ><a name="1599"
+      > </a
+      ><a name="1600" href="sets.nat.core.html#228" class="Datatype"
+      >&#8469;</a
+      ><a name="1601" class="Symbol"
+      >)</a
+      ><a name="1602"
+      >
+         </a
+      ><a name="1612" class="Symbol"
+      >&#8594;</a
+      ><a name="1613"
+      > </a
+      ><a name="1614" class="Symbol"
+      >(</a
+      ><a name="1615" href="hott.loop.sum.html#1615" class="Bound"
+      >hB</a
+      ><a name="1617"
+      > </a
+      ><a name="1618" class="Symbol"
+      >:</a
+      ><a name="1619"
+      > </a
+      ><a name="1620" class="Symbol"
+      >(</a
+      ><a name="1621" href="hott.loop.sum.html#1621" class="Bound"
+      >a</a
+      ><a name="1622"
+      > </a
+      ><a name="1623" class="Symbol"
+      >:</a
+      ><a name="1624"
+      > </a
+      ><a name="1625" href="hott.loop.sum.html#1570" class="Bound"
+      >A</a
+      ><a name="1626" class="Symbol"
+      >)</a
+      ><a name="1627"
+      > </a
+      ><a name="1628" class="Symbol"
+      >&#8594;</a
+      ><a name="1629"
+      > </a
+      ><a name="1630" href="hott.level.core.html#176" class="Function"
+      >h</a
+      ><a name="1631"
+      > </a
+      ><a name="1632" href="hott.loop.sum.html#1596" class="Bound"
+      >n</a
+      ><a name="1633"
+      > </a
+      ><a name="1634" class="Symbol"
+      >(</a
+      ><a name="1635" href="hott.loop.sum.html#1581" class="Bound"
+      >B</a
+      ><a name="1636"
+      > </a
+      ><a name="1637" href="hott.loop.sum.html#1621" class="Bound"
+      >a</a
+      ><a name="1638" class="Symbol"
+      >))</a
+      ><a name="1640"
+      >
+         </a
+      ><a name="1650" class="Symbol"
+      >&#8594;</a
+      ><a name="1651"
+      > </a
+      ><a name="1652" class="Symbol"
+      >{</a
+      ><a name="1653" href="hott.loop.sum.html#1653" class="Bound"
+      >a&#8320;</a
+      ><a name="1655"
+      > </a
+      ><a name="1656" class="Symbol"
+      >:</a
+      ><a name="1657"
+      > </a
+      ><a name="1658" href="hott.loop.sum.html#1570" class="Bound"
+      >A</a
+      ><a name="1659" class="Symbol"
+      >}{</a
+      ><a name="1661" href="hott.loop.sum.html#1661" class="Bound"
+      >b&#8320;</a
+      ><a name="1663"
+      > </a
+      ><a name="1664" class="Symbol"
+      >:</a
+      ><a name="1665"
+      > </a
+      ><a name="1666" href="hott.loop.sum.html#1581" class="Bound"
+      >B</a
+      ><a name="1667"
+      > </a
+      ><a name="1668" href="hott.loop.sum.html#1653" class="Bound"
+      >a&#8320;</a
+      ><a name="1670" class="Symbol"
+      >}</a
+      ><a name="1671"
+      >
+         </a
+      ><a name="1681" class="Symbol"
+      >&#8594;</a
+      ><a name="1682"
+      > </a
+      ><a name="1683" href="hott.loop.core.html#376" class="Function"
+      >&#937;</a
+      ><a name="1684"
+      > </a
+      ><a name="1685" href="hott.loop.sum.html#1596" class="Bound"
+      >n</a
+      ><a name="1686"
+      > </a
+      ><a name="1687" class="Symbol"
+      >{</a
+      ><a name="1688" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="1689"
+      > </a
+      ><a name="1690" href="hott.loop.sum.html#1570" class="Bound"
+      >A</a
+      ><a name="1691"
+      > </a
+      ><a name="1692" href="hott.loop.sum.html#1581" class="Bound"
+      >B</a
+      ><a name="1693" class="Symbol"
+      >}</a
+      ><a name="1694"
+      > </a
+      ><a name="1695" class="Symbol"
+      >(</a
+      ><a name="1696" href="hott.loop.sum.html#1653" class="Bound"
+      >a&#8320;</a
+      ><a name="1698"
+      > </a
+      ><a name="1699" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1700"
+      > </a
+      ><a name="1701" href="hott.loop.sum.html#1661" class="Bound"
+      >b&#8320;</a
+      ><a name="1703" class="Symbol"
+      >)</a
+      ><a name="1704"
+      > </a
+      ><a name="1705" href="function.isomorphism.core.html#355" class="Record Operator"
+      >&#8773;</a
+      ><a name="1706"
+      > </a
+      ><a name="1707" href="hott.loop.core.html#376" class="Function"
+      >&#937;</a
+      ><a name="1708"
+      > </a
+      ><a name="1709" href="hott.loop.sum.html#1596" class="Bound"
+      >n</a
+      ><a name="1710"
+      > </a
+      ><a name="1711" href="hott.loop.sum.html#1653" class="Bound"
+      >a&#8320;</a
+      ><a name="1713"
+      >
+</a
+      ><a name="1714" href="hott.loop.sum.html#1550" class="Function"
+      >loop-sum</a
+      ><a name="1722"
+      > </a
+      ><a name="1723" href="hott.loop.sum.html#1723" class="Bound"
+      >n</a
+      ><a name="1724"
+      > </a
+      ><a name="1725" href="hott.loop.sum.html#1725" class="Bound"
+      >hB</a
+      ><a name="1727"
+      > </a
+      ><a name="1728" class="Symbol"
+      >{</a
+      ><a name="1729" href="hott.loop.sum.html#1729" class="Bound"
+      >a&#8320;</a
+      ><a name="1731" class="Symbol"
+      >}{</a
+      ><a name="1733" href="hott.loop.sum.html#1733" class="Bound"
+      >b&#8320;</a
+      ><a name="1735" class="Symbol"
+      >}</a
+      ><a name="1736"
+      > </a
+      ><a name="1737" class="Symbol"
+      >=</a
+      ><a name="1738"
+      > </a
+      ><a name="1739" href="hott.equivalence.core.html#739" class="Function"
+      >&#8776;&#8658;&#8773;</a
+      ><a name="1742"
+      > </a
+      ><a name="1743" class="Symbol"
+      >(</a
+      ><a name="1744" href="hott.loop.core.html#784" class="Function"
+      >map&#937;</a
+      ><a name="1748"
+      > </a
+      ><a name="1749" href="hott.loop.sum.html#1723" class="Bound"
+      >n</a
+      ><a name="1750"
+      > </a
+      ><a name="1751" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1756"
+      > </a
+      ><a name="1757" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1758"
+      > </a
+      ><a name="1759" href="equality.core.html#636" class="Function"
+      >subst</a
+      ><a name="1764"
+      > </a
+      ><a name="1765" href="hott.equivalence.core.html#434" class="Function"
+      >weak-equiv</a
+      ><a name="1775"
+      > </a
+      ><a name="1776" href="hott.loop.sum.html#1907" class="Function"
+      >eq</a
+      ><a name="1778"
+      > </a
+      ><a name="1779" href="hott.loop.sum.html#1810" class="Function"
+      >we</a
+      ><a name="1781" class="Symbol"
+      >)</a
+      ><a name="1782"
+      >
+  </a
+      ><a name="1785" class="Keyword"
+      >where</a
+      ><a name="1790"
+      >
+    </a
+      ><a name="1795" class="Keyword"
+      >abstract</a
+      ><a name="1803"
+      >
+      </a
+      ><a name="1810" href="hott.loop.sum.html#1810" class="Function"
+      >we</a
+      ><a name="1812"
+      > </a
+      ><a name="1813" class="Symbol"
+      >:</a
+      ><a name="1814"
+      > </a
+      ><a name="1815" href="hott.equivalence.core.html#434" class="Function"
+      >weak-equiv</a
+      ><a name="1825"
+      > </a
+      ><a name="1826" class="Symbol"
+      >(</a
+      ><a name="1827" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="1832"
+      > </a
+      ><a name="1833" class="Symbol"
+      >(</a
+      ><a name="1834" href="hott.loop.sum.html#404" class="Function"
+      >loop-sum'</a
+      ><a name="1843"
+      > </a
+      ><a name="1844" href="hott.loop.sum.html#1723" class="Bound"
+      >n</a
+      ><a name="1845"
+      > </a
+      ><a name="1846" href="hott.loop.sum.html#1725" class="Bound"
+      >hB</a
+      ><a name="1848"
+      > </a
+      ><a name="1849" class="Symbol"
+      >{</a
+      ><a name="1850" href="hott.loop.sum.html#1729" class="Bound"
+      >a&#8320;</a
+      ><a name="1852" class="Symbol"
+      >}{</a
+      ><a name="1854" href="hott.loop.sum.html#1733" class="Bound"
+      >b&#8320;</a
+      ><a name="1856" class="Symbol"
+      >}))</a
+      ><a name="1859"
+      >
+      </a
+      ><a name="1866" href="hott.loop.sum.html#1810" class="Function"
+      >we</a
+      ><a name="1868"
+      > </a
+      ><a name="1869" class="Symbol"
+      >=</a
+      ><a name="1870"
+      > </a
+      ><a name="1871" href="sum.html#259" class="Field"
+      >proj&#8322;</a
+      ><a name="1876"
+      > </a
+      ><a name="1877" class="Symbol"
+      >(</a
+      ><a name="1878" href="hott.equivalence.alternative.html#3991" class="Function"
+      >&#8773;&#8658;&#8776;</a
+      ><a name="1881"
+      > </a
+      ><a name="1882" class="Symbol"
+      >(</a
+      ><a name="1883" href="hott.loop.sum.html#404" class="Function"
+      >loop-sum'</a
+      ><a name="1892"
+      > </a
+      ><a name="1893" href="hott.loop.sum.html#1723" class="Bound"
+      >n</a
+      ><a name="1894"
+      > </a
+      ><a name="1895" href="hott.loop.sum.html#1725" class="Bound"
+      >hB</a
+      ><a name="1897" class="Symbol"
+      >))</a
+      ><a name="1899"
+      >
+
+      </a
+      ><a name="1907" href="hott.loop.sum.html#1907" class="Function"
+      >eq</a
+      ><a name="1909"
+      > </a
+      ><a name="1910" class="Symbol"
+      >:</a
+      ><a name="1911"
+      > </a
+      ><a name="1912" href="overloading.core.html#6206" class="Function"
+      >apply</a
+      ><a name="1917"
+      > </a
+      ><a name="1918" class="Symbol"
+      >(</a
+      ><a name="1919" href="hott.loop.sum.html#404" class="Function"
+      >loop-sum'</a
+      ><a name="1928"
+      > </a
+      ><a name="1929" href="hott.loop.sum.html#1723" class="Bound"
+      >n</a
+      ><a name="1930"
+      > </a
+      ><a name="1931" href="hott.loop.sum.html#1725" class="Bound"
+      >hB</a
+      ><a name="1933"
+      > </a
+      ><a name="1934" class="Symbol"
+      >{</a
+      ><a name="1935" href="hott.loop.sum.html#1729" class="Bound"
+      >a&#8320;</a
+      ><a name="1937" class="Symbol"
+      >}{</a
+      ><a name="1939" href="hott.loop.sum.html#1733" class="Bound"
+      >b&#8320;</a
+      ><a name="1941" class="Symbol"
+      >})</a
+      ><a name="1943"
+      > </a
+      ><a name="1944" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="1945"
+      > </a
+      ><a name="1946" href="hott.loop.core.html#784" class="Function"
+      >map&#937;</a
+      ><a name="1950"
+      > </a
+      ><a name="1951" href="hott.loop.sum.html#1723" class="Bound"
+      >n</a
+      ><a name="1952"
+      > </a
+      ><a name="1953" href="sum.html#245" class="Field"
+      >proj&#8321;</a
+      ><a name="1958"
+      >
+      </a
+      ><a name="1965" href="hott.loop.sum.html#1907" class="Function"
+      >eq</a
+      ><a name="1967"
+      > </a
+      ><a name="1968" class="Symbol"
+      >=</a
+      ><a name="1969"
+      > </a
+      ><a name="1970" href="function.extensionality.proof.html#1870" class="Function"
+      >funext</a
+      ><a name="1976"
+      > </a
+      ><a name="1977" class="Symbol"
+      >(</a
+      ><a name="1978" href="hott.loop.sum.html#838" class="Function"
+      >loop-sum-&#946;</a
+      ><a name="1988"
+      > </a
+      ><a name="1989" href="hott.loop.sum.html#1723" class="Bound"
+      >n</a
+      ><a name="1990"
+      > </a
+      ><a name="1991" href="hott.loop.sum.html#1725" class="Bound"
+      >hB</a
+      ><a name="1993" class="Symbol"
+      >)</a
+      ><a name="1994"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
