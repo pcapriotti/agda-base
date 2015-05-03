@@ -1,6 +1,8 @@
 {-# OPTIONS --without-K #-}
 
-module function.isomorphism.utils where
+open import function.extensionality.core
+
+module function.isomorphism.utils (funext : ∀ {i j} → Extensionality' i j) where
 
 open import sum
 open import equality.core
@@ -9,7 +11,6 @@ open import function.core
 open import function.overloading
 open import function.isomorphism.core
 open import function.isomorphism.coherent
-open import function.extensionality.proof
 open import sets.nat.core
 open import sets.unit
 open import sets.empty

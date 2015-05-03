@@ -1,16 +1,15 @@
 {-# OPTIONS --without-K #-}
 open import function.extensionality.core
 
-module hott.equivalence.alternative where
+module hott.equivalence.alternative (funext : ∀ {i j} → Extensionality' i j) where
 
 open import sum
 open import equality.core
 open import equality.calculus
 open import function.core
-open import function.extensionality.proof
 open import function.isomorphism.core
 open import function.isomorphism.coherent
-open import function.isomorphism.utils
+open import function.isomorphism.utils funext
 open import hott.level.core
 open import hott.equivalence.core
 open import hott.univalence

@@ -1,13 +1,14 @@
 {-# OPTIONS --without-K #-}
-module function.extensionality.proof where
+open import hott.univalence.core
+module function.extensionality.proof (univalence : ∀ {i} → Univalence i) where
 
 open import level
 open import sum
 open import equality
 open import function.extensionality.core
-open import hott.univalence
+open import hott.univalence univalence
 open import hott.level.core
-open import hott.level.closure.core
+open import hott.level.closure.core univalence
 open import hott.equivalence.core
 open import sets.unit
 

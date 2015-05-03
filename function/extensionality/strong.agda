@@ -1,5 +1,7 @@
 {-# OPTIONS --without-K #-}
-module function.extensionality.strong where
+open import function.extensionality.core
+
+module function.extensionality.strong (funext : ∀ {i j} → Extensionality' i j) where
 
 open import level
 open import sum
@@ -7,8 +9,6 @@ open import function.core
 open import equality.core
 open import function.isomorphism.core
 open import function.isomorphism.univalence
-open import function.extensionality.core
-open import function.extensionality.proof
 open import hott.level.core
 open import hott.level.closure.core
 open import hott.equivalence.core

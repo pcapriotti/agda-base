@@ -1,11 +1,14 @@
 {-# OPTIONS --without-K #-}
-module function.isomorphism.univalence where
+open import hott.univalence.core
+
+module function.isomorphism.univalence (univalence : ∀ {i} → Univalence i) where
 
 open import equality.core
 open import function.core
 open import function.isomorphism.core
-open import hott.equivalence.alternative
-open import hott.univalence
+open import function.extensionality.proof univalence
+open import hott.equivalence.alternative funext
+open import hott.univalence univalence
 
 ≅⇒≡ : ∀ {i}{X Y : Set i}
      → X ≅ Y → X ≡ Y

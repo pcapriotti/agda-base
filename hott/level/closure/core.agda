@@ -1,5 +1,7 @@
 {-# OPTIONS --without-K #-}
-module hott.level.closure.core where
+open import hott.univalence.core
+
+module hott.level.closure.core (univalence : ∀ {i} → Univalence i) where
 
 open import level
 open import decidable
@@ -9,7 +11,7 @@ open import function.isomorphism.core
 open import sum
 open import hott.level.core
 open import hott.equivalence.core
-open import hott.univalence
+open import hott.univalence univalence
 open import sets.nat.core
 open import sets.nat.ordering.leq.core
 open import sets.nat.ordering.leq.decide

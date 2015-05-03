@@ -1,9 +1,11 @@
 {-# OPTIONS --without-K #-}
-module function.extensionality where
+open import hott.univalence.core
+
+module function.extensionality (univalence : ∀ {i} → Univalence i) where
 
 open import function.extensionality.core public
-open import function.extensionality.proof public
-open import function.extensionality.strong public
+open import function.extensionality.proof univalence public
+open import function.extensionality.strong funext public
   using (strong-funext; strong-funext-iso)
 open import function.extensionality.computation public
 
