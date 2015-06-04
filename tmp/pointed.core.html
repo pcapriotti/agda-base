@@ -1,0 +1,759 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >pointed.core</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Symbol"
+      >{-#</a
+      ><a name="4"
+      > </a
+      ><a name="5" class="Keyword"
+      >OPTIONS</a
+      ><a name="12"
+      > --without-K </a
+      ><a name="25" class="Symbol"
+      >#-}</a
+      ><a name="28"
+      >
+</a
+      ><a name="29" class="Keyword"
+      >module</a
+      ><a name="35"
+      > </a
+      ><a name="36" href="pointed.core.html#1" class="Module"
+      >pointed.core</a
+      ><a name="48"
+      > </a
+      ><a name="49" class="Keyword"
+      >where</a
+      ><a name="54"
+      >
+
+</a
+      ><a name="56" class="Keyword"
+      >open</a
+      ><a name="60"
+      > </a
+      ><a name="61" class="Keyword"
+      >import</a
+      ><a name="67"
+      > </a
+      ><a name="68" href="sum.html#1" class="Module"
+      >sum</a
+      ><a name="71"
+      >
+</a
+      ><a name="72" class="Keyword"
+      >open</a
+      ><a name="76"
+      > </a
+      ><a name="77" class="Keyword"
+      >import</a
+      ><a name="83"
+      > </a
+      ><a name="84" href="equality.core.html#1" class="Module"
+      >equality.core</a
+      ><a name="97"
+      >
+</a
+      ><a name="98" class="Keyword"
+      >open</a
+      ><a name="102"
+      > </a
+      ><a name="103" class="Keyword"
+      >import</a
+      ><a name="109"
+      > </a
+      ><a name="110" href="function.core.html#1" class="Module"
+      >function.core</a
+      ><a name="123"
+      >
+</a
+      ><a name="124" class="Keyword"
+      >open</a
+      ><a name="128"
+      > </a
+      ><a name="129" class="Keyword"
+      >import</a
+      ><a name="135"
+      > </a
+      ><a name="136" href="function.isomorphism.core.html#1" class="Module"
+      >function.isomorphism.core</a
+      ><a name="161"
+      >
+
+</a
+      ><a name="163" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="167"
+      > </a
+      ><a name="168" class="Symbol"
+      >:</a
+      ><a name="169"
+      > </a
+      ><a name="170" class="Symbol"
+      >&#8704;</a
+      ><a name="171"
+      > </a
+      ><a name="172" href="pointed.core.html#172" class="Bound"
+      >i</a
+      ><a name="173"
+      > </a
+      ><a name="174" class="Symbol"
+      >&#8594;</a
+      ><a name="175"
+      > </a
+      ><a name="176" class="PrimitiveType"
+      >Set</a
+      ><a name="179"
+      > </a
+      ><a name="180" class="Symbol"
+      >_</a
+      ><a name="181"
+      >
+</a
+      ><a name="182" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="186"
+      > </a
+      ><a name="187" href="pointed.core.html#187" class="Bound"
+      >i</a
+      ><a name="188"
+      > </a
+      ><a name="189" class="Symbol"
+      >=</a
+      ><a name="190"
+      > </a
+      ><a name="191" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="192"
+      > </a
+      ><a name="193" class="Symbol"
+      >(</a
+      ><a name="194" class="PrimitiveType"
+      >Set</a
+      ><a name="197"
+      > </a
+      ><a name="198" href="pointed.core.html#187" class="Bound"
+      >i</a
+      ><a name="199" class="Symbol"
+      >)</a
+      ><a name="200"
+      > </a
+      ><a name="201" class="Symbol"
+      >&#955;</a
+      ><a name="202"
+      > </a
+      ><a name="203" href="pointed.core.html#203" class="Bound"
+      >X</a
+      ><a name="204"
+      > </a
+      ><a name="205" class="Symbol"
+      >&#8594;</a
+      ><a name="206"
+      > </a
+      ><a name="207" href="pointed.core.html#203" class="Bound"
+      >X</a
+      ><a name="208"
+      >
+
+</a
+      ><a name="210" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="214"
+      > </a
+      ><a name="215" class="Symbol"
+      >:</a
+      ><a name="216"
+      > </a
+      ><a name="217" class="Symbol"
+      >&#8704;</a
+      ><a name="218"
+      > </a
+      ><a name="219" class="Symbol"
+      >{</a
+      ><a name="220" href="pointed.core.html#220" class="Bound"
+      >i</a
+      ><a name="221"
+      > </a
+      ><a name="222" href="pointed.core.html#222" class="Bound"
+      >j</a
+      ><a name="223" class="Symbol"
+      >}</a
+      ><a name="224"
+      > </a
+      ><a name="225" class="Symbol"
+      >&#8594;</a
+      ><a name="226"
+      > </a
+      ><a name="227" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="231"
+      > </a
+      ><a name="232" href="pointed.core.html#220" class="Bound"
+      >i</a
+      ><a name="233"
+      > </a
+      ><a name="234" class="Symbol"
+      >&#8594;</a
+      ><a name="235"
+      > </a
+      ><a name="236" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="240"
+      > </a
+      ><a name="241" href="pointed.core.html#222" class="Bound"
+      >j</a
+      ><a name="242"
+      > </a
+      ><a name="243" class="Symbol"
+      >&#8594;</a
+      ><a name="244"
+      > </a
+      ><a name="245" class="PrimitiveType"
+      >Set</a
+      ><a name="248"
+      > </a
+      ><a name="249" class="Symbol"
+      >_</a
+      ><a name="250"
+      >
+</a
+      ><a name="251" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="255"
+      > </a
+      ><a name="256" class="Symbol"
+      >(</a
+      ><a name="257" href="pointed.core.html#257" class="Bound"
+      >X</a
+      ><a name="258"
+      > </a
+      ><a name="259" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="260"
+      > </a
+      ><a name="261" href="pointed.core.html#261" class="Bound"
+      >x</a
+      ><a name="262" class="Symbol"
+      >)</a
+      ><a name="263"
+      > </a
+      ><a name="264" class="Symbol"
+      >(</a
+      ><a name="265" href="pointed.core.html#265" class="Bound"
+      >Y</a
+      ><a name="266"
+      > </a
+      ><a name="267" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="268"
+      > </a
+      ><a name="269" href="pointed.core.html#269" class="Bound"
+      >y</a
+      ><a name="270" class="Symbol"
+      >)</a
+      ><a name="271"
+      > </a
+      ><a name="272" class="Symbol"
+      >=</a
+      ><a name="273"
+      > </a
+      ><a name="274" href="sum.html#159" class="Record"
+      >&#931;</a
+      ><a name="275"
+      > </a
+      ><a name="276" class="Symbol"
+      >(</a
+      ><a name="277" href="pointed.core.html#257" class="Bound"
+      >X</a
+      ><a name="278"
+      > </a
+      ><a name="279" class="Symbol"
+      >&#8594;</a
+      ><a name="280"
+      > </a
+      ><a name="281" href="pointed.core.html#265" class="Bound"
+      >Y</a
+      ><a name="282" class="Symbol"
+      >)</a
+      ><a name="283"
+      > </a
+      ><a name="284" class="Symbol"
+      >&#955;</a
+      ><a name="285"
+      > </a
+      ><a name="286" href="pointed.core.html#286" class="Bound"
+      >f</a
+      ><a name="287"
+      > </a
+      ><a name="288" class="Symbol"
+      >&#8594;</a
+      ><a name="289"
+      > </a
+      ><a name="290" href="pointed.core.html#286" class="Bound"
+      >f</a
+      ><a name="291"
+      > </a
+      ><a name="292" href="pointed.core.html#261" class="Bound"
+      >x</a
+      ><a name="293"
+      > </a
+      ><a name="294" href="equality.core.html#145" class="Datatype Operator"
+      >&#8801;</a
+      ><a name="295"
+      > </a
+      ><a name="296" href="pointed.core.html#269" class="Bound"
+      >y</a
+      ><a name="297"
+      >
+
+</a
+      ><a name="299" href="pointed.core.html#299" class="Function Operator"
+      >_&#8728;P_</a
+      ><a name="303"
+      > </a
+      ><a name="304" class="Symbol"
+      >:</a
+      ><a name="305"
+      > </a
+      ><a name="306" class="Symbol"
+      >&#8704;</a
+      ><a name="307"
+      > </a
+      ><a name="308" class="Symbol"
+      >{</a
+      ><a name="309" href="pointed.core.html#309" class="Bound"
+      >i</a
+      ><a name="310"
+      > </a
+      ><a name="311" href="pointed.core.html#311" class="Bound"
+      >j</a
+      ><a name="312"
+      > </a
+      ><a name="313" href="pointed.core.html#313" class="Bound"
+      >k</a
+      ><a name="314" class="Symbol"
+      >}{</a
+      ><a name="316" href="pointed.core.html#316" class="Bound"
+      >&#120039;</a
+      ><a name="317"
+      > </a
+      ><a name="318" class="Symbol"
+      >:</a
+      ><a name="319"
+      > </a
+      ><a name="320" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="324"
+      > </a
+      ><a name="325" href="pointed.core.html#309" class="Bound"
+      >i</a
+      ><a name="326" class="Symbol"
+      >}{</a
+      ><a name="328" href="pointed.core.html#328" class="Bound"
+      >&#120040;</a
+      ><a name="329"
+      > </a
+      ><a name="330" class="Symbol"
+      >:</a
+      ><a name="331"
+      > </a
+      ><a name="332" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="336"
+      > </a
+      ><a name="337" href="pointed.core.html#311" class="Bound"
+      >j</a
+      ><a name="338" class="Symbol"
+      >}{</a
+      ><a name="340" href="pointed.core.html#340" class="Bound"
+      >&#120041;</a
+      ><a name="341"
+      > </a
+      ><a name="342" class="Symbol"
+      >:</a
+      ><a name="343"
+      > </a
+      ><a name="344" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="348"
+      > </a
+      ><a name="349" href="pointed.core.html#313" class="Bound"
+      >k</a
+      ><a name="350" class="Symbol"
+      >}</a
+      ><a name="351"
+      >
+     </a
+      ><a name="357" class="Symbol"
+      >&#8594;</a
+      ><a name="358"
+      > </a
+      ><a name="359" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="363"
+      > </a
+      ><a name="364" href="pointed.core.html#328" class="Bound"
+      >&#120040;</a
+      ><a name="365"
+      > </a
+      ><a name="366" href="pointed.core.html#340" class="Bound"
+      >&#120041;</a
+      ><a name="367"
+      > </a
+      ><a name="368" class="Symbol"
+      >&#8594;</a
+      ><a name="369"
+      > </a
+      ><a name="370" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="374"
+      > </a
+      ><a name="375" href="pointed.core.html#316" class="Bound"
+      >&#120039;</a
+      ><a name="376"
+      > </a
+      ><a name="377" href="pointed.core.html#328" class="Bound"
+      >&#120040;</a
+      ><a name="378"
+      > </a
+      ><a name="379" class="Symbol"
+      >&#8594;</a
+      ><a name="380"
+      > </a
+      ><a name="381" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="385"
+      > </a
+      ><a name="386" href="pointed.core.html#316" class="Bound"
+      >&#120039;</a
+      ><a name="387"
+      > </a
+      ><a name="388" href="pointed.core.html#340" class="Bound"
+      >&#120041;</a
+      ><a name="389"
+      >
+</a
+      ><a name="390" class="Symbol"
+      >(</a
+      ><a name="391" href="pointed.core.html#391" class="Bound"
+      >g</a
+      ><a name="392"
+      > </a
+      ><a name="393" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="394"
+      > </a
+      ><a name="395" href="pointed.core.html#395" class="Bound"
+      >q</a
+      ><a name="396" class="Symbol"
+      >)</a
+      ><a name="397"
+      > </a
+      ><a name="398" href="pointed.core.html#299" class="Function Operator"
+      >&#8728;P</a
+      ><a name="400"
+      > </a
+      ><a name="401" class="Symbol"
+      >(</a
+      ><a name="402" href="pointed.core.html#402" class="Bound"
+      >f</a
+      ><a name="403"
+      > </a
+      ><a name="404" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="405"
+      > </a
+      ><a name="406" href="pointed.core.html#406" class="Bound"
+      >p</a
+      ><a name="407" class="Symbol"
+      >)</a
+      ><a name="408"
+      > </a
+      ><a name="409" class="Symbol"
+      >=</a
+      ><a name="410"
+      > </a
+      ><a name="411" class="Symbol"
+      >(</a
+      ><a name="412" href="pointed.core.html#391" class="Bound"
+      >g</a
+      ><a name="413"
+      > </a
+      ><a name="414" href="function.core.html#912" class="Field Operator"
+      >&#8728;</a
+      ><a name="415"
+      > </a
+      ><a name="416" href="pointed.core.html#402" class="Bound"
+      >f</a
+      ><a name="417"
+      > </a
+      ><a name="418" href="sum.html#229" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="419"
+      > </a
+      ><a name="420" href="equality.core.html#367" class="Function"
+      >ap</a
+      ><a name="422"
+      > </a
+      ><a name="423" href="pointed.core.html#391" class="Bound"
+      >g</a
+      ><a name="424"
+      > </a
+      ><a name="425" href="pointed.core.html#406" class="Bound"
+      >p</a
+      ><a name="426"
+      > </a
+      ><a name="427" href="equality.core.html#278" class="Function Operator"
+      >&#183;</a
+      ><a name="428"
+      > </a
+      ><a name="429" href="pointed.core.html#395" class="Bound"
+      >q</a
+      ><a name="430" class="Symbol"
+      >)</a
+      ><a name="431"
+      >
+
+</a
+      ><a name="433" class="Keyword"
+      >instance</a
+      ><a name="441"
+      >
+  </a
+      ><a name="444" href="pointed.core.html#444" class="Function"
+      >pmap-comp</a
+      ><a name="453"
+      > </a
+      ><a name="454" class="Symbol"
+      >:</a
+      ><a name="455"
+      > </a
+      ><a name="456" class="Symbol"
+      >&#8704;</a
+      ><a name="457"
+      > </a
+      ><a name="458" class="Symbol"
+      >{</a
+      ><a name="459" href="pointed.core.html#459" class="Bound"
+      >i</a
+      ><a name="460"
+      > </a
+      ><a name="461" href="pointed.core.html#461" class="Bound"
+      >j</a
+      ><a name="462"
+      > </a
+      ><a name="463" href="pointed.core.html#463" class="Bound"
+      >k</a
+      ><a name="464" class="Symbol"
+      >}</a
+      ><a name="465"
+      > </a
+      ><a name="466" class="Symbol"
+      >&#8594;</a
+      ><a name="467"
+      > </a
+      ><a name="468" href="function.core.html#652" class="Record"
+      >Composition</a
+      ><a name="479"
+      > </a
+      ><a name="480" class="Symbol"
+      >_</a
+      ><a name="481"
+      > </a
+      ><a name="482" class="Symbol"
+      >_</a
+      ><a name="483"
+      > </a
+      ><a name="484" class="Symbol"
+      >_</a
+      ><a name="485"
+      > </a
+      ><a name="486" class="Symbol"
+      >_</a
+      ><a name="487"
+      > </a
+      ><a name="488" class="Symbol"
+      >_</a
+      ><a name="489"
+      > </a
+      ><a name="490" class="Symbol"
+      >_</a
+      ><a name="491"
+      >
+  </a
+      ><a name="494" href="pointed.core.html#444" class="Function"
+      >pmap-comp</a
+      ><a name="503"
+      > </a
+      ><a name="504" class="Symbol"
+      >{</a
+      ><a name="505" href="pointed.core.html#505" class="Bound"
+      >i</a
+      ><a name="506" class="Symbol"
+      >}{</a
+      ><a name="508" href="pointed.core.html#508" class="Bound"
+      >j</a
+      ><a name="509" class="Symbol"
+      >}{</a
+      ><a name="511" href="pointed.core.html#511" class="Bound"
+      >k</a
+      ><a name="512" class="Symbol"
+      >}</a
+      ><a name="513"
+      > </a
+      ><a name="514" class="Symbol"
+      >=</a
+      ><a name="515"
+      > </a
+      ><a name="516" class="Keyword"
+      >record</a
+      ><a name="522"
+      >
+    </a
+      ><a name="527" class="Symbol"
+      >{</a
+      ><a name="528"
+      > </a
+      ><a name="529" class="Field"
+      >U&#8321;</a
+      ><a name="531"
+      > </a
+      ><a name="532" class="Symbol"
+      >=</a
+      ><a name="533"
+      > </a
+      ><a name="534" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="538"
+      > </a
+      ><a name="539" href="pointed.core.html#505" class="Bound"
+      >i</a
+      ><a name="540"
+      >
+    </a
+      ><a name="545" class="Symbol"
+      >;</a
+      ><a name="546"
+      > </a
+      ><a name="547" class="Field"
+      >U&#8322;</a
+      ><a name="549"
+      > </a
+      ><a name="550" class="Symbol"
+      >=</a
+      ><a name="551"
+      > </a
+      ><a name="552" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="556"
+      > </a
+      ><a name="557" href="pointed.core.html#508" class="Bound"
+      >j</a
+      ><a name="558"
+      >
+    </a
+      ><a name="563" class="Symbol"
+      >;</a
+      ><a name="564"
+      > </a
+      ><a name="565" class="Field"
+      >U&#8323;</a
+      ><a name="567"
+      > </a
+      ><a name="568" class="Symbol"
+      >=</a
+      ><a name="569"
+      > </a
+      ><a name="570" href="pointed.core.html#163" class="Function"
+      >PSet</a
+      ><a name="574"
+      > </a
+      ><a name="575" href="pointed.core.html#511" class="Bound"
+      >k</a
+      ><a name="576"
+      >
+    </a
+      ><a name="581" class="Symbol"
+      >;</a
+      ><a name="582"
+      > </a
+      ><a name="583" class="Field"
+      >hom&#8321;&#8322;</a
+      ><a name="588"
+      > </a
+      ><a name="589" class="Symbol"
+      >=</a
+      ><a name="590"
+      > </a
+      ><a name="591" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="595"
+      >
+    </a
+      ><a name="600" class="Symbol"
+      >;</a
+      ><a name="601"
+      > </a
+      ><a name="602" class="Field"
+      >hom&#8322;&#8323;</a
+      ><a name="607"
+      > </a
+      ><a name="608" class="Symbol"
+      >=</a
+      ><a name="609"
+      > </a
+      ><a name="610" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="614"
+      >
+    </a
+      ><a name="619" class="Symbol"
+      >;</a
+      ><a name="620"
+      > </a
+      ><a name="621" class="Field"
+      >hom&#8321;&#8323;</a
+      ><a name="626"
+      > </a
+      ><a name="627" class="Symbol"
+      >=</a
+      ><a name="628"
+      > </a
+      ><a name="629" href="pointed.core.html#210" class="Function"
+      >PMap</a
+      ><a name="633"
+      >
+    </a
+      ><a name="638" class="Symbol"
+      >;</a
+      ><a name="639"
+      > </a
+      ><a name="640" class="Field Operator"
+      >_&#8728;_</a
+      ><a name="643"
+      > </a
+      ><a name="644" class="Symbol"
+      >=</a
+      ><a name="645"
+      > </a
+      ><a name="646" href="pointed.core.html#299" class="Function Operator"
+      >_&#8728;P_</a
+      ><a name="650"
+      > </a
+      ><a name="651" class="Symbol"
+      >}</a
+      ><a name="652"
+      >
+</a
+      ></pre
+    ></body
+  ></html
+>
