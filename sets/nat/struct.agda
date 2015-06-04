@@ -1,6 +1,7 @@
 {-# OPTIONS --without-K #-}
 module sets.nat.struct where
 
+open import level
 open import sum
 open import equality
 open import function
@@ -15,14 +16,14 @@ open import hott.level
 
 ℕ-c : Container _ _ _
 ℕ-c = record
-  { I = ⊤
+  { I = ⊤ {lzero}
   ; A = λ _ → Fin 2
   ; B = ⊥ ∷∷ ⊤ ∷∷ ⟦⟧
   ; r = λ _ → tt }
 
 open Container ℕ-c
 
-ℕ-algebra-iso : (⊤ ⊎ ℕ) ≅ ℕ
+ℕ-algebra-iso : (⊤ {lzero} ⊎ ℕ) ≅ ℕ
 ℕ-algebra-iso = record
   { to = λ { (inj₁ _) → zero ; (inj₂ n) → suc n }
   ; from = λ { zero → inj₁ tt ; (suc n) → inj₂ n }

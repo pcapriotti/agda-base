@@ -2,7 +2,7 @@
 
 module decidable where
 
-open import level using (Level)
+open import level
 open import sets.empty using (⊥; ¬_)
 open import sets.unit using (⊤; tt)
 
@@ -12,7 +12,7 @@ data Dec {i} (P : Set i) : Set i where
   yes : ( p :   P) → Dec P
   no  : (¬p : ¬ P) → Dec P
 
-True : ∀ {i}{P : Set i} → Dec P → Set
+True : ∀ {i}{P : Set i} → Dec P → Set lzero
 True (yes _) = ⊤
 True (no _) = ⊥
 

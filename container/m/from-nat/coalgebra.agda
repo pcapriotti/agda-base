@@ -18,11 +18,11 @@ module _ {li la lb} (c : Container li la lb) where
   open import container.m.coalgebra c hiding (_≅_; module _≅_)
 
   Xⁱ : ℕ → I → Set (la ⊔ lb)
-  Xⁱ zero = λ _ → ↑ _ ⊤
+  Xⁱ zero = λ _ → ⊤
   Xⁱ (suc n) = F (Xⁱ n)
 
   πⁱ : ∀ n → Xⁱ (suc n) →ⁱ Xⁱ n
-  πⁱ zero = λ _ _ → lift tt
+  πⁱ zero = λ _ _ → tt
   πⁱ (suc n) = imap (πⁱ n)
 
   module _ (i : I) where
@@ -129,7 +129,7 @@ module _ {li la lb} (c : Container li la lb) where
         open cones c Xⁱ πⁱ 𝓩
 
         X₀-contr : ∀ i → contr (X i 0)
-        X₀-contr i = ↑-level _ ⊤-contr
+        X₀-contr i = ⊤-contr
 
         Z→X₀-contr : contr (Z →ⁱ Xⁱ 0)
         Z→X₀-contr = Π-level λ i → Π-level λ _ → X₀-contr i
@@ -138,7 +138,7 @@ module _ {li la lb} (c : Container li la lb) where
         step v = imap v ∘ⁱ θ
 
         Φ₀ : Cone₀ → Cone₀
-        Φ₀ u 0 = λ _ _ → lift tt
+        Φ₀ u 0 = λ _ _ → tt
         Φ₀ u (suc n) = step (u n)
 
         Φ₀' : Cone → Cone₀
@@ -155,7 +155,7 @@ module _ {li la lb} (c : Container li la lb) where
         Φ (u , q) = (Φ₀ u , Φ₁ u q)
 
         u₀ : Cone₀
-        u₀ zero = λ _ _ → lift tt
+        u₀ zero = λ _ _ → tt
         u₀ (suc n) = step (u₀ n)
 
         p₀ : ∀ n → u₀ n ≡ Φ₀ u₀ n
@@ -175,7 +175,7 @@ module _ {li la lb} (c : Container li la lb) where
         Fix₀-iso = begin
             ( Σ Cone₀ λ u → u ≡ Φ₀ u )
           ≅⟨ ( Σ-ap-iso refl≅ λ u → sym≅ strong-funext-iso ·≅ ℕ-elim-shift ) ⟩
-            ( Σ Cone₀ λ u → (u 0 ≡ λ _ _ → lift tt)
+            ( Σ Cone₀ λ u → (u 0 ≡ λ _ _ → tt)
                           × (∀ n → u (suc n) ≡ step (u n)) )
           ≅⟨ ( Σ-ap-iso refl≅ λ u → (×-ap-iso (contr-⊤-iso (h↑ Z→X₀-contr _ _)) refl≅)
                                   ·≅ ×-left-unit ) ⟩

@@ -8,18 +8,13 @@ open import function.extensionality.core
 open import hott.univalence
 open import hott.level.core
 open import hott.level.closure.core
+open import hott.level.sets.core
 open import hott.equivalence.core
 open import sets.unit
 
-top : ∀ {i} → Set i
-top = ↑ _ ⊤
-
-⊤-contr' : ∀ {i} → contr (↑ i ⊤)
-⊤-contr' {i} = lift tt , λ { (lift tt) → refl }
-
 -- this uses definitional η for ⊤
-contr-exp-⊤ : ∀ {i j}{A : Set i} → contr (A → top {j})
-contr-exp-⊤ = (λ _ → lift tt) , (λ f → refl)
+contr-exp-⊤ : ∀ {i j}{A : Set i} → contr (A → ⊤ {j})
+contr-exp-⊤ = (λ _ → tt) , (λ f → refl)
 
 module Weak where
   →-contr : ∀ {i j}{A : Set i}{B : Set j}
@@ -27,8 +22,8 @@ module Weak where
           → contr (A → B)
   →-contr {A = A}{B = B} hB = subst contr p contr-exp-⊤
     where
-      p : (A → top) ≡ (A → B)
-      p = ap (λ X → A → X) (unique-contr ⊤-contr' hB)
+      p : (A → ⊤) ≡ (A → B)
+      p = ap (λ X → A → X) (unique-contr ⊤-contr hB)
 
   funext : ∀ {i j}{A : Set i}{B : Set j}
       → (f : A → B)(b : B)(h : (x : A) → b ≡ f x)
@@ -45,10 +40,10 @@ abstract
           → contr ((x : A) → B x)
   Π-contr {i}{j}{A}{B} hB = subst contr p contr-exp-⊤
     where
-      p₀ : (λ _ → top) ≡ B
-      p₀ = Weak.funext B top (λ x → unique-contr ⊤-contr' (hB x))
+      p₀ : (λ _ → ⊤) ≡ B
+      p₀ = Weak.funext B ⊤ (λ x → unique-contr ⊤-contr (hB x))
 
-      p : (A → top {j}) ≡ ((x : A) → B x)
+      p : (A → ⊤ {j}) ≡ ((x : A) → B x)
       p = ap (λ Z → (x : A) → Z x) p₀
 
   private

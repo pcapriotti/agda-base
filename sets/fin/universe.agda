@@ -1,6 +1,7 @@
 {-# OPTIONS --without-K  #-}
 module sets.fin.universe where
 
+open import level
 open import sum
 open import decidable
 open import equality.core
@@ -28,7 +29,7 @@ open import hott.level.core
 open import hott.level.closure
 open import hott.level.sets
 
-fin-struct-iso : ∀ {n} → Fin (suc n) ≅ (⊤ ⊎ Fin n)
+fin-struct-iso : ∀ {n} → Fin (suc n) ≅ (⊤ {lzero} ⊎ Fin n)
 fin-struct-iso = record
   { to = λ { zero → inj₁ tt; (suc i) → inj₂ i }
   ; from = [ (λ _ → zero) ,⊎ (suc) ]
@@ -38,7 +39,7 @@ fin-struct-iso = record
 fin0-empty : ⊥ ≅ Fin 0
 fin0-empty = sym≅ (empty-⊥-iso (λ ()))
 
-fin1-unit : ⊤ ≅ Fin 1
+fin1-unit : ∀ {i} → ⊤ {i} ≅ Fin 1
 fin1-unit = record
   { to = λ _ → zero
   ; from = λ { zero → tt ; (suc ()) }

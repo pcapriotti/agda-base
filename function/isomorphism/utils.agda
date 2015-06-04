@@ -2,6 +2,7 @@
 
 module function.isomorphism.utils where
 
+open import level
 open import sum
 open import equality.core
 open import equality.calculus
@@ -285,14 +286,14 @@ impl-iso = record
       ; (inj₂ x) → refl }
   ; iso₂ = λ { (g₁ , g₂) → refl } }
 
-×-left-unit : ∀ {i}{X : Set i} → (⊤ × X) ≅ X
+×-left-unit : ∀ {i j}{X : Set i} → (⊤ {j} × X) ≅ X
 ×-left-unit = record
   { to = λ {(tt , x) → x }
   ; from = λ x → tt , x
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
-×-right-unit : ∀ {i}{X : Set i} → (X × ⊤) ≅ X
+×-right-unit : ∀ {i j}{X : Set i} → (X × ⊤ {j}) ≅ X
 ×-right-unit = record
   { to = λ {(x , tt) → x }
   ; from = λ x → x , tt
@@ -300,7 +301,7 @@ impl-iso = record
   ; iso₂ = λ _ → refl }
 
 contr-⊤-iso : ∀ {i}{X : Set i}
-            → contr X → X ≅ ⊤
+            → contr X → X ≅ ⊤ {lzero}
 contr-⊤-iso hX = record
   { to = λ x → tt
   ; from = λ { tt → proj₁ hX }
@@ -323,8 +324,8 @@ empty-⊥-iso u = record
   ; iso₁ = λ _ → refl
   ; iso₂ = λ _ → refl }
 
-Π-left-unit : ∀ {i}{X : Set i}
-            → (⊤ → X) ≅ X
+Π-left-unit : ∀ {i j}{X : Set i}
+            → (⊤ {j} → X) ≅ X
 Π-left-unit = record
   { to = λ f → f tt
   ; from = λ x _ → x

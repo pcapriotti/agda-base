@@ -2,8 +2,10 @@
 
 module sets.unit where
 
-record ⊤ : Set where
+open import level
+
+record ⊤ {i : Level} : Set i where
   constructor tt
 
-⊤-elim : (P : ⊤ → Set) → P tt → (x : ⊤) → P x
+⊤-elim : ∀ {i j} (P : ⊤ {i} → Set j) → P tt → (x : ⊤) → P x
 ⊤-elim P ptt tt = ptt
