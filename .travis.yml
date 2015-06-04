@@ -3,7 +3,7 @@ language: haskell
 before_install:
   - cabal update
   - cabal install happy alex
-  - cabal install Agda  --constraint "cpphs < 1.19"
+  - cabal install Agda
   - agda --version
 
 install:
