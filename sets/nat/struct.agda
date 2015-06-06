@@ -14,9 +14,9 @@ open import sets.fin
 open import sets.vec.dependent
 open import hott.level
 
-ℕ-c : Container _ _ _
+ℕ-c : Container lzero lzero lzero
 ℕ-c = record
-  { I = ⊤ {lzero}
+  { I = ⊤
   ; A = λ _ → Fin 2
   ; B = ⊥ ∷∷ ⊤ ∷∷ ⟦⟧
   ; r = λ _ → tt }

@@ -308,8 +308,7 @@ contr-⊤-iso hX = record
   ; iso₁ = λ x → proj₂ hX x
   ; iso₂ = λ { tt → refl } }
 
-empty-⊥-iso : ∀ {i}{X : Set i}
-            → (X → ⊥) → X ≅ ⊥
+empty-⊥-iso : ∀ {i}{X : Set i} → ¬ X → X ≅ ⊥ {lzero}
 empty-⊥-iso u = record
   { to = u
   ; from = ⊥-elim

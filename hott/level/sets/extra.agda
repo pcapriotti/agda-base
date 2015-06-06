@@ -13,7 +13,7 @@ open import sets.empty
 open import sets.unit
 open import hott.level.core
 
-⊥-initial : ∀ {i} {A : Set i} → contr (⊥ → A)
+⊥-initial : ∀ {i j} {A : Set i} → contr (⊥ {j} → A)
 ⊥-initial = (λ ()) , (λ f → funext λ ())
 
 -- Hedberg's theorem
