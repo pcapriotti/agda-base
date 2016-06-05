@@ -64,7 +64,7 @@ infixl 9 _·≅_
 
 module ≅-Reasoning where
   infix  4 _IsRelatedTo_
-  infix  2 _∎
+  infix  3 _∎
   infixr 2 _≅⟨_⟩_
   infixr 2 _≡⟨_⟩_
   infix  1 begin_
