@@ -74,13 +74,18 @@ private
     → subst B p u ≡ v
   prop-subst {p = refl} pr = pr _ _
 
-record _≅_ {ℓ} (𝓧 𝓨 : Coalg ℓ) : Set (lsuc $ ℓ ⊔ li ⊔ la ⊔ lb) where
-  constructor iso
-  field
-    f : 𝓧 ⇒ 𝓨
-    g : 𝓨 ⇒ 𝓧
-    f-g : f ∘ g ≡ idf 𝓨
-    g-f : g ∘ f ≡ idf 𝓧
+module _ {ℓ} (𝓧 𝓨 : Coalg ℓ) where
+  instance
+    𝓧' 𝓨' : Coalg ℓ
+    𝓧' = 𝓧
+    𝓨' = 𝓨
+  record _≅_ : Set (lsuc $ ℓ ⊔ li ⊔ la ⊔ lb) where
+    constructor iso
+    field
+      f : 𝓧 ⇒ 𝓨
+      g : 𝓨 ⇒ 𝓧
+      f-g : f ∘ g ≡ idf 𝓨
+      g-f : g ∘ f ≡ idf 𝓧
 
 ≅⇒≡ : ∀ {ℓ} {𝓧 𝓨 : Coalg ℓ} → 𝓧 ≅ 𝓨 → 𝓧 ≡ 𝓨
 ≅⇒≡ {𝓧 = X , θ} {𝓨 = Y , ψ} 𝓧≅𝓨 = unapΣ (π₁≡ , π₂≡)

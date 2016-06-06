@@ -88,7 +88,7 @@ fibration-iso {i} j {X} = record
       → _≡_ {A = Σ (Set (i ⊔ j)) λ Y → Y → X}
         (Σ X (_⁻¹_ p) , proj₁)
         (Y , p)
-    α Y p = invert (fib-eq-iso proj₁ p)
+    α Y p = invert≅ (fib-eq-iso proj₁ p)
             ( ≅⇒≅' (total-iso p)
             , funext λ { (y , x , eq) → sym eq } )
 

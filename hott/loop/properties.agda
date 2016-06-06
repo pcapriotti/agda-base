@@ -13,7 +13,7 @@ open import hott.loop.core
 
 mapΩ₁-const : ∀ {i j}{𝓧 : PSet i}{𝓨 : PSet j}
             → mapΩ₁ (constP 𝓧 𝓨) ≡ constP _ _
-mapΩ₁-const = apply pmap-eq (ap-const _ , refl)
+mapΩ₁-const = apply≅ pmap-eq (ap-const _ , refl)
   where
     ap-const : ∀ {i j}{X : Set i}{Y : Set j}(y : Y)
              → {x x' : X}(p : x ≡ x') → ap (λ _ → y) p ≡ refl
@@ -32,7 +32,7 @@ mapΩ-const n y x p = funext-inv (ap proj₁ (mapΩP-const n)) p
 mapΩ₁-hom : ∀ {i j k}{𝓧 : PSet i}{𝓨 : PSet j}{𝓩 : PSet k}
           → (f : PMap 𝓧 𝓨)(g : PMap 𝓨 𝓩)
           → mapΩ₁ g ∘ mapΩ₁ f ≡ mapΩ₁ (g ∘ f)
-mapΩ₁-hom (f , refl) (g , refl) = apply pmap-eq (ap-hom f g , refl)
+mapΩ₁-hom (f , refl) (g , refl) = apply≅ pmap-eq (ap-hom f g , refl)
 
 mapΩP-hom : ∀ {i j k} n → {𝓧 : PSet i}{𝓨 : PSet j}{𝓩 : PSet k}
           → (f : PMap 𝓧 𝓨)(g : PMap 𝓨 𝓩)
@@ -44,7 +44,7 @@ mapΩP-hom (suc n) f g = mapΩP-hom n (mapΩ₁ f) (mapΩ₁ g)
 mapΩ-hom : ∀ {i j k} n {X : Set i}{Y : Set j}{Z : Set k}
          → (f : X → Y)(g : Y → Z){x : X}(p : Ω n x)
          → mapΩ n g (mapΩ n f p) ≡ mapΩ n (g ∘ f) p
-mapΩ-hom n f g = proj₁ (invert pmap-eq (mapΩP-hom n (f , refl) (g , refl)))
+mapΩ-hom n f g = proj₁ (invert≅ pmap-eq (mapΩP-hom n (f , refl) (g , refl)))
 
 mapΩ-refl : ∀ {i j} n {X : Set i}{Y : Set j}
           → (f : X → Y){x : X}

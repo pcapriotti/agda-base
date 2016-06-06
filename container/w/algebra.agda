@@ -111,7 +111,7 @@ module _ {ℓ} (𝓧 : Alg ℓ) where
     lem p refl refl refl α = α
 
   W-mor-prop : (f g : Mor 𝓦 𝓧) → f ≡ g
-  W-mor-prop (f , α) (g , β) = invert (eq-mor-iso 𝓦 𝓧) (p , p-h)
+  W-mor-prop (f , α) (g , β) = invert≅ (eq-mor-iso 𝓦 𝓧) (p , p-h)
     where
       p : ∀ i x → f i x ≡ g i x
       p i (sup a u)

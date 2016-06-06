@@ -34,12 +34,12 @@ module _ {li}{I : Set li} where
   funext-invⁱ : ∀ {lx ly} {X : I → Set lx}{Y : (i : I) → X i → Set ly}
               → {f g : (i : I)(x : X i) → Y i x}
               → f ≡ g → ∀ i x → f i x ≡ g i x
-  funext-invⁱ = invert funext-isoⁱ
+  funext-invⁱ = invert≅ funext-isoⁱ
 
   funextⁱ : ∀ {lx ly} {X : I → Set lx}{Y : (i : I) → X i → Set ly}
           → {f g : (i : I)(x : X i) → Y i x}
           → (∀ i x → f i x ≡ g i x) → f ≡ g
-  funextⁱ = apply funext-isoⁱ
+  funextⁱ = apply≅ funext-isoⁱ
 
 record Container (li la lb : Level) : Set (lsuc (li ⊔ la ⊔ lb)) where
   constructor container

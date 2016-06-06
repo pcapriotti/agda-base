@@ -47,11 +47,11 @@ module _ {li la lb} (c : Container li la lb) where
     outL-iso i = lim-iso i ·≅ shift-iso i
 
     outL-lem₀ : (n : ℕ)(i : I)(x : F L i)
-              → p i (suc n) (apply (outL-iso i) x) ≡ imap (pⁱ n) i x
+              → p i (suc n) (apply≅ (outL-iso i) x) ≡ imap (pⁱ n) i x
     outL-lem₀ n i x = refl
 
     outL-lem₁' : (n : ℕ)(i : I)(x : F L i)
-               → β i (suc n) (apply (outL-iso i) x)
+               → β i (suc n) (apply≅ (outL-iso i) x)
                ≡ subst₂ (λ w₁ w₀ → π i (suc n) w₁ ≡ w₀)
                         (sym (outL-lem₀ (suc n) i x))
                         (sym (outL-lem₀ n i x))
@@ -59,16 +59,16 @@ module _ {li la lb} (c : Container li la lb) where
     outL-lem₁' n i x = refl
 
   inL : F L →ⁱ L
-  inL i = apply (outL-iso i)
+  inL i = apply≅ (outL-iso i)
 
   outL : L →ⁱ F L
-  outL i = invert (outL-iso i)
+  outL i = invert≅ (outL-iso i)
 
   in-out : inL ∘ⁱ outL ≡ idⁱ
   in-out = funext λ i → funext λ x → _≅_.iso₂ (outL-iso i) x
 
   outL-lem₁ : (n : ℕ)(i : I)(x : F L i)
-            → β i (suc n) (apply (outL-iso i) x)
+            → β i (suc n) (apply≅ (outL-iso i) x)
             ≡ ap (π i (suc n)) (outL-lem₀ (suc n) i x)
             · unapΣ (refl , funext λ b → proj₂ (proj₂ x b) n)
             · sym (outL-lem₀ n i x)
@@ -102,9 +102,9 @@ module _ {li la lb} (c : Container li la lb) where
       ≅⟨ ( Σ-ap-iso refl≅ λ f → trans≡-iso (ap (λ h₁ → h₁ ∘ⁱ f) (sym in-out)) ) ⟩
         ( Σ (Z →ⁱ L) λ f → f ≡ Ψ f )
       ≅⟨ sym≅ (Σ-ap-iso isom λ _ → refl≅) ⟩
-        ( Σ Cone λ c → apply isom c ≡ Ψ (apply isom c) )
+        ( Σ Cone λ c → apply≅ isom c ≡ Ψ (apply≅ isom c) )
       ≅⟨ ( Σ-ap-iso refl≅ λ c → trans≡-iso' (Φ-Ψ-comm c) ) ⟩
-        ( Σ Cone λ c → apply isom c ≡ apply isom (Φ c) )
+        ( Σ Cone λ c → apply≅ isom c ≡ apply≅ isom (Φ c) )
       ≅⟨ sym≅ (Σ-ap-iso refl≅ λ c → iso≡ isom ) ⟩
         ( Σ Cone λ c → c ≡ Φ c )
       ≅⟨ ( Σ-ap-iso refl≅ λ _ → refl≅ ) ⟩
@@ -238,14 +238,14 @@ module _ {li la lb} (c : Container li la lb) where
 
         Φ-Ψ-comm₀ : (f : Z →ⁱ L) → ∀ n i z
                   → p i n (Ψ f i z)
-                  ≡ Φ₀' (invert isom f) n i z
+                  ≡ Φ₀' (invert≅ isom f) n i z
         Φ-Ψ-comm₀ f 0 i z = h1⇒prop (h↑ (X₀-contr i)) _ _
         Φ-Ψ-comm₀ f (suc n) i z = outL-lem₀ n i (imap f i (θ i z))
 
         Φ-Ψ-comm₁' : (f : Z →ⁱ L) → ∀ n i z
                     → β i n (Ψ f i z)
                     ≡ ap (π i n) (Φ-Ψ-comm₀ f (suc n) i z)
-                    · funext-invⁱ (Φ₁' (invert isom f) n) i z
+                    · funext-invⁱ (Φ₁' (invert≅ isom f) n) i z
                     · sym (Φ-Ψ-comm₀ f n i z)
         Φ-Ψ-comm₁' f 0 i z = h1⇒prop (h↑ (h↑ (X₀-contr i)) _ _) _ _
         Φ-Ψ-comm₁' f (suc n) i z = begin
@@ -281,32 +281,32 @@ module _ {li la lb} (c : Container li la lb) where
             lem : {u v : L →ⁱ Xⁱ n}(ω : (i : I)(x : L i) → u i x ≡ v i x)(i : I)(z : Z i)
                 → unapΣ (refl , funext λ b → ω (r b) (proj₂ (imap f i (θ i z)) b))
                 ≡ funext-invⁱ (ap step (funextⁱ (λ i z → ω i (f i z)))) i z
-            lem {u}{v} = invert (Π-ap-iso funext-isoⁱ λ ω → refl≅) lem'
+            lem {u}{v} = invert≅ (Π-ap-iso funext-isoⁱ λ ω → refl≅) lem'
 
         Φ-Ψ-comm₁ : (f : Z →ⁱ L) → ∀ n i z
                    → funext-invⁱ (funextⁱ λ i z → β i n (Ψ f i z)) i z
                    ≡ ap (π i n) (Φ-Ψ-comm₀ f (suc n) i z)
-                   · funext-invⁱ (Φ₁' (invert isom f) n) i z
+                   · funext-invⁱ (Φ₁' (invert≅ isom f) n) i z
                    · sym (Φ-Ψ-comm₀ f n i z)
         Φ-Ψ-comm₁ f n i z = ap (λ h → h i z)
                                 (_≅_.iso₁ funext-isoⁱ (λ i z → β i n (Ψ f i z)))
                           · Φ-Ψ-comm₁' f n i z
 
-        Φ-Ψ-comm' : (f : Z →ⁱ L) → invert isom (Ψ f) ≡ Φ (invert isom f)
+        Φ-Ψ-comm' : (f : Z →ⁱ L) → invert≅ isom (Ψ f) ≡ Φ (invert≅ isom f)
         Φ-Ψ-comm' f = Cone-eq (Φ-Ψ-comm₀ f) (Φ-Ψ-comm₁ f)
 
-        Φ-Ψ-comm : (c : Cone) → Ψ (apply isom c) ≡ apply isom (Φ c)
-        Φ-Ψ-comm c = sym (_≅_.iso₂ isom (Ψ (apply isom c)))
-                   · ap (apply isom)
-                        (Φ-Ψ-comm' (apply isom c) · ap Φ (_≅_.iso₁ isom c))
+        Φ-Ψ-comm : (c : Cone) → Ψ (apply≅ isom c) ≡ apply≅ isom (Φ c)
+        Φ-Ψ-comm c = sym (_≅_.iso₂ isom (Ψ (apply≅ isom c)))
+                   · ap (apply≅ isom)
+                        (Φ-Ψ-comm' (apply≅ isom c) · ap Φ (_≅_.iso₁ isom c))
 
         cone-comp₀ : (f : Z →ⁱ L)(n : ℕ)(i : I)(z : Z i)
-                   → proj₁ (invert isom (Ψ f)) n i z
+                   → proj₁ (invert≅ isom (Ψ f)) n i z
                    ≡ p i n (Ψ f i z)
         cone-comp₀ f n i z = refl
 
         cone-comp₁ : (f : Z →ⁱ L)(n : ℕ)
-                   → proj₂ (invert isom (Ψ f)) n
+                   → proj₂ (invert≅ isom (Ψ f)) n
                    ≡ funextⁱ (λ i z → β i n (Ψ f i z))
         cone-comp₁ f n = refl
 

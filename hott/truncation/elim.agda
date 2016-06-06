@@ -243,7 +243,7 @@ braiding-repr {i}{A} hA γ = (λ c → proj₁ (hom c)) , λ a
     type-eq : ∀ {n}{X : Type i n}{p : X ≡ X}
             → ((x : proj₁ X) → coerce (ap proj₁ p) x ≡ x)
             → p ≡ refl
-    type-eq f = invert (iso≡ type-eq-iso) (unapΣ
+    type-eq f = invert≅ (iso≡ type-eq-iso) (unapΣ
               ( funext f , h1⇒prop (weak-equiv-h1 _) _ _))
 
     ap-eq : {a b : A}(p : a ≡ b)(q : a ≡ a) → coerce (ap proj₁ (ap hom' p)) q ≡ sym p · q · p

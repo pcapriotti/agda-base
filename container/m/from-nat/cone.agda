@@ -84,20 +84,20 @@ module _ {li la lb} (c : Container li la lb) where
 
           subst-lem' : {u₁ u₂ : Cone₀}(p : (n : ℕ)(i : I)(z : Z i) → u₁ n i z ≡ u₂ n i z)
                      → (q : Cone₁ u₂)(n : ℕ)(i : I)(z : Z i)
-                     → funext-invⁱ (subst Cone₁ (sym (apply Cone₀-eq-iso p)) q n) i z
+                     → funext-invⁱ (subst Cone₁ (sym (apply≅ Cone₀-eq-iso p)) q n) i z
                      ≡ ap (π i n) (p (suc n) i z)
                      · funext-invⁱ (q n) i z
                      · sym (p n i z)
           subst-lem' {u₁}{u₂} p q n i z = subst ( λ p₁
-            → funext-invⁱ (subst Cone₁ (sym (apply Cone₀-eq-iso p)) q n) i z
+            → funext-invⁱ (subst Cone₁ (sym (apply≅ Cone₀-eq-iso p)) q n) i z
             ≡ ap (π i n) (p₁ (suc n) i z) · funext-invⁱ (q n) i z · sym (p₁ n i z) )
-              (_≅_.iso₁ Cone₀-eq-iso p) (subst-lem (apply Cone₀-eq-iso p) q n i z)
+              (_≅_.iso₁ Cone₀-eq-iso p) (subst-lem (apply≅ Cone₀-eq-iso p) q n i z)
 
           p' : proj₁ c₁ ≡ proj₁ c₂
-          p' = apply Cone₀-eq-iso p
+          p' = apply≅ Cone₀-eq-iso p
 
           α' : proj₂ c₁ ≡ subst Cone₁ (sym p') (proj₂ c₂)
-          α' = apply Cone₁-eq-iso λ n i z
+          α' = apply≅ Cone₁-eq-iso λ n i z
              → α n i z
              · sym (subst-lem' p (proj₂ c₂) n i z)
 

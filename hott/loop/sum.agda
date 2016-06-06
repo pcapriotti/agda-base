@@ -28,7 +28,7 @@ private
                → (hB : (a : A) → h n (B a))
                → {a₀ : A}{b₀ : B a₀}
                → (p : Ω n {Σ A B} (a₀ , b₀))
-               → apply (loop-sum' n hB) p ≡ mapΩ n proj₁ p
+               → apply≅ (loop-sum' n hB) p ≡ mapΩ n proj₁ p
     loop-sum-β zero hB p = refl
     loop-sum-β (suc n) hB p
       = loop-sum-β n _ (mapΩ n apΣ p)
@@ -39,7 +39,7 @@ private
             → _≡_ {A = PMap (_≡_ {A = Σ A B} (a₀ , b₀) (a₀ , b₀) , refl) ((a₀ ≡ a₀) , refl)}
               (proj₁ ∘ apΣ , refl)
               (ap proj₁ , refl)
-        lem = apply pmap-eq ((λ _ → refl) , refl)
+        lem = apply≅ pmap-eq ((λ _ → refl) , refl)
 
 
 loop-sum : ∀ {i}{j}{A : Set i}{B : A → Set j}(n : ℕ)
