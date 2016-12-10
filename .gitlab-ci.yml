@@ -1,0 +1,7 @@
+pages:
+  script:
+    - mkdir public
+    - echo "test" > public/index.html
+  artifacts:
+    paths:
+      - public
