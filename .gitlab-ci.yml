@@ -1,7 +1,10 @@
+image: banacorn/agda
+
 pages:
   script:
-    - mkdir public
-    - echo "test" > public/index.html
+    - gitlab-build-website.sh
   artifacts:
     paths:
       - public
+  except:
+    - pages
