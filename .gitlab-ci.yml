@@ -2,7 +2,7 @@ image: banacorn/agda
 
 pages:
   script:
-    - gitlab-build-website.sh
+    - ./gitlab-build-website.sh
   artifacts:
     paths:
       - public

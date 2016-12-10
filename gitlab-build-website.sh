@@ -6,6 +6,7 @@ branch="$1"
 
 # clone pages website
 html=public
+rm -fr "$html"
 git clone -b pages . "$html"
 rm -fr "$html"/"$branch"
 
