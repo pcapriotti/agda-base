@@ -1,2 +1,2 @@
 name: agda-base
-include: .
+include: src
