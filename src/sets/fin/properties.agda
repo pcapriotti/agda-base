@@ -188,18 +188,22 @@ inj-nonsurj : ∀ {n i}{A : Set i}
             → ((x : A) → ¬ (f x ≡ i))
             → A ↣ Fin n
 inj-nonsurj {n}{i}{A} f inj {z} u = g , g-inj
-  where
-    f' : A → Σ (Fin (suc n)) λ k → ¬ (k ≡ z)
-    f' i = f i , u i
+ where
+   f' : A → Σ (Fin (suc n)) λ k → ¬ (k ≡ z)
+   f' i = f i , u i
 
-    inj' : injective f'
-    inj' p = inj (ap proj₁ p)
+   inj' : injective f'
+   inj' p = inj (ap proj₁ p)
 
-    g : A → Fin n
-    g = apply (fin-remove-iso z) ∘' f'
+   abstract
+    φ : (Σ (Fin (suc n)) λ k → ¬ (k ≡ z)) ≅ Fin n
+    φ = fin-remove-iso z
 
-    g-inj : injective g
-    g-inj p = inj' (iso⇒inj (fin-remove-iso z) p)
+   g : A → Fin n
+   g = apply φ ∘' f'
+
+   g-inj : injective g
+   g-inj p = inj' (iso⇒inj φ p)
 
 preimage : ∀ {i n}{A : Set i}
          → (f : Fin n → A)
