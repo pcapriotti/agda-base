@@ -23,6 +23,9 @@ import equality
 -- Basic types
 import sets
 
+-- Algebra
+import algebra
+
 -- Decidable predicates
 import decidable
 
