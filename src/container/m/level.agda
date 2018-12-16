@@ -42,16 +42,17 @@ private
     contraction : ∀ {i} (x : M i) → center ≡ x
     contraction {i} x = mext (lem' x)
       where
-        coalg : ∀ {i}{x y : M i}
+        coalg : ∀ {i}(x y : M i)
               → center ≡ x
               → Σ (head x ≡ head y) λ p
               → ((b : B (head x)) → center ≡ tail x b)
-        coalg {i}{y = y} refl
+        coalg {i} x y refl
           = proj₂ (hA i) (head y)
           , λ b → refl
 
         lem' : ∀ {i}(x : M i) → center ≡M x
-        lem' _ = S.unfold (λ _ → coalg) _ refl
+        lem' x = S.unfold {X = λ { ( i , u , v ) → center ≡ u }}
+                   (λ { (i , u , v) → coalg u v }) _ refl
 
     m-contr : ∀ i → contr (M i)
     m-contr i = center , contraction
