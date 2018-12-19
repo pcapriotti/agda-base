@@ -381,3 +381,23 @@ J-iso {X = X}{x}{P} = record
       → (y : X)(p : x ≡ y)
       → J' P (u x refl) y p ≡ u y p
     β u .x refl = refl
+
+subtype-equality : ∀ {i j}{X : Set i}{Y : X → Set j}
+                 → ((x : X) → h 1 (Y x))
+                 → {x : X}{y : Y x}
+                 → {x' : X}{y' : Y x'}
+                 → (x ≡ x')
+                 ≅ _≡_ {A = Σ X Y} (x , y) (x' , y')
+subtype-equality {X = X}{Y} hY {x}{y}{x'}{y'} =
+  sym≅ ( Σ-ap-iso refl≅ (λ _ → contr-⊤-iso (hY _ _ _))
+        ·≅ ×-right-unit) ·≅ Σ-split-iso
+  -- where
+
+  --   f : {x x' : X}{y : Y x}{y' : Y x'}
+  --     → (x ≡ x') → _≡_ {A = Σ X Y} (x , y) (x' , y')
+  --   f {x} refl = ap (λ u → (x , u)) (h1⇒prop (hY x) _ _)
+
+  --   g : {x x' : X}{y : Y x}{y' : Y x'}
+  --     → _≡_ {A = Σ X Y} (x , y) (x' , y')
+  --     → x ≡ x'
+  --   g = ap proj₁
