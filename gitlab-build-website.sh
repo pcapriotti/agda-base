@@ -1,11 +1,16 @@
 #!/bin/bash
 set -e
 
+function err() {
+    echo "$1" >&2
+    exit 1
+}
+
 branch="$1"
-[ -z "$branch" ] && branch="$CI_BUILD_REF_NAME"
-[ -z "$branch" ] && exit 1
-url="$CI_BUILD_REPO"
-[ -z "$url" ] && exit 2
+[ -z "$branch" ] && branch="$CI_COMMIT_REF_NAME"
+[ -z "$branch" ] && err "no branch specified"
+url="$CI_REPOSITORY_URL"
+[ -z "$url" ] && err "no url specified"
 
 # clone pages website
 html=public
