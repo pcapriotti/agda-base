@@ -1,6 +1,6 @@
 # agda-base
 
-[![Continuous Integration status][status-png]][status]
+[![build status](https://gitlab.com/pcapriotti/agda-base/badges/master/build.svg)](https://gitlab.com/pcapriotti/agda-base/commits/master)
 
 This is a self-contained repository of basic results and utilities for
 Homotopy Type Theory.
@@ -14,6 +14,3 @@ For example, in the case of equality, the module called `equality` is
 composed of a number of submodules: `core` (containing the basic
 definitions), `groupoid` (groupoid laws), `calculus` (for calculations
 involving equality proofs) and `reasoning` (for equational reasoning).
-
- [status-png]: https://api.travis-ci.org/pcapriotti/agda-base.svg?branch=master
- [status]: http://travis-ci.org/pcapriotti/agda-base
