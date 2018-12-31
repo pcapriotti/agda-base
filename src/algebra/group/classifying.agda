@@ -42,9 +42,10 @@ module _ {i}(G : Set i) ⦃ gG : IsGroup G ⦄ where
       → subst (λ X → Trunc 1 (X ≡ G')) p [ refl ] ≡ [ refl ] )
     ≅⟨ (Σ-ap-iso refl≅ λ p → contr-⊤-iso (Trunc-level 1 _ _)) ·≅ ×-right-unit ⟩
       (G' ≡ G')
-    ≅⟨ GSet-univalence G G ⟩
-      ( Σ (GSetMorphism G G) λ { (f , _) → weak-equiv f } )
-    ≅⟨ ( Σ-ap-iso' (GSet-repr-iso is-set) λ _ → refl≅ ) ⟩
+    ≅⟨ GSet-univalence G ⦃ xG = GisGSet ⦄ G ⦃ yG = GisGSet ⦄ ⟩
+      ( Σ (GSetMorphism G ⦃ xG = GisGSet ⦄ G ⦃ yG = GisGSet ⦄) λ { (f , _)
+        → weak-equiv f } )
+    ≅⟨ (Σ-ap-iso' (GSet-repr-iso is-set ⦃ xG = GisGSet ⦄) λ _ → refl≅) ⟩
       ( Σ G λ { g → weak-equiv (λ x → x * g) } )
     ≅⟨ ( Σ-ap-iso refl≅ λ g → contr-⊤-iso ( lem g , h1⇒prop (we-h1 _) _ ) )
         ·≅ ×-right-unit ⟩
