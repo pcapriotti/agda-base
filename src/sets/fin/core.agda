@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K  #-}
 module sets.fin.core where
 
 open import decidable

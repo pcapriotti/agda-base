@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K  #-}
 module algebra.semigroup.morphism where
 
 open import level

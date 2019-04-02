@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K  #-}
 module container.w.core where
 
 open import level

@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K  #-}
 module algebra.monoid.morphism where
 
 open import level

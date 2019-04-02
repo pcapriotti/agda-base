@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K  #-}
 module sets.nat.ordering.lt.core where
 
 open import sum

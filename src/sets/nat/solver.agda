@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K  #-}
 module sets.nat.solver where
 
 open import decidable

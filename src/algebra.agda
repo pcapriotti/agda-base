@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K  #-}
 module algebra where
 
 open import algebra.semigroup public

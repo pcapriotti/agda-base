@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K  #-}
 module algebra.monoid where
 
 open import algebra.monoid.core public

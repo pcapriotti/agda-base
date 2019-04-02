@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K  #-}
 module algebra.group.morphism where
 
 open import level

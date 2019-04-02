@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K  #-}
 module algebra.monoid.core where
 
 open import level

@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K  #-}
 module container.w where
 
 open import container.w.core public

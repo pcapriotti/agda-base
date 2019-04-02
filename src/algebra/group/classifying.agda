@@ -1,3 +1,4 @@
+{-# OPTIONS --without-K  #-}
 module algebra.group.classifying where
 
 open import level
